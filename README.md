@@ -1,3 +1,8 @@
+# Balancing Plate
+## Aufbau
+-> Todo
+## ...Todo
+-> Todo Beschreibung
 # Basic Git Mergerequest Workflow
 ## 1. neuen Branch anlegen
 (Wenn man schon einen Branch hat zu 2.)
