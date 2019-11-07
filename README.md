@@ -3,6 +3,11 @@
 -> Todo
 ## ...Todo
 -> Todo Beschreibung
+# Rep clonen
+```
+git clone https://gitlab.oth-regensburg.de/IM/ems/DT_Projekte/dt_g1_balancing_plate_wise20192020.git
+```
+dann Oth username und Passwort eingeben 
 # Basic Git Mergerequest Workflow
 ## 1. neuen Branch anlegen
 (Wenn man schon einen Branch hat zu 2.)
