@@ -42,3 +42,11 @@ Falls der Branch auf dem man arbeitet schon existiert:
 git push
 ```
 
+## 4. Merge Request stellen
+Sobald man gepusht hat muss man auf der Github seite im Reiter links auf 
+Merge Request klicken. Nun wird einem eine Meldung angezeigt, dass man 
+einen branch gepusht hat und man kann direkt ueber diesen Button 
+einen Merge Request stellen. Ansonsten Button fuer neuen Merge Requst klicken.
+nun die richtigen Branches auswaehlen von z.B. NeuerBranch auf master, dann 
+Beschreibung hinzufuegen und jemanden auswaehlen der ueber den Merge Request 
+drueber schauen soll.
