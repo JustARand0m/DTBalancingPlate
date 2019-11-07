@@ -1,10 +1,8 @@
 #include "uart_raspi.h"
 
-/**
- * Function that opens up the UART connection
- */
-void uartConnection::connect() {
+uartConnection::uartConnection() {
     try {
+		  uartConnection::isListening = false;
         // open the uart tty device
         const char *device = "/dev/ttyS0";
         fd = open(device, O_RDWR | O_NOCTTY | O_NDELAY);
@@ -18,16 +16,51 @@ void uartConnection::connect() {
 
 		  termios config = configSetup(fd);
 
-        close(fd);
+        tcflush(fd, TCIFLUSH);
+        if(tcsetattr(fd, TCSANOW, &config) == -1){
+				throw "couldn't set termios config";
+		  }
+
+
     }
     catch(std::string e) {
         std::cout << e << std::endl;
-        close(fd);
     }
     catch(...) {
         std::cout << "error has been thrown" << std::endl;
-        close(fd);
     }
+}
+
+void uartConnection::startSending() {
+}
+
+/**
+ * This function starts to listen for new messages.
+ * It can be canceld by changeing isListening to false. 
+ */
+void uartConnection::startListening() {
+  //start polling for input (wait for event on file descriptor)
+  pollfd srcPoll;
+  srcPoll.fd = fd;
+  srcPoll.events = POLLIN;
+  srcPoll.revents = 0;
+  uartConnection::isListening = true;
+
+  // Main loop that is polling for new messages
+  char buf[BUFFERSIZE];
+  int res = 0;
+  while(isListening) {
+	  int check = poll(&srcPoll, 1, -1);
+	  if(check != 1) {
+		  std::cout << "package lost" << std::endl;
+	  }
+	  res = read(fd, buf, BUFFERSIZE);
+	  // use buf for something
+  }
+}
+
+void uartConnection::stopListening() {
+	uartConnection::isListening = false;
 }
 
 /**
@@ -61,7 +94,7 @@ termios uartConnection::configSetup(int fd) {
 		IXOFF Enables start/stop input control,
 			 if enabled -> sends stop signal, to not overflow queue  
 	*/
-	config.c_iflag = IGNPAR;
+	config.c_iflag = IGNBRK;
 
 	/*
 	CONTROL MODES:
@@ -113,5 +146,17 @@ termios uartConnection::configSetup(int fd) {
 	*/
 	config.c_lflag = 0;
 
+	// time between caracters in 10th of sec
+	config.c_cc[VTIME] = 0;
+	// blocking read() until x byte are recieved
+	config.c_cc[VMIN] = 3;
+
 	return config;
+}
+
+/**
+ * Deconstructor to close the opened tty device
+ */
+uartConnection::~uartConnection() {
+	  close(fd);
 }
