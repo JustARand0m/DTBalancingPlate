@@ -3,7 +3,7 @@
 -> Todo
 ## ...Todo
 -> Todo Beschreibung
-# Rep clonen
+# Repository klonen
 ```
 git clone https://gitlab.oth-regensburg.de/IM/ems/DT_Projekte/dt_g1_balancing_plate_wise20192020.git
 ```
