@@ -63,6 +63,8 @@ termios uartConnection::configSetup(int fd) {
 	config.c_iflag = IGNPAR;
 	/*
 	CONTROL MODES:
+		CBAUD a number of Bauds given by some constants
+			for example B50 for 50 baud, B110, B150, ..., B9600, B19200, B25600
 		CLOACL ignore modem control line CD is Carrier Detection (if another device is found)
 		CREAD enables Reciver
 		CSIZE Character size mask. Values are CS5, CS6, CS7 or CS8 
@@ -73,6 +75,7 @@ termios uartConnection::configSetup(int fd) {
 		PARENB Enalbe Parity generation on output and parity checking on input
 		PARODD if set parity check for input and output is odd else even
 	*/
-	config.c_cflag = PARODD | PARENB | CS8 | CREAD | CLOCAL;
+	config.c_cflag = B19200 | PARODD | PARENB | CS8 | CREAD | CLOCAL;
+
 	return config;
 }
