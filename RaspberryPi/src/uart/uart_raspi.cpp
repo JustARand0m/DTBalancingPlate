@@ -31,7 +31,8 @@ void uartConnection::connect() {
 }
 
 /**
- * This function sets up and initializes the termios object with the UART Protocol
+ * This function sets up and initializes the termios object with the UART Protocol.
+ * It will return the termios config struct that contains the settings for uart.
  * 
  * @param fd file descriptor of the uart tty device
  */
@@ -61,6 +62,7 @@ termios uartConnection::configSetup(int fd) {
 			 if enabled -> sends stop signal, to not overflow queue  
 	*/
 	config.c_iflag = IGNPAR;
+
 	/*
 	CONTROL MODES:
 		CBAUD a number of Bauds given by some constants
@@ -76,6 +78,40 @@ termios uartConnection::configSetup(int fd) {
 		PARODD if set parity check for input and output is odd else even
 	*/
 	config.c_cflag = B19200 | PARODD | PARENB | CS8 | CREAD | CLOCAL;
+
+	/*
+	OUTPUT MODES:
+		OPOST	Perform output processing
+		OLCUC	Map lower case to upper on output a => A
+		ONLCR	Map NL to CR-NL on output
+		OCRNL	Map CR to NL on output
+		ONOCR	No CR output at column 0
+		ONLRET NL performs CR function
+		OFILL	Use fill characters for delay
+		OFDEL	Fill is DEL else NUL.
+		NLDLY	Select new-line delays: NL0 NL1
+		CRDLY	Select carriage-return delays: CR0 CR1 CR2 CR3
+		TABDLY Select horizontal-tab delays: TAB0 TAB1 TAB2
+		XTABS	Expand tabs to spaces
+		BSDLY	Select backspace delays: BS0 BS1
+		VTDLY	Select vertical tab delays: VT0 VT1
+		FFDLY	Select form-feed delays: FF0 FF1	
+	*/	
+	config.c_oflag = 0;
+
+	/*
+	LOCAL MODES
+		ECHO	Enable echo
+		ECHOE	Echo ERASE as an error-correcting backspace
+		ECHOK	Echo KILL
+		ECHONL	Echo \n
+		ICANON	Canonical input (erase and kill processing)
+		IEXTEN	Enable extended functions
+		ISIG	Enable signals
+		NOFLSH	Disable flush after interrupt, quit or suspend
+		TOSTOP	Send SIGTTOU for background output
+	*/
+	config.c_lflag = 0;
 
 	return config;
 }
