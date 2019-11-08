@@ -74,6 +74,7 @@ termios uartConnection::configSetup(int fd) {
 	if(tcgetattr(fd, &config) < 0) {
 		throw "could not get the current configuration of the tty device";
 	}
+	memset(&config, 0, sizeof(config));
 	/*
 		INPUT MODES:
 		IGNBRK Ignores Break conditions

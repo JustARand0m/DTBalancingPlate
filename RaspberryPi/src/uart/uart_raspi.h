@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <poll.h>
 #include <csignal>
+#include <string.h>
 
 #define BUFFERSIZE 1024
 
