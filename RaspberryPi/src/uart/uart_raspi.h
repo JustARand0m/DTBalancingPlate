@@ -7,11 +7,11 @@
 #include <csignal>
 #include <string.h>
 
-#define BUFFERSIZE 1024
+const int BUFFERSIZE = 1024;
 
 class uartConnection {
 	public:
-		uartConnection();
+		uartConnection(std::string device);
 		void startListening();
 		void writeData(std::string input);
 		void stopListening();

@@ -1,5 +1,10 @@
 #include <iostream>
+#include "uart/uart_raspi.h"
+#include "../include/exceptionHandling.h"
 
 int main() {
-	std::cout << "hallo";	
+	uartConnection uartCon("/dev/ttyS0");
+	uartCon.writeData(std::string("test"));
+
+	return 0;
 }

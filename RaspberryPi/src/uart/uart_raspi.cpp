@@ -8,11 +8,11 @@
  *
  * @param device The string for the device to be opend
  */
-uartConnection::uartConnection(const char *device) {
+uartConnection::uartConnection(std::string device) {
 	try {
 		isListening = false;
 		// open the uart tty device
-		fd = open(device, O_RDWR | O_NOCTTY | O_NDELAY);
+		fd = open(device.c_str(), O_RDWR | O_NOCTTY | O_NDELAY);
 		if (fd == -1) {
 			throw exceptionHandling("failed to open the tty device");
 		}
