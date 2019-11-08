@@ -16,7 +16,9 @@ uartConnection::uartConnection() {
 
 		termios config = configSetup(fd);
 
+		// This flushes the input buffer so messages that would be in queue before the init get deleted
 		tcflush(fd, TCIFLUSH);
+		// This sets the new config
 		if(tcsetattr(fd, TCSANOW, &config) == -1){
 			throw "couldn't set termios config";
 		}
@@ -34,10 +36,10 @@ void uartConnection::startSending() {
 
 /**
  * This function starts to listen for new messages.
- * It can be canceld by changeing isListening to false. 
+ * It can be canceld by changing isListening to false. 
  */
 void uartConnection::startListening() {
-	//start polling for input (wait for event on file descriptor)
+	// start polling for input (wait for event on file descriptor)
 	pollfd srcPoll;
 	srcPoll.fd = fd;
 	srcPoll.events = POLLIN;
@@ -148,6 +150,10 @@ termios uartConnection::configSetup(int fd) {
 	config.c_cc[VTIME] = 0;
 	// blocking read() until x byte are recieved
 	config.c_cc[VMIN] = 3;
+
+	if(cfsetispeed(&config, B19200)) {
+		throw "speed couldnt be set";
+	}
 
 	return config;
 }
