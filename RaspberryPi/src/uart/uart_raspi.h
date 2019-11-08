@@ -3,13 +3,20 @@
 #include <fcntl.h>
 #include <iostream>
 #include <cstdio>
+#include <poll.h>
+#include <csignal>
+
+#define BUFFERSIZE 1024
 
 class uartConnection {
 	public:
 		uartConnection();
-		void connect();
+		void startListening();
+		void startSending();
+		void stopListening();
 		~uartConnection();
 	private:
 		int fd;
+		static bool isListening;
 		termios configSetup(int fd);
 };
