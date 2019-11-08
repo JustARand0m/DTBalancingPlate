@@ -7,7 +7,6 @@
 #include <csignal>
 #include <string.h>
 
-const int BUFFERSIZE = 1024;
 
 class uartConnection {
 	public:
@@ -21,4 +20,5 @@ class uartConnection {
 		int fd;
 		termios configSetup(int fd);
 		bool isListening;
+		const int BUFFERSIZE;
 };

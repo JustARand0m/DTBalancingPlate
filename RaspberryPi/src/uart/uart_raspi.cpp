@@ -8,7 +8,7 @@
  *
  * @param device The string for the device to be opend
  */
-uartConnection::uartConnection(std::string device) {
+uartConnection::uartConnection(std::string device): BUFFERSIZE(1024) {
 	try {
 		isListening = false;
 		// open the uart tty device

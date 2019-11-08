@@ -4,7 +4,7 @@
 
 int main() {
 	uartConnection uartCon("/dev/ttyS0");
-	uartCon.writeData(std::string("test"));
+	uartCon.writeData("test");
 
 	return 0;
 }
