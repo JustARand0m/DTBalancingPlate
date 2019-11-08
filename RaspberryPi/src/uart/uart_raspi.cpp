@@ -110,7 +110,7 @@ termios uartConnection::configSetup(int fd) {
 		PARENB Enalbe Parity generation on output and parity checking on input
 		PARODD if set parity check for input and output is odd else even
 	*/
-	config.c_cflag = B19200 | PARODD | PARENB | CS8 | CREAD | CLOCAL;
+	config.c_cflag = PARODD | PARENB | CS8 | CREAD | CLOCAL;
 
 	/*
 		OUTPUT MODES:
