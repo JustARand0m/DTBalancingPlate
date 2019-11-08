@@ -1,11 +1,17 @@
 #include "uart_raspi.h"
 #include "../../include/exceptionHandling.h"
 
-uartConnection::uartConnection() {
+/**
+ * The class constructer, needs the tty device as string, dont use 2 classes with
+ * the same discriptor.
+ * This function sets up uart.
+ *
+ * @param device The string for the device to be opend
+ */
+uartConnection::uartConnection(const char *device) {
 	try {
 		isListening = false;
 		// open the uart tty device
-		const char *device = "/dev/ttyS0";
 		fd = open(device, O_RDWR | O_NOCTTY | O_NDELAY);
 		if (fd == -1) {
 			throw exceptionHandling("failed to open the tty device");
