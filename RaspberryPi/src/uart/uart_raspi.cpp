@@ -73,7 +73,7 @@ termios uartConnection::configSetup(int fd) {
 		throw "could not get the current configuration of the tty device";
 	}
 	/*
-   INPUT MODES:
+	INPUT MODES:
 	   IGNBRK Ignores Break conditions
 	   Break condition = if the Sender sends 0 for more than 1 Frame (0 = dominant)
 	   BRKINT Singal Interrupt on break
@@ -91,11 +91,11 @@ termios uartConnection::configSetup(int fd) {
 	   if enalbed -> recieving stop caracter will suspend the output
 	   IXOFF Enables start/stop input control,
 	   if enabled -> sends stop signal, to not overflow queue  
-   */
+	*/
 	config.c_iflag = IGNBRK;
 
 	/*
-   CONTROL MODES:
+    CONTROL MODES:
 	   CBAUD a number of Bauds given by some constants
 	   for example B50 for 50 baud, B110, B150, ..., B9600, B19200, B25600
 	   CLOACL ignore modem control line CD is Carrier Detection (if another device is found)
@@ -107,11 +107,11 @@ termios uartConnection::configSetup(int fd) {
 	   HUPCL lower modem control line if connection is cut
 	   PARENB Enalbe Parity generation on output and parity checking on input
 	   PARODD if set parity check for input and output is odd else even
-   */
+    */
 	config.c_cflag = B19200 | PARODD | PARENB | CS8 | CREAD | CLOCAL;
 
 	/*
-   OUTPUT MODES:
+    OUTPUT MODES:
 	   OPOST	Perform output processing
 	   OLCUC	Map lower case to upper on output a => A
 	   ONLCR	Map NL to CR-NL on output
@@ -127,11 +127,11 @@ termios uartConnection::configSetup(int fd) {
 	   BSDLY	Select backspace delays: BS0 BS1
 	   VTDLY	Select vertical tab delays: VT0 VT1
 	   FFDLY	Select form-feed delays: FF0 FF1	
-   */	
+    */	
 	config.c_oflag = 0;
 
 	/*
-   LOCAL MODES
+    LOCAL MODES
 	   ECHO	Enable echo
 	   ECHOE	Echo ERASE as an error-correcting backspace
 	   ECHOK	Echo KILL
@@ -141,7 +141,7 @@ termios uartConnection::configSetup(int fd) {
 	   ISIG	Enable signals
 	   NOFLSH	Disable flush after interrupt, quit or suspend
 	   TOSTOP	Send SIGTTOU for background output
-   */
+    */
 	config.c_lflag = 0;
 
 	// time between caracters in 10th of sec
