@@ -13,7 +13,7 @@ class uartConnection {
 	public:
 		uartConnection();
 		void startListening();
-		void startSending();
+		void writeData(std::string input);
 		void stopListening();
 		~uartConnection();
 	private:

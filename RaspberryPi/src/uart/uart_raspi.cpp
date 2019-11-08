@@ -31,7 +31,11 @@ uartConnection::uartConnection() {
 	}
 }
 
-void uartConnection::startSending() {
+void uartConnection::writeData(std::string input) {
+	// clears messages that couldnt be send or are still in the buffer
+	tclflush(fd, TCOFLUSH);
+	// write new data
+	write (fd, input.c_str(), 7);
 }
 
 /**
