@@ -16,8 +16,9 @@ class uartConnection {
 		void writeData(std::string input);
 		void stopListening();
 		~uartConnection();
+
 	private:
 		int fd;
-		static bool isListening;
 		termios configSetup(int fd);
+		bool isListening;
 };

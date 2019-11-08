@@ -1,17 +1,18 @@
 #include "uart_raspi.h"
+#include "../../include/exceptionHandling.h"
 
 uartConnection::uartConnection() {
 	try {
-		uartConnection::isListening = false;
+		isListening = false;
 		// open the uart tty device
 		const char *device = "/dev/ttyS0";
 		fd = open(device, O_RDWR | O_NOCTTY | O_NDELAY);
 		if (fd == -1) {
-			throw "failed to open";
+			throw exceptionHandling("failed to open the tty device");
 		}
 		// check if it was a tty device, not just a file
 		if(!isatty(fd)) {
-			throw "fd is no tty device";
+			throw exceptionHandling("fd is no tty device");
 		}
 
 		termios config = configSetup(fd);
@@ -20,11 +21,11 @@ uartConnection::uartConnection() {
 		tcflush(fd, TCIFLUSH);
 		// This sets the new config
 		if(tcsetattr(fd, TCSANOW, &config) == -1){
-			throw "couldn't set termios config";
+			throw exceptionHandling("couldn't set termios config");
 		}
 	}
-	catch(std::string e) {
-		std::cout << e << std::endl;
+	catch(exceptionHandling &e) {
+		std::cout << e.what() << std::endl;
 	}
 	catch(...) {
 		std::cout << "error has been thrown" << std::endl;
@@ -33,7 +34,7 @@ uartConnection::uartConnection() {
 
 void uartConnection::writeData(std::string input) {
 	// clears messages that couldnt be send or are still in the buffer
-	tclflush(fd, TCOFLUSH);
+	tcflush(fd, TCOFLUSH);
 	// write new data
 	write (fd, input.c_str(), 7);
 }
@@ -48,7 +49,7 @@ void uartConnection::startListening() {
 	srcPoll.fd = fd;
 	srcPoll.events = POLLIN;
 	srcPoll.revents = 0;
-	uartConnection::isListening = true;
+	isListening = true;
 
 	// Main loop that is polling for new messages
 	char buf[BUFFERSIZE];
@@ -64,7 +65,7 @@ void uartConnection::startListening() {
 }
 
 void uartConnection::stopListening() {
-	uartConnection::isListening = false;
+	isListening = false;
 }
 
 /**
@@ -76,7 +77,7 @@ void uartConnection::stopListening() {
 termios uartConnection::configSetup(int fd) {
 	termios config;
 	if(tcgetattr(fd, &config) < 0) {
-		throw "could not get the current configuration of the tty device";
+		throw exceptionHandling("could not get the current configuration of the tty device");
 	}
 	memset(&config, 0, sizeof(config));
 	/*
@@ -157,7 +158,7 @@ termios uartConnection::configSetup(int fd) {
 	config.c_cc[VMIN] = 3;
 
 	if(cfsetispeed(&config, B19200)) {
-		throw "speed couldnt be set";
+		throw exceptionHandling("speed couldnt be set");
 	}
 
 	return config;
