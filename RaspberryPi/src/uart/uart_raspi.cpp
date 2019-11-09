@@ -38,6 +38,12 @@ uartConnection::uartConnection(std::string device): BUFFERSIZE(1024) {
 	}
 }
 
+/**
+ * This function writes a string into the uart buffer to send the string.
+ * If there would still be content from before the old content gets deleted.
+ *
+ * @param input the string that gets sent.
+ */
 void uartConnection::writeData(std::string input) {
 	// clears messages that couldnt be send or are still in the buffer
 	tcflush(fd, TCOFLUSH);
@@ -90,6 +96,9 @@ void uartConnection::listeningThread(int &fdescr, bool &isListen, const int BUFF
 	}
 }
 
+/**
+ * This function stops the listingThread function.
+ */
 void uartConnection::stopListening() {
 	isListening = false;
 	// stop for poll to give up control
