@@ -52,7 +52,7 @@ void uartConnection::writeData(std::string input) {
  */
 void uartConnection::startListening() {
 	std::thread t(listeningThread, std::ref(fd), std::ref(isListening), BUFFERSIZE);
-	t.join();
+	t.detach();
 }
 
 /**
