@@ -42,7 +42,7 @@ void uartConnection::writeData(std::string input) {
 	// clears messages that couldnt be send or are still in the buffer
 	tcflush(fd, TCOFLUSH);
 	// write new data
-	write (fd, input.c_str(), 7);
+	write (fd, input.c_str(), input.size() + 1);
 }
 
 /**
@@ -62,11 +62,13 @@ void uartConnection::startListening() {
 	int res = 0;
 	while(isListening) {
 		int check = poll(&srcPoll, 1, -1);
+		// @todo maybe sleep here, cause data is trasmitted bitwise, wait until all data arrives?
 		if(check != 1) {
 			std::cout << "package lost" << std::endl;
 		}
 		res = read(fd, buf, BUFFERSIZE);
-		// use buf for something
+
+		// @todo use buf for something
 	}
 }
 

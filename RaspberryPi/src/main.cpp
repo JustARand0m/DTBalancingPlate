@@ -3,7 +3,7 @@
 #include "../include/exceptionHandling.h"
 
 int main() {
-	uartConnection uartCon("/dev/ttyS0");
+	uartConnection uartCon("/dev/serial0");
 	uartCon.writeData("test");
 
 	return 0;
