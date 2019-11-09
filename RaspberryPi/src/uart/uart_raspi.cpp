@@ -46,27 +46,45 @@ void uartConnection::writeData(std::string input) {
 }
 
 /**
- * This function starts to listen for new messages.
- * It can be canceld by changing isListening to false. 
+ * This function is a wrapper function around the listingThread function.
+ * It will create a Thread that listens for input over UART and can be terminated
+ * by setting the isListening flag to flase.
  */
 void uartConnection::startListening() {
+	std::thread t(listeningThread, std::ref(fd), std::ref(isListening), BUFFERSIZE);
+	t.join();
+}
+
+/**
+ * This static function is the function that is executed in an extra thread when calling
+ * startListening(). It has a loop that looks for input over the uart connection.
+ *
+ * @param fdescr is the file descriptor passed as reference, to be read from
+ * @param isListen is a bool flag that can cancel the loop.
+ * @param BUFFSZ is the size of the buffer in which is written.
+ */
+void uartConnection::listeningThread(int &fdescr, bool &isListen, const int BUFFSZ) {
 	// start polling for input (wait for event on file descriptor)
 	pollfd srcPoll;
-	srcPoll.fd = fd;
+	srcPoll.fd = fdescr;
 	srcPoll.events = POLLIN;
 	srcPoll.revents = 0;
-	isListening = true;
+	isListen = true;
 
 	// Main loop that is polling for new messages
-	char buf[BUFFERSIZE];
+	char buf[BUFFSZ];
 	int res = 0;
-	while(isListening) {
+	while(isListen) {
 		int check = poll(&srcPoll, 1, -1);
-		// @todo maybe sleep here, cause data is trasmitted bitwise, wait until all data arrives?
+		if(isListen == false) {
+			break;
+		}
 		if(check != 1) {
 			std::cout << "package lost" << std::endl;
 		}
-		res = read(fd, buf, BUFFERSIZE);
+		// @todo maybe sleep here, cause data is trasmitted bitwise, wait until all data arrives?
+		
+		res = read(fdescr, buf, BUFFSZ);
 
 		// @todo use buf for something
 	}
@@ -74,6 +92,8 @@ void uartConnection::startListening() {
 
 void uartConnection::stopListening() {
 	isListening = false;
+	// stop for poll to give up control
+	write(fd, "stop", 5);
 }
 
 /**
