@@ -6,12 +6,13 @@
 #include <poll.h>
 #include <csignal>
 #include <string.h>
-
+#include <thread>
 
 class uartConnection {
 	public:
 		uartConnection(std::string device);
 		void startListening();
+		static void listeningThread(int &fd, bool &isLitening, const int BUFFSZ);
 		void writeData(std::string input);
 		void stopListening();
 		~uartConnection();
