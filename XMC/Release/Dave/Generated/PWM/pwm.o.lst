@@ -1,0 +1,558 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "pwm.c"
+  16              	 .section .text.PWM_lCCU4_ConfigInterrupts,"ax",%progbits
+  17              	 .align 1
+  18              	 .global PWM_lCCU4_ConfigInterrupts
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	PWM_lCCU4_ConfigInterrupts:
+  23              	 
+  24              	 
+  25 0000 90F83030 	 ldrb r3,[r0,#48]
+  26 0004 10B5     	 push {r4,lr}
+  27 0006 0446     	 mov r4,r0
+  28 0008 63B1     	 cbz r3,.L2
+  29 000a 8268     	 ldr r2,[r0,#8]
+  30 000c D2F8A430 	 ldr r3,[r2,#164]
+  31 0010 43F00103 	 orr r3,r3,#1
+  32 0014 C2F8A430 	 str r3,[r2,#164]
+  33 0018 8068     	 ldr r0,[r0,#8]
+  34 001a 94F82A20 	 ldrb r2,[r4,#42]
+  35 001e 0021     	 movs r1,#0
+  36 0020 FFF7FEFF 	 bl XMC_CCU4_SLICE_SetInterruptNode
+  37              	.L2:
+  38 0024 94F83130 	 ldrb r3,[r4,#49]
+  39 0028 73B1     	 cbz r3,.L1
+  40 002a A268     	 ldr r2,[r4,#8]
+  41 002c D2F8A430 	 ldr r3,[r2,#164]
+  42 0030 43F00403 	 orr r3,r3,#4
+  43 0034 C2F8A430 	 str r3,[r2,#164]
+  44 0038 A068     	 ldr r0,[r4,#8]
+  45 003a 94F82B20 	 ldrb r2,[r4,#43]
+  46 003e 0221     	 movs r1,#2
+  47 0040 BDE81040 	 pop {r4,lr}
+  48 0044 FFF7FEBF 	 b XMC_CCU4_SLICE_SetInterruptNode
+  49              	.L1:
+  50 0048 10BD     	 pop {r4,pc}
+  52              	 .section .text.PWM_lCCU4_Start,"ax",%progbits
+  53              	 .align 1
+  54              	 .global PWM_lCCU4_Start
+  55              	 .thumb
+  56              	 .thumb_func
+  58              	PWM_lCCU4_Start:
+  59              	 
+  60              	 
+  61              	 
+  62 0000 90F82930 	 ldrb r3,[r0,#41]
+  63 0004 13F0FB0F 	 tst r3,#251
+  64 0008 0BD1     	 bne .L8
+  65 000a 90F82E10 	 ldrb r1,[r0,#46]
+  66 000e 4268     	 ldr r2,[r0,#4]
+  67 0010 0123     	 movs r3,#1
+  68 0012 03FA01F1 	 lsl r1,r3,r1
+  69 0016 D160     	 str r1,[r2,#12]
+  70 0018 8268     	 ldr r2,[r0,#8]
+  71 001a D360     	 str r3,[r2,#12]
+  72 001c 0323     	 movs r3,#3
+  73 001e 80F82930 	 strb r3,[r0,#41]
+  74              	.L8:
+  75 0022 7047     	 bx lr
+  77              	 .section .text.PWM_lCCU4_Stop,"ax",%progbits
+  78              	 .align 1
+  79              	 .global PWM_lCCU4_Stop
+  80              	 .thumb
+  81              	 .thumb_func
+  83              	PWM_lCCU4_Stop:
+  84              	 
+  85              	 
+  86              	 
+  87 0000 90F82930 	 ldrb r3,[r0,#41]
+  88 0004 022B     	 cmp r3,#2
+  89 0006 0DD0     	 beq .L10
+  90 0008 8268     	 ldr r2,[r0,#8]
+  91 000a 0123     	 movs r3,#1
+  92 000c 1361     	 str r3,[r2,#16]
+  93 000e 8268     	 ldr r2,[r0,#8]
+  94 0010 0221     	 movs r1,#2
+  95 0012 1161     	 str r1,[r2,#16]
+  96 0014 90F82E10 	 ldrb r1,[r0,#46]
+  97 0018 4268     	 ldr r2,[r0,#4]
+  98 001a 8B40     	 lsls r3,r3,r1
+  99 001c 9360     	 str r3,[r2,#8]
+ 100 001e 0423     	 movs r3,#4
+ 101 0020 80F82930 	 strb r3,[r0,#41]
+ 102              	.L10:
+ 103 0024 7047     	 bx lr
+ 105              	 .section .text.PWM_lCCU4_SetDutyCycle,"ax",%progbits
+ 106              	 .align 1
+ 107              	 .global PWM_lCCU4_SetDutyCycle
+ 108              	 .thumb
+ 109              	 .thumb_func
+ 111              	PWM_lCCU4_SetDutyCycle:
+ 112              	 
+ 113              	 
+ 114 0000 90F82930 	 ldrb r3,[r0,#41]
+ 115 0004 022B     	 cmp r3,#2
+ 116 0006 10B5     	 push {r4,lr}
+ 117 0008 15D0     	 beq .L18
+ 118 000a 42F21072 	 movw r2,#10000
+ 119 000e 9142     	 cmp r1,r2
+ 120 0010 11D8     	 bhi .L18
+ 121 0012 C469     	 ldr r4,[r0,#28]
+ 122 0014 0162     	 str r1,[r0,#32]
+ 123 0016 C1F51C53 	 rsb r3,r1,#9984
+ 124 001a 1033     	 adds r3,r3,#16
+ 125 001c 04FB0333 	 mla r3,r4,r3,r3
+ 126 0020 B3FBF2F3 	 udiv r3,r3,r2
+ 127 0024 8268     	 ldr r2,[r0,#8]
+ 128 0026 8361     	 str r3,[r0,#24]
+ 129 0028 9BB2     	 uxth r3,r3
+ 130 002a D363     	 str r3,[r2,#60]
+ 131 002c 4368     	 ldr r3,[r0,#4]
+ 132 002e 426A     	 ldr r2,[r0,#36]
+ 133 0030 1A61     	 str r2,[r3,#16]
+ 134 0032 0020     	 movs r0,#0
+ 135 0034 10BD     	 pop {r4,pc}
+ 136              	.L18:
+ 137 0036 0120     	 movs r0,#1
+ 138 0038 10BD     	 pop {r4,pc}
+ 140              	 .section .text.PWM_lCCU4_SetFreq,"ax",%progbits
+ 141              	 .align 1
+ 142              	 .global PWM_lCCU4_SetFreq
+ 143              	 .thumb
+ 144              	 .thumb_func
+ 146              	PWM_lCCU4_SetFreq:
+ 147              	 
+ 148              	 
+ 149 0000 90F82930 	 ldrb r3,[r0,#41]
+ 150 0004 022B     	 cmp r3,#2
+ 151 0006 70B5     	 push {r4,r5,r6,lr}
+ 152 0008 0446     	 mov r4,r0
+ 153 000a 0ED0     	 beq .L26
+ 154 000c 69B1     	 cbz r1,.L26
+ 155 000e 0368     	 ldr r3,[r0]
+ 156 0010 1B68     	 ldr r3,[r3]
+ 157 0012 B3FBF1F2 	 udiv r2,r3,r1
+ 158 0016 0023     	 movs r3,#0
+ 159              	.L22:
+ 160 0018 22FA03F6 	 lsr r6,r2,r3
+ 161 001c B6F5803F 	 cmp r6,#65536
+ 162 0020 D9B2     	 uxtb r1,r3
+ 163 0022 04D3     	 bcc .L21
+ 164 0024 0133     	 adds r3,r3,#1
+ 165 0026 102B     	 cmp r3,#16
+ 166 0028 F6D1     	 bne .L22
+ 167              	.L26:
+ 168 002a 0120     	 movs r0,#1
+ 169 002c 70BD     	 pop {r4,r5,r6,pc}
+ 170              	.L21:
+ 171 002e 002E     	 cmp r6,#0
+ 172 0030 FBD0     	 beq .L26
+ 173 0032 236A     	 ldr r3,[r4,#32]
+ 174 0034 A068     	 ldr r0,[r4,#8]
+ 175 0036 C3F51C53 	 rsb r3,r3,#9984
+ 176 003a 1033     	 adds r3,r3,#16
+ 177 003c 7343     	 muls r3,r6,r3
+ 178 003e 42F21075 	 movw r5,#10000
+ 179 0042 B3FBF5F5 	 udiv r5,r3,r5
+ 180 0046 FFF7FEFF 	 bl XMC_CCU4_SLICE_SetPrescaler
+ 181 004a A368     	 ldr r3,[r4,#8]
+ 182 004c 013E     	 subs r6,r6,#1
+ 183 004e 5E63     	 str r6,[r3,#52]
+ 184 0050 A368     	 ldr r3,[r4,#8]
+ 185 0052 AAB2     	 uxth r2,r5
+ 186 0054 DA63     	 str r2,[r3,#60]
+ 187 0056 6368     	 ldr r3,[r4,#4]
+ 188 0058 626A     	 ldr r2,[r4,#36]
+ 189 005a 1A61     	 str r2,[r3,#16]
+ 190 005c 0020     	 movs r0,#0
+ 191 005e A561     	 str r5,[r4,#24]
+ 192 0060 E661     	 str r6,[r4,#28]
+ 193 0062 70BD     	 pop {r4,r5,r6,pc}
+ 195              	 .section .text.PWM_lCCU4_SetFreqAndDutyCycle,"ax",%progbits
+ 196              	 .align 1
+ 197              	 .global PWM_lCCU4_SetFreqAndDutyCycle
+ 198              	 .thumb
+ 199              	 .thumb_func
+ 201              	PWM_lCCU4_SetFreqAndDutyCycle:
+ 202              	 
+ 203              	 
+ 204 0000 F8B5     	 push {r3,r4,r5,r6,r7,lr}
+ 205 0002 90F82930 	 ldrb r3,[r0,#41]
+ 206 0006 022B     	 cmp r3,#2
+ 207 0008 0446     	 mov r4,r0
+ 208 000a 1746     	 mov r7,r2
+ 209 000c 13D0     	 beq .L38
+ 210 000e 91B1     	 cbz r1,.L38
+ 211 0010 0368     	 ldr r3,[r0]
+ 212 0012 1A68     	 ldr r2,[r3]
+ 213 0014 B2FBF1F2 	 udiv r2,r2,r1
+ 214 0018 0023     	 movs r3,#0
+ 215              	.L33:
+ 216 001a 22FA03F6 	 lsr r6,r2,r3
+ 217 001e B6F5803F 	 cmp r6,#65536
+ 218 0022 D9B2     	 uxtb r1,r3
+ 219 0024 03D3     	 bcc .L32
+ 220 0026 0133     	 adds r3,r3,#1
+ 221 0028 102B     	 cmp r3,#16
+ 222 002a F6D1     	 bne .L33
+ 223 002c 03E0     	 b .L38
+ 224              	.L32:
+ 225 002e 42F21075 	 movw r5,#10000
+ 226 0032 AF42     	 cmp r7,r5
+ 227 0034 01D9     	 bls .L41
+ 228              	.L38:
+ 229 0036 0120     	 movs r0,#1
+ 230 0038 F8BD     	 pop {r3,r4,r5,r6,r7,pc}
+ 231              	.L41:
+ 232 003a 002E     	 cmp r6,#0
+ 233 003c FBD0     	 beq .L38
+ 234 003e C7F51C53 	 rsb r3,r7,#9984
+ 235 0042 A068     	 ldr r0,[r4,#8]
+ 236 0044 1033     	 adds r3,r3,#16
+ 237 0046 7343     	 muls r3,r6,r3
+ 238 0048 B3FBF5F5 	 udiv r5,r3,r5
+ 239 004c FFF7FEFF 	 bl XMC_CCU4_SLICE_SetPrescaler
+ 240 0050 A368     	 ldr r3,[r4,#8]
+ 241 0052 626A     	 ldr r2,[r4,#36]
+ 242 0054 013E     	 subs r6,r6,#1
+ 243 0056 5E63     	 str r6,[r3,#52]
+ 244 0058 A368     	 ldr r3,[r4,#8]
+ 245 005a DD63     	 str r5,[r3,#60]
+ 246 005c 6368     	 ldr r3,[r4,#4]
+ 247 005e 0020     	 movs r0,#0
+ 248 0060 1A61     	 str r2,[r3,#16]
+ 249 0062 A561     	 str r5,[r4,#24]
+ 250 0064 E661     	 str r6,[r4,#28]
+ 251 0066 2762     	 str r7,[r4,#32]
+ 252 0068 F8BD     	 pop {r3,r4,r5,r6,r7,pc}
+ 254              	 .section .text.PWM_GetAppVersion,"ax",%progbits
+ 255              	 .align 1
+ 256              	 .global PWM_GetAppVersion
+ 257              	 .thumb
+ 258              	 .thumb_func
+ 260              	PWM_GetAppVersion:
+ 261              	 
+ 262              	 
+ 263              	 
+ 264 0000 0423     	 movs r3,#4
+ 265 0002 0020     	 movs r0,#0
+ 266 0004 63F30700 	 bfi r0,r3,#0,#8
+ 267 0008 0123     	 movs r3,#1
+ 268 000a 63F30F20 	 bfi r0,r3,#8,#8
+ 269 000e 0A23     	 movs r3,#10
+ 270 0010 63F31740 	 bfi r0,r3,#16,#8
+ 271 0014 82B0     	 sub sp,sp,#8
+ 272 0016 02B0     	 add sp,sp,#8
+ 273              	 
+ 274 0018 7047     	 bx lr
+ 276              	 .section .text.PWM_Start,"ax",%progbits
+ 277              	 .align 1
+ 278              	 .global PWM_Start
+ 279              	 .thumb
+ 280              	 .thumb_func
+ 282              	PWM_Start:
+ 283              	 
+ 284              	 
+ 285              	 
+ 286 0000 90F82830 	 ldrb r3,[r0,#40]
+ 287 0004 0BB9     	 cbnz r3,.L43
+ 288 0006 FFF7FEBF 	 b PWM_lCCU4_Start
+ 289              	.L43:
+ 290 000a 7047     	 bx lr
+ 292              	 .section .text.PWM_lCCU4_Init,"ax",%progbits
+ 293              	 .align 1
+ 294              	 .global PWM_lCCU4_Init
+ 295              	 .thumb
+ 296              	 .thumb_func
+ 298              	PWM_lCCU4_Init:
+ 299              	 
+ 300              	 
+ 301 0000 70B5     	 push {r4,r5,r6,lr}
+ 302 0002 90F82960 	 ldrb r6,[r0,#41]
+ 303 0006 022E     	 cmp r6,#2
+ 304 0008 0446     	 mov r4,r0
+ 305 000a 26D1     	 bne .L48
+ 306 000c 0068     	 ldr r0,[r0]
+ 307 000e FFF7FEFF 	 bl GLOBAL_CCU4_Init
+ 308 0012 0546     	 mov r5,r0
+ 309 0014 F0B9     	 cbnz r0,.L47
+ 310 0016 E168     	 ldr r1,[r4,#12]
+ 311 0018 A068     	 ldr r0,[r4,#8]
+ 312 001a FFF7FEFF 	 bl XMC_CCU4_SLICE_CompareInit
+ 313 001e A368     	 ldr r3,[r4,#8]
+ 314 0020 A28B     	 ldrh r2,[r4,#28]
+ 315 0022 5A63     	 str r2,[r3,#52]
+ 316 0024 A368     	 ldr r3,[r4,#8]
+ 317 0026 228B     	 ldrh r2,[r4,#24]
+ 318 0028 DA63     	 str r2,[r3,#60]
+ 319 002a 6368     	 ldr r3,[r4,#4]
+ 320 002c 626A     	 ldr r2,[r4,#36]
+ 321 002e 1A61     	 str r2,[r3,#16]
+ 322 0030 2046     	 mov r0,r4
+ 323 0032 FFF7FEFF 	 bl PWM_lCCU4_ConfigInterrupts
+ 324 0036 2069     	 ldr r0,[r4,#16]
+ 325 0038 94F82C10 	 ldrb r1,[r4,#44]
+ 326 003c 6269     	 ldr r2,[r4,#20]
+ 327 003e FFF7FEFF 	 bl XMC_GPIO_Init
+ 328 0042 94F82F30 	 ldrb r3,[r4,#47]
+ 329 0046 84F82950 	 strb r5,[r4,#41]
+ 330 004a 3BB1     	 cbz r3,.L46
+ 331 004c 2046     	 mov r0,r4
+ 332 004e FFF7FEFF 	 bl PWM_Start
+ 333 0052 03E0     	 b .L46
+ 334              	.L47:
+ 335 0054 84F82960 	 strb r6,[r4,#41]
+ 336 0058 00E0     	 b .L46
+ 337              	.L48:
+ 338 005a 0125     	 movs r5,#1
+ 339              	.L46:
+ 340 005c 2846     	 mov r0,r5
+ 341 005e 70BD     	 pop {r4,r5,r6,pc}
+ 343              	 .section .text.PWM_Init,"ax",%progbits
+ 344              	 .align 1
+ 345              	 .global PWM_Init
+ 346              	 .thumb
+ 347              	 .thumb_func
+ 349              	PWM_Init:
+ 350              	 
+ 351              	 
+ 352              	 
+ 353 0000 90F82830 	 ldrb r3,[r0,#40]
+ 354 0004 0BB9     	 cbnz r3,.L53
+ 355 0006 FFF7FEBF 	 b PWM_lCCU4_Init
+ 356              	.L53:
+ 357 000a 0120     	 movs r0,#1
+ 358 000c 7047     	 bx lr
+ 360              	 .section .text.PWM_Stop,"ax",%progbits
+ 361              	 .align 1
+ 362              	 .global PWM_Stop
+ 363              	 .thumb
+ 364              	 .thumb_func
+ 366              	PWM_Stop:
+ 367              	 
+ 368              	 
+ 369              	 
+ 370 0000 90F82830 	 ldrb r3,[r0,#40]
+ 371 0004 0BB9     	 cbnz r3,.L54
+ 372 0006 FFF7FEBF 	 b PWM_lCCU4_Stop
+ 373              	.L54:
+ 374 000a 7047     	 bx lr
+ 376              	 .section .text.PWM_SetDutyCycle,"ax",%progbits
+ 377              	 .align 1
+ 378              	 .global PWM_SetDutyCycle
+ 379              	 .thumb
+ 380              	 .thumb_func
+ 382              	PWM_SetDutyCycle:
+ 383              	 
+ 384              	 
+ 385              	 
+ 386 0000 90F82830 	 ldrb r3,[r0,#40]
+ 387 0004 0BB9     	 cbnz r3,.L57
+ 388 0006 FFF7FEBF 	 b PWM_lCCU4_SetDutyCycle
+ 389              	.L57:
+ 390 000a 0120     	 movs r0,#1
+ 391 000c 7047     	 bx lr
+ 393              	 .section .text.PWM_SetFreq,"ax",%progbits
+ 394              	 .align 1
+ 395              	 .global PWM_SetFreq
+ 396              	 .thumb
+ 397              	 .thumb_func
+ 399              	PWM_SetFreq:
+ 400              	 
+ 401              	 
+ 402              	 
+ 403 0000 90F82830 	 ldrb r3,[r0,#40]
+ 404 0004 0BB9     	 cbnz r3,.L59
+ 405 0006 FFF7FEBF 	 b PWM_lCCU4_SetFreq
+ 406              	.L59:
+ 407 000a 0120     	 movs r0,#1
+ 408 000c 7047     	 bx lr
+ 410              	 .section .text.PWM_SetFreqAndDutyCycle,"ax",%progbits
+ 411              	 .align 1
+ 412              	 .global PWM_SetFreqAndDutyCycle
+ 413              	 .thumb
+ 414              	 .thumb_func
+ 416              	PWM_SetFreqAndDutyCycle:
+ 417              	 
+ 418              	 
+ 419              	 
+ 420 0000 90F82830 	 ldrb r3,[r0,#40]
+ 421 0004 0BB9     	 cbnz r3,.L61
+ 422 0006 FFF7FEBF 	 b PWM_lCCU4_SetFreqAndDutyCycle
+ 423              	.L61:
+ 424 000a 0120     	 movs r0,#1
+ 425 000c 7047     	 bx lr
+ 427              	 .section .text.PWM_GetTimerStatus,"ax",%progbits
+ 428              	 .align 1
+ 429              	 .global PWM_GetTimerStatus
+ 430              	 .thumb
+ 431              	 .thumb_func
+ 433              	PWM_GetTimerStatus:
+ 434              	 
+ 435              	 
+ 436              	 
+ 437 0000 90F82830 	 ldrb r3,[r0,#40]
+ 438 0004 23B9     	 cbnz r3,.L64
+ 439 0006 8368     	 ldr r3,[r0,#8]
+ 440 0008 9868     	 ldr r0,[r3,#8]
+ 441 000a 00F00100 	 and r0,r0,#1
+ 442 000e 7047     	 bx lr
+ 443              	.L64:
+ 444 0010 0020     	 movs r0,#0
+ 445 0012 7047     	 bx lr
+ 447              	 .section .text.PWM_GetInterruptStatus,"ax",%progbits
+ 448              	 .align 1
+ 449              	 .global PWM_GetInterruptStatus
+ 450              	 .thumb
+ 451              	 .thumb_func
+ 453              	PWM_GetInterruptStatus:
+ 454              	 
+ 455              	 
+ 456              	 
+ 457 0000 90F82830 	 ldrb r3,[r0,#40]
+ 458 0004 33B9     	 cbnz r3,.L67
+ 459 0006 8368     	 ldr r3,[r0,#8]
+ 460 0008 D3F8A000 	 ldr r0,[r3,#160]
+ 461 000c C840     	 lsrs r0,r0,r1
+ 462 000e 00F00100 	 and r0,r0,#1
+ 463 0012 7047     	 bx lr
+ 464              	.L67:
+ 465 0014 0020     	 movs r0,#0
+ 466 0016 7047     	 bx lr
+ 468              	 .section .text.PWM_ClearEvent,"ax",%progbits
+ 469              	 .align 1
+ 470              	 .global PWM_ClearEvent
+ 471              	 .thumb
+ 472              	 .thumb_func
+ 474              	PWM_ClearEvent:
+ 475              	 
+ 476              	 
+ 477              	 
+ 478 0000 90F82830 	 ldrb r3,[r0,#40]
+ 479 0004 23B9     	 cbnz r3,.L68
+ 480 0006 8268     	 ldr r2,[r0,#8]
+ 481 0008 0123     	 movs r3,#1
+ 482 000a 8B40     	 lsls r3,r3,r1
+ 483 000c C2F8B030 	 str r3,[r2,#176]
+ 484              	.L68:
+ 485 0010 7047     	 bx lr
+ 487              	 .section .text.PWM_SetPassiveLevel,"ax",%progbits
+ 488              	 .align 1
+ 489              	 .global PWM_SetPassiveLevel
+ 490              	 .thumb
+ 491              	 .thumb_func
+ 493              	PWM_SetPassiveLevel:
+ 494              	 
+ 495              	 
+ 496 0000 90F82830 	 ldrb r3,[r0,#40]
+ 497 0004 10B5     	 push {r4,lr}
+ 498 0006 0446     	 mov r4,r0
+ 499 0008 2BB9     	 cbnz r3,.L70
+ 500 000a 8068     	 ldr r0,[r0,#8]
+ 501 000c FFF7FEFF 	 bl XMC_CCU4_SLICE_SetPassiveLevel
+ 502 0010 6368     	 ldr r3,[r4,#4]
+ 503 0012 626A     	 ldr r2,[r4,#36]
+ 504 0014 1A61     	 str r2,[r3,#16]
+ 505              	.L70:
+ 506 0016 10BD     	 pop {r4,pc}
+ 508              	 .section .text.PWM_SetPeriodMatchValue,"ax",%progbits
+ 509              	 .align 1
+ 510              	 .global PWM_SetPeriodMatchValue
+ 511              	 .thumb
+ 512              	 .thumb_func
+ 514              	PWM_SetPeriodMatchValue:
+ 515              	 
+ 516              	 
+ 517 0000 90F82930 	 ldrb r3,[r0,#41]
+ 518 0004 022B     	 cmp r3,#2
+ 519 0006 10B5     	 push {r4,lr}
+ 520 0008 1AD0     	 beq .L76
+ 521 000a B1F5803F 	 cmp r1,#65536
+ 522 000e 17D2     	 bcs .L76
+ 523 0010 036A     	 ldr r3,[r0,#32]
+ 524 0012 C3F51C53 	 rsb r3,r3,#9984
+ 525 0016 1033     	 adds r3,r3,#16
+ 526 0018 42F21072 	 movw r2,#10000
+ 527 001c 4B43     	 muls r3,r1,r3
+ 528 001e B3FBF2F3 	 udiv r3,r3,r2
+ 529 0022 90F82820 	 ldrb r2,[r0,#40]
+ 530 0026 3AB9     	 cbnz r2,.L74
+ 531 0028 8268     	 ldr r2,[r0,#8]
+ 532 002a 5163     	 str r1,[r2,#52]
+ 533 002c 8268     	 ldr r2,[r0,#8]
+ 534 002e 9CB2     	 uxth r4,r3
+ 535 0030 D463     	 str r4,[r2,#60]
+ 536 0032 4268     	 ldr r2,[r0,#4]
+ 537 0034 446A     	 ldr r4,[r0,#36]
+ 538 0036 1461     	 str r4,[r2,#16]
+ 539              	.L74:
+ 540 0038 C161     	 str r1,[r0,#28]
+ 541 003a 8361     	 str r3,[r0,#24]
+ 542 003c 0020     	 movs r0,#0
+ 543 003e 10BD     	 pop {r4,pc}
+ 544              	.L76:
+ 545 0040 0120     	 movs r0,#1
+ 546 0042 10BD     	 pop {r4,pc}
+ 548              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 pwm.c
+    {standard input}:17     .text.PWM_lCCU4_ConfigInterrupts:00000000 $t
+    {standard input}:22     .text.PWM_lCCU4_ConfigInterrupts:00000000 PWM_lCCU4_ConfigInterrupts
+    {standard input}:53     .text.PWM_lCCU4_Start:00000000 $t
+    {standard input}:58     .text.PWM_lCCU4_Start:00000000 PWM_lCCU4_Start
+    {standard input}:78     .text.PWM_lCCU4_Stop:00000000 $t
+    {standard input}:83     .text.PWM_lCCU4_Stop:00000000 PWM_lCCU4_Stop
+    {standard input}:106    .text.PWM_lCCU4_SetDutyCycle:00000000 $t
+    {standard input}:111    .text.PWM_lCCU4_SetDutyCycle:00000000 PWM_lCCU4_SetDutyCycle
+    {standard input}:141    .text.PWM_lCCU4_SetFreq:00000000 $t
+    {standard input}:146    .text.PWM_lCCU4_SetFreq:00000000 PWM_lCCU4_SetFreq
+    {standard input}:196    .text.PWM_lCCU4_SetFreqAndDutyCycle:00000000 $t
+    {standard input}:201    .text.PWM_lCCU4_SetFreqAndDutyCycle:00000000 PWM_lCCU4_SetFreqAndDutyCycle
+    {standard input}:255    .text.PWM_GetAppVersion:00000000 $t
+    {standard input}:260    .text.PWM_GetAppVersion:00000000 PWM_GetAppVersion
+    {standard input}:277    .text.PWM_Start:00000000 $t
+    {standard input}:282    .text.PWM_Start:00000000 PWM_Start
+    {standard input}:293    .text.PWM_lCCU4_Init:00000000 $t
+    {standard input}:298    .text.PWM_lCCU4_Init:00000000 PWM_lCCU4_Init
+    {standard input}:344    .text.PWM_Init:00000000 $t
+    {standard input}:349    .text.PWM_Init:00000000 PWM_Init
+    {standard input}:361    .text.PWM_Stop:00000000 $t
+    {standard input}:366    .text.PWM_Stop:00000000 PWM_Stop
+    {standard input}:377    .text.PWM_SetDutyCycle:00000000 $t
+    {standard input}:382    .text.PWM_SetDutyCycle:00000000 PWM_SetDutyCycle
+    {standard input}:394    .text.PWM_SetFreq:00000000 $t
+    {standard input}:399    .text.PWM_SetFreq:00000000 PWM_SetFreq
+    {standard input}:411    .text.PWM_SetFreqAndDutyCycle:00000000 $t
+    {standard input}:416    .text.PWM_SetFreqAndDutyCycle:00000000 PWM_SetFreqAndDutyCycle
+    {standard input}:428    .text.PWM_GetTimerStatus:00000000 $t
+    {standard input}:433    .text.PWM_GetTimerStatus:00000000 PWM_GetTimerStatus
+    {standard input}:448    .text.PWM_GetInterruptStatus:00000000 $t
+    {standard input}:453    .text.PWM_GetInterruptStatus:00000000 PWM_GetInterruptStatus
+    {standard input}:469    .text.PWM_ClearEvent:00000000 $t
+    {standard input}:474    .text.PWM_ClearEvent:00000000 PWM_ClearEvent
+    {standard input}:488    .text.PWM_SetPassiveLevel:00000000 $t
+    {standard input}:493    .text.PWM_SetPassiveLevel:00000000 PWM_SetPassiveLevel
+    {standard input}:509    .text.PWM_SetPeriodMatchValue:00000000 $t
+    {standard input}:514    .text.PWM_SetPeriodMatchValue:00000000 PWM_SetPeriodMatchValue
+
+UNDEFINED SYMBOLS
+XMC_CCU4_SLICE_SetInterruptNode
+XMC_CCU4_SLICE_SetPrescaler
+GLOBAL_CCU4_Init
+XMC_CCU4_SLICE_CompareInit
+XMC_GPIO_Init
+XMC_CCU4_SLICE_SetPassiveLevel

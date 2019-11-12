@@ -1,0 +1,995 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "xmc_can.c"
+  16              	 .section .text.XMC_CAN_NODE_NominalBitTimeConfigureEx,"ax",%progbits
+  17              	 .align 1
+  18              	 .global XMC_CAN_NODE_NominalBitTimeConfigureEx
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	XMC_CAN_NODE_NominalBitTimeConfigureEx:
+  23              	 
+  24              	 
+  25 0000 91E80C00 	 ldmia r1,{r2,r3}
+  26 0004 F0B5     	 push {r4,r5,r6,r7,lr}
+  27 0006 B2FBF3FE 	 udiv lr,r2,r3
+  28 000a 03FB1E23 	 mls r3,r3,lr,r2
+  29 000e 1BBB     	 cbnz r3,.L8
+  30 0010 1927     	 movs r7,#25
+  31              	.L7:
+  32 0012 BEFBF7F2 	 udiv r2,lr,r7
+  33 0016 07FB12E5 	 mls r5,r7,r2,lr
+  34 001a D5B9     	 cbnz r5,.L3
+  35 001c 531E     	 subs r3,r2,#1
+  36 001e B3F5007F 	 cmp r3,#512
+  37 0022 16D2     	 bcs .L3
+  38 0024 3F2A     	 cmp r2,#63
+  39 0026 02D9     	 bls .L4
+  40 0028 5307     	 lsls r3,r2,#29
+  41 002a 13D1     	 bne .L5
+  42 002c 0125     	 movs r5,#1
+  43              	.L4:
+  44 002e 0C89     	 ldrh r4,[r1,#8]
+  45 0030 7B1E     	 subs r3,r7,#1
+  46 0032 6343     	 muls r3,r4,r3
+  47 0034 42F21074 	 movw r4,#10000
+  48 0038 B3FBF4F3 	 udiv r3,r3,r4
+  49 003c DC1E     	 subs r4,r3,#3
+  50 003e 0C2C     	 cmp r4,#12
+  51 0040 07D8     	 bhi .L3
+  52 0042 FE1A     	 subs r6,r7,r3
+  53 0044 F41E     	 subs r4,r6,#3
+  54 0046 042C     	 cmp r4,#4
+  55 0048 03D8     	 bhi .L3
+  56 004a 4C89     	 ldrh r4,[r1,#10]
+  57 004c 013E     	 subs r6,r6,#1
+  58 004e A642     	 cmp r6,r4
+  59 0050 04D2     	 bcs .L6
+  60              	.L3:
+  61 0052 013F     	 subs r7,r7,#1
+  62              	.L5:
+  63 0054 072F     	 cmp r7,#7
+  64 0056 DCD8     	 bhi .L7
+  65              	.L8:
+  66 0058 0120     	 movs r0,#1
+  67 005a F0BD     	 pop {r4,r5,r6,r7,pc}
+  68              	.L6:
+  69 005c 0168     	 ldr r1,[r0]
+  70 005e 41F04001 	 orr r1,r1,#64
+  71 0062 0160     	 str r1,[r0]
+  72 0064 013C     	 subs r4,r4,#1
+  73 0066 711E     	 subs r1,r6,#1
+  74 0068 0903     	 lsls r1,r1,#12
+  75 006a A401     	 lsls r4,r4,#6
+  76 006c E4B2     	 uxtb r4,r4
+  77 006e 01F4E041 	 and r1,r1,#28672
+  78 0072 2143     	 orrs r1,r1,r4
+  79 0074 41EAC531 	 orr r1,r1,r5,lsl#15
+  80 0078 013B     	 subs r3,r3,#1
+  81 007a 05EB4505 	 add r5,r5,r5,lsl#1
+  82 007e EA40     	 lsrs r2,r2,r5
+  83 0080 1B02     	 lsls r3,r3,#8
+  84 0082 03F47063 	 and r3,r3,#3840
+  85 0086 013A     	 subs r2,r2,#1
+  86 0088 1943     	 orrs r1,r1,r3
+  87 008a 02F03F02 	 and r2,r2,#63
+  88 008e 41EA0203 	 orr r3,r1,r2
+  89 0092 0361     	 str r3,[r0,#16]
+  90 0094 0368     	 ldr r3,[r0]
+  91 0096 23F04003 	 bic r3,r3,#64
+  92 009a 0360     	 str r3,[r0]
+  93 009c 0020     	 movs r0,#0
+  94 009e F0BD     	 pop {r4,r5,r6,r7,pc}
+  96              	 .section .text.XMC_CAN_NODE_NominalBitTimeConfigure,"ax",%progbits
+  97              	 .align 1
+  98              	 .global XMC_CAN_NODE_NominalBitTimeConfigure
+  99              	 .thumb
+ 100              	 .thumb_func
+ 102              	XMC_CAN_NODE_NominalBitTimeConfigure:
+ 103              	 
+ 104              	 
+ 105 0000 0B68     	 ldr r3,[r1]
+ 106 0002 2DE9F043 	 push {r4,r5,r6,r7,r8,r9,lr}
+ 107 0006 4FF00A08 	 mov r8,#10
+ 108 000a 08FB03F8 	 mul r8,r8,r3
+ 109 000e D1F804E0 	 ldr lr,[r1,#4]
+ 110 0012 0023     	 movs r3,#0
+ 111 0014 42F21079 	 movw r9,#10000
+ 112 0018 1E46     	 mov r6,r3
+ 113 001a 0127     	 movs r7,#1
+ 114              	.L22:
+ 115 001c 0A22     	 movs r2,#10
+ 116 001e B8FBF7F4 	 udiv r4,r8,r7
+ 117 0022 B4FBFEFC 	 udiv ip,r4,lr
+ 118 0026 BCFBF2F5 	 udiv r5,ip,r2
+ 119 002a 02FB15CC 	 mls ip,r2,r5,ip
+ 120 002e BCF1050F 	 cmp ip,#5
+ 121 0032 9446     	 mov ip,r2
+ 122 0034 01D9     	 bls .L14
+ 123 0036 0135     	 adds r5,r5,#1
+ 124 0038 00E0     	 b .L15
+ 125              	.L14:
+ 126 003a 25B1     	 cbz r5,.L16
+ 127              	.L15:
+ 128 003c 0CFB05F2 	 mul r2,ip,r5
+ 129 0040 B4FBF2F2 	 udiv r2,r4,r2
+ 130 0044 02E0     	 b .L17
+ 131              	.L16:
+ 132 0046 0125     	 movs r5,#1
+ 133 0048 B4FBF2F2 	 udiv r2,r4,r2
+ 134              	.L17:
+ 135 004c 7245     	 cmp r2,lr
+ 136 004e 2CBF     	 ite cs
+ 137 0050 CEEB0202 	 rsbcs r2,lr,r2
+ 138 0054 C2EB0E02 	 rsbcc r2,r2,lr
+ 139 0058 142D     	 cmp r5,#20
+ 140 005a 07D8     	 bhi .L20
+ 141 005c 9145     	 cmp r9,r2
+ 142 005e 05D9     	 bls .L20
+ 143 0060 B2F57A7F 	 cmp r2,#1000
+ 144 0064 06D3     	 bcc .L27
+ 145 0066 9146     	 mov r9,r2
+ 146 0068 2B46     	 mov r3,r5
+ 147 006a 3E46     	 mov r6,r7
+ 148              	.L20:
+ 149 006c 0137     	 adds r7,r7,#1
+ 150 006e 412F     	 cmp r7,#65
+ 151 0070 D4D1     	 bne .L22
+ 152 0072 01E0     	 b .L21
+ 153              	.L27:
+ 154 0074 2B46     	 mov r3,r5
+ 155 0076 3E46     	 mov r6,r7
+ 156              	.L21:
+ 157 0078 0F89     	 ldrh r7,[r1,#8]
+ 158 007a 42F2107E 	 movw lr,#10000
+ 159 007e 0124     	 movs r4,#1
+ 160 0080 4025     	 movs r5,#64
+ 161              	.L26:
+ 162 0082 42F21072 	 movw r2,#10000
+ 163 0086 05FB0222 	 mla r2,r5,r2,r2
+ 164 008a B2FBF3F2 	 udiv r2,r2,r3
+ 165 008e BA42     	 cmp r2,r7
+ 166 0090 05D3     	 bcc .L23
+ 167 0092 D21B     	 subs r2,r2,r7
+ 168 0094 9645     	 cmp lr,r2
+ 169 0096 07D9     	 bls .L24
+ 170 0098 9646     	 mov lr,r2
+ 171 009a 2C46     	 mov r4,r5
+ 172 009c 04E0     	 b .L24
+ 173              	.L23:
+ 174 009e BA1A     	 subs r2,r7,r2
+ 175 00a0 9645     	 cmp lr,r2
+ 176 00a2 88BF     	 it hi
+ 177 00a4 2C46     	 movhi r4,r5
+ 178 00a6 02E0     	 b .L25
+ 179              	.L24:
+ 180 00a8 013D     	 subs r5,r5,#1
+ 181 00aa 022D     	 cmp r5,#2
+ 182 00ac E9D1     	 bne .L26
+ 183              	.L25:
+ 184 00ae 0268     	 ldr r2,[r0]
+ 185 00b0 42F04002 	 orr r2,r2,#64
+ 186 00b4 0260     	 str r2,[r0]
+ 187 00b6 4A89     	 ldrh r2,[r1,#10]
+ 188 00b8 013A     	 subs r2,r2,#1
+ 189 00ba 013E     	 subs r6,r6,#1
+ 190 00bc 9201     	 lsls r2,r2,#6
+ 191 00be 611E     	 subs r1,r4,#1
+ 192 00c0 06F03F06 	 and r6,r6,#63
+ 193 00c4 D2B2     	 uxtb r2,r2
+ 194 00c6 0902     	 lsls r1,r1,#8
+ 195 00c8 3243     	 orrs r2,r2,r6
+ 196 00ca 01F47061 	 and r1,r1,#3840
+ 197 00ce 1143     	 orrs r1,r1,r2
+ 198 00d0 9A1E     	 subs r2,r3,#2
+ 199 00d2 131B     	 subs r3,r2,r4
+ 200 00d4 1B03     	 lsls r3,r3,#12
+ 201 00d6 03F4E043 	 and r3,r3,#28672
+ 202 00da 0B43     	 orrs r3,r3,r1
+ 203 00dc 0361     	 str r3,[r0,#16]
+ 204 00de 0368     	 ldr r3,[r0]
+ 205 00e0 23F04003 	 bic r3,r3,#64
+ 206 00e4 0360     	 str r3,[r0]
+ 207 00e6 BDE8F083 	 pop {r4,r5,r6,r7,r8,r9,pc}
+ 209              	 .section .text.XMC_CAN_AllocateMOtoNodeList,"ax",%progbits
+ 210              	 .align 1
+ 211              	 .global XMC_CAN_AllocateMOtoNodeList
+ 212              	 .thumb
+ 213              	 .thumb_func
+ 215              	XMC_CAN_AllocateMOtoNodeList:
+ 216              	 
+ 217              	 
+ 218              	 
+ 219              	.L32:
+ 220 0000 D0F8C431 	 ldr r3,[r0,#452]
+ 221 0004 13F4407F 	 tst r3,#768
+ 222 0008 FAD1     	 bne .L32
+ 223 000a 1204     	 lsls r2,r2,#16
+ 224 000c 42F00202 	 orr r2,r2,#2
+ 225 0010 0131     	 adds r1,r1,#1
+ 226 0012 42EA0161 	 orr r1,r2,r1,lsl#24
+ 227 0016 C0F8C411 	 str r1,[r0,#452]
+ 228 001a 7047     	 bx lr
+ 230              	 .section .text.XMC_CAN_Disable,"ax",%progbits
+ 231              	 .align 1
+ 232              	 .global XMC_CAN_Disable
+ 233              	 .thumb
+ 234              	 .thumb_func
+ 236              	XMC_CAN_Disable:
+ 237              	 
+ 238              	 
+ 239              	 
+ 240 0000 0123     	 movs r3,#1
+ 241 0002 0360     	 str r3,[r0]
+ 242 0004 0148     	 ldr r0,.L35
+ 243 0006 FFF7FEBF 	 b XMC_SCU_RESET_AssertPeripheralReset
+ 244              	.L36:
+ 245 000a 00BF     	 .align 2
+ 246              	.L35:
+ 247 000c 10000010 	 .word 268435472
+ 249              	 .section .text.XMC_CAN_Enable,"ax",%progbits
+ 250              	 .align 1
+ 251              	 .global XMC_CAN_Enable
+ 252              	 .thumb
+ 253              	 .thumb_func
+ 255              	XMC_CAN_Enable:
+ 256              	 
+ 257              	 
+ 258 0000 10B5     	 push {r4,lr}
+ 259 0002 0446     	 mov r4,r0
+ 260 0004 0548     	 ldr r0,.L40
+ 261 0006 FFF7FEFF 	 bl XMC_SCU_RESET_DeassertPeripheralReset
+ 262 000a 2368     	 ldr r3,[r4]
+ 263 000c 23F00103 	 bic r3,r3,#1
+ 264 0010 2360     	 str r3,[r4]
+ 265              	.L38:
+ 266 0012 2368     	 ldr r3,[r4]
+ 267 0014 9B07     	 lsls r3,r3,#30
+ 268 0016 FCD4     	 bmi .L38
+ 269 0018 10BD     	 pop {r4,pc}
+ 270              	.L41:
+ 271 001a 00BF     	 .align 2
+ 272              	.L40:
+ 273 001c 10000010 	 .word 268435472
+ 275              	 .section .text.XMC_CAN_Init,"ax",%progbits
+ 276              	 .align 1
+ 277              	 .global XMC_CAN_Init
+ 278              	 .thumb
+ 279              	 .thumb_func
+ 281              	XMC_CAN_Init:
+ 282              	 
+ 283              	 
+ 284 0000 70B5     	 push {r4,r5,r6,lr}
+ 285 0002 0E46     	 mov r6,r1
+ 286 0004 0546     	 mov r5,r0
+ 287 0006 FFF7FEFF 	 bl XMC_SCU_CLOCK_GetPeripheralClockFrequency
+ 288 000a 0446     	 mov r4,r0
+ 289 000c 2846     	 mov r0,r5
+ 290 000e FFF7FEFF 	 bl XMC_CAN_Enable
+ 291 0012 B4FBF6F2 	 udiv r2,r4,r6
+ 292 0016 C2F58062 	 rsb r2,r2,#1024
+ 293 001a 002A     	 cmp r2,#0
+ 294 001c 40F2FF31 	 movw r1,#1023
+ 295 0020 38BF     	 it cc
+ 296 0022 0022     	 movcc r2,#0
+ 297 0024 8A42     	 cmp r2,r1
+ 298 0026 4FEA9613 	 lsr r3,r6,#6
+ 299 002a 28BF     	 it cs
+ 300 002c 0A46     	 movcs r2,r1
+ 301 002e A009     	 lsrs r0,r4,#6
+ 302 0030 9B02     	 lsls r3,r3,#10
+ 303 0032 B3FBF0F3 	 udiv r3,r3,r0
+ 304 0036 8B42     	 cmp r3,r1
+ 305 0038 28BF     	 it cs
+ 306 003a 0B46     	 movcs r3,r1
+ 307 003c 5843     	 muls r0,r3,r0
+ 308 003e 800A     	 lsrs r0,r0,#10
+ 309 0040 C2F58061 	 rsb r1,r2,#1024
+ 310 0044 B4FBF1F4 	 udiv r4,r4,r1
+ 311 0048 A6EB8011 	 sub r1,r6,r0,lsl#6
+ 312 004c 341B     	 subs r4,r6,r4
+ 313 004e 8C42     	 cmp r4,r1
+ 314 0050 98BF     	 it ls
+ 315 0052 1346     	 movls r3,r2
+ 316 0054 EA68     	 ldr r2,[r5,#12]
+ 317 0056 22F44342 	 bic r2,r2,#49920
+ 318 005a 22F0FF02 	 bic r2,r2,#255
+ 319 005e EA60     	 str r2,[r5,#12]
+ 320 0060 EA68     	 ldr r2,[r5,#12]
+ 321 0062 8CBF     	 ite hi
+ 322 0064 0221     	 movhi r1,#2
+ 323 0066 0121     	 movls r1,#1
+ 324 0068 1343     	 orrs r3,r3,r2
+ 325 006a 43EA8133 	 orr r3,r3,r1,lsl#14
+ 326 006e EB60     	 str r3,[r5,#12]
+ 327 0070 70BD     	 pop {r4,r5,r6,pc}
+ 329              	 .section .text.XMC_CAN_SetBaudrateClockSource,"ax",%progbits
+ 330              	 .align 1
+ 331              	 .global XMC_CAN_SetBaudrateClockSource
+ 332              	 .thumb
+ 333              	 .thumb_func
+ 335              	XMC_CAN_SetBaudrateClockSource:
+ 336              	 
+ 337              	 
+ 338              	 
+ 339 0000 7047     	 bx lr
+ 341              	 .section .text.XMC_CAN_GetBaudrateClockSource,"ax",%progbits
+ 342              	 .align 1
+ 343              	 .global XMC_CAN_GetBaudrateClockSource
+ 344              	 .thumb
+ 345              	 .thumb_func
+ 347              	XMC_CAN_GetBaudrateClockSource:
+ 348              	 
+ 349              	 
+ 350              	 
+ 351 0000 0120     	 movs r0,#1
+ 352 0002 7047     	 bx lr
+ 354              	 .section .text.XMC_CAN_GetBaudrateClockFrequency,"ax",%progbits
+ 355              	 .align 1
+ 356              	 .global XMC_CAN_GetBaudrateClockFrequency
+ 357              	 .thumb
+ 358              	 .thumb_func
+ 360              	XMC_CAN_GetBaudrateClockFrequency:
+ 361              	 
+ 362              	 
+ 363              	 
+ 364 0000 FFF7FEBF 	 b XMC_SCU_CLOCK_GetPeripheralClockFrequency
+ 366              	 .section .text.XMC_CAN_InitEx,"ax",%progbits
+ 367              	 .align 1
+ 368              	 .global XMC_CAN_InitEx
+ 369              	 .thumb
+ 370              	 .thumb_func
+ 372              	XMC_CAN_InitEx:
+ 373              	 
+ 374              	 
+ 375 0000 70B5     	 push {r4,r5,r6,lr}
+ 376 0002 0546     	 mov r5,r0
+ 377 0004 1446     	 mov r4,r2
+ 378 0006 FFF7FEFF 	 bl XMC_SCU_CLOCK_GetPeripheralClockFrequency
+ 379 000a 0646     	 mov r6,r0
+ 380 000c 2846     	 mov r0,r5
+ 381 000e FFF7FEFF 	 bl XMC_CAN_Enable
+ 382 0012 B6FBF4F0 	 udiv r0,r6,r4
+ 383 0016 C0F58060 	 rsb r0,r0,#1024
+ 384 001a 0028     	 cmp r0,#0
+ 385 001c 38BF     	 it cc
+ 386 001e 0020     	 movcc r0,#0
+ 387 0020 40F2FF33 	 movw r3,#1023
+ 388 0024 9842     	 cmp r0,r3
+ 389 0026 28BF     	 it cs
+ 390 0028 1846     	 movcs r0,r3
+ 391 002a EB68     	 ldr r3,[r5,#12]
+ 392 002c 23F44343 	 bic r3,r3,#49920
+ 393 0030 23F0FF03 	 bic r3,r3,#255
+ 394 0034 EB60     	 str r3,[r5,#12]
+ 395 0036 EB68     	 ldr r3,[r5,#12]
+ 396 0038 43F48043 	 orr r3,r3,#16384
+ 397 003c 0343     	 orrs r3,r3,r0
+ 398 003e EB60     	 str r3,[r5,#12]
+ 399 0040 C0F58060 	 rsb r0,r0,#1024
+ 400 0044 B6FBF0F0 	 udiv r0,r6,r0
+ 401 0048 70BD     	 pop {r4,r5,r6,pc}
+ 403              	 .section .text.XMC_CAN_MO_SetIdentifier,"ax",%progbits
+ 404              	 .align 1
+ 405              	 .global XMC_CAN_MO_SetIdentifier
+ 406              	 .thumb
+ 407              	 .thumb_func
+ 409              	XMC_CAN_MO_SetIdentifier:
+ 410              	 
+ 411              	 
+ 412 0000 0368     	 ldr r3,[r0]
+ 413 0002 9A69     	 ldr r2,[r3,#24]
+ 414 0004 9200     	 lsls r2,r2,#2
+ 415 0006 10B5     	 push {r4,lr}
+ 416 0008 57BF     	 itett pl
+ 417 000a 9A69     	 ldrpl r2,[r3,#24]
+ 418 000c 9C69     	 ldrmi r4,[r3,#24]
+ 419 000e 8C04     	 lslpl r4,r1,#18
+ 420 0010 24F06044 	 bicpl r4,r4,#-536870912
+ 421 0014 52BF     	 itee pl
+ 422 0016 02F06042 	 andpl r2,r2,#-536870912
+ 423 001a 21F06042 	 bicmi r2,r1,#-536870912
+ 424 001e 04F06044 	 andmi r4,r4,#-536870912
+ 425 0022 2243     	 orrs r2,r2,r4
+ 426 0024 9A61     	 str r2,[r3,#24]
+ 427 0026 4368     	 ldr r3,[r0,#4]
+ 428 0028 61F31C03 	 bfi r3,r1,#0,#29
+ 429 002c 4360     	 str r3,[r0,#4]
+ 430 002e 10BD     	 pop {r4,pc}
+ 432              	 .section .text.XMC_CAN_MO_GetIdentifier,"ax",%progbits
+ 433              	 .align 1
+ 434              	 .global XMC_CAN_MO_GetIdentifier
+ 435              	 .thumb
+ 436              	 .thumb_func
+ 438              	XMC_CAN_MO_GetIdentifier:
+ 439              	 
+ 440              	 
+ 441              	 
+ 442 0000 0368     	 ldr r3,[r0]
+ 443 0002 9A69     	 ldr r2,[r3,#24]
+ 444 0004 9869     	 ldr r0,[r3,#24]
+ 445 0006 9300     	 lsls r3,r2,#2
+ 446 0008 54BF     	 ite pl
+ 447 000a C0F38A40 	 ubfxpl r0,r0,#18,#11
+ 448 000e 20F06040 	 bicmi r0,r0,#-536870912
+ 449 0012 7047     	 bx lr
+ 451              	 .section .text.XMC_CAN_MO_GetAcceptanceMask,"ax",%progbits
+ 452              	 .align 1
+ 453              	 .global XMC_CAN_MO_GetAcceptanceMask
+ 454              	 .thumb
+ 455              	 .thumb_func
+ 457              	XMC_CAN_MO_GetAcceptanceMask:
+ 458              	 
+ 459              	 
+ 460              	 
+ 461 0000 0368     	 ldr r3,[r0]
+ 462 0002 DA68     	 ldr r2,[r3,#12]
+ 463 0004 9100     	 lsls r1,r2,#2
+ 464 0006 06D4     	 bmi .L57
+ 465 0008 9A69     	 ldr r2,[r3,#24]
+ 466 000a 9200     	 lsls r2,r2,#2
+ 467 000c 03D4     	 bmi .L57
+ 468 000e D868     	 ldr r0,[r3,#12]
+ 469 0010 C0F38A40 	 ubfx r0,r0,#18,#11
+ 470 0014 7047     	 bx lr
+ 471              	.L57:
+ 472 0016 D868     	 ldr r0,[r3,#12]
+ 473 0018 20F06040 	 bic r0,r0,#-536870912
+ 474 001c 7047     	 bx lr
+ 476              	 .section .text.XMC_CAN_MO_SetAcceptanceMask,"ax",%progbits
+ 477              	 .align 1
+ 478              	 .global XMC_CAN_MO_SetAcceptanceMask
+ 479              	 .thumb
+ 480              	 .thumb_func
+ 482              	XMC_CAN_MO_SetAcceptanceMask:
+ 483              	 
+ 484              	 
+ 485 0000 0368     	 ldr r3,[r0]
+ 486 0002 DA68     	 ldr r2,[r3,#12]
+ 487 0004 10B5     	 push {r4,lr}
+ 488 0006 9400     	 lsls r4,r2,#2
+ 489 0008 08D4     	 bmi .L60
+ 490 000a 9A69     	 ldr r2,[r3,#24]
+ 491 000c 9200     	 lsls r2,r2,#2
+ 492 000e 05D4     	 bmi .L60
+ 493 0010 DA68     	 ldr r2,[r3,#12]
+ 494 0012 02F06042 	 and r2,r2,#-536870912
+ 495 0016 42EA8142 	 orr r2,r2,r1,lsl#18
+ 496 001a 05E0     	 b .L62
+ 497              	.L60:
+ 498 001c DC68     	 ldr r4,[r3,#12]
+ 499 001e 21F06042 	 bic r2,r1,#-536870912
+ 500 0022 04F06044 	 and r4,r4,#-536870912
+ 501 0026 2243     	 orrs r2,r2,r4
+ 502              	.L62:
+ 503 0028 DA60     	 str r2,[r3,#12]
+ 504 002a 8368     	 ldr r3,[r0,#8]
+ 505 002c 61F31C03 	 bfi r3,r1,#0,#29
+ 506 0030 8360     	 str r3,[r0,#8]
+ 507 0032 10BD     	 pop {r4,pc}
+ 509              	 .section .text.XMC_CAN_MO_UpdateData,"ax",%progbits
+ 510              	 .align 1
+ 511              	 .global XMC_CAN_MO_UpdateData
+ 512              	 .thumb
+ 513              	 .thumb_func
+ 515              	XMC_CAN_MO_UpdateData:
+ 516              	 
+ 517              	 
+ 518              	 
+ 519 0000 037E     	 ldrb r3,[r0,#24]
+ 520 0002 012B     	 cmp r3,#1
+ 521 0004 14D1     	 bne .L65
+ 522 0006 0368     	 ldr r3,[r0]
+ 523 0008 2022     	 movs r2,#32
+ 524 000a DA61     	 str r2,[r3,#28]
+ 525 000c 0368     	 ldr r3,[r0]
+ 526 000e 017B     	 ldrb r1,[r0,#12]
+ 527 0010 1A68     	 ldr r2,[r3]
+ 528 0012 0906     	 lsls r1,r1,#24
+ 529 0014 01F07061 	 and r1,r1,#251658240
+ 530 0018 22F07062 	 bic r2,r2,#251658240
+ 531 001c 0A43     	 orrs r2,r2,r1
+ 532 001e 1A60     	 str r2,[r3]
+ 533 0020 0269     	 ldr r2,[r0,#16]
+ 534 0022 1A61     	 str r2,[r3,#16]
+ 535 0024 4269     	 ldr r2,[r0,#20]
+ 536 0026 5A61     	 str r2,[r3,#20]
+ 537 0028 024A     	 ldr r2,.L66
+ 538 002a DA61     	 str r2,[r3,#28]
+ 539 002c 0020     	 movs r0,#0
+ 540 002e 7047     	 bx lr
+ 541              	.L65:
+ 542 0030 0320     	 movs r0,#3
+ 543 0032 7047     	 bx lr
+ 544              	.L67:
+ 545              	 .align 2
+ 546              	.L66:
+ 547 0034 40002800 	 .word 2621504
+ 549              	 .section .text.XMC_CAN_MO_Config,"ax",%progbits
+ 550              	 .align 1
+ 551              	 .global XMC_CAN_MO_Config
+ 552              	 .thumb
+ 553              	 .thumb_func
+ 555              	XMC_CAN_MO_Config:
+ 556              	 
+ 557              	 
+ 558 0000 0268     	 ldr r2,[r0]
+ 559 0002 9168     	 ldr r1,[r2,#8]
+ 560 0004 02F13843 	 add r3,r2,#-1207959552
+ 561 0008 21F47F41 	 bic r1,r1,#65280
+ 562 000c 10B5     	 push {r4,lr}
+ 563 000e A3F5A833 	 sub r3,r3,#86016
+ 564 0012 9160     	 str r1,[r2,#8]
+ 565 0014 9168     	 ldr r1,[r2,#8]
+ 566 0016 DB00     	 lsls r3,r3,#3
+ 567 0018 23F0FF03 	 bic r3,r3,#255
+ 568 001c 0B43     	 orrs r3,r3,r1
+ 569 001e 9360     	 str r3,[r2,#8]
+ 570 0020 037E     	 ldrb r3,[r0,#24]
+ 571 0022 012B     	 cmp r3,#1
+ 572 0024 0446     	 mov r4,r0
+ 573 0026 28D8     	 bhi .L68
+ 574 0028 2023     	 movs r3,#32
+ 575 002a D361     	 str r3,[r2,#28]
+ 576 002c C379     	 ldrb r3,[r0,#7]
+ 577 002e 4268     	 ldr r2,[r0,#4]
+ 578 0030 13F0200F 	 tst r3,#32
+ 579 0034 08BF     	 it eq
+ 580 0036 02F06041 	 andeq r1,r2,#-536870912
+ 581 003a 0368     	 ldr r3,[r0]
+ 582 003c 03BF     	 ittte eq
+ 583 003e 41EA8242 	 orreq r2,r1,r2,lsl#18
+ 584 0042 9A61     	 streq r2,[r3,#24]
+ 585 0044 8168     	 ldreq r1,[r0,#8]
+ 586 0046 9A61     	 strne r2,[r3,#24]
+ 587 0048 06BF     	 itte eq
+ 588 004a 01F06042 	 andeq r2,r1,#-536870912
+ 589 004e 42EA8142 	 orreq r2,r2,r1,lsl#18
+ 590 0052 8268     	 ldrne r2,[r0,#8]
+ 591 0054 DA60     	 str r2,[r3,#12]
+ 592 0056 027E     	 ldrb r2,[r0,#24]
+ 593 0058 012A     	 cmp r2,#1
+ 594 005a 08D1     	 bne .L72
+ 595 005c FFF7FEFF 	 bl XMC_CAN_MO_UpdateData
+ 596 0060 2368     	 ldr r3,[r4]
+ 597 0062 4FF00062 	 mov r2,#134217728
+ 598 0066 DA61     	 str r2,[r3,#28]
+ 599 0068 2368     	 ldr r3,[r4]
+ 600 006a 044A     	 ldr r2,.L75
+ 601 006c 04E0     	 b .L74
+ 602              	.L72:
+ 603 006e 4FF40062 	 mov r2,#2048
+ 604 0072 DA61     	 str r2,[r3,#28]
+ 605 0074 0368     	 ldr r3,[r0]
+ 606 0076 024A     	 ldr r2,.L75+4
+ 607              	.L74:
+ 608 0078 DA61     	 str r2,[r3,#28]
+ 609              	.L68:
+ 610 007a 10BD     	 pop {r4,pc}
+ 611              	.L76:
+ 612              	 .align 2
+ 613              	.L75:
+ 614 007c C0002006 	 .word 102760640
+ 615 0080 4006A000 	 .word 10487360
+ 617              	 .section .text.XMC_CAN_MO_Transmit,"ax",%progbits
+ 618              	 .align 1
+ 619              	 .global XMC_CAN_MO_Transmit
+ 620              	 .thumb
+ 621              	 .thumb_func
+ 623              	XMC_CAN_MO_Transmit:
+ 624              	 
+ 625              	 
+ 626              	 
+ 627 0000 0368     	 ldr r3,[r0]
+ 628 0002 D969     	 ldr r1,[r3,#28]
+ 629 0004 DA69     	 ldr r2,[r3,#28]
+ 630 0006 8906     	 lsls r1,r1,#26
+ 631 0008 06D5     	 bpl .L79
+ 632 000a D205     	 lsls r2,r2,#23
+ 633 000c 06D4     	 bmi .L80
+ 634 000e 4FF0E062 	 mov r2,#117440512
+ 635 0012 DA61     	 str r2,[r3,#28]
+ 636 0014 0020     	 movs r0,#0
+ 637 0016 7047     	 bx lr
+ 638              	.L79:
+ 639 0018 0420     	 movs r0,#4
+ 640 001a 7047     	 bx lr
+ 641              	.L80:
+ 642 001c 0220     	 movs r0,#2
+ 643 001e 7047     	 bx lr
+ 645              	 .section .text.XMC_CAN_MO_ReceiveData,"ax",%progbits
+ 646              	 .align 1
+ 647              	 .global XMC_CAN_MO_ReceiveData
+ 648              	 .thumb
+ 649              	 .thumb_func
+ 651              	XMC_CAN_MO_ReceiveData:
+ 652              	 
+ 653              	 
+ 654              	 
+ 655 0000 0268     	 ldr r2,[r0]
+ 656 0002 D169     	 ldr r1,[r2,#28]
+ 657 0004 D369     	 ldr r3,[r2,#28]
+ 658 0006 0905     	 lsls r1,r1,#20
+ 659 0008 10D4     	 bmi .L84
+ 660 000a 5B07     	 lsls r3,r3,#29
+ 661 000c 10D4     	 bmi .L85
+ 662              	.L87:
+ 663 000e 1369     	 ldr r3,[r2,#16]
+ 664 0010 0361     	 str r3,[r0,#16]
+ 665 0012 5369     	 ldr r3,[r2,#20]
+ 666 0014 4361     	 str r3,[r0,#20]
+ 667 0016 D369     	 ldr r3,[r2,#28]
+ 668 0018 D169     	 ldr r1,[r2,#28]
+ 669 001a C3F38003 	 ubfx r3,r3,#2,#1
+ 670 001e C1F3C001 	 ubfx r1,r1,#3,#1
+ 671 0022 3BB1     	 cbz r3,.L86
+ 672 0024 0029     	 cmp r1,#0
+ 673 0026 F2D1     	 bne .L87
+ 674 0028 0846     	 mov r0,r1
+ 675 002a 7047     	 bx lr
+ 676              	.L84:
+ 677 002c 0320     	 movs r0,#3
+ 678 002e 7047     	 bx lr
+ 679              	.L85:
+ 680 0030 0220     	 movs r0,#2
+ 681 0032 7047     	 bx lr
+ 682              	.L86:
+ 683 0034 1846     	 mov r0,r3
+ 684 0036 7047     	 bx lr
+ 686              	 .section .text.XMC_CAN_MO_Receive,"ax",%progbits
+ 687              	 .align 1
+ 688              	 .global XMC_CAN_MO_Receive
+ 689              	 .thumb
+ 690              	 .thumb_func
+ 692              	XMC_CAN_MO_Receive:
+ 693              	 
+ 694              	 
+ 695              	 
+ 696 0000 0368     	 ldr r3,[r0]
+ 697 0002 DA69     	 ldr r2,[r3,#28]
+ 698 0004 DB69     	 ldr r3,[r3,#28]
+ 699 0006 1205     	 lsls r2,r2,#20
+ 700 0008 4ED4     	 bmi .L96
+ 701 000a 5907     	 lsls r1,r3,#29
+ 702 000c 4ED4     	 bmi .L97
+ 703              	.L100:
+ 704 000e 0368     	 ldr r3,[r0]
+ 705 0010 0822     	 movs r2,#8
+ 706 0012 DA61     	 str r2,[r3,#28]
+ 707 0014 0368     	 ldr r3,[r0]
+ 708 0016 C279     	 ldrb r2,[r0,#7]
+ 709 0018 9969     	 ldr r1,[r3,#24]
+ 710 001a C1F34071 	 ubfx r1,r1,#29,#1
+ 711 001e D9B9     	 cbnz r1,.L91
+ 712 0020 61F34512 	 bfi r2,r1,#5,#1
+ 713 0024 C271     	 strb r2,[r0,#7]
+ 714 0026 9A69     	 ldr r2,[r3,#24]
+ 715 0028 4168     	 ldr r1,[r0,#4]
+ 716 002a C2F38A42 	 ubfx r2,r2,#18,#11
+ 717 002e 62F31C01 	 bfi r1,r2,#0,#29
+ 718 0032 4160     	 str r1,[r0,#4]
+ 719 0034 D968     	 ldr r1,[r3,#12]
+ 720 0036 C27A     	 ldrb r2,[r0,#11]
+ 721 0038 C1F34071 	 ubfx r1,r1,#29,#1
+ 722 003c 61F34512 	 bfi r2,r1,#5,#1
+ 723 0040 C272     	 strb r2,[r0,#11]
+ 724 0042 D968     	 ldr r1,[r3,#12]
+ 725 0044 12F0200F 	 tst r2,#32
+ 726 0048 8268     	 ldr r2,[r0,#8]
+ 727 004a 18BF     	 it ne
+ 728 004c C1F38A41 	 ubfxne r1,r1,#18,#11
+ 729 0050 61F31C02 	 bfi r2,r1,#0,#29
+ 730 0054 8260     	 str r2,[r0,#8]
+ 731 0056 13E0     	 b .L93
+ 732              	.L91:
+ 733 0058 42F02002 	 orr r2,r2,#32
+ 734 005c C271     	 strb r2,[r0,#7]
+ 735 005e 9969     	 ldr r1,[r3,#24]
+ 736 0060 4268     	 ldr r2,[r0,#4]
+ 737 0062 61F31C02 	 bfi r2,r1,#0,#29
+ 738 0066 4260     	 str r2,[r0,#4]
+ 739 0068 D968     	 ldr r1,[r3,#12]
+ 740 006a 8268     	 ldr r2,[r0,#8]
+ 741 006c 61F31C02 	 bfi r2,r1,#0,#29
+ 742 0070 8260     	 str r2,[r0,#8]
+ 743 0072 DA68     	 ldr r2,[r3,#12]
+ 744 0074 C17A     	 ldrb r1,[r0,#11]
+ 745 0076 C2F34072 	 ubfx r2,r2,#29,#1
+ 746 007a 62F34511 	 bfi r1,r2,#5,#1
+ 747 007e C172     	 strb r1,[r0,#11]
+ 748              	.L93:
+ 749 0080 1A68     	 ldr r2,[r3]
+ 750 0082 C2F30362 	 ubfx r2,r2,#24,#4
+ 751 0086 0273     	 strb r2,[r0,#12]
+ 752 0088 1A69     	 ldr r2,[r3,#16]
+ 753 008a 0261     	 str r2,[r0,#16]
+ 754 008c 5A69     	 ldr r2,[r3,#20]
+ 755 008e 4261     	 str r2,[r0,#20]
+ 756 0090 DA69     	 ldr r2,[r3,#28]
+ 757 0092 DB69     	 ldr r3,[r3,#28]
+ 758 0094 5207     	 lsls r2,r2,#29
+ 759 0096 C3F3C003 	 ubfx r3,r3,#3,#1
+ 760 009a 01D5     	 bpl .L94
+ 761 009c 002B     	 cmp r3,#0
+ 762 009e B6D1     	 bne .L100
+ 763              	.L94:
+ 764 00a0 0023     	 movs r3,#0
+ 765 00a2 0376     	 strb r3,[r0,#24]
+ 766 00a4 1846     	 mov r0,r3
+ 767 00a6 7047     	 bx lr
+ 768              	.L96:
+ 769 00a8 0320     	 movs r0,#3
+ 770 00aa 7047     	 bx lr
+ 771              	.L97:
+ 772 00ac 0220     	 movs r0,#2
+ 773 00ae 7047     	 bx lr
+ 775              	 .section .text.XMC_CAN_NODE_EnableEvent,"ax",%progbits
+ 776              	 .align 1
+ 777              	 .global XMC_CAN_NODE_EnableEvent
+ 778              	 .thumb
+ 779              	 .thumb_func
+ 781              	XMC_CAN_NODE_EnableEvent:
+ 782              	 
+ 783              	 
+ 784              	 
+ 785 0000 B1F5800F 	 cmp r1,#4194304
+ 786 0004 15BF     	 itete ne
+ 787 0006 0368     	 ldrne r3,[r0]
+ 788 0008 8369     	 ldreq r3,[r0,#24]
+ 789 000a 1943     	 orrne r1,r1,r3
+ 790 000c 43F48003 	 orreq r3,r3,#4194304
+ 791 0010 14BF     	 ite ne
+ 792 0012 0160     	 strne r1,[r0]
+ 793 0014 8361     	 streq r3,[r0,#24]
+ 794 0016 7047     	 bx lr
+ 796              	 .section .text.XMC_CAN_NODE_DisableEvent,"ax",%progbits
+ 797              	 .align 1
+ 798              	 .global XMC_CAN_NODE_DisableEvent
+ 799              	 .thumb
+ 800              	 .thumb_func
+ 802              	XMC_CAN_NODE_DisableEvent:
+ 803              	 
+ 804              	 
+ 805              	 
+ 806 0000 B1F5800F 	 cmp r1,#4194304
+ 807 0004 15BF     	 itete ne
+ 808 0006 0368     	 ldrne r3,[r0]
+ 809 0008 8369     	 ldreq r3,[r0,#24]
+ 810 000a 23EA0101 	 bicne r1,r3,r1
+ 811 000e 23F48003 	 biceq r3,r3,#4194304
+ 812 0012 14BF     	 ite ne
+ 813 0014 0160     	 strne r1,[r0]
+ 814 0016 8361     	 streq r3,[r0,#24]
+ 815 0018 7047     	 bx lr
+ 817              	 .section .text.XMC_CAN_TXFIFO_Transmit,"ax",%progbits
+ 818              	 .align 1
+ 819              	 .global XMC_CAN_TXFIFO_Transmit
+ 820              	 .thumb
+ 821              	 .thumb_func
+ 823              	XMC_CAN_TXFIFO_Transmit:
+ 824              	 
+ 825              	 
+ 826              	 
+ 827 0000 0368     	 ldr r3,[r0]
+ 828 0002 D969     	 ldr r1,[r3,#28]
+ 829 0004 DA69     	 ldr r2,[r3,#28]
+ 830 0006 5B68     	 ldr r3,[r3,#4]
+ 831 0008 8906     	 lsls r1,r1,#26
+ 832 000a 0DD5     	 bpl .L111
+ 833 000c D205     	 lsls r2,r2,#23
+ 834 000e 0DD4     	 bmi .L112
+ 835 0010 C3F30743 	 ubfx r3,r3,#16,#8
+ 836 0014 03F11073 	 add r3,r3,#37748736
+ 837 0018 03F52863 	 add r3,r3,#2688
+ 838 001c 5B01     	 lsls r3,r3,#5
+ 839 001e 4FF0E062 	 mov r2,#117440512
+ 840 0022 DA61     	 str r2,[r3,#28]
+ 841 0024 0020     	 movs r0,#0
+ 842 0026 7047     	 bx lr
+ 843              	.L111:
+ 844 0028 0420     	 movs r0,#4
+ 845 002a 7047     	 bx lr
+ 846              	.L112:
+ 847 002c 0220     	 movs r0,#2
+ 848 002e 7047     	 bx lr
+ 850              	 .section .text.XMC_CAN_TXFIFO_ConfigMOBaseObject,"ax",%progbits
+ 851              	 .align 1
+ 852              	 .global XMC_CAN_TXFIFO_ConfigMOBaseObject
+ 853              	 .thumb
+ 854              	 .thumb_func
+ 856              	XMC_CAN_TXFIFO_ConfigMOBaseObject:
+ 857              	 
+ 858              	 
+ 859              	 
+ 860 0000 82B0     	 sub sp,sp,#8
+ 861 0002 0268     	 ldr r2,[r0]
+ 862 0004 0191     	 str r1,[sp,#4]
+ 863 0006 1368     	 ldr r3,[r2]
+ 864 0008 9DF80410 	 ldrb r1,[sp,#4]
+ 865 000c 23F00F03 	 bic r3,r3,#15
+ 866 0010 43F00203 	 orr r3,r3,#2
+ 867 0014 1360     	 str r3,[r2]
+ 868 0016 5368     	 ldr r3,[r2,#4]
+ 869 0018 03F07F43 	 and r3,r3,#-16777216
+ 870 001c 0B43     	 orrs r3,r3,r1
+ 871 001e 9DF80510 	 ldrb r1,[sp,#5]
+ 872 0022 43EA0123 	 orr r3,r3,r1,lsl#8
+ 873 0026 9DF80610 	 ldrb r1,[sp,#6]
+ 874 002a 43EA0143 	 orr r3,r3,r1,lsl#16
+ 875 002e 5360     	 str r3,[r2,#4]
+ 876 0030 02B0     	 add sp,sp,#8
+ 877              	 
+ 878 0032 7047     	 bx lr
+ 880              	 .section .text.XMC_CAN_RXFIFO_ConfigMOBaseObject,"ax",%progbits
+ 881              	 .align 1
+ 882              	 .global XMC_CAN_RXFIFO_ConfigMOBaseObject
+ 883              	 .thumb
+ 884              	 .thumb_func
+ 886              	XMC_CAN_RXFIFO_ConfigMOBaseObject:
+ 887              	 
+ 888              	 
+ 889              	 
+ 890 0000 82B0     	 sub sp,sp,#8
+ 891 0002 0268     	 ldr r2,[r0]
+ 892 0004 0191     	 str r1,[sp,#4]
+ 893 0006 1368     	 ldr r3,[r2]
+ 894 0008 9DF80410 	 ldrb r1,[sp,#4]
+ 895 000c 23F00F03 	 bic r3,r3,#15
+ 896 0010 43F00103 	 orr r3,r3,#1
+ 897 0014 1360     	 str r3,[r2]
+ 898 0016 5368     	 ldr r3,[r2,#4]
+ 899 0018 03F07F43 	 and r3,r3,#-16777216
+ 900 001c 0B43     	 orrs r3,r3,r1
+ 901 001e 9DF80510 	 ldrb r1,[sp,#5]
+ 902 0022 43EA0123 	 orr r3,r3,r1,lsl#8
+ 903 0026 9DF80610 	 ldrb r1,[sp,#6]
+ 904 002a 43EA0143 	 orr r3,r3,r1,lsl#16
+ 905 002e 5360     	 str r3,[r2,#4]
+ 906 0030 02B0     	 add sp,sp,#8
+ 907              	 
+ 908 0032 7047     	 bx lr
+ 910              	 .section .text.XMC_CAN_TXFIFO_ConfigMOSlaveObject,"ax",%progbits
+ 911              	 .align 1
+ 912              	 .global XMC_CAN_TXFIFO_ConfigMOSlaveObject
+ 913              	 .thumb
+ 914              	 .thumb_func
+ 916              	XMC_CAN_TXFIFO_ConfigMOSlaveObject:
+ 917              	 
+ 918              	 
+ 919              	 
+ 920 0000 82B0     	 sub sp,sp,#8
+ 921 0002 0368     	 ldr r3,[r0]
+ 922 0004 0191     	 str r1,[sp,#4]
+ 923 0006 1A68     	 ldr r2,[r3]
+ 924 0008 9DF80610 	 ldrb r1,[sp,#6]
+ 925 000c 22F00F02 	 bic r2,r2,#15
+ 926 0010 42F00302 	 orr r2,r2,#3
+ 927 0014 1A60     	 str r2,[r3]
+ 928 0016 5A68     	 ldr r2,[r3,#4]
+ 929 0018 22F47F02 	 bic r2,r2,#16711680
+ 930 001c 42EA0142 	 orr r2,r2,r1,lsl#16
+ 931 0020 5A60     	 str r2,[r3,#4]
+ 932 0022 024A     	 ldr r2,.L116
+ 933 0024 DA61     	 str r2,[r3,#28]
+ 934 0026 02B0     	 add sp,sp,#8
+ 935              	 
+ 936 0028 7047     	 bx lr
+ 937              	.L117:
+ 938 002a 00BF     	 .align 2
+ 939              	.L116:
+ 940 002c 00040002 	 .word 33555456
+ 942              	 .section .text.XMC_CAN_GATEWAY_InitSourceObject,"ax",%progbits
+ 943              	 .align 1
+ 944              	 .global XMC_CAN_GATEWAY_InitSourceObject
+ 945              	 .thumb
+ 946              	 .thumb_func
+ 948              	XMC_CAN_GATEWAY_InitSourceObject:
+ 949              	 
+ 950              	 
+ 951              	 
+ 952 0000 82B0     	 sub sp,sp,#8
+ 953 0002 02AB     	 add r3,sp,#8
+ 954 0004 03E90600 	 stmdb r3,{r1,r2}
+ 955 0008 9DF80330 	 ldrb r3,[sp,#3]
+ 956 000c 0168     	 ldr r1,[r0]
+ 957 000e 1B02     	 lsls r3,r3,#8
+ 958 0010 03F48072 	 and r2,r3,#256
+ 959 0014 9DF80530 	 ldrb r3,[sp,#5]
+ 960 0018 9B02     	 lsls r3,r3,#10
+ 961 001a 03F48063 	 and r3,r3,#1024
+ 962 001e 1343     	 orrs r3,r3,r2
+ 963 0020 9DF80420 	 ldrb r2,[sp,#4]
+ 964 0024 5202     	 lsls r2,r2,#9
+ 965 0026 02F40072 	 and r2,r2,#512
+ 966 002a 43F00403 	 orr r3,r3,#4
+ 967 002e 1343     	 orrs r3,r3,r2
+ 968 0030 9DF80620 	 ldrb r2,[sp,#6]
+ 969 0034 D202     	 lsls r2,r2,#11
+ 970 0036 02F40062 	 and r2,r2,#2048
+ 971 003a 1343     	 orrs r3,r3,r2
+ 972 003c 0B60     	 str r3,[r1]
+ 973 003e 9DF80120 	 ldrb r2,[sp,#1]
+ 974 0042 9DF80030 	 ldrb r3,[sp]
+ 975 0046 43EA0223 	 orr r3,r3,r2,lsl#8
+ 976 004a 9DF80220 	 ldrb r2,[sp,#2]
+ 977 004e 43EA0243 	 orr r3,r3,r2,lsl#16
+ 978 0052 4B60     	 str r3,[r1,#4]
+ 979 0054 02B0     	 add sp,sp,#8
+ 980              	 
+ 981 0056 7047     	 bx lr
+ 983              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 xmc_can.c
+    {standard input}:17     .text.XMC_CAN_NODE_NominalBitTimeConfigureEx:00000000 $t
+    {standard input}:22     .text.XMC_CAN_NODE_NominalBitTimeConfigureEx:00000000 XMC_CAN_NODE_NominalBitTimeConfigureEx
+    {standard input}:97     .text.XMC_CAN_NODE_NominalBitTimeConfigure:00000000 $t
+    {standard input}:102    .text.XMC_CAN_NODE_NominalBitTimeConfigure:00000000 XMC_CAN_NODE_NominalBitTimeConfigure
+    {standard input}:210    .text.XMC_CAN_AllocateMOtoNodeList:00000000 $t
+    {standard input}:215    .text.XMC_CAN_AllocateMOtoNodeList:00000000 XMC_CAN_AllocateMOtoNodeList
+    {standard input}:231    .text.XMC_CAN_Disable:00000000 $t
+    {standard input}:236    .text.XMC_CAN_Disable:00000000 XMC_CAN_Disable
+    {standard input}:247    .text.XMC_CAN_Disable:0000000c $d
+    {standard input}:250    .text.XMC_CAN_Enable:00000000 $t
+    {standard input}:255    .text.XMC_CAN_Enable:00000000 XMC_CAN_Enable
+    {standard input}:273    .text.XMC_CAN_Enable:0000001c $d
+    {standard input}:276    .text.XMC_CAN_Init:00000000 $t
+    {standard input}:281    .text.XMC_CAN_Init:00000000 XMC_CAN_Init
+    {standard input}:330    .text.XMC_CAN_SetBaudrateClockSource:00000000 $t
+    {standard input}:335    .text.XMC_CAN_SetBaudrateClockSource:00000000 XMC_CAN_SetBaudrateClockSource
+    {standard input}:342    .text.XMC_CAN_GetBaudrateClockSource:00000000 $t
+    {standard input}:347    .text.XMC_CAN_GetBaudrateClockSource:00000000 XMC_CAN_GetBaudrateClockSource
+    {standard input}:355    .text.XMC_CAN_GetBaudrateClockFrequency:00000000 $t
+    {standard input}:360    .text.XMC_CAN_GetBaudrateClockFrequency:00000000 XMC_CAN_GetBaudrateClockFrequency
+    {standard input}:367    .text.XMC_CAN_InitEx:00000000 $t
+    {standard input}:372    .text.XMC_CAN_InitEx:00000000 XMC_CAN_InitEx
+    {standard input}:404    .text.XMC_CAN_MO_SetIdentifier:00000000 $t
+    {standard input}:409    .text.XMC_CAN_MO_SetIdentifier:00000000 XMC_CAN_MO_SetIdentifier
+    {standard input}:433    .text.XMC_CAN_MO_GetIdentifier:00000000 $t
+    {standard input}:438    .text.XMC_CAN_MO_GetIdentifier:00000000 XMC_CAN_MO_GetIdentifier
+    {standard input}:452    .text.XMC_CAN_MO_GetAcceptanceMask:00000000 $t
+    {standard input}:457    .text.XMC_CAN_MO_GetAcceptanceMask:00000000 XMC_CAN_MO_GetAcceptanceMask
+    {standard input}:477    .text.XMC_CAN_MO_SetAcceptanceMask:00000000 $t
+    {standard input}:482    .text.XMC_CAN_MO_SetAcceptanceMask:00000000 XMC_CAN_MO_SetAcceptanceMask
+    {standard input}:510    .text.XMC_CAN_MO_UpdateData:00000000 $t
+    {standard input}:515    .text.XMC_CAN_MO_UpdateData:00000000 XMC_CAN_MO_UpdateData
+    {standard input}:547    .text.XMC_CAN_MO_UpdateData:00000034 $d
+    {standard input}:550    .text.XMC_CAN_MO_Config:00000000 $t
+    {standard input}:555    .text.XMC_CAN_MO_Config:00000000 XMC_CAN_MO_Config
+    {standard input}:614    .text.XMC_CAN_MO_Config:0000007c $d
+    {standard input}:618    .text.XMC_CAN_MO_Transmit:00000000 $t
+    {standard input}:623    .text.XMC_CAN_MO_Transmit:00000000 XMC_CAN_MO_Transmit
+    {standard input}:646    .text.XMC_CAN_MO_ReceiveData:00000000 $t
+    {standard input}:651    .text.XMC_CAN_MO_ReceiveData:00000000 XMC_CAN_MO_ReceiveData
+    {standard input}:687    .text.XMC_CAN_MO_Receive:00000000 $t
+    {standard input}:692    .text.XMC_CAN_MO_Receive:00000000 XMC_CAN_MO_Receive
+    {standard input}:776    .text.XMC_CAN_NODE_EnableEvent:00000000 $t
+    {standard input}:781    .text.XMC_CAN_NODE_EnableEvent:00000000 XMC_CAN_NODE_EnableEvent
+    {standard input}:797    .text.XMC_CAN_NODE_DisableEvent:00000000 $t
+    {standard input}:802    .text.XMC_CAN_NODE_DisableEvent:00000000 XMC_CAN_NODE_DisableEvent
+    {standard input}:818    .text.XMC_CAN_TXFIFO_Transmit:00000000 $t
+    {standard input}:823    .text.XMC_CAN_TXFIFO_Transmit:00000000 XMC_CAN_TXFIFO_Transmit
+    {standard input}:851    .text.XMC_CAN_TXFIFO_ConfigMOBaseObject:00000000 $t
+    {standard input}:856    .text.XMC_CAN_TXFIFO_ConfigMOBaseObject:00000000 XMC_CAN_TXFIFO_ConfigMOBaseObject
+    {standard input}:881    .text.XMC_CAN_RXFIFO_ConfigMOBaseObject:00000000 $t
+    {standard input}:886    .text.XMC_CAN_RXFIFO_ConfigMOBaseObject:00000000 XMC_CAN_RXFIFO_ConfigMOBaseObject
+    {standard input}:911    .text.XMC_CAN_TXFIFO_ConfigMOSlaveObject:00000000 $t
+    {standard input}:916    .text.XMC_CAN_TXFIFO_ConfigMOSlaveObject:00000000 XMC_CAN_TXFIFO_ConfigMOSlaveObject
+    {standard input}:940    .text.XMC_CAN_TXFIFO_ConfigMOSlaveObject:0000002c $d
+    {standard input}:943    .text.XMC_CAN_GATEWAY_InitSourceObject:00000000 $t
+    {standard input}:948    .text.XMC_CAN_GATEWAY_InitSourceObject:00000000 XMC_CAN_GATEWAY_InitSourceObject
+
+UNDEFINED SYMBOLS
+XMC_SCU_RESET_AssertPeripheralReset
+XMC_SCU_RESET_DeassertPeripheralReset
+XMC_SCU_CLOCK_GetPeripheralClockFrequency
