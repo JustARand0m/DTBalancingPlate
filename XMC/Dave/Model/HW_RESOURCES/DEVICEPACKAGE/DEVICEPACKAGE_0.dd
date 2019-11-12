@@ -3,6 +3,12 @@
   <provided xsi:type="ResourceModel:ResourceGroup" name="50" URI="http://resources/lqfp100.0.0/devicepackage/0/50">
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin50"/>
   </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="40" URI="http://resources/lqfp100.0.0/devicepackage/0/40">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin40"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="41" URI="http://resources/lqfp100.0.0/devicepackage/0/41">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin41"/>
+  </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="48" URI="http://resources/lqfp100.0.0/devicepackage/0/48">
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin48"/>
   </provided>
@@ -23,5 +29,13 @@
   <provided xsi:type="ResourceModel:ResourceGroup" name="92" URI="http://resources/lqfp100.0.0/devicepackage/0/92">
     <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/PWM/v4_1_10/PWM_2.app#//@hwResources.3"/>
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin92"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="2" URI="http://resources/lqfp100.0.0/devicepackage/0/2">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/UART/v4_1_12/UART_0.app#//@hwResources.10"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin2"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="1" URI="http://resources/lqfp100.0.0/devicepackage/0/1">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/UART/v4_1_12/UART_0.app#//@hwResources.11"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin1"/>
   </provided>
 </ResourceModel:DevicePackage>

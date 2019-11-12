@@ -1,7 +1,7 @@
 /*
  * main.c
  *
- *  Created on: 2019 Nov 11 17:37:29
+ *  Created on: 2019 Nov 12 10:18:39
  *  Author: brm47801
  */
 
@@ -19,6 +19,7 @@
  * invoking the APP initialization dispatcher routine - DAVE_Init() and hosting the place-holder for user application
  * code.
  */
+
 
 int main(void)
 {
@@ -38,31 +39,8 @@ int main(void)
   }
 
   /* Placeholder for user application code. The while loop below can be replaced with user application code. */
-
-
   while(1U)
   {
-	  PWM_SetDutyCycle(&PWM_MOTOR_0, 750);
-	  PWM_SetDutyCycle(&PWM_MOTOR_1, 750);
-	  PWM_SetDutyCycle(&PWM_MOTOR_2, 750);
-
-	  int i = 100000;
-
-	  while(i--)
-	  {
-		  __NOP();
-	  }
-
-	  PWM_SetDutyCycle(&PWM_MOTOR_0, 1000);
-	  PWM_SetDutyCycle(&PWM_MOTOR_1, 1000);
-	  PWM_SetDutyCycle(&PWM_MOTOR_2, 1000);
-
-	  i = 100000;
-
-	 while(i--)
-	 {
-	  	__NOP();
-	 }
 
   }
 }
