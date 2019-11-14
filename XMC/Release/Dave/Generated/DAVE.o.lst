@@ -1,0 +1,65 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "DAVE.c"
+  16              	 .section .text.DAVE_Init,"ax",%progbits
+  17              	 .align 1
+  18              	 .weak DAVE_Init
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	DAVE_Init:
+  23              	 
+  24              	 
+  25 0000 08B5     	 push {r3,lr}
+  26 0002 0B48     	 ldr r0,.L6
+  27 0004 FFF7FEFF 	 bl CLOCK_XMC4_Init
+  28 0008 80B9     	 cbnz r0,.L4
+  29 000a 0A48     	 ldr r0,.L6+4
+  30 000c FFF7FEFF 	 bl PWM_Init
+  31 0010 60B9     	 cbnz r0,.L4
+  32 0012 0948     	 ldr r0,.L6+8
+  33 0014 FFF7FEFF 	 bl UART_Init
+  34 0018 40B9     	 cbnz r0,.L4
+  35 001a 0848     	 ldr r0,.L6+12
+  36 001c FFF7FEFF 	 bl PWM_Init
+  37 0020 20B9     	 cbnz r0,.L4
+  38 0022 0748     	 ldr r0,.L6+16
+  39 0024 BDE80840 	 pop {r3,lr}
+  40 0028 FFF7FEBF 	 b PWM_Init
+  41              	.L4:
+  42 002c 08BD     	 pop {r3,pc}
+  43              	.L7:
+  44 002e 00BF     	 .align 2
+  45              	.L6:
+  46 0030 00000000 	 .word CLOCK_XMC4_0
+  47 0034 00000000 	 .word PWM_MOTOR_0
+  48 0038 00000000 	 .word UART_0
+  49 003c 00000000 	 .word PWM_MOTOR_1
+  50 0040 00000000 	 .word PWM_MOTOR_2
+  52              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 DAVE.c
+    {standard input}:17     .text.DAVE_Init:00000000 $t
+    {standard input}:22     .text.DAVE_Init:00000000 DAVE_Init
+    {standard input}:46     .text.DAVE_Init:00000030 $d
+
+UNDEFINED SYMBOLS
+CLOCK_XMC4_Init
+PWM_Init
+UART_Init
+CLOCK_XMC4_0
+PWM_MOTOR_0
+UART_0
+PWM_MOTOR_1
+PWM_MOTOR_2

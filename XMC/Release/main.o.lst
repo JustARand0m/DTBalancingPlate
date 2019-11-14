@@ -1,0 +1,101 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "main.c"
+  16              	 .section .text.busy_waitMs,"ax",%progbits
+  17              	 .align 1
+  18              	 .global busy_waitMs
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	busy_waitMs:
+  23              	 
+  24              	 
+  25              	 
+  26 0000 0023     	 movs r3,#0
+  27              	.L2:
+  28 0002 8342     	 cmp r3,r0
+  29 0004 06DA     	 bge .L7
+  30 0006 044A     	 ldr r2,.L9
+  31              	.L4:
+  32 0008 013A     	 subs r2,r2,#1
+  33 000a 01D0     	 beq .L8
+  34              	
+  35 000c 00BF     	 nop
+  36              	
+  37              	 .thumb
+  38 000e FBE7     	 b .L4
+  39              	.L8:
+  40 0010 0133     	 adds r3,r3,#1
+  41 0012 F6E7     	 b .L2
+  42              	.L7:
+  43 0014 7047     	 bx lr
+  44              	.L10:
+  45 0016 00BF     	 .align 2
+  46              	.L9:
+  47 0018 C1D40100 	 .word 120001
+  49              	 .section .text.startup.main,"ax",%progbits
+  50              	 .align 1
+  51              	 .global main
+  52              	 .thumb
+  53              	 .thumb_func
+  55              	main:
+  56              	 
+  57              	 
+  58 0000 10B5     	 push {r4,lr}
+  59 0002 FFF7FEFF 	 bl DAVE_Init
+  60 0006 D0B1     	 cbz r0,.L12
+  61              	.L20:
+  62 0008 FEE7     	 b .L20
+  63              	.L14:
+  64 000a 2146     	 mov r1,r4
+  65 000c 0D48     	 ldr r0,.L21
+  66 000e FFF7FEFF 	 bl PWM_SetDutyCycle
+  67 0012 1420     	 movs r0,#20
+  68 0014 FFF7FEFF 	 bl busy_waitMs
+  69 0018 0A34     	 adds r4,r4,#10
+  70 001a 40F22443 	 movw r3,#1060
+  71 001e 9C42     	 cmp r4,r3
+  72 0020 F3D1     	 bne .L14
+  73 0022 40F21944 	 movw r4,#1049
+  74              	.L15:
+  75 0026 2146     	 mov r1,r4
+  76 0028 0648     	 ldr r0,.L21
+  77 002a FFF7FEFF 	 bl PWM_SetDutyCycle
+  78 002e 1420     	 movs r0,#20
+  79 0030 FFF7FEFF 	 bl busy_waitMs
+  80 0034 0A3C     	 subs r4,r4,#10
+  81 0036 40F2C113 	 movw r3,#449
+  82 003a 9C42     	 cmp r4,r3
+  83 003c F3D1     	 bne .L15
+  84              	.L12:
+  85 003e 4FF4E174 	 mov r4,#450
+  86 0042 E2E7     	 b .L14
+  87              	.L22:
+  88              	 .align 2
+  89              	.L21:
+  90 0044 00000000 	 .word PWM_MOTOR_0
+  92              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+    {standard input}:17     .text.busy_waitMs:00000000 $t
+    {standard input}:22     .text.busy_waitMs:00000000 busy_waitMs
+    {standard input}:47     .text.busy_waitMs:00000018 $d
+    {standard input}:50     .text.startup.main:00000000 $t
+    {standard input}:55     .text.startup.main:00000000 main
+    {standard input}:90     .text.startup.main:00000044 $d
+
+UNDEFINED SYMBOLS
+DAVE_Init
+PWM_SetDutyCycle
+PWM_MOTOR_0

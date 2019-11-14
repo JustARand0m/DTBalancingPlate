@@ -1,0 +1,174 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "pwm_conf.c"
+  16              	 .global PWM_MOTOR_2
+  17              	 .global PWM_MOTOR_2_gpio_out_config
+  18              	 .global PWM_MOTOR_2_compare_config
+  19              	 .global PWM_MOTOR_1
+  20              	 .global PWM_MOTOR_1_gpio_out_config
+  21              	 .global PWM_MOTOR_1_compare_config
+  22              	 .global PWM_MOTOR_0
+  23              	 .global PWM_MOTOR_0_gpio_out_config
+  24              	 .global PWM_MOTOR_0_compare_config
+  25              	 .section .data.PWM_MOTOR_1,"aw",%progbits
+  26              	 .align 2
+  29              	PWM_MOTOR_1:
+  30 0000 00000000 	 .word GLOBAL_CCU4_0
+  31 0004 00400140 	 .word 1073823744
+  32 0008 00440140 	 .word 1073824768
+  33 000c 00000000 	 .word PWM_MOTOR_1_compare_config
+  34 0010 00830248 	 .word 1208124160
+  35 0014 00000000 	 .word PWM_MOTOR_1_gpio_out_config
+  36 0018 3E490000 	 .word 18750
+  37 001c 7B920000 	 .word 37499
+  38 0020 88130000 	 .word 5000
+  39 0024 00500000 	 .word 20480
+  40 0028 00       	 .byte 0
+  41 0029 02       	 .byte 2
+  42 002a 00       	 .byte 0
+  43 002b 00       	 .byte 0
+  44 002c 03       	 .byte 3
+  45 002d 02       	 .byte 2
+  46 002e 03       	 .byte 3
+  47 002f 00       	 .byte 0
+  48 0030 00       	 .byte 0
+  49 0031 00       	 .byte 0
+  50 0032 0000     	 .space 2
+  51              	 .section .data.PWM_MOTOR_2,"aw",%progbits
+  52              	 .align 2
+  55              	PWM_MOTOR_2:
+  56 0000 00000000 	 .word GLOBAL_CCU4_0
+  57 0004 00400140 	 .word 1073823744
+  58 0008 00430140 	 .word 1073824512
+  59 000c 00000000 	 .word PWM_MOTOR_2_compare_config
+  60 0010 00830248 	 .word 1208124160
+  61 0014 00000000 	 .word PWM_MOTOR_2_gpio_out_config
+  62 0018 3E490000 	 .word 18750
+  63 001c 7B920000 	 .word 37499
+  64 0020 88130000 	 .word 5000
+  65 0024 00050000 	 .word 1280
+  66 0028 00       	 .byte 0
+  67 0029 02       	 .byte 2
+  68 002a 00       	 .byte 0
+  69 002b 00       	 .byte 0
+  70 002c 04       	 .byte 4
+  71 002d 02       	 .byte 2
+  72 002e 02       	 .byte 2
+  73 002f 00       	 .byte 0
+  74 0030 00       	 .byte 0
+  75 0031 00       	 .byte 0
+  76 0032 0000     	 .space 2
+  77              	 .section .rodata.PWM_MOTOR_1_gpio_out_config,"a",%progbits
+  78              	 .align 2
+  81              	PWM_MOTOR_1_gpio_out_config:
+  82 0000 98       	 .byte -104
+  83 0001 000000   	 .space 3
+  84 0004 00000100 	 .word 65536
+  85 0008 04       	 .byte 4
+  86 0009 000000   	 .space 3
+  87              	 .section .rodata.PWM_MOTOR_2_compare_config,"a",%progbits
+  88              	 .align 2
+  91              	PWM_MOTOR_2_compare_config:
+  92 0000 00       	 .byte 0
+  93 0001 00       	 .byte 0
+  94 0002 00       	 .byte 0
+  95 0003 00       	 .byte 0
+  96 0004 06       	 .byte 6
+  97 0005 00       	 .byte 0
+  98 0006 0000     	 .space 2
+  99              	 .section .rodata.PWM_MOTOR_0_gpio_out_config,"a",%progbits
+ 100              	 .align 2
+ 103              	PWM_MOTOR_0_gpio_out_config:
+ 104 0000 98       	 .byte -104
+ 105 0001 000000   	 .space 3
+ 106 0004 00000100 	 .word 65536
+ 107 0008 04       	 .byte 4
+ 108 0009 000000   	 .space 3
+ 109              	 .section .rodata.PWM_MOTOR_0_compare_config,"a",%progbits
+ 110              	 .align 2
+ 113              	PWM_MOTOR_0_compare_config:
+ 114 0000 00       	 .byte 0
+ 115 0001 00       	 .byte 0
+ 116 0002 00       	 .byte 0
+ 117 0003 00       	 .byte 0
+ 118 0004 06       	 .byte 6
+ 119 0005 00       	 .byte 0
+ 120 0006 0000     	 .space 2
+ 121              	 .section .rodata.PWM_MOTOR_2_gpio_out_config,"a",%progbits
+ 122              	 .align 2
+ 125              	PWM_MOTOR_2_gpio_out_config:
+ 126 0000 98       	 .byte -104
+ 127 0001 000000   	 .space 3
+ 128 0004 00000100 	 .word 65536
+ 129 0008 04       	 .byte 4
+ 130 0009 000000   	 .space 3
+ 131              	 .section .rodata.PWM_MOTOR_1_compare_config,"a",%progbits
+ 132              	 .align 2
+ 135              	PWM_MOTOR_1_compare_config:
+ 136 0000 00       	 .byte 0
+ 137 0001 00       	 .byte 0
+ 138 0002 00       	 .byte 0
+ 139 0003 00       	 .byte 0
+ 140 0004 06       	 .byte 6
+ 141 0005 00       	 .byte 0
+ 142 0006 0000     	 .space 2
+ 143              	 .section .data.PWM_MOTOR_0,"aw",%progbits
+ 144              	 .align 2
+ 147              	PWM_MOTOR_0:
+ 148 0000 00000000 	 .word GLOBAL_CCU4_0
+ 149 0004 00400140 	 .word 1073823744
+ 150 0008 00410140 	 .word 1073824000
+ 151 000c 00000000 	 .word PWM_MOTOR_0_compare_config
+ 152 0010 00830248 	 .word 1208124160
+ 153 0014 00000000 	 .word PWM_MOTOR_0_gpio_out_config
+ 154 0018 3E490000 	 .word 18750
+ 155 001c 7B920000 	 .word 37499
+ 156 0020 88130000 	 .word 5000
+ 157 0024 05000000 	 .word 5
+ 158 0028 00       	 .byte 0
+ 159 0029 02       	 .byte 2
+ 160 002a 00       	 .byte 0
+ 161 002b 00       	 .byte 0
+ 162 002c 00       	 .byte 0
+ 163 002d 02       	 .byte 2
+ 164 002e 00       	 .byte 0
+ 165 002f 01       	 .byte 1
+ 166 0030 00       	 .byte 0
+ 167 0031 00       	 .byte 0
+ 168 0032 0000     	 .space 2
+ 169              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 pwm_conf.c
+    {standard input}:55     .data.PWM_MOTOR_2:00000000 PWM_MOTOR_2
+    {standard input}:125    .rodata.PWM_MOTOR_2_gpio_out_config:00000000 PWM_MOTOR_2_gpio_out_config
+    {standard input}:91     .rodata.PWM_MOTOR_2_compare_config:00000000 PWM_MOTOR_2_compare_config
+    {standard input}:29     .data.PWM_MOTOR_1:00000000 PWM_MOTOR_1
+    {standard input}:81     .rodata.PWM_MOTOR_1_gpio_out_config:00000000 PWM_MOTOR_1_gpio_out_config
+    {standard input}:135    .rodata.PWM_MOTOR_1_compare_config:00000000 PWM_MOTOR_1_compare_config
+    {standard input}:147    .data.PWM_MOTOR_0:00000000 PWM_MOTOR_0
+    {standard input}:103    .rodata.PWM_MOTOR_0_gpio_out_config:00000000 PWM_MOTOR_0_gpio_out_config
+    {standard input}:113    .rodata.PWM_MOTOR_0_compare_config:00000000 PWM_MOTOR_0_compare_config
+    {standard input}:26     .data.PWM_MOTOR_1:00000000 $d
+    {standard input}:52     .data.PWM_MOTOR_2:00000000 $d
+    {standard input}:78     .rodata.PWM_MOTOR_1_gpio_out_config:00000000 $d
+    {standard input}:88     .rodata.PWM_MOTOR_2_compare_config:00000000 $d
+    {standard input}:100    .rodata.PWM_MOTOR_0_gpio_out_config:00000000 $d
+    {standard input}:110    .rodata.PWM_MOTOR_0_compare_config:00000000 $d
+    {standard input}:122    .rodata.PWM_MOTOR_2_gpio_out_config:00000000 $d
+    {standard input}:132    .rodata.PWM_MOTOR_1_compare_config:00000000 $d
+    {standard input}:144    .data.PWM_MOTOR_0:00000000 $d
+
+UNDEFINED SYMBOLS
+GLOBAL_CCU4_0
