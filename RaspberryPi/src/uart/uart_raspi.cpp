@@ -92,6 +92,8 @@ void uartConnection::listeningThread(int &fdescr, bool &isListen, const int BUFF
 		
 		res = read(fdescr, buf, BUFFSZ);
 
+		std::cout << buf << std::endl;
+
 		// @todo use buf for something
 	}
 }

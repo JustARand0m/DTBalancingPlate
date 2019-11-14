@@ -49,7 +49,7 @@ LIST_FILES = $(addsuffix .o.lst, $(basename $(OBJS)))
 MAP_FILE = "Balancing_Plate.map"
 
 TOOLCHAIN_ROOT=C:/Program Files/DAVE_4/DAVE-IDE-4.4.2-64Bit/eclipse/ARM-GCC-49
-PROJECT_LOC=G:/DT/repo/dt_g1_balancing_plate_wise20192020/XMC
+PROJECT_LOC=G:/DT/dt_g1_balancing_plate_wise20192020/XMC
 
 # All Target
 all: Balancing_Plate.elf secondary-outputs
