@@ -47,7 +47,7 @@ int main(void)
   uint8_t init_data[] = "startasfdasfdasfsadfasdfsafdasfdsadfasdfsadfasf";
   uint8_t read_data[BUFFERSIZE];
 
-  setMemNull(read_data, BUFFERSIZE);
+  memset(read_data, 0, BUFFERSIZE);
   status = DAVE_Init();           /* Initialization of DAVE APPs  */
 
   if(status != DAVE_STATUS_SUCCESS)
@@ -87,8 +87,8 @@ int main(void)
 	  UART_Receive(&UART_0, read_data, BUFFERSIZE);
 	  if(read_data[0] != '\0') {
 		  busy_waitMs(10000);
-		  UART_Transmit(&UART_0, read_data, sizeof(BUFFERSIZE));
-		  setMemNull(read_data, BUFFERSIZE);
+		  UART_Transmit(&UART_0, read_data, BUFFERSIZE);
+		  memset(read_data, 0, BUFFERSIZE);
 	  }
   }
 }

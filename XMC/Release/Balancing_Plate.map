@@ -4646,6 +4646,8 @@ Discarded input sections
  .text          0x00000000        0x0 ./main.o
  .data          0x00000000        0x0 ./main.o
  .bss           0x00000000        0x0 ./main.o
+ .text.setMemNull
+                0x00000000       0x12 ./main.o
  .debug_macro   0x00000000      0x886 ./main.o
  .debug_macro   0x00000000      0x166 ./main.o
  .debug_macro   0x00000000       0x22 ./main.o
@@ -4719,10 +4721,6 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
  .data          0x00000000        0x0 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
  .bss           0x00000000        0x0 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
- .text.memset   0x00000000       0x9c c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
- .debug_frame   0x00000000       0x34 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
- .ARM.attributes
-                0x00000000       0x32 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
 
 Memory Configuration
 
@@ -4800,7 +4798,7 @@ END GROUP
                 0x00000800                stack_size = DEFINED (stack_size)?stack_size:0x800
                 0x00000040                no_init_size = 0x40
 
-.text           0x08000000     0x1440 load address 0x0c000000
+.text           0x08000000     0x14cc load address 0x0c000000
                 0x08000000                sText = .
  *(.reset)
  .reset         0x08000000      0x2b4 ./Startup/startup_XMC4500.o
@@ -5142,16 +5140,14 @@ END GROUP
  .text.busy_waitMs
                 0x08001248       0x18 ./main.o
                 0x08001248                busy_waitMs
- .text.setMemNull
-                0x08001260       0x12 ./main.o
-                0x08001260                setMemNull
- *fill*         0x08001272        0x2 
  .text.startup.main
-                0x08001274       0x7c ./main.o
-                0x08001274                main
+                0x08001260       0x80 ./main.o
+                0x08001260                main
  .text.__libc_init_array
-                0x080012f0       0x50 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-init.o)
-                0x080012f0                __libc_init_array
+                0x080012e0       0x50 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-init.o)
+                0x080012e0                __libc_init_array
+ .text.memset   0x08001330       0x9c c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
+                0x08001330                memset
  *(.init)
  *(.fini)
  *crtbegin.o(.ctors)
@@ -5166,66 +5162,66 @@ END GROUP
  *(.dtors)
  *(.rodata .rodata.*)
  .rodata.CSWTCH.36
-                0x08001340        0xa ./Libraries/XMCLib/src/xmc_ccu4.o
+                0x080013cc        0xa ./Libraries/XMCLib/src/xmc_ccu4.o
  .rodata.CSWTCH.37
-                0x0800134a       0x14 ./Libraries/XMCLib/src/xmc_ccu4.o
- *fill*         0x0800135e        0x2 
+                0x080013d6       0x14 ./Libraries/XMCLib/src/xmc_ccu4.o
+ *fill*         0x080013ea        0x2 
  .rodata.UART_0_config
-                0x08001360       0x30 ./Dave/Generated/UART/uart_conf.o
-                0x08001360                UART_0_config
+                0x080013ec       0x30 ./Dave/Generated/UART/uart_conf.o
+                0x080013ec                UART_0_config
  .rodata.UART_0_rx_pin_config
-                0x08001390        0xc ./Dave/Generated/UART/uart_conf.o
-                0x08001390                UART_0_rx_pin_config
+                0x0800141c        0xc ./Dave/Generated/UART/uart_conf.o
+                0x0800141c                UART_0_rx_pin_config
  .rodata.UART_0_tx_pin
-                0x0800139c        0xc ./Dave/Generated/UART/uart_conf.o
-                0x0800139c                UART_0_tx_pin
+                0x08001428        0xc ./Dave/Generated/UART/uart_conf.o
+                0x08001428                UART_0_tx_pin
  .rodata.UART_0_tx_pin_config
-                0x080013a8        0xc ./Dave/Generated/UART/uart_conf.o
-                0x080013a8                UART_0_tx_pin_config
+                0x08001434        0xc ./Dave/Generated/UART/uart_conf.o
+                0x08001434                UART_0_tx_pin_config
  .rodata.UART_0_channel_config
-                0x080013b4        0xc ./Dave/Generated/UART/uart_conf.o
-                0x080013b4                UART_0_channel_config
+                0x08001440        0xc ./Dave/Generated/UART/uart_conf.o
+                0x08001440                UART_0_channel_config
  .rodata.PWM_MOTOR_1_gpio_out_config
-                0x080013c0        0xc ./Dave/Generated/PWM/pwm_conf.o
-                0x080013c0                PWM_MOTOR_1_gpio_out_config
+                0x0800144c        0xc ./Dave/Generated/PWM/pwm_conf.o
+                0x0800144c                PWM_MOTOR_1_gpio_out_config
  .rodata.PWM_MOTOR_2_compare_config
-                0x080013cc        0x8 ./Dave/Generated/PWM/pwm_conf.o
-                0x080013cc                PWM_MOTOR_2_compare_config
+                0x08001458        0x8 ./Dave/Generated/PWM/pwm_conf.o
+                0x08001458                PWM_MOTOR_2_compare_config
  .rodata.PWM_MOTOR_0_gpio_out_config
-                0x080013d4        0xc ./Dave/Generated/PWM/pwm_conf.o
-                0x080013d4                PWM_MOTOR_0_gpio_out_config
+                0x08001460        0xc ./Dave/Generated/PWM/pwm_conf.o
+                0x08001460                PWM_MOTOR_0_gpio_out_config
  .rodata.PWM_MOTOR_0_compare_config
-                0x080013e0        0x8 ./Dave/Generated/PWM/pwm_conf.o
-                0x080013e0                PWM_MOTOR_0_compare_config
+                0x0800146c        0x8 ./Dave/Generated/PWM/pwm_conf.o
+                0x0800146c                PWM_MOTOR_0_compare_config
  .rodata.PWM_MOTOR_2_gpio_out_config
-                0x080013e8        0xc ./Dave/Generated/PWM/pwm_conf.o
-                0x080013e8                PWM_MOTOR_2_gpio_out_config
+                0x08001474        0xc ./Dave/Generated/PWM/pwm_conf.o
+                0x08001474                PWM_MOTOR_2_gpio_out_config
  .rodata.PWM_MOTOR_1_compare_config
-                0x080013f4        0x8 ./Dave/Generated/PWM/pwm_conf.o
-                0x080013f4                PWM_MOTOR_1_compare_config
- .rodata        0x080013fc       0x14 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
+                0x08001480        0x8 ./Dave/Generated/PWM/pwm_conf.o
+                0x08001480                PWM_MOTOR_1_compare_config
+ .rodata        0x08001488       0x14 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .rodata.str1.1
-                0x08001410       0x30 ./main.o
+                0x0800149c       0x30 ./main.o
  *(.gnu.linkonce.r*)
  *(vtable)
-                0x08001440                . = ALIGN (0x4)
+                0x080014cc                . = ALIGN (0x4)
 
-.glue_7         0x08001440        0x0 load address 0x0c001440
+.glue_7         0x080014cc        0x0 load address 0x0c0014cc
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x08001440        0x0 load address 0x0c001440
+.glue_7t        0x080014cc        0x0 load address 0x0c0014cc
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x08001440        0x0 load address 0x0c001440
+.vfp11_veneer   0x080014cc        0x0 load address 0x0c0014cc
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x08001440        0x0 load address 0x0c001440
+.v4_bx          0x080014cc        0x0 load address 0x0c0014cc
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x08001440        0x0 load address 0x0c001440
+.iplt           0x080014cc        0x0 load address 0x0c0014cc
  .iplt          0x00000000        0x0 ./Startup/startup_XMC4500.o
 
-.rel.dyn        0x08001440        0x0 load address 0x0c001440
+.rel.dyn        0x080014cc        0x0 load address 0x0c0014cc
  .rel.iplt      0x00000000        0x0 ./Startup/startup_XMC4500.o
 
 .eh_frame_hdr
@@ -5236,13 +5232,13 @@ END GROUP
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08001440                . = ALIGN (0x4)
-                0x08001440                __exidx_start = .
+                0x080014cc                . = ALIGN (0x4)
+                0x080014cc                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08001440                __exidx_end = .
-                0x08001440                . = ALIGN (0x4)
+                0x080014cc                __exidx_end = .
+                0x080014cc                . = ALIGN (0x4)
 
 Stack           0x10000000      0x800
                 0x10000000                __stack_start = .
@@ -5251,25 +5247,25 @@ Stack           0x10000000      0x800
                 0x10000800                __stack_end = .
                 0x10000800                __initial_sp = .
 
-.ram_code       0x10000800        0x0 load address 0x0c001440
+.ram_code       0x10000800        0x0 load address 0x0c0014cc
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __ram_code_start = .
  *(.ram_code)
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __ram_code_end = .
-                0x0c001440                __ram_code_load = LOADADDR (.ram_code)
+                0x0c0014cc                __ram_code_load = LOADADDR (.ram_code)
                 0x00000000                __ram_code_size = (__ram_code_end - __ram_code_start)
 
-PSRAM_DATA      0x10000800        0x0 load address 0x0c001440
+PSRAM_DATA      0x10000800        0x0 load address 0x0c0014cc
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __data3_start = .
  *(PSRAM_DATA)
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __data3_end = .
-                0x0c001440                __data3_load = LOADADDR (PSRAM_DATA)
+                0x0c0014cc                __data3_load = LOADADDR (PSRAM_DATA)
                 0x00000000                __data3_size = (__data3_end - __data3_start)
 
-PSRAM_BSS       0x10000800        0x0 load address 0x0c001440
+PSRAM_BSS       0x10000800        0x0 load address 0x0c0014cc
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __bss3_start = .
  *(PSRAM_BSS)
@@ -5279,7 +5275,7 @@ PSRAM_BSS       0x10000800        0x0 load address 0x0c001440
                 0x10000800                Heap_Bank3_Start = .
                 0x00000000                __bss3_size = (__bss3_end - __bss3_start)
 
-.data           0x20000000       0xb8 load address 0x0c001440
+.data           0x20000000       0xb8 load address 0x0c0014cc
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                __data_start = .
  *(.data)
@@ -5316,13 +5312,13 @@ PSRAM_BSS       0x10000800        0x0 load address 0x0c001440
                 0x200000b8                PROVIDE (__fini_array_end, .)
                 0x200000b8                . = ALIGN (0x4)
                 0x200000b8                __data_end = .
-                0x0c001440                __data_load = LOADADDR (.data)
+                0x0c0014cc                __data_load = LOADADDR (.data)
                 0x000000b8                __data_size = (__data_end - __data_start)
 
-.igot.plt       0x200000b8        0x0 load address 0x0c0014f8
+.igot.plt       0x200000b8        0x0 load address 0x0c001584
  .igot.plt      0x00000000        0x0 ./Startup/startup_XMC4500.o
 
-.bss            0x200000b8       0x20 load address 0x0c0014f8
+.bss            0x200000b8       0x20 load address 0x0c001584
                 0x200000b8                . = ALIGN (0x4)
                 0x200000b8                __bss_start = .
  *(.bss)
@@ -5349,18 +5345,18 @@ PSRAM_BSS       0x10000800        0x0 load address 0x0c001440
                 0x2000ffc0                SystemCoreClock
                 0x2000ffc4                g_chipid
 
-DSRAM2_DATA     0x30000000        0x0 load address 0x0c0014f8
+DSRAM2_DATA     0x30000000        0x0 load address 0x0c001584
                 0x30000000                . = ALIGN (0x4)
                 0x30000000                __data2_start = .
  *(DSRAM2_DATA)
                 0x30000000                . = ALIGN (0x4)
                 0x30000000                __data2_end = .
-                0x0c0014f8                __data2_load = LOADADDR (DSRAM2_DATA)
+                0x0c001584                __data2_load = LOADADDR (DSRAM2_DATA)
                 0x00000000                __data2_size = (__data2_end - __data2_start)
-                0x000014f8                __text_size = (((((__exidx_end - sText) + __data_size) + __ram_code_size) + __data2_size) + __data3_size)
-                0x080014f8                eText = (sText + __text_size)
+                0x00001584                __text_size = (((((__exidx_end - sText) + __data_size) + __ram_code_size) + __data2_size) + __data3_size)
+                0x08001584                eText = (sText + __text_size)
 
-DSRAM2_BSS      0x30000000        0x0 load address 0x0c0014f8
+DSRAM2_BSS      0x30000000        0x0 load address 0x0c001584
                 0x30000000                . = ALIGN (0x4)
                 0x30000000                __bss2_start = .
  *(ETH_RAM)
@@ -5444,7 +5440,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c0014f8
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_info     0x00000000     0xed65
+.debug_info     0x00000000     0xed94
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000       0x7a ./Startup/startup_XMC4500.o
  .debug_info    0x0000007a      0x95b ./Startup/system_XMC4500.o
@@ -5464,9 +5460,9 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c0014f8
  .debug_info    0x0000c5d3      0x252 ./Dave/Generated/CLOCK_XMC4/clock_xmc4.o
  .debug_info    0x0000c825      0x510 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .debug_info    0x0000cd35     0x1343 ./Dave/Generated/DAVE.o
- .debug_info    0x0000e078      0xced ./main.o
+ .debug_info    0x0000e078      0xd1c ./main.o
 
-.debug_abbrev   0x00000000     0x2964
+.debug_abbrev   0x00000000     0x297e
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0x14 ./Startup/startup_XMC4500.o
  .debug_abbrev  0x00000014      0x1bf ./Startup/system_XMC4500.o
@@ -5486,7 +5482,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c0014f8
  .debug_abbrev  0x00002212      0x16f ./Dave/Generated/CLOCK_XMC4/clock_xmc4.o
  .debug_abbrev  0x00002381      0x15f ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .debug_abbrev  0x000024e0      0x21c ./Dave/Generated/DAVE.o
- .debug_abbrev  0x000026fc      0x268 ./main.o
+ .debug_abbrev  0x000026fc      0x282 ./main.o
 
 .debug_line     0x00000000     0x7132
  *(.debug_line)
@@ -5510,7 +5506,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c0014f8
  .debug_line    0x00006253      0x713 ./Dave/Generated/DAVE.o
  .debug_line    0x00006966      0x7cc ./main.o
 
-.debug_frame    0x00000000     0x13d0
+.debug_frame    0x00000000     0x1404
  *(.debug_frame)
  .debug_frame   0x00000000       0xa4 ./Startup/system_XMC4500.o
  .debug_frame   0x000000a4       0x50 ./Libraries/XMCLib/src/xmc4_gpio.o
@@ -5529,8 +5525,9 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c0014f8
  .debug_frame   0x00001320       0x34 ./Dave/Generated/DAVE.o
  .debug_frame   0x00001354       0x50 ./main.o
  .debug_frame   0x000013a4       0x2c c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-init.o)
+ .debug_frame   0x000013d0       0x34 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
 
-.debug_str      0x00000000    0x7ec87
+.debug_str      0x00000000    0x7ec8e
  *(.debug_str)
  .debug_str     0x00000000    0x6f7a1 ./Startup/system_XMC4500.o
                               0x6fa3a (size before relaxing)
@@ -5566,8 +5563,8 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c0014f8
                               0x73a96 (size before relaxing)
  .debug_str     0x0007ebd3       0x6f ./Dave/Generated/DAVE.o
                               0x771fc (size before relaxing)
- .debug_str     0x0007ec42       0x45 ./main.o
-                              0x76b50 (size before relaxing)
+ .debug_str     0x0007ec42       0x4c ./main.o
+                              0x76b57 (size before relaxing)
 
 .debug_loc      0x00000000     0x49ae
  *(.debug_loc)
@@ -5623,7 +5620,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c0014f8
  *(.debug_varnames)
 
 .build_attributes
-                0x00000000      0x435
+                0x00000000      0x467
  *(.ARM.attributes)
  .ARM.attributes
                 0x00000000       0x25 ./Startup/startup_XMC4500.o
@@ -5665,6 +5662,8 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c0014f8
                 0x000003cc       0x37 ./main.o
  .ARM.attributes
                 0x00000403       0x32 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-init.o)
+ .ARM.attributes
+                0x00000435       0x32 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
 OUTPUT(Balancing_Plate.elf elf32-littlearm)
 
 .debug_macro    0x00000000    0x1a4af
