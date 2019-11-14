@@ -23,6 +23,7 @@ Dave/Generated/CLOCK_XMC4 \
 Dave/Generated/CPU_CTRL_XMC4 \
 Dave/Generated \
 Dave/Generated/GLOBAL_CCU4 \
+Dave/Generated/INTERRUPT \
 Dave/Generated/PWM \
 Dave/Generated/UART \
 Libraries/Newlib \

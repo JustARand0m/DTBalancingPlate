@@ -10,7 +10,6 @@
 
 #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaration)
 
-
 /**
 
  * @brief main() - Application entry point
@@ -27,25 +26,28 @@ void busy_waitMs(int ms)
 
 	for(int c = 0; c < ms; c++)
 	{
-		i = 60000;
-		while(--i) { __NOP(); }
-	}
-}
-
-void setMemNull(uint8_t *data, int size) {
-	int i;
-	for(i = 0 ;i < size; i++) {
-		data[i] = 0;
+		i = 10000;
+		while(--i)
+		{
+			__NOP();
+			__NOP();
+			__NOP();
+			__NOP();
+			__NOP();
+			__NOP();
+		}
 	}
 }
 
 #define BUFFERSIZE 1024
 
+uint8_t read_data[BUFFERSIZE];
+uint8_t testdata[] = "testdata";
+
 int main(void)
 {
   DAVE_STATUS_t status;
   uint8_t init_data[] = "startasfdasfdasfsadfasdfsafdasfdsadfasdfsadfasf";
-  uint8_t read_data[BUFFERSIZE];
 
   memset(read_data, 0, BUFFERSIZE);
   status = DAVE_Init();           /* Initialization of DAVE APPs  */
@@ -82,13 +84,22 @@ int main(void)
 		  PWM_SetDutyCycle(&PWM_MOTOR_0, i);
 		  busy_waitMs(20);
 	  }
-	  */
+		*/
 	  busy_waitMs(100);
-	  UART_Receive(&UART_0, read_data, BUFFERSIZE);
+	  /*UART_Receive(&UART_0, read_data, BUFFERSIZE);
 	  if(read_data[0] != '\0') {
-		  busy_waitMs(10000);
+		  busy_waitMs(5000);
 		  UART_Transmit(&UART_0, read_data, BUFFERSIZE);
 		  memset(read_data, 0, BUFFERSIZE);
-	  }
+	  }*/
   }
 }
+int a = 0;
+void DataReceived(void) {
+	UART_Receive(&UART_0, read_data, 8);
+	read_data[0] = '1';
+	read_data[1] = '1';
+	UART_Transmit(&UART_0, read_data, 8);
+	memset(read_data, 0, BUFFERSIZE);
+}
+

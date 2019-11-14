@@ -115,5 +115,9 @@
     <resourcesList name="ccucon_gsc" requiredResourceUri="http://resources/0.1.34/peripheral/scu/0/ccucon/gsc42"/>
     <resourcesList name="gsc_enable" requiredResourceUri="http://resources/0.1.34/peripheral/scu/0/gsc42_enable"/>
   </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="ERUNMI_4" URI="http://resources/0.1.34/peripheral/scu/0/gcu/interrupt/erunmi/4">
+    <resourcesList name="out" requiredResourceUri="http://resources/0.1.34/peripheral/scu/0/eru04_out"/>
+    <resourcesList name="in" requiredResourceUri="http://resources/0.1.34/peripheral/scu/0/eru04_in"/>
+  </provided>
   <addressBlock offset="0x0" size="0x4000" usage="registers"/>
 </ResourceModel:Peripheral>

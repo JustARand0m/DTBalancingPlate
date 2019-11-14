@@ -3,35 +3,35 @@ Balancing_Plate.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000014cc  08000000  0c000000  00008000  2**2
+  0 .text         000012dc  08000000  0c000000  00008000  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   1 Stack         00000800  10000000  10000000  00018000  2**0
                   ALLOC
-  2 .data         000000b8  20000000  0c0014cc  00010000  2**2
+  2 .data         000000b8  20000000  0c0012dc  00010000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  3 .bss          00000020  200000b8  0c001584  000100b8  2**2
+  3 .bss          00000420  200000b8  0c001394  000100b8  2**2
                   ALLOC
   4 .no_init      00000014  2000ffc0  2000ffc0  00017fc0  2**2
                   ALLOC
-  5 .debug_aranges 000008d8  00000000  00000000  000100b8  2**3
+  5 .debug_aranges 000008c8  00000000  00000000  000100b8  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000ed94  00000000  00000000  00010990  2**0
+  6 .debug_info   0000ef5c  00000000  00000000  00010980  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000297e  00000000  00000000  0001f724  2**0
+  7 .debug_abbrev 00002acd  00000000  00000000  0001f8dc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00007132  00000000  00000000  000220a2  2**0
+  8 .debug_line   00007a03  00000000  00000000  000223a9  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00001404  00000000  00000000  000291d4  2**2
+  9 .debug_frame  00001360  00000000  00000000  00029dac  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0007ec8e  00000000  00000000  0002a5d8  2**0
+ 10 .debug_str    0007ead6  00000000  00000000  0002b10c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000049ae  00000000  00000000  000a9266  2**0
+ 11 .debug_loc    000042e9  00000000  00000000  000a9be2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000008e0  00000000  00000000  000adc14  2**0
+ 12 .debug_ranges 000008f0  00000000  00000000  000adecb  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .build_attributes 00000467  00000000  00000000  000ae4f4  2**0
+ 13 .build_attributes 000004d5  00000000  00000000  000ae7bb  2**0
                   CONTENTS, READONLY
- 14 .debug_macro  0001a4af  00000000  00000000  000ae95b  2**0
+ 14 .debug_macro  0001a843  00000000  00000000  000aec90  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -63,7 +63,7 @@ Disassembly of section .text:
  800016c:	00 00 00 00 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  800017c:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  800018c:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
- 800019c:	11 10 00 08 b1 02 00 08 1d 10 00 08 b1 02 00 08     ................
+ 800019c:	b1 02 00 08 b1 02 00 08 bd 10 00 08 b1 02 00 08     ................
  80001ac:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  80001bc:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  80001cc:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
@@ -176,22 +176,22 @@ Disassembly of section .text:
 	...
 
 08000248 <__copy_table_start__>:
- 8000248:	0c0014cc 	.word	0x0c0014cc
+ 8000248:	0c0012dc 	.word	0x0c0012dc
  800024c:	20000000 	.word	0x20000000
  8000250:	000000b8 	.word	0x000000b8
- 8000254:	0c001584 	.word	0x0c001584
+ 8000254:	0c001394 	.word	0x0c001394
  8000258:	30000000 	.word	0x30000000
  800025c:	00000000 	.word	0x00000000
- 8000260:	0c0014cc 	.word	0x0c0014cc
+ 8000260:	0c0012dc 	.word	0x0c0012dc
  8000264:	10000800 	.word	0x10000800
  8000268:	00000000 	.word	0x00000000
- 800026c:	0c0014cc 	.word	0x0c0014cc
+ 800026c:	0c0012dc 	.word	0x0c0012dc
  8000270:	10000800 	.word	0x10000800
  8000274:	00000000 	.word	0x00000000
 
 08000278 <__copy_table_end__>:
  8000278:	200000b8 	.word	0x200000b8
- 800027c:	00000020 	.word	0x00000020
+ 800027c:	00000420 	.word	0x00000420
  8000280:	30000000 	.word	0x30000000
  8000284:	00000000 	.word	0x00000000
  8000288:	10000800 	.word	0x10000800
@@ -233,12 +233,12 @@ Disassembly of section .text:
    
 #ifndef __SKIP_LIBC_INIT_ARRAY
     ldr  r0, =__libc_init_array
- 80002a8:	080012e1 	.word	0x080012e1
+ 80002a8:	080010f5 	.word	0x080010f5
     blx  r0
 #endif
 
     ldr  r0, =main
- 80002ac:	08001261 	.word	0x08001261
+ 80002ac:	0800106d 	.word	0x0800106d
 
 080002b0 <BusFault_Handler>:
 	.align	1
@@ -288,7 +288,7 @@ __WEAK void SystemCoreClockUpdate(void)
     {
       /* PLL input clock is the high performance osicllator (fOSCHP) */
       temp = OSCHP_GetFrequency();
- 80002ca:	f000 ff71 	bl	80011b0 <OSCHP_GetFrequency>
+ 80002ca:	f000 fe6b 	bl	8000fa4 <OSCHP_GetFrequency>
  80002ce:	e000      	b.n	80002d2 <SystemCoreClockUpdate+0x1e>
   {
     /* fPLL is clock source for fSYS */
@@ -417,9 +417,9 @@ __WEAK void SystemInit(void)
  8000356:	d1f6      	bne.n	8000346 <SystemInit+0xa>
 
   SystemCoreSetup();
- 8000358:	f000 feea 	bl	8001130 <SystemCoreSetup>
+ 8000358:	f000 fde4 	bl	8000f24 <SystemCoreSetup>
   SystemCoreClockSetup(); 
- 800035c:	f000 ff2c 	bl	80011b8 <SystemCoreClockSetup>
+ 800035c:	f000 fe26 	bl	8000fac <SystemCoreClockSetup>
  8000360:	bd38      	pop	{r3, r4, r5, pc}
  8000362:	bf00      	nop
  8000364:	2000ffc4 	.word	0x2000ffc4
@@ -1299,7 +1299,7 @@ void XMC_SCU_CLOCK_EnableHighPerformanceOscillator(void)
   SCU_OSC->OSCHPCTRL = (uint32_t)((SCU_OSC->OSCHPCTRL & ~(SCU_OSC_OSCHPCTRL_MODE_Msk | SCU_OSC_OSCHPCTRL_OSCVAL_Msk)) |
  80006ba:	6874      	ldr	r4, [r6, #4]
                                   (((OSCHP_GetFrequency() / FOSCREF) - 1UL) << SCU_OSC_OSCHPCTRL_OSCVAL_Pos));
- 80006bc:	f000 fd78 	bl	80011b0 <OSCHP_GetFrequency>
+ 80006bc:	f000 fc72 	bl	8000fa4 <OSCHP_GetFrequency>
  80006c0:	4b09      	ldr	r3, [pc, #36]	; (80006e8 <XMC_SCU_CLOCK_EnableHighPerformanceOscillator+0x3c>)
  80006c2:	fbb0 f0f3 	udiv	r0, r0, r3
 /* API to enable High Precision High Speed oscillator */
@@ -1437,7 +1437,7 @@ void XMC_SCU_CLOCK_StartSystemPll(XMC_SCU_CLOCK_SYSPLLCLKSRC_t source,
  8000760:	b935      	cbnz	r5, 8000770 <XMC_SCU_CLOCK_StartSystemPll+0x28>
     {
       vco_frequency = (OSCHP_GetFrequency() / 1000000U) << 22;
- 8000762:	f000 fd25 	bl	80011b0 <OSCHP_GetFrequency>
+ 8000762:	f000 fc1f 	bl	8000fa4 <OSCHP_GetFrequency>
  8000766:	4d30      	ldr	r5, [pc, #192]	; (8000828 <XMC_SCU_CLOCK_StartSystemPll+0xe0>)
  8000768:	fbb0 f0f5 	udiv	r0, r0, r5
  800076c:	0580      	lsls	r0, r0, #22
@@ -1984,8 +1984,8 @@ void XMC_CCU4_SLICE_SetInterruptNode(XMC_CCU4_SLICE_t *const slice,
  800098c:	f8c0 20a8 	str.w	r2, [r0, #168]	; 0xa8
  8000990:	bd30      	pop	{r4, r5, pc}
  8000992:	bf00      	nop
- 8000994:	080013cc 	.word	0x080013cc
- 8000998:	080013d6 	.word	0x080013d6
+ 8000994:	080011e0 	.word	0x080011e0
+ 8000998:	080011ea 	.word	0x080011ea
 
 0800099c <XMC_UART_CH_Init>:
 /*********************************************************************************************************************
@@ -2001,7 +2001,7 @@ void XMC_UART_CH_Init(XMC_USIC_CH_t *channel, const XMC_UART_CH_CONFIG_t *const 
 
   /* USIC channel switched on*/
   XMC_USIC_CH_Enable(channel);
- 80009a2:	f000 f96b 	bl	8000c7c <XMC_USIC_CH_Enable>
+ 80009a2:	f000 f913 	bl	8000bcc <XMC_USIC_CH_Enable>
   
   if(config->oversampling != 0U)
  80009a6:	7a35      	ldrb	r5, [r6, #8]
@@ -2555,2244 +2555,1724 @@ XMC_USIC_CH_STATUS_t XMC_USIC_CH_SetBaudrateEx(XMC_USIC_CH_t *const channel, uin
  8000b5c:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
  8000b60:	fc0080ef 	.word	0xfc0080ef
 
-08000b64 <XMC_USIC_CH_TXFIFO_Configure>:
-
-void XMC_USIC_CH_TXFIFO_Configure(XMC_USIC_CH_t *const channel,
-                                  const uint32_t data_pointer,
-                                  const XMC_USIC_CH_FIFO_SIZE_t size,
-                                  const uint32_t limit)
-{
- 8000b64:	b530      	push	{r4, r5, lr}
-  /* Disable FIFO */
-  channel->TBCTR &= (uint32_t)~USIC_CH_TBCTR_SIZE_Msk;
- 8000b66:	f8d0 4108 	ldr.w	r4, [r0, #264]	; 0x108
- 8000b6a:	f024 64e0 	bic.w	r4, r4, #117440512	; 0x7000000
- 8000b6e:	f8c0 4108 	str.w	r4, [r0, #264]	; 0x108
-  /* LOF = 0, A standard transmit buffer event occurs when the filling level equals the limit value and gets
-   * lower due to transmission of a data word
-   * STBTEN = 0, the trigger of the standard transmit buffer event is based on the transition of the fill level
-   *  from equal to below the limit, not the fact being below
-   */
-  channel->TBCTR = (uint32_t)(channel->TBCTR & (uint32_t)~(USIC_CH_TBCTR_LIMIT_Msk |
- 8000b72:	f8d0 5108 	ldr.w	r5, [r0, #264]	; 0x108
- 8000b76:	4c05      	ldr	r4, [pc, #20]	; (8000b8c <XMC_USIC_CH_TXFIFO_Configure+0x28>)
- 8000b78:	402c      	ands	r4, r5
- 8000b7a:	4321      	orrs	r1, r4
- 8000b7c:	ea41 6202 	orr.w	r2, r1, r2, lsl #24
-                                                           USIC_CH_TBCTR_DPTR_Msk |
-                                                           USIC_CH_TBCTR_SIZE_Msk)) |
- 8000b80:	ea42 2303 	orr.w	r3, r2, r3, lsl #8
-  /* LOF = 0, A standard transmit buffer event occurs when the filling level equals the limit value and gets
-   * lower due to transmission of a data word
-   * STBTEN = 0, the trigger of the standard transmit buffer event is based on the transition of the fill level
-   *  from equal to below the limit, not the fact being below
-   */
-  channel->TBCTR = (uint32_t)(channel->TBCTR & (uint32_t)~(USIC_CH_TBCTR_LIMIT_Msk |
- 8000b84:	f8c0 3108 	str.w	r3, [r0, #264]	; 0x108
- 8000b88:	bd30      	pop	{r4, r5, pc}
- 8000b8a:	bf00      	nop
- 8000b8c:	f8ffc0c0 	.word	0xf8ffc0c0
-
-08000b90 <XMC_USIC_CH_RXFIFO_Configure>:
-
-void XMC_USIC_CH_RXFIFO_Configure(XMC_USIC_CH_t *const channel,
-                                  const uint32_t data_pointer,
-                                  const XMC_USIC_CH_FIFO_SIZE_t size,
-                                  const uint32_t limit)
-{
- 8000b90:	b530      	push	{r4, r5, lr}
-  /* Disable FIFO */
-  channel->RBCTR &= (uint32_t)~USIC_CH_RBCTR_SIZE_Msk;
- 8000b92:	f8d0 410c 	ldr.w	r4, [r0, #268]	; 0x10c
- 8000b96:	f024 64e0 	bic.w	r4, r4, #117440512	; 0x7000000
- 8000b9a:	f8c0 410c 	str.w	r4, [r0, #268]	; 0x10c
-
-  /* LOF = 1, A standard receive buffer event occurs when the filling level equals the limit value and gets bigger
-   *  due to the reception of a new data word
-   */
-  channel->RBCTR = (uint32_t)((channel->RBCTR & (uint32_t)~(USIC_CH_RBCTR_LIMIT_Msk |
- 8000b9e:	f8d0 510c 	ldr.w	r5, [r0, #268]	; 0x10c
- 8000ba2:	4c06      	ldr	r4, [pc, #24]	; (8000bbc <XMC_USIC_CH_RXFIFO_Configure+0x2c>)
- 8000ba4:	402c      	ands	r4, r5
- 8000ba6:	f044 5480 	orr.w	r4, r4, #268435456	; 0x10000000
- 8000baa:	4321      	orrs	r1, r4
- 8000bac:	ea41 6202 	orr.w	r2, r1, r2, lsl #24
- 8000bb0:	ea42 2303 	orr.w	r3, r2, r3, lsl #8
- 8000bb4:	f8c0 310c 	str.w	r3, [r0, #268]	; 0x10c
- 8000bb8:	bd30      	pop	{r4, r5, pc}
- 8000bba:	bf00      	nop
- 8000bbc:	efffc0c0 	.word	0xefffc0c0
-
-08000bc0 <XMC_USIC_CH_RXFIFO_SetSizeTriggerLimit>:
-void XMC_USIC_CH_RXFIFO_SetSizeTriggerLimit(XMC_USIC_CH_t *const channel,
-                                            const XMC_USIC_CH_FIFO_SIZE_t size,
-                                            const uint32_t limit)
-{
-  /* Disable FIFO */
-  channel->RBCTR &= (uint32_t)~USIC_CH_RBCTR_SIZE_Msk;
- 8000bc0:	f8d0 310c 	ldr.w	r3, [r0, #268]	; 0x10c
- 8000bc4:	f023 63e0 	bic.w	r3, r3, #117440512	; 0x7000000
- 8000bc8:	f8c0 310c 	str.w	r3, [r0, #268]	; 0x10c
-
-  channel->RBCTR = (uint32_t)((uint32_t)(channel->RBCTR & (uint32_t)~USIC_CH_RBCTR_LIMIT_Msk) |
- 8000bcc:	f8d0 310c 	ldr.w	r3, [r0, #268]	; 0x10c
-                   (limit << USIC_CH_RBCTR_LIMIT_Pos) |
-                   ((uint32_t)size << USIC_CH_RBCTR_SIZE_Pos));
- 8000bd0:	0609      	lsls	r1, r1, #24
- 8000bd2:	ea41 2202 	orr.w	r2, r1, r2, lsl #8
-                                            const uint32_t limit)
-{
-  /* Disable FIFO */
-  channel->RBCTR &= (uint32_t)~USIC_CH_RBCTR_SIZE_Msk;
-
-  channel->RBCTR = (uint32_t)((uint32_t)(channel->RBCTR & (uint32_t)~USIC_CH_RBCTR_LIMIT_Msk) |
- 8000bd6:	f423 537c 	bic.w	r3, r3, #16128	; 0x3f00
- 8000bda:	4313      	orrs	r3, r2
- 8000bdc:	f8c0 310c 	str.w	r3, [r0, #268]	; 0x10c
- 8000be0:	4770      	bx	lr
-
-08000be2 <XMC_USIC_CH_SetInterruptNodePointer>:
+08000b64 <XMC_USIC_CH_SetInterruptNodePointer>:
 }
 
 void XMC_USIC_CH_SetInterruptNodePointer(XMC_USIC_CH_t *const channel,
                                          const XMC_USIC_CH_INTERRUPT_NODE_POINTER_t interrupt_node,
                                          const uint32_t service_request)
 {
- 8000be2:	b510      	push	{r4, lr}
+ 8000b64:	b510      	push	{r4, lr}
   channel->INPR = (uint32_t)((channel->INPR & (~(uint32_t)(USIC_CH_INPR_Msk << (uint32_t)interrupt_node))) |
- 8000be4:	2307      	movs	r3, #7
- 8000be6:	6984      	ldr	r4, [r0, #24]
- 8000be8:	408b      	lsls	r3, r1
- 8000bea:	ea24 0303 	bic.w	r3, r4, r3
+ 8000b66:	2307      	movs	r3, #7
+ 8000b68:	6984      	ldr	r4, [r0, #24]
+ 8000b6a:	408b      	lsls	r3, r1
+ 8000b6c:	ea24 0303 	bic.w	r3, r4, r3
                   (service_request << (uint32_t)interrupt_node));
- 8000bee:	408a      	lsls	r2, r1
+ 8000b70:	408a      	lsls	r2, r1
 
 void XMC_USIC_CH_SetInterruptNodePointer(XMC_USIC_CH_t *const channel,
                                          const XMC_USIC_CH_INTERRUPT_NODE_POINTER_t interrupt_node,
                                          const uint32_t service_request)
 {
   channel->INPR = (uint32_t)((channel->INPR & (~(uint32_t)(USIC_CH_INPR_Msk << (uint32_t)interrupt_node))) |
- 8000bf0:	431a      	orrs	r2, r3
- 8000bf2:	6182      	str	r2, [r0, #24]
- 8000bf4:	bd10      	pop	{r4, pc}
+ 8000b72:	431a      	orrs	r2, r3
+ 8000b74:	6182      	str	r2, [r0, #24]
+ 8000b76:	bd10      	pop	{r4, pc}
 
-08000bf6 <XMC_USIC_CH_TXFIFO_SetInterruptNodePointer>:
-}
-
-void XMC_USIC_CH_TXFIFO_SetInterruptNodePointer(XMC_USIC_CH_t *const channel,
-                                                const XMC_USIC_CH_TXFIFO_INTERRUPT_NODE_POINTER_t interrupt_node,
-                                                const uint32_t service_request)
-{
- 8000bf6:	b510      	push	{r4, lr}
-  channel->TBCTR = (uint32_t)((channel->TBCTR & (~(uint32_t)(USIC_CH_INPR_Msk << (uint32_t)interrupt_node))) |
- 8000bf8:	2307      	movs	r3, #7
- 8000bfa:	f8d0 4108 	ldr.w	r4, [r0, #264]	; 0x108
- 8000bfe:	408b      	lsls	r3, r1
- 8000c00:	ea24 0303 	bic.w	r3, r4, r3
-                   (service_request << (uint32_t)interrupt_node));
- 8000c04:	408a      	lsls	r2, r1
-
-void XMC_USIC_CH_TXFIFO_SetInterruptNodePointer(XMC_USIC_CH_t *const channel,
-                                                const XMC_USIC_CH_TXFIFO_INTERRUPT_NODE_POINTER_t interrupt_node,
-                                                const uint32_t service_request)
-{
-  channel->TBCTR = (uint32_t)((channel->TBCTR & (~(uint32_t)(USIC_CH_INPR_Msk << (uint32_t)interrupt_node))) |
- 8000c06:	431a      	orrs	r2, r3
- 8000c08:	f8c0 2108 	str.w	r2, [r0, #264]	; 0x108
- 8000c0c:	bd10      	pop	{r4, pc}
-
-08000c0e <XMC_USIC_CH_RXFIFO_SetInterruptNodePointer>:
-}
-
-void XMC_USIC_CH_RXFIFO_SetInterruptNodePointer(XMC_USIC_CH_t *const channel,
-                                                const XMC_USIC_CH_RXFIFO_INTERRUPT_NODE_POINTER_t interrupt_node,
-                                                const uint32_t service_request)
-{
- 8000c0e:	b510      	push	{r4, lr}
+08000b78 <XMC_USIC_Enable>:
   channel->RBCTR = (uint32_t)((channel->RBCTR & (~(uint32_t)(USIC_CH_INPR_Msk << (uint32_t)interrupt_node))) |
- 8000c10:	2307      	movs	r3, #7
- 8000c12:	f8d0 410c 	ldr.w	r4, [r0, #268]	; 0x10c
- 8000c16:	408b      	lsls	r3, r1
- 8000c18:	ea24 0303 	bic.w	r3, r4, r3
-                   (service_request << (uint32_t)interrupt_node));
- 8000c1c:	408a      	lsls	r2, r1
-
-void XMC_USIC_CH_RXFIFO_SetInterruptNodePointer(XMC_USIC_CH_t *const channel,
-                                                const XMC_USIC_CH_RXFIFO_INTERRUPT_NODE_POINTER_t interrupt_node,
-                                                const uint32_t service_request)
-{
-  channel->RBCTR = (uint32_t)((channel->RBCTR & (~(uint32_t)(USIC_CH_INPR_Msk << (uint32_t)interrupt_node))) |
- 8000c1e:	431a      	orrs	r2, r3
- 8000c20:	f8c0 210c 	str.w	r2, [r0, #268]	; 0x10c
- 8000c24:	bd10      	pop	{r4, pc}
-	...
-
-08000c28 <XMC_USIC_Enable>:
                    (service_request << (uint32_t)interrupt_node));
 }
 
 void XMC_USIC_Enable(XMC_USIC_t *const usic)
 {
- 8000c28:	b508      	push	{r3, lr}
+ 8000b78:	b508      	push	{r3, lr}
   if (usic == USIC0)
- 8000c2a:	4b10      	ldr	r3, [pc, #64]	; (8000c6c <XMC_USIC_Enable+0x44>)
- 8000c2c:	4298      	cmp	r0, r3
- 8000c2e:	d10a      	bne.n	8000c46 <XMC_USIC_Enable+0x1e>
+ 8000b7a:	4b10      	ldr	r3, [pc, #64]	; (8000bbc <XMC_USIC_Enable+0x44>)
+ 8000b7c:	4298      	cmp	r0, r3
+ 8000b7e:	d10a      	bne.n	8000b96 <XMC_USIC_Enable+0x1e>
 #if defined(CLOCK_GATING_SUPPORTED)
     XMC_SCU_CLOCK_UngatePeripheralClock(XMC_SCU_PERIPHERAL_CLOCK_USIC0);
     while (XMC_SCU_CLOCK_IsPeripheralClockGated(XMC_SCU_PERIPHERAL_CLOCK_USIC0));
 #endif
 #if defined(PERIPHERAL_RESET_SUPPORTED)
     XMC_SCU_RESET_DeassertPeripheralReset(XMC_SCU_PERIPHERAL_RESET_USIC0);
- 8000c30:	f44f 6000 	mov.w	r0, #2048	; 0x800
- 8000c34:	f7ff fbf4 	bl	8000420 <XMC_SCU_RESET_DeassertPeripheralReset>
+ 8000b80:	f44f 6000 	mov.w	r0, #2048	; 0x800
+ 8000b84:	f7ff fc4c 	bl	8000420 <XMC_SCU_RESET_DeassertPeripheralReset>
     while (XMC_SCU_RESET_IsPeripheralResetAsserted(XMC_SCU_PERIPHERAL_RESET_USIC0));
- 8000c38:	f44f 6000 	mov.w	r0, #2048	; 0x800
- 8000c3c:	f7ff fbfa 	bl	8000434 <XMC_SCU_RESET_IsPeripheralResetAsserted>
- 8000c40:	2800      	cmp	r0, #0
- 8000c42:	d1f9      	bne.n	8000c38 <XMC_USIC_Enable+0x10>
- 8000c44:	bd08      	pop	{r3, pc}
+ 8000b88:	f44f 6000 	mov.w	r0, #2048	; 0x800
+ 8000b8c:	f7ff fc52 	bl	8000434 <XMC_SCU_RESET_IsPeripheralResetAsserted>
+ 8000b90:	2800      	cmp	r0, #0
+ 8000b92:	d1f9      	bne.n	8000b88 <XMC_USIC_Enable+0x10>
+ 8000b94:	bd08      	pop	{r3, pc}
 #endif 
   }
 #if defined(USIC1)  
   else if (usic == USIC1)
- 8000c46:	4b0a      	ldr	r3, [pc, #40]	; (8000c70 <XMC_USIC_Enable+0x48>)
- 8000c48:	4298      	cmp	r0, r3
- 8000c4a:	d103      	bne.n	8000c54 <XMC_USIC_Enable+0x2c>
+ 8000b96:	4b0a      	ldr	r3, [pc, #40]	; (8000bc0 <XMC_USIC_Enable+0x48>)
+ 8000b98:	4298      	cmp	r0, r3
+ 8000b9a:	d103      	bne.n	8000ba4 <XMC_USIC_Enable+0x2c>
 #endif  
   else
   {
     XMC_ASSERT("USIC module not available", 0/*Always*/);
   }
 }
- 8000c4c:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
- 8000c50:	f7ff bef6 	b.w	8000a40 <XMC_USIC_Enable.part.0>
+ 8000b9c:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
+ 8000ba0:	f7ff bf4e 	b.w	8000a40 <XMC_USIC_Enable.part.0>
     while (XMC_SCU_RESET_IsPeripheralResetAsserted(XMC_SCU_PERIPHERAL_RESET_USIC1));
 #endif 
   }
 #endif  
 #if defined(USIC2)  
   else if (usic == USIC2)
- 8000c54:	4b07      	ldr	r3, [pc, #28]	; (8000c74 <XMC_USIC_Enable+0x4c>)
- 8000c56:	4298      	cmp	r0, r3
- 8000c58:	d107      	bne.n	8000c6a <XMC_USIC_Enable+0x42>
+ 8000ba4:	4b07      	ldr	r3, [pc, #28]	; (8000bc4 <XMC_USIC_Enable+0x4c>)
+ 8000ba6:	4298      	cmp	r0, r3
+ 8000ba8:	d107      	bne.n	8000bba <XMC_USIC_Enable+0x42>
 #if defined(CLOCK_GATING_SUPPORTED) 
     XMC_SCU_CLOCK_UngatePeripheralClock(XMC_SCU_PERIPHERAL_CLOCK_USIC2);
     while (XMC_SCU_CLOCK_IsPeripheralClockGated(XMC_SCU_PERIPHERAL_CLOCK_USIC2));
 #endif
 #if defined(PERIPHERAL_RESET_SUPPORTED)
     XMC_SCU_RESET_DeassertPeripheralReset(XMC_SCU_PERIPHERAL_RESET_USIC2);
- 8000c5a:	4807      	ldr	r0, [pc, #28]	; (8000c78 <XMC_USIC_Enable+0x50>)
- 8000c5c:	f7ff fbe0 	bl	8000420 <XMC_SCU_RESET_DeassertPeripheralReset>
+ 8000baa:	4807      	ldr	r0, [pc, #28]	; (8000bc8 <XMC_USIC_Enable+0x50>)
+ 8000bac:	f7ff fc38 	bl	8000420 <XMC_SCU_RESET_DeassertPeripheralReset>
     while (XMC_SCU_RESET_IsPeripheralResetAsserted(XMC_SCU_PERIPHERAL_RESET_USIC2));
- 8000c60:	4805      	ldr	r0, [pc, #20]	; (8000c78 <XMC_USIC_Enable+0x50>)
- 8000c62:	f7ff fbe7 	bl	8000434 <XMC_SCU_RESET_IsPeripheralResetAsserted>
- 8000c66:	2800      	cmp	r0, #0
- 8000c68:	d1fa      	bne.n	8000c60 <XMC_USIC_Enable+0x38>
- 8000c6a:	bd08      	pop	{r3, pc}
- 8000c6c:	40030008 	.word	0x40030008
- 8000c70:	48020008 	.word	0x48020008
- 8000c74:	48024008 	.word	0x48024008
- 8000c78:	10000100 	.word	0x10000100
+ 8000bb0:	4805      	ldr	r0, [pc, #20]	; (8000bc8 <XMC_USIC_Enable+0x50>)
+ 8000bb2:	f7ff fc3f 	bl	8000434 <XMC_SCU_RESET_IsPeripheralResetAsserted>
+ 8000bb6:	2800      	cmp	r0, #0
+ 8000bb8:	d1fa      	bne.n	8000bb0 <XMC_USIC_Enable+0x38>
+ 8000bba:	bd08      	pop	{r3, pc}
+ 8000bbc:	40030008 	.word	0x40030008
+ 8000bc0:	48020008 	.word	0x48020008
+ 8000bc4:	48024008 	.word	0x48024008
+ 8000bc8:	10000100 	.word	0x10000100
 
-08000c7c <XMC_USIC_CH_Enable>:
+08000bcc <XMC_USIC_CH_Enable>:
 
 void XMC_USIC_CH_Enable(XMC_USIC_CH_t *const channel)
 {
   XMC_ASSERT("XMC_USIC_CH_Enable: channel not valid", XMC_USIC_IsChannelValid(channel));
 
   if ((channel == XMC_USIC0_CH0) || (channel == XMC_USIC0_CH1))
- 8000c7c:	4b14      	ldr	r3, [pc, #80]	; (8000cd0 <XMC_USIC_CH_Enable+0x54>)
- 8000c7e:	4298      	cmp	r0, r3
+ 8000bcc:	4b14      	ldr	r3, [pc, #80]	; (8000c20 <XMC_USIC_CH_Enable+0x54>)
+ 8000bce:	4298      	cmp	r0, r3
 /*******************************************************************************
  * API IMPLEMENTATION
  *******************************************************************************/
 
 void XMC_USIC_CH_Enable(XMC_USIC_CH_t *const channel)
 {
- 8000c80:	b510      	push	{r4, lr}
- 8000c82:	4604      	mov	r4, r0
+ 8000bd0:	b510      	push	{r4, lr}
+ 8000bd2:	4604      	mov	r4, r0
   XMC_ASSERT("XMC_USIC_CH_Enable: channel not valid", XMC_USIC_IsChannelValid(channel));
 
   if ((channel == XMC_USIC0_CH0) || (channel == XMC_USIC0_CH1))
- 8000c84:	d003      	beq.n	8000c8e <XMC_USIC_CH_Enable+0x12>
- 8000c86:	f503 7300 	add.w	r3, r3, #512	; 0x200
- 8000c8a:	4298      	cmp	r0, r3
- 8000c8c:	d101      	bne.n	8000c92 <XMC_USIC_CH_Enable+0x16>
+ 8000bd4:	d003      	beq.n	8000bde <XMC_USIC_CH_Enable+0x12>
+ 8000bd6:	f503 7300 	add.w	r3, r3, #512	; 0x200
+ 8000bda:	4298      	cmp	r0, r3
+ 8000bdc:	d101      	bne.n	8000be2 <XMC_USIC_CH_Enable+0x16>
   {
     XMC_USIC_Enable(XMC_USIC0);
- 8000c8e:	4811      	ldr	r0, [pc, #68]	; (8000cd4 <XMC_USIC_CH_Enable+0x58>)
- 8000c90:	e011      	b.n	8000cb6 <XMC_USIC_CH_Enable+0x3a>
+ 8000bde:	4811      	ldr	r0, [pc, #68]	; (8000c24 <XMC_USIC_CH_Enable+0x58>)
+ 8000be0:	e011      	b.n	8000c06 <XMC_USIC_CH_Enable+0x3a>
   }
 #if defined(USIC1)
   else if((channel == XMC_USIC1_CH0) || (channel == XMC_USIC1_CH1))
- 8000c92:	4b11      	ldr	r3, [pc, #68]	; (8000cd8 <XMC_USIC_CH_Enable+0x5c>)
- 8000c94:	4298      	cmp	r0, r3
- 8000c96:	d003      	beq.n	8000ca0 <XMC_USIC_CH_Enable+0x24>
- 8000c98:	f503 7300 	add.w	r3, r3, #512	; 0x200
- 8000c9c:	4298      	cmp	r0, r3
- 8000c9e:	d102      	bne.n	8000ca6 <XMC_USIC_CH_Enable+0x2a>
- 8000ca0:	f7ff fece 	bl	8000a40 <XMC_USIC_Enable.part.0>
- 8000ca4:	e009      	b.n	8000cba <XMC_USIC_CH_Enable+0x3e>
+ 8000be2:	4b11      	ldr	r3, [pc, #68]	; (8000c28 <XMC_USIC_CH_Enable+0x5c>)
+ 8000be4:	4298      	cmp	r0, r3
+ 8000be6:	d003      	beq.n	8000bf0 <XMC_USIC_CH_Enable+0x24>
+ 8000be8:	f503 7300 	add.w	r3, r3, #512	; 0x200
+ 8000bec:	4298      	cmp	r0, r3
+ 8000bee:	d102      	bne.n	8000bf6 <XMC_USIC_CH_Enable+0x2a>
+ 8000bf0:	f7ff ff26 	bl	8000a40 <XMC_USIC_Enable.part.0>
+ 8000bf4:	e009      	b.n	8000c0a <XMC_USIC_CH_Enable+0x3e>
   {
     XMC_USIC_Enable(XMC_USIC1);
   }
 #endif
 #if defined(USIC2)
   else if((channel == XMC_USIC2_CH0) || (channel == XMC_USIC2_CH1))
- 8000ca6:	4b0d      	ldr	r3, [pc, #52]	; (8000cdc <XMC_USIC_CH_Enable+0x60>)
- 8000ca8:	4298      	cmp	r0, r3
- 8000caa:	d003      	beq.n	8000cb4 <XMC_USIC_CH_Enable+0x38>
- 8000cac:	f503 7300 	add.w	r3, r3, #512	; 0x200
- 8000cb0:	4298      	cmp	r0, r3
- 8000cb2:	d102      	bne.n	8000cba <XMC_USIC_CH_Enable+0x3e>
+ 8000bf6:	4b0d      	ldr	r3, [pc, #52]	; (8000c2c <XMC_USIC_CH_Enable+0x60>)
+ 8000bf8:	4298      	cmp	r0, r3
+ 8000bfa:	d003      	beq.n	8000c04 <XMC_USIC_CH_Enable+0x38>
+ 8000bfc:	f503 7300 	add.w	r3, r3, #512	; 0x200
+ 8000c00:	4298      	cmp	r0, r3
+ 8000c02:	d102      	bne.n	8000c0a <XMC_USIC_CH_Enable+0x3e>
   {
     XMC_USIC_Enable(XMC_USIC2);
- 8000cb4:	480a      	ldr	r0, [pc, #40]	; (8000ce0 <XMC_USIC_CH_Enable+0x64>)
- 8000cb6:	f7ff ffb7 	bl	8000c28 <XMC_USIC_Enable>
+ 8000c04:	480a      	ldr	r0, [pc, #40]	; (8000c30 <XMC_USIC_CH_Enable+0x64>)
+ 8000c06:	f7ff ffb7 	bl	8000b78 <XMC_USIC_Enable>
   {
     XMC_ASSERT("USIC module not available", 0U/*Always*/);
   }
 
   /* USIC channel switched on*/
   channel->KSCFG = (USIC_CH_KSCFG_MODEN_Msk | USIC_CH_KSCFG_BPMODEN_Msk);
- 8000cba:	2303      	movs	r3, #3
- 8000cbc:	60e3      	str	r3, [r4, #12]
+ 8000c0a:	2303      	movs	r3, #3
+ 8000c0c:	60e3      	str	r3, [r4, #12]
   while ((channel->KSCFG & USIC_CH_KSCFG_MODEN_Msk) == 0U)
- 8000cbe:	68e3      	ldr	r3, [r4, #12]
- 8000cc0:	07db      	lsls	r3, r3, #31
- 8000cc2:	d5fc      	bpl.n	8000cbe <XMC_USIC_CH_Enable+0x42>
+ 8000c0e:	68e3      	ldr	r3, [r4, #12]
+ 8000c10:	07db      	lsls	r3, r3, #31
+ 8000c12:	d5fc      	bpl.n	8000c0e <XMC_USIC_CH_Enable+0x42>
   {
     /* Wait till the channel is enabled */
   }
 
   /* Set USIC channel in IDLE mode */
   channel->CCR &= (uint32_t)~USIC_CH_CCR_MODE_Msk;
- 8000cc4:	6c23      	ldr	r3, [r4, #64]	; 0x40
- 8000cc6:	f023 030f 	bic.w	r3, r3, #15
- 8000cca:	6423      	str	r3, [r4, #64]	; 0x40
- 8000ccc:	bd10      	pop	{r4, pc}
- 8000cce:	bf00      	nop
- 8000cd0:	40030000 	.word	0x40030000
- 8000cd4:	40030008 	.word	0x40030008
- 8000cd8:	48020000 	.word	0x48020000
- 8000cdc:	48024000 	.word	0x48024000
- 8000ce0:	48024008 	.word	0x48024008
+ 8000c14:	6c23      	ldr	r3, [r4, #64]	; 0x40
+ 8000c16:	f023 030f 	bic.w	r3, r3, #15
+ 8000c1a:	6423      	str	r3, [r4, #64]	; 0x40
+ 8000c1c:	bd10      	pop	{r4, pc}
+ 8000c1e:	bf00      	nop
+ 8000c20:	40030000 	.word	0x40030000
+ 8000c24:	40030008 	.word	0x40030008
+ 8000c28:	48020000 	.word	0x48020000
+ 8000c2c:	48024000 	.word	0x48024000
+ 8000c30:	48024008 	.word	0x48024008
 
-08000ce4 <_init>:
+08000c34 <_init>:
   }
 }
 
 /* Init */
 void _init(void)
 {}
- 8000ce4:	4770      	bx	lr
+ 8000c34:	4770      	bx	lr
 
-08000ce6 <UART_lReconfigureRxFIFO>:
-{
-  uint32_t fifo_size;
-  uint32_t ret_limit_val = 0U;
-
-  /*Get FIFO size in bytes*/
-  fifo_size = (uint32_t)(0x01UL << (uint8_t)(handle->config->rx_fifo_size));
- 8000ce6:	6843      	ldr	r3, [r0, #4]
-  else
-  {
-    ret_limit_val = (uint32_t)(fifo_size - 1U);
-  }
-  /*Set the limit value*/
-  XMC_USIC_CH_RXFIFO_SetSizeTriggerLimit(handle->channel,
- 8000ce8:	6800      	ldr	r0, [r0, #0]
-{
-  uint32_t fifo_size;
-  uint32_t ret_limit_val = 0U;
-
-  /*Get FIFO size in bytes*/
-  fifo_size = (uint32_t)(0x01UL << (uint8_t)(handle->config->rx_fifo_size));
- 8000cea:	f893 302c 	ldrb.w	r3, [r3, #44]	; 0x2c
- 8000cee:	2201      	movs	r2, #1
- 8000cf0:	409a      	lsls	r2, r3
-  /*If data size is more than FIFO size, configure the limit to the FIFO size*/
-  if (data_size < fifo_size)
- 8000cf2:	4291      	cmp	r1, r2
-  {
-    ret_limit_val = (uint32_t)(data_size - 1U);
- 8000cf4:	bf34      	ite	cc
- 8000cf6:	f101 32ff 	addcc.w	r2, r1, #4294967295
-  }
-  else
-  {
-    ret_limit_val = (uint32_t)(fifo_size - 1U);
- 8000cfa:	f102 32ff 	addcs.w	r2, r2, #4294967295
-  }
-  /*Set the limit value*/
-  XMC_USIC_CH_RXFIFO_SetSizeTriggerLimit(handle->channel,
- 8000cfe:	4619      	mov	r1, r3
- 8000d00:	f7ff bf5e 	b.w	8000bc0 <XMC_USIC_CH_RXFIFO_SetSizeTriggerLimit>
-
-08000d04 <UART_Init>:
+08000c36 <UART_Init>:
   XMC_ASSERT("UART_Init : UART APP handle invalid", (((handle != NULL)&&
       (handle->config != NULL)) &&((handle->config->fptr_uart_config != NULL)&&
       (handle->runtime != NULL))))
 
   /*Initialize the multiplexers required for UART configuration*/
   status = handle->config->fptr_uart_config();
- 8000d04:	6843      	ldr	r3, [r0, #4]
- 8000d06:	685b      	ldr	r3, [r3, #4]
- 8000d08:	4718      	bx	r3
+ 8000c36:	6843      	ldr	r3, [r0, #4]
+ 8000c38:	685b      	ldr	r3, [r3, #4]
+ 8000c3a:	4718      	bx	r3
 
-08000d0a <UART_StartTransmitIRQ>:
- * request is registered.
- *
- *
- */
-UART_STATUS_t UART_StartTransmitIRQ(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
-{
- 8000d0a:	b570      	push	{r4, r5, r6, lr}
-  UART_RUNTIME_t * ptr_runtime = handle->runtime;
-
-  XMC_ASSERT("UART_StartTransmitIRQ: UART APP handle invalid", ((handle != NULL)&&
-            (handle->runtime != NULL)))
-
-  if (handle->config->transmit_mode == UART_TRANSFER_MODE_INTERRUPT)
- 8000d0c:	6844      	ldr	r4, [r0, #4]
- *
- */
-UART_STATUS_t UART_StartTransmitIRQ(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
-{
-  UART_STATUS_t ret_stat = UART_STATUS_MODE_MISMATCH;
-  UART_RUNTIME_t * ptr_runtime = handle->runtime;
- 8000d0e:	6883      	ldr	r3, [r0, #8]
-
-  XMC_ASSERT("UART_StartTransmitIRQ: UART APP handle invalid", ((handle != NULL)&&
-            (handle->runtime != NULL)))
-
-  if (handle->config->transmit_mode == UART_TRANSFER_MODE_INTERRUPT)
- 8000d10:	f894 5029 	ldrb.w	r5, [r4, #41]	; 0x29
- 8000d14:	bb2d      	cbnz	r5, 8000d62 <UART_StartTransmitIRQ+0x58>
-  {
-    ret_stat = UART_STATUS_BUSY;
-    if (ptr_runtime->tx_busy == false)
- 8000d16:	7e1d      	ldrb	r5, [r3, #24]
- 8000d18:	f005 06ff 	and.w	r6, r5, #255	; 0xff
- 8000d1c:	bb1d      	cbnz	r5, 8000d66 <UART_StartTransmitIRQ+0x5c>
-    {
-      /*If there is no transmission in progress*/
-      if ((data_ptr != NULL) && (count > 0U))
- 8000d1e:	b321      	cbz	r1, 8000d6a <UART_StartTransmitIRQ+0x60>
- 8000d20:	b31a      	cbz	r2, 8000d6a <UART_StartTransmitIRQ+0x60>
-      {
-        /*Obtain the address of data, size of data*/
-        ptr_runtime->tx_data = data_ptr;
-        ptr_runtime->tx_data_count = count;
- 8000d22:	609a      	str	r2, [r3, #8]
-        /*Initialize to first index and set the busy flag*/
-        ptr_runtime->tx_data_index = 0U;
-        ptr_runtime->tx_busy = true;
- 8000d24:	2201      	movs	r2, #1
- 8000d26:	761a      	strb	r2, [r3, #24]
-
-        /*Enable the transmit buffer event*/
-        if (handle->config->tx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
- 8000d28:	f894 202b 	ldrb.w	r2, [r4, #43]	; 0x2b
-    {
-      /*If there is no transmission in progress*/
-      if ((data_ptr != NULL) && (count > 0U))
-      {
-        /*Obtain the address of data, size of data*/
-        ptr_runtime->tx_data = data_ptr;
- 8000d2c:	6019      	str	r1, [r3, #0]
-        ptr_runtime->tx_data_count = count;
-        /*Initialize to first index and set the busy flag*/
-        ptr_runtime->tx_data_index = 0U;
- 8000d2e:	60de      	str	r6, [r3, #12]
- 8000d30:	6803      	ldr	r3, [r0, #0]
-        ptr_runtime->tx_busy = true;
-
-        /*Enable the transmit buffer event*/
-        if (handle->config->tx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
- 8000d32:	b152      	cbz	r2, 8000d4a <UART_StartTransmitIRQ+0x40>
- * \par<b>Related APIs:</b><BR>
- * XMC_USIC_CH_TXFIFO_GetLevel() \n\n\n
- */
-__STATIC_INLINE void XMC_USIC_CH_TXFIFO_Flush(XMC_USIC_CH_t *const channel)
-{
-  channel->TRBSCR = (uint32_t)USIC_CH_TRBSCR_FLUSHTB_Msk;
- 8000d34:	f44f 4200 	mov.w	r2, #32768	; 0x8000
- 8000d38:	f8c3 2118 	str.w	r2, [r3, #280]	; 0x118
- * \par<b>Related APIs:</b><BR>
- * XMC_USIC_CH_TXFIFO_SetInterruptNodePointer() \n\n\n
- */
-__STATIC_INLINE void XMC_USIC_CH_TXFIFO_EnableEvent(XMC_USIC_CH_t *const channel, const uint32_t event)
-{
-  channel->TBCTR |= event;
- 8000d3c:	f8d3 2108 	ldr.w	r2, [r3, #264]	; 0x108
- 8000d40:	f042 4280 	orr.w	r2, r2, #1073741824	; 0x40000000
- 8000d44:	f8c3 2108 	str.w	r2, [r3, #264]	; 0x108
- 8000d48:	e003      	b.n	8000d52 <UART_StartTransmitIRQ+0x48>
- * \par<b>Related APIs:</b><BR>
- * XMC_USIC_CH_DisableEvent(), XMC_USIC_CH_SetInterruptNodePointer() \n\n\n
- */
-__STATIC_INLINE void XMC_USIC_CH_EnableEvent(XMC_USIC_CH_t *const channel, const uint32_t event)
-{
-  channel->CCR |= event;
- 8000d4a:	6c1a      	ldr	r2, [r3, #64]	; 0x40
- 8000d4c:	f442 5200 	orr.w	r2, r2, #8192	; 0x2000
- 8000d50:	641a      	str	r2, [r3, #64]	; 0x40
- * \par<b>Related APIs:</b><BR>
- * XMC_USIC_CH_SetInterruptNodePointer() \n\n\n
- */
-__STATIC_INLINE void XMC_USIC_CH_TriggerServiceRequest(XMC_USIC_CH_t *const channel, const uint32_t service_request_line)
-{
-  channel->FMR = (uint32_t)(USIC_CH_FMR_SIO0_Msk << service_request_line);
- 8000d52:	f894 102d 	ldrb.w	r1, [r4, #45]	; 0x2d
- 8000d56:	f44f 3280 	mov.w	r2, #65536	; 0x10000
- 8000d5a:	408a      	lsls	r2, r1
- 8000d5c:	669a      	str	r2, [r3, #104]	; 0x68
- 8000d5e:	2000      	movs	r0, #0
- 8000d60:	bd70      	pop	{r4, r5, r6, pc}
- *
- *
- */
-UART_STATUS_t UART_StartTransmitIRQ(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
-{
-  UART_STATUS_t ret_stat = UART_STATUS_MODE_MISMATCH;
- 8000d62:	2004      	movs	r0, #4
- 8000d64:	bd70      	pop	{r4, r5, r6, pc}
-  XMC_ASSERT("UART_StartTransmitIRQ: UART APP handle invalid", ((handle != NULL)&&
-            (handle->runtime != NULL)))
-
-  if (handle->config->transmit_mode == UART_TRANSFER_MODE_INTERRUPT)
-  {
-    ret_stat = UART_STATUS_BUSY;
- 8000d66:	2002      	movs	r0, #2
- 8000d68:	bd70      	pop	{r4, r5, r6, pc}
-        /*Trigger the transmit buffer interrupt*/
-        XMC_USIC_CH_TriggerServiceRequest(handle->channel, (uint32_t)handle->config->tx_sr);
-      }
-      else
-      {
-        ret_stat = UART_STATUS_BUFFER_INVALID;
- 8000d6a:	2003      	movs	r0, #3
-      }
-    }
-  }
-  return ret_stat;
-}
- 8000d6c:	bd70      	pop	{r4, r5, r6, pc}
-
-08000d6e <UART_Transmit>:
+08000c3c <UART_Transmit>:
  */
 UART_STATUS_t UART_Transmit(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
 {
   UART_STATUS_t ret_stat = UART_STATUS_MODE_MISMATCH;
 
   switch(handle->config->transmit_mode)
- 8000d6e:	6843      	ldr	r3, [r0, #4]
- 8000d70:	f893 3029 	ldrb.w	r3, [r3, #41]	; 0x29
- 8000d74:	b90b      	cbnz	r3, 8000d7a <UART_Transmit+0xc>
-  {
-#ifdef UART_TX_INTERRUPT_USED
-  case UART_TRANSFER_MODE_INTERRUPT:
-    ret_stat = UART_StartTransmitIRQ(handle, data_ptr, count);
- 8000d76:	f7ff bfc8 	b.w	8000d0a <UART_StartTransmitIRQ>
-#endif
-  default:
-    break;
-  }
-  return ret_stat;
-}
- 8000d7a:	2004      	movs	r0, #4
- 8000d7c:	4770      	bx	lr
-
-08000d7e <UART_StartReceiveIRQ>:
- * request is registered.
- *
+ 8000c3c:	6843      	ldr	r3, [r0, #4]
+ *          UART_STATUS_BUFFER_INVALID: Either if buffer is NULL or count is 0.<BR>
+ *          UART_STATUS_MODE_MISMATCH: If the configured mode is invalid.<BR>
  *
  */
-UART_STATUS_t UART_StartReceiveIRQ(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
+UART_STATUS_t UART_Transmit(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
 {
- 8000d7e:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
-  UART_RUNTIME_t * ptr_runtime = handle->runtime;
-
-  XMC_ASSERT("UART_StartReceiveIRQ: UART APP handle invalid", ((handle != NULL)&&
-            (handle->runtime != NULL)))
-
-  if (handle->config->receive_mode == UART_TRANSFER_MODE_INTERRUPT)
- 8000d80:	6845      	ldr	r5, [r0, #4]
- *
- */
-UART_STATUS_t UART_StartReceiveIRQ(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
-{
+ 8000c3e:	b570      	push	{r4, r5, r6, lr}
+ 8000c40:	4604      	mov	r4, r0
   UART_STATUS_t ret_stat = UART_STATUS_MODE_MISMATCH;
-  UART_RUNTIME_t * ptr_runtime = handle->runtime;
- 8000d82:	6883      	ldr	r3, [r0, #8]
 
-  XMC_ASSERT("UART_StartReceiveIRQ: UART APP handle invalid", ((handle != NULL)&&
-            (handle->runtime != NULL)))
+  switch(handle->config->transmit_mode)
+ 8000c42:	f893 0021 	ldrb.w	r0, [r3, #33]	; 0x21
+ 8000c46:	2802      	cmp	r0, #2
+ 8000c48:	d12b      	bne.n	8000ca2 <UART_Transmit+0x66>
+  uint32_t loc_index;
 
-  if (handle->config->receive_mode == UART_TRANSFER_MODE_INTERRUPT)
- 8000d84:	f895 602a 	ldrb.w	r6, [r5, #42]	; 0x2a
- * request is registered.
- *
- *
- */
-UART_STATUS_t UART_StartReceiveIRQ(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
-{
- 8000d88:	4604      	mov	r4, r0
-  UART_RUNTIME_t * ptr_runtime = handle->runtime;
+  XMC_ASSERT("UART_Transmit: UART APP handle invalid", (((handle != NULL)&&
+            (handle->runtime != NULL))&&(handle->config != NULL)))
 
-  XMC_ASSERT("UART_StartReceiveIRQ: UART APP handle invalid", ((handle != NULL)&&
-            (handle->runtime != NULL)))
-
-  if (handle->config->receive_mode == UART_TRANSFER_MODE_INTERRUPT)
- 8000d8a:	bb26      	cbnz	r6, 8000dd6 <UART_StartReceiveIRQ+0x58>
+  if ((data_ptr != NULL) && (count > 0U))
+ 8000c4a:	b361      	cbz	r1, 8000ca6 <UART_Transmit+0x6a>
+ 8000c4c:	b35a      	cbz	r2, 8000ca6 <UART_Transmit+0x6a>
   {
     ret_stat = UART_STATUS_BUSY;
-    if (ptr_runtime->rx_busy == false)
- 8000d8c:	7e5f      	ldrb	r7, [r3, #25]
- 8000d8e:	f007 06ff 	and.w	r6, r7, #255	; 0xff
- 8000d92:	bb17      	cbnz	r7, 8000dda <UART_StartReceiveIRQ+0x5c>
+    if (handle->runtime->tx_busy == false)
+ 8000c4e:	68a5      	ldr	r5, [r4, #8]
+ 8000c50:	7e2e      	ldrb	r6, [r5, #24]
+ 8000c52:	bb4e      	cbnz	r6, 8000ca8 <UART_Transmit+0x6c>
     {
-      /*If no active reception in progress*/
-      if ((data_ptr != NULL) && (count > 0U))
- 8000d94:	b319      	cbz	r1, 8000dde <UART_StartReceiveIRQ+0x60>
- 8000d96:	b312      	cbz	r2, 8000dde <UART_StartReceiveIRQ+0x60>
+      handle->runtime->tx_busy = true;
+      if (handle->config->tx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
+ 8000c54:	f893 3023 	ldrb.w	r3, [r3, #35]	; 0x23
+  if ((data_ptr != NULL) && (count > 0U))
+  {
+    ret_stat = UART_STATUS_BUSY;
+    if (handle->runtime->tx_busy == false)
+    {
+      handle->runtime->tx_busy = true;
+ 8000c58:	2001      	movs	r0, #1
+ 8000c5a:	7628      	strb	r0, [r5, #24]
+      if (handle->config->tx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
+ 8000c5c:	b123      	cbz	r3, 8000c68 <UART_Transmit+0x2c>
       {
-        /*Obtain the address of data buffer and
-         * number of data bytes to be received*/
-        ptr_runtime->rx_data = data_ptr;
- 8000d98:	6059      	str	r1, [r3, #4]
-        ptr_runtime->rx_data_count = count;
-        ptr_runtime->rx_busy = true;
- 8000d9a:	2101      	movs	r1, #1
-      if ((data_ptr != NULL) && (count > 0U))
+        /*Clear the transmit FIFO*/
+        XMC_USIC_CH_TXFIFO_Flush(handle->channel);
+ 8000c5e:	6823      	ldr	r3, [r4, #0]
+ * \par<b>Related APIs:</b><BR>
+ * XMC_USIC_CH_TXFIFO_GetLevel() \n\n\n
+ */
+__STATIC_INLINE void XMC_USIC_CH_TXFIFO_Flush(XMC_USIC_CH_t *const channel)
+{
+  channel->TRBSCR = (uint32_t)USIC_CH_TRBSCR_FLUSHTB_Msk;
+ 8000c60:	f44f 4000 	mov.w	r0, #32768	; 0x8000
+ 8000c64:	f8c3 0118 	str.w	r0, [r3, #280]	; 0x118
+ 8000c68:	460d      	mov	r5, r1
+ 8000c6a:	188e      	adds	r6, r1, r2
+ 8000c6c:	6863      	ldr	r3, [r4, #4]
+      }
+      /*Loop through each byte*/
+      for (loc_index = 0U; loc_index < count; loc_index++)
+ 8000c6e:	42b5      	cmp	r5, r6
       {
-        /*Obtain the address of data buffer and
-         * number of data bytes to be received*/
-        ptr_runtime->rx_data = data_ptr;
-        ptr_runtime->rx_data_count = count;
- 8000d9c:	611a      	str	r2, [r3, #16]
-        ptr_runtime->rx_busy = true;
- 8000d9e:	7659      	strb	r1, [r3, #25]
-        ptr_runtime->rx_data_index = 0U;
- 8000da0:	615e      	str	r6, [r3, #20]
-
-        if (handle->config->rx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
- 8000da2:	f895 302c 	ldrb.w	r3, [r5, #44]	; 0x2c
- 8000da6:	6805      	ldr	r5, [r0, #0]
- 8000da8:	b17b      	cbz	r3, 8000dca <UART_StartReceiveIRQ+0x4c>
- * \par<b>Related APIs:</b><BR>
- * XMC_USIC_CH_RXFIFO_GetLevel() \n\n\n
- */
-__STATIC_INLINE void XMC_USIC_CH_RXFIFO_Flush(XMC_USIC_CH_t *const channel)
-{
-  channel->TRBSCR = (uint32_t)USIC_CH_TRBSCR_FLUSHRB_Msk;
- 8000daa:	f44f 4380 	mov.w	r3, #16384	; 0x4000
- 8000dae:	f8c5 3118 	str.w	r3, [r5, #280]	; 0x118
-          /*Clear the receive FIFO, configure the trigger lime
-           * and enable the receive events*/
-          XMC_USIC_CH_RXFIFO_Flush(handle->channel);
-
-          /*Configure the FIFO trigger limit based on the required data size*/
-          UART_lReconfigureRxFIFO(handle, count);
- 8000db2:	4611      	mov	r1, r2
- 8000db4:	f7ff ff97 	bl	8000ce6 <UART_lReconfigureRxFIFO>
-
-          XMC_USIC_CH_RXFIFO_EnableEvent(handle->channel,
- 8000db8:	6822      	ldr	r2, [r4, #0]
- * \par<b>Related APIs:</b><BR>
- * XMC_USIC_CH_RXFIFO_SetInterruptNodePointer() \n\n\n
- */
-__STATIC_INLINE void XMC_USIC_CH_RXFIFO_EnableEvent(XMC_USIC_CH_t *const channel, const uint32_t event)
-{
-  channel->RBCTR |= event;
- 8000dba:	f8d2 310c 	ldr.w	r3, [r2, #268]	; 0x10c
- 8000dbe:	f043 43c0 	orr.w	r3, r3, #1610612736	; 0x60000000
- 8000dc2:	f8c2 310c 	str.w	r3, [r2, #268]	; 0x10c
- 8000dc6:	4630      	mov	r0, r6
- 8000dc8:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
- * \par<b>Related APIs:</b><BR>
- * XMC_USIC_CH_DisableEvent(), XMC_USIC_CH_SetInterruptNodePointer() \n\n\n
- */
-__STATIC_INLINE void XMC_USIC_CH_EnableEvent(XMC_USIC_CH_t *const channel, const uint32_t event)
-{
-  channel->CCR |= event;
- 8000dca:	6c2a      	ldr	r2, [r5, #64]	; 0x40
- 8000dcc:	f442 4240 	orr.w	r2, r2, #49152	; 0xc000
- 8000dd0:	642a      	str	r2, [r5, #64]	; 0x40
-        else
+        /*If FIFO is enabled, FIFO filling status should be checked
+         * to avoid overflow error*/
+        if (handle->config->tx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
+ 8000c70:	f893 3023 	ldrb.w	r3, [r3, #35]	; 0x23
+      {
+        /*Clear the transmit FIFO*/
+        XMC_USIC_CH_TXFIFO_Flush(handle->channel);
+      }
+      /*Loop through each byte*/
+      for (loc_index = 0U; loc_index < count; loc_index++)
+ 8000c74:	d00b      	beq.n	8000c8e <UART_Transmit+0x52>
+      {
+        /*If FIFO is enabled, FIFO filling status should be checked
+         * to avoid overflow error*/
+        if (handle->config->tx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
+ 8000c76:	b123      	cbz	r3, 8000c82 <UART_Transmit+0x46>
         {
-          XMC_USIC_CH_EnableEvent(handle->channel,
-          (uint32_t)((uint32_t)XMC_USIC_CH_EVENT_STANDARD_RECEIVE | (uint32_t)XMC_USIC_CH_EVENT_ALTERNATIVE_RECEIVE));
-        }
-        ret_stat = UART_STATUS_SUCCESS;
- 8000dd2:	4618      	mov	r0, r3
- 8000dd4:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
- *
- *
- */
-UART_STATUS_t UART_StartReceiveIRQ(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
-{
-  UART_STATUS_t ret_stat = UART_STATUS_MODE_MISMATCH;
- 8000dd6:	2004      	movs	r0, #4
- 8000dd8:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
-  XMC_ASSERT("UART_StartReceiveIRQ: UART APP handle invalid", ((handle != NULL)&&
-            (handle->runtime != NULL)))
-
-  if (handle->config->receive_mode == UART_TRANSFER_MODE_INTERRUPT)
-  {
-    ret_stat = UART_STATUS_BUSY;
- 8000dda:	2002      	movs	r0, #2
- 8000ddc:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
-        }
-        ret_stat = UART_STATUS_SUCCESS;
-      }
-      else
-      {
-        ret_stat = UART_STATUS_BUFFER_INVALID;
- 8000dde:	2003      	movs	r0, #3
-      }
-    }
-  }
-  return ret_stat;
-}
- 8000de0:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
-
-08000de2 <UART_Receive>:
- */
-UART_STATUS_t UART_Receive(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
-{
-  UART_STATUS_t ret_stat = UART_STATUS_MODE_MISMATCH;
-
-  switch(handle->config->receive_mode)
- 8000de2:	6843      	ldr	r3, [r0, #4]
- 8000de4:	f893 302a 	ldrb.w	r3, [r3, #42]	; 0x2a
- 8000de8:	b90b      	cbnz	r3, 8000dee <UART_Receive+0xc>
-  {
-#ifdef UART_RX_INTERRUPT_USED
-  case UART_TRANSFER_MODE_INTERRUPT:
-    ret_stat = UART_StartReceiveIRQ(handle, data_ptr, count);
- 8000dea:	f7ff bfc8 	b.w	8000d7e <UART_StartReceiveIRQ>
-#endif
-  default:
-    break;
-  }
-  return ret_stat;
-}
- 8000dee:	2004      	movs	r0, #4
- 8000df0:	4770      	bx	lr
-
-08000df2 <UART_lTransmitHandler>:
- *  * param[in]  handle UART APP handle pointer of type UART_t*
- *
- *  * return void
- */
-void UART_lTransmitHandler(const UART_t * const handle)
-{
- 8000df2:	b570      	push	{r4, r5, r6, lr}
-  UART_RUNTIME_t * ptr_runtime = handle->runtime;
- 8000df4:	6884      	ldr	r4, [r0, #8]
-
-  if (ptr_runtime->tx_data_index < ptr_runtime->tx_data_count)
- 8000df6:	68e3      	ldr	r3, [r4, #12]
- 8000df8:	68a2      	ldr	r2, [r4, #8]
- 8000dfa:	4293      	cmp	r3, r2
- *  * param[in]  handle UART APP handle pointer of type UART_t*
- *
- *  * return void
- */
-void UART_lTransmitHandler(const UART_t * const handle)
-{
- 8000dfc:	4605      	mov	r5, r0
-  UART_RUNTIME_t * ptr_runtime = handle->runtime;
-
-  if (ptr_runtime->tx_data_index < ptr_runtime->tx_data_count)
- 8000dfe:	d21e      	bcs.n	8000e3e <UART_lTransmitHandler+0x4c>
-  {
-    if (handle->config->tx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
- 8000e00:	6842      	ldr	r2, [r0, #4]
- 8000e02:	f892 202b 	ldrb.w	r2, [r2, #43]	; 0x2b
- 8000e06:	b18a      	cbz	r2, 8000e2c <UART_lTransmitHandler+0x3a>
-    {
-      /*When Transmit FIFO is enabled*/
-      /*Fill the transmit FIFO */
-      while (XMC_USIC_CH_TXFIFO_IsFull(handle->channel) == false)
- 8000e08:	6828      	ldr	r0, [r5, #0]
+          /*Wait if transmit FIFO is full*/
+          while (XMC_USIC_CH_TXFIFO_IsFull(handle->channel) == true)
+ 8000c78:	6822      	ldr	r2, [r4, #0]
  * \par<b>Related APIs:</b><BR>
  * XMC_USIC_CH_TXFIFO_IsEmpty(), XMC_USIC_CH_TXFIFO_Flush() \n\n\n
  */
 __STATIC_INLINE bool XMC_USIC_CH_TXFIFO_IsFull(XMC_USIC_CH_t *const channel)
 {
   return (bool)(channel->TRBSR & USIC_CH_TRBSR_TFULL_Msk);
- 8000e0a:	f8d0 3114 	ldr.w	r3, [r0, #276]	; 0x114
- 8000e0e:	04de      	lsls	r6, r3, #19
- 8000e10:	d40b      	bmi.n	8000e2a <UART_lTransmitHandler+0x38>
-      {
-        if (ptr_runtime->tx_data_index < ptr_runtime->tx_data_count)
- 8000e12:	68e3      	ldr	r3, [r4, #12]
- 8000e14:	68a2      	ldr	r2, [r4, #8]
- 8000e16:	4293      	cmp	r3, r2
- 8000e18:	d230      	bcs.n	8000e7c <UART_lTransmitHandler+0x8a>
-        {
-          /*Load the FIFO byte by byte till either FIFO is full or all data is loaded*/
-          XMC_UART_CH_Transmit(handle->channel,(uint16_t)ptr_runtime->tx_data[ptr_runtime->tx_data_index]);
- 8000e1a:	6822      	ldr	r2, [r4, #0]
- 8000e1c:	5cd1      	ldrb	r1, [r2, r3]
- 8000e1e:	f7ff fdf3 	bl	8000a08 <XMC_UART_CH_Transmit>
-          (ptr_runtime->tx_data_index)++;
- 8000e22:	68e3      	ldr	r3, [r4, #12]
- 8000e24:	3301      	adds	r3, #1
- 8000e26:	60e3      	str	r3, [r4, #12]
- 8000e28:	e7ee      	b.n	8000e08 <UART_lTransmitHandler+0x16>
- 8000e2a:	bd70      	pop	{r4, r5, r6, pc}
+ 8000c7a:	f8d2 3114 	ldr.w	r3, [r2, #276]	; 0x114
+ 8000c7e:	04d9      	lsls	r1, r3, #19
+ 8000c80:	d4fb      	bmi.n	8000c7a <UART_Transmit+0x3e>
+          {
+          }
+        }
+        XMC_UART_CH_Transmit(handle->channel, (uint16_t)data_ptr[loc_index]);
+ 8000c82:	6820      	ldr	r0, [r4, #0]
+ 8000c84:	f815 1b01 	ldrb.w	r1, [r5], #1
+ 8000c88:	f7ff febe 	bl	8000a08 <XMC_UART_CH_Transmit>
+ 8000c8c:	e7ee      	b.n	8000c6c <UART_Transmit+0x30>
       }
-    }
-    else
-    {
-      /*When Transmit FIFO is disabled*/
-      XMC_UART_CH_Transmit(handle->channel,(uint16_t)ptr_runtime->tx_data[ptr_runtime->tx_data_index]);
- 8000e2c:	6822      	ldr	r2, [r4, #0]
- 8000e2e:	6800      	ldr	r0, [r0, #0]
- 8000e30:	5cd1      	ldrb	r1, [r2, r3]
- 8000e32:	f7ff fde9 	bl	8000a08 <XMC_UART_CH_Transmit>
-      (ptr_runtime->tx_data_index)++;
- 8000e36:	68e3      	ldr	r3, [r4, #12]
- 8000e38:	3301      	adds	r3, #1
- 8000e3a:	60e3      	str	r3, [r4, #12]
- 8000e3c:	bd70      	pop	{r4, r5, r6, pc}
-    }
-  }
-  else
-  {
-    if (XMC_USIC_CH_TXFIFO_IsEmpty(handle->channel) == true)
- 8000e3e:	6803      	ldr	r3, [r0, #0]
+
+      if (handle->config->tx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
+ 8000c8e:	b123      	cbz	r3, 8000c9a <UART_Transmit+0x5e>
+      {
+        /*Wait till FIFO is empty*/
+        while (XMC_USIC_CH_TXFIFO_IsEmpty(handle->channel) == false)
+ 8000c90:	6822      	ldr	r2, [r4, #0]
  * \par<b>Related APIs:</b><BR>
  * XMC_USIC_CH_TXFIFO_Flush(), XMC_USIC_CH_TXFIFO_PutData() \n\n\n
  */
 __STATIC_INLINE bool XMC_USIC_CH_TXFIFO_IsEmpty(XMC_USIC_CH_t *const channel)
 {
   return (bool)(channel->TRBSR & USIC_CH_TRBSR_TEMPTY_Msk);
- 8000e40:	f8d3 2114 	ldr.w	r2, [r3, #276]	; 0x114
- 8000e44:	0511      	lsls	r1, r2, #20
- 8000e46:	d519      	bpl.n	8000e7c <UART_lTransmitHandler+0x8a>
-    {
-      if (handle->config->tx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
- 8000e48:	6841      	ldr	r1, [r0, #4]
- 8000e4a:	f891 202b 	ldrb.w	r2, [r1, #43]	; 0x2b
- 8000e4e:	b132      	cbz	r2, 8000e5e <UART_lTransmitHandler+0x6c>
- * \par<b>Related APIs:</b><BR>
- * XMC_USIC_CH_TXFIFO_GetEvent(), XMC_USIC_CH_TXFIFO_EnableEvent() \n\n\n
- */
-__STATIC_INLINE void XMC_USIC_CH_TXFIFO_DisableEvent(XMC_USIC_CH_t *const channel, const uint32_t event)
-{
-  channel->TBCTR &= (uint32_t)~event;
- 8000e50:	f8d3 2108 	ldr.w	r2, [r3, #264]	; 0x108
- 8000e54:	f022 4280 	bic.w	r2, r2, #1073741824	; 0x40000000
- 8000e58:	f8c3 2108 	str.w	r2, [r3, #264]	; 0x108
- 8000e5c:	e003      	b.n	8000e66 <UART_lTransmitHandler+0x74>
- * \par<b>Related APIs:</b><BR>
- * XMC_USIC_CH_EnableEvent(), XMC_USIC_CH_SetInterruptNodePointer() \n\n\n
-*/
-__STATIC_INLINE void XMC_USIC_CH_DisableEvent(XMC_USIC_CH_t *const channel, const uint32_t event)
-{
-  channel->CCR &= (uint32_t)~event;
- 8000e5e:	6c1a      	ldr	r2, [r3, #64]	; 0x40
- 8000e60:	f422 5200 	bic.w	r2, r2, #8192	; 0x2000
- 8000e64:	641a      	str	r2, [r3, #64]	; 0x40
- * \par<b>Related APIs:</b><BR>
- * XMC_USIC_CH_SetDataOutputMode() \n\n\n
- */
-__STATIC_INLINE XMC_USIC_CH_TBUF_STATUS_t XMC_USIC_CH_GetTransmitBufferStatus(XMC_USIC_CH_t *const channel)
-{
-  return (XMC_USIC_CH_TBUF_STATUS_t)(channel->TCSR & USIC_CH_TCSR_TDV_Msk);
- 8000e66:	6b9a      	ldr	r2, [r3, #56]	; 0x38
-        /*Disable the standard transmit event*/
-        XMC_USIC_CH_DisableEvent(handle->channel, (uint32_t)XMC_USIC_CH_EVENT_TRANSMIT_BUFFER);
+ 8000c92:	f8d2 3114 	ldr.w	r3, [r2, #276]	; 0x114
+ 8000c96:	051b      	lsls	r3, r3, #20
+ 8000c98:	d5fb      	bpl.n	8000c92 <UART_Transmit+0x56>
+        {
+        }
       }
-
-      /*Wait for the transmit buffer to be free to ensure that all data is transmitted*/
-      while (XMC_USIC_CH_GetTransmitBufferStatus(handle->channel) == XMC_USIC_CH_TBUF_STATUS_BUSY)
- 8000e68:	0612      	lsls	r2, r2, #24
- 8000e6a:	d4fc      	bmi.n	8000e66 <UART_lTransmitHandler+0x74>
-      {
-
-      }
-      /*All data is transmitted*/
-      ptr_runtime->tx_busy = false;
- 8000e6c:	2300      	movs	r3, #0
- 8000e6e:	7623      	strb	r3, [r4, #24]
-      ptr_runtime->tx_data = NULL;
- 8000e70:	6023      	str	r3, [r4, #0]
-
-      if (handle->config->tx_cbhandler != NULL)
- 8000e72:	688b      	ldr	r3, [r1, #8]
- 8000e74:	b113      	cbz	r3, 8000e7c <UART_lTransmitHandler+0x8a>
-        /*Execute the callback function provided in the UART APP UI*/
-        handle->config->tx_cbhandler();
-      }
-    }
-  }
-}
- 8000e76:	e8bd 4070 	ldmia.w	sp!, {r4, r5, r6, lr}
-      ptr_runtime->tx_data = NULL;
-
-      if (handle->config->tx_cbhandler != NULL)
-      {
-        /*Execute the callback function provided in the UART APP UI*/
-        handle->config->tx_cbhandler();
- 8000e7a:	4718      	bx	r3
- 8000e7c:	bd70      	pop	{r4, r5, r6, pc}
-
-08000e7e <UART_lReceiveHandler>:
- */
-void UART_lReceiveHandler(const UART_t * const handle)
-{
-  UART_RUNTIME_t * ptr_runtime = handle->runtime;
-
-  if (handle->config->rx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
- 8000e7e:	6843      	ldr	r3, [r0, #4]
- 8000e80:	f893 302c 	ldrb.w	r3, [r3, #44]	; 0x2c
- * param[in]  handle UART APP handle pointer of type UART_t*
+      ret_stat = UART_STATUS_SUCCESS;
+      handle->runtime->tx_busy = false;
+ 8000c9a:	68a3      	ldr	r3, [r4, #8]
+ 8000c9c:	2000      	movs	r0, #0
+ 8000c9e:	7618      	strb	r0, [r3, #24]
+ 8000ca0:	bd70      	pop	{r4, r5, r6, pc}
+ *          UART_STATUS_MODE_MISMATCH: If the configured mode is invalid.<BR>
  *
- * return void
  */
-void UART_lReceiveHandler(const UART_t * const handle)
+UART_STATUS_t UART_Transmit(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
 {
- 8000e84:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
- 8000e88:	4605      	mov	r5, r0
-  UART_RUNTIME_t * ptr_runtime = handle->runtime;
- 8000e8a:	6884      	ldr	r4, [r0, #8]
+  UART_STATUS_t ret_stat = UART_STATUS_MODE_MISMATCH;
+ 8000ca2:	2004      	movs	r0, #4
+ 8000ca4:	bd70      	pop	{r4, r5, r6, pc}
+ * either TBUF or IN register is updated with the data.
+ *
+ */
+static UART_STATUS_t UART_lStartTransmitPolling(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
+{
+  UART_STATUS_t ret_stat = UART_STATUS_BUFFER_INVALID;
+ 8000ca6:	2003      	movs	r0, #3
+#endif
+  default:
+    break;
+  }
+  return ret_stat;
+}
+ 8000ca8:	bd70      	pop	{r4, r5, r6, pc}
 
-  if (handle->config->rx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
- 8000e8c:	b353      	cbz	r3, 8000ee4 <UART_lReceiveHandler+0x66>
+08000caa <UART_Receive>:
+ */
+UART_STATUS_t UART_Receive(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
+{
+  UART_STATUS_t ret_stat = UART_STATUS_MODE_MISMATCH;
+
+  switch(handle->config->receive_mode)
+ 8000caa:	6843      	ldr	r3, [r0, #4]
+ *          UART_STATUS_BUFFER_INVALID: Either if buffer is NULL or count is 0.<BR>
+ *          UART_STATUS_MODE_MISMATCH: If the configured mode is invalid.<BR>
+ *
+ */
+UART_STATUS_t UART_Receive(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
+{
+ 8000cac:	b570      	push	{r4, r5, r6, lr}
+ 8000cae:	4604      	mov	r4, r0
+  UART_STATUS_t ret_stat = UART_STATUS_MODE_MISMATCH;
+
+  switch(handle->config->receive_mode)
+ 8000cb0:	f893 0022 	ldrb.w	r0, [r3, #34]	; 0x22
+ 8000cb4:	2802      	cmp	r0, #2
+ 8000cb6:	d12d      	bne.n	8000d14 <UART_Receive+0x6a>
+  uint32_t loc_status;
+
+  XMC_ASSERT("UART_Receive: UART APP handle invalid", ((handle != NULL)&&
+            (handle->runtime != NULL)))
+
+  if ((data_ptr != NULL) && (count > 0U))
+ 8000cb8:	b371      	cbz	r1, 8000d18 <UART_Receive+0x6e>
+ 8000cba:	b36a      	cbz	r2, 8000d18 <UART_Receive+0x6e>
   {
-    /*When Receive FIFO is enabled*/
-    while (XMC_USIC_CH_RXFIFO_IsEmpty(handle->channel) == false)
- 8000e8e:	6828      	ldr	r0, [r5, #0]
+    ret_stat = UART_STATUS_BUSY;
+    if (handle->runtime->rx_busy == false)
+ 8000cbc:	68a5      	ldr	r5, [r4, #8]
+ 8000cbe:	7e6e      	ldrb	r6, [r5, #25]
+ 8000cc0:	bb5e      	cbnz	r6, 8000d1a <UART_Receive+0x70>
+    {
+      handle->runtime->rx_busy = true;
+      if (handle->config->rx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
+ 8000cc2:	f893 3024 	ldrb.w	r3, [r3, #36]	; 0x24
+  if ((data_ptr != NULL) && (count > 0U))
+  {
+    ret_stat = UART_STATUS_BUSY;
+    if (handle->runtime->rx_busy == false)
+    {
+      handle->runtime->rx_busy = true;
+ 8000cc6:	2001      	movs	r0, #1
+ 8000cc8:	7668      	strb	r0, [r5, #25]
+      if (handle->config->rx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
+ 8000cca:	b123      	cbz	r3, 8000cd6 <UART_Receive+0x2c>
+      {
+        /*Clear the receive FIFO, configure the trigger lime
+         * and enable the receive events*/
+        XMC_USIC_CH_RXFIFO_Flush(handle->channel);
+ 8000ccc:	6823      	ldr	r3, [r4, #0]
+ * \par<b>Related APIs:</b><BR>
+ * XMC_USIC_CH_RXFIFO_GetLevel() \n\n\n
+ */
+__STATIC_INLINE void XMC_USIC_CH_RXFIFO_Flush(XMC_USIC_CH_t *const channel)
+{
+  channel->TRBSCR = (uint32_t)USIC_CH_TRBSCR_FLUSHRB_Msk;
+ 8000cce:	f44f 4080 	mov.w	r0, #16384	; 0x4000
+ 8000cd2:	f8c3 0118 	str.w	r0, [r3, #280]	; 0x118
+ 8000cd6:	460d      	mov	r5, r1
+ 8000cd8:	188e      	adds	r6, r1, r2
+      }
+      for (loc_index = 0U; loc_index < count; loc_index++)
+ 8000cda:	42b5      	cmp	r5, r6
+ 8000cdc:	d016      	beq.n	8000d0c <UART_Receive+0x62>
+      {
+        /*If receive FIFO is configured, wait for FIFO to get data.*/
+        if (handle->config->rx_fifo_size != XMC_USIC_CH_FIFO_DISABLED)
+ 8000cde:	6863      	ldr	r3, [r4, #4]
+ 8000ce0:	f893 2024 	ldrb.w	r2, [r3, #36]	; 0x24
+ 8000ce4:	6823      	ldr	r3, [r4, #0]
+ 8000ce6:	b122      	cbz	r2, 8000cf2 <UART_Receive+0x48>
  * \par<b>Related APIs:</b><BR>
  * XMC_USIC_CH_RXFIFO_Flush(), XMC_USIC_CH_RXFIFO_PutData() \n\n\n
  */
 __STATIC_INLINE bool XMC_USIC_CH_RXFIFO_IsEmpty(XMC_USIC_CH_t *const channel)
 {
   return (bool)(channel->TRBSR & USIC_CH_TRBSR_REMPTY_Msk);
- 8000e90:	f8d0 3114 	ldr.w	r3, [r0, #276]	; 0x114
- 8000e94:	071b      	lsls	r3, r3, #28
- 8000e96:	d41b      	bmi.n	8000ed0 <UART_lReceiveHandler+0x52>
-    {
-      if (ptr_runtime->rx_data_index < ptr_runtime->rx_data_count)
- 8000e98:	6966      	ldr	r6, [r4, #20]
- 8000e9a:	6923      	ldr	r3, [r4, #16]
- 8000e9c:	429e      	cmp	r6, r3
- 8000e9e:	d206      	bcs.n	8000eae <UART_lReceiveHandler+0x30>
-      {
-        /*Read all the content of Receive FIFO */
-        ptr_runtime->rx_data[ptr_runtime->rx_data_index] = (uint8_t)XMC_UART_CH_GetReceivedData(handle->channel);
- 8000ea0:	6867      	ldr	r7, [r4, #4]
- 8000ea2:	f7ff fdc2 	bl	8000a2a <XMC_UART_CH_GetReceivedData>
- 8000ea6:	55b8      	strb	r0, [r7, r6]
-        (ptr_runtime->rx_data_index)++;
- 8000ea8:	6963      	ldr	r3, [r4, #20]
- 8000eaa:	3301      	adds	r3, #1
- 8000eac:	6163      	str	r3, [r4, #20]
-      }
-
-      if (ptr_runtime->rx_data_index == ptr_runtime->rx_data_count)
- 8000eae:	6962      	ldr	r2, [r4, #20]
- 8000eb0:	6923      	ldr	r3, [r4, #16]
- 8000eb2:	429a      	cmp	r2, r3
- 8000eb4:	d1eb      	bne.n	8000e8e <UART_lReceiveHandler+0x10>
-      {
-        /*Reception complete*/
-        ptr_runtime->rx_busy = false;
- 8000eb6:	2300      	movs	r3, #0
-        /*Disable both standard receive and alternative receive FIFO events*/
-        XMC_USIC_CH_RXFIFO_DisableEvent(handle->channel,
- 8000eb8:	682a      	ldr	r2, [r5, #0]
-      }
-
-      if (ptr_runtime->rx_data_index == ptr_runtime->rx_data_count)
-      {
-        /*Reception complete*/
-        ptr_runtime->rx_busy = false;
- 8000eba:	7663      	strb	r3, [r4, #25]
- * \par<b>Related APIs:</b><BR>
- * XMC_USIC_CH_RXFIFO_GetEvent(), XMC_USIC_CH_RXFIFO_EnableEvent() \n\n\n
- */
-__STATIC_INLINE void XMC_USIC_CH_RXFIFO_DisableEvent(XMC_USIC_CH_t *const channel, const uint32_t event)
-{
-  channel->RBCTR &= (uint32_t)~event;
- 8000ebc:	f8d2 310c 	ldr.w	r3, [r2, #268]	; 0x10c
- 8000ec0:	f023 43c0 	bic.w	r3, r3, #1610612736	; 0x60000000
- 8000ec4:	f8c2 310c 	str.w	r3, [r2, #268]	; 0x10c
-        /*Disable both standard receive and alternative receive FIFO events*/
-        XMC_USIC_CH_RXFIFO_DisableEvent(handle->channel,
-            (uint32_t)((uint32_t)XMC_USIC_CH_RXFIFO_EVENT_CONF_STANDARD |
-            (uint32_t)XMC_USIC_CH_RXFIFO_EVENT_CONF_ALTERNATE));
-        if (handle->config->rx_cbhandler != NULL)
- 8000ec8:	686b      	ldr	r3, [r5, #4]
- 8000eca:	68db      	ldr	r3, [r3, #12]
- 8000ecc:	b103      	cbz	r3, 8000ed0 <UART_lReceiveHandler+0x52>
+ 8000ce8:	f8d3 2114 	ldr.w	r2, [r3, #276]	; 0x114
         {
-          /*Execute the 'End of reception' callback function*/
-          handle->config->rx_cbhandler();
- 8000ece:	4798      	blx	r3
-        }
-        break;
-      }
-    }
-    /*Set the trigger limit if data still to be received*/
-    if (ptr_runtime->rx_data_index < ptr_runtime->rx_data_count)
- 8000ed0:	6963      	ldr	r3, [r4, #20]
- 8000ed2:	6921      	ldr	r1, [r4, #16]
- 8000ed4:	428b      	cmp	r3, r1
- 8000ed6:	d222      	bcs.n	8000f1e <UART_lReceiveHandler+0xa0>
-    {
-      UART_lReconfigureRxFIFO(handle,
- 8000ed8:	4628      	mov	r0, r5
- 8000eda:	1ac9      	subs	r1, r1, r3
-        /*Execute the 'End of reception' callback function*/
-        handle->config->rx_cbhandler();
-      }
-    }
-  }
-}
- 8000edc:	e8bd 41f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, lr}
-      }
-    }
-    /*Set the trigger limit if data still to be received*/
-    if (ptr_runtime->rx_data_index < ptr_runtime->rx_data_count)
-    {
-      UART_lReconfigureRxFIFO(handle,
- 8000ee0:	f7ff bf01 	b.w	8000ce6 <UART_lReconfigureRxFIFO>
-    }
-  }
-  else
-  {
-    /*When RxFIFO is disabled*/
-    if (ptr_runtime->rx_data_index < ptr_runtime->rx_data_count)
- 8000ee4:	6966      	ldr	r6, [r4, #20]
- 8000ee6:	6923      	ldr	r3, [r4, #16]
- 8000ee8:	429e      	cmp	r6, r3
- 8000eea:	d207      	bcs.n	8000efc <UART_lReceiveHandler+0x7e>
-    {
-      ptr_runtime->rx_data[ptr_runtime->rx_data_index] = (uint8_t)XMC_UART_CH_GetReceivedData(handle->channel);
- 8000eec:	6800      	ldr	r0, [r0, #0]
- 8000eee:	6867      	ldr	r7, [r4, #4]
- 8000ef0:	f7ff fd9b 	bl	8000a2a <XMC_UART_CH_GetReceivedData>
- 8000ef4:	55b8      	strb	r0, [r7, r6]
-      (ptr_runtime->rx_data_index)++;
- 8000ef6:	6963      	ldr	r3, [r4, #20]
- 8000ef8:	3301      	adds	r3, #1
- 8000efa:	6163      	str	r3, [r4, #20]
-    }
-
-    if (ptr_runtime->rx_data_index == ptr_runtime->rx_data_count)
- 8000efc:	6962      	ldr	r2, [r4, #20]
- 8000efe:	6923      	ldr	r3, [r4, #16]
- 8000f00:	429a      	cmp	r2, r3
- 8000f02:	d10c      	bne.n	8000f1e <UART_lReceiveHandler+0xa0>
-    {
-      /*Reception complete*/
-      ptr_runtime->rx_busy = false;
- 8000f04:	2300      	movs	r3, #0
-      /*Disable both standard receive and alternative receive FIFO events*/
-      XMC_USIC_CH_DisableEvent(handle->channel,
- 8000f06:	682a      	ldr	r2, [r5, #0]
-    }
-
-    if (ptr_runtime->rx_data_index == ptr_runtime->rx_data_count)
-    {
-      /*Reception complete*/
-      ptr_runtime->rx_busy = false;
- 8000f08:	7663      	strb	r3, [r4, #25]
+          /*Wait if FIFO empty*/
+          while(XMC_USIC_CH_RXFIFO_IsEmpty(handle->channel) == true)
+ 8000cec:	0712      	lsls	r2, r2, #28
+ 8000cee:	d4fb      	bmi.n	8000ce8 <UART_Receive+0x3e>
+ 8000cf0:	e006      	b.n	8000d00 <UART_Receive+0x56>
  * \par<b>Related APIs:</b><BR>
- * XMC_USIC_CH_EnableEvent(), XMC_USIC_CH_SetInterruptNodePointer() \n\n\n
-*/
-__STATIC_INLINE void XMC_USIC_CH_DisableEvent(XMC_USIC_CH_t *const channel, const uint32_t event)
-{
-  channel->CCR &= (uint32_t)~event;
- 8000f0a:	6c13      	ldr	r3, [r2, #64]	; 0x40
- 8000f0c:	f423 4340 	bic.w	r3, r3, #49152	; 0xc000
- 8000f10:	6413      	str	r3, [r2, #64]	; 0x40
-      /*Disable both standard receive and alternative receive FIFO events*/
-      XMC_USIC_CH_DisableEvent(handle->channel,
-          (uint32_t)((uint32_t)XMC_USIC_CH_EVENT_ALTERNATIVE_RECEIVE | (uint32_t)XMC_USIC_CH_EVENT_STANDARD_RECEIVE));
-
-      if (handle->config->rx_cbhandler != NULL)
- 8000f12:	686b      	ldr	r3, [r5, #4]
- 8000f14:	68db      	ldr	r3, [r3, #12]
- 8000f16:	b113      	cbz	r3, 8000f1e <UART_lReceiveHandler+0xa0>
-        /*Execute the 'End of reception' callback function*/
-        handle->config->rx_cbhandler();
-      }
-    }
-  }
-}
- 8000f18:	e8bd 41f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, lr}
-          (uint32_t)((uint32_t)XMC_USIC_CH_EVENT_ALTERNATIVE_RECEIVE | (uint32_t)XMC_USIC_CH_EVENT_STANDARD_RECEIVE));
-
-      if (handle->config->rx_cbhandler != NULL)
-      {
-        /*Execute the 'End of reception' callback function*/
-        handle->config->rx_cbhandler();
- 8000f1c:	4718      	bx	r3
- 8000f1e:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
-
-08000f22 <NVIC_EncodePriority.constprop.1>:
-  \param [in]       SubPriority  Subpriority value (starting from 0).
-  \return                        Encoded priority. Value can be used in the function \ref NVIC_SetPriority().
+ * XMC_UART_CH_EnableEvent(),  XMC_UART_CH_ClearStatusFlag()\n\n\n
  */
-__STATIC_INLINE uint32_t NVIC_EncodePriority (uint32_t PriorityGroup, uint32_t PreemptPriority, uint32_t SubPriority)
+__STATIC_INLINE uint32_t XMC_UART_CH_GetStatusFlag(XMC_USIC_CH_t *const channel)
 {
-  uint32_t PriorityGroupTmp = (PriorityGroup & (uint32_t)0x07UL);   /* only values 0..7 are used          */
- 8000f22:	f000 0007 	and.w	r0, r0, #7
-  uint32_t PreemptPriorityBits;
-  uint32_t SubPriorityBits;
-
-  PreemptPriorityBits = ((7UL - PriorityGroupTmp) > (uint32_t)(__NVIC_PRIO_BITS)) ? (uint32_t)(__NVIC_PRIO_BITS) : (uint32_t)(7UL - PriorityGroupTmp);
- 8000f26:	f1c0 0207 	rsb	r2, r0, #7
- 8000f2a:	2a06      	cmp	r2, #6
- 8000f2c:	bf28      	it	cs
- 8000f2e:	2206      	movcs	r2, #6
-  SubPriorityBits     = ((PriorityGroupTmp + (uint32_t)(__NVIC_PRIO_BITS)) < (uint32_t)7UL) ? (uint32_t)0UL : (uint32_t)((PriorityGroupTmp - 7UL) + (uint32_t)(__NVIC_PRIO_BITS));
- 8000f30:	b100      	cbz	r0, 8000f34 <NVIC_EncodePriority.constprop.1+0x12>
- 8000f32:	3801      	subs	r0, #1
-
-  return (
-           ((PreemptPriority & (uint32_t)((1UL << (PreemptPriorityBits)) - 1UL)) << SubPriorityBits) |
- 8000f34:	2301      	movs	r3, #1
- 8000f36:	4093      	lsls	r3, r2
- 8000f38:	3b01      	subs	r3, #1
-           ((SubPriority     & (uint32_t)((1UL << (SubPriorityBits    )) - 1UL)))
-         );
+  return channel->PSR_ASCMode;
+ 8000cf2:	6c9a      	ldr	r2, [r3, #72]	; 0x48
+        }
+        else
+        {
+          /*Wait for RIF or AIF flag update*/
+          loc_status = XMC_UART_CH_GetStatusFlag(handle->channel);
+          while (!(loc_status & ((uint32_t)XMC_UART_CH_STATUS_FLAG_ALTERNATIVE_RECEIVE_INDICATION |
+ 8000cf4:	f412 4f40 	tst.w	r2, #49152	; 0xc000
+ 8000cf8:	d0fb      	beq.n	8000cf2 <UART_Receive+0x48>
+ * \par<b>Related APIs:</b><BR>
+ * XMC_UART_CH_DisableEvent(),  XMC_UART_CH_GetStatusFlag()\n\n\n
+ */
+__STATIC_INLINE void XMC_UART_CH_ClearStatusFlag(XMC_USIC_CH_t *const channel, const uint32_t flag)
+{
+  channel->PSCR = flag;
+ 8000cfa:	f44f 4240 	mov.w	r2, #49152	; 0xc000
+ 8000cfe:	64da      	str	r2, [r3, #76]	; 0x4c
+           * Both events should not be cleared at once, otherwise if 2 bytes are received, only
+           * one byte will be read.*/
+          XMC_UART_CH_ClearStatusFlag(handle->channel,
+              ((uint32_t)XMC_UART_CH_STATUS_FLAG_RECEIVE_INDICATION | (uint32_t)XMC_UART_CH_STATUS_FLAG_ALTERNATIVE_RECEIVE_INDICATION));
+        }
+        data_ptr[loc_index] = (uint8_t)XMC_UART_CH_GetReceivedData(handle->channel);
+ 8000d00:	6820      	ldr	r0, [r4, #0]
+ 8000d02:	f7ff fe92 	bl	8000a2a <XMC_UART_CH_GetReceivedData>
+ 8000d06:	f805 0b01 	strb.w	r0, [r5], #1
+ 8000d0a:	e7e6      	b.n	8000cda <UART_Receive+0x30>
+      }
+      ret_stat = UART_STATUS_SUCCESS;
+      handle->runtime->rx_busy = false;
+ 8000d0c:	68a3      	ldr	r3, [r4, #8]
+ 8000d0e:	2000      	movs	r0, #0
+ 8000d10:	7658      	strb	r0, [r3, #25]
+ 8000d12:	bd70      	pop	{r4, r5, r6, pc}
+ *          UART_STATUS_MODE_MISMATCH: If the configured mode is invalid.<BR>
+ *
+ */
+UART_STATUS_t UART_Receive(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
+{
+  UART_STATUS_t ret_stat = UART_STATUS_MODE_MISMATCH;
+ 8000d14:	2004      	movs	r0, #4
+ 8000d16:	bd70      	pop	{r4, r5, r6, pc}
+ * either RBUF or OUT register will be read.
+ *
+ */
+static UART_STATUS_t UART_lStartReceivePolling(const UART_t *const handle, uint8_t* data_ptr, uint32_t count)
+{
+  UART_STATUS_t ret_stat = UART_STATUS_BUFFER_INVALID;
+ 8000d18:	2003      	movs	r0, #3
+#endif
+  default:
+    break;
+  }
+  return ret_stat;
 }
- 8000f3a:	fa03 f000 	lsl.w	r0, r3, r0
- 8000f3e:	4770      	bx	lr
+ 8000d1a:	bd70      	pop	{r4, r5, r6, pc}
 
-08000f40 <UART_0_init>:
+08000d1c <UART_0_init>:
 /**********************************************************************************************************************
  * API IMPLEMENTATION
  **********************************************************************************************************************/
 /*Channel initialization function*/
 UART_STATUS_t UART_0_init()
 {
- 8000f40:	b538      	push	{r3, r4, r5, lr}
+ 8000d1c:	b538      	push	{r3, r4, r5, lr}
   UART_STATUS_t status = UART_STATUS_SUCCESS;
   /*Configure Receive pin*/
   XMC_GPIO_Init((XMC_GPIO_PORT_t *)PORT1_BASE, 4U, &UART_0_rx_pin_config);
- 8000f42:	4d2c      	ldr	r5, [pc, #176]	; (8000ff4 <UART_0_init+0xb4>)
+ 8000d1e:	4d16      	ldr	r5, [pc, #88]	; (8000d78 <UART_0_init+0x5c>)
   /* Initialize USIC channel in UART mode*/
   XMC_UART_CH_Init(XMC_UART0_CH0, &UART_0_channel_config);
- 8000f44:	4c2c      	ldr	r4, [pc, #176]	; (8000ff8 <UART_0_init+0xb8>)
+ 8000d20:	4c16      	ldr	r4, [pc, #88]	; (8000d7c <UART_0_init+0x60>)
 /*Channel initialization function*/
 UART_STATUS_t UART_0_init()
 {
   UART_STATUS_t status = UART_STATUS_SUCCESS;
   /*Configure Receive pin*/
   XMC_GPIO_Init((XMC_GPIO_PORT_t *)PORT1_BASE, 4U, &UART_0_rx_pin_config);
- 8000f46:	4a2d      	ldr	r2, [pc, #180]	; (8000ffc <UART_0_init+0xbc>)
- 8000f48:	4628      	mov	r0, r5
- 8000f4a:	2104      	movs	r1, #4
- 8000f4c:	f7ff fa0e 	bl	800036c <XMC_GPIO_Init>
+ 8000d22:	4a17      	ldr	r2, [pc, #92]	; (8000d80 <UART_0_init+0x64>)
+ 8000d24:	4628      	mov	r0, r5
+ 8000d26:	2104      	movs	r1, #4
+ 8000d28:	f7ff fb20 	bl	800036c <XMC_GPIO_Init>
   /* Initialize USIC channel in UART mode*/
   XMC_UART_CH_Init(XMC_UART0_CH0, &UART_0_channel_config);
- 8000f50:	4620      	mov	r0, r4
- 8000f52:	492b      	ldr	r1, [pc, #172]	; (8001000 <UART_0_init+0xc0>)
- 8000f54:	f7ff fd22 	bl	800099c <XMC_UART_CH_Init>
+ 8000d2c:	4620      	mov	r0, r4
+ 8000d2e:	4915      	ldr	r1, [pc, #84]	; (8000d84 <UART_0_init+0x68>)
+ 8000d30:	f7ff fe34 	bl	800099c <XMC_UART_CH_Init>
  * XMC_USIC_CH_EnableInputInversion(), XMC_USIC_CH_EnableInputDigitalFilter(), XMC_USIC_CH_EnableInputSync(),
  * XMC_USIC_CH_SetInputSamplingFreq()\n\n\n
  */
 __STATIC_INLINE void XMC_USIC_CH_SetInputSource(XMC_USIC_CH_t *const channel, const XMC_USIC_CH_INPUT_t input, const uint8_t source)
 {
   channel->DXCR[input] = (uint32_t)((channel->DXCR[input] & (uint32_t)(~USIC_CH_DXCR_DSEL_Msk)) |
- 8000f58:	69e3      	ldr	r3, [r4, #28]
- 8000f5a:	f023 0307 	bic.w	r3, r3, #7
- 8000f5e:	f043 0301 	orr.w	r3, r3, #1
- 8000f62:	61e3      	str	r3, [r4, #28]
-  /*Set input source path*/
+ 8000d34:	69e3      	ldr	r3, [r4, #28]
   XMC_USIC_CH_SetInputSource(XMC_UART0_CH0, XMC_USIC_CH_INPUT_DX0, 1U);
-  /*Configure transmit FIFO*/
-  XMC_USIC_CH_TXFIFO_Configure(XMC_UART0_CH0,
- 8000f64:	4620      	mov	r0, r4
- 8000f66:	2120      	movs	r1, #32
- 8000f68:	2205      	movs	r2, #5
- 8000f6a:	2301      	movs	r3, #1
- 8000f6c:	f7ff fdfa 	bl	8000b64 <XMC_USIC_CH_TXFIFO_Configure>
-        32U,
-        XMC_USIC_CH_FIFO_SIZE_32WORDS,
-        1U);
-  /*Configure receive FIFO*/
-  XMC_USIC_CH_RXFIFO_Configure(XMC_UART0_CH0,
- 8000f70:	2100      	movs	r1, #0
- 8000f72:	4620      	mov	r0, r4
- 8000f74:	460b      	mov	r3, r1
- 8000f76:	2205      	movs	r2, #5
- 8000f78:	f7ff fe0a 	bl	8000b90 <XMC_USIC_CH_RXFIFO_Configure>
+  /* Start UART */
+  XMC_UART_CH_Start(XMC_UART0_CH0);
+
+  /* Initialize UART TX pin */
+  XMC_GPIO_Init((XMC_GPIO_PORT_t *)PORT1_BASE, 5U, &UART_0_tx_pin_config);
+ 8000d36:	4a14      	ldr	r2, [pc, #80]	; (8000d88 <UART_0_init+0x6c>)
+ 8000d38:	f023 0307 	bic.w	r3, r3, #7
+ 8000d3c:	f043 0301 	orr.w	r3, r3, #1
+ 8000d40:	61e3      	str	r3, [r4, #28]
  * \par<b>Related APIs:</b><BR>
  * XMC_UART_CH_Stop(), XMC_UART_CH_Transmit()\n\n\n
  */
 __STATIC_INLINE void XMC_UART_CH_Start(XMC_USIC_CH_t *const channel)
 {
   channel->CCR = (uint32_t)(((channel->CCR) & (~USIC_CH_CCR_MODE_Msk)) | (uint32_t)XMC_USIC_CH_OPERATING_MODE_UART);
- 8000f7c:	6c23      	ldr	r3, [r4, #64]	; 0x40
-        0U);
-  /* Start UART */
-  XMC_UART_CH_Start(XMC_UART0_CH0);
+ 8000d42:	6c23      	ldr	r3, [r4, #64]	; 0x40
+ 8000d44:	f023 030f 	bic.w	r3, r3, #15
+ 8000d48:	f043 0302 	orr.w	r3, r3, #2
+ 8000d4c:	6423      	str	r3, [r4, #64]	; 0x40
+ 8000d4e:	4628      	mov	r0, r5
+ 8000d50:	2105      	movs	r1, #5
+ 8000d52:	f7ff fb0b 	bl	800036c <XMC_GPIO_Init>
 
-  /* Initialize UART TX pin */
-  XMC_GPIO_Init((XMC_GPIO_PORT_t *)PORT1_BASE, 5U, &UART_0_tx_pin_config);
- 8000f7e:	4a21      	ldr	r2, [pc, #132]	; (8001004 <UART_0_init+0xc4>)
- 8000f80:	f023 030f 	bic.w	r3, r3, #15
- 8000f84:	f043 0302 	orr.w	r3, r3, #2
- 8000f88:	6423      	str	r3, [r4, #64]	; 0x40
- 8000f8a:	4628      	mov	r0, r5
- 8000f8c:	2105      	movs	r1, #5
- 8000f8e:	f7ff f9ed 	bl	800036c <XMC_GPIO_Init>
-
+  /*Set service request for receive interrupt*/
+  XMC_USIC_CH_SetInterruptNodePointer(XMC_UART0_CH0, XMC_USIC_CH_INTERRUPT_NODE_POINTER_RECEIVE,
+ 8000d56:	4620      	mov	r0, r4
+ 8000d58:	2108      	movs	r1, #8
+ 8000d5a:	2205      	movs	r2, #5
+ 8000d5c:	f7ff ff02 	bl	8000b64 <XMC_USIC_CH_SetInterruptNodePointer>
+ * \par<b>Related APIs:</b><BR>
+ * XMC_USIC_CH_DisableEvent(), XMC_USIC_CH_SetInterruptNodePointer() \n\n\n
+ */
+__STATIC_INLINE void XMC_USIC_CH_EnableEvent(XMC_USIC_CH_t *const channel, const uint32_t event)
+{
+  channel->CCR |= event;
+ 8000d60:	6c23      	ldr	r3, [r4, #64]	; 0x40
+ 8000d62:	f443 4380 	orr.w	r3, r3, #16384	; 0x4000
+     5U);
+  /*Enable UART standard receive event*/
+  XMC_USIC_CH_EnableEvent(XMC_UART0_CH0, XMC_USIC_CH_EVENT_STANDARD_RECEIVE);
   /*Set service request for UART protocol events*/
   XMC_USIC_CH_SetInterruptNodePointer(XMC_UART0_CH0, XMC_USIC_CH_INTERRUPT_NODE_POINTER_PROTOCOL,
- 8000f92:	4620      	mov	r0, r4
- 8000f94:	2110      	movs	r1, #16
- 8000f96:	2200      	movs	r2, #0
- 8000f98:	f7ff fe23 	bl	8000be2 <XMC_USIC_CH_SetInterruptNodePointer>
+ 8000d66:	4620      	mov	r0, r4
+ 8000d68:	6423      	str	r3, [r4, #64]	; 0x40
+ 8000d6a:	2110      	movs	r1, #16
+ 8000d6c:	2200      	movs	r2, #0
+ 8000d6e:	f7ff fef9 	bl	8000b64 <XMC_USIC_CH_SetInterruptNodePointer>
      0U);
-  /*Set service request for tx FIFO transmit interrupt*/
-  XMC_USIC_CH_TXFIFO_SetInterruptNodePointer(XMC_UART0_CH0, XMC_USIC_CH_TXFIFO_INTERRUPT_NODE_POINTER_STANDARD,
- 8000f9c:	4620      	mov	r0, r4
- 8000f9e:	2110      	movs	r1, #16
- 8000fa0:	2203      	movs	r2, #3
- 8000fa2:	f7ff fe28 	bl	8000bf6 <XMC_USIC_CH_TXFIFO_SetInterruptNodePointer>
-  \details Reads the priority grouping field from the NVIC Interrupt Controller.
-  \return                Priority grouping field (SCB->AIRCR [10:8] PRIGROUP field).
- */
-__STATIC_INLINE uint32_t __NVIC_GetPriorityGrouping(void)
-{
-  return ((uint32_t)((SCB->AIRCR & SCB_AIRCR_PRIGROUP_Msk) >> SCB_AIRCR_PRIGROUP_Pos));
- 8000fa6:	4d18      	ldr	r5, [pc, #96]	; (8001008 <UART_0_init+0xc8>)
-      3U);
-  /*Set service request for rx FIFO receive interrupt*/
-  XMC_USIC_CH_RXFIFO_SetInterruptNodePointer(XMC_UART0_CH0, XMC_USIC_CH_RXFIFO_INTERRUPT_NODE_POINTER_STANDARD,
- 8000fa8:	4620      	mov	r0, r4
- 8000faa:	2110      	movs	r1, #16
- 8000fac:	2205      	movs	r2, #5
- 8000fae:	f7ff fe2e 	bl	8000c0e <XMC_USIC_CH_RXFIFO_SetInterruptNodePointer>
-       0x5U);
-  XMC_USIC_CH_RXFIFO_SetInterruptNodePointer(XMC_UART0_CH0, XMC_USIC_CH_RXFIFO_INTERRUPT_NODE_POINTER_ALTERNATE,
- 8000fb2:	2113      	movs	r1, #19
- 8000fb4:	2205      	movs	r2, #5
- 8000fb6:	4620      	mov	r0, r4
- 8000fb8:	f7ff fe29 	bl	8000c0e <XMC_USIC_CH_RXFIFO_SetInterruptNodePointer>
- 8000fbc:	68e8      	ldr	r0, [r5, #12]
- */
-__STATIC_INLINE void __NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
-{
-  if ((int32_t)(IRQn) >= 0)
-  {
-    NVIC->IP[((uint32_t)IRQn)]               = (uint8_t)((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL);
- 8000fbe:	4c13      	ldr	r4, [pc, #76]	; (800100c <UART_0_init+0xcc>)
-       0x5U);
-  /*Set priority and enable NVIC node for transmit interrupt*/
-  NVIC_SetPriority((IRQn_Type)87, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),
- 8000fc0:	f3c0 2002 	ubfx	r0, r0, #8, #3
- 8000fc4:	f7ff ffad 	bl	8000f22 <NVIC_EncodePriority.constprop.1>
- 8000fc8:	0080      	lsls	r0, r0, #2
- */
-__STATIC_INLINE void __NVIC_EnableIRQ(IRQn_Type IRQn)
-{
-  if ((int32_t)(IRQn) >= 0)
-  {
-    NVIC->ISER[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
- 8000fca:	f44f 0300 	mov.w	r3, #8388608	; 0x800000
- */
-__STATIC_INLINE void __NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
-{
-  if ((int32_t)(IRQn) >= 0)
-  {
-    NVIC->IP[((uint32_t)IRQn)]               = (uint8_t)((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL);
- 8000fce:	b2c0      	uxtb	r0, r0
- 8000fd0:	f884 0357 	strb.w	r0, [r4, #855]	; 0x357
- */
-__STATIC_INLINE void __NVIC_EnableIRQ(IRQn_Type IRQn)
-{
-  if ((int32_t)(IRQn) >= 0)
-  {
-    NVIC->ISER[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
- 8000fd4:	60a3      	str	r3, [r4, #8]
-  \details Reads the priority grouping field from the NVIC Interrupt Controller.
-  \return                Priority grouping field (SCB->AIRCR [10:8] PRIGROUP field).
- */
-__STATIC_INLINE uint32_t __NVIC_GetPriorityGrouping(void)
-{
-  return ((uint32_t)((SCB->AIRCR & SCB_AIRCR_PRIGROUP_Msk) >> SCB_AIRCR_PRIGROUP_Pos));
- 8000fd6:	68e8      	ldr	r0, [r5, #12]
-                        63U, 0U));
-  NVIC_EnableIRQ((IRQn_Type)87);
-  /*Set priority and enable NVIC node for receive interrupt*/
-  NVIC_SetPriority((IRQn_Type)89, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),
- 8000fd8:	f3c0 2002 	ubfx	r0, r0, #8, #3
- 8000fdc:	f7ff ffa1 	bl	8000f22 <NVIC_EncodePriority.constprop.1>
- */
-__STATIC_INLINE void __NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
-{
-  if ((int32_t)(IRQn) >= 0)
-  {
-    NVIC->IP[((uint32_t)IRQn)]               = (uint8_t)((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL);
- 8000fe0:	0080      	lsls	r0, r0, #2
- 8000fe2:	b2c0      	uxtb	r0, r0
- 8000fe4:	f884 0359 	strb.w	r0, [r4, #857]	; 0x359
- */
-__STATIC_INLINE void __NVIC_EnableIRQ(IRQn_Type IRQn)
-{
-  if ((int32_t)(IRQn) >= 0)
-  {
-    NVIC->ISER[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
- 8000fe8:	f04f 7300 	mov.w	r3, #33554432	; 0x2000000
- 8000fec:	60a3      	str	r3, [r4, #8]
-                      63U, 0U));
-  NVIC_EnableIRQ((IRQn_Type)89);
   return status;
 }
- 8000fee:	2000      	movs	r0, #0
- 8000ff0:	bd38      	pop	{r3, r4, r5, pc}
- 8000ff2:	bf00      	nop
- 8000ff4:	48028100 	.word	0x48028100
- 8000ff8:	40030000 	.word	0x40030000
- 8000ffc:	0800141c 	.word	0x0800141c
- 8001000:	08001440 	.word	0x08001440
- 8001004:	08001434 	.word	0x08001434
- 8001008:	e000ed00 	.word	0xe000ed00
- 800100c:	e000e100 	.word	0xe000e100
+ 8000d72:	2000      	movs	r0, #0
+ 8000d74:	bd38      	pop	{r3, r4, r5, pc}
+ 8000d76:	bf00      	nop
+ 8000d78:	48028100 	.word	0x48028100
+ 8000d7c:	40030000 	.word	0x40030000
+ 8000d80:	08001228 	.word	0x08001228
+ 8000d84:	0800124c 	.word	0x0800124c
+ 8000d88:	08001240 	.word	0x08001240
 
-08001010 <USIC0_3_IRQHandler>:
-/*Interrupt handlers*/
-/*Transmit ISR*/
-void UART_0_TX_HANDLER()
-{
-  UART_lTransmitHandler(&UART_0);
- 8001010:	4801      	ldr	r0, [pc, #4]	; (8001018 <USIC0_3_IRQHandler+0x8>)
- 8001012:	f7ff beee 	b.w	8000df2 <UART_lTransmitHandler>
- 8001016:	bf00      	nop
- 8001018:	20000000 	.word	0x20000000
-
-0800101c <USIC0_5_IRQHandler>:
-}
-
-/*Receive ISR*/
-void UART_0_RX_HANDLER()
-{
-  UART_lReceiveHandler(&UART_0);
- 800101c:	4801      	ldr	r0, [pc, #4]	; (8001024 <USIC0_5_IRQHandler+0x8>)
- 800101e:	f7ff bf2e 	b.w	8000e7e <UART_lReceiveHandler>
- 8001022:	bf00      	nop
- 8001024:	20000000 	.word	0x20000000
-
-08001028 <PWM_lCCU4_ConfigInterrupts>:
+08000d8c <PWM_lCCU4_ConfigInterrupts>:
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /* Initialize interrupts */
 void PWM_lCCU4_ConfigInterrupts(PWM_t *const handle_ptr)
 {
   if ((bool) true == handle_ptr->period_match_enable)
- 8001028:	f890 3030 	ldrb.w	r3, [r0, #48]	; 0x30
+ 8000d8c:	f890 3030 	ldrb.w	r3, [r0, #48]	; 0x30
 } /* end of PWM_lCCU4_Init() api */
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /* Initialize interrupts */
 void PWM_lCCU4_ConfigInterrupts(PWM_t *const handle_ptr)
 {
- 800102c:	b510      	push	{r4, lr}
- 800102e:	4604      	mov	r4, r0
+ 8000d90:	b510      	push	{r4, lr}
+ 8000d92:	4604      	mov	r4, r0
   if ((bool) true == handle_ptr->period_match_enable)
- 8001030:	b163      	cbz	r3, 800104c <PWM_lCCU4_ConfigInterrupts+0x24>
+ 8000d94:	b163      	cbz	r3, 8000db0 <PWM_lCCU4_ConfigInterrupts+0x24>
   {
     XMC_DEBUG("PWM_lCCU4_ConfigInterrupts:period match enable")
     XMC_CCU4_SLICE_EnableEvent(handle_ptr->ccu4_slice_ptr, XMC_CCU4_SLICE_IRQ_ID_PERIOD_MATCH);
- 8001032:	6882      	ldr	r2, [r0, #8]
+ 8000d96:	6882      	ldr	r2, [r0, #8]
 __STATIC_INLINE void XMC_CCU4_SLICE_EnableEvent(XMC_CCU4_SLICE_t *const slice,
                                                 const XMC_CCU4_SLICE_IRQ_ID_t event)
 {
   XMC_ASSERT("XMC_CCU4_SLICE_EnableEvent:Invalid Slice Pointer", XMC_CCU4_IsValidSlice(slice));
   XMC_ASSERT("XMC_CCU4_SLICE_EnableEvent:Invalid SR event", XMC_CCU4_SLICE_CHECK_INTERRUPT(event));
   slice->INTE |= ((uint32_t) 1) << ((uint32_t) event);
- 8001034:	f8d2 30a4 	ldr.w	r3, [r2, #164]	; 0xa4
- 8001038:	f043 0301 	orr.w	r3, r3, #1
- 800103c:	f8c2 30a4 	str.w	r3, [r2, #164]	; 0xa4
+ 8000d98:	f8d2 30a4 	ldr.w	r3, [r2, #164]	; 0xa4
+ 8000d9c:	f043 0301 	orr.w	r3, r3, #1
+ 8000da0:	f8c2 30a4 	str.w	r3, [r2, #164]	; 0xa4
 
     /* Bind event to Service Request Node to period match event*/
     XMC_CCU4_SLICE_SetInterruptNode(handle_ptr->ccu4_slice_ptr, XMC_CCU4_SLICE_IRQ_ID_PERIOD_MATCH,
- 8001040:	6880      	ldr	r0, [r0, #8]
- 8001042:	f894 202a 	ldrb.w	r2, [r4, #42]	; 0x2a
- 8001046:	2100      	movs	r1, #0
- 8001048:	f7ff fc8e 	bl	8000968 <XMC_CCU4_SLICE_SetInterruptNode>
+ 8000da4:	6880      	ldr	r0, [r0, #8]
+ 8000da6:	f894 202a 	ldrb.w	r2, [r4, #42]	; 0x2a
+ 8000daa:	2100      	movs	r1, #0
+ 8000dac:	f7ff fddc 	bl	8000968 <XMC_CCU4_SLICE_SetInterruptNode>
                                     handle_ptr->ccu4_slice_period_match_node);
   }
 
   if ((bool) true == handle_ptr->compare_match_enable)
- 800104c:	f894 3031 	ldrb.w	r3, [r4, #49]	; 0x31
- 8001050:	b173      	cbz	r3, 8001070 <PWM_lCCU4_ConfigInterrupts+0x48>
+ 8000db0:	f894 3031 	ldrb.w	r3, [r4, #49]	; 0x31
+ 8000db4:	b173      	cbz	r3, 8000dd4 <PWM_lCCU4_ConfigInterrupts+0x48>
   {
     XMC_DEBUG("PWM_lCCU4_ConfigInterrupts:compare match enable")
     XMC_CCU4_SLICE_EnableEvent(handle_ptr->ccu4_slice_ptr, XMC_CCU4_SLICE_IRQ_ID_COMPARE_MATCH_UP);
- 8001052:	68a2      	ldr	r2, [r4, #8]
- 8001054:	f8d2 30a4 	ldr.w	r3, [r2, #164]	; 0xa4
- 8001058:	f043 0304 	orr.w	r3, r3, #4
- 800105c:	f8c2 30a4 	str.w	r3, [r2, #164]	; 0xa4
+ 8000db6:	68a2      	ldr	r2, [r4, #8]
+ 8000db8:	f8d2 30a4 	ldr.w	r3, [r2, #164]	; 0xa4
+ 8000dbc:	f043 0304 	orr.w	r3, r3, #4
+ 8000dc0:	f8c2 30a4 	str.w	r3, [r2, #164]	; 0xa4
 
     /* Bind event to Service Request Node to compare match event */
     XMC_CCU4_SLICE_SetInterruptNode(handle_ptr->ccu4_slice_ptr, XMC_CCU4_SLICE_IRQ_ID_COMPARE_MATCH_UP,
- 8001060:	68a0      	ldr	r0, [r4, #8]
- 8001062:	f894 202b 	ldrb.w	r2, [r4, #43]	; 0x2b
- 8001066:	2102      	movs	r1, #2
+ 8000dc4:	68a0      	ldr	r0, [r4, #8]
+ 8000dc6:	f894 202b 	ldrb.w	r2, [r4, #43]	; 0x2b
+ 8000dca:	2102      	movs	r1, #2
                                     handle_ptr->ccu4_slice_compare_match_node);
   }
 }
- 8001068:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+ 8000dcc:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
   {
     XMC_DEBUG("PWM_lCCU4_ConfigInterrupts:compare match enable")
     XMC_CCU4_SLICE_EnableEvent(handle_ptr->ccu4_slice_ptr, XMC_CCU4_SLICE_IRQ_ID_COMPARE_MATCH_UP);
 
     /* Bind event to Service Request Node to compare match event */
     XMC_CCU4_SLICE_SetInterruptNode(handle_ptr->ccu4_slice_ptr, XMC_CCU4_SLICE_IRQ_ID_COMPARE_MATCH_UP,
- 800106c:	f7ff bc7c 	b.w	8000968 <XMC_CCU4_SLICE_SetInterruptNode>
- 8001070:	bd10      	pop	{r4, pc}
+ 8000dd0:	f7ff bdca 	b.w	8000968 <XMC_CCU4_SLICE_SetInterruptNode>
+ 8000dd4:	bd10      	pop	{r4, pc}
 
-08001072 <PWM_lCCU4_Start>:
+08000dd6 <PWM_lCCU4_Start>:
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /*Starts the CCU4 slice. */
 void PWM_lCCU4_Start(PWM_t *const handle_ptr)
 {
   if ((PWM_STATUS_SUCCESS == handle_ptr->state) || (PWM_STATUS_STOPPED == handle_ptr->state))
- 8001072:	f890 3029 	ldrb.w	r3, [r0, #41]	; 0x29
- 8001076:	f013 0ffb 	tst.w	r3, #251	; 0xfb
- 800107a:	d10b      	bne.n	8001094 <PWM_lCCU4_Start+0x22>
+ 8000dd6:	f890 3029 	ldrb.w	r3, [r0, #41]	; 0x29
+ 8000dda:	f013 0ffb 	tst.w	r3, #251	; 0xfb
+ 8000dde:	d10b      	bne.n	8000df8 <PWM_lCCU4_Start+0x22>
 __STATIC_INLINE void XMC_CCU4_EnableClock(XMC_CCU4_MODULE_t *const module, const uint8_t slice_number)
 {
   XMC_ASSERT("XMC_CCU4_EnableClock:Invalid Module Pointer", XMC_CCU4_IsValidModule(module));
   XMC_ASSERT("XMC_CCU4_EnableClock:Invalid Slice Number", (slice_number < 4U));
 
   module->GIDLC = ((uint32_t) 1) << slice_number;
- 800107c:	f890 102e 	ldrb.w	r1, [r0, #46]	; 0x2e
+ 8000de0:	f890 102e 	ldrb.w	r1, [r0, #46]	; 0x2e
   {
     /* Clears the IDLE mode for the slice */
     XMC_CCU4_EnableClock(handle_ptr->ccu4_kernel_ptr,handle_ptr->slice_number);
- 8001080:	6842      	ldr	r2, [r0, #4]
- 8001082:	2301      	movs	r3, #1
- 8001084:	fa03 f101 	lsl.w	r1, r3, r1
- 8001088:	60d1      	str	r1, [r2, #12]
+ 8000de4:	6842      	ldr	r2, [r0, #4]
+ 8000de6:	2301      	movs	r3, #1
+ 8000de8:	fa03 f101 	lsl.w	r1, r3, r1
+ 8000dec:	60d1      	str	r1, [r2, #12]
     XMC_CCU4_SLICE_StartTimer(handle_ptr->ccu4_slice_ptr);
- 800108a:	6882      	ldr	r2, [r0, #8]
+ 8000dee:	6882      	ldr	r2, [r0, #8]
  *  XMC_CCU4_SLICE_StopTimer().
  */
 __STATIC_INLINE void XMC_CCU4_SLICE_StartTimer(XMC_CCU4_SLICE_t *const slice)
 {
   XMC_ASSERT("XMC_CCU4_SLICE_StartTimer:Invalid Slice Pointer", XMC_CCU4_IsValidSlice(slice));
   slice->TCSET = CCU4_CC4_TCSET_TRBS_Msk;
- 800108c:	60d3      	str	r3, [r2, #12]
+ 8000df0:	60d3      	str	r3, [r2, #12]
 
     handle_ptr->state = PWM_STATUS_RUNNING;
- 800108e:	2303      	movs	r3, #3
- 8001090:	f880 3029 	strb.w	r3, [r0, #41]	; 0x29
- 8001094:	4770      	bx	lr
+ 8000df2:	2303      	movs	r3, #3
+ 8000df4:	f880 3029 	strb.w	r3, [r0, #41]	; 0x29
+ 8000df8:	4770      	bx	lr
 
-08001096 <PWM_Start>:
+08000dfa <PWM_Start>:
 void PWM_Start(PWM_t *const handle_ptr)
 {
   XMC_ASSERT("PWM_Start:Invalid handle_ptr" , (handle_ptr != NULL))
 
 #ifdef PWM_SLICE_USED_CCU4
   if (PWM_TIMER_SLICE_CCU4 == handle_ptr->timer_type)
- 8001096:	f890 3028 	ldrb.w	r3, [r0, #40]	; 0x28
- 800109a:	b90b      	cbnz	r3, 80010a0 <PWM_Start+0xa>
+ 8000dfa:	f890 3028 	ldrb.w	r3, [r0, #40]	; 0x28
+ 8000dfe:	b90b      	cbnz	r3, 8000e04 <PWM_Start+0xa>
   {
     PWM_lCCU4_Start(handle_ptr);
- 800109c:	f7ff bfe9 	b.w	8001072 <PWM_lCCU4_Start>
- 80010a0:	4770      	bx	lr
+ 8000e00:	f7ff bfe9 	b.w	8000dd6 <PWM_lCCU4_Start>
+ 8000e04:	4770      	bx	lr
 
-080010a2 <PWM_lCCU4_Init>:
-
-#ifdef PWM_SLICE_USED_CCU4
-
-/*Initialize the APP and CCU4 slice. */
-PWM_STATUS_t PWM_lCCU4_Init(PWM_t *const handle_ptr)
-{
- 80010a2:	b570      	push	{r4, r5, r6, lr}
-  PWM_STATUS_t status = PWM_STATUS_FAILURE;
-
-  XMC_ASSERT("PWM_lCCU4_Init:Invalid handle_ptr" , (handle_ptr != NULL))
-
-  if (PWM_STATUS_UNINITIALIZED == handle_ptr->state)
- 80010a4:	f890 6029 	ldrb.w	r6, [r0, #41]	; 0x29
- 80010a8:	2e02      	cmp	r6, #2
+08000e06 <PWM_lCCU4_Init>:
 
 #ifdef PWM_SLICE_USED_CCU4
 
 /*Initialize the APP and CCU4 slice. */
 PWM_STATUS_t PWM_lCCU4_Init(PWM_t *const handle_ptr)
 {
- 80010aa:	4604      	mov	r4, r0
+ 8000e06:	b570      	push	{r4, r5, r6, lr}
   PWM_STATUS_t status = PWM_STATUS_FAILURE;
 
   XMC_ASSERT("PWM_lCCU4_Init:Invalid handle_ptr" , (handle_ptr != NULL))
 
   if (PWM_STATUS_UNINITIALIZED == handle_ptr->state)
- 80010ac:	d126      	bne.n	80010fc <PWM_lCCU4_Init+0x5a>
+ 8000e08:	f890 6029 	ldrb.w	r6, [r0, #41]	; 0x29
+ 8000e0c:	2e02      	cmp	r6, #2
+
+#ifdef PWM_SLICE_USED_CCU4
+
+/*Initialize the APP and CCU4 slice. */
+PWM_STATUS_t PWM_lCCU4_Init(PWM_t *const handle_ptr)
+{
+ 8000e0e:	4604      	mov	r4, r0
+  PWM_STATUS_t status = PWM_STATUS_FAILURE;
+
+  XMC_ASSERT("PWM_lCCU4_Init:Invalid handle_ptr" , (handle_ptr != NULL))
+
+  if (PWM_STATUS_UNINITIALIZED == handle_ptr->state)
+ 8000e10:	d126      	bne.n	8000e60 <PWM_lCCU4_Init+0x5a>
   {
     /* Initialize consumed Apps */
     status = (PWM_STATUS_t)GLOBAL_CCU4_Init(handle_ptr->global_ccu4_handle);
- 80010ae:	6800      	ldr	r0, [r0, #0]
- 80010b0:	f000 f82e 	bl	8001110 <GLOBAL_CCU4_Init>
+ 8000e12:	6800      	ldr	r0, [r0, #0]
+ 8000e14:	f000 f876 	bl	8000f04 <GLOBAL_CCU4_Init>
 
     /*Initialize CCU4 slice */
     if (PWM_STATUS_SUCCESS == status)/*check GLOBAL_CCU4_Init status*/
- 80010b4:	4605      	mov	r5, r0
- 80010b6:	b9f0      	cbnz	r0, 80010f6 <PWM_lCCU4_Init+0x54>
+ 8000e18:	4605      	mov	r5, r0
+ 8000e1a:	b9f0      	cbnz	r0, 8000e5a <PWM_lCCU4_Init+0x54>
     {
       XMC_DEBUG("PWM_lCCU4_Init:Initilizing Slice")
       XMC_CCU4_SLICE_CompareInit(handle_ptr->ccu4_slice_ptr, handle_ptr->ccu4_slice_config_ptr);
- 80010b8:	68e1      	ldr	r1, [r4, #12]
- 80010ba:	68a0      	ldr	r0, [r4, #8]
- 80010bc:	f7ff fc3d 	bl	800093a <XMC_CCU4_SLICE_CompareInit>
+ 8000e1c:	68e1      	ldr	r1, [r4, #12]
+ 8000e1e:	68a0      	ldr	r0, [r4, #8]
+ 8000e20:	f7ff fd8b 	bl	800093a <XMC_CCU4_SLICE_CompareInit>
 
       /* Set the period and compare register values */
       XMC_CCU4_SLICE_SetTimerPeriodMatch(handle_ptr->ccu4_slice_ptr,
- 80010c0:	68a3      	ldr	r3, [r4, #8]
+ 8000e24:	68a3      	ldr	r3, [r4, #8]
  *  XMC_CCU4_SLICE_GetTimerPeriodMatch().
  */
 __STATIC_INLINE void XMC_CCU4_SLICE_SetTimerPeriodMatch(XMC_CCU4_SLICE_t *const slice, const uint16_t period_val)
 {
   XMC_ASSERT("XMC_CCU4_SLICE_SetTimerPeriodMatch:Invalid Slice Pointer", XMC_CCU4_IsValidSlice(slice));
   slice->PRS = (uint32_t) period_val;
- 80010c2:	8ba2      	ldrh	r2, [r4, #28]
- 80010c4:	635a      	str	r2, [r3, #52]	; 0x34
+ 8000e26:	8ba2      	ldrh	r2, [r4, #28]
+ 8000e28:	635a      	str	r2, [r3, #52]	; 0x34
     		                             (uint16_t)handle_ptr->period_value);
 
       XMC_CCU4_SLICE_SetTimerCompareMatch(handle_ptr->ccu4_slice_ptr,
- 80010c6:	68a3      	ldr	r3, [r4, #8]
+ 8000e2a:	68a3      	ldr	r3, [r4, #8]
  *  XMC_CCU4_SLICE_GetTimerPeriodMatch().
  */
 __STATIC_INLINE void XMC_CCU4_SLICE_SetTimerCompareMatch(XMC_CCU4_SLICE_t *const slice, const uint16_t compare_val)
 {
   XMC_ASSERT("XMC_CCU4_SLICE_SetTimerCompareMatch:Invalid Slice Pointer", XMC_CCU4_IsValidSlice(slice));
   slice->CRS = (uint32_t) compare_val;
- 80010c8:	8b22      	ldrh	r2, [r4, #24]
- 80010ca:	63da      	str	r2, [r3, #60]	; 0x3c
+ 8000e2c:	8b22      	ldrh	r2, [r4, #24]
+ 8000e2e:	63da      	str	r2, [r3, #60]	; 0x3c
     		                              (uint16_t)handle_ptr->compare_value);
 
       XMC_CCU4_EnableShadowTransfer(handle_ptr->ccu4_kernel_ptr, handle_ptr->shadow_mask);
- 80010cc:	6863      	ldr	r3, [r4, #4]
- 80010ce:	6a62      	ldr	r2, [r4, #36]	; 0x24
+ 8000e30:	6863      	ldr	r3, [r4, #4]
+ 8000e32:	6a62      	ldr	r2, [r4, #36]	; 0x24
  *  None.
  */
 __STATIC_INLINE void XMC_CCU4_EnableShadowTransfer(XMC_CCU4_MODULE_t *const module, const uint32_t shadow_transfer_msk)
 {
   XMC_ASSERT("XMC_CCU4_EnableShadowTransfer:Invalid Slice Pointer", XMC_CCU4_IsValidModule(module));
   module->GCSS = (uint32_t)shadow_transfer_msk;  
- 80010d0:	611a      	str	r2, [r3, #16]
+ 8000e34:	611a      	str	r2, [r3, #16]
 
       /* Initialize interrupts */
       PWM_lCCU4_ConfigInterrupts(handle_ptr);
- 80010d2:	4620      	mov	r0, r4
- 80010d4:	f7ff ffa8 	bl	8001028 <PWM_lCCU4_ConfigInterrupts>
+ 8000e36:	4620      	mov	r0, r4
+ 8000e38:	f7ff ffa8 	bl	8000d8c <PWM_lCCU4_ConfigInterrupts>
 
       XMC_GPIO_Init(handle_ptr->gpio_out_port,handle_ptr->gpio_out_pin,
- 80010d8:	6920      	ldr	r0, [r4, #16]
- 80010da:	f894 102c 	ldrb.w	r1, [r4, #44]	; 0x2c
- 80010de:	6962      	ldr	r2, [r4, #20]
- 80010e0:	f7ff f944 	bl	800036c <XMC_GPIO_Init>
+ 8000e3c:	6920      	ldr	r0, [r4, #16]
+ 8000e3e:	f894 102c 	ldrb.w	r1, [r4, #44]	; 0x2c
+ 8000e42:	6962      	ldr	r2, [r4, #20]
+ 8000e44:	f7ff fa92 	bl	800036c <XMC_GPIO_Init>
     		        handle_ptr->gpio_out_config);
 
       handle_ptr->state = PWM_STATUS_SUCCESS;
 
       /* Start the PWM generation if start at initialization is enabled */
       if ((bool) true == handle_ptr->start_control)
- 80010e4:	f894 302f 	ldrb.w	r3, [r4, #47]	; 0x2f
+ 8000e48:	f894 302f 	ldrb.w	r3, [r4, #47]	; 0x2f
       PWM_lCCU4_ConfigInterrupts(handle_ptr);
 
       XMC_GPIO_Init(handle_ptr->gpio_out_port,handle_ptr->gpio_out_pin,
     		        handle_ptr->gpio_out_config);
 
       handle_ptr->state = PWM_STATUS_SUCCESS;
- 80010e8:	f884 5029 	strb.w	r5, [r4, #41]	; 0x29
+ 8000e4c:	f884 5029 	strb.w	r5, [r4, #41]	; 0x29
 
       /* Start the PWM generation if start at initialization is enabled */
       if ((bool) true == handle_ptr->start_control)
- 80010ec:	b13b      	cbz	r3, 80010fe <PWM_lCCU4_Init+0x5c>
+ 8000e50:	b13b      	cbz	r3, 8000e62 <PWM_lCCU4_Init+0x5c>
       {
         PWM_Start(handle_ptr);
- 80010ee:	4620      	mov	r0, r4
- 80010f0:	f7ff ffd1 	bl	8001096 <PWM_Start>
- 80010f4:	e003      	b.n	80010fe <PWM_lCCU4_Init+0x5c>
+ 8000e52:	4620      	mov	r0, r4
+ 8000e54:	f7ff ffd1 	bl	8000dfa <PWM_Start>
+ 8000e58:	e003      	b.n	8000e62 <PWM_lCCU4_Init+0x5c>
       }
       status = PWM_STATUS_SUCCESS;
     }
     else
     {
       handle_ptr->state = PWM_STATUS_UNINITIALIZED;
- 80010f6:	f884 6029 	strb.w	r6, [r4, #41]	; 0x29
- 80010fa:	e000      	b.n	80010fe <PWM_lCCU4_Init+0x5c>
+ 8000e5a:	f884 6029 	strb.w	r6, [r4, #41]	; 0x29
+ 8000e5e:	e000      	b.n	8000e62 <PWM_lCCU4_Init+0x5c>
 #ifdef PWM_SLICE_USED_CCU4
 
 /*Initialize the APP and CCU4 slice. */
 PWM_STATUS_t PWM_lCCU4_Init(PWM_t *const handle_ptr)
 {
   PWM_STATUS_t status = PWM_STATUS_FAILURE;
- 80010fc:	2501      	movs	r5, #1
+ 8000e60:	2501      	movs	r5, #1
       handle_ptr->state = PWM_STATUS_UNINITIALIZED;
     }
 
   }
   return (status);
 } /* end of PWM_lCCU4_Init() api */
- 80010fe:	4628      	mov	r0, r5
- 8001100:	bd70      	pop	{r4, r5, r6, pc}
+ 8000e62:	4628      	mov	r0, r5
+ 8000e64:	bd70      	pop	{r4, r5, r6, pc}
 
-08001102 <PWM_Init>:
+08000e66 <PWM_Init>:
   status = PWM_STATUS_FAILURE;
 
   XMC_ASSERT("PWM_Init:Invalid handle_ptr" , (handle_ptr != NULL))
 
 #ifdef PWM_SLICE_USED_CCU4
   if (PWM_TIMER_SLICE_CCU4 == handle_ptr->timer_type)
- 8001102:	f890 3028 	ldrb.w	r3, [r0, #40]	; 0x28
- 8001106:	b90b      	cbnz	r3, 800110c <PWM_Init+0xa>
+ 8000e66:	f890 3028 	ldrb.w	r3, [r0, #40]	; 0x28
+ 8000e6a:	b90b      	cbnz	r3, 8000e70 <PWM_Init+0xa>
   {
     status = PWM_lCCU4_Init(handle_ptr);
- 8001108:	f7ff bfcb 	b.w	80010a2 <PWM_lCCU4_Init>
+ 8000e6c:	f7ff bfcb 	b.w	8000e06 <PWM_lCCU4_Init>
     status = PWM_lCCU8_Init(handle_ptr);
   }
 #endif
 
   return (status);
 }
- 800110c:	2001      	movs	r0, #1
- 800110e:	4770      	bx	lr
+ 8000e70:	2001      	movs	r0, #1
+ 8000e72:	4770      	bx	lr
 
-08001110 <GLOBAL_CCU4_Init>:
+08000e74 <INTERRUPT_Init>:
+  \details Reads the priority grouping field from the NVIC Interrupt Controller.
+  \return                Priority grouping field (SCB->AIRCR [10:8] PRIGROUP field).
+ */
+__STATIC_INLINE uint32_t __NVIC_GetPriorityGrouping(void)
+{
+  return ((uint32_t)((SCB->AIRCR & SCB_AIRCR_PRIGROUP_Msk) >> SCB_AIRCR_PRIGROUP_Pos));
+ 8000e74:	4b20      	ldr	r3, [pc, #128]	; (8000ef8 <INTERRUPT_Init+0x84>)
+
+/*
+ * API to initialize the INTERRUPT APP
+ */
+INTERRUPT_STATUS_t INTERRUPT_Init(const INTERRUPT_t *const handler)
+{
+ 8000e76:	b5f0      	push	{r4, r5, r6, r7, lr}
+ 8000e78:	68d9      	ldr	r1, [r3, #12]
+  XMC_ASSERT("INTERRUPT_Init:HandlePtr NULL", (handler != NULL));
+  
+#if(UC_FAMILY == XMC4)
+
+  NVIC_SetPriority(handler->node,
+ 8000e7a:	7805      	ldrb	r5, [r0, #0]
+ 8000e7c:	7842      	ldrb	r2, [r0, #1]
+ 8000e7e:	7887      	ldrb	r7, [r0, #2]
+ 8000e80:	f3c1 2102 	ubfx	r1, r1, #8, #3
+{
+  uint32_t PriorityGroupTmp = (PriorityGroup & (uint32_t)0x07UL);   /* only values 0..7 are used          */
+  uint32_t PreemptPriorityBits;
+  uint32_t SubPriorityBits;
+
+  PreemptPriorityBits = ((7UL - PriorityGroupTmp) > (uint32_t)(__NVIC_PRIO_BITS)) ? (uint32_t)(__NVIC_PRIO_BITS) : (uint32_t)(7UL - PriorityGroupTmp);
+ 8000e84:	f1c1 0e07 	rsb	lr, r1, #7
+ 8000e88:	f1be 0f06 	cmp.w	lr, #6
+ 8000e8c:	bf28      	it	cs
+ 8000e8e:	f04f 0e06 	movcs.w	lr, #6
+  SubPriorityBits     = ((PriorityGroupTmp + (uint32_t)(__NVIC_PRIO_BITS)) < (uint32_t)7UL) ? (uint32_t)0UL : (uint32_t)((PriorityGroupTmp - 7UL) + (uint32_t)(__NVIC_PRIO_BITS));
+ 8000e92:	b101      	cbz	r1, 8000e96 <INTERRUPT_Init+0x22>
+ 8000e94:	3901      	subs	r1, #1
+
+  return (
+           ((PreemptPriority & (uint32_t)((1UL << (PreemptPriorityBits)) - 1UL)) << SubPriorityBits) |
+           ((SubPriority     & (uint32_t)((1UL << (SubPriorityBits    )) - 1UL)))
+ 8000e96:	2401      	movs	r4, #1
+ 8000e98:	fa04 f301 	lsl.w	r3, r4, r1
+ 8000e9c:	3b01      	subs	r3, #1
+
+  PreemptPriorityBits = ((7UL - PriorityGroupTmp) > (uint32_t)(__NVIC_PRIO_BITS)) ? (uint32_t)(__NVIC_PRIO_BITS) : (uint32_t)(7UL - PriorityGroupTmp);
+  SubPriorityBits     = ((PriorityGroupTmp + (uint32_t)(__NVIC_PRIO_BITS)) < (uint32_t)7UL) ? (uint32_t)0UL : (uint32_t)((PriorityGroupTmp - 7UL) + (uint32_t)(__NVIC_PRIO_BITS));
+
+  return (
+           ((PreemptPriority & (uint32_t)((1UL << (PreemptPriorityBits)) - 1UL)) << SubPriorityBits) |
+ 8000e9e:	fa04 f40e 	lsl.w	r4, r4, lr
+           ((SubPriority     & (uint32_t)((1UL << (SubPriorityBits    )) - 1UL)))
+ 8000ea2:	ea03 0607 	and.w	r6, r3, r7
+
+  PreemptPriorityBits = ((7UL - PriorityGroupTmp) > (uint32_t)(__NVIC_PRIO_BITS)) ? (uint32_t)(__NVIC_PRIO_BITS) : (uint32_t)(7UL - PriorityGroupTmp);
+  SubPriorityBits     = ((PriorityGroupTmp + (uint32_t)(__NVIC_PRIO_BITS)) < (uint32_t)7UL) ? (uint32_t)0UL : (uint32_t)((PriorityGroupTmp - 7UL) + (uint32_t)(__NVIC_PRIO_BITS));
+
+  return (
+           ((PreemptPriority & (uint32_t)((1UL << (PreemptPriorityBits)) - 1UL)) << SubPriorityBits) |
+ 8000ea6:	1e63      	subs	r3, r4, #1
+ 8000ea8:	4013      	ands	r3, r2
+ 8000eaa:	408b      	lsls	r3, r1
+  \param [in]  priority  Priority to set.
+  \note    The priority cannot be set for every processor exception.
+ */
+__STATIC_INLINE void __NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
+{
+  if ((int32_t)(IRQn) >= 0)
+ 8000eac:	b26a      	sxtb	r2, r5
+ 8000eae:	2a00      	cmp	r2, #0
+  uint32_t SubPriorityBits;
+
+  PreemptPriorityBits = ((7UL - PriorityGroupTmp) > (uint32_t)(__NVIC_PRIO_BITS)) ? (uint32_t)(__NVIC_PRIO_BITS) : (uint32_t)(7UL - PriorityGroupTmp);
+  SubPriorityBits     = ((PriorityGroupTmp + (uint32_t)(__NVIC_PRIO_BITS)) < (uint32_t)7UL) ? (uint32_t)0UL : (uint32_t)((PriorityGroupTmp - 7UL) + (uint32_t)(__NVIC_PRIO_BITS));
+
+  return (
+ 8000eb0:	ea43 0306 	orr.w	r3, r3, r6
+ 8000eb4:	ea4f 0383 	mov.w	r3, r3, lsl #2
+ */
+__STATIC_INLINE void __NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
+{
+  if ((int32_t)(IRQn) >= 0)
+  {
+    NVIC->IP[((uint32_t)IRQn)]               = (uint8_t)((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL);
+ 8000eb8:	bfaf      	iteee	ge
+ 8000eba:	f102 4260 	addge.w	r2, r2, #3758096384	; 0xe0000000
+  }
+  else
+  {
+    SCB->SHP[(((uint32_t)IRQn) & 0xFUL)-4UL] = (uint8_t)((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL);
+ 8000ebe:	f005 050f 	andlt.w	r5, r5, #15
+ 8000ec2:	4a0e      	ldrlt	r2, [pc, #56]	; (8000efc <INTERRUPT_Init+0x88>)
+ 8000ec4:	b2db      	uxtblt	r3, r3
+ */
+__STATIC_INLINE void __NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
+{
+  if ((int32_t)(IRQn) >= 0)
+  {
+    NVIC->IP[((uint32_t)IRQn)]               = (uint8_t)((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL);
+ 8000ec6:	bfa5      	ittet	ge
+ 8000ec8:	f502 4261 	addge.w	r2, r2, #57600	; 0xe100
+ 8000ecc:	b2db      	uxtbge	r3, r3
+  }
+  else
+  {
+    SCB->SHP[(((uint32_t)IRQn) & 0xFUL)-4UL] = (uint8_t)((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL);
+ 8000ece:	5553      	strblt	r3, [r2, r5]
+ */
+__STATIC_INLINE void __NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
+{
+  if ((int32_t)(IRQn) >= 0)
+  {
+    NVIC->IP[((uint32_t)IRQn)]               = (uint8_t)((priority << (8U - __NVIC_PRIO_BITS)) & (uint32_t)0xFFUL);
+ 8000ed0:	f882 3300 	strbge.w	r3, [r2, #768]	; 0x300
+                   NVIC_EncodePriority(NVIC_GetPriorityGrouping(),
+                                       handler->priority,
+                                       handler->subpriority));
+  if (handler->enable_at_init == true)
+ 8000ed4:	78c3      	ldrb	r3, [r0, #3]
+ 8000ed6:	b16b      	cbz	r3, 8000ef4 <INTERRUPT_Init+0x80>
+ 8000ed8:	7802      	ldrb	r2, [r0, #0]
+  \param [in]      IRQn  Device specific interrupt number.
+  \note    IRQn must not be negative.
+ */
+__STATIC_INLINE void __NVIC_EnableIRQ(IRQn_Type IRQn)
+{
+  if ((int32_t)(IRQn) >= 0)
+ 8000eda:	b253      	sxtb	r3, r2
+ 8000edc:	2b00      	cmp	r3, #0
+  {
+    NVIC->ISER[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+ 8000ede:	bfa1      	itttt	ge
+ 8000ee0:	2101      	movge	r1, #1
+ 8000ee2:	f002 021f 	andge.w	r2, r2, #31
+ 8000ee6:	fa01 f202 	lslge.w	r2, r1, r2
+ 8000eea:	095b      	lsrge	r3, r3, #5
+ 8000eec:	bfa4      	itt	ge
+ 8000eee:	4904      	ldrge	r1, [pc, #16]	; (8000f00 <INTERRUPT_Init+0x8c>)
+ 8000ef0:	f841 2023 	strge.w	r2, [r1, r3, lsl #2]
+    INTERRUPT_Enable(handler);
+  }
+#endif
+
+  return (INTERRUPT_STATUS_SUCCESS);
+}
+ 8000ef4:	2000      	movs	r0, #0
+ 8000ef6:	bdf0      	pop	{r4, r5, r6, r7, pc}
+ 8000ef8:	e000ed00 	.word	0xe000ed00
+ 8000efc:	e000ed14 	.word	0xe000ed14
+ 8000f00:	e000e100 	.word	0xe000e100
+
+08000f04 <GLOBAL_CCU4_Init>:
 /* Initializes the slice with the generated configuration */
 GLOBAL_CCU4_STATUS_t GLOBAL_CCU4_Init(GLOBAL_CCU4_t* handle)
 {
   XMC_ASSERT("GLOBAL_CCU4_Init:NULL handler", (NULL != handle));
 
   if (false == handle->is_initialized)
- 8001110:	7b43      	ldrb	r3, [r0, #13]
+ 8000f04:	7b43      	ldrb	r3, [r0, #13]
   return version;
 }
 
 /* Initializes the slice with the generated configuration */
 GLOBAL_CCU4_STATUS_t GLOBAL_CCU4_Init(GLOBAL_CCU4_t* handle)
 {
- 8001112:	b510      	push	{r4, lr}
- 8001114:	4604      	mov	r4, r0
+ 8000f06:	b510      	push	{r4, lr}
+ 8000f08:	4604      	mov	r4, r0
   XMC_ASSERT("GLOBAL_CCU4_Init:NULL handler", (NULL != handle));
 
   if (false == handle->is_initialized)
- 8001116:	b94b      	cbnz	r3, 800112c <GLOBAL_CCU4_Init+0x1c>
+ 8000f0a:	b94b      	cbnz	r3, 8000f20 <GLOBAL_CCU4_Init+0x1c>
   {
     /* Enable CCU4 module */
     XMC_CCU4_Init(handle->module_ptr,handle->mcs_action);
- 8001118:	6880      	ldr	r0, [r0, #8]
- 800111a:	7b21      	ldrb	r1, [r4, #12]
- 800111c:	f7ff fbfe 	bl	800091c <XMC_CCU4_Init>
+ 8000f0c:	6880      	ldr	r0, [r0, #8]
+ 8000f0e:	7b21      	ldrb	r1, [r4, #12]
+ 8000f10:	f7ff fd04 	bl	800091c <XMC_CCU4_Init>
     /* Start the prescaler */
     XMC_CCU4_StartPrescaler(handle->module_ptr);
- 8001120:	68a3      	ldr	r3, [r4, #8]
+ 8000f14:	68a3      	ldr	r3, [r4, #8]
  * XMC_CCU4_StopPrescaler().
  */
 __STATIC_INLINE void XMC_CCU4_StartPrescaler(XMC_CCU4_MODULE_t *const module)
 {
   XMC_ASSERT("XMC_CCU4_StartPrescaler:Invalid Module Pointer", XMC_CCU4_IsValidModule(module));
   module->GIDLC = (uint32_t) CCU4_GIDLC_SPRB_Msk;
- 8001122:	f44f 7280 	mov.w	r2, #256	; 0x100
- 8001126:	60da      	str	r2, [r3, #12]
+ 8000f16:	f44f 7280 	mov.w	r2, #256	; 0x100
+ 8000f1a:	60da      	str	r2, [r3, #12]
     /* Restricts multiple initializations */
     handle->is_initialized = true;
- 8001128:	2301      	movs	r3, #1
- 800112a:	7363      	strb	r3, [r4, #13]
+ 8000f1c:	2301      	movs	r3, #1
+ 8000f1e:	7363      	strb	r3, [r4, #13]
   }
 
   return (GLOBAL_CCU4_STATUS_SUCCESS);
 }
- 800112c:	2000      	movs	r0, #0
- 800112e:	bd10      	pop	{r4, pc}
+ 8000f20:	2000      	movs	r0, #0
+ 8000f22:	bd10      	pop	{r4, pc}
 
-08001130 <SystemCoreSetup>:
+08000f24 <SystemCoreSetup>:
 __STATIC_INLINE void __NVIC_SetPriorityGrouping(uint32_t PriorityGroup)
 {
   uint32_t reg_value;
   uint32_t PriorityGroupTmp = (PriorityGroup & (uint32_t)0x07UL);             /* only values 0..7 are used          */
 
   reg_value  =  SCB->AIRCR;                                                   /* read old register configuration    */
- 8001130:	4b19      	ldr	r3, [pc, #100]	; (8001198 <SystemCoreSetup+0x68>)
+ 8000f24:	4b19      	ldr	r3, [pc, #100]	; (8000f8c <SystemCoreSetup+0x68>)
   reg_value &= ~((uint32_t)(SCB_AIRCR_VECTKEY_Msk | SCB_AIRCR_PRIGROUP_Msk)); /* clear bits to change               */
   reg_value  =  (reg_value                                   |
- 8001132:	4a1a      	ldr	r2, [pc, #104]	; (800119c <SystemCoreSetup+0x6c>)
+ 8000f26:	4a1a      	ldr	r2, [pc, #104]	; (8000f90 <SystemCoreSetup+0x6c>)
 __STATIC_INLINE void __NVIC_SetPriorityGrouping(uint32_t PriorityGroup)
 {
   uint32_t reg_value;
   uint32_t PriorityGroupTmp = (PriorityGroup & (uint32_t)0x07UL);             /* only values 0..7 are used          */
 
   reg_value  =  SCB->AIRCR;                                                   /* read old register configuration    */
- 8001134:	68d9      	ldr	r1, [r3, #12]
+ 8000f28:	68d9      	ldr	r1, [r3, #12]
   reg_value &= ~((uint32_t)(SCB_AIRCR_VECTKEY_Msk | SCB_AIRCR_PRIGROUP_Msk)); /* clear bits to change               */
- 8001136:	f421 61e0 	bic.w	r1, r1, #1792	; 0x700
- 800113a:	0409      	lsls	r1, r1, #16
- 800113c:	0c09      	lsrs	r1, r1, #16
+ 8000f2a:	f421 61e0 	bic.w	r1, r1, #1792	; 0x700
+ 8000f2e:	0409      	lsls	r1, r1, #16
+ 8000f30:	0c09      	lsrs	r1, r1, #16
   reg_value  =  (reg_value                                   |
- 800113e:	430a      	orrs	r2, r1
+ 8000f32:	430a      	orrs	r2, r1
                 ((uint32_t)0x5FAUL << SCB_AIRCR_VECTKEY_Pos) |
                 (PriorityGroupTmp << SCB_AIRCR_PRIGROUP_Pos)  );              /* Insert write key and priority group */
   SCB->AIRCR =  reg_value;
- 8001140:	60da      	str	r2, [r3, #12]
+ 8000f34:	60da      	str	r2, [r3, #12]
   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
            Can only be executed in Privileged modes.
  */
 __STATIC_FORCEINLINE void __disable_irq(void)
 {
   __ASM volatile ("cpsid i" : : : "memory");
- 8001142:	b672      	cpsid	i
+ 8000f36:	b672      	cpsid	i
 	
   /* relocate vector table */
   __disable_irq();
 
 #if !defined(__TASKING__)
   SCB->VTOR = (uint32_t)(&__Vectors);
- 8001144:	4a16      	ldr	r2, [pc, #88]	; (80011a0 <SystemCoreSetup+0x70>)
- 8001146:	609a      	str	r2, [r3, #8]
+ 8000f38:	4a16      	ldr	r2, [pc, #88]	; (8000f94 <SystemCoreSetup+0x70>)
+ 8000f3a:	609a      	str	r2, [r3, #8]
   \details Acts as a special kind of Data Memory Barrier.
            It completes when all explicit memory accesses before this instruction complete.
  */
 __STATIC_FORCEINLINE void __DSB(void)
 {
   __ASM volatile ("dsb 0xF":::"memory");
- 8001148:	f3bf 8f4f 	dsb	sy
+ 8000f3c:	f3bf 8f4f 	dsb	sy
   \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
            Can only be executed in Privileged modes.
  */
 __STATIC_FORCEINLINE void __enable_irq(void)
 {
   __ASM volatile ("cpsie i" : : : "memory");
- 800114c:	b662      	cpsie	i
+ 8000f40:	b662      	cpsie	i
 
   __DSB();
   __enable_irq();
 	
 #if ((__FPU_PRESENT == 1) && (__FPU_USED == 1))
   SCB->CPACR |= ((3UL << 10*2) |                 /* set CP10 Full Access */
- 800114e:	f8d3 2088 	ldr.w	r2, [r3, #136]	; 0x88
+ 8000f42:	f8d3 2088 	ldr.w	r2, [r3, #136]	; 0x88
 				 (3UL << 11*2)  );               /* set CP11 Full Access */
 #endif
   /* Set flash wait states */
   temp = FLASH0->FCON;
- 8001152:	4814      	ldr	r0, [pc, #80]	; (80011a4 <SystemCoreSetup+0x74>)
+ 8000f46:	4814      	ldr	r0, [pc, #80]	; (8000f98 <SystemCoreSetup+0x74>)
 
   __DSB();
   __enable_irq();
 	
 #if ((__FPU_PRESENT == 1) && (__FPU_USED == 1))
   SCB->CPACR |= ((3UL << 10*2) |                 /* set CP10 Full Access */
- 8001154:	f442 0270 	orr.w	r2, r2, #15728640	; 0xf00000
+ 8000f48:	f442 0270 	orr.w	r2, r2, #15728640	; 0xf00000
 				 (3UL << 11*2)  );               /* set CP11 Full Access */
 #endif
   /* Set flash wait states */
   temp = FLASH0->FCON;
- 8001158:	f241 0114 	movw	r1, #4116	; 0x1014
+ 8000f4c:	f241 0114 	movw	r1, #4116	; 0x1014
 
   __DSB();
   __enable_irq();
 	
 #if ((__FPU_PRESENT == 1) && (__FPU_USED == 1))
   SCB->CPACR |= ((3UL << 10*2) |                 /* set CP10 Full Access */
- 800115c:	f8c3 2088 	str.w	r2, [r3, #136]	; 0x88
+ 8000f50:	f8c3 2088 	str.w	r2, [r3, #136]	; 0x88
 				 (3UL << 11*2)  );               /* set CP11 Full Access */
 #endif
   /* Set flash wait states */
   temp = FLASH0->FCON;
- 8001160:	5842      	ldr	r2, [r0, r1]
+ 8000f54:	5842      	ldr	r2, [r0, r1]
   temp &= ~FLASH_FCON_WSPFLASH_Msk;
- 8001162:	f022 020f 	bic.w	r2, r2, #15
+ 8000f56:	f022 020f 	bic.w	r2, r2, #15
   temp |= PMU_FLASH_WS;
- 8001166:	f042 0203 	orr.w	r2, r2, #3
+ 8000f5a:	f042 0203 	orr.w	r2, r2, #3
   FLASH0->FCON = temp;
- 800116a:	5042      	str	r2, [r0, r1]
+ 8000f5e:	5042      	str	r2, [r0, r1]
 
 
   /* Disable divide by zero trap */
   SCB->CCR &= ~SCB_CCR_DIV_0_TRP_Msk; 
- 800116c:	695a      	ldr	r2, [r3, #20]
- 800116e:	f022 0210 	bic.w	r2, r2, #16
- 8001172:	615a      	str	r2, [r3, #20]
+ 8000f60:	695a      	ldr	r2, [r3, #20]
+ 8000f62:	f022 0210 	bic.w	r2, r2, #16
+ 8000f66:	615a      	str	r2, [r3, #20]
 
   /* Disable unaligned memory access trap */
   SCB->CCR &= ~SCB_CCR_UNALIGN_TRP_Msk; 
- 8001174:	695a      	ldr	r2, [r3, #20]
- 8001176:	f022 0208 	bic.w	r2, r2, #8
- 800117a:	615a      	str	r2, [r3, #20]
+ 8000f68:	695a      	ldr	r2, [r3, #20]
+ 8000f6a:	f022 0208 	bic.w	r2, r2, #8
+ 8000f6e:	615a      	str	r2, [r3, #20]
 
   /* Disable memory management fault */
   SCB->SHCSR &= ~SCB_SHCSR_MEMFAULTENA_Msk;
- 800117c:	6a5a      	ldr	r2, [r3, #36]	; 0x24
- 800117e:	f422 3280 	bic.w	r2, r2, #65536	; 0x10000
- 8001182:	625a      	str	r2, [r3, #36]	; 0x24
+ 8000f70:	6a5a      	ldr	r2, [r3, #36]	; 0x24
+ 8000f72:	f422 3280 	bic.w	r2, r2, #65536	; 0x10000
+ 8000f76:	625a      	str	r2, [r3, #36]	; 0x24
 
   /* Disable bus fault */
   SCB->SHCSR &= ~SCB_SHCSR_BUSFAULTENA_Msk;
- 8001184:	6a5a      	ldr	r2, [r3, #36]	; 0x24
- 8001186:	f422 3200 	bic.w	r2, r2, #131072	; 0x20000
- 800118a:	625a      	str	r2, [r3, #36]	; 0x24
+ 8000f78:	6a5a      	ldr	r2, [r3, #36]	; 0x24
+ 8000f7a:	f422 3200 	bic.w	r2, r2, #131072	; 0x20000
+ 8000f7e:	625a      	str	r2, [r3, #36]	; 0x24
 
   /* Disable usage fault */
   SCB->SHCSR &= ~SCB_SHCSR_USGFAULTENA_Msk;
- 800118c:	6a5a      	ldr	r2, [r3, #36]	; 0x24
- 800118e:	f422 2280 	bic.w	r2, r2, #262144	; 0x40000
- 8001192:	625a      	str	r2, [r3, #36]	; 0x24
- 8001194:	4770      	bx	lr
- 8001196:	bf00      	nop
- 8001198:	e000ed00 	.word	0xe000ed00
- 800119c:	05fa0100 	.word	0x05fa0100
- 80011a0:	08000000 	.word	0x08000000
- 80011a4:	58001000 	.word	0x58001000
+ 8000f80:	6a5a      	ldr	r2, [r3, #36]	; 0x24
+ 8000f82:	f422 2280 	bic.w	r2, r2, #262144	; 0x40000
+ 8000f86:	625a      	str	r2, [r3, #36]	; 0x24
+ 8000f88:	4770      	bx	lr
+ 8000f8a:	bf00      	nop
+ 8000f8c:	e000ed00 	.word	0xe000ed00
+ 8000f90:	05fa0100 	.word	0x05fa0100
+ 8000f94:	08000000 	.word	0x08000000
+ 8000f98:	58001000 	.word	0x58001000
 
-080011a8 <CLOCK_XMC4_Init>:
+08000f9c <CLOCK_XMC4_Init>:
 {
   CLOCK_XMC4_STATUS_t status = CLOCK_XMC4_STATUS_SUCCESS;
 
   XMC_ASSERT("CLOCK_XMC4 APP handle function pointer uninitialized", (handle != NULL));
 
   handle->init_status = true;
- 80011a8:	2301      	movs	r3, #1
- 80011aa:	7003      	strb	r3, [r0, #0]
+ 8000f9c:	2301      	movs	r3, #1
+ 8000f9e:	7003      	strb	r3, [r0, #0]
 
   return (status);
 }
- 80011ac:	2000      	movs	r0, #0
- 80011ae:	4770      	bx	lr
+ 8000fa0:	2000      	movs	r0, #0
+ 8000fa2:	4770      	bx	lr
 
-080011b0 <OSCHP_GetFrequency>:
+08000fa4 <OSCHP_GetFrequency>:
 #ifdef CLOCK_XMC4_OSCHP_ENABLED
 /*  API to retrieve high precision external oscillator frequency */
 uint32_t OSCHP_GetFrequency(void)
 {
   return (CLOCK_XMC4_OSCHP_FREQUENCY);
 }
- 80011b0:	4800      	ldr	r0, [pc, #0]	; (80011b4 <OSCHP_GetFrequency+0x4>)
- 80011b2:	4770      	bx	lr
- 80011b4:	00b71b00 	.word	0x00b71b00
+ 8000fa4:	4800      	ldr	r0, [pc, #0]	; (8000fa8 <OSCHP_GetFrequency+0x4>)
+ 8000fa6:	4770      	bx	lr
+ 8000fa8:	00b71b00 	.word	0x00b71b00
 
-080011b8 <SystemCoreClockSetup>:
+08000fac <SystemCoreClockSetup>:
 * @note   -
 * @param  None
 * @retval None
 */
 void SystemCoreClockSetup(void)
 {
- 80011b8:	b530      	push	{r4, r5, lr}
+ 8000fac:	b530      	push	{r4, r5, lr}
   /* Local data structure for initializing the clock functional block */
   const XMC_SCU_CLOCK_CONFIG_t CLOCK_XMC4_0_CONFIG =
- 80011ba:	4d11      	ldr	r5, [pc, #68]	; (8001200 <SystemCoreClockSetup+0x48>)
- 80011bc:	cd0f      	ldmia	r5!, {r0, r1, r2, r3}
+ 8000fae:	4d11      	ldr	r5, [pc, #68]	; (8000ff4 <SystemCoreClockSetup+0x48>)
+ 8000fb0:	cd0f      	ldmia	r5!, {r0, r1, r2, r3}
 * @note   -
 * @param  None
 * @retval None
 */
 void SystemCoreClockSetup(void)
 {
- 80011be:	b087      	sub	sp, #28
+ 8000fb2:	b087      	sub	sp, #28
   /* Local data structure for initializing the clock functional block */
   const XMC_SCU_CLOCK_CONFIG_t CLOCK_XMC4_0_CONFIG =
- 80011c0:	ac01      	add	r4, sp, #4
- 80011c2:	c40f      	stmia	r4!, {r0, r1, r2, r3}
- 80011c4:	682b      	ldr	r3, [r5, #0]
- 80011c6:	6023      	str	r3, [r4, #0]
+ 8000fb4:	ac01      	add	r4, sp, #4
+ 8000fb6:	c40f      	stmia	r4!, {r0, r1, r2, r3}
+ 8000fb8:	682b      	ldr	r3, [r5, #0]
+ 8000fba:	6023      	str	r3, [r4, #0]
 #endif
     /* Peripheral Clock Divider Value */
     .fperipheral_clkdiv = 1U
   };
   /* Initialize the SCU clock */
   XMC_SCU_CLOCK_Init(&CLOCK_XMC4_0_CONFIG);
- 80011c8:	a801      	add	r0, sp, #4
- 80011ca:	f7ff fb31 	bl	8000830 <XMC_SCU_CLOCK_Init>
+ 8000fbc:	a801      	add	r0, sp, #4
+ 8000fbe:	f7ff fc37 	bl	8000830 <XMC_SCU_CLOCK_Init>
   /* RTC source clock */
   XMC_SCU_HIB_SetRtcClockSource(XMC_SCU_HIB_RTCCLKSRC_OSI);
- 80011ce:	2000      	movs	r0, #0
- 80011d0:	f7ff f97a 	bl	80004c8 <XMC_SCU_HIB_SetRtcClockSource>
+ 8000fc2:	2000      	movs	r0, #0
+ 8000fc4:	f7ff fa80 	bl	80004c8 <XMC_SCU_HIB_SetRtcClockSource>
   
 #ifdef CLOCK_XMC4_USBCLK_ENABLED  
   /* USB/SDMMC source clock */
   XMC_SCU_CLOCK_SetUsbClockSource(XMC_SCU_CLOCK_USBCLKSRC_USBPLL);
- 80011d4:	2000      	movs	r0, #0
- 80011d6:	f7ff f953 	bl	8000480 <XMC_SCU_CLOCK_SetUsbClockSource>
+ 8000fc8:	2000      	movs	r0, #0
+ 8000fca:	f7ff fa59 	bl	8000480 <XMC_SCU_CLOCK_SetUsbClockSource>
   /* USB/SDMMC divider setting */
   XMC_SCU_CLOCK_SetUsbClockDivider(4U);
- 80011da:	2004      	movs	r0, #4
- 80011dc:	f7ff f9bc 	bl	8000558 <XMC_SCU_CLOCK_SetUsbClockDivider>
+ 8000fce:	2004      	movs	r0, #4
+ 8000fd0:	f7ff fac2 	bl	8000558 <XMC_SCU_CLOCK_SetUsbClockDivider>
 #endif
   /* Start USB PLL */
   XMC_SCU_CLOCK_StartUsbPll(1U, 32U);
- 80011e0:	2120      	movs	r1, #32
- 80011e2:	2001      	movs	r0, #1
- 80011e4:	f7ff f9dc 	bl	80005a0 <XMC_SCU_CLOCK_StartUsbPll>
+ 8000fd4:	2120      	movs	r1, #32
+ 8000fd6:	2001      	movs	r0, #1
+ 8000fd8:	f7ff fae2 	bl	80005a0 <XMC_SCU_CLOCK_StartUsbPll>
 
 #ifdef CLOCK_XMC4_WDTCLK_ENABLED    
   /* WDT source clock */
   XMC_SCU_CLOCK_SetWdtClockSource(XMC_SCU_CLOCK_WDTCLKSRC_OFI);
- 80011e8:	2000      	movs	r0, #0
- 80011ea:	f7ff f953 	bl	8000494 <XMC_SCU_CLOCK_SetWdtClockSource>
+ 8000fdc:	2000      	movs	r0, #0
+ 8000fde:	f7ff fa59 	bl	8000494 <XMC_SCU_CLOCK_SetWdtClockSource>
   /* WDT divider setting */
   XMC_SCU_CLOCK_SetWdtClockDivider(1U);
- 80011ee:	2001      	movs	r0, #1
- 80011f0:	f7ff f9c6 	bl	8000580 <XMC_SCU_CLOCK_SetWdtClockDivider>
+ 8000fe2:	2001      	movs	r0, #1
+ 8000fe4:	f7ff facc 	bl	8000580 <XMC_SCU_CLOCK_SetWdtClockDivider>
 #endif
 
 #ifdef CLOCK_XMC4_EBUCLK_ENABLED 
   /* EBU divider setting */
   XMC_SCU_CLOCK_SetEbuClockDivider(1U);
- 80011f4:	2001      	movs	r0, #1
- 80011f6:	f7ff f9b9 	bl	800056c <XMC_SCU_CLOCK_SetEbuClockDivider>
+ 8000fe8:	2001      	movs	r0, #1
+ 8000fea:	f7ff fabf 	bl	800056c <XMC_SCU_CLOCK_SetEbuClockDivider>
 #endif
 
 }
- 80011fa:	b007      	add	sp, #28
- 80011fc:	bd30      	pop	{r4, r5, pc}
- 80011fe:	bf00      	nop
- 8001200:	08001488 	.word	0x08001488
+ 8000fee:	b007      	add	sp, #28
+ 8000ff0:	bd30      	pop	{r4, r5, pc}
+ 8000ff2:	bf00      	nop
+ 8000ff4:	08001298 	.word	0x08001298
 
-08001204 <DAVE_Init>:
+08000ff8 <DAVE_Init>:
  * @param[in]  None
  *
  * @return  DAVE_STATUS_t <BR>
  ******************************************************************************/
 __WEAK DAVE_STATUS_t DAVE_Init(void)
 {
- 8001204:	b508      	push	{r3, lr}
+ 8000ff8:	b508      	push	{r3, lr}
   DAVE_STATUS_t init_status;
   
   init_status = DAVE_STATUS_SUCCESS;
      /** @Initialization of APPs Init Functions */
      init_status = (DAVE_STATUS_t)CLOCK_XMC4_Init(&CLOCK_XMC4_0);
- 8001206:	480b      	ldr	r0, [pc, #44]	; (8001234 <DAVE_Init+0x30>)
- 8001208:	f7ff ffce 	bl	80011a8 <CLOCK_XMC4_Init>
+ 8000ffa:	480d      	ldr	r0, [pc, #52]	; (8001030 <DAVE_Init+0x38>)
+ 8000ffc:	f7ff ffce 	bl	8000f9c <CLOCK_XMC4_Init>
 
   if (init_status == DAVE_STATUS_SUCCESS)
- 800120c:	b980      	cbnz	r0, 8001230 <DAVE_Init+0x2c>
+ 8001000:	b9a0      	cbnz	r0, 800102c <DAVE_Init+0x34>
   {
 	 /**  Initialization of PWM APP instance PWM_MOTOR_0 */
 	 init_status = (DAVE_STATUS_t)PWM_Init(&PWM_MOTOR_0); 
- 800120e:	480a      	ldr	r0, [pc, #40]	; (8001238 <DAVE_Init+0x34>)
- 8001210:	f7ff ff77 	bl	8001102 <PWM_Init>
+ 8001002:	480c      	ldr	r0, [pc, #48]	; (8001034 <DAVE_Init+0x3c>)
+ 8001004:	f7ff ff2f 	bl	8000e66 <PWM_Init>
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
- 8001214:	b960      	cbnz	r0, 8001230 <DAVE_Init+0x2c>
+ 8001008:	b980      	cbnz	r0, 800102c <DAVE_Init+0x34>
   {
 	 /**  Initialization of UART APP instance UART_0 */
 	 init_status = (DAVE_STATUS_t)UART_Init(&UART_0); 
- 8001216:	4809      	ldr	r0, [pc, #36]	; (800123c <DAVE_Init+0x38>)
- 8001218:	f7ff fd74 	bl	8000d04 <UART_Init>
+ 800100a:	480b      	ldr	r0, [pc, #44]	; (8001038 <DAVE_Init+0x40>)
+ 800100c:	f7ff fe13 	bl	8000c36 <UART_Init>
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
- 800121c:	b940      	cbnz	r0, 8001230 <DAVE_Init+0x2c>
+ 8001010:	b960      	cbnz	r0, 800102c <DAVE_Init+0x34>
   {
 	 /**  Initialization of PWM APP instance PWM_MOTOR_1 */
 	 init_status = (DAVE_STATUS_t)PWM_Init(&PWM_MOTOR_1); 
- 800121e:	4808      	ldr	r0, [pc, #32]	; (8001240 <DAVE_Init+0x3c>)
- 8001220:	f7ff ff6f 	bl	8001102 <PWM_Init>
+ 8001012:	480a      	ldr	r0, [pc, #40]	; (800103c <DAVE_Init+0x44>)
+ 8001014:	f7ff ff27 	bl	8000e66 <PWM_Init>
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
- 8001224:	b920      	cbnz	r0, 8001230 <DAVE_Init+0x2c>
+ 8001018:	b940      	cbnz	r0, 800102c <DAVE_Init+0x34>
   {
 	 /**  Initialization of PWM APP instance PWM_MOTOR_2 */
 	 init_status = (DAVE_STATUS_t)PWM_Init(&PWM_MOTOR_2); 
- 8001226:	4807      	ldr	r0, [pc, #28]	; (8001244 <DAVE_Init+0x40>)
+ 800101a:	4809      	ldr	r0, [pc, #36]	; (8001040 <DAVE_Init+0x48>)
+ 800101c:	f7ff ff23 	bl	8000e66 <PWM_Init>
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+ 8001020:	b920      	cbnz	r0, 800102c <DAVE_Init+0x34>
+  {
+	 /**  Initialization of INTERRUPT APP instance UART_ISR */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&UART_ISR); 
+ 8001022:	4808      	ldr	r0, [pc, #32]	; (8001044 <DAVE_Init+0x4c>)
    }  
   return init_status;
 } /**  End of function DAVE_Init */
- 8001228:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
-	 init_status = (DAVE_STATUS_t)PWM_Init(&PWM_MOTOR_1); 
+ 8001024:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
+	 init_status = (DAVE_STATUS_t)PWM_Init(&PWM_MOTOR_2); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of PWM APP instance PWM_MOTOR_2 */
-	 init_status = (DAVE_STATUS_t)PWM_Init(&PWM_MOTOR_2); 
- 800122c:	f7ff bf69 	b.w	8001102 <PWM_Init>
+	 /**  Initialization of INTERRUPT APP instance UART_ISR */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&UART_ISR); 
+ 8001028:	f7ff bf24 	b.w	8000e74 <INTERRUPT_Init>
    }  
   return init_status;
 } /**  End of function DAVE_Init */
- 8001230:	bd08      	pop	{r3, pc}
- 8001232:	bf00      	nop
- 8001234:	200000d4 	.word	0x200000d4
- 8001238:	20000074 	.word	0x20000074
- 800123c:	20000000 	.word	0x20000000
- 8001240:	2000000c 	.word	0x2000000c
- 8001244:	20000040 	.word	0x20000040
+ 800102c:	bd08      	pop	{r3, pc}
+ 800102e:	bf00      	nop
+ 8001030:	200000d4 	.word	0x200000d4
+ 8001034:	20000074 	.word	0x20000074
+ 8001038:	20000000 	.word	0x20000000
+ 800103c:	2000000c 	.word	0x2000000c
+ 8001040:	20000040 	.word	0x20000040
+ 8001044:	08001294 	.word	0x08001294
 
-08001248 <busy_waitMs>:
+08001048 <busy_waitMs>:
 
 void busy_waitMs(int ms)
 {
 	int i;
 
 	for(int c = 0; c < ms; c++)
- 8001248:	2300      	movs	r3, #0
- 800124a:	4283      	cmp	r3, r0
- 800124c:	da07      	bge.n	800125e <busy_waitMs+0x16>
- 800124e:	f64e 2260 	movw	r2, #60000	; 0xea60
+ 8001048:	2300      	movs	r3, #0
+ 800104a:	4283      	cmp	r3, r0
+ 800104c:	da0c      	bge.n	8001068 <busy_waitMs+0x20>
+ 800104e:	f242 7210 	movw	r2, #10000	; 0x2710
 	{
-		i = 60000;
-		while(--i) { __NOP(); }
- 8001252:	3a01      	subs	r2, #1
- 8001254:	d001      	beq.n	800125a <busy_waitMs+0x12>
- 8001256:	bf00      	nop
- 8001258:	e7fb      	b.n	8001252 <busy_waitMs+0xa>
+		i = 10000;
+		while(--i)
+ 8001052:	3a01      	subs	r2, #1
+ 8001054:	d006      	beq.n	8001064 <busy_waitMs+0x1c>
+		{
+			__NOP();
+ 8001056:	bf00      	nop
+			__NOP();
+ 8001058:	bf00      	nop
+			__NOP();
+ 800105a:	bf00      	nop
+			__NOP();
+ 800105c:	bf00      	nop
+			__NOP();
+ 800105e:	bf00      	nop
+			__NOP();
+ 8001060:	bf00      	nop
+ 8001062:	e7f6      	b.n	8001052 <busy_waitMs+0xa>
 
 void busy_waitMs(int ms)
 {
 	int i;
 
 	for(int c = 0; c < ms; c++)
- 800125a:	3301      	adds	r3, #1
- 800125c:	e7f5      	b.n	800124a <busy_waitMs+0x2>
-	{
-		i = 60000;
-		while(--i) { __NOP(); }
+ 8001064:	3301      	adds	r3, #1
+ 8001066:	e7f0      	b.n	800104a <busy_waitMs+0x2>
+			__NOP();
+			__NOP();
+			__NOP();
+		}
 	}
 }
- 800125e:	4770      	bx	lr
+ 8001068:	4770      	bx	lr
+	...
 
-08001260 <main>:
-}
+0800106c <main>:
 
-#define BUFFERSIZE 1024
-
-int main(void)
-{
- 8001260:	b530      	push	{r4, r5, lr}
-  DAVE_STATUS_t status;
-  uint8_t init_data[] = "startasfdasfdasfsadfasdfsafdasfdsadfasdfsadfasf";
- 8001262:	4b1d      	ldr	r3, [pc, #116]	; (80012d8 <main+0x78>)
-}
-
-#define BUFFERSIZE 1024
+uint8_t read_data[BUFFERSIZE];
+uint8_t testdata[] = "testdata";
 
 int main(void)
 {
- 8001264:	f2ad 4d34 	subw	sp, sp, #1076	; 0x434
+ 800106c:	b570      	push	{r4, r5, r6, lr}
   DAVE_STATUS_t status;
   uint8_t init_data[] = "startasfdasfdasfsadfasdfsafdasfdsadfasdfsadfasf";
- 8001268:	466c      	mov	r4, sp
- 800126a:	f103 0530 	add.w	r5, r3, #48	; 0x30
- 800126e:	6818      	ldr	r0, [r3, #0]
- 8001270:	6859      	ldr	r1, [r3, #4]
- 8001272:	4622      	mov	r2, r4
- 8001274:	c203      	stmia	r2!, {r0, r1}
- 8001276:	3308      	adds	r3, #8
- 8001278:	42ab      	cmp	r3, r5
- 800127a:	4614      	mov	r4, r2
- 800127c:	d1f7      	bne.n	800126e <main+0xe>
-  uint8_t read_data[BUFFERSIZE];
+ 800106e:	4b10      	ldr	r3, [pc, #64]	; (80010b0 <main+0x44>)
+
+uint8_t read_data[BUFFERSIZE];
+uint8_t testdata[] = "testdata";
+
+int main(void)
+{
+ 8001070:	b08c      	sub	sp, #48	; 0x30
+  DAVE_STATUS_t status;
+  uint8_t init_data[] = "startasfdasfdasfsadfasdfsafdasfdsadfasdfsadfasf";
+ 8001072:	466a      	mov	r2, sp
+ 8001074:	f103 0630 	add.w	r6, r3, #48	; 0x30
+ 8001078:	466d      	mov	r5, sp
+ 800107a:	6818      	ldr	r0, [r3, #0]
+ 800107c:	6859      	ldr	r1, [r3, #4]
+ 800107e:	4614      	mov	r4, r2
+ 8001080:	c403      	stmia	r4!, {r0, r1}
+ 8001082:	3308      	adds	r3, #8
+ 8001084:	42b3      	cmp	r3, r6
+ 8001086:	4622      	mov	r2, r4
+ 8001088:	d1f7      	bne.n	800107a <main+0xe>
 
   memset(read_data, 0, BUFFERSIZE);
- 800127e:	2100      	movs	r1, #0
- 8001280:	f44f 6280 	mov.w	r2, #1024	; 0x400
- 8001284:	a80c      	add	r0, sp, #48	; 0x30
- 8001286:	f000 f853 	bl	8001330 <memset>
+ 800108a:	2100      	movs	r1, #0
+ 800108c:	f44f 6280 	mov.w	r2, #1024	; 0x400
+ 8001090:	4808      	ldr	r0, [pc, #32]	; (80010b4 <main+0x48>)
+ 8001092:	f000 f857 	bl	8001144 <memset>
   status = DAVE_Init();           /* Initialization of DAVE APPs  */
- 800128a:	f7ff ffbb 	bl	8001204 <DAVE_Init>
+ 8001096:	f7ff ffaf 	bl	8000ff8 <DAVE_Init>
 
   if(status != DAVE_STATUS_SUCCESS)
- 800128e:	b100      	cbz	r0, 8001292 <main+0x32>
+ 800109a:	b100      	cbz	r0, 800109e <main+0x32>
     XMC_DEBUG("DAVE APPs initialization failed\n");
 
     while(1U)
     {
 
     }
- 8001290:	e7fe      	b.n	8001290 <main+0x30>
+ 800109c:	e7fe      	b.n	800109c <main+0x30>
 
   // Minimal position 450  ^ 4,5  duty ^ 0,9ms
   // Neutral position 750  ^ 7,5  duty ^ 1,5ms
   // Maximal position 1050 ^ 10,5 duty ^ 2,1ms
 
   UART_Transmit(&UART_0, init_data, sizeof(init_data));
- 8001292:	4812      	ldr	r0, [pc, #72]	; (80012dc <main+0x7c>)
- 8001294:	4669      	mov	r1, sp
- 8001296:	2230      	movs	r2, #48	; 0x30
- 8001298:	f7ff fd69 	bl	8000d6e <UART_Transmit>
+ 800109e:	4806      	ldr	r0, [pc, #24]	; (80010b8 <main+0x4c>)
+ 80010a0:	4629      	mov	r1, r5
+ 80010a2:	2230      	movs	r2, #48	; 0x30
+ 80010a4:	f7ff fdca 	bl	8000c3c <UART_Transmit>
 	  {
 		  PWM_SetDutyCycle(&PWM_MOTOR_0, i);
 		  busy_waitMs(20);
 	  }
-	  */
+		*/
 	  busy_waitMs(100);
- 800129c:	2064      	movs	r0, #100	; 0x64
- 800129e:	f7ff ffd3 	bl	8001248 <busy_waitMs>
-	  UART_Receive(&UART_0, read_data, BUFFERSIZE);
- 80012a2:	480e      	ldr	r0, [pc, #56]	; (80012dc <main+0x7c>)
- 80012a4:	a90c      	add	r1, sp, #48	; 0x30
- 80012a6:	f44f 6280 	mov.w	r2, #1024	; 0x400
- 80012aa:	f7ff fd9a 	bl	8000de2 <UART_Receive>
+ 80010a8:	2064      	movs	r0, #100	; 0x64
+ 80010aa:	f7ff ffcd 	bl	8001048 <busy_waitMs>
 	  if(read_data[0] != '\0') {
- 80012ae:	f89d 3030 	ldrb.w	r3, [sp, #48]	; 0x30
- 80012b2:	2b00      	cmp	r3, #0
- 80012b4:	d0f2      	beq.n	800129c <main+0x3c>
-		  busy_waitMs(10000);
- 80012b6:	f242 7010 	movw	r0, #10000	; 0x2710
- 80012ba:	f7ff ffc5 	bl	8001248 <busy_waitMs>
+		  busy_waitMs(5000);
 		  UART_Transmit(&UART_0, read_data, BUFFERSIZE);
- 80012be:	a90c      	add	r1, sp, #48	; 0x30
- 80012c0:	f44f 6280 	mov.w	r2, #1024	; 0x400
- 80012c4:	4805      	ldr	r0, [pc, #20]	; (80012dc <main+0x7c>)
- 80012c6:	f7ff fd52 	bl	8000d6e <UART_Transmit>
 		  memset(read_data, 0, BUFFERSIZE);
- 80012ca:	a80c      	add	r0, sp, #48	; 0x30
- 80012cc:	2100      	movs	r1, #0
- 80012ce:	f44f 6280 	mov.w	r2, #1024	; 0x400
- 80012d2:	f000 f82d 	bl	8001330 <memset>
- 80012d6:	e7e1      	b.n	800129c <main+0x3c>
- 80012d8:	0800149c 	.word	0x0800149c
- 80012dc:	20000000 	.word	0x20000000
+	  }*/
+  }
+ 80010ae:	e7fb      	b.n	80010a8 <main+0x3c>
+ 80010b0:	080012ac 	.word	0x080012ac
+ 80010b4:	200000d5 	.word	0x200000d5
+ 80010b8:	20000000 	.word	0x20000000
 
-080012e0 <__libc_init_array>:
- 80012e0:	b570      	push	{r4, r5, r6, lr}
- 80012e2:	4e0f      	ldr	r6, [pc, #60]	; (8001320 <__libc_init_array+0x40>)
- 80012e4:	4d0f      	ldr	r5, [pc, #60]	; (8001324 <__libc_init_array+0x44>)
- 80012e6:	1b76      	subs	r6, r6, r5
- 80012e8:	10b6      	asrs	r6, r6, #2
- 80012ea:	bf18      	it	ne
- 80012ec:	2400      	movne	r4, #0
- 80012ee:	d005      	beq.n	80012fc <__libc_init_array+0x1c>
- 80012f0:	3401      	adds	r4, #1
- 80012f2:	f855 3b04 	ldr.w	r3, [r5], #4
- 80012f6:	4798      	blx	r3
- 80012f8:	42a6      	cmp	r6, r4
- 80012fa:	d1f9      	bne.n	80012f0 <__libc_init_array+0x10>
- 80012fc:	4e0a      	ldr	r6, [pc, #40]	; (8001328 <__libc_init_array+0x48>)
- 80012fe:	4d0b      	ldr	r5, [pc, #44]	; (800132c <__libc_init_array+0x4c>)
- 8001300:	1b76      	subs	r6, r6, r5
- 8001302:	f7ff fcef 	bl	8000ce4 <_init>
- 8001306:	10b6      	asrs	r6, r6, #2
- 8001308:	bf18      	it	ne
- 800130a:	2400      	movne	r4, #0
- 800130c:	d006      	beq.n	800131c <__libc_init_array+0x3c>
- 800130e:	3401      	adds	r4, #1
- 8001310:	f855 3b04 	ldr.w	r3, [r5], #4
- 8001314:	4798      	blx	r3
- 8001316:	42a6      	cmp	r6, r4
- 8001318:	d1f9      	bne.n	800130e <__libc_init_array+0x2e>
- 800131a:	bd70      	pop	{r4, r5, r6, pc}
- 800131c:	bd70      	pop	{r4, r5, r6, pc}
- 800131e:	bf00      	nop
- 8001320:	200000b8 	.word	0x200000b8
- 8001324:	200000b8 	.word	0x200000b8
- 8001328:	200000b8 	.word	0x200000b8
- 800132c:	200000b8 	.word	0x200000b8
+080010bc <USIC0_5_IRQHandler>:
+}
+int a = 0;
+void DataReceived(void) {
+ 80010bc:	b538      	push	{r3, r4, r5, lr}
+	UART_Receive(&UART_0, read_data, 8);
+ 80010be:	4c0b      	ldr	r4, [pc, #44]	; (80010ec <USIC0_5_IRQHandler+0x30>)
+ 80010c0:	4d0b      	ldr	r5, [pc, #44]	; (80010f0 <USIC0_5_IRQHandler+0x34>)
+ 80010c2:	4621      	mov	r1, r4
+ 80010c4:	4628      	mov	r0, r5
+ 80010c6:	2208      	movs	r2, #8
+ 80010c8:	f7ff fdef 	bl	8000caa <UART_Receive>
+	read_data[0] = '1';
+ 80010cc:	2331      	movs	r3, #49	; 0x31
+	read_data[1] = '1';
+	UART_Transmit(&UART_0, read_data, 8);
+ 80010ce:	4621      	mov	r1, r4
+ 80010d0:	4628      	mov	r0, r5
+ 80010d2:	2208      	movs	r2, #8
+  }
+}
+int a = 0;
+void DataReceived(void) {
+	UART_Receive(&UART_0, read_data, 8);
+	read_data[0] = '1';
+ 80010d4:	7023      	strb	r3, [r4, #0]
+	read_data[1] = '1';
+ 80010d6:	7063      	strb	r3, [r4, #1]
+	UART_Transmit(&UART_0, read_data, 8);
+ 80010d8:	f7ff fdb0 	bl	8000c3c <UART_Transmit>
+	memset(read_data, 0, BUFFERSIZE);
+ 80010dc:	4620      	mov	r0, r4
+ 80010de:	2100      	movs	r1, #0
+ 80010e0:	f44f 6280 	mov.w	r2, #1024	; 0x400
+}
+ 80010e4:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
+void DataReceived(void) {
+	UART_Receive(&UART_0, read_data, 8);
+	read_data[0] = '1';
+	read_data[1] = '1';
+	UART_Transmit(&UART_0, read_data, 8);
+	memset(read_data, 0, BUFFERSIZE);
+ 80010e8:	f000 b82c 	b.w	8001144 <memset>
+ 80010ec:	200000d5 	.word	0x200000d5
+ 80010f0:	20000000 	.word	0x20000000
 
-08001330 <memset>:
- 8001330:	b470      	push	{r4, r5, r6}
- 8001332:	0784      	lsls	r4, r0, #30
- 8001334:	d046      	beq.n	80013c4 <memset+0x94>
- 8001336:	1e54      	subs	r4, r2, #1
- 8001338:	2a00      	cmp	r2, #0
- 800133a:	d041      	beq.n	80013c0 <memset+0x90>
- 800133c:	b2cd      	uxtb	r5, r1
- 800133e:	4603      	mov	r3, r0
- 8001340:	e002      	b.n	8001348 <memset+0x18>
- 8001342:	1e62      	subs	r2, r4, #1
- 8001344:	b3e4      	cbz	r4, 80013c0 <memset+0x90>
- 8001346:	4614      	mov	r4, r2
- 8001348:	f803 5b01 	strb.w	r5, [r3], #1
- 800134c:	079a      	lsls	r2, r3, #30
- 800134e:	d1f8      	bne.n	8001342 <memset+0x12>
- 8001350:	2c03      	cmp	r4, #3
- 8001352:	d92e      	bls.n	80013b2 <memset+0x82>
- 8001354:	b2cd      	uxtb	r5, r1
- 8001356:	ea45 2505 	orr.w	r5, r5, r5, lsl #8
- 800135a:	2c0f      	cmp	r4, #15
- 800135c:	ea45 4505 	orr.w	r5, r5, r5, lsl #16
- 8001360:	d919      	bls.n	8001396 <memset+0x66>
- 8001362:	f103 0210 	add.w	r2, r3, #16
- 8001366:	4626      	mov	r6, r4
- 8001368:	3e10      	subs	r6, #16
- 800136a:	2e0f      	cmp	r6, #15
- 800136c:	f842 5c10 	str.w	r5, [r2, #-16]
- 8001370:	f842 5c0c 	str.w	r5, [r2, #-12]
- 8001374:	f842 5c08 	str.w	r5, [r2, #-8]
- 8001378:	f842 5c04 	str.w	r5, [r2, #-4]
- 800137c:	f102 0210 	add.w	r2, r2, #16
- 8001380:	d8f2      	bhi.n	8001368 <memset+0x38>
- 8001382:	f1a4 0210 	sub.w	r2, r4, #16
- 8001386:	f022 020f 	bic.w	r2, r2, #15
- 800138a:	f004 040f 	and.w	r4, r4, #15
- 800138e:	3210      	adds	r2, #16
- 8001390:	2c03      	cmp	r4, #3
- 8001392:	4413      	add	r3, r2
- 8001394:	d90d      	bls.n	80013b2 <memset+0x82>
- 8001396:	461e      	mov	r6, r3
- 8001398:	4622      	mov	r2, r4
- 800139a:	3a04      	subs	r2, #4
- 800139c:	2a03      	cmp	r2, #3
- 800139e:	f846 5b04 	str.w	r5, [r6], #4
- 80013a2:	d8fa      	bhi.n	800139a <memset+0x6a>
- 80013a4:	1f22      	subs	r2, r4, #4
- 80013a6:	f022 0203 	bic.w	r2, r2, #3
- 80013aa:	3204      	adds	r2, #4
- 80013ac:	4413      	add	r3, r2
- 80013ae:	f004 0403 	and.w	r4, r4, #3
- 80013b2:	b12c      	cbz	r4, 80013c0 <memset+0x90>
- 80013b4:	b2c9      	uxtb	r1, r1
- 80013b6:	441c      	add	r4, r3
- 80013b8:	f803 1b01 	strb.w	r1, [r3], #1
- 80013bc:	42a3      	cmp	r3, r4
- 80013be:	d1fb      	bne.n	80013b8 <memset+0x88>
- 80013c0:	bc70      	pop	{r4, r5, r6}
- 80013c2:	4770      	bx	lr
- 80013c4:	4614      	mov	r4, r2
- 80013c6:	4603      	mov	r3, r0
- 80013c8:	e7c2      	b.n	8001350 <memset+0x20>
- 80013ca:	bf00      	nop
+080010f4 <__libc_init_array>:
+ 80010f4:	b570      	push	{r4, r5, r6, lr}
+ 80010f6:	4e0f      	ldr	r6, [pc, #60]	; (8001134 <__libc_init_array+0x40>)
+ 80010f8:	4d0f      	ldr	r5, [pc, #60]	; (8001138 <__libc_init_array+0x44>)
+ 80010fa:	1b76      	subs	r6, r6, r5
+ 80010fc:	10b6      	asrs	r6, r6, #2
+ 80010fe:	bf18      	it	ne
+ 8001100:	2400      	movne	r4, #0
+ 8001102:	d005      	beq.n	8001110 <__libc_init_array+0x1c>
+ 8001104:	3401      	adds	r4, #1
+ 8001106:	f855 3b04 	ldr.w	r3, [r5], #4
+ 800110a:	4798      	blx	r3
+ 800110c:	42a6      	cmp	r6, r4
+ 800110e:	d1f9      	bne.n	8001104 <__libc_init_array+0x10>
+ 8001110:	4e0a      	ldr	r6, [pc, #40]	; (800113c <__libc_init_array+0x48>)
+ 8001112:	4d0b      	ldr	r5, [pc, #44]	; (8001140 <__libc_init_array+0x4c>)
+ 8001114:	1b76      	subs	r6, r6, r5
+ 8001116:	f7ff fd8d 	bl	8000c34 <_init>
+ 800111a:	10b6      	asrs	r6, r6, #2
+ 800111c:	bf18      	it	ne
+ 800111e:	2400      	movne	r4, #0
+ 8001120:	d006      	beq.n	8001130 <__libc_init_array+0x3c>
+ 8001122:	3401      	adds	r4, #1
+ 8001124:	f855 3b04 	ldr.w	r3, [r5], #4
+ 8001128:	4798      	blx	r3
+ 800112a:	42a6      	cmp	r6, r4
+ 800112c:	d1f9      	bne.n	8001122 <__libc_init_array+0x2e>
+ 800112e:	bd70      	pop	{r4, r5, r6, pc}
+ 8001130:	bd70      	pop	{r4, r5, r6, pc}
+ 8001132:	bf00      	nop
+ 8001134:	200000b8 	.word	0x200000b8
+ 8001138:	200000b8 	.word	0x200000b8
+ 800113c:	200000b8 	.word	0x200000b8
+ 8001140:	200000b8 	.word	0x200000b8
 
-080013cc <CSWTCH.36>:
- 80013cc:	0000 0202 0c0c 0c0c 0a08                    ..........
+08001144 <memset>:
+ 8001144:	b470      	push	{r4, r5, r6}
+ 8001146:	0784      	lsls	r4, r0, #30
+ 8001148:	d046      	beq.n	80011d8 <memset+0x94>
+ 800114a:	1e54      	subs	r4, r2, #1
+ 800114c:	2a00      	cmp	r2, #0
+ 800114e:	d041      	beq.n	80011d4 <memset+0x90>
+ 8001150:	b2cd      	uxtb	r5, r1
+ 8001152:	4603      	mov	r3, r0
+ 8001154:	e002      	b.n	800115c <memset+0x18>
+ 8001156:	1e62      	subs	r2, r4, #1
+ 8001158:	b3e4      	cbz	r4, 80011d4 <memset+0x90>
+ 800115a:	4614      	mov	r4, r2
+ 800115c:	f803 5b01 	strb.w	r5, [r3], #1
+ 8001160:	079a      	lsls	r2, r3, #30
+ 8001162:	d1f8      	bne.n	8001156 <memset+0x12>
+ 8001164:	2c03      	cmp	r4, #3
+ 8001166:	d92e      	bls.n	80011c6 <memset+0x82>
+ 8001168:	b2cd      	uxtb	r5, r1
+ 800116a:	ea45 2505 	orr.w	r5, r5, r5, lsl #8
+ 800116e:	2c0f      	cmp	r4, #15
+ 8001170:	ea45 4505 	orr.w	r5, r5, r5, lsl #16
+ 8001174:	d919      	bls.n	80011aa <memset+0x66>
+ 8001176:	f103 0210 	add.w	r2, r3, #16
+ 800117a:	4626      	mov	r6, r4
+ 800117c:	3e10      	subs	r6, #16
+ 800117e:	2e0f      	cmp	r6, #15
+ 8001180:	f842 5c10 	str.w	r5, [r2, #-16]
+ 8001184:	f842 5c0c 	str.w	r5, [r2, #-12]
+ 8001188:	f842 5c08 	str.w	r5, [r2, #-8]
+ 800118c:	f842 5c04 	str.w	r5, [r2, #-4]
+ 8001190:	f102 0210 	add.w	r2, r2, #16
+ 8001194:	d8f2      	bhi.n	800117c <memset+0x38>
+ 8001196:	f1a4 0210 	sub.w	r2, r4, #16
+ 800119a:	f022 020f 	bic.w	r2, r2, #15
+ 800119e:	f004 040f 	and.w	r4, r4, #15
+ 80011a2:	3210      	adds	r2, #16
+ 80011a4:	2c03      	cmp	r4, #3
+ 80011a6:	4413      	add	r3, r2
+ 80011a8:	d90d      	bls.n	80011c6 <memset+0x82>
+ 80011aa:	461e      	mov	r6, r3
+ 80011ac:	4622      	mov	r2, r4
+ 80011ae:	3a04      	subs	r2, #4
+ 80011b0:	2a03      	cmp	r2, #3
+ 80011b2:	f846 5b04 	str.w	r5, [r6], #4
+ 80011b6:	d8fa      	bhi.n	80011ae <memset+0x6a>
+ 80011b8:	1f22      	subs	r2, r4, #4
+ 80011ba:	f022 0203 	bic.w	r2, r2, #3
+ 80011be:	3204      	adds	r2, #4
+ 80011c0:	4413      	add	r3, r2
+ 80011c2:	f004 0403 	and.w	r4, r4, #3
+ 80011c6:	b12c      	cbz	r4, 80011d4 <memset+0x90>
+ 80011c8:	b2c9      	uxtb	r1, r1
+ 80011ca:	441c      	add	r4, r3
+ 80011cc:	f803 1b01 	strb.w	r1, [r3], #1
+ 80011d0:	42a3      	cmp	r3, r4
+ 80011d2:	d1fb      	bne.n	80011cc <memset+0x88>
+ 80011d4:	bc70      	pop	{r4, r5, r6}
+ 80011d6:	4770      	bx	lr
+ 80011d8:	4614      	mov	r4, r2
+ 80011da:	4603      	mov	r3, r0
+ 80011dc:	e7c2      	b.n	8001164 <memset+0x20>
+ 80011de:	bf00      	nop
 
-080013d6 <CSWTCH.37>:
- 80013d6:	0003 0003 000c 000c 3000 3000 3000 3000     .........0.0.0.0
- 80013e6:	0300 0c00 0000                              ......
+080011e0 <CSWTCH.36>:
+ 80011e0:	0000 0202 0c0c 0c0c 0a08                    ..........
 
-080013ec <UART_0_config>:
- 80013ec:	1440 0800 0f41 0800 0000 0000 0000 0000     @...A...........
+080011ea <CSWTCH.37>:
+ 80011ea:	0003 0003 000c 000c 3000 3000 3000 3000     .........0.0.0.0
+ 80011fa:	0300 0c00 0000                              ......
+
+08001200 <UART_0_config>:
+ 8001200:	124c 0800 0d1d 0800 0000 0000 0000 0000     L...............
 	...
- 8001410:	1428 0800 0000 0500 0305 0000               (...........
+ 800121c:	1234 0800 0200 0002 0000 0000               4...........
 
-0800141c <UART_0_rx_pin_config>:
- 800141c:	0000 0000 0001 0000 0002 0000               ............
+08001228 <UART_0_rx_pin_config>:
+ 8001228:	0000 0000 0001 0000 0002 0000               ............
 
-08001428 <UART_0_tx_pin>:
- 8001428:	8100 4802 0005 0000 1434 0800               ...H....4...
+08001234 <UART_0_tx_pin>:
+ 8001234:	8100 4802 0005 0000 1240 0800               ...H....@...
 
-08001434 <UART_0_tx_pin_config>:
- 8001434:	0090 0000 0001 0000 0002 0000               ............
+08001240 <UART_0_tx_pin_config>:
+ 8001240:	0090 0000 0001 0000 0002 0000               ............
 
-08001440 <UART_0_channel_config>:
- 8001440:	4b00 0000 0800 0108 0010 0000               .K..........
+0800124c <UART_0_channel_config>:
+ 800124c:	4b00 0000 0800 0108 0010 0000               .K..........
 
-0800144c <PWM_MOTOR_1_gpio_out_config>:
- 800144c:	0098 0000 0000 0001 0004 0000               ............
+08001258 <PWM_MOTOR_1_gpio_out_config>:
+ 8001258:	0098 0000 0000 0001 0004 0000               ............
 
-08001458 <PWM_MOTOR_2_compare_config>:
- 8001458:	0000 0000 0006 0000                         ........
+08001264 <PWM_MOTOR_2_compare_config>:
+ 8001264:	0000 0000 0006 0000                         ........
 
-08001460 <PWM_MOTOR_0_gpio_out_config>:
- 8001460:	0098 0000 0000 0001 0004 0000               ............
+0800126c <PWM_MOTOR_0_gpio_out_config>:
+ 800126c:	0098 0000 0000 0001 0004 0000               ............
 
-0800146c <PWM_MOTOR_0_compare_config>:
- 800146c:	0000 0000 0006 0000                         ........
+08001278 <PWM_MOTOR_0_compare_config>:
+ 8001278:	0000 0000 0006 0000                         ........
 
-08001474 <PWM_MOTOR_2_gpio_out_config>:
- 8001474:	0098 0000 0000 0001 0004 0000               ............
+08001280 <PWM_MOTOR_2_gpio_out_config>:
+ 8001280:	0098 0000 0000 0001 0004 0000               ............
 
-08001480 <PWM_MOTOR_1_compare_config>:
- 8001480:	0000 0000 0006 0000 0250 0104 0000 0001     ........P.......
- 8001490:	0000 0000 0000 0001 0101 0101 7473 7261     ............star
- 80014a0:	6174 6673 6164 6673 6164 6673 6173 6664     tasfdasfdasfsadf
- 80014b0:	7361 6664 6173 6466 7361 6466 6173 6664     asdfsafdasfdsadf
- 80014c0:	7361 6664 6173 6664 7361 0066               asdfsadfasf.
+0800128c <PWM_MOTOR_1_compare_config>:
+ 800128c:	0000 0000 0006 0000                         ........
+
+08001294 <UART_ISR>:
+ 8001294:	3f59 0100 0250 0104 0000 0001 0000 0000     Y?..P...........
+ 80012a4:	0000 0001 0101 0101 7473 7261 6174 6673     ........startasf
+ 80012b4:	6164 6673 6164 6673 6173 6664 7361 6664     dasfdasfsadfasdf
+ 80012c4:	6173 6466 7361 6466 6173 6664 7361 6664     safdasfdsadfasdf
+ 80012d4:	6173 6664 7361 0066                         sadfasf.

@@ -28,15 +28,17 @@ Dave/Generated/DAVE.o Dave/Generated/DAVE.d Dave/Generated/DAVE.o: \
  ../Dave/Generated/PWM/pwm.h ../Dave/Generated/PWM/pwm_conf.h \
  G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_CCU4/global_ccu4.h \
  G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DAVE_common.h \
- ../Dave/Generated/PWM/PWM_Extern.h \
- ../Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4.h \
- ../Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4_conf.h \
- ../Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4_extern.h \
- ../Dave/Generated/UART/uart.h \
+ ../Dave/Generated/PWM/PWM_Extern.h ../Dave/Generated/UART/uart.h \
  G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_uart.h \
  G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_usic.h \
  G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_usic_map.h \
- ../Dave/Generated/UART/uart_conf.h ../Dave/Generated/UART/uart_extern.h
+ ../Dave/Generated/UART/uart_conf.h ../Dave/Generated/UART/uart_extern.h \
+ ../Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4.h \
+ ../Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4_conf.h \
+ ../Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4_extern.h \
+ ../Dave/Generated/INTERRUPT/interrupt.h \
+ ../Dave/Generated/INTERRUPT/interrupt_conf.h \
+ ../Dave/Generated/INTERRUPT/interrupt_extern.h
 
 ../Dave/Generated/DAVE.h:
 
@@ -100,12 +102,6 @@ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DAVE_common.h:
 
 ../Dave/Generated/PWM/PWM_Extern.h:
 
-../Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4.h:
-
-../Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4_conf.h:
-
-../Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4_extern.h:
-
 ../Dave/Generated/UART/uart.h:
 
 G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_uart.h:
@@ -117,3 +113,15 @@ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_usic_map.
 ../Dave/Generated/UART/uart_conf.h:
 
 ../Dave/Generated/UART/uart_extern.h:
+
+../Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4.h:
+
+../Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4_conf.h:
+
+../Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4_extern.h:
+
+../Dave/Generated/INTERRUPT/interrupt.h:
+
+../Dave/Generated/INTERRUPT/interrupt_conf.h:
+
+../Dave/Generated/INTERRUPT/interrupt_extern.h:
