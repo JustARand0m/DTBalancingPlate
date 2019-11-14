@@ -59,7 +59,7 @@ Balancing_Plate.elf: $(OBJS) ../linker_script.ld $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM-GCC C Linker'
 	$(file >objects.rsp,$(OBJS))
-	"$(TOOLCHAIN_ROOT)/bin/arm-none-eabi-gcc" -T"../linker_script.ld" -nostartfiles -Xlinker --gc-sections -specs=nosys.specs -Wl,-Map,$(MAP_FILE) -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mthumb -o "Balancing_Plate.elf" "@objects.rsp" $(USER_OBJS) $(LIBS)
+	"$(TOOLCHAIN_ROOT)/bin/arm-none-eabi-gcc" -T"../linker_script.ld" -nostartfiles -Xlinker --gc-sections -specs=nosys.specs -Wl,-Map,$(MAP_FILE) -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mthumb -g3 -gdwarf-2 -o "Balancing_Plate.elf" "@objects.rsp" $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo.
 Balancing_Plate.hex: Balancing_Plate.elf

@@ -13,8 +13,12 @@
   13              	 .eabi_attribute 18,4
   14              	 .thumb
   15              	 .file "xmc_eth_phy_ksz8031rnl.c"
-  16              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 xmc_eth_phy_ksz8031rnl.c
+                           .group:00000000 wm4.0.ca5ae67a873a4952d630d8e4120b9e3e
 
 NO UNDEFINED SYMBOLS

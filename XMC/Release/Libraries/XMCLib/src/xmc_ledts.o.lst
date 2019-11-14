@@ -13,345 +13,1019 @@
   13              	 .eabi_attribute 18,4
   14              	 .thumb
   15              	 .file "xmc_ledts.c"
-  16              	 .section .text.XMC_LEDTS_InitGlobal,"ax",%progbits
-  17              	 .align 1
-  18              	 .global XMC_LEDTS_InitGlobal
-  19              	 .thumb
-  20              	 .thumb_func
-  22              	XMC_LEDTS_InitGlobal:
-  23              	 
-  24              	 
-  25 0000 38B5     	 push {r3,r4,r5,lr}
-  26 0002 084B     	 ldr r3,.L6
-  27 0004 9842     	 cmp r0,r3
-  28 0006 0446     	 mov r4,r0
-  29 0008 0D46     	 mov r5,r1
-  30 000a 02D1     	 bne .L2
-  31 000c 0648     	 ldr r0,.L6+4
-  32 000e FFF7FEFF 	 bl XMC_SCU_RESET_DeassertPeripheralReset
-  33              	.L2:
-  34 0012 6068     	 ldr r0,[r4,#4]
-  35 0014 000C     	 lsrs r0,r0,#16
-  36 0016 0004     	 lsls r0,r0,#16
-  37 0018 10B9     	 cbnz r0,.L4
-  38 001a 2B68     	 ldr r3,[r5]
-  39 001c 6360     	 str r3,[r4,#4]
-  40 001e 38BD     	 pop {r3,r4,r5,pc}
-  41              	.L4:
-  42 0020 0120     	 movs r0,#1
-  43 0022 38BD     	 pop {r3,r4,r5,pc}
-  44              	.L7:
-  45              	 .align 2
-  46              	.L6:
-  47 0024 00000148 	 .word 1208025088
-  48 0028 08000010 	 .word 268435464
-  50              	 .section .text.XMC_LEDTS_InitLED,"ax",%progbits
-  51              	 .align 1
-  52              	 .global XMC_LEDTS_InitLED
-  53              	 .thumb
-  54              	 .thumb_func
-  56              	XMC_LEDTS_InitLED:
-  57              	 
-  58              	 
-  59 0000 4368     	 ldr r3,[r0,#4]
-  60 0002 1B0C     	 lsrs r3,r3,#16
-  61 0004 1B04     	 lsls r3,r3,#16
-  62 0006 10B5     	 push {r4,lr}
-  63 0008 6BB9     	 cbnz r3,.L10
-  64 000a 8268     	 ldr r2,[r0,#8]
-  65 000c 22F07042 	 bic r2,r2,#-268435456
-  66 0010 8260     	 str r2,[r0,#8]
-  67 0012 8468     	 ldr r4,[r0,#8]
-  68 0014 0A68     	 ldr r2,[r1]
-  69 0016 2243     	 orrs r2,r2,r4
-  70 0018 8260     	 str r2,[r0,#8]
-  71 001a 4268     	 ldr r2,[r0,#4]
-  72 001c 42F00202 	 orr r2,r2,#2
-  73 0020 4260     	 str r2,[r0,#4]
-  74 0022 1846     	 mov r0,r3
-  75 0024 10BD     	 pop {r4,pc}
-  76              	.L10:
-  77 0026 0120     	 movs r0,#1
-  78 0028 10BD     	 pop {r4,pc}
-  80              	 .section .text.XMC_LEDTS_InitTSBasic,"ax",%progbits
-  81              	 .align 1
-  82              	 .global XMC_LEDTS_InitTSBasic
-  83              	 .thumb
-  84              	 .thumb_func
-  86              	XMC_LEDTS_InitTSBasic:
-  87              	 
-  88              	 
-  89 0000 4368     	 ldr r3,[r0,#4]
-  90 0002 1B0C     	 lsrs r3,r3,#16
-  91 0004 1B04     	 lsls r3,r3,#16
-  92 0006 10B5     	 push {r4,lr}
-  93 0008 7BB9     	 cbnz r3,.L13
-  94 000a 8268     	 ldr r2,[r0,#8]
-  95 000c 22F07962 	 bic r2,r2,#261095424
-  96 0010 22F47022 	 bic r2,r2,#983040
-  97 0014 8260     	 str r2,[r0,#8]
-  98 0016 8468     	 ldr r4,[r0,#8]
-  99 0018 0A68     	 ldr r2,[r1]
- 100 001a 2243     	 orrs r2,r2,r4
- 101 001c 8260     	 str r2,[r0,#8]
- 102 001e 4268     	 ldr r2,[r0,#4]
- 103 0020 42F00102 	 orr r2,r2,#1
- 104 0024 4260     	 str r2,[r0,#4]
- 105 0026 1846     	 mov r0,r3
- 106 0028 10BD     	 pop {r4,pc}
- 107              	.L13:
- 108 002a 0120     	 movs r0,#1
- 109 002c 10BD     	 pop {r4,pc}
- 111              	 .section .text.XMC_LEDTS_InitTSAdvanced,"ax",%progbits
- 112              	 .align 1
- 113              	 .global XMC_LEDTS_InitTSAdvanced
- 114              	 .thumb
- 115              	 .thumb_func
- 117              	XMC_LEDTS_InitTSAdvanced:
- 118              	 
- 119              	 
- 120 0000 4368     	 ldr r3,[r0,#4]
- 121 0002 1B0C     	 lsrs r3,r3,#16
- 122 0004 1B04     	 lsls r3,r3,#16
- 123 0006 10B5     	 push {r4,lr}
- 124 0008 9BB9     	 cbnz r3,.L16
- 125 000a 4268     	 ldr r2,[r0,#4]
- 126 000c 22F4F052 	 bic r2,r2,#7680
- 127 0010 4260     	 str r2,[r0,#4]
- 128 0012 4468     	 ldr r4,[r0,#4]
- 129 0014 0A68     	 ldr r2,[r1]
- 130 0016 2243     	 orrs r2,r2,r4
- 131 0018 4260     	 str r2,[r0,#4]
- 132 001a 8268     	 ldr r2,[r0,#8]
- 133 001c 22F4C002 	 bic r2,r2,#6291456
- 134 0020 22F01F02 	 bic r2,r2,#31
- 135 0024 8260     	 str r2,[r0,#8]
- 136 0026 8468     	 ldr r4,[r0,#8]
- 137 0028 4A68     	 ldr r2,[r1,#4]
- 138 002a 2243     	 orrs r2,r2,r4
- 139 002c 8260     	 str r2,[r0,#8]
- 140 002e 1846     	 mov r0,r3
- 141 0030 10BD     	 pop {r4,pc}
- 142              	.L16:
- 143 0032 0120     	 movs r0,#1
- 144 0034 10BD     	 pop {r4,pc}
- 146              	 .section .text.XMC_LEDTS_StartCounter,"ax",%progbits
- 147              	 .align 1
- 148              	 .global XMC_LEDTS_StartCounter
- 149              	 .thumb
- 150              	 .thumb_func
- 152              	XMC_LEDTS_StartCounter:
- 153              	 
- 154              	 
- 155              	 
- 156 0000 4368     	 ldr r3,[r0,#4]
- 157 0002 43EA0141 	 orr r1,r3,r1,lsl#16
- 158 0006 4160     	 str r1,[r0,#4]
- 159 0008 7047     	 bx lr
- 161              	 .section .text.XMC_LEDTS_StopCounter,"ax",%progbits
- 162              	 .align 1
- 163              	 .global XMC_LEDTS_StopCounter
- 164              	 .thumb
- 165              	 .thumb_func
- 167              	XMC_LEDTS_StopCounter:
- 168              	 
- 169              	 
- 170              	 
- 171 0000 4368     	 ldr r3,[r0,#4]
- 172 0002 9BB2     	 uxth r3,r3
- 173 0004 4360     	 str r3,[r0,#4]
- 174 0006 7047     	 bx lr
- 176              	 .section .text.XMC_LEDTS_ReadInterruptFlag,"ax",%progbits
- 177              	 .align 1
- 178              	 .global XMC_LEDTS_ReadInterruptFlag
- 179              	 .thumb
- 180              	 .thumb_func
- 182              	XMC_LEDTS_ReadInterruptFlag:
- 183              	 
- 184              	 
- 185              	 
- 186 0000 C068     	 ldr r0,[r0,#12]
- 187 0002 00F00F00 	 and r0,r0,#15
- 188 0006 7047     	 bx lr
- 190              	 .section .text.XMC_LEDTS_SetActivePADNo,"ax",%progbits
- 191              	 .align 1
- 192              	 .global XMC_LEDTS_SetActivePADNo
- 193              	 .thumb
- 194              	 .thumb_func
- 196              	XMC_LEDTS_SetActivePADNo:
- 197              	 
- 198              	 
- 199              	 
- 200 0000 8368     	 ldr r3,[r0,#8]
- 201 0002 23F00703 	 bic r3,r3,#7
- 202 0006 1943     	 orrs r1,r1,r3
- 203 0008 8160     	 str r1,[r0,#8]
- 204 000a 7047     	 bx lr
- 206              	 .section .text.XMC_LEDTS_ClearInterruptFlag,"ax",%progbits
- 207              	 .align 1
- 208              	 .global XMC_LEDTS_ClearInterruptFlag
- 209              	 .thumb
- 210              	 .thumb_func
- 212              	XMC_LEDTS_ClearInterruptFlag:
- 213              	 
- 214              	 
- 215              	 
- 216 0000 0904     	 lsls r1,r1,#16
- 217 0002 C160     	 str r1,[r0,#12]
- 218 0004 7047     	 bx lr
- 220              	 .section .text.XMC_LEDTS_SetLEDLinePattern,"ax",%progbits
- 221              	 .align 1
- 222              	 .global XMC_LEDTS_SetLEDLinePattern
- 223              	 .thumb
- 224              	 .thumb_func
- 226              	XMC_LEDTS_SetLEDLinePattern:
- 227              	 
- 228              	 
- 229 0000 01F0FC03 	 and r3,r1,#252
- 230 0004 1844     	 add r0,r0,r3
- 231 0006 10B5     	 push {r4,lr}
- 232 0008 01F00301 	 and r1,r1,#3
- 233 000c 4469     	 ldr r4,[r0,#20]
- 234 000e C900     	 lsls r1,r1,#3
- 235 0010 FF23     	 movs r3,#255
- 236 0012 8B40     	 lsls r3,r3,r1
- 237 0014 24EA0303 	 bic r3,r4,r3
- 238 0018 8A40     	 lsls r2,r2,r1
- 239 001a 1A43     	 orrs r2,r2,r3
- 240 001c 4261     	 str r2,[r0,#20]
- 241 001e 10BD     	 pop {r4,pc}
- 243              	 .section .text.XMC_LEDTS_SetColumnBrightness,"ax",%progbits
- 244              	 .align 1
- 245              	 .global XMC_LEDTS_SetColumnBrightness
- 246              	 .thumb
- 247              	 .thumb_func
- 249              	XMC_LEDTS_SetColumnBrightness:
- 250              	 
- 251              	 
- 252 0000 01F0FC03 	 and r3,r1,#252
- 253 0004 1844     	 add r0,r0,r3
- 254 0006 10B5     	 push {r4,lr}
- 255 0008 01F00301 	 and r1,r1,#3
- 256 000c C469     	 ldr r4,[r0,#28]
- 257 000e C900     	 lsls r1,r1,#3
- 258 0010 FF23     	 movs r3,#255
- 259 0012 8B40     	 lsls r3,r3,r1
- 260 0014 24EA0303 	 bic r3,r4,r3
- 261 0018 8A40     	 lsls r2,r2,r1
- 262 001a 1A43     	 orrs r2,r2,r3
- 263 001c C261     	 str r2,[r0,#28]
- 264 001e 10BD     	 pop {r4,pc}
- 266              	 .section .text.XMC_LEDTS_SetCommonOscillationWindow,"ax",%progbits
- 267              	 .align 1
- 268              	 .global XMC_LEDTS_SetCommonOscillationWindow
- 269              	 .thumb
- 270              	 .thumb_func
- 272              	XMC_LEDTS_SetCommonOscillationWindow:
- 273              	 
- 274              	 
- 275              	 
- 276 0000 036A     	 ldr r3,[r0,#32]
- 277 0002 23F07F43 	 bic r3,r3,#-16777216
- 278 0006 43EA0161 	 orr r1,r3,r1,lsl#24
- 279 000a 0162     	 str r1,[r0,#32]
- 280 000c 7047     	 bx lr
- 282              	 .section .text.XMC_LEDTS_ReadFNCOL,"ax",%progbits
- 283              	 .align 1
- 284              	 .global XMC_LEDTS_ReadFNCOL
- 285              	 .thumb
- 286              	 .thumb_func
- 288              	XMC_LEDTS_ReadFNCOL:
- 289              	 
- 290              	 
- 291              	 
- 292 0000 8068     	 ldr r0,[r0,#8]
- 293 0002 C0F34210 	 ubfx r0,r0,#5,#3
- 294 0006 7047     	 bx lr
- 296              	 .section .text.XMC_LEDTS_SetNumOfLEDColumns,"ax",%progbits
- 297              	 .align 1
- 298              	 .global XMC_LEDTS_SetNumOfLEDColumns
- 299              	 .thumb
- 300              	 .thumb_func
- 302              	XMC_LEDTS_SetNumOfLEDColumns:
- 303              	 
- 304              	 
- 305              	 
- 306 0000 8368     	 ldr r3,[r0,#8]
- 307 0002 23F06043 	 bic r3,r3,#-536870912
- 308 0006 8360     	 str r3,[r0,#8]
- 309 0008 8368     	 ldr r3,[r0,#8]
- 310 000a 43EA4171 	 orr r1,r3,r1,lsl#29
- 311 000e 8160     	 str r1,[r0,#8]
- 312 0010 7047     	 bx lr
- 314              	 .section .text.XMC_LEDTS_ReadTSVAL,"ax",%progbits
- 315              	 .align 1
- 316              	 .global XMC_LEDTS_ReadTSVAL
- 317              	 .thumb
- 318              	 .thumb_func
- 320              	XMC_LEDTS_ReadTSVAL:
- 321              	 
- 322              	 
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.XMC_LEDTS_InitGlobal,"ax",%progbits
+  20              	 .align 1
+  21              	 .global XMC_LEDTS_InitGlobal
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	XMC_LEDTS_InitGlobal:
+  26              	.LFB176:
+  27              	 .file 1 "../Libraries/XMCLib/src/xmc_ledts.c"
+   1:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+   2:../Libraries/XMCLib/src/xmc_ledts.c ****  * @file xmc_ledts.c
+   3:../Libraries/XMCLib/src/xmc_ledts.c ****  * @date 2017-02-25
+   4:../Libraries/XMCLib/src/xmc_ledts.c ****  *
+   5:../Libraries/XMCLib/src/xmc_ledts.c ****  * @cond
+   6:../Libraries/XMCLib/src/xmc_ledts.c ****  **************************************************************************************************
+   7:../Libraries/XMCLib/src/xmc_ledts.c ****  * XMClib v2.1.22 - XMC Peripheral Driver Library 
+   8:../Libraries/XMCLib/src/xmc_ledts.c ****  *
+   9:../Libraries/XMCLib/src/xmc_ledts.c ****  * Copyright (c) 2015-2019, Infineon Technologies AG
+  10:../Libraries/XMCLib/src/xmc_ledts.c ****  * All rights reserved.                        
+  11:../Libraries/XMCLib/src/xmc_ledts.c ****  *                                             
+  12:../Libraries/XMCLib/src/xmc_ledts.c ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:../Libraries/XMCLib/src/xmc_ledts.c ****  * following conditions are met:   
+  14:../Libraries/XMCLib/src/xmc_ledts.c ****  *                                                                              
+  15:../Libraries/XMCLib/src/xmc_ledts.c ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:../Libraries/XMCLib/src/xmc_ledts.c ****  * disclaimer.                        
+  17:../Libraries/XMCLib/src/xmc_ledts.c ****  * 
+  18:../Libraries/XMCLib/src/xmc_ledts.c ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:../Libraries/XMCLib/src/xmc_ledts.c ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:../Libraries/XMCLib/src/xmc_ledts.c ****  * 
+  21:../Libraries/XMCLib/src/xmc_ledts.c ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:../Libraries/XMCLib/src/xmc_ledts.c ****  * products derived from this software without specific prior written permission.                  
+  23:../Libraries/XMCLib/src/xmc_ledts.c ****  *                                                                              
+  24:../Libraries/XMCLib/src/xmc_ledts.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:../Libraries/XMCLib/src/xmc_ledts.c ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:../Libraries/XMCLib/src/xmc_ledts.c ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:../Libraries/XMCLib/src/xmc_ledts.c ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:../Libraries/XMCLib/src/xmc_ledts.c ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:../Libraries/XMCLib/src/xmc_ledts.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:../Libraries/XMCLib/src/xmc_ledts.c ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:../Libraries/XMCLib/src/xmc_ledts.c ****  *                                                                              
+  32:../Libraries/XMCLib/src/xmc_ledts.c ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:../Libraries/XMCLib/src/xmc_ledts.c ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:../Libraries/XMCLib/src/xmc_ledts.c ****  **************************************************************************************************
+  35:../Libraries/XMCLib/src/xmc_ledts.c ****  *
+  36:../Libraries/XMCLib/src/xmc_ledts.c ****  * Change History
+  37:../Libraries/XMCLib/src/xmc_ledts.c ****  * --------------
+  38:../Libraries/XMCLib/src/xmc_ledts.c ****  *
+  39:../Libraries/XMCLib/src/xmc_ledts.c ****  * 2015-02-20:
+  40:../Libraries/XMCLib/src/xmc_ledts.c ****  *     - Initial draft <br>
+  41:../Libraries/XMCLib/src/xmc_ledts.c ****  *     - New API added: XMC_LEDTS_SetActivePADNo() <br>
+  42:../Libraries/XMCLib/src/xmc_ledts.c ****  *      
+  43:../Libraries/XMCLib/src/xmc_ledts.c ****  * 2015-06-20:
+  44:../Libraries/XMCLib/src/xmc_ledts.c ****  *     - Removed version macros and declaration of GetDriverVersion API
+  45:../Libraries/XMCLib/src/xmc_ledts.c ****  *
+  46:../Libraries/XMCLib/src/xmc_ledts.c ****  * 2017-02-25:
+  47:../Libraries/XMCLib/src/xmc_ledts.c ****  *     - XMC_LEDTS_InitGlobal() fixed compilation warnings
+  48:../Libraries/XMCLib/src/xmc_ledts.c ****  *
+  49:../Libraries/XMCLib/src/xmc_ledts.c ****  * <b>Detailed description of file:</b><br>
+  50:../Libraries/XMCLib/src/xmc_ledts.c ****  * APIs for the functional blocks of LEDTS have been defined:<br>
+  51:../Libraries/XMCLib/src/xmc_ledts.c ****  * -- GLOBAL (APIs prefixed with LEDTS_GLOBAL_) <br>
+  52:../Libraries/XMCLib/src/xmc_ledts.c ****  * -- Clock configuration, Function/Event configuration, Interrupt configuration
+  53:../Libraries/XMCLib/src/xmc_ledts.c ****  *
+  54:../Libraries/XMCLib/src/xmc_ledts.c ****  * @endcond
+  55:../Libraries/XMCLib/src/xmc_ledts.c ****  *
+  56:../Libraries/XMCLib/src/xmc_ledts.c ****  */
+  57:../Libraries/XMCLib/src/xmc_ledts.c **** 
+  58:../Libraries/XMCLib/src/xmc_ledts.c **** /**************************************************************************************************
+  59:../Libraries/XMCLib/src/xmc_ledts.c ****  * HEADER FILES
+  60:../Libraries/XMCLib/src/xmc_ledts.c ****  **************************************************************************************************
+  61:../Libraries/XMCLib/src/xmc_ledts.c **** #include <xmc_ledts.h>
+  62:../Libraries/XMCLib/src/xmc_ledts.c **** 
+  63:../Libraries/XMCLib/src/xmc_ledts.c **** #if defined(LEDTS0)
+  64:../Libraries/XMCLib/src/xmc_ledts.c **** #include "xmc_scu.h"
+  65:../Libraries/XMCLib/src/xmc_ledts.c **** 
+  66:../Libraries/XMCLib/src/xmc_ledts.c **** /**************************************************************************************************
+  67:../Libraries/XMCLib/src/xmc_ledts.c ****  * MACROS
+  68:../Libraries/XMCLib/src/xmc_ledts.c ****  **************************************************************************************************
+  69:../Libraries/XMCLib/src/xmc_ledts.c **** #define XMC_LEDTS_CLOCK_NOT_RUNNING 0U
+  70:../Libraries/XMCLib/src/xmc_ledts.c **** 
+  71:../Libraries/XMCLib/src/xmc_ledts.c **** /**************************************************************************************************
+  72:../Libraries/XMCLib/src/xmc_ledts.c ****  * ENUMS
+  73:../Libraries/XMCLib/src/xmc_ledts.c ****  **************************************************************************************************
+  74:../Libraries/XMCLib/src/xmc_ledts.c **** 
+  75:../Libraries/XMCLib/src/xmc_ledts.c **** /**************************************************************************************************
+  76:../Libraries/XMCLib/src/xmc_ledts.c ****  * DATA STRUCTURES
+  77:../Libraries/XMCLib/src/xmc_ledts.c ****  **************************************************************************************************
+  78:../Libraries/XMCLib/src/xmc_ledts.c **** 
+  79:../Libraries/XMCLib/src/xmc_ledts.c **** /**************************************************************************************************
+  80:../Libraries/XMCLib/src/xmc_ledts.c ****  * GLOBAL DATA
+  81:../Libraries/XMCLib/src/xmc_ledts.c ****  **************************************************************************************************
+  82:../Libraries/XMCLib/src/xmc_ledts.c **** 
+  83:../Libraries/XMCLib/src/xmc_ledts.c **** /**************************************************************************************************
+  84:../Libraries/XMCLib/src/xmc_ledts.c ****  * LOCAL/UTILITY ROUTINES
+  85:../Libraries/XMCLib/src/xmc_ledts.c ****  **************************************************************************************************
+  86:../Libraries/XMCLib/src/xmc_ledts.c **** 
+  87:../Libraries/XMCLib/src/xmc_ledts.c **** /**************************************************************************************************
+  88:../Libraries/XMCLib/src/xmc_ledts.c ****  * API IMPLEMENTATION
+  89:../Libraries/XMCLib/src/xmc_ledts.c ****  **************************************************************************************************
+  90:../Libraries/XMCLib/src/xmc_ledts.c **** 
+  91:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+  92:../Libraries/XMCLib/src/xmc_ledts.c ****   * Initialization of global register
+  93:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+  94:../Libraries/XMCLib/src/xmc_ledts.c **** XMC_LEDTS_STATUS_t XMC_LEDTS_InitGlobal(XMC_LEDTS_t *const ledts, const XMC_LEDTS_GLOBAL_CONFIG_t *
+  95:../Libraries/XMCLib/src/xmc_ledts.c **** {
+  28              	 .loc 1 95 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32              	.LVL0:
+  33 0000 38B5     	 push {r3,r4,r5,lr}
+  34              	.LCFI0:
+  35              	 .cfi_def_cfa_offset 16
+  36              	 .cfi_offset 3,-16
+  37              	 .cfi_offset 4,-12
+  38              	 .cfi_offset 5,-8
+  39              	 .cfi_offset 14,-4
+  96:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_InitGlobal:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts));
+  97:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_InitGlobal:Null Pointer", (config != (XMC_LEDTS_GLOBAL_CONFIG_t *)NULL));
+  98:../Libraries/XMCLib/src/xmc_ledts.c **** 
+  99:../Libraries/XMCLib/src/xmc_ledts.c ****   if (ledts == XMC_LEDTS0)
+  40              	 .loc 1 99 0
+  41 0002 084B     	 ldr r3,.L6
+  42 0004 9842     	 cmp r0,r3
+  95:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_InitGlobal:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts));
+  43              	 .loc 1 95 0
+  44 0006 0446     	 mov r4,r0
+  45 0008 0D46     	 mov r5,r1
+  46              	 .loc 1 99 0
+  47 000a 02D1     	 bne .L2
+ 100:../Libraries/XMCLib/src/xmc_ledts.c ****   {
+ 101:../Libraries/XMCLib/src/xmc_ledts.c **** #if defined(CLOCK_GATING_SUPPORTED)
+ 102:../Libraries/XMCLib/src/xmc_ledts.c ****       XMC_SCU_CLOCK_UngatePeripheralClock(XMC_SCU_PERIPHERAL_CLOCK_LEDTS0);
+ 103:../Libraries/XMCLib/src/xmc_ledts.c **** #endif
+ 104:../Libraries/XMCLib/src/xmc_ledts.c **** #if defined(PERIPHERAL_RESET_SUPPORTED)
+ 105:../Libraries/XMCLib/src/xmc_ledts.c ****       XMC_SCU_RESET_DeassertPeripheralReset(XMC_SCU_PERIPHERAL_RESET_LEDTS0);
+  48              	 .loc 1 105 0
+  49 000c 0648     	 ldr r0,.L6+4
+  50              	.LVL1:
+  51 000e FFF7FEFF 	 bl XMC_SCU_RESET_DeassertPeripheralReset
+  52              	.LVL2:
+  53              	.L2:
+ 106:../Libraries/XMCLib/src/xmc_ledts.c **** #endif
+ 107:../Libraries/XMCLib/src/xmc_ledts.c ****   }
+ 108:../Libraries/XMCLib/src/xmc_ledts.c **** #if defined(LEDTS1)
+ 109:../Libraries/XMCLib/src/xmc_ledts.c ****   else if (ledts == XMC_LEDTS1)
+ 110:../Libraries/XMCLib/src/xmc_ledts.c ****   {
+ 111:../Libraries/XMCLib/src/xmc_ledts.c **** #if defined(CLOCK_GATING_SUPPORTED)
+ 112:../Libraries/XMCLib/src/xmc_ledts.c ****       XMC_SCU_CLOCK_UngatePeripheralClock(XMC_SCU_PERIPHERAL_CLOCK_LEDTS1);
+ 113:../Libraries/XMCLib/src/xmc_ledts.c **** #endif
+ 114:../Libraries/XMCLib/src/xmc_ledts.c **** #if defined(PERIPHERAL_RESET_SUPPORTED)
+ 115:../Libraries/XMCLib/src/xmc_ledts.c ****       XMC_SCU_RESET_DeassertPeripheralReset(XMC_SCU_PERIPHERAL_RESET_LEDTS1);
+ 116:../Libraries/XMCLib/src/xmc_ledts.c **** #endif
+ 117:../Libraries/XMCLib/src/xmc_ledts.c ****   }
+ 118:../Libraries/XMCLib/src/xmc_ledts.c **** #endif
+ 119:../Libraries/XMCLib/src/xmc_ledts.c **** #if defined(LEDTS2)
+ 120:../Libraries/XMCLib/src/xmc_ledts.c ****   else if (ledts == XMC_LEDTS2)
+ 121:../Libraries/XMCLib/src/xmc_ledts.c ****   {
+ 122:../Libraries/XMCLib/src/xmc_ledts.c **** #if defined(CLOCK_GATING_SUPPORTED)
+ 123:../Libraries/XMCLib/src/xmc_ledts.c ****       XMC_SCU_CLOCK_UngatePeripheralClock(XMC_SCU_PERIPHERAL_CLOCK_LEDTS2);
+ 124:../Libraries/XMCLib/src/xmc_ledts.c **** #endif
+ 125:../Libraries/XMCLib/src/xmc_ledts.c **** #if defined(PERIPHERAL_RESET_SUPPORTED)
+ 126:../Libraries/XMCLib/src/xmc_ledts.c ****       XMC_SCU_RESET_DeassertPeripheralReset(XMC_SCU_PERIPHERAL_RESET_LEDTS2);
+ 127:../Libraries/XMCLib/src/xmc_ledts.c **** #endif
+ 128:../Libraries/XMCLib/src/xmc_ledts.c ****   }
+ 129:../Libraries/XMCLib/src/xmc_ledts.c **** #endif
+ 130:../Libraries/XMCLib/src/xmc_ledts.c ****   else
+ 131:../Libraries/XMCLib/src/xmc_ledts.c ****   {
+ 132:../Libraries/XMCLib/src/xmc_ledts.c ****     XMC_ASSERT("XMC_LEDTS_InitGlobal:Invalid Module Pointer", 0);
+ 133:../Libraries/XMCLib/src/xmc_ledts.c ****   }
+ 134:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 135:../Libraries/XMCLib/src/xmc_ledts.c ****   if((ledts->GLOBCTL & LEDTS_GLOBCTL_CLK_PS_Msk) != XMC_LEDTS_CLOCK_NOT_RUNNING)
+  54              	 .loc 1 135 0
+  55 0012 6068     	 ldr r0,[r4,#4]
+  56 0014 000C     	 lsrs r0,r0,#16
+  57 0016 0004     	 lsls r0,r0,#16
+  58 0018 10B9     	 cbnz r0,.L4
+ 136:../Libraries/XMCLib/src/xmc_ledts.c ****   {
+ 137:../Libraries/XMCLib/src/xmc_ledts.c ****     return XMC_LEDTS_STATUS_RUNNING;
+ 138:../Libraries/XMCLib/src/xmc_ledts.c ****   }
+ 139:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 140:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->GLOBCTL = config->globctl;
+  59              	 .loc 1 140 0
+  60 001a 2B68     	 ldr r3,[r5]
+  61 001c 6360     	 str r3,[r4,#4]
+ 141:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 142:../Libraries/XMCLib/src/xmc_ledts.c ****   return XMC_LEDTS_STATUS_SUCCESS;
+  62              	 .loc 1 142 0
+  63 001e 38BD     	 pop {r3,r4,r5,pc}
+  64              	.LVL3:
+  65              	.L4:
+ 137:../Libraries/XMCLib/src/xmc_ledts.c ****   }
+  66              	 .loc 1 137 0
+  67 0020 0120     	 movs r0,#1
+ 143:../Libraries/XMCLib/src/xmc_ledts.c **** }
+  68              	 .loc 1 143 0
+  69 0022 38BD     	 pop {r3,r4,r5,pc}
+  70              	.LVL4:
+  71              	.L7:
+  72              	 .align 2
+  73              	.L6:
+  74 0024 00000148 	 .word 1208025088
+  75 0028 08000010 	 .word 268435464
+  76              	 .cfi_endproc
+  77              	.LFE176:
+  79              	 .section .text.XMC_LEDTS_InitLED,"ax",%progbits
+  80              	 .align 1
+  81              	 .global XMC_LEDTS_InitLED
+  82              	 .thumb
+  83              	 .thumb_func
+  85              	XMC_LEDTS_InitLED:
+  86              	.LFB177:
+ 144:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 145:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 146:../Libraries/XMCLib/src/xmc_ledts.c ****   * Initialization of registers for LED-driving function
+ 147:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 148:../Libraries/XMCLib/src/xmc_ledts.c **** XMC_LEDTS_STATUS_t XMC_LEDTS_InitLED(XMC_LEDTS_t *const ledts, const XMC_LEDTS_LED_CONFIG_t *config
+ 149:../Libraries/XMCLib/src/xmc_ledts.c **** {
+  87              	 .loc 1 149 0
+  88              	 .cfi_startproc
+  89              	 
+  90              	 
+  91              	.LVL5:
+ 150:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_LED_Init:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts));
+ 151:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_LED_Init:Null Pointer", (config != (XMC_LEDTS_LED_CONFIG_t *)NULL));
+ 152:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 153:../Libraries/XMCLib/src/xmc_ledts.c ****   if((ledts->GLOBCTL & LEDTS_GLOBCTL_CLK_PS_Msk) != XMC_LEDTS_CLOCK_NOT_RUNNING)
+  92              	 .loc 1 153 0
+  93 0000 4368     	 ldr r3,[r0,#4]
+  94 0002 1B0C     	 lsrs r3,r3,#16
+  95 0004 1B04     	 lsls r3,r3,#16
+ 149:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_LED_Init:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts));
+  96              	 .loc 1 149 0
+  97 0006 10B5     	 push {r4,lr}
+  98              	.LCFI1:
+  99              	 .cfi_def_cfa_offset 8
+ 100              	 .cfi_offset 4,-8
+ 101              	 .cfi_offset 14,-4
+ 102              	 .loc 1 153 0
+ 103 0008 6BB9     	 cbnz r3,.L10
+ 154:../Libraries/XMCLib/src/xmc_ledts.c ****   {
+ 155:../Libraries/XMCLib/src/xmc_ledts.c ****     return XMC_LEDTS_STATUS_RUNNING;
+ 156:../Libraries/XMCLib/src/xmc_ledts.c ****   }
+ 157:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 158:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->FNCTL &= ~(LEDTS_FNCTL_COLLEV_Msk | LEDTS_FNCTL_NR_LEDCOL_Msk);
+ 104              	 .loc 1 158 0
+ 105 000a 8268     	 ldr r2,[r0,#8]
+ 106 000c 22F07042 	 bic r2,r2,#-268435456
+ 107 0010 8260     	 str r2,[r0,#8]
+ 159:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->FNCTL |= (config->fnctl);
+ 108              	 .loc 1 159 0
+ 109 0012 8468     	 ldr r4,[r0,#8]
+ 110 0014 0A68     	 ldr r2,[r1]
+ 111 0016 2243     	 orrs r2,r2,r4
+ 112 0018 8260     	 str r2,[r0,#8]
+ 160:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 161:../Libraries/XMCLib/src/xmc_ledts.c ****   /* Enable LED function */
+ 162:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->GLOBCTL |= LEDTS_GLOBCTL_LD_EN_Msk;
+ 113              	 .loc 1 162 0
+ 114 001a 4268     	 ldr r2,[r0,#4]
+ 115 001c 42F00202 	 orr r2,r2,#2
+ 116 0020 4260     	 str r2,[r0,#4]
+ 163:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 164:../Libraries/XMCLib/src/xmc_ledts.c ****   return XMC_LEDTS_STATUS_SUCCESS;
+ 117              	 .loc 1 164 0
+ 118 0022 1846     	 mov r0,r3
+ 119              	.LVL6:
+ 120 0024 10BD     	 pop {r4,pc}
+ 121              	.LVL7:
+ 122              	.L10:
+ 155:../Libraries/XMCLib/src/xmc_ledts.c ****   }
+ 123              	 .loc 1 155 0
+ 124 0026 0120     	 movs r0,#1
+ 125              	.LVL8:
+ 165:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 126              	 .loc 1 165 0
+ 127 0028 10BD     	 pop {r4,pc}
+ 128              	 .cfi_endproc
+ 129              	.LFE177:
+ 131              	 .section .text.XMC_LEDTS_InitTSBasic,"ax",%progbits
+ 132              	 .align 1
+ 133              	 .global XMC_LEDTS_InitTSBasic
+ 134              	 .thumb
+ 135              	 .thumb_func
+ 137              	XMC_LEDTS_InitTSBasic:
+ 138              	.LFB178:
+ 166:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 167:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 168:../Libraries/XMCLib/src/xmc_ledts.c ****   * Initialization of registers for basic Touch-Sense control function
+ 169:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 170:../Libraries/XMCLib/src/xmc_ledts.c **** XMC_LEDTS_STATUS_t XMC_LEDTS_InitTSBasic(XMC_LEDTS_t *const ledts, const XMC_LEDTS_TS_CONFIG_BASIC_
+ 171:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 139              	 .loc 1 171 0
+ 140              	 .cfi_startproc
+ 141              	 
+ 142              	 
+ 143              	.LVL9:
+ 172:../Libraries/XMCLib/src/xmc_ledts.c ****   uint32_t reg;
+ 173:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 174:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_TS_Basic_Init:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts));
+ 175:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_TS_Basic_Init:Null Pointer", (config != (XMC_LEDTS_TS_CONFIG_BASIC_t *)NULL
+ 176:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 177:../Libraries/XMCLib/src/xmc_ledts.c ****   if((ledts->GLOBCTL & LEDTS_GLOBCTL_CLK_PS_Msk) != XMC_LEDTS_CLOCK_NOT_RUNNING)
+ 144              	 .loc 1 177 0
+ 145 0000 4368     	 ldr r3,[r0,#4]
+ 146 0002 1B0C     	 lsrs r3,r3,#16
+ 147 0004 1B04     	 lsls r3,r3,#16
+ 171:../Libraries/XMCLib/src/xmc_ledts.c ****   uint32_t reg;
+ 148              	 .loc 1 171 0
+ 149 0006 10B5     	 push {r4,lr}
+ 150              	.LCFI2:
+ 151              	 .cfi_def_cfa_offset 8
+ 152              	 .cfi_offset 4,-8
+ 153              	 .cfi_offset 14,-4
+ 154              	 .loc 1 177 0
+ 155 0008 7BB9     	 cbnz r3,.L13
+ 156              	.LVL10:
+ 178:../Libraries/XMCLib/src/xmc_ledts.c ****   {
+ 179:../Libraries/XMCLib/src/xmc_ledts.c ****     return XMC_LEDTS_STATUS_RUNNING;
+ 180:../Libraries/XMCLib/src/xmc_ledts.c ****   }
+ 181:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 182:../Libraries/XMCLib/src/xmc_ledts.c ****   reg = ~(LEDTS_FNCTL_ACCCNT_Msk | LEDTS_FNCTL_TSCCMP_Msk | LEDTS_FNCTL_TSCTRR_Msk | LEDTS_FNCTL_TS
+ 183:../Libraries/XMCLib/src/xmc_ledts.c **** 		 LEDTS_FNCTL_NR_TSIN_Msk);
+ 184:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->FNCTL &= (reg);
+ 157              	 .loc 1 184 0
+ 158 000a 8268     	 ldr r2,[r0,#8]
+ 159 000c 22F07962 	 bic r2,r2,#261095424
+ 160 0010 22F47022 	 bic r2,r2,#983040
+ 161 0014 8260     	 str r2,[r0,#8]
+ 185:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->FNCTL |= (config->fnctl);
+ 162              	 .loc 1 185 0
+ 163 0016 8468     	 ldr r4,[r0,#8]
+ 164 0018 0A68     	 ldr r2,[r1]
+ 165 001a 2243     	 orrs r2,r2,r4
+ 166 001c 8260     	 str r2,[r0,#8]
+ 186:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 187:../Libraries/XMCLib/src/xmc_ledts.c ****   /* Enable TS function */
+ 188:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->GLOBCTL |= LEDTS_GLOBCTL_TS_EN_Msk;
+ 167              	 .loc 1 188 0
+ 168 001e 4268     	 ldr r2,[r0,#4]
+ 169 0020 42F00102 	 orr r2,r2,#1
+ 170 0024 4260     	 str r2,[r0,#4]
+ 189:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 190:../Libraries/XMCLib/src/xmc_ledts.c ****   return XMC_LEDTS_STATUS_SUCCESS;
+ 171              	 .loc 1 190 0
+ 172 0026 1846     	 mov r0,r3
+ 173              	.LVL11:
+ 174 0028 10BD     	 pop {r4,pc}
+ 175              	.LVL12:
+ 176              	.L13:
+ 179:../Libraries/XMCLib/src/xmc_ledts.c ****   }
+ 177              	 .loc 1 179 0
+ 178 002a 0120     	 movs r0,#1
+ 179              	.LVL13:
+ 191:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 180              	 .loc 1 191 0
+ 181 002c 10BD     	 pop {r4,pc}
+ 182              	 .cfi_endproc
+ 183              	.LFE178:
+ 185              	 .section .text.XMC_LEDTS_InitTSAdvanced,"ax",%progbits
+ 186              	 .align 1
+ 187              	 .global XMC_LEDTS_InitTSAdvanced
+ 188              	 .thumb
+ 189              	 .thumb_func
+ 191              	XMC_LEDTS_InitTSAdvanced:
+ 192              	.LFB179:
+ 192:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 193:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 194:../Libraries/XMCLib/src/xmc_ledts.c ****   * Initialization of registers for advanced Touch-Sense control function
+ 195:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 196:../Libraries/XMCLib/src/xmc_ledts.c **** XMC_LEDTS_STATUS_t XMC_LEDTS_InitTSAdvanced (XMC_LEDTS_t *const ledts, const XMC_LEDTS_TS_CONFIG_AD
+ 197:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 193              	 .loc 1 197 0
+ 194              	 .cfi_startproc
+ 195              	 
+ 196              	 
+ 197              	.LVL14:
+ 198:../Libraries/XMCLib/src/xmc_ledts.c ****   uint32_t reg;
+ 199:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 200:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_TS_Advanced_Init:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts));
+ 201:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_TS_Advanced_Init:Null Pointer", (config != (XMC_LEDTS_TS_CONFIG_ADVANCED_t 
+ 202:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 203:../Libraries/XMCLib/src/xmc_ledts.c ****   if((ledts->GLOBCTL & LEDTS_GLOBCTL_CLK_PS_Msk) != XMC_LEDTS_CLOCK_NOT_RUNNING)
+ 198              	 .loc 1 203 0
+ 199 0000 4368     	 ldr r3,[r0,#4]
+ 200 0002 1B0C     	 lsrs r3,r3,#16
+ 201 0004 1B04     	 lsls r3,r3,#16
+ 197:../Libraries/XMCLib/src/xmc_ledts.c ****   uint32_t reg;
+ 202              	 .loc 1 197 0
+ 203 0006 10B5     	 push {r4,lr}
+ 204              	.LCFI3:
+ 205              	 .cfi_def_cfa_offset 8
+ 206              	 .cfi_offset 4,-8
+ 207              	 .cfi_offset 14,-4
+ 208              	 .loc 1 203 0
+ 209 0008 9BB9     	 cbnz r3,.L16
+ 210              	.LVL15:
+ 204:../Libraries/XMCLib/src/xmc_ledts.c ****   {
+ 205:../Libraries/XMCLib/src/xmc_ledts.c ****     return XMC_LEDTS_STATUS_RUNNING;
+ 206:../Libraries/XMCLib/src/xmc_ledts.c ****   }
+ 207:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 208:../Libraries/XMCLib/src/xmc_ledts.c ****   reg = ~(LEDTS_GLOBCTL_MASKVAL_Msk | LEDTS_GLOBCTL_FENVAL_Msk);
+ 209:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->GLOBCTL &= (reg);
+ 211              	 .loc 1 209 0
+ 212 000a 4268     	 ldr r2,[r0,#4]
+ 213 000c 22F4F052 	 bic r2,r2,#7680
+ 214 0010 4260     	 str r2,[r0,#4]
+ 210:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->GLOBCTL |= (config->globctl);
+ 215              	 .loc 1 210 0
+ 216 0012 4468     	 ldr r4,[r0,#4]
+ 217 0014 0A68     	 ldr r2,[r1]
+ 218 0016 2243     	 orrs r2,r2,r4
+ 219 0018 4260     	 str r2,[r0,#4]
+ 220              	.LVL16:
+ 211:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 212:../Libraries/XMCLib/src/xmc_ledts.c ****   reg = ~(LEDTS_FNCTL_PADT_Msk | LEDTS_FNCTL_PADTSW_Msk | LEDTS_FNCTL_EPULL_Msk | LEDTS_FNCTL_TSOEX
+ 213:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->FNCTL &= (reg);
+ 221              	 .loc 1 213 0
+ 222 001a 8268     	 ldr r2,[r0,#8]
+ 223 001c 22F4C002 	 bic r2,r2,#6291456
+ 224 0020 22F01F02 	 bic r2,r2,#31
+ 225 0024 8260     	 str r2,[r0,#8]
+ 214:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->FNCTL |= (config->fnctl);
+ 226              	 .loc 1 214 0
+ 227 0026 8468     	 ldr r4,[r0,#8]
+ 228 0028 4A68     	 ldr r2,[r1,#4]
+ 229 002a 2243     	 orrs r2,r2,r4
+ 230 002c 8260     	 str r2,[r0,#8]
+ 215:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 216:../Libraries/XMCLib/src/xmc_ledts.c ****   return XMC_LEDTS_STATUS_SUCCESS;
+ 231              	 .loc 1 216 0
+ 232 002e 1846     	 mov r0,r3
+ 233              	.LVL17:
+ 234 0030 10BD     	 pop {r4,pc}
+ 235              	.LVL18:
+ 236              	.L16:
+ 205:../Libraries/XMCLib/src/xmc_ledts.c ****   }
+ 237              	 .loc 1 205 0
+ 238 0032 0120     	 movs r0,#1
+ 239              	.LVL19:
+ 217:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 240              	 .loc 1 217 0
+ 241 0034 10BD     	 pop {r4,pc}
+ 242              	 .cfi_endproc
+ 243              	.LFE179:
+ 245              	 .section .text.XMC_LEDTS_StartCounter,"ax",%progbits
+ 246              	 .align 1
+ 247              	 .global XMC_LEDTS_StartCounter
+ 248              	 .thumb
+ 249              	 .thumb_func
+ 251              	XMC_LEDTS_StartCounter:
+ 252              	.LFB180:
+ 218:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 219:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 220:../Libraries/XMCLib/src/xmc_ledts.c ****   * Starts LEDTS-counter
+ 221:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 222:../Libraries/XMCLib/src/xmc_ledts.c **** void XMC_LEDTS_StartCounter(XMC_LEDTS_t *const ledts, const uint16_t prescaler)
+ 223:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 253              	 .loc 1 223 0
+ 254              	 .cfi_startproc
+ 255              	 
+ 256              	 
+ 257              	 
+ 258              	.LVL20:
+ 224:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_Start_Counter:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts));
+ 225:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 226:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->GLOBCTL |= prescaler<<16U;
+ 259              	 .loc 1 226 0
+ 260 0000 4368     	 ldr r3,[r0,#4]
+ 261 0002 43EA0141 	 orr r1,r3,r1,lsl#16
+ 262              	.LVL21:
+ 263 0006 4160     	 str r1,[r0,#4]
+ 264 0008 7047     	 bx lr
+ 265              	 .cfi_endproc
+ 266              	.LFE180:
+ 268              	 .section .text.XMC_LEDTS_StopCounter,"ax",%progbits
+ 269              	 .align 1
+ 270              	 .global XMC_LEDTS_StopCounter
+ 271              	 .thumb
+ 272              	 .thumb_func
+ 274              	XMC_LEDTS_StopCounter:
+ 275              	.LFB181:
+ 227:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 228:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 229:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 230:../Libraries/XMCLib/src/xmc_ledts.c ****   * Stops LEDTS-counter
+ 231:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 232:../Libraries/XMCLib/src/xmc_ledts.c **** void XMC_LEDTS_StopCounter(XMC_LEDTS_t *const ledts)
+ 233:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 276              	 .loc 1 233 0
+ 277              	 .cfi_startproc
+ 278              	 
+ 279              	 
+ 280              	 
+ 281              	.LVL22:
+ 234:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_Stop_Counter:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts));
+ 235:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 236:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->GLOBCTL &= 0x0000FFFF;
+ 282              	 .loc 1 236 0
+ 283 0000 4368     	 ldr r3,[r0,#4]
+ 284 0002 9BB2     	 uxth r3,r3
+ 285 0004 4360     	 str r3,[r0,#4]
+ 286 0006 7047     	 bx lr
+ 287              	 .cfi_endproc
+ 288              	.LFE181:
+ 290              	 .section .text.XMC_LEDTS_ReadInterruptFlag,"ax",%progbits
+ 291              	 .align 1
+ 292              	 .global XMC_LEDTS_ReadInterruptFlag
+ 293              	 .thumb
+ 294              	 .thumb_func
+ 296              	XMC_LEDTS_ReadInterruptFlag:
+ 297              	.LFB182:
+ 237:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 238:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 239:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 240:../Libraries/XMCLib/src/xmc_ledts.c ****   * Reads time interrupt flags
+ 241:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 242:../Libraries/XMCLib/src/xmc_ledts.c **** uint32_t XMC_LEDTS_ReadInterruptFlag(XMC_LEDTS_t *const ledts)
+ 243:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 298              	 .loc 1 243 0
+ 299              	 .cfi_startproc
+ 300              	 
+ 301              	 
+ 302              	 
+ 303              	.LVL23:
+ 244:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_ReadInterruptFlag:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts))
+ 245:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 246:../Libraries/XMCLib/src/xmc_ledts.c ****   return (ledts->EVFR & 0xF);
+ 304              	 .loc 1 246 0
+ 305 0000 C068     	 ldr r0,[r0,#12]
+ 306              	.LVL24:
+ 247:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 307              	 .loc 1 247 0
+ 308 0002 00F00F00 	 and r0,r0,#15
+ 309 0006 7047     	 bx lr
+ 310              	 .cfi_endproc
+ 311              	.LFE182:
+ 313              	 .section .text.XMC_LEDTS_SetActivePADNo,"ax",%progbits
+ 314              	 .align 1
+ 315              	 .global XMC_LEDTS_SetActivePADNo
+ 316              	 .thumb
+ 317              	 .thumb_func
+ 319              	XMC_LEDTS_SetActivePADNo:
+ 320              	.LFB183:
+ 248:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 249:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 250:../Libraries/XMCLib/src/xmc_ledts.c ****   * Set the active pad number
+ 251:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 252:../Libraries/XMCLib/src/xmc_ledts.c **** void XMC_LEDTS_SetActivePADNo(XMC_LEDTS_t *const ledts, XMC_LEDTS_NUMBER_TS_INPUT_t pad_num)
+ 253:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 321              	 .loc 1 253 0
+ 322              	 .cfi_startproc
  323              	 
- 324 0000 0069     	 ldr r0,[r0,#16]
- 325 0002 80B2     	 uxth r0,r0
- 326 0004 7047     	 bx lr
- 328              	 .section .text.XMC_LEDTS_SetOscillationWindow,"ax",%progbits
- 329              	 .align 1
- 330              	 .global XMC_LEDTS_SetOscillationWindow
- 331              	 .thumb
- 332              	 .thumb_func
- 334              	XMC_LEDTS_SetOscillationWindow:
- 335              	 
- 336              	 
- 337 0000 01F0FC03 	 and r3,r1,#252
- 338 0004 1844     	 add r0,r0,r3
- 339 0006 10B5     	 push {r4,lr}
- 340 0008 01F00301 	 and r1,r1,#3
- 341 000c 446A     	 ldr r4,[r0,#36]
- 342 000e C900     	 lsls r1,r1,#3
- 343 0010 FF23     	 movs r3,#255
- 344 0012 8B40     	 lsls r3,r3,r1
- 345 0014 24EA0303 	 bic r3,r4,r3
- 346 0018 8A40     	 lsls r2,r2,r1
- 347 001a 1A43     	 orrs r2,r2,r3
- 348 001c 4262     	 str r2,[r0,#36]
- 349 001e 10BD     	 pop {r4,pc}
- 351              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+ 324              	 
+ 325              	 
+ 326              	.LVL25:
+ 254:../Libraries/XMCLib/src/xmc_ledts.c ****   uint32_t reg;
+ 255:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 256:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_SetActivePADNo:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts));
+ 257:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 258:../Libraries/XMCLib/src/xmc_ledts.c ****   reg = ledts->FNCTL;
+ 327              	 .loc 1 258 0
+ 328 0000 8368     	 ldr r3,[r0,#8]
+ 329              	.LVL26:
+ 259:../Libraries/XMCLib/src/xmc_ledts.c ****   reg &= ~(LEDTS_FNCTL_PADT_Msk);
+ 330              	 .loc 1 259 0
+ 331 0002 23F00703 	 bic r3,r3,#7
+ 332              	.LVL27:
+ 260:../Libraries/XMCLib/src/xmc_ledts.c ****   reg |= (uint32_t)pad_num;
+ 333              	 .loc 1 260 0
+ 334 0006 1943     	 orrs r1,r1,r3
+ 335              	.LVL28:
+ 261:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->FNCTL = reg;
+ 336              	 .loc 1 261 0
+ 337 0008 8160     	 str r1,[r0,#8]
+ 338 000a 7047     	 bx lr
+ 339              	 .cfi_endproc
+ 340              	.LFE183:
+ 342              	 .section .text.XMC_LEDTS_ClearInterruptFlag,"ax",%progbits
+ 343              	 .align 1
+ 344              	 .global XMC_LEDTS_ClearInterruptFlag
+ 345              	 .thumb
+ 346              	 .thumb_func
+ 348              	XMC_LEDTS_ClearInterruptFlag:
+ 349              	.LFB184:
+ 262:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 263:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 264:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 265:../Libraries/XMCLib/src/xmc_ledts.c ****   * Clears interrupt indication flags
+ 266:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 267:../Libraries/XMCLib/src/xmc_ledts.c **** void XMC_LEDTS_ClearInterruptFlag(XMC_LEDTS_t *const ledts, uint32_t interrupt_mask)
+ 268:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 350              	 .loc 1 268 0
+ 351              	 .cfi_startproc
+ 352              	 
+ 353              	 
+ 354              	 
+ 355              	.LVL29:
+ 269:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_ClearInterruptFlag:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts)
+ 270:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 271:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->EVFR = (interrupt_mask << LEDTS_EVFR_CTSF_Pos);
+ 356              	 .loc 1 271 0
+ 357 0000 0904     	 lsls r1,r1,#16
+ 358              	.LVL30:
+ 359 0002 C160     	 str r1,[r0,#12]
+ 360 0004 7047     	 bx lr
+ 361              	 .cfi_endproc
+ 362              	.LFE184:
+ 364              	 .section .text.XMC_LEDTS_SetLEDLinePattern,"ax",%progbits
+ 365              	 .align 1
+ 366              	 .global XMC_LEDTS_SetLEDLinePattern
+ 367              	 .thumb
+ 368              	 .thumb_func
+ 370              	XMC_LEDTS_SetLEDLinePattern:
+ 371              	.LFB185:
+ 272:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 273:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 274:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 275:../Libraries/XMCLib/src/xmc_ledts.c ****   * Programming of registers to output pattern on an LED column in LED matrix
+ 276:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 277:../Libraries/XMCLib/src/xmc_ledts.c **** void XMC_LEDTS_SetLEDLinePattern(XMC_LEDTS_t *const ledts, XMC_LEDTS_LED_COLUMN_t column, const uin
+ 278:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 372              	 .loc 1 278 0
+ 373              	 .cfi_startproc
+ 374              	 
+ 375              	 
+ 376              	.LVL31:
+ 377 0000 01F0FC03 	 and r3,r1,#252
+ 378 0004 1844     	 add r0,r0,r3
+ 379              	.LVL32:
+ 380 0006 10B5     	 push {r4,lr}
+ 381              	.LCFI4:
+ 382              	 .cfi_def_cfa_offset 8
+ 383              	 .cfi_offset 4,-8
+ 384              	 .cfi_offset 14,-4
+ 279:../Libraries/XMCLib/src/xmc_ledts.c ****   uint32_t reg;
+ 280:../Libraries/XMCLib/src/xmc_ledts.c ****   uint8_t reg_index = ((uint8_t)column) >> 2;
+ 281:../Libraries/XMCLib/src/xmc_ledts.c ****   uint8_t bit_shift_count = ((uint8_t)column & 0x03) * 8;
+ 385              	 .loc 1 281 0
+ 386 0008 01F00301 	 and r1,r1,#3
+ 387              	.LVL33:
+ 282:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 283:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_Set_LED_Line_Pattern:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledt
+ 284:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 285:../Libraries/XMCLib/src/xmc_ledts.c ****   reg = ledts->LINE[reg_index];
+ 388              	 .loc 1 285 0
+ 389 000c 4469     	 ldr r4,[r0,#20]
+ 390              	.LVL34:
+ 286:../Libraries/XMCLib/src/xmc_ledts.c ****   reg &= (~(0xff << bit_shift_count));
+ 391              	 .loc 1 286 0
+ 392 000e C900     	 lsls r1,r1,#3
+ 393 0010 FF23     	 movs r3,#255
+ 394 0012 8B40     	 lsls r3,r3,r1
+ 395 0014 24EA0303 	 bic r3,r4,r3
+ 396              	.LVL35:
+ 287:../Libraries/XMCLib/src/xmc_ledts.c ****   reg |= pattern << bit_shift_count;
+ 397              	 .loc 1 287 0
+ 398 0018 8A40     	 lsls r2,r2,r1
+ 399              	.LVL36:
+ 400 001a 1A43     	 orrs r2,r2,r3
+ 401              	.LVL37:
+ 288:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->LINE[reg_index] = reg;
+ 402              	 .loc 1 288 0
+ 403 001c 4261     	 str r2,[r0,#20]
+ 404 001e 10BD     	 pop {r4,pc}
+ 405              	 .cfi_endproc
+ 406              	.LFE185:
+ 408              	 .section .text.XMC_LEDTS_SetColumnBrightness,"ax",%progbits
+ 409              	 .align 1
+ 410              	 .global XMC_LEDTS_SetColumnBrightness
+ 411              	 .thumb
+ 412              	 .thumb_func
+ 414              	XMC_LEDTS_SetColumnBrightness:
+ 415              	.LFB186:
+ 289:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 290:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 291:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 292:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 293:../Libraries/XMCLib/src/xmc_ledts.c ****   * Programming of registers to adjust brightness of an LED column in LED matrix
+ 294:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 295:../Libraries/XMCLib/src/xmc_ledts.c **** void XMC_LEDTS_SetColumnBrightness(XMC_LEDTS_t *const ledts, XMC_LEDTS_LED_COLUMN_t column, const u
+ 296:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 416              	 .loc 1 296 0
+ 417              	 .cfi_startproc
+ 418              	 
+ 419              	 
+ 420              	.LVL38:
+ 421 0000 01F0FC03 	 and r3,r1,#252
+ 422 0004 1844     	 add r0,r0,r3
+ 423              	.LVL39:
+ 424 0006 10B5     	 push {r4,lr}
+ 425              	.LCFI5:
+ 426              	 .cfi_def_cfa_offset 8
+ 427              	 .cfi_offset 4,-8
+ 428              	 .cfi_offset 14,-4
+ 297:../Libraries/XMCLib/src/xmc_ledts.c ****   uint32_t reg;
+ 298:../Libraries/XMCLib/src/xmc_ledts.c ****   uint8_t reg_index = ((uint8_t)column) >> 2;
+ 299:../Libraries/XMCLib/src/xmc_ledts.c ****   uint8_t bit_shift_count = ((uint8_t)column & 0x03) * 8;
+ 429              	 .loc 1 299 0
+ 430 0008 01F00301 	 and r1,r1,#3
+ 431              	.LVL40:
+ 300:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 301:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_Set_Column_Brightness:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(led
+ 302:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 303:../Libraries/XMCLib/src/xmc_ledts.c **** 	reg = ledts->LDCMP[reg_index];
+ 432              	 .loc 1 303 0
+ 433 000c C469     	 ldr r4,[r0,#28]
+ 434              	.LVL41:
+ 304:../Libraries/XMCLib/src/xmc_ledts.c **** 	reg &= (~(0xff << bit_shift_count));
+ 435              	 .loc 1 304 0
+ 436 000e C900     	 lsls r1,r1,#3
+ 437 0010 FF23     	 movs r3,#255
+ 438 0012 8B40     	 lsls r3,r3,r1
+ 439 0014 24EA0303 	 bic r3,r4,r3
+ 440              	.LVL42:
+ 305:../Libraries/XMCLib/src/xmc_ledts.c **** 	reg |= brightness << bit_shift_count;
+ 441              	 .loc 1 305 0
+ 442 0018 8A40     	 lsls r2,r2,r1
+ 443              	.LVL43:
+ 444 001a 1A43     	 orrs r2,r2,r3
+ 445              	.LVL44:
+ 306:../Libraries/XMCLib/src/xmc_ledts.c **** 	ledts->LDCMP[reg_index] = reg;
+ 446              	 .loc 1 306 0
+ 447 001c C261     	 str r2,[r0,#28]
+ 448 001e 10BD     	 pop {r4,pc}
+ 449              	 .cfi_endproc
+ 450              	.LFE186:
+ 452              	 .section .text.XMC_LEDTS_SetCommonOscillationWindow,"ax",%progbits
+ 453              	 .align 1
+ 454              	 .global XMC_LEDTS_SetCommonOscillationWindow
+ 455              	 .thumb
+ 456              	 .thumb_func
+ 458              	XMC_LEDTS_SetCommonOscillationWindow:
+ 459              	.LFB187:
+ 307:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 308:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 309:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 310:../Libraries/XMCLib/src/xmc_ledts.c ****   * Programming of registers to set common oscillation window size for touch-sense inputs
+ 311:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 312:../Libraries/XMCLib/src/xmc_ledts.c **** void XMC_LEDTS_SetCommonOscillationWindow(XMC_LEDTS_t *const ledts, const uint8_t common_size)
+ 313:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 460              	 .loc 1 313 0
+ 461              	 .cfi_startproc
+ 462              	 
+ 463              	 
+ 464              	 
+ 465              	.LVL45:
+ 314:../Libraries/XMCLib/src/xmc_ledts.c ****   uint32_t reg;
+ 315:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 316:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_Set_Common_Oscillation_Window:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL
+ 317:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 318:../Libraries/XMCLib/src/xmc_ledts.c ****   reg = ledts->LDCMP[1];
+ 466              	 .loc 1 318 0
+ 467 0000 036A     	 ldr r3,[r0,#32]
+ 468              	.LVL46:
+ 319:../Libraries/XMCLib/src/xmc_ledts.c ****   reg &= ~LEDTS_LDCMP1_CMP_LDA_TSCOM_Msk;
+ 469              	 .loc 1 319 0
+ 470 0002 23F07F43 	 bic r3,r3,#-16777216
+ 471              	.LVL47:
+ 320:../Libraries/XMCLib/src/xmc_ledts.c ****   reg |= (common_size << LEDTS_LDCMP1_CMP_LDA_TSCOM_Pos);
+ 472              	 .loc 1 320 0
+ 473 0006 43EA0161 	 orr r1,r3,r1,lsl#24
+ 474              	.LVL48:
+ 321:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->LDCMP[1] = reg;
+ 475              	 .loc 1 321 0
+ 476 000a 0162     	 str r1,[r0,#32]
+ 477 000c 7047     	 bx lr
+ 478              	 .cfi_endproc
+ 479              	.LFE187:
+ 481              	 .section .text.XMC_LEDTS_ReadFNCOL,"ax",%progbits
+ 482              	 .align 1
+ 483              	 .global XMC_LEDTS_ReadFNCOL
+ 484              	 .thumb
+ 485              	 .thumb_func
+ 487              	XMC_LEDTS_ReadFNCOL:
+ 488              	.LFB188:
+ 322:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 323:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 324:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 325:../Libraries/XMCLib/src/xmc_ledts.c ****   * Checking the previous active function or LED column status
+ 326:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 327:../Libraries/XMCLib/src/xmc_ledts.c **** uint32_t XMC_LEDTS_ReadFNCOL(XMC_LEDTS_t *const ledts)
+ 328:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 489              	 .loc 1 328 0
+ 490              	 .cfi_startproc
+ 491              	 
+ 492              	 
+ 493              	 
+ 494              	.LVL49:
+ 329:../Libraries/XMCLib/src/xmc_ledts.c ****   uint32_t fncol_read;
+ 330:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 331:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_Read_FNCOL:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts));
+ 332:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 333:../Libraries/XMCLib/src/xmc_ledts.c ****   fncol_read = ledts->FNCTL & LEDTS_FNCTL_FNCOL_Msk;
+ 495              	 .loc 1 333 0
+ 496 0000 8068     	 ldr r0,[r0,#8]
+ 497              	.LVL50:
+ 334:../Libraries/XMCLib/src/xmc_ledts.c ****   fncol_read >>= LEDTS_FNCTL_FNCOL_Pos;
+ 335:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 336:../Libraries/XMCLib/src/xmc_ledts.c ****   return fncol_read;
+ 337:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 498              	 .loc 1 337 0
+ 499 0002 C0F34210 	 ubfx r0,r0,#5,#3
+ 500              	.LVL51:
+ 501 0006 7047     	 bx lr
+ 502              	 .cfi_endproc
+ 503              	.LFE188:
+ 505              	 .section .text.XMC_LEDTS_SetNumOfLEDColumns,"ax",%progbits
+ 506              	 .align 1
+ 507              	 .global XMC_LEDTS_SetNumOfLEDColumns
+ 508              	 .thumb
+ 509              	 .thumb_func
+ 511              	XMC_LEDTS_SetNumOfLEDColumns:
+ 512              	.LFB189:
+ 338:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 339:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 340:../Libraries/XMCLib/src/xmc_ledts.c ****   * Set the number of LED column Enabled
+ 341:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 342:../Libraries/XMCLib/src/xmc_ledts.c **** void XMC_LEDTS_SetNumOfLEDColumns(XMC_LEDTS_t *const ledts, uint8_t count)
+ 343:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 513              	 .loc 1 343 0
+ 514              	 .cfi_startproc
+ 515              	 
+ 516              	 
+ 517              	 
+ 518              	.LVL52:
+ 344:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 345:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_SetNumOfLEDColumns:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts)
+ 346:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 347:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->FNCTL &= ~(LEDTS_FNCTL_NR_LEDCOL_Msk);
+ 519              	 .loc 1 347 0
+ 520 0000 8368     	 ldr r3,[r0,#8]
+ 521 0002 23F06043 	 bic r3,r3,#-536870912
+ 522 0006 8360     	 str r3,[r0,#8]
+ 348:../Libraries/XMCLib/src/xmc_ledts.c ****   ledts->FNCTL |= (count << LEDTS_FNCTL_NR_LEDCOL_Pos);
+ 523              	 .loc 1 348 0
+ 524 0008 8368     	 ldr r3,[r0,#8]
+ 525 000a 43EA4171 	 orr r1,r3,r1,lsl#29
+ 526              	.LVL53:
+ 527 000e 8160     	 str r1,[r0,#8]
+ 528 0010 7047     	 bx lr
+ 529              	 .cfi_endproc
+ 530              	.LFE189:
+ 532              	 .section .text.XMC_LEDTS_ReadTSVAL,"ax",%progbits
+ 533              	 .align 1
+ 534              	 .global XMC_LEDTS_ReadTSVAL
+ 535              	 .thumb
+ 536              	 .thumb_func
+ 538              	XMC_LEDTS_ReadTSVAL:
+ 539              	.LFB190:
+ 349:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 350:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 351:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 352:../Libraries/XMCLib/src/xmc_ledts.c ****   * Reading recorded number of oscillation counts
+ 353:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 354:../Libraries/XMCLib/src/xmc_ledts.c **** uint16_t XMC_LEDTS_ReadTSVAL(XMC_LEDTS_t *const ledts)
+ 355:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 540              	 .loc 1 355 0
+ 541              	 .cfi_startproc
+ 542              	 
+ 543              	 
+ 544              	 
+ 545              	.LVL54:
+ 356:../Libraries/XMCLib/src/xmc_ledts.c ****   uint16_t no_of_oscillations;
+ 357:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 358:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_Read_TSVAL:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(ledts));
+ 359:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 360:../Libraries/XMCLib/src/xmc_ledts.c ****   no_of_oscillations = (ledts->TSVAL & 0xFFFF);
+ 546              	 .loc 1 360 0
+ 547 0000 0069     	 ldr r0,[r0,#16]
+ 548              	.LVL55:
+ 361:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 362:../Libraries/XMCLib/src/xmc_ledts.c ****   return no_of_oscillations;
+ 363:../Libraries/XMCLib/src/xmc_ledts.c **** }
+ 549              	 .loc 1 363 0
+ 550 0002 80B2     	 uxth r0,r0
+ 551 0004 7047     	 bx lr
+ 552              	 .cfi_endproc
+ 553              	.LFE190:
+ 555              	 .section .text.XMC_LEDTS_SetOscillationWindow,"ax",%progbits
+ 556              	 .align 1
+ 557              	 .global XMC_LEDTS_SetOscillationWindow
+ 558              	 .thumb
+ 559              	 .thumb_func
+ 561              	XMC_LEDTS_SetOscillationWindow:
+ 562              	.LFB191:
+ 364:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 365:../Libraries/XMCLib/src/xmc_ledts.c **** /**
+ 366:../Libraries/XMCLib/src/xmc_ledts.c ****   * Programming of registers to adjust the size of oscillation window
+ 367:../Libraries/XMCLib/src/xmc_ledts.c ****   */
+ 368:../Libraries/XMCLib/src/xmc_ledts.c **** void XMC_LEDTS_SetOscillationWindow(XMC_LEDTS_t *const ledts, XMC_LEDTS_NUMBER_TS_INPUT_t touchpad,
+ 369:../Libraries/XMCLib/src/xmc_ledts.c **** {
+ 563              	 .loc 1 369 0
+ 564              	 .cfi_startproc
+ 565              	 
+ 566              	 
+ 567              	.LVL56:
+ 568 0000 01F0FC03 	 and r3,r1,#252
+ 569 0004 1844     	 add r0,r0,r3
+ 570              	.LVL57:
+ 571 0006 10B5     	 push {r4,lr}
+ 572              	.LCFI6:
+ 573              	 .cfi_def_cfa_offset 8
+ 574              	 .cfi_offset 4,-8
+ 575              	 .cfi_offset 14,-4
+ 370:../Libraries/XMCLib/src/xmc_ledts.c ****   uint32_t reg;
+ 371:../Libraries/XMCLib/src/xmc_ledts.c ****   uint8_t reg_index = ((uint8_t)touchpad) >> 2;
+ 372:../Libraries/XMCLib/src/xmc_ledts.c ****   uint8_t bit_shift_count = ((uint8_t)touchpad & 0x03) * 8;
+ 576              	 .loc 1 372 0
+ 577 0008 01F00301 	 and r1,r1,#3
+ 578              	.LVL58:
+ 373:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 374:../Libraries/XMCLib/src/xmc_ledts.c ****   XMC_ASSERT("XMC_LEDTS_Set_Oscillation_Window:Wrong Module Pointer", XMC_LEDTS_CHECK_KERNEL_PTR(le
+ 375:../Libraries/XMCLib/src/xmc_ledts.c **** 
+ 376:../Libraries/XMCLib/src/xmc_ledts.c **** 	reg = ledts->TSCMP[reg_index];
+ 579              	 .loc 1 376 0
+ 580 000c 446A     	 ldr r4,[r0,#36]
+ 581              	.LVL59:
+ 377:../Libraries/XMCLib/src/xmc_ledts.c **** 	reg &= (~(0xff << bit_shift_count));
+ 582              	 .loc 1 377 0
+ 583 000e C900     	 lsls r1,r1,#3
+ 584 0010 FF23     	 movs r3,#255
+ 585 0012 8B40     	 lsls r3,r3,r1
+ 586 0014 24EA0303 	 bic r3,r4,r3
+ 587              	.LVL60:
+ 378:../Libraries/XMCLib/src/xmc_ledts.c **** 	reg |= size << bit_shift_count;
+ 588              	 .loc 1 378 0
+ 589 0018 8A40     	 lsls r2,r2,r1
+ 590              	.LVL61:
+ 591 001a 1A43     	 orrs r2,r2,r3
+ 592              	.LVL62:
+ 379:../Libraries/XMCLib/src/xmc_ledts.c **** 	ledts->TSCMP[reg_index] = reg;
+ 593              	 .loc 1 379 0
+ 594 001c 4262     	 str r2,[r0,#36]
+ 595 001e 10BD     	 pop {r4,pc}
+ 596              	 .cfi_endproc
+ 597              	.LFE191:
+ 599              	 .text
+ 600              	.Letext0:
+ 601              	 .file 2 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 602              	 .file 3 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 603              	 .file 4 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+ 604              	 .file 5 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_scu.h"
+ 605              	 .file 6 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_ledts.h"
+ 606              	 .file 7 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+ 607              	 .file 8 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 xmc_ledts.c
-    {standard input}:17     .text.XMC_LEDTS_InitGlobal:00000000 $t
-    {standard input}:22     .text.XMC_LEDTS_InitGlobal:00000000 XMC_LEDTS_InitGlobal
-    {standard input}:47     .text.XMC_LEDTS_InitGlobal:00000024 $d
-    {standard input}:51     .text.XMC_LEDTS_InitLED:00000000 $t
-    {standard input}:56     .text.XMC_LEDTS_InitLED:00000000 XMC_LEDTS_InitLED
-    {standard input}:81     .text.XMC_LEDTS_InitTSBasic:00000000 $t
-    {standard input}:86     .text.XMC_LEDTS_InitTSBasic:00000000 XMC_LEDTS_InitTSBasic
-    {standard input}:112    .text.XMC_LEDTS_InitTSAdvanced:00000000 $t
-    {standard input}:117    .text.XMC_LEDTS_InitTSAdvanced:00000000 XMC_LEDTS_InitTSAdvanced
-    {standard input}:147    .text.XMC_LEDTS_StartCounter:00000000 $t
-    {standard input}:152    .text.XMC_LEDTS_StartCounter:00000000 XMC_LEDTS_StartCounter
-    {standard input}:162    .text.XMC_LEDTS_StopCounter:00000000 $t
-    {standard input}:167    .text.XMC_LEDTS_StopCounter:00000000 XMC_LEDTS_StopCounter
-    {standard input}:177    .text.XMC_LEDTS_ReadInterruptFlag:00000000 $t
-    {standard input}:182    .text.XMC_LEDTS_ReadInterruptFlag:00000000 XMC_LEDTS_ReadInterruptFlag
-    {standard input}:191    .text.XMC_LEDTS_SetActivePADNo:00000000 $t
-    {standard input}:196    .text.XMC_LEDTS_SetActivePADNo:00000000 XMC_LEDTS_SetActivePADNo
-    {standard input}:207    .text.XMC_LEDTS_ClearInterruptFlag:00000000 $t
-    {standard input}:212    .text.XMC_LEDTS_ClearInterruptFlag:00000000 XMC_LEDTS_ClearInterruptFlag
-    {standard input}:221    .text.XMC_LEDTS_SetLEDLinePattern:00000000 $t
-    {standard input}:226    .text.XMC_LEDTS_SetLEDLinePattern:00000000 XMC_LEDTS_SetLEDLinePattern
-    {standard input}:244    .text.XMC_LEDTS_SetColumnBrightness:00000000 $t
-    {standard input}:249    .text.XMC_LEDTS_SetColumnBrightness:00000000 XMC_LEDTS_SetColumnBrightness
-    {standard input}:267    .text.XMC_LEDTS_SetCommonOscillationWindow:00000000 $t
-    {standard input}:272    .text.XMC_LEDTS_SetCommonOscillationWindow:00000000 XMC_LEDTS_SetCommonOscillationWindow
-    {standard input}:283    .text.XMC_LEDTS_ReadFNCOL:00000000 $t
-    {standard input}:288    .text.XMC_LEDTS_ReadFNCOL:00000000 XMC_LEDTS_ReadFNCOL
-    {standard input}:297    .text.XMC_LEDTS_SetNumOfLEDColumns:00000000 $t
-    {standard input}:302    .text.XMC_LEDTS_SetNumOfLEDColumns:00000000 XMC_LEDTS_SetNumOfLEDColumns
-    {standard input}:315    .text.XMC_LEDTS_ReadTSVAL:00000000 $t
-    {standard input}:320    .text.XMC_LEDTS_ReadTSVAL:00000000 XMC_LEDTS_ReadTSVAL
-    {standard input}:329    .text.XMC_LEDTS_SetOscillationWindow:00000000 $t
-    {standard input}:334    .text.XMC_LEDTS_SetOscillationWindow:00000000 XMC_LEDTS_SetOscillationWindow
+    {standard input}:20     .text.XMC_LEDTS_InitGlobal:00000000 $t
+    {standard input}:25     .text.XMC_LEDTS_InitGlobal:00000000 XMC_LEDTS_InitGlobal
+    {standard input}:74     .text.XMC_LEDTS_InitGlobal:00000024 $d
+    {standard input}:80     .text.XMC_LEDTS_InitLED:00000000 $t
+    {standard input}:85     .text.XMC_LEDTS_InitLED:00000000 XMC_LEDTS_InitLED
+    {standard input}:132    .text.XMC_LEDTS_InitTSBasic:00000000 $t
+    {standard input}:137    .text.XMC_LEDTS_InitTSBasic:00000000 XMC_LEDTS_InitTSBasic
+    {standard input}:186    .text.XMC_LEDTS_InitTSAdvanced:00000000 $t
+    {standard input}:191    .text.XMC_LEDTS_InitTSAdvanced:00000000 XMC_LEDTS_InitTSAdvanced
+    {standard input}:246    .text.XMC_LEDTS_StartCounter:00000000 $t
+    {standard input}:251    .text.XMC_LEDTS_StartCounter:00000000 XMC_LEDTS_StartCounter
+    {standard input}:269    .text.XMC_LEDTS_StopCounter:00000000 $t
+    {standard input}:274    .text.XMC_LEDTS_StopCounter:00000000 XMC_LEDTS_StopCounter
+    {standard input}:291    .text.XMC_LEDTS_ReadInterruptFlag:00000000 $t
+    {standard input}:296    .text.XMC_LEDTS_ReadInterruptFlag:00000000 XMC_LEDTS_ReadInterruptFlag
+    {standard input}:314    .text.XMC_LEDTS_SetActivePADNo:00000000 $t
+    {standard input}:319    .text.XMC_LEDTS_SetActivePADNo:00000000 XMC_LEDTS_SetActivePADNo
+    {standard input}:343    .text.XMC_LEDTS_ClearInterruptFlag:00000000 $t
+    {standard input}:348    .text.XMC_LEDTS_ClearInterruptFlag:00000000 XMC_LEDTS_ClearInterruptFlag
+    {standard input}:365    .text.XMC_LEDTS_SetLEDLinePattern:00000000 $t
+    {standard input}:370    .text.XMC_LEDTS_SetLEDLinePattern:00000000 XMC_LEDTS_SetLEDLinePattern
+    {standard input}:409    .text.XMC_LEDTS_SetColumnBrightness:00000000 $t
+    {standard input}:414    .text.XMC_LEDTS_SetColumnBrightness:00000000 XMC_LEDTS_SetColumnBrightness
+    {standard input}:453    .text.XMC_LEDTS_SetCommonOscillationWindow:00000000 $t
+    {standard input}:458    .text.XMC_LEDTS_SetCommonOscillationWindow:00000000 XMC_LEDTS_SetCommonOscillationWindow
+    {standard input}:482    .text.XMC_LEDTS_ReadFNCOL:00000000 $t
+    {standard input}:487    .text.XMC_LEDTS_ReadFNCOL:00000000 XMC_LEDTS_ReadFNCOL
+    {standard input}:506    .text.XMC_LEDTS_SetNumOfLEDColumns:00000000 $t
+    {standard input}:511    .text.XMC_LEDTS_SetNumOfLEDColumns:00000000 XMC_LEDTS_SetNumOfLEDColumns
+    {standard input}:533    .text.XMC_LEDTS_ReadTSVAL:00000000 $t
+    {standard input}:538    .text.XMC_LEDTS_ReadTSVAL:00000000 XMC_LEDTS_ReadTSVAL
+    {standard input}:556    .text.XMC_LEDTS_SetOscillationWindow:00000000 $t
+    {standard input}:561    .text.XMC_LEDTS_SetOscillationWindow:00000000 XMC_LEDTS_SetOscillationWindow
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.0.ca5ae67a873a4952d630d8e4120b9e3e
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4.features.h.22.bee0aee4a3878f51861c775df98fa3ea
+                           .group:00000000 wm4._default_types.h.15.933e8edd27a65e0b69af4a865eb623d2
+                           .group:00000000 wm4._intsup.h.10.ca9f32a61b410c270a48d1161ca2c217
+                           .group:00000000 wm4.stdint.h.22.f4a337c398d8b6d821a97202448bc0d0
+                           .group:00000000 wm4.stdbool.h.29.1c9ee6859ce8145f7838a4f2549ccec2
+                           .group:00000000 wm4.newlib.h.8.fe7d912fc917043c98742c35eddd8cff
+                           .group:00000000 wm4.config.h.216.aad1ef7bee4fb69981cb38ce62f84d9c
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.cdefs.h.47.4e89a3f145accdcb1100c37260c088e6
+                           .group:00000000 wm4.string.h.15.dab3980bf35408a4c507182805e2de3a
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.xmc_device.h.65.5c0d35eb1a6853ff8300ab2ec1b944b0
+                           .group:00000000 wm4.XMC4500.h.55.9aa45b9b5790506b2dcb963e4e7adeaf
+                           .group:00000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.57f124f9262f3dbf77da6a6506ffb430
+                           .group:00000000 wm4.core_cm4.h.174.fcddd62df80231752fa39eb9b61dadfe
+                           .group:00000000 wm4.mpu_armv7.h.32.4049752bb5792d4e15357775e9506cfc
+                           .group:00000000 wm4.system_XMC4500.h.42.99124977c10ca8844a71949adbeabd70
+                           .group:00000000 wm4.XMC4500.h.208.b340195df97f067735c4c769ba59985a
+                           .group:00000000 wm4.xmc_device.h.1500.3eca65ed9ba7f90e09c1ffcb0b3f5724
+                           .group:00000000 wm4.xmc_common.h.98.806f17e888fd51d0e4be2ad115163551
+                           .group:00000000 wm4.xmc4_scu.h.113.70a903f8782696023ba1d8628d8ac2d6
+                           .group:00000000 wm4.xmc_ledts.h.121.3378e4643727bb1f7d377efd7d479904
 
 UNDEFINED SYMBOLS
 XMC_SCU_RESET_DeassertPeripheralReset

@@ -13,88 +13,1458 @@
   13              	 .eabi_attribute 18,4
   14              	 .thumb
   15              	 .file "xmc_ebu.c"
-  16              	 .section .text.XMC_EBU_Init,"ax",%progbits
-  17              	 .align 1
-  18              	 .global XMC_EBU_Init
-  19              	 .thumb
-  20              	 .thumb_func
-  22              	XMC_EBU_Init:
-  23              	 
-  24              	 
-  25 0000 38B5     	 push {r3,r4,r5,lr}
-  26 0002 0446     	 mov r4,r0
-  27 0004 0B48     	 ldr r0,.L5
-  28 0006 0D46     	 mov r5,r1
-  29 0008 FFF7FEFF 	 bl XMC_SCU_RESET_DeassertPeripheralReset
-  30 000c 2368     	 ldr r3,[r4]
-  31 000e 23F00103 	 bic r3,r3,#1
-  32 0012 2360     	 str r3,[r4]
-  33 0014 2A68     	 ldr r2,[r5]
-  34 0016 2260     	 str r2,[r4]
-  35              	.L2:
-  36 0018 2368     	 ldr r3,[r4]
-  37 001a 02F47021 	 and r1,r2,#983040
-  38 001e 03F47003 	 and r3,r3,#15728640
-  39 0022 B1EB131F 	 cmp r1,r3,lsr#4
-  40 0026 F7D1     	 bne .L2
-  41 0028 6B68     	 ldr r3,[r5,#4]
-  42 002a 6360     	 str r3,[r4,#4]
-  43 002c AB68     	 ldr r3,[r5,#8]
-  44 002e E360     	 str r3,[r4,#12]
-  45 0030 0020     	 movs r0,#0
-  46 0032 38BD     	 pop {r3,r4,r5,pc}
-  47              	.L6:
-  48              	 .align 2
-  49              	.L5:
-  50 0034 04000030 	 .word 805306372
-  52              	 .section .text.XMC_EBU_ConfigureSdram,"ax",%progbits
-  53              	 .align 1
-  54              	 .global XMC_EBU_ConfigureSdram
-  55              	 .thumb
-  56              	 .thumb_func
-  58              	XMC_EBU_ConfigureSdram:
-  59              	 
-  60              	 
-  61              	 
-  62 0000 8B68     	 ldr r3,[r1,#8]
-  63 0002 0367     	 str r3,[r0,#112]
-  64 0004 0B68     	 ldr r3,[r1]
-  65 0006 8366     	 str r3,[r0,#104]
-  66 0008 4B68     	 ldr r3,[r1,#4]
-  67 000a C366     	 str r3,[r0,#108]
-  68 000c 7047     	 bx lr
-  70              	 .section .text.XMC_EBU_ConfigureRegion,"ax",%progbits
-  71              	 .align 1
-  72              	 .global XMC_EBU_ConfigureRegion
-  73              	 .thumb
-  74              	 .thumb_func
-  76              	XMC_EBU_ConfigureRegion:
-  77              	 
-  78              	 
-  79 0000 10B5     	 push {r4,lr}
-  80 0002 91E81800 	 ldmia r1,{r3,r4}
-  81 0006 00EB0313 	 add r3,r0,r3,lsl#4
-  82 000a 03F12802 	 add r2,r3,#40
-  83 000e 9C62     	 str r4,[r3,#40]
-  84 0010 8B68     	 ldr r3,[r1,#8]
-  85 0012 5360     	 str r3,[r2,#4]
-  86 0014 CA68     	 ldr r2,[r1,#12]
-  87 0016 0B69     	 ldr r3,[r1,#16]
-  88 0018 00EB0210 	 add r0,r0,r2,lsl#4
-  89 001c 0363     	 str r3,[r0,#48]
-  90 001e 4B69     	 ldr r3,[r1,#20]
-  91 0020 4363     	 str r3,[r0,#52]
-  92 0022 10BD     	 pop {r4,pc}
-  94              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.XMC_EBU_Init,"ax",%progbits
+  20              	 .align 1
+  21              	 .global XMC_EBU_Init
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	XMC_EBU_Init:
+  26              	.LFB192:
+  27              	 .file 1 "../Libraries/XMCLib/src/xmc_ebu.c"
+   1:../Libraries/XMCLib/src/xmc_ebu.c **** /**
+   2:../Libraries/XMCLib/src/xmc_ebu.c ****  * @file xmc_ebu.c
+   3:../Libraries/XMCLib/src/xmc_ebu.c ****  * @date 2017-06-24
+   4:../Libraries/XMCLib/src/xmc_ebu.c ****  *
+   5:../Libraries/XMCLib/src/xmc_ebu.c ****  * @cond
+   6:../Libraries/XMCLib/src/xmc_ebu.c ****  **************************************************************************************************
+   7:../Libraries/XMCLib/src/xmc_ebu.c ****  * XMClib v2.1.22 - XMC Peripheral Driver Library 
+   8:../Libraries/XMCLib/src/xmc_ebu.c ****  *
+   9:../Libraries/XMCLib/src/xmc_ebu.c ****  * Copyright (c) 2015-2019, Infineon Technologies AG
+  10:../Libraries/XMCLib/src/xmc_ebu.c ****  * All rights reserved.                        
+  11:../Libraries/XMCLib/src/xmc_ebu.c ****  *                                             
+  12:../Libraries/XMCLib/src/xmc_ebu.c ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:../Libraries/XMCLib/src/xmc_ebu.c ****  * following conditions are met:   
+  14:../Libraries/XMCLib/src/xmc_ebu.c ****  *                                                                              
+  15:../Libraries/XMCLib/src/xmc_ebu.c ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:../Libraries/XMCLib/src/xmc_ebu.c ****  * disclaimer.                        
+  17:../Libraries/XMCLib/src/xmc_ebu.c ****  * 
+  18:../Libraries/XMCLib/src/xmc_ebu.c ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:../Libraries/XMCLib/src/xmc_ebu.c ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:../Libraries/XMCLib/src/xmc_ebu.c ****  * 
+  21:../Libraries/XMCLib/src/xmc_ebu.c ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:../Libraries/XMCLib/src/xmc_ebu.c ****  * products derived from this software without specific prior written permission.                  
+  23:../Libraries/XMCLib/src/xmc_ebu.c ****  *                                                                              
+  24:../Libraries/XMCLib/src/xmc_ebu.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:../Libraries/XMCLib/src/xmc_ebu.c ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:../Libraries/XMCLib/src/xmc_ebu.c ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:../Libraries/XMCLib/src/xmc_ebu.c ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:../Libraries/XMCLib/src/xmc_ebu.c ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:../Libraries/XMCLib/src/xmc_ebu.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:../Libraries/XMCLib/src/xmc_ebu.c ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:../Libraries/XMCLib/src/xmc_ebu.c ****  *                                                                              
+  32:../Libraries/XMCLib/src/xmc_ebu.c ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:../Libraries/XMCLib/src/xmc_ebu.c ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:../Libraries/XMCLib/src/xmc_ebu.c ****  **************************************************************************************************
+  35:../Libraries/XMCLib/src/xmc_ebu.c ****  *
+  36:../Libraries/XMCLib/src/xmc_ebu.c ****  * Change History
+  37:../Libraries/XMCLib/src/xmc_ebu.c ****  * --------------
+  38:../Libraries/XMCLib/src/xmc_ebu.c ****  *
+  39:../Libraries/XMCLib/src/xmc_ebu.c ****  * 2015-02-20:
+  40:../Libraries/XMCLib/src/xmc_ebu.c ****  *     - Initial <br>
+  41:../Libraries/XMCLib/src/xmc_ebu.c ****  *      
+  42:../Libraries/XMCLib/src/xmc_ebu.c ****  * 2015-06-20:
+  43:../Libraries/XMCLib/src/xmc_ebu.c ****  *     - Removed GetDriverVersion API
+  44:../Libraries/XMCLib/src/xmc_ebu.c ****  *
+  45:../Libraries/XMCLib/src/xmc_ebu.c ****  * 2017-06-24:
+  46:../Libraries/XMCLib/src/xmc_ebu.c ****  *     - Changed XMC_EBU_Init() adding checks for the clock acknoledgment. 
+  47:../Libraries/XMCLib/src/xmc_ebu.c ****  *
+  48:../Libraries/XMCLib/src/xmc_ebu.c ****  * @endcond 
+  49:../Libraries/XMCLib/src/xmc_ebu.c ****  *
+  50:../Libraries/XMCLib/src/xmc_ebu.c ****  */
+  51:../Libraries/XMCLib/src/xmc_ebu.c ****  
+  52:../Libraries/XMCLib/src/xmc_ebu.c **** /**************************************************************************************************
+  53:../Libraries/XMCLib/src/xmc_ebu.c ****  * HEADER FILES
+  54:../Libraries/XMCLib/src/xmc_ebu.c ****  **************************************************************************************************
+  55:../Libraries/XMCLib/src/xmc_ebu.c ****  
+  56:../Libraries/XMCLib/src/xmc_ebu.c **** #include <xmc_ebu.h>
+  57:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  58:../Libraries/XMCLib/src/xmc_ebu.c **** #if defined(EBU)
+  59:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  60:../Libraries/XMCLib/src/xmc_ebu.c **** /**************************************************************************************************
+  61:../Libraries/XMCLib/src/xmc_ebu.c ****  * API IMPLEMENTATION
+  62:../Libraries/XMCLib/src/xmc_ebu.c ****  **************************************************************************************************
+  63:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  64:../Libraries/XMCLib/src/xmc_ebu.c **** /*
+  65:../Libraries/XMCLib/src/xmc_ebu.c ****  * Initialize the EBU peripheral
+  66:../Libraries/XMCLib/src/xmc_ebu.c ****  */
+  67:../Libraries/XMCLib/src/xmc_ebu.c **** XMC_EBU_STATUS_t XMC_EBU_Init(XMC_EBU_t *const ebu,const XMC_EBU_CONFIG_t *const config)
+  68:../Libraries/XMCLib/src/xmc_ebu.c **** {
+  28              	 .loc 1 68 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32              	.LVL0:
+  33 0000 38B5     	 push {r3,r4,r5,lr}
+  34              	.LCFI0:
+  35              	 .cfi_def_cfa_offset 16
+  36              	 .cfi_offset 3,-16
+  37              	 .cfi_offset 4,-12
+  38              	 .cfi_offset 5,-8
+  39              	 .cfi_offset 14,-4
+  40              	 .loc 1 68 0
+  41 0002 0446     	 mov r4,r0
+  42              	.LVL1:
+  43              	.LBB4:
+  44              	.LBB5:
+  45              	 .file 2 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_ebu.h"
+   1:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+   2:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @file xmc_ebu.h
+   3:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @date 2017-06-24
+   4:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+   5:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @cond
+   6:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  **************************************************************************************************
+   7:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * XMClib v2.1.22 - XMC Peripheral Driver Library 
+   8:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+   9:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Copyright (c) 2015-2019, Infineon Technologies AG
+  10:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * All rights reserved.                        
+  11:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *                                             
+  12:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * following conditions are met:   
+  14:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *                                                                              
+  15:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * disclaimer.                        
+  17:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * 
+  18:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * 
+  21:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * products derived from this software without specific prior written permission.                  
+  23:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *                                                                              
+  24:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *                                                                              
+  32:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  **************************************************************************************************
+  35:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+  36:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Change History
+  37:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * --------------
+  38:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+  39:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * 2015-06-20:
+  40:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *     - Initial
+  41:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+  42:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * 2016-03-30:
+  43:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *     - Added ebu_data_hold_cycles_for_read_accesses to XMC_EBU_BUS_READ_CONFIG_t
+  44:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *     - Added ebu_device_addressing_mode and ebu_data_hold_cycles_for_write_accesses to XMC_EBU_BU
+  45:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *      
+  46:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * 2017-06-24:
+  47:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *     - Changed XMC_EBU_AddressSelectEnable() to make sure arbitartion mode is active
+  48:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+  49:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @endcond 
+  50:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+  51:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+  52:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  
+  53:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #ifndef XMC_EBU_H
+  54:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #define XMC_EBU_H
+  55:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+  56:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**************************************************************************************************
+  57:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * HEADER FILES
+  58:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  **************************************************************************************************
+  59:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  
+  60:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #include <xmc_common.h>
+  61:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #if defined (EBU)
+  62:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #include <xmc_scu.h>
+  63:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+  64:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+  65:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @addtogroup XMClib XMC Peripheral Library
+  66:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @{
+  67:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+  68:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+  69:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+  70:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @addtogroup EBU
+  71:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @brief External Bus Unit (EBU) driver for the XMC45/XMC47/XMC48 microcontroller
+  72:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+  73:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The External Bus Unit (EBU) controls the transactions between external memories or 
+  74:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * peripheral units, and the internal memories and peripheral units. Several external 
+  75:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * device configurations are supported; e.g. Asynchronous static memories, SDRAM 
+  76:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * and various flash memory types. It supports multiple programmable address regions. 
+  77:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+  78:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The EBU low level driver provides functions to configure and initialize the EBU
+  79:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * hardware peripheral. 
+  80:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @{
+  81:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+  82:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  
+  83:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**************************************************************************************************
+  84:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * MACROS
+  85:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** ***************************************************************************************************
+  86:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+  87:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+  88:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * A convenient symbol for the EBU peripheral base address
+  89:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+  90:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #if defined (EBU)
+  91:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** # define XMC_EBU ((XMC_EBU_t *)EBU_BASE)
+  92:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #else
+  93:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** # error 'EBU' base peripheral pointer not defined
+  94:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #endif
+  95:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+  96:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+  97:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /*
+  98:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * This macro is used in the LLD for assertion checks (XMC_ASSERT).
+  99:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 100:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #define XMC_EBU_CHECK_MODULE_PTR(p) ((p) == XMC_EBU)
+ 101:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 102:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**************************************************************************************************
+ 103:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * ENUMS
+ 104:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** ***************************************************************************************************
+ 105:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  
+ 106:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 107:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Status return values for EBU low level driver
+ 108:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */ 
+ 109:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_STATUS
+ 110:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 111:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_STATUS_OK    = 0U, /**< Operation successful */
+ 112:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_STATUS_BUSY  = 1U, /**< Busy with a previous request */
+ 113:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_STATUS_ERROR = 3U  /**< Operation unsuccessful */
+ 114:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_STATUS_t;
+ 115:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 116:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 117:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU clock divide ratio
+ 118:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 119:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum  XMC_EBU_CLOCK_DIVIDE_RATIO
+ 120:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 121:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLOCK_DIVIDED_BY_1 = 0U, /**< Clock divided by 1 */
+ 122:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLOCK_DIVIDED_BY_2 = 1U, /**< Clock divided by 2 */
+ 123:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLOCK_DIVIDED_BY_3 = 2U, /**< Clock divided by 3 */
+ 124:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLOCK_DIVIDED_BY_4 = 3U  /**< Clock divided by 4 */
+ 125:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_CLOCK_DIVIDE_RATIO_t;
+ 126:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 127:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 128:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU DIV2 clocking mode
+ 129:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 130:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum  XMC_EBU_DIV2_CLK_MODE
+ 131:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 132:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DIV2_CLK_MODE_OFF = 0U, /**< Divider 2 clock mode OFF */
+ 133:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DIV2_CLK_MODE_ON = 1U   /**< Divider 2 clock mode ON */
+ 134:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_DIV2_CLK_MODE_t;
+ 135:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 136:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 137:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU clocking mode
+ 138:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 139:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum  XMC_EBU_CLK_MODE
+ 140:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 141:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_MODE_ASYNCHRONOUS_TO_AHB = 0U, /**< EBU is using standard clocking mode */
+ 142:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_MODE_SYNCHRONOUS_TO_CPU = 1U   /**< EBU is running at AHB bus clock divided by 2 */
+ 143:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_CLK_MODE_t;
+ 144:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 145:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 146:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU arbitration mode
+ 147:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 148:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum  XMC_EBU_ARB_MODE
+ 149:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 150:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ARB_MODE_NOT_SELECTED     = 0U, /**< No Bus arbitration mode selected */
+ 151:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ARB_MODE_ARBITER_MODE     = 1U, /**< Arbiter Mode arbitration mode selected */
+ 152:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ARB_MODE_PARTICIPANT_MODE = 2U, /**< Participant arbitration mode selected */
+ 153:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ARB_MODE_SOLE_MASTER_MODE = 3U  /**< Sole Master arbitration mode selected */
+ 154:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_ARB_MODE_t;
+ 155:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 156:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 157:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU ALE mode
+ 158:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 159:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum  XMC_EBU_ALE_MODE
+ 160:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 161:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ALE_OUTPUT_IS_INV_ADV = 0U, /**< Output is ADV */
+ 162:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ALE_OUTPUT_IS_ALE     = 1U  /**< Output is ALE */
+ 163:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_ALE_MODE_t;
+ 164:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 165:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 166:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU clock status
+ 167:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 168:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_CLK_STATUS
+ 169:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 170:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_STATUS_DISABLE_BIT = EBU_CLC_DISS_Msk,     /**< EBU Disable Status Bit */
+ 171:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_STATUS_MODE        = EBU_CLC_SYNCACK_Msk,  /**< EBU Clocking Mode Status */
+ 172:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_STATUS_DIV2_MODE   = EBU_CLC_DIV2ACK_Msk,  /**< DIV2 Clocking Mode Status */
+ 173:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_STATUS_DIV_RATIO   = EBU_CLC_EBUDIVACK_Msk /**< EBU Clock Divide Ratio Status */
+ 174:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_CLK_STATUS_t;
+ 175:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 176:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 177:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU address selection
+ 178:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 179:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_ADDRESS_SELECT
+ 180:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 181:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ADDRESS_SELECT_MEMORY_REGION_ENABLE        = EBU_ADDRSEL0_REGENAB_Msk, /**< Memory Region
+ 182:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ADDRESS_SELECT_ALTERNATE_REGION_ENABLE     = EBU_ADDRSEL0_ALTENAB_Msk, /**< Alternate Reg
+ 183:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ADDRESS_SELECT_MEMORY_REGION_WRITE_PROTECT = EBU_ADDRSEL0_WPROT_Msk    /**< Memory Region
+ 184:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_ADDRESS_SELECT_t;
+ 185:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 186:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 187:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU bus write configuration status
+ 188:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 189:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BUSWCON_SELECT
+ 190:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 191:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BUSWCON_SELECT_NAN_WORKAROUND = EBU_BUSWCON0_NAA_Msk, /**< Enable flash non-array access 
+ 192:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BUSWCON_SELECT_DEVICE_ADDRESSING_MODE = EBU_BUSWCON0_PORTW_Msk, /**< Device Addressing Mo
+ 193:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BUSWCON_SELECT_t;
+ 194:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 195:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 196:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU burst length for synchronous burst
+ 197:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 198:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BURST_LENGTH_SYNC
+ 199:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 200:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_LENGTH_SYNC_1_DATA_ACCESS   = 0U, /**< 1 data access (default after reset) */
+ 201:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_LENGTH_SYNC_2_DATA_ACCESSES = 1U, /**< 2 data access */
+ 202:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_LENGTH_SYNC_4_DATA_ACCESSES = 2U, /**< 3 data access */
+ 203:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_LENGTH_SYNC_8_DATA_ACCESSES = 3U, /**< 4 data access */
+ 204:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BURST_LENGTH_SYNC_t;
+ 205:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 206:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 207:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU burst buffer mode
+ 208:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 209:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BURST_BUFFER_SYNC_MODE
+ 210:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 211:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_BUFFER_SYNC_LENGTH_SYNC_ENABLE = 0U, /**< Burst buffer length defined by value in F
+ 212:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_BUFFER_SYNC_SINGLE_MODE        = 1U  /**< All data required for transaction (single
+ 213:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BURST_BUFFER_SYNC_MODE_t;
+ 214:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 215:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 216:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Read single stage synchronization
+ 217:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 218:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_READ_STAGES_SYNC
+ 219:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 220:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_READ_STAGES_SYNC_TWO = 0U, /**< Two stages of synchronization used (maximum margin) */
+ 221:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_READ_STAGES_SYNC_ONE = 1U  /**< One stage of synchronization used (minimum latency) */
+ 222:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_READ_STAGES_SYNC_t;
+ 223:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 224:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 225:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU burst flash clock feedback enable/disable
+ 226:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 227:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BURST_FLASH_CLOCK_FEEDBACK
+ 228:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 229:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_FLASH_CLOCK_FEEDBACK_DISABLE = 0U, /**< BFCLK feedback not used */
+ 230:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_FLASH_CLOCK_FEEDBACK_ENABLE  = 1U  /**< BFCLK feedback used */
+ 231:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BURST_FLASH_CLOCK_FEEDBACK_t;
+ 232:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 233:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 234:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU burst flash clock mode select
+ 235:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 236:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BURST_FLASH_CLOCK_MODE
+ 237:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 238:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_FLASH_CLOCK_MODE_RUN_CONTINUOSLY = 0U, /**< Burst flash clock runs continuously */
+ 239:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_FLASH_CLOCK_MODE_DISABLED_BETWEEN_ACCESSES = 1U /**< Burst flash clock disabled */
+ 240:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BURST_FLASH_CLOCK_MODE_t;
+ 241:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 242:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 243:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU flash non-array access
+ 244:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 245:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_FLASH_NON_ARRAY_ACCESS
+ 246:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 247:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FLASH_NON_ARRAY_ACCESS_DISNABLE = 0U, /**< Disable non-array access */
+ 248:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FLASH_NON_ARRAY_ACCESS_ENABLE   = 1U  /**< Enable non-array access */
+ 249:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_FLASH_NON_ARRAY_ACCESS_t;
+ 250:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 251:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 252:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU early chip select for synchronous burst
+ 253:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 254:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_EARLY_CHIP_SELECT_SYNC_BURST
+ 255:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 256:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_EARLY_CHIP_SELECT_DELAYED     = 0U, /**< Chip select delayed */
+ 257:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_EARLY_CHIP_SELECT_NOT_DELAYED = 1U  /**< Chip select not delayed */
+ 258:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_EARLY_CHIP_SELECT_SYNC_BURST_t;
+ 259:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 260:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 261:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU early burst signal enable for synchronous burst
+ 262:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 263:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BURST_SIGNAL_SYNC_BURST
+ 264:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 265:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_SIGNAL_SYNC_BURST_ADV_DELAYED     = 0U, /**< Chip select delayed */
+ 266:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_SIGNAL_SYNC_BURST_ADV_NOT_DELAYED = 1U  /**< Chip select not delayed */
+ 267:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BURST_SIGNAL_SYNC_BURST_t;
+ 268:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 269:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 270:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU burst address wrapping
+ 271:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 272:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BURST_ADDRESS_WRAPPING
+ 273:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 274:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_ADDRESS_WRAPPING_DISABLED = 0U, /**< Automatically re-aligns any non-aligned synchr
+ 275:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_ADDRESS_WRAPPING_ENABLED  = 1U  /**< Starts any burst access at address specified b
+ 276:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BURST_ADDRESS_WRAPPING_t;
+ 277:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 278:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 279:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU reversed polarity at WAIT
+ 280:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 281:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_WAIT_SIGNAL_POLARITY
+ 282:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 283:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_WAIT_SIGNAL_POLARITY_PIN_ACTIVE_LOW  = 0U, /**< OFF, input at WAIT pin is active low */
+ 284:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_WAIT_SIGNAL_POLARITY_PIN_ACTIVE_HIGH = 1U  /**< Polarity reversed, input at WAIT pin is a
+ 285:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_WAIT_SIGNAL_POLARITY_t;
+ 286:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 287:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 288:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU byte control signal control
+ 289:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 290:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BYTE_CONTROL
+ 291:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 292:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BYTE_CONTROL_FOLLOWS_CHIP_SELECT_TIMMING         = 0U, /**< Control signals follow chip s
+ 293:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BYTE_CONTROL_FOLLOWS_CONTROL_SIGNAL_TIMMING      = 1U, /**< Control signals follow contro
+ 294:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BYTE_CONTROL_FOLLOWS_WRITE_ENABLE_SIGNAL_TIMMING = 2U  /**< Control signals follow write 
+ 295:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BYTE_CONTROL_t;
+ 296:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 297:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 298:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU device addressing mode
+ 299:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 300:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_DEVICE_ADDRESSING_MODE
+ 301:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 302:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_ADDRESSING_MODE_16_BITS                  = 1U, /**< Address will only be driven on
+ 303:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_ADDRESSING_MODE_TWIN_16_BITS_MULTIPLEXED = 2U, /**< Lower 16b will be driven onto 
+ 304:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_ADDRESSING_MODE_32_BITS_MULTIPLEXED      = 3U  /**< Full address driven onto A[15:
+ 305:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_DEVICE_ADDRESSING_MODE_t;
+ 306:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 307:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 308:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU external wait control
+ 309:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 310:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_WAIT_CONTROL
+ 311:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 312:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_WAIT_CONTROL_OFF = 0U, /**< Default after reset; Wait control off */  
+ 313:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_WAIT_CONTROL_SYNC_EARLY_WAIT_ASYNC_ASYNC_INPUT_AT_WAIT = 1U,    /**< SYNC: Wait for page 
+ 314:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****                                                                                ASYNC: Asynchronous 
+ 315:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_WAIT_CONTROL_SYNC_WAIT_WITH_DATA_ASYNC_SYNC_INPUT_AT_WAIT = 2U, /**< SYNC: Wait for page 
+ 316:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****                                                                                ASYNC: Synchronous i
+ 317:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_WAIT_CONTROL_SYNC_ABORT_AND_RETRY_ACCESS = 3U                   /**< SYNC: Abort and retr
+ 318:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_WAIT_CONTROL_t;
+ 319:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 320:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 321:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU asynchronous address phase
+ 322:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 323:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_ASYNCHRONOUS_ADDRESS_PHASE
+ 324:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 325:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ASYNCHRONOUS_ADDRESS_PHASE_CLOCK_ENABLED_AT_BEGINNING_OF_ACCESS = 0U, /**< Enabled at beg
+ 326:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ASYNCHRONOUS_ADDRESS_PHASE_CLOCK_ENABLED_AFTER_ADDRESS_PHASE    = 1U  /**< Enabled after 
+ 327:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_ASYNCHRONOUS_ADDRESS_PHASE_t;
+ 328:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 329:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 330:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU device type for region
+ 331:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 332:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_DEVICE_TYPE
+ 333:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 334:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_MUXED_ASYNCHRONOUS_TYPE   = 0U, /**< Device type muxed asynchronous */
+ 335:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_MUXED_BURST_TYPE          = 1U, /**< Device type muxed burst */
+ 336:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_NAND_FLASH                = 2U, /**< Device type NAND flash */
+ 337:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_MUXED_CELLULAR_RAM        = 3U, /**< Device type muxed cellular RAM  */
+ 338:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_DEMUXED_ASYNCHRONOUS_TYPE = 4U, /**< Device type de-muxed asynchronous */
+ 339:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_DEMUXED_BURST_TYPE        = 5U, /**< Device type de-muxed burst */
+ 340:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_DEMUXED_PAGE_MODE         = 6U, /**< Device type de-muxed page mode */
+ 341:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_DEMUXED_CELLULAR_RAM      = 7U, /**< Device type de-muxed cellular RAM  */
+ 342:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_SDRAM                     = 8U  /**< Device type SDRAM  */
+ 343:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_DEVICE_TYPE_t;
+ 344:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 345:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 346:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU lock chip select
+ 347:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 348:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_LOCK_CHIP_SELECT
+ 349:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 350:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_LOCK_CHIP_SELECT_DISABLED = 0U, /**< Chip select cannot be locked */
+ 351:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_LOCK_CHIP_SELECT_ENABLED  = 1U  /**< Chip select automatically locked after a write opera
+ 352:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_LOCK_CHIP_SELECT_t;
+ 353:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 354:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 355:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU Frequency of external clock at pin BFCLKO
+ 356:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 357:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_FREQUENCY_EXT_CLK_PIN
+ 358:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 359:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FREQ_EXT_CLK_PIN_EQUAL_TO_INT_CLK   = 0U, /**< Equal to INT_CLK frequency */
+ 360:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FREQ_EXT_CLK_PIN_HALF_OF_INT_CLK    = 1U, /**< 1/2 of INT_CLK frequency */
+ 361:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FREQ_EXT_CLK_PIN_THIRD_OF_INT_CLK   = 2U, /**< 1/3 of INT_CLK frequency */
+ 362:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FREQ_EXT_CLK_PIN_QUARTER_OF_INT_CLK = 3U  /**< 1/4 of INT_CLK frequency */
+ 363:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_FREQ_EXT_CLK_PIN_t;
+ 364:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 365:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 366:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU extended data
+ 367:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 368:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_EXT_DATA
+ 369:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 370:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_EXT_DATA_OUTPUT_EVERY_1_BFCLK_CYCLES = 0U, /**< External memory outputs data every BFCLK 
+ 371:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_EXT_DATA_OUTPUT_EVERY_2_BFCLK_CYCLES = 1U, /**< External memory outputs data every two BF
+ 372:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_EXT_DATA_OUTPUT_EVERY_4_BFCLK_CYCLES = 2U, /**< External memory outputs data every four B
+ 373:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_EXT_DATA_OUTPUT_EVERY_8_BFCLK_CYCLES = 3U  /**< External memory outputs data every eight 
+ 374:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_EXT_DATA_t;
+ 375:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 376:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 377:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU SDRAM clock mode select
+ 378:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 379:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_CLK_MODE
+ 380:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 381:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_CLK_MODE_CONTINUOUSLY_RUNS         = 0U, /**< Clock continuously running */
+ 382:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_CLK_MODE_DISABLED_BETWEEN_ACCESSES = 1U  /**< Clock disabled between accesses */
+ 383:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_CLK_MODE_t;
+ 384:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 385:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 386:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU power save mode used for gated clock mode
+ 387:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 388:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_PWR_MODE
+ 389:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 390:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_PWR_MODE_PRECHARGE_BEFORE_CLK_STOP      = 0U, /**< Precharge before clock stop */
+ 391:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_PWR_MODE_AUTO_PRECHARGE_BEFORE_CLK_STOP = 1U, /**< Auto-precharge before clock stop
+ 392:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_PWR_MODE_ACTIVE_PWR_DOWN                = 2U, /**< Active power down (stop clock wi
+ 393:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_PWR_MODE_CLK_STOP_PWR_DOWN              = 3U  /**< Clock stop power down */
+ 394:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_PWR_MODE_t;
+ 395:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 396:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 397:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU disable SDRAM clock output
+ 398:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 399:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_CLK_OUTPUT
+ 400:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 401:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_CLK_OUTPUT_ENABLED  = 0U, /**< Clock output enabled */
+ 402:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_CLK_OUTPUT_DISABLED = 1U  /**< Clock output disabled */
+ 403:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_CLK_OUTPUT_t;
+ 404:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 405:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 406:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *  EBU mask for bank tag
+ 407:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 408:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_MASK_FOR_BANKM_TAG
+ 409:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 410:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_21_to_20 = 1U, /**< Mask for bank tag addresses 21 to 20 
+ 411:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_22_to_21 = 2U, /**< Mask for bank tag addresses 22 to 21 
+ 412:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_23_to_22 = 3U, /**< Mask for bank tag addresses 23 to 22 
+ 413:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_24_to_23 = 4U, /**< Mask for bank tag addresses 24 to 23 
+ 414:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_25_to_24 = 5U, /**< Mask for bank tag addresses 25 to 24 
+ 415:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_26_to_25 = 6U, /**< Mask for bank tag addresses 26 to 25 
+ 416:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_26       = 7U  /**< Mask for bank tag addresses 26 */
+ 417:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_t;
+ 418:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 419:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 420:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU Mask for row tag
+ 421:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 422:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_MASK_FOR_ROW_TAG
+ 423:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 424:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_ROW_TAG_ADDRESS_26_to_9  = 1U, /**< Mask for row tag addresses 26 to 9 */
+ 425:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_ROW_TAG_ADDRESS_26_to_10 = 2U, /**< Mask for row tag addresses 26 to 10 */
+ 426:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_ROW_TAG_ADDRESS_26_to_11 = 3U, /**< Mask for row tag addresses 26 to 11 */
+ 427:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_ROW_TAG_ADDRESS_26_to_12 = 4U, /**< Mask for row tag addresses 26 to 12 */
+ 428:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_ROW_TAG_ADDRESS_26_to_13 = 5U  /**< Mask for row tag addresses 26 to 13 */
+ 429:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_MASK_FOR_ROW_TAG_t;
+ 430:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 431:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 432:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Number of address bits from bit 0 to be used for column address
+ 433:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 434:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_WIDTH_OF_COLUMN_ADDRESS
+ 435:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 436:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_WIDTH_OF_COLUMN_ADDRESS_8_to_0  = 1U, /**< Address [8:0] */
+ 437:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_WIDTH_OF_COLUMN_ADDRESS_9_to_0  = 2U, /**< Address [9:0] */
+ 438:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_WIDTH_OF_COLUMN_ADDRESS_10_to_0 = 3U  /**< Address [10:0] */
+ 439:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_WIDTH_OF_COLUMN_ADDRESS_t;
+ 440:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 441:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 442:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Number of clocks between a READ command and the availability of data
+ 443:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 444:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_CAS_LATENCY
+ 445:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 446:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_CAS_LATENCY_2_CLKS = 2U, /**< 2 clocks between a READ command and the availability 
+ 447:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_CAS_LATENCY_3_CLKS = 3U  /**< 3 clocks between a READ command and the availability 
+ 448:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_CAS_LATENCY_t;
+ 449:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 450:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 451:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Number of locations can be accessed with a single command
+ 452:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 453:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_BURST_LENGTH
+ 454:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 455:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_BURST_LENGTH_1_LOCATION  = 0U, /**< One location accessed with a single command */
+ 456:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_BURST_LENGTH_2_LOCATION  = 1U, /**< Two location accessed with a single command */
+ 457:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_BURST_LENGTH_4_LOCATION  = 2U, /**< Four location accessed with a single command */
+ 458:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_BURST_LENGTH_8_LOCATION  = 3U, /**< Eight location accessed with a single command *
+ 459:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_BURST_LENGTH_16_LOCATION = 4U  /**< Sixteen location accessed with a single command
+ 460:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_BURST_LENGTH_t;
+ 461:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 462:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 463:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU SDRAM status
+ 464:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 465:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_STATUS
+ 466:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 467:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_STATUS_RX_ERROR = EBU_SDRSTAT_SDERR_Msk, /**< Detected an error when returning read
+ 468:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_STATUS_BUSY = EBU_SDRSTAT_SDRMBUSY_Msk, /**< The status of power-up initialization 
+ 469:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_STATUS_REFRESH_ERROR = EBU_SDRSTAT_REFERR_Msk /**< Failed previous refresh req coll
+ 470:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_STATUS_t;
+ 471:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 472:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 473:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * SDRAM refresh status
+ 474:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 475:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_RFRSH_STATUS
+ 476:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 477:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_RFRSH_STATUS_SELF_REFRESH_ENTRY_STATUS = EBU_SDRMREF_SELFRENST_Msk, /**< Self refre
+ 478:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_RFRSH_STATUS_SELF_REFRESH_EXIT_STATUS = EBU_SDRMREF_SELFREXST_Msk   /**< Self refre
+ 479:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_RFRSH_STATUS_t;
+ 480:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 481:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 482:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**************************************************************************************************
+ 483:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * DATA STRUCTURES
+ 484:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  **************************************************************************************************
+ 485:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  
+ 486:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /* Anonymous structure/union guard start */
+ 487:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #if defined(__CC_ARM)
+ 488:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   #pragma push
+ 489:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   #pragma anon_unions
+ 490:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #elif defined (__TASKING__)
+ 491:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   #pragma warning 586
+ 492:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #endif
+ 493:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 494:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 495:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Clock configuration values of EBU  <br>
+ 496:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 497:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the clock configuration
+ 498:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * values for clock mode, div2 clock mode and clock divide ratio of EBU.
+ 499:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The XMC_EBU_Init() can be used to populate the structure with the clock
+ 500:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * configuration values of the EBU module.
+ 501:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */ 
+ 502:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_CLK_CONFIG
+ 503:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 504:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 505:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   { 
+ 506:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     uint32_t raw0;
+ 507:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     struct
+ 508:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 509:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                        : 16;
+ 510:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_clk_mode           : 1; /**< Clocking mode (::XMC_EBU_CLK_MODE_t) */
+ 511:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_div2_clk_mode      : 1; /**< DIV2 clocking mode (::XMC_EBU_DIV2_CLK_MODE_t) */
+ 512:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_clock_divide_ratio : 2; /**< Clock divide ratio (::XMC_EBU_CLOCK_DIVIDE_RATIO_t)
+ 513:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                        : 12;
+ 514:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     };
+ 515:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 516:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_CLK_CONFIG_t;
+ 517:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 518:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 519:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Mode configuration values for EBU <br>
+ 520:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 521:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the mode configuration,
+ 522:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * SDRAM tristate, external clock, arbitration, timeout control and ALE mode for
+ 523:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU. The XMC_EBU_Init() can be used to populate the structure with the
+ 524:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * clock configuration values of the EBU module.
+ 525:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */ 
+ 526:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_MODE_CONFIG
+ 527:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** { 
+ 528:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 529:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 530:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     uint32_t raw0;
+ 531:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     struct
+ 532:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 533:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                      : 2;
+ 534:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_tristate   : 1; /**< 0 - SDRAM cannot be shared; 1 - SDRAM can be shared *
+ 535:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                      : 1;
+ 536:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_extlock          : 1; /**< 0 - ext bus is not locked after the EBU gains ownersh
+ 537:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_arbsync          : 1; /**< 0 - arbitration inputs are sync; 1 - arbitration inpu
+ 538:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_arbitration_mode : 2; /**< Arbitration mode selection (::XMC_EBU_ARB_MODE_t) */
+ 539:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t bus_timeout_control  : 8; /**< Determines num of inactive cycles leading to a bus ti
+ 540:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****                                               00H: Timeout is disabled <br>
+ 541:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****                                               01H: Timeout is generated after 1 x 8 clock cycles <b
+ 542:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****                                               FFH: Timeout is generated after 255 x 8 clock cycles 
+ 543:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                      : 15;
+ 544:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_ale_mode         : 1; /**< ALE mode. Switch the ADV output to be an active high 
+ 545:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     };
+ 546:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 547:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_MODE_CONFIG_t;
+ 548:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 549:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 550:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * GPIO mode configuration for the allocated EBU ports <br>
+ 551:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Configuring this structure frees the allocated EBU ports for GPIO
+ 552:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * functionality. The XMC_EBU_Init() is used to populate the structure
+ 553:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * with the GPIO mode for the allocated EBU ports.
+ 554:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */ 
+ 555:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_FREE_PINS_TO_GPIO
+ 556:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 557:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 558:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 559:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     uint32_t raw0;
+ 560:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     struct
+ 561:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 562:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                   : 16;
+ 563:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t address_pins_gpio : 9; /**< 0 - Address bit required for addressing memory; 1 - Addr
+ 564:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t adv_pin_gpio      : 1; /**< Adv pin to GPIO mode */
+ 565:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                   : 6;
+ 566:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     };
+ 567:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 568:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_FREE_PINS_TO_GPIO_t;
+ 569:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 570:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 571:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Read configuration for a region of EBU <br>
+ 572:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 573:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the read and read timing
+ 574:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * configuration for a region for EBU. The XMC_EBU_ConfigureRegion() can be
+ 575:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * used to populate the structure with the read configuration values for EBU.
+ 576:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */ 
+ 577:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_BUS_READ_CONFIG
+ 578:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 579:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU read configuration parameters */
+ 580:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 581:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 582:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     uint32_t raw0;
+ 583:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     struct
+ 584:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 585:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_burst_length_sync                         : 3; /**< Burst length for synchronous
+ 586:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_burst_buffer_sync_mode                    : 1; /**< Burst buffer mode (::XMC_EBU
+ 587:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_read_stages_synch                         : 1; /**< Read single stage synchroniz
+ 588:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_burst_flash_clock_feedback                : 1; /**< Burst flash clock feedback e
+ 589:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_burst_flash_clock_mode                    : 1; /**< Burst flash clock mode selec
+ 590:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_flash_non_array_access                    : 1; /**< flash non-array access (::XM
+ 591:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                                               : 8;
+ 592:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_early_chip_select_sync_burst              : 1; /**< Early chip select for sync b
+ 593:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_burst_signal_sync                         : 1; /**< Early burst signal enable fo
+ 594:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_burst_address_wrapping                    : 1; /**< Burst address wrapping (::XM
+ 595:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_wait_signal_polarity                      : 1; /**< Reversed polarity at WAIT (:
+ 596:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_byte_control                              : 2; /**< Byte control signal control 
+ 597:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_device_addressing_mode                    : 2; /**< Device addressing mode (::XM
+ 598:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_wait_control                              : 2; /**< External wait control (::XMC
+ 599:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_asynchronous_address_phase                : 1; /**< Asynchronous address phase (
+ 600:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                                               : 1;
+ 601:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_device_type                               : 4; /**< Device type for region (::XM
+ 602:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     };
+ 603:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   };  
+ 604:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU read access parameters */
+ 605:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 606:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 607:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     uint32_t raw1;
+ 608:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     struct
+ 609:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 610:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 611:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Recovery Cycles between Different Regions:     <br>
+ 612:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * This bit field determines the number of clock cycles of the Recovery Phase between consecu
+ 613:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0000B: No recovery phase clock cycles available <br>
+ 614:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0001B: 1 clock cycle selected                   <br>
+ 615:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * ...                                            <br>
+ 616:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1110B: 14 clock cycles selected                <br>
+ 617:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1111B: 15 clock cycles selected                <br>
+ 618:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 619:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_recovery_cycles_between_different_regions : 4;
+ 620:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 621:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Recovery cycles after read accesses:           <br>
+ 622:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * This bit field determines the basic number of clock cycles of the Recovery Phase at the en
+ 623:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 000B: No recovery phase clock cycles available <br>
+ 624:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 001B: 1 clock cycle selected                   <br>
+ 625:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * ...                                            <br>
+ 626:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 110B: 6 clock cycles selected                  <br>
+ 627:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 111B: 7 clock cycles selected                  <br>
+ 628:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 629:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_recovery_cycles_after_read_accesses       : 3;
+ 630:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 631:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Programmed wait states for read accesses: <br>
+ 632:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of programmed wait states for read accesses. For synchronous accesses, this will al
+ 633:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 00000B:  1 wait state                     <br>
+ 634:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 00001B:  1 wait state                     <br>
+ 635:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 00010B:  2 wait state                     <br>
+ 636:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * ...                                       <br>
+ 637:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 11110B:  30 wait states                   <br>
+ 638:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 11111B:  31 wait states                   <br>
+ 639:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 640:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_programmed_wait_states_for_read_accesses  : 5;
+ 641:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 642:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Data Hold Cycles for Read Accesses <br>
+ 643:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * This bit field determines the basic number of Data Hold phase clock cycles during read acc
+ 644:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 645:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_data_hold_cycles_for_read_accesses: 4;
+ 646:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 647:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Frequency of external clock at pin BFCLKO (::XMC_EBU_FREQ_EXT_CLK_PIN_t)
+ 648:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 649:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_freq_ext_clk_pin                          : 2;
+ 650:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 651:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * EBU Extended data (::XMC_EBU_EXT_DATA_t)
+ 652:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 653:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_ext_data                                  : 2;
+ 654:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 655:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Command delay cycles:            <br>
+ 656:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * This bit field determines the basic number of Command Delay phase clock cycles.<br>
+ 657:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0000B: 0 clock cycle selected    <br>
+ 658:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0001B: 1 clock cycle selected    <br>
+ 659:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * ...                              <br>
+ 660:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1110B: 14 clock cycles selected  <br>
+ 661:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1111B: 15 clock cycles selected  <br>
+ 662:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 663:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        uint32_t command_delay_lines                          : 4;
+ 664:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        /**
+ 665:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****         * Address hold cycles:            <br>
+ 666:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****         * This bit field determines the number of clock cycles of the address hold phase.<br>
+ 667:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****         * 0000B: 0 clock cycle selected   <br>
+ 668:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****         * 0001B: 1 clock cycle selected   <br>
+ 669:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****         * ...                             <br>
+ 670:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****         * 1110B: 14 clock cycles selected <br>
+ 671:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****         * 1111B: 15 clock cycles selected <br>
+ 672:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****         */
+ 673:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        uint32_t address_hold_cycles                          : 4;
+ 674:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****         /**
+ 675:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****          * Address Cycles:
+ 676:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****          * This bit field determines the number of clock cycles of the address phase.<br>
+ 677:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****          * 0000B: 1 clock cycle selected   <br>
+ 678:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****          * 0001B: 1 clock cycle selected   <br>
+ 679:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****          * ...                             <br>
+ 680:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****          * 1110B: 14 clock cycles selected <br>
+ 681:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****          * 1111B: 15 clock cycles selected <br>
+ 682:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****          */
+ 683:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        uint32_t address_cycles                               : 4;
+ 684:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     };
+ 685:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 686:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BUS_READ_CONFIG_t;
+ 687:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 688:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 689:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Write configuration for a region of EBU <br>
+ 690:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 691:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the write and write timing
+ 692:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * configurations for a region of EBU. The XMC_EBU_ConfigureRegion() can be used
+ 693:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * to populate the structure with the write configuration values of EBU.
+ 694:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */ 
+ 695:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_BUS_WRITE_CONFIG
+ 696:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 697:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU write configuration parameters */
+ 698:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 699:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 700:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     uint32_t raw0;
+ 701:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     struct
+ 702:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 703:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_burst_length_sync                         : 3;  /**< Burst length for synchronou
+ 704:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_burst_buffer_sync_mode                    : 1;  /**< Burst buffer mode (::XMC_EB
+ 705:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                                               : 12;
+ 706:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_early_chip_select_sync_burst              : 1;  /**< Early chip select for sync 
+ 707:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_burst_signal_sync                         : 1;  /**< Early burst signal enable f
+ 708:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                                               : 1;
+ 709:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_wait_signal_polarity                      : 1;  /**< Reversed polarity at WAIT (
+ 710:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_byte_control                              : 2;  /**< Byte control signal control
+ 711:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_device_addressing_mode                    : 2;  /**< Device addressing mode (::X
+ 712:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_wait_control                              : 2;  /**< External wait control (::XM
+ 713:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_asynchronous_address_phase                : 1;  /**< Asynchronous address phase 
+ 714:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_lock_chip_select                          : 1;  /**< Lock chip select (::XMC_EBU
+ 715:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_device_type                               : 4;  /**< Device type for region (::X
+ 716:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     };
+ 717:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 718:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU write access parameters */
+ 719:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 720:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 721:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     uint32_t raw1;
+ 722:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     struct
+ 723:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 724:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 725:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Recovery cycles between different regions:       <br>
+ 726:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * This bit field determines the number of clock cycles of the Recovery Phase between consecu
+ 727:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0000B: No recovery phase clock cycles available  <br>
+ 728:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0001B: 1 clock cycle selected                    <br>
+ 729:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * ...                                              <br>
+ 730:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1110B: 14 clock cycles selected                  <br>
+ 731:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1111B: 15 clock cycles selected                  <br>
+ 732:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 733:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_recovery_cycles_between_different_regions : 4;
+ 734:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 735:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 736:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Recovery cycles after write accesses:          <br>
+ 737:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * This bit field determines the basic number of clock cycles of the Recovery Phase at the en
+ 738:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 000B: No recovery phase clock cycles available <br>
+ 739:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 001B: 1 clock cycle selected                   <br> 
+ 740:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * ...                                            <br>
+ 741:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 110B: 6 clock cycles selected                  <br>
+ 742:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 111B: 7 clock cycles selected                  <br>
+ 743:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 744:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_recovery_cycles_after_write_accesses      : 3;
+ 745:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 746:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 747:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Programmed wait states for write accesses: <br>
+ 748:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of programmed wait states for write accesses. For synchronous accesses, this will a
+ 749:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 00000B:  1 wait state                      <br>
+ 750:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 00001B:  1 wait state                      <br>
+ 751:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 00010B:  2 wait state                      <br>
+ 752:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * ...                                        <br>
+ 753:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 11110B:  30 wait states                    <br>
+ 754:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 11111B:  31 wait states                    <br>
+ 755:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       */
+ 756:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_programmed_wait_states_for_write_accesses : 5;
+ 757:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 758:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 759:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Data Hold Cycles for Write Accesses
+ 760:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * This bit field determines the basic number of Data Hold phase clock cycles during write ac
+ 761:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0000B: No recovery phase clock cycles available  <br>
+ 762:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0001B: 1 clock cycle selected                    <br>
+ 763:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * ...                                              <br>
+ 764:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1110B: 14 clock cycles selected                  <br>
+ 765:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1111B: 15 clock cycles selected                  <br>
+ 766:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 767:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_data_hold_cycles_for_write_accesses : 4;
+ 768:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**<
+ 769:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Frequency of external clock at pin BFCLKO (::XMC_EBU_FREQ_EXT_CLK_PIN_t)
+ 770:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 771:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_freq_ext_clk_pin                          : 2;
+ 772:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 773:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * EBU extended data (::XMC_EBU_EXT_DATA_t)
+ 774:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 775:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_ext_data                                  : 2;
+ 776:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 777:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Command delay cycles:           <br>
+ 778:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * This bit field determines the basic number of Command Delay phase clock cycles.<br>
+ 779:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0000B: 0 clock cycle selected   <br>
+ 780:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0001B: 1 clock cycle selected   <br>
+ 781:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * ...                             <br>
+ 782:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1110B: 14 clock cycles selected <br>
+ 783:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1111B: 15 clock cycles selected <br>
+ 784:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 785:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t command_delay_lines                           : 4;
+ 786:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /** Address hold cycles:           <br>
+ 787:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * This bit field determines the number of clock cycles of the address hold phase.<br>
+ 788:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0000B: 0 clock cycle selected   <br>
+ 789:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0001B: 1 clock cycle selected   <br>
+ 790:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * ...                             <br>
+ 791:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1110B: 14 clock cycles selected <br>
+ 792:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1111B: 15 clock cycles selected <br>
+ 793:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 794:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t address_hold_cycles                           : 4;
+ 795:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 796:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Address cycles:                 <br>
+ 797:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * This bit field determines the number of clock cycles of the address phase.<br>
+ 798:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0000B: 1 clock cycle selected   <br>
+ 799:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 0001B: 1 clock cycle selected   <br>
+ 800:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * ...                             <br>
+ 801:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1110B: 14 clock cycles selected <br>
+ 802:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * 1111B: 15 clock cycles selected <br>
+ 803:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 804:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****      uint32_t address_cycles                                 : 4;
+ 805:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     };
+ 806:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 807:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** }XMC_EBU_BUS_WRITE_CONFIG_t;
+ 808:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 809:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 810:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * SDRAM configuration structure <br>
+ 811:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 812:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure is a placeholder for setting (and obtaining) the SDRAM configuration,
+ 813:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * operation mode configuration and the right refresh parameters. The XMC_EBU_ConfigureSdram()
+ 814:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * can be used to populate the structure with the SDRAM operation mode and
+ 815:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * refresh parameters configuration.
+ 816:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 817:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_SDRAM_CONFIG
+ 818:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 819:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU SDRAM control parameters */
+ 820:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 821:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 822:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     uint32_t raw0;
+ 823:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     struct
+ 824:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 825:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 826:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of clock cycles between row activate command and a precharge
+ 827:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * command 
+ 828:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 829:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_row_precharge_delay_counter            : 4;
+ 830:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /** 
+ 831:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * (CRFSH) Number of refresh commands issued during powerup init sequence:
+ 832:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Perform CRFSH + 1 refresh cycles
+ 833:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 834:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_init_refresh_commands_counter          : 4;
+ 835:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 836:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * (CRSC) Number of NOP cycles after a mode register set command:
+ 837:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Insert CRSC + 1 NOP cycles 
+ 838:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 839:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_mode_register_set_up_time              : 2;
+ 840:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 841:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * (CRP) Number of NOP cycles inserted after a precharge command:
+ 842:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Insert CRP + 1 NOP cycles 
+ 843:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 844:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_row_precharge_time_counter             : 2;
+ 845:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 846:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of address bits from bit 0 to be used for column address
+ 847:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 848:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_width_of_column_address          : 2;
+ 849:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 850:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * (CRCD) Number of NOP cycles between a row address and a column
+ 851:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * address: Insert CRCD + 1 NOP cycles
+ 852:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 853:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_row_to_column_delay_counter      : 2;
+ 854:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 855:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Row cycle time counter: Insert (CRCE * 8) + CRC + 1 NOP cycles
+ 856:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 857:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_row_cycle_time_counter           : 3;
+ 858:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 859:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Mask for row tag
+ 860:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 861:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_mask_for_row_tag                 : 3;
+ 862:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 863:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Mask for bank tag
+ 864:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 865:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_mask_for_bank_tag                : 3;
+ 866:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 867:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Extension to the Row cycle time counter (CRCE)
+ 868:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 869:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_row_cycle_time_counter_extension : 3;
+ 870:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 871:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Disable SDRAM clock output
+ 872:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 873:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_clk_output                       : 1;
+ 874:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 875:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Power Save Mode used for gated clock mode
+ 876:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 877:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_pwr_mode                         : 2;
+ 878:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 879:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * SDRAM clock mode select
+ 880:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 881:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_clk_mode                         : 1;
+ 882:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     };
+ 883:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 884:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU SDRAM mode parameters */
+ 885:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 886:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 887:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     uint32_t raw1;
+ 888:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     struct
+ 889:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 890:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 891:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of locations can be accessed with a single command
+ 892:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 893:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_burst_length                     : 3;
+ 894:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                                            : 1;
+ 895:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 896:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of clocks between a READ command and the availability
+ 897:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * of data
+ 898:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 899:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_casclk_mode                      : 3;
+ 900:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                                            : 8;
+ 901:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 902:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Cold start
+ 903:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 904:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_cold_start: 1;
+ 905:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 906:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Value to be written to the extended mode register of a mobile
+ 907:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * SDRAM device
+ 908:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 909:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_extended_operation_mode          : 12;
+ 910:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 911:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Value to be written to the bank select pins of a mobile SDRAM
+ 912:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * device during an extended mode register write operation
+ 913:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 914:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_extended_operation_bank_select   : 4;
+ 915:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     };
+ 916:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 917:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU SDRAM refresh parameters */
+ 918:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 919:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 920:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     uint32_t raw2;
+ 921:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     struct
+ 922:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 923:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 924:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of refresh counter period:
+ 925:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Refresh period is 'num_refresh_counter_period' x 64 clock cycles
+ 926:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 927:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_num_refresh_counter_period       : 6;
+ 928:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 929:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of refresh commands
+ 930:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 931:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_num_refresh_cmnds                : 3;
+ 932:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                                            : 1;
+ 933:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 934:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * If 1, the self refresh exit command is issued to all SDRAM devices
+ 935:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * regardless of their attachment to type 0 or type 1
+ 936:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 937:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_self_refresh_exit                : 1;
+ 938:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                                            : 1;
+ 939:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 940:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * If "1", the self refresh entry command is issued to all SDRAM devices,
+ 941:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * regardless regardless of their attachment to type 0 or type 1
+ 942:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 943:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_self_refresh_entry               : 1;
+ 944:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 945:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * If 1, memory controller will automatically issue the "self refresh
+ 946:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * entry" command to all SDRAM devices when it gives up control of the
+ 947:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * external bus. It will also automatically issue "self refresh exit"
+ 948:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * when it regains control of the bus
+ 949:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 950:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_auto_self_refresh                : 1;
+ 951:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 952:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Extended number of refresh counter period
+ 953:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 954:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_extended_refresh_counter_period  : 2;
+ 955:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 956:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of NOP cycles inserted after a self refresh exit before a
+ 957:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * command is permitted to the SDRAM/DDRAM
+ 958:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 959:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_self_refresh_exit_delay          : 8;
+ 960:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 961:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * If 1, an auto refresh cycle will be performed; If 0, no refresh will
+ 962:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * be performed
+ 963:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 964:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_auto_refresh                     : 1;
+ 965:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       /**
+ 966:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of NOPs after the SDRAM controller exits power down before an
+ 967:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        * active command is permitted
+ 968:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 969:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_delay_on_power_down_exit         : 3;
+ 970:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t : 4;
+ 971:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     };
+ 972:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 973:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_CONFIG_t;
+ 974:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 975:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /* Anonymous structure/union guard end */
+ 976:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #if defined (__CC_ARM)
+ 977:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   #pragma pop
+ 978:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #elif defined (__TASKING__)
+ 979:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   #pragma warning restore
+ 980:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #endif
+ 981:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 982:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 983:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU region initialization with read configurations <br>
+ 984:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 985:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the read and read timing
+ 986:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * configurations for a region of EBU. The XMC_EBU_ConfigureRegion() can be
+ 987:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * used to populate the structure with the read configuration values of EBU  
+ 988:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */  
+ 989:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_REGION_READ_CONFIG
+ 990:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 991:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   const uint32_t ebu_region_no;                  /**< Number of region*/
+ 992:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BUS_READ_CONFIG_t ebu_bus_read_config; /**< Read configuration and access parameters stru
+ 993:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_REGION_READ_CONFIG_t;
+ 994:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 995:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 996:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU region initialization with write configurations <br>
+ 997:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 998:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the write and write
+ 999:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * timing configurations for a region of EBU. The XMC_EBU_ConfigureRegion()
+1000:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * can be used to populate the structure with the write configuration
+1001:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * values of EBU.
+1002:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */  
+1003:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_REGION_WRITE_CONFIG
+1004:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+1005:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   const uint32_t ebu_region_no;                    /**< Number of refresh counter period */
+1006:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BUS_WRITE_CONFIG_t ebu_bus_write_config; /**< Write configuration and access parameters s
+1007:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_REGION_WRITE_CONFIG_t;
+1008:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+1009:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+1010:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU region initialization with read and write configurations <br>
+1011:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1012:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the read, read timing,
+1013:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * write and write timing configurations for a region of EBU. The
+1014:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * XMC_EBU_ConfigureRegion() can be used to populate the structure with the
+1015:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * region read and write configuration values of EBU.
+1016:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */  
+1017:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_REGION
+1018:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+1019:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_REGION_READ_CONFIG_t read_config;
+1020:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_REGION_WRITE_CONFIG_t write_config;
+1021:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_REGION_t;
+1022:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+1023:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+1024:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU global configurations <br>
+1025:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1026:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the global configurations
+1027:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * of the EBU like clock, mode and GPIO mode. The XMC_EBU_Init() can be
+1028:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * used to populate the structure with the region read and write configuration
+1029:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * values of EBU.
+1030:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */  
+1031:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_CONFIG
+1032:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+1033:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_CONFIG_t ebu_clk_config;               /**< Clock configuration structure */
+1034:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_MODE_CONFIG_t ebu_mode_config;             /**< Mode configuration structure */
+1035:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FREE_PINS_TO_GPIO_t ebu_free_pins_to_gpio; /**< Free allocated EBU ports for GPIO */
+1036:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_CONFIG_t;
+1037:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   
+1038:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+1039:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * External Bus Unit (EBU) device structure <br>
+1040:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1041:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure represents a collection of all hardware registers
+1042:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * used to configure the EBU peripheral on the XMC4500 microcontroller.
+1043:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The registers can be accessed with ::XMC_EBU.
+1044:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+1045:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct
+1046:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+1047:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  CLC;
+1048:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  MODCON;
+1049:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   __I  uint32_t  ID;
+1050:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  USERCON;
+1051:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   __I  uint32_t  RESERVED0[2];
+1052:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  ADDRSEL[4];
+1053:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   struct
+1054:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+1055:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     __IO uint32_t  RDCON;
+1056:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     __IO uint32_t  RDAPR;
+1057:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     __IO uint32_t  WRCON;
+1058:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****     __IO uint32_t  WRAPR;
+1059:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   } BUS[4];
+1060:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  SDRMCON;
+1061:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  SDRMOD;
+1062:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  SDRMREF;
+1063:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   __I  uint32_t  SDRSTAT;
+1064:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_t;
+1065:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+1066:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**************************************************************************************************
+1067:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * API PROTOTYPES
+1068:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** ***************************************************************************************************
+1069:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  
+1070:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #ifdef __cplusplus
+1071:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** extern "C" {
+1072:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** #endif
+1073:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+1074:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+1075:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param ebu Constant pointer to ::XMC_EBU_t, pointing to the EBU base address
+1076:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param config Constant pointer to a constant ::XMC_EBU_CONFIG_t structure containing the
+1077:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *               clock mode and clock configuration.
+1078:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @return XMC_EBU_STATUS_t Always returns XMC_EBU_STATUS_OK (Only register assignment statements)
+1079:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1080:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par<b>Description: </b><br>
+1081:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Initialize the EBU peripheral <br>
+1082:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1083:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par
+1084:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The function enables the EBU peripheral, configures time values for clock mode, div2
+1085:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * clock mode, mode configuration, SDRAM tristate, external clock, arbitration, timeout
+1086:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * control, ALE mode and configuration to free up the allocated EBU ports for GPIO
+1087:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * functionality (if required).
+1088:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+1089:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** XMC_EBU_STATUS_t XMC_EBU_Init(XMC_EBU_t *const ebu, const XMC_EBU_CONFIG_t *const config);
+1090:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+1091:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+1092:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param ebu Constant pointer to ::XMC_EBU_t, pointing to the EBU base address
+1093:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param config Constant pointer to a constant ::XMC_EBU_SDRAM_CONFIG_t structure containing
+1094:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *               the SDRAM configuration, operation mode configuration and right refresh
+1095:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *               parameters
+1096:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @return None
+1097:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1098:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par<b>Description: </b><br>
+1099:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Configures the SDRAM <br>
+1100:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1101:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par
+1102:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The function enables the SDRAM, sets SDRAM configuration parameters such as operation
+1103:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * mode and refresh parameters. Please see  ::XMC_EBU_SDRAM_CONFIG_t for more information.
+1104:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+1105:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** void XMC_EBU_ConfigureSdram(XMC_EBU_t *const ebu, const XMC_EBU_SDRAM_CONFIG_t *const config);
+1106:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+1107:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+1108:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param ebu Constant pointer to ::XMC_EBU_t, pointing to the EBU base address
+1109:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param region Constant pointer to a constant ::XMC_EBU_REGION_t structure containing the
+1110:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *               read, read timing, write and write timing configurations for a region of
+1111:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *               EBU
+1112:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @return None
+1113:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1114:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par<b>Description: </b><br>
+1115:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Configures the SDRAM <br>
+1116:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1117:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par
+1118:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The function configures the EBU region read, read timing, write and write timing parameter
+1119:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * configuration. It also configures the region registers for read and write accesses. Please
+1120:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * see ::XMC_EBU_REGION_t for more information.
+1121:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1122:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+1123:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** void XMC_EBU_ConfigureRegion(XMC_EBU_t *const ebu, const XMC_EBU_REGION_t *const region);
+1124:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** 
+1125:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+1126:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param ebu Constant pointer to ::XMC_EBU_t, pointing to the EBU base address
+1127:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * @return None
+1128:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1129:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par<b>Description: </b><br>
+1130:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * Enable EBU peripheral <br>
+1131:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1132:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par
+1133:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * The function de-asserts the peripheral reset. The peripheral needs to be initialized.
+1134:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * It also enables the control of the EBU.
+1135:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1136:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par<b>Related APIs:</b><br>
+1137:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  * XMC_EBU_Disable(), XMC_SCU_RESET_AssertPeripheralReset()
+1138:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+1139:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** __STATIC_INLINE void XMC_EBU_Enable(XMC_EBU_t *const ebu)
+1140:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h **** {
+1141:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_ASSERT("XMC_EBU_Enable: Invalid module pointer", XMC_EBU_CHECK_MODULE_PTR(ebu));
+1142:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_SCU_RESET_DeassertPeripheralReset(XMC_SCU_PERIPHERAL_RESET_EBU);
+  46              	 .loc 2 1142 0
+  47 0004 0B48     	 ldr r0,.L5
+  48              	.LVL2:
+  49              	.LBE5:
+  50              	.LBE4:
+  51              	 .loc 1 68 0
+  52 0006 0D46     	 mov r5,r1
+  53              	.LBB7:
+  54              	.LBB6:
+  55              	 .loc 2 1142 0
+  56 0008 FFF7FEFF 	 bl XMC_SCU_RESET_DeassertPeripheralReset
+  57              	.LVL3:
+1143:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_ebu.h ****   ebu->CLC &= ~EBU_CLC_DISR_Msk;
+  58              	 .loc 2 1143 0
+  59 000c 2368     	 ldr r3,[r4]
+  60 000e 23F00103 	 bic r3,r3,#1
+  61 0012 2360     	 str r3,[r4]
+  62              	.LBE6:
+  63              	.LBE7:
+  69:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_ASSERT("XMC_EBU_Init: Invalid module pointer", XMC_EBU_CHECK_MODULE_PTR(ebu));
+  70:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_ASSERT("XMC_EBU_Init:Null Pointer", (config != (XMC_EBU_CONFIG_t *)NULL));
+  71:../Libraries/XMCLib/src/xmc_ebu.c ****   
+  72:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Enable EBU */
+  73:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_EBU_Enable(ebu);
+  74:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  75:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Clock configuration */
+  76:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->CLC  =  config->ebu_clk_config.raw0;
+  64              	 .loc 1 76 0
+  65 0014 2A68     	 ldr r2,[r5]
+  66 0016 2260     	 str r2,[r4]
+  67              	.L2:
+  77:../Libraries/XMCLib/src/xmc_ebu.c ****   while (((ebu->CLC & (EBU_CLC_SYNCACK_Msk | EBU_CLC_DIV2ACK_Msk | EBU_CLC_EBUDIVACK_Msk)) >> 4) !=
+  68              	 .loc 1 77 0 discriminator 1
+  69 0018 2368     	 ldr r3,[r4]
+  78:../Libraries/XMCLib/src/xmc_ebu.c ****          (config->ebu_clk_config.raw0 & (EBU_CLC_SYNC_Msk | EBU_CLC_DIV2_Msk | EBU_CLC_EBUDIV_Msk))
+  70              	 .loc 1 78 0 discriminator 1
+  71 001a 02F47021 	 and r1,r2,#983040
+  77:../Libraries/XMCLib/src/xmc_ebu.c ****   while (((ebu->CLC & (EBU_CLC_SYNCACK_Msk | EBU_CLC_DIV2ACK_Msk | EBU_CLC_EBUDIVACK_Msk)) >> 4) !=
+  72              	 .loc 1 77 0 discriminator 1
+  73 001e 03F47003 	 and r3,r3,#15728640
+  74 0022 B1EB131F 	 cmp r1,r3,lsr#4
+  75 0026 F7D1     	 bne .L2
+  79:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  80:../Libraries/XMCLib/src/xmc_ebu.c ****   /*EBU Mode Configuration */
+  81:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->MODCON = config->ebu_mode_config.raw0;
+  76              	 .loc 1 81 0
+  77 0028 6B68     	 ldr r3,[r5,#4]
+  78 002a 6360     	 str r3,[r4,#4]
+  82:../Libraries/XMCLib/src/xmc_ebu.c ****  
+  83:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Address Bits available for GPIO function */
+  84:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->USERCON = config->ebu_free_pins_to_gpio.raw0;
+  79              	 .loc 1 84 0
+  80 002c AB68     	 ldr r3,[r5,#8]
+  81 002e E360     	 str r3,[r4,#12]
+  85:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  86:../Libraries/XMCLib/src/xmc_ebu.c ****   return XMC_EBU_STATUS_OK;
+  87:../Libraries/XMCLib/src/xmc_ebu.c **** }
+  82              	 .loc 1 87 0
+  83 0030 0020     	 movs r0,#0
+  84 0032 38BD     	 pop {r3,r4,r5,pc}
+  85              	.LVL4:
+  86              	.L6:
+  87              	 .align 2
+  88              	.L5:
+  89 0034 04000030 	 .word 805306372
+  90              	 .cfi_endproc
+  91              	.LFE192:
+  93              	 .section .text.XMC_EBU_ConfigureSdram,"ax",%progbits
+  94              	 .align 1
+  95              	 .global XMC_EBU_ConfigureSdram
+  96              	 .thumb
+  97              	 .thumb_func
+  99              	XMC_EBU_ConfigureSdram:
+ 100              	.LFB193:
+  88:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  89:../Libraries/XMCLib/src/xmc_ebu.c **** /*
+  90:../Libraries/XMCLib/src/xmc_ebu.c ****  * Configures the SDRAM with operating modes and refresh parameters
+  91:../Libraries/XMCLib/src/xmc_ebu.c ****  */
+  92:../Libraries/XMCLib/src/xmc_ebu.c **** void XMC_EBU_ConfigureSdram(XMC_EBU_t *const ebu,const XMC_EBU_SDRAM_CONFIG_t *const config)
+  93:../Libraries/XMCLib/src/xmc_ebu.c **** {
+ 101              	 .loc 1 93 0
+ 102              	 .cfi_startproc
+ 103              	 
+ 104              	 
+ 105              	 
+ 106              	.LVL5:
+  94:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_ASSERT("XMC_EBU_Init: Invalid module pointer", XMC_EBU_CHECK_MODULE_PTR(ebu));
+  95:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_ASSERT("XMC_EBU_Init:Null Pointer", (config != (XMC_EBU_SDRAM_CONFIG_t *)NULL));
+  96:../Libraries/XMCLib/src/xmc_ebu.c ****   
+  97:../Libraries/XMCLib/src/xmc_ebu.c ****   /* EBU SDRAM Refresh Configuration Parameters */
+  98:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->SDRMREF = config->raw2;
+ 107              	 .loc 1 98 0
+ 108 0000 8B68     	 ldr r3,[r1,#8]
+ 109 0002 0367     	 str r3,[r0,#112]
+  99:../Libraries/XMCLib/src/xmc_ebu.c ****   /* EBU SDRAM General Configuration Parameters */
+ 100:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->SDRMCON = config->raw0;
+ 110              	 .loc 1 100 0
+ 111 0004 0B68     	 ldr r3,[r1]
+ 112 0006 8366     	 str r3,[r0,#104]
+ 101:../Libraries/XMCLib/src/xmc_ebu.c ****   /* EBU SDRAM Operation Mode Configuration Parameters */
+ 102:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->SDRMOD = config->raw1;
+ 113              	 .loc 1 102 0
+ 114 0008 4B68     	 ldr r3,[r1,#4]
+ 115 000a C366     	 str r3,[r0,#108]
+ 116 000c 7047     	 bx lr
+ 117              	 .cfi_endproc
+ 118              	.LFE193:
+ 120              	 .section .text.XMC_EBU_ConfigureRegion,"ax",%progbits
+ 121              	 .align 1
+ 122              	 .global XMC_EBU_ConfigureRegion
+ 123              	 .thumb
+ 124              	 .thumb_func
+ 126              	XMC_EBU_ConfigureRegion:
+ 127              	.LFB194:
+ 103:../Libraries/XMCLib/src/xmc_ebu.c **** }
+ 104:../Libraries/XMCLib/src/xmc_ebu.c **** 
+ 105:../Libraries/XMCLib/src/xmc_ebu.c **** /*
+ 106:../Libraries/XMCLib/src/xmc_ebu.c ****  * Configures the SDRAM region for read and write operation
+ 107:../Libraries/XMCLib/src/xmc_ebu.c ****  */
+ 108:../Libraries/XMCLib/src/xmc_ebu.c **** void XMC_EBU_ConfigureRegion(XMC_EBU_t *const ebu,const XMC_EBU_REGION_t *const region)
+ 109:../Libraries/XMCLib/src/xmc_ebu.c **** {
+ 128              	 .loc 1 109 0
+ 129              	 .cfi_startproc
+ 130              	 
+ 131              	 
+ 132              	.LVL6:
+ 133 0000 10B5     	 push {r4,lr}
+ 134              	.LCFI1:
+ 135              	 .cfi_def_cfa_offset 8
+ 136              	 .cfi_offset 4,-8
+ 137              	 .cfi_offset 14,-4
+ 110:../Libraries/XMCLib/src/xmc_ebu.c ****   
+ 111:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_ASSERT("XMC_EBU_Init: Invalid module pointer", XMC_EBU_CHECK_MODULE_PTR(ebu));
+ 112:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_ASSERT("XMC_EBU_Init:Null Pointer", (region != (XMC_EBU_REGION_t *)NULL));
+ 113:../Libraries/XMCLib/src/xmc_ebu.c ****   
+ 114:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Read configuration of the region*/
+ 115:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->BUS[region->read_config.ebu_region_no].RDCON = region->read_config.ebu_bus_read_config.raw0;
+ 138              	 .loc 1 115 0
+ 139 0002 91E81800 	 ldmia r1,{r3,r4}
+ 140 0006 00EB0313 	 add r3,r0,r3,lsl#4
+ 141 000a 03F12802 	 add r2,r3,#40
+ 142 000e 9C62     	 str r4,[r3,#40]
+ 116:../Libraries/XMCLib/src/xmc_ebu.c **** 
+ 117:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Read parameters of the region*/
+ 118:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->BUS[region->read_config.ebu_region_no].RDAPR = region->read_config.ebu_bus_read_config.raw1;
+ 143              	 .loc 1 118 0
+ 144 0010 8B68     	 ldr r3,[r1,#8]
+ 145 0012 5360     	 str r3,[r2,#4]
+ 146 0014 CA68     	 ldr r2,[r1,#12]
+ 119:../Libraries/XMCLib/src/xmc_ebu.c **** 
+ 120:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Write configuration of the region*/
+ 121:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->BUS[region->write_config.ebu_region_no].WRCON = region->write_config.ebu_bus_write_config.ra
+ 147              	 .loc 1 121 0
+ 148 0016 0B69     	 ldr r3,[r1,#16]
+ 149 0018 00EB0210 	 add r0,r0,r2,lsl#4
+ 150              	.LVL7:
+ 151 001c 0363     	 str r3,[r0,#48]
+ 122:../Libraries/XMCLib/src/xmc_ebu.c **** 
+ 123:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Write parameters of the region*/
+ 124:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->BUS[region->write_config.ebu_region_no].WRAPR = region->write_config.ebu_bus_write_config.ra
+ 152              	 .loc 1 124 0
+ 153 001e 4B69     	 ldr r3,[r1,#20]
+ 154 0020 4363     	 str r3,[r0,#52]
+ 155 0022 10BD     	 pop {r4,pc}
+ 156              	 .cfi_endproc
+ 157              	.LFE194:
+ 159              	 .text
+ 160              	.Letext0:
+ 161              	 .file 3 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 162              	 .file 4 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 163              	 .file 5 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_scu.h"
+ 164              	 .file 6 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+ 165              	 .file 7 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 xmc_ebu.c
-    {standard input}:17     .text.XMC_EBU_Init:00000000 $t
-    {standard input}:22     .text.XMC_EBU_Init:00000000 XMC_EBU_Init
-    {standard input}:50     .text.XMC_EBU_Init:00000034 $d
-    {standard input}:53     .text.XMC_EBU_ConfigureSdram:00000000 $t
-    {standard input}:58     .text.XMC_EBU_ConfigureSdram:00000000 XMC_EBU_ConfigureSdram
-    {standard input}:71     .text.XMC_EBU_ConfigureRegion:00000000 $t
-    {standard input}:76     .text.XMC_EBU_ConfigureRegion:00000000 XMC_EBU_ConfigureRegion
+    {standard input}:20     .text.XMC_EBU_Init:00000000 $t
+    {standard input}:25     .text.XMC_EBU_Init:00000000 XMC_EBU_Init
+    {standard input}:89     .text.XMC_EBU_Init:00000034 $d
+    {standard input}:94     .text.XMC_EBU_ConfigureSdram:00000000 $t
+    {standard input}:99     .text.XMC_EBU_ConfigureSdram:00000000 XMC_EBU_ConfigureSdram
+    {standard input}:121    .text.XMC_EBU_ConfigureRegion:00000000 $t
+    {standard input}:126    .text.XMC_EBU_ConfigureRegion:00000000 XMC_EBU_ConfigureRegion
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.0.ca5ae67a873a4952d630d8e4120b9e3e
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4.features.h.22.bee0aee4a3878f51861c775df98fa3ea
+                           .group:00000000 wm4._default_types.h.15.933e8edd27a65e0b69af4a865eb623d2
+                           .group:00000000 wm4._intsup.h.10.ca9f32a61b410c270a48d1161ca2c217
+                           .group:00000000 wm4.stdint.h.22.f4a337c398d8b6d821a97202448bc0d0
+                           .group:00000000 wm4.stdbool.h.29.1c9ee6859ce8145f7838a4f2549ccec2
+                           .group:00000000 wm4.newlib.h.8.fe7d912fc917043c98742c35eddd8cff
+                           .group:00000000 wm4.config.h.216.aad1ef7bee4fb69981cb38ce62f84d9c
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.cdefs.h.47.4e89a3f145accdcb1100c37260c088e6
+                           .group:00000000 wm4.string.h.15.dab3980bf35408a4c507182805e2de3a
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.xmc_device.h.65.5c0d35eb1a6853ff8300ab2ec1b944b0
+                           .group:00000000 wm4.XMC4500.h.55.9aa45b9b5790506b2dcb963e4e7adeaf
+                           .group:00000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.57f124f9262f3dbf77da6a6506ffb430
+                           .group:00000000 wm4.core_cm4.h.174.fcddd62df80231752fa39eb9b61dadfe
+                           .group:00000000 wm4.mpu_armv7.h.32.4049752bb5792d4e15357775e9506cfc
+                           .group:00000000 wm4.system_XMC4500.h.42.99124977c10ca8844a71949adbeabd70
+                           .group:00000000 wm4.XMC4500.h.208.b340195df97f067735c4c769ba59985a
+                           .group:00000000 wm4.xmc_device.h.1500.3eca65ed9ba7f90e09c1ffcb0b3f5724
+                           .group:00000000 wm4.xmc_common.h.98.806f17e888fd51d0e4be2ad115163551
+                           .group:00000000 wm4.xmc4_scu.h.113.70a903f8782696023ba1d8628d8ac2d6
+                           .group:00000000 wm4.xmc_ebu.h.91.7a1e346b7764f5896cb2c32a29c6ff82
 
 UNDEFINED SYMBOLS
 XMC_SCU_RESET_DeassertPeripheralReset

@@ -13,384 +13,2255 @@
   13              	 .eabi_attribute 18,4
   14              	 .thumb
   15              	 .file "system_XMC4500.c"
-  16              	 .section .text.delay,"ax",%progbits
-  17              	 .align 1
-  18              	 .thumb
-  19              	 .thumb_func
-  21              	delay:
-  22              	 
-  23              	 
-  24              	 
-  25 0000 82B0     	 sub sp,sp,#8
-  26 0002 0023     	 movs r3,#0
-  27              	.L4:
-  28 0004 0193     	 str r3,[sp,#4]
-  29 0006 019B     	 ldr r3,[sp,#4]
-  30 0008 8342     	 cmp r3,r0
-  31 000a 03D2     	 bcs .L6
-  32              	
-  33 000c 00BF     	 nop
-  34              	
-  35              	 .thumb
-  36 000e 019B     	 ldr r3,[sp,#4]
-  37 0010 0133     	 adds r3,r3,#1
-  38 0012 F7E7     	 b .L4
-  39              	.L6:
-  40 0014 02B0     	 add sp,sp,#8
-  41              	 
-  42 0016 7047     	 bx lr
-  44              	 .section .text.SystemCoreSetup,"ax",%progbits
-  45              	 .align 1
-  46              	 .weak SystemCoreSetup
-  47              	 .thumb
-  48              	 .thumb_func
-  50              	SystemCoreSetup:
-  51              	 
-  52              	 
-  53              	 
-  54              	
-  55 0000 72B6     	 cpsid i
-  56              	
-  57              	 .thumb
-  58 0002 0D4B     	 ldr r3,.L8
-  59 0004 0D4A     	 ldr r2,.L8+4
-  60 0006 9A60     	 str r2,[r3,#8]
-  61              	
-  62 0008 BFF34F8F 	 dsb 0xF
-  63              	
-  64              	
-  65 000c 62B6     	 cpsie i
-  66              	
-  67              	 .thumb
-  68 000e D3F88820 	 ldr r2,[r3,#136]
-  69 0012 0B49     	 ldr r1,.L8+8
-  70 0014 42F47002 	 orr r2,r2,#15728640
-  71 0018 C3F88820 	 str r2,[r3,#136]
-  72 001c 5A69     	 ldr r2,[r3,#20]
-  73 001e 22F00802 	 bic r2,r2,#8
-  74 0022 5A61     	 str r2,[r3,#20]
-  75 0024 41F21402 	 movw r2,#4116
-  76 0028 8B58     	 ldr r3,[r1,r2]
-  77 002a 23F00F03 	 bic r3,r3,#15
-  78 002e 43F00303 	 orr r3,r3,#3
-  79 0032 8B50     	 str r3,[r1,r2]
-  80 0034 7047     	 bx lr
-  81              	.L9:
-  82 0036 00BF     	 .align 2
-  83              	.L8:
-  84 0038 00ED00E0 	 .word -536810240
-  85 003c 00000000 	 .word __Vectors
-  86 0040 00100058 	 .word 1476399104
-  88              	 .section .text.OSCHP_GetFrequency,"ax",%progbits
-  89              	 .align 1
-  90              	 .weak OSCHP_GetFrequency
-  91              	 .thumb
-  92              	 .thumb_func
-  94              	OSCHP_GetFrequency:
-  95              	 
-  96              	 
-  97              	 
-  98 0000 0048     	 ldr r0,.L11
-  99 0002 7047     	 bx lr
- 100              	.L12:
- 101              	 .align 2
- 102              	.L11:
- 103 0004 001BB700 	 .word 12000000
- 105              	 .section .text.SystemCoreClockUpdate,"ax",%progbits
- 106              	 .align 1
- 107              	 .weak SystemCoreClockUpdate
- 108              	 .thumb
- 109              	 .thumb_func
- 111              	SystemCoreClockUpdate:
- 112              	 
- 113              	 
- 114 0000 1D4B     	 ldr r3,.L19
- 115 0002 DB68     	 ldr r3,[r3,#12]
- 116 0004 D903     	 lsls r1,r3,#15
- 117 0006 10B5     	 push {r4,lr}
- 118 0008 25D5     	 bpl .L17
- 119 000a 1C4B     	 ldr r3,.L19+4
- 120 000c DA68     	 ldr r2,[r3,#12]
- 121 000e 12F0010F 	 tst r2,#1
- 122 0012 1C46     	 mov r4,r3
- 123 0014 02D1     	 bne .L18
- 124 0016 FFF7FEFF 	 bl OSCHP_GetFrequency
- 125 001a 00E0     	 b .L15
- 126              	.L18:
- 127 001c 1848     	 ldr r0,.L19+8
- 128              	.L15:
- 129 001e 2268     	 ldr r2,[r4]
- 130 0020 164B     	 ldr r3,.L19+4
- 131 0022 5207     	 lsls r2,r2,#29
- 132 0024 10D5     	 bpl .L16
- 133 0026 9A68     	 ldr r2,[r3,#8]
- 134 0028 9968     	 ldr r1,[r3,#8]
- 135 002a 9B68     	 ldr r3,[r3,#8]
- 136 002c C2F30362 	 ubfx r2,r2,#24,#4
- 137 0030 C3F30644 	 ubfx r4,r3,#16,#7
- 138 0034 531C     	 adds r3,r2,#1
- 139 0036 04FB0333 	 mla r3,r4,r3,r3
- 140 003a B0FBF3F0 	 udiv r0,r0,r3
- 141 003e C1F30623 	 ubfx r3,r1,#8,#7
- 142 0042 03FB0000 	 mla r0,r3,r0,r0
- 143 0046 07E0     	 b .L14
- 144              	.L16:
- 145 0048 9B68     	 ldr r3,[r3,#8]
- 146 004a 03F07F03 	 and r3,r3,#127
- 147 004e 0133     	 adds r3,r3,#1
- 148 0050 B0FBF3F0 	 udiv r0,r0,r3
- 149 0054 00E0     	 b .L14
- 150              	.L17:
- 151 0056 0A48     	 ldr r0,.L19+8
- 152              	.L14:
- 153 0058 074A     	 ldr r2,.L19
- 154 005a D368     	 ldr r3,[r2,#12]
- 155 005c DBB2     	 uxtb r3,r3
- 156 005e 0133     	 adds r3,r3,#1
- 157 0060 B0FBF3F0 	 udiv r0,r0,r3
- 158 0064 1369     	 ldr r3,[r2,#16]
- 159 0066 03F00103 	 and r3,r3,#1
- 160 006a 0133     	 adds r3,r3,#1
- 161 006c B0FBF3F0 	 udiv r0,r0,r3
- 162 0070 044B     	 ldr r3,.L19+12
- 163 0072 1860     	 str r0,[r3]
- 164 0074 10BD     	 pop {r4,pc}
- 165              	.L20:
- 166 0076 00BF     	 .align 2
- 167              	.L19:
- 168 0078 00460050 	 .word 1342195200
- 169 007c 10470050 	 .word 1342195472
- 170 0080 00366E01 	 .word 24000000
- 171 0084 00000000 	 .word .LANCHOR0
- 173              	 .section .text.SystemCoreClockSetup,"ax",%progbits
- 174              	 .align 1
- 175              	 .weak SystemCoreClockSetup
- 176              	 .thumb
- 177              	 .thumb_func
- 179              	SystemCoreClockSetup:
- 180              	 
- 181              	 
- 182 0000 38B5     	 push {r3,r4,r5,lr}
- 183 0002 534B     	 ldr r3,.L47
- 184 0004 1A68     	 ldr r2,[r3]
- 185 0006 D207     	 lsls r2,r2,#31
- 186 0008 0CD5     	 bpl .L22
- 187              	.L26:
- 188 000a 524B     	 ldr r3,.L47+4
- 189 000c 1A68     	 ldr r2,[r3]
- 190 000e 9505     	 lsls r5,r2,#22
- 191 0010 10D5     	 bpl .L24
- 192 0012 9A68     	 ldr r2,[r3,#8]
- 193 0014 42F40072 	 orr r2,r2,#512
- 194 0018 9A60     	 str r2,[r3,#8]
- 195 001a 41F64C50 	 movw r0,#7500
- 196 001e FFF7FEFF 	 bl delay
- 197 0022 07E0     	 b .L24
- 198              	.L22:
- 199 0024 5A68     	 ldr r2,[r3,#4]
- 200 0026 42F00102 	 orr r2,r2,#1
- 201 002a 5A60     	 str r2,[r3,#4]
- 202              	.L25:
- 203 002c 1A68     	 ldr r2,[r3]
- 204 002e D407     	 lsls r4,r2,#31
- 205 0030 FCD5     	 bpl .L25
- 206 0032 EAE7     	 b .L26
- 207              	.L24:
- 208 0034 484C     	 ldr r4,.L47+8
- 209 0036 494D     	 ldr r5,.L47+12
- 210 0038 6368     	 ldr r3,[r4,#4]
- 211 003a 43F40023 	 orr r3,r3,#524288
- 212 003e 6360     	 str r3,[r4,#4]
- 213 0040 40F6C410 	 movw r0,#2500
- 214 0044 FFF7FEFF 	 bl delay
- 215 0048 6368     	 ldr r3,[r4,#4]
- 216 004a 23F48033 	 bic r3,r3,#65536
- 217 004e 23F00203 	 bic r3,r3,#2
- 218 0052 6360     	 str r3,[r4,#4]
- 219 0054 6B68     	 ldr r3,[r5,#4]
- 220 0056 13F0300F 	 tst r3,#48
- 221 005a 16D1     	 bne .L27
- 222              	.L30:
- 223 005c 6368     	 ldr r3,[r4,#4]
- 224 005e 43F00103 	 orr r3,r3,#1
- 225 0062 6360     	 str r3,[r4,#4]
- 226 0064 6368     	 ldr r3,[r4,#4]
- 227 0066 43F01003 	 orr r3,r3,#16
- 228 006a 6360     	 str r3,[r4,#4]
- 229 006c 3C4B     	 ldr r3,.L47+16
- 230 006e A360     	 str r3,[r4,#8]
- 231 0070 6368     	 ldr r3,[r4,#4]
- 232 0072 43F04003 	 orr r3,r3,#64
- 233 0076 6360     	 str r3,[r4,#4]
- 234 0078 6368     	 ldr r3,[r4,#4]
- 235 007a 23F01003 	 bic r3,r3,#16
- 236 007e 6360     	 str r3,[r4,#4]
- 237 0080 6368     	 ldr r3,[r4,#4]
- 238 0082 43F48023 	 orr r3,r3,#262144
- 239 0086 6360     	 str r3,[r4,#4]
- 240 0088 1EE0     	 b .L28
- 241              	.L27:
- 242 008a 6B68     	 ldr r3,[r5,#4]
- 243 008c 23F47023 	 bic r3,r3,#983040
- 244 0090 23F03003 	 bic r3,r3,#48
- 245 0094 6B60     	 str r3,[r5,#4]
- 246 0096 FFF7FEFF 	 bl OSCHP_GetFrequency
- 247 009a 6A68     	 ldr r2,[r5,#4]
- 248 009c 314B     	 ldr r3,.L47+20
- 249 009e B0FBF3F0 	 udiv r0,r0,r3
- 250 00a2 0138     	 subs r0,r0,#1
- 251 00a4 42EA0040 	 orr r0,r2,r0,lsl#16
- 252 00a8 6860     	 str r0,[r5,#4]
- 253 00aa E368     	 ldr r3,[r4,#12]
- 254 00ac 23F00103 	 bic r3,r3,#1
- 255 00b0 E360     	 str r3,[r4,#12]
- 256 00b2 6368     	 ldr r3,[r4,#4]
- 257 00b4 23F40033 	 bic r3,r3,#131072
- 258 00b8 6360     	 str r3,[r4,#4]
- 259              	.L29:
- 260 00ba 2368     	 ldr r3,[r4]
- 261 00bc 03F46073 	 and r3,r3,#896
- 262 00c0 B3F5607F 	 cmp r3,#896
- 263 00c4 F9D1     	 bne .L29
- 264 00c6 C9E7     	 b .L30
- 265              	.L28:
- 266 00c8 2368     	 ldr r3,[r4]
- 267 00ca 234A     	 ldr r2,.L47+8
- 268 00cc 5807     	 lsls r0,r3,#29
- 269 00ce FBD5     	 bpl .L28
- 270 00d0 5368     	 ldr r3,[r2,#4]
- 271 00d2 23F00103 	 bic r3,r3,#1
- 272 00d6 5360     	 str r3,[r2,#4]
- 273              	.L31:
- 274 00d8 2268     	 ldr r2,[r4]
- 275 00da 1F49     	 ldr r1,.L47+8
- 276 00dc 12F00102 	 ands r2,r2,#1
- 277 00e0 FAD1     	 bne .L31
- 278 00e2 214B     	 ldr r3,.L47+24
- 279 00e4 D868     	 ldr r0,[r3,#12]
- 280 00e6 40F48030 	 orr r0,r0,#65536
- 281 00ea D860     	 str r0,[r3,#12]
- 282 00ec 5A61     	 str r2,[r3,#20]
- 283 00ee 1A61     	 str r2,[r3,#16]
- 284 00f0 1A62     	 str r2,[r3,#32]
- 285 00f2 5A62     	 str r2,[r3,#36]
- 286 00f4 DA61     	 str r2,[r3,#28]
- 287 00f6 0322     	 movs r2,#3
- 288 00f8 9A61     	 str r2,[r3,#24]
- 289 00fa 4B68     	 ldr r3,[r1,#4]
- 290 00fc 23F04003 	 bic r3,r3,#64
- 291 0100 4B60     	 str r3,[r1,#4]
- 292 0102 1A4B     	 ldr r3,.L47+28
- 293 0104 8B60     	 str r3,[r1,#8]
- 294 0106 40F6B830 	 movw r0,#3000
- 295 010a FFF7FEFF 	 bl delay
- 296              	.L32:
- 297 010e 2368     	 ldr r3,[r4]
- 298 0110 5907     	 lsls r1,r3,#29
- 299 0112 FCD5     	 bpl .L32
- 300 0114 104B     	 ldr r3,.L47+8
- 301 0116 164A     	 ldr r2,.L47+32
- 302 0118 9A60     	 str r2,[r3,#8]
- 303 011a 41F29410 	 movw r0,#4500
- 304 011e FFF7FEFF 	 bl delay
- 305              	.L33:
- 306 0122 2368     	 ldr r3,[r4]
- 307 0124 5A07     	 lsls r2,r3,#29
- 308 0126 FCD5     	 bpl .L33
- 309 0128 0B4B     	 ldr r3,.L47+8
- 310 012a 124A     	 ldr r2,.L47+36
- 311 012c 9A60     	 str r2,[r3,#8]
- 312 012e 41F27070 	 movw r0,#6000
- 313 0132 FFF7FEFF 	 bl delay
- 314              	.L34:
- 315 0136 2368     	 ldr r3,[r4]
- 316 0138 5B07     	 lsls r3,r3,#29
- 317 013a FCD5     	 bpl .L34
- 318 013c 0E4B     	 ldr r3,.L47+40
- 319 013e 0522     	 movs r2,#5
- 320 0140 DA60     	 str r2,[r3,#12]
- 321 0142 0022     	 movs r2,#0
- 322 0144 C3F8A424 	 str r2,[r3,#1188]
- 323 0148 FFF7FEFF 	 bl SystemCoreClockUpdate
- 324 014c 38BD     	 pop {r3,r4,r5,pc}
- 325              	.L48:
- 326 014e 00BF     	 .align 2
- 327              	.L47:
- 328 0150 00420050 	 .word 1342194176
- 329 0154 00440050 	 .word 1342194688
- 330 0158 10470050 	 .word 1342195472
- 331 015c 00470050 	 .word 1342195456
- 332 0160 004F1301 	 .word 18042624
- 333 0164 A0252600 	 .word 2500000
- 334 0168 00460050 	 .word 1342195200
- 335 016c 004F0701 	 .word 17256192
- 336 0170 004F0401 	 .word 17059584
- 337 0174 004F0301 	 .word 16994048
- 338 0178 60410050 	 .word 1342194016
- 340              	 .section .text.SystemInit,"ax",%progbits
- 341              	 .align 1
- 342              	 .weak SystemInit
- 343              	 .thumb
- 344              	 .thumb_func
- 346              	SystemInit:
- 347              	 
- 348              	 
- 349 0000 38B5     	 push {r3,r4,r5,lr}
- 350 0002 094A     	 ldr r2,.L52
- 351 0004 094D     	 ldr r5,.L52+4
- 352 0006 4FF00054 	 mov r4,#536870912
- 353              	.L50:
- 354 000a 2346     	 mov r3,r4
- 355 000c 03CB     	 ldmia r3!,{r0,r1}
- 356 000e AB42     	 cmp r3,r5
- 357 0010 1060     	 str r0,[r2]
- 358 0012 5160     	 str r1,[r2,#4]
- 359 0014 1C46     	 mov r4,r3
- 360 0016 02F10802 	 add r2,r2,#8
- 361 001a F6D1     	 bne .L50
- 362 001c FFF7FEFF 	 bl SystemCoreSetup
- 363 0020 FFF7FEFF 	 bl SystemCoreClockSetup
- 364 0024 38BD     	 pop {r3,r4,r5,pc}
- 365              	.L53:
- 366 0026 00BF     	 .align 2
- 367              	.L52:
- 368 0028 04000000 	 .word .LANCHOR0+4
- 369 002c 10000020 	 .word 536870928
- 371              	 .global g_chipid
- 372              	 .global SystemCoreClock
- 373              	 .section .no_init,"aw",%progbits
- 374              	 .align 2
- 375              	 .set .LANCHOR0,.+0
- 378              	SystemCoreClock:
- 379 0000 00000000 	 .space 4
- 382              	g_chipid:
- 383 0004 00000000 	 .space 16
- 383      00000000 
- 383      00000000 
- 383      00000000 
- 384              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.delay,"ax",%progbits
+  20              	 .align 1
+  21              	 .thumb
+  22              	 .thumb_func
+  24              	delay:
+  25              	.LFB131:
+  26              	 .file 1 "../Startup/system_XMC4500.c"
+   1:../Startup/system_XMC4500.c **** /**************************************************************************************************
+   2:../Startup/system_XMC4500.c ****  * @file     system_XMC4500.c
+   3:../Startup/system_XMC4500.c ****  * @brief    CMSIS Cortex-M4 Device Peripheral Access Layer Header File for the Infineon XMC4500 De
+   4:../Startup/system_XMC4500.c ****  * @version  V3.1.5
+   5:../Startup/system_XMC4500.c ****  * @date     26. Sep 2017
+   6:../Startup/system_XMC4500.c ****  *
+   7:../Startup/system_XMC4500.c ****  * @cond
+   8:../Startup/system_XMC4500.c ****  **************************************************************************************************
+   9:../Startup/system_XMC4500.c ****  * Copyright (c) 2014-2018, Infineon Technologies AG
+  10:../Startup/system_XMC4500.c ****  * All rights reserved.
+  11:../Startup/system_XMC4500.c ****  *
+  12:../Startup/system_XMC4500.c ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:../Startup/system_XMC4500.c ****  * following conditions are met:
+  14:../Startup/system_XMC4500.c ****  *
+  15:../Startup/system_XMC4500.c ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:../Startup/system_XMC4500.c ****  * disclaimer.
+  17:../Startup/system_XMC4500.c ****  *
+  18:../Startup/system_XMC4500.c ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:../Startup/system_XMC4500.c ****  * disclaimer in the documentation and/or other materials provided with the distribution.
+  20:../Startup/system_XMC4500.c ****  *
+  21:../Startup/system_XMC4500.c ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:../Startup/system_XMC4500.c ****  * products derived from this software without specific prior written permission.
+  23:../Startup/system_XMC4500.c ****  *
+  24:../Startup/system_XMC4500.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:../Startup/system_XMC4500.c ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:../Startup/system_XMC4500.c ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:../Startup/system_XMC4500.c ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:../Startup/system_XMC4500.c ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:../Startup/system_XMC4500.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:../Startup/system_XMC4500.c ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  31:../Startup/system_XMC4500.c ****  *
+  32:../Startup/system_XMC4500.c ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:../Startup/system_XMC4500.c ****  * Infineon Technologies AG dave@infineon.com).
+  34:../Startup/system_XMC4500.c ****  **************************************************************************************************
+  35:../Startup/system_XMC4500.c ****  *
+  36:../Startup/system_XMC4500.c ****  ********************** Version History ***************************************
+  37:../Startup/system_XMC4500.c ****  * V3.1.0, Dec 2014, Added options to configure clock settings
+  38:../Startup/system_XMC4500.c ****  * V3.1.1, 01. Jun 2016, Fix masking of OSCHPCTRL value 
+  39:../Startup/system_XMC4500.c ****  * V3.1.2, 09. Feb 2017, Fix activation of USBPLL when SDMMC clock is enabled
+  40:../Startup/system_XMC4500.c ****  * V3.1.3, 19. Jun 2017, Rely on cmsis_compiler.h instead of defining __WEAK
+  41:../Startup/system_XMC4500.c ****  *                       Added support for ARM Compiler 6 (armclang)
+  42:../Startup/system_XMC4500.c ****  * V3.1.4, 26. Sep 2017, Disable FPU if FPU_USED is zero   
+  43:../Startup/system_XMC4500.c ****  *                       Fixed include files
+  44:../Startup/system_XMC4500.c ****  * V3.1.5, 29. Oct 2018, Fix variable location of SystemCoreClock and g_chipid for ARMCC compiler
+  45:../Startup/system_XMC4500.c ****  ******************************************************************************
+  46:../Startup/system_XMC4500.c ****  * @endcond
+  47:../Startup/system_XMC4500.c ****  */
+  48:../Startup/system_XMC4500.c **** 
+  49:../Startup/system_XMC4500.c **** /*******************************************************************************
+  50:../Startup/system_XMC4500.c ****  * HEADER FILES
+  51:../Startup/system_XMC4500.c ****  *******************************************************************************/
+  52:../Startup/system_XMC4500.c **** #include <string.h>
+  53:../Startup/system_XMC4500.c **** 
+  54:../Startup/system_XMC4500.c **** #include <XMC4500.h>
+  55:../Startup/system_XMC4500.c **** #include "system_XMC4500.h"
+  56:../Startup/system_XMC4500.c **** 
+  57:../Startup/system_XMC4500.c **** /*******************************************************************************
+  58:../Startup/system_XMC4500.c ****  * MACROS
+  59:../Startup/system_XMC4500.c ****  *******************************************************************************/
+  60:../Startup/system_XMC4500.c **** #define CHIPID_LOC ((uint8_t *)0x20000000UL)
+  61:../Startup/system_XMC4500.c **** 
+  62:../Startup/system_XMC4500.c **** #define PMU_FLASH_WS          (0x3U)
+  63:../Startup/system_XMC4500.c **** 
+  64:../Startup/system_XMC4500.c **** #define FPLL_FREQUENCY        (120000000U)
+  65:../Startup/system_XMC4500.c **** #define FOSCREF               (2500000U)
+  66:../Startup/system_XMC4500.c **** #define DELAY_CNT_50US_50MHZ  (2500UL)
+  67:../Startup/system_XMC4500.c **** #define DELAY_CNT_150US_50MHZ (7500UL)
+  68:../Startup/system_XMC4500.c **** #define DELAY_CNT_50US_60MHZ  (3000UL)
+  69:../Startup/system_XMC4500.c **** #define DELAY_CNT_50US_90MHZ  (4500UL)
+  70:../Startup/system_XMC4500.c **** #define DELAY_CNT_50US_120MHZ (6000UL)
+  71:../Startup/system_XMC4500.c **** 
+  72:../Startup/system_XMC4500.c **** #define SCU_PLL_PLLSTAT_OSC_USABLE  (SCU_PLL_PLLSTAT_PLLHV_Msk | \
+  73:../Startup/system_XMC4500.c ****                                      SCU_PLL_PLLSTAT_PLLLV_Msk | \
+  74:../Startup/system_XMC4500.c ****                                      SCU_PLL_PLLSTAT_PLLSP_Msk)
+  75:../Startup/system_XMC4500.c **** 
+  76:../Startup/system_XMC4500.c **** /*
+  77:../Startup/system_XMC4500.c **** //-------- <<< Use Configuration Wizard in Context Menu >>> ------------------
+  78:../Startup/system_XMC4500.c **** */
+  79:../Startup/system_XMC4500.c **** 
+  80:../Startup/system_XMC4500.c **** /*
+  81:../Startup/system_XMC4500.c **** // <h> Clock configuration
+  82:../Startup/system_XMC4500.c **** */
+  83:../Startup/system_XMC4500.c **** 
+  84:../Startup/system_XMC4500.c **** /*
+  85:../Startup/system_XMC4500.c **** //    <o> External crystal frequency [Hz]
+  86:../Startup/system_XMC4500.c **** //       <8000000=> 8MHz
+  87:../Startup/system_XMC4500.c **** //       <12000000=> 12MHz
+  88:../Startup/system_XMC4500.c **** //       <16000000=> 16MHz
+  89:../Startup/system_XMC4500.c **** //    <i> Defines external crystal frequency
+  90:../Startup/system_XMC4500.c **** //    <i> Default: 8MHz
+  91:../Startup/system_XMC4500.c **** */
+  92:../Startup/system_XMC4500.c **** #define OSCHP_FREQUENCY (12000000U)
+  93:../Startup/system_XMC4500.c **** 
+  94:../Startup/system_XMC4500.c **** #if OSCHP_FREQUENCY == 8000000U
+  95:../Startup/system_XMC4500.c **** #define USB_PDIV (1U)
+  96:../Startup/system_XMC4500.c **** #define USB_NDIV (95U)
+  97:../Startup/system_XMC4500.c **** #define USB_DIV (3U)
+  98:../Startup/system_XMC4500.c **** 
+  99:../Startup/system_XMC4500.c **** #elif OSCHP_FREQUENCY == 12000000U
+ 100:../Startup/system_XMC4500.c **** #define USB_PDIV (1U)
+ 101:../Startup/system_XMC4500.c **** #define USB_NDIV (63U)
+ 102:../Startup/system_XMC4500.c **** #define USB_DIV (3U)
+ 103:../Startup/system_XMC4500.c **** 
+ 104:../Startup/system_XMC4500.c **** #elif OSCHP_FREQUENCY == 16000000U
+ 105:../Startup/system_XMC4500.c **** #define USB_PDIV (1U)
+ 106:../Startup/system_XMC4500.c **** #define USB_NDIV (47U)
+ 107:../Startup/system_XMC4500.c **** #define USB_DIV (3U)
+ 108:../Startup/system_XMC4500.c **** 
+ 109:../Startup/system_XMC4500.c **** #else
+ 110:../Startup/system_XMC4500.c **** #error "External crystal frequency not supported"
+ 111:../Startup/system_XMC4500.c **** 
+ 112:../Startup/system_XMC4500.c **** #endif
+ 113:../Startup/system_XMC4500.c **** 
+ 114:../Startup/system_XMC4500.c **** /*
+ 115:../Startup/system_XMC4500.c **** //    <o> System clock (fSYS) source selection
+ 116:../Startup/system_XMC4500.c **** //       <0=> Backup clock (24MHz)
+ 117:../Startup/system_XMC4500.c **** //       <1=> Maximum clock frequency using PLL (120MHz)
+ 118:../Startup/system_XMC4500.c **** //    <i> Default: Maximum clock frequency using PLL (120MHz)
+ 119:../Startup/system_XMC4500.c **** */
+ 120:../Startup/system_XMC4500.c **** #define SYS_CLOCK_SRC 1
+ 121:../Startup/system_XMC4500.c **** #define SYS_CLOCK_SRC_OFI 0
+ 122:../Startup/system_XMC4500.c **** #define SYS_CLOCK_SRC_PLL 1
+ 123:../Startup/system_XMC4500.c **** 
+ 124:../Startup/system_XMC4500.c **** /*
+ 125:../Startup/system_XMC4500.c **** //    <o> Backup clock calibration mode
+ 126:../Startup/system_XMC4500.c **** //       <0=> Factory calibration
+ 127:../Startup/system_XMC4500.c **** //       <1=> Automatic calibration
+ 128:../Startup/system_XMC4500.c **** //    <i> Default: Automatic calibration
+ 129:../Startup/system_XMC4500.c **** */
+ 130:../Startup/system_XMC4500.c **** #define FOFI_CALIBRATION_MODE 1
+ 131:../Startup/system_XMC4500.c **** #define FOFI_CALIBRATION_MODE_FACTORY 0
+ 132:../Startup/system_XMC4500.c **** #define FOFI_CALIBRATION_MODE_AUTOMATIC 1
+ 133:../Startup/system_XMC4500.c **** 
+ 134:../Startup/system_XMC4500.c **** /*
+ 135:../Startup/system_XMC4500.c **** //    <o> Standby clock (fSTDBY) source selection
+ 136:../Startup/system_XMC4500.c **** //       <0=> Internal slow oscillator (32768Hz)
+ 137:../Startup/system_XMC4500.c **** //       <1=> External crystal (32768Hz)
+ 138:../Startup/system_XMC4500.c **** //    <i> Default: Internal slow oscillator (32768Hz)
+ 139:../Startup/system_XMC4500.c **** */
+ 140:../Startup/system_XMC4500.c **** #define STDBY_CLOCK_SRC 0
+ 141:../Startup/system_XMC4500.c **** #define STDBY_CLOCK_SRC_OSI 0
+ 142:../Startup/system_XMC4500.c **** #define STDBY_CLOCK_SRC_OSCULP 1
+ 143:../Startup/system_XMC4500.c **** 
+ 144:../Startup/system_XMC4500.c **** /*
+ 145:../Startup/system_XMC4500.c **** //    <o> PLL clock source selection
+ 146:../Startup/system_XMC4500.c **** //       <0=> External crystal
+ 147:../Startup/system_XMC4500.c **** //       <1=> External direct input
+ 148:../Startup/system_XMC4500.c **** //       <2=> Internal fast oscillator
+ 149:../Startup/system_XMC4500.c **** //    <i> Default: External crystal
+ 150:../Startup/system_XMC4500.c **** */
+ 151:../Startup/system_XMC4500.c **** #define PLL_CLOCK_SRC 0
+ 152:../Startup/system_XMC4500.c **** #define PLL_CLOCK_SRC_EXT_XTAL 0
+ 153:../Startup/system_XMC4500.c **** #define PLL_CLOCK_SRC_EXT_DIRECT 1
+ 154:../Startup/system_XMC4500.c **** #define PLL_CLOCK_SRC_OFI 2
+ 155:../Startup/system_XMC4500.c **** 
+ 156:../Startup/system_XMC4500.c **** #if PLL_CLOCK_SRC == PLL_CLOCK_SRC_EXT_XTAL
+ 157:../Startup/system_XMC4500.c **** #if OSCHP_FREQUENCY == 8000000U
+ 158:../Startup/system_XMC4500.c **** #define PLL_PDIV (1U)
+ 159:../Startup/system_XMC4500.c **** #define PLL_NDIV (89U)
+ 160:../Startup/system_XMC4500.c **** #define PLL_K2DIV (2U)
+ 161:../Startup/system_XMC4500.c **** 
+ 162:../Startup/system_XMC4500.c **** #elif OSCHP_FREQUENCY == 12000000U
+ 163:../Startup/system_XMC4500.c **** #define PLL_PDIV (1U)
+ 164:../Startup/system_XMC4500.c **** #define PLL_NDIV (79U)
+ 165:../Startup/system_XMC4500.c **** #define PLL_K2DIV (3U)
+ 166:../Startup/system_XMC4500.c **** 
+ 167:../Startup/system_XMC4500.c **** #elif OSCHP_FREQUENCY == 16000000U
+ 168:../Startup/system_XMC4500.c **** #define PLL_PDIV (1U)
+ 169:../Startup/system_XMC4500.c **** #define PLL_NDIV (59U)
+ 170:../Startup/system_XMC4500.c **** #define PLL_K2DIV (3U)
+ 171:../Startup/system_XMC4500.c **** 
+ 172:../Startup/system_XMC4500.c **** #else
+ 173:../Startup/system_XMC4500.c **** #error "External crystal frequency not supported"
+ 174:../Startup/system_XMC4500.c **** 
+ 175:../Startup/system_XMC4500.c **** #endif
+ 176:../Startup/system_XMC4500.c **** 
+ 177:../Startup/system_XMC4500.c **** #define VCO ((OSCHP_FREQUENCY / (PLL_PDIV + 1UL)) * (PLL_NDIV + 1UL))
+ 178:../Startup/system_XMC4500.c **** 
+ 179:../Startup/system_XMC4500.c **** #else /* PLL_CLOCK_SRC == PLL_CLOCK_SRC_EXT_XTAL */
+ 180:../Startup/system_XMC4500.c **** 
+ 181:../Startup/system_XMC4500.c **** #define PLL_PDIV (1U)
+ 182:../Startup/system_XMC4500.c **** #define PLL_NDIV (39U)
+ 183:../Startup/system_XMC4500.c **** #define PLL_K2DIV (3U)
+ 184:../Startup/system_XMC4500.c **** 
+ 185:../Startup/system_XMC4500.c **** #define VCO ((OFI_FREQUENCY / (PLL_PDIV + 1UL)) * (PLL_NDIV + 1UL))
+ 186:../Startup/system_XMC4500.c **** 
+ 187:../Startup/system_XMC4500.c **** #endif /* PLL_CLOCK_SRC == PLL_CLOCK_SRC_OFI */
+ 188:../Startup/system_XMC4500.c **** 
+ 189:../Startup/system_XMC4500.c **** #define PLL_K2DIV_0 ((VCO / OFI_FREQUENCY) - 1UL)
+ 190:../Startup/system_XMC4500.c **** #define PLL_K2DIV_1 ((VCO / 60000000U) - 1UL)
+ 191:../Startup/system_XMC4500.c **** #define PLL_K2DIV_2 ((VCO / 90000000U) - 1UL)
+ 192:../Startup/system_XMC4500.c **** 
+ 193:../Startup/system_XMC4500.c **** #define SCU_CLK_CLKCLR_ENABLE_USBCLK SCU_CLK_CLKCLR_USBCDI_Msk
+ 194:../Startup/system_XMC4500.c **** #define SCU_CLK_CLKCLR_ENABLE_MMCCLK SCU_CLK_CLKCLR_MMCCDI_Msk
+ 195:../Startup/system_XMC4500.c **** #define SCU_CLK_CLKCLR_ENABLE_ETHCLK SCU_CLK_CLKCLR_ETH0CDI_Msk
+ 196:../Startup/system_XMC4500.c **** #define SCU_CLK_CLKCLR_ENABLE_EBUCLK SCU_CLK_CLKCLR_EBUCDI_Msk
+ 197:../Startup/system_XMC4500.c **** #define SCU_CLK_CLKCLR_ENABLE_CCUCLK SCU_CLK_CLKCLR_CCUCDI_Msk
+ 198:../Startup/system_XMC4500.c **** #define SCU_CLK_CLKCLR_ENABLE_WDTCLK SCU_CLK_CLKCLR_WDTCDI_Msk
+ 199:../Startup/system_XMC4500.c **** 
+ 200:../Startup/system_XMC4500.c **** #define SCU_CLK_USBCLKCR_USBSEL_USBPLL (0U << SCU_CLK_USBCLKCR_USBSEL_Pos)
+ 201:../Startup/system_XMC4500.c **** #define SCU_CLK_USBCLKCR_USBSEL_PLL    (1U << SCU_CLK_USBCLKCR_USBSEL_Pos)
+ 202:../Startup/system_XMC4500.c **** 
+ 203:../Startup/system_XMC4500.c **** #define SCU_CLK_WDTCLKCR_WDTSEL_OFI      (0U << SCU_CLK_WDTCLKCR_WDTSEL_Pos)
+ 204:../Startup/system_XMC4500.c **** #define SCU_CLK_WDTCLKCR_WDTSEL_STANDBY  (1U << SCU_CLK_WDTCLKCR_WDTSEL_Pos)
+ 205:../Startup/system_XMC4500.c **** #define SCU_CLK_WDTCLKCR_WDTSEL_PLL      (2U << SCU_CLK_WDTCLKCR_WDTSEL_Pos)
+ 206:../Startup/system_XMC4500.c **** 
+ 207:../Startup/system_XMC4500.c **** #define SCU_CLK_EXTCLKCR_ECKSEL_SYS      (0U << SCU_CLK_EXTCLKCR_ECKSEL_Pos)
+ 208:../Startup/system_XMC4500.c **** #define SCU_CLK_EXTCLKCR_ECKSEL_USBPLL   (2U << SCU_CLK_EXTCLKCR_ECKSEL_Pos)
+ 209:../Startup/system_XMC4500.c **** #define SCU_CLK_EXTCLKCR_ECKSEL_PLL      (3U << SCU_CLK_EXTCLKCR_ECKSEL_Pos)
+ 210:../Startup/system_XMC4500.c **** 
+ 211:../Startup/system_XMC4500.c **** #define EXTCLK_PIN_P0_8  (0)
+ 212:../Startup/system_XMC4500.c **** #define EXTCLK_PIN_P1_15 (1)
+ 213:../Startup/system_XMC4500.c **** 
+ 214:../Startup/system_XMC4500.c **** /*
+ 215:../Startup/system_XMC4500.c **** //    <h> Clock tree
+ 216:../Startup/system_XMC4500.c **** //        <o1.0> CPU clock divider
+ 217:../Startup/system_XMC4500.c **** //                   <0=> fCPU = fSYS
+ 218:../Startup/system_XMC4500.c **** //                   <1=> fCPU = fSYS / 2
+ 219:../Startup/system_XMC4500.c **** //        <o2.0>  Peripheral clock divider
+ 220:../Startup/system_XMC4500.c **** //                     <0=> fPB	= fCPU
+ 221:../Startup/system_XMC4500.c **** //                     <1=> fPB	= fCPU / 2
+ 222:../Startup/system_XMC4500.c **** //        <e.4> Enable CCU clock
+ 223:../Startup/system_XMC4500.c **** //             <o3.0>  CCU clock divider
+ 224:../Startup/system_XMC4500.c **** //                     <0=> fCCU = fCPU
+ 225:../Startup/system_XMC4500.c **** //                     <1=> fCCU = fCPU / 2
+ 226:../Startup/system_XMC4500.c **** //        </e>
+ 227:../Startup/system_XMC4500.c **** //        <e.5> Enable WDT clock
+ 228:../Startup/system_XMC4500.c **** //             <o4.0..7>  WDT clock divider <1-256><#-1>
+ 229:../Startup/system_XMC4500.c **** //             <o4.16..17> WDT clock source <0=> fOFI
+ 230:../Startup/system_XMC4500.c **** //                                          <1=> fSTDBY
+ 231:../Startup/system_XMC4500.c **** //                                          <2=> fPLL
+ 232:../Startup/system_XMC4500.c **** //        </e>
+ 233:../Startup/system_XMC4500.c **** //        <e.3> Enable EBU clock
+ 234:../Startup/system_XMC4500.c **** //             <o5.0..5>  EBU clock divider  <1-64><#-1>
+ 235:../Startup/system_XMC4500.c **** //        </e>
+ 236:../Startup/system_XMC4500.c **** //        <e.2> Enable ETH clock
+ 237:../Startup/system_XMC4500.c **** //        </e>
+ 238:../Startup/system_XMC4500.c **** //        <e.1> Enable MMC clock
+ 239:../Startup/system_XMC4500.c **** //        </e>
+ 240:../Startup/system_XMC4500.c **** //        <e.0> Enable USB clock
+ 241:../Startup/system_XMC4500.c **** //             <o6.16> USB clock source <0=> USBPLL
+ 242:../Startup/system_XMC4500.c **** //                                      <1=> PLL
+ 243:../Startup/system_XMC4500.c **** //        </e>
+ 244:../Startup/system_XMC4500.c **** //        <e7> External Clock configuration
+ 245:../Startup/system_XMC4500.c **** //            <o8.0..1> External Clock Source Selection
+ 246:../Startup/system_XMC4500.c **** //                  <0=> System clock
+ 247:../Startup/system_XMC4500.c **** //                  <2=> USB PLL clock
+ 248:../Startup/system_XMC4500.c **** //                  <3=> PLL clock
+ 249:../Startup/system_XMC4500.c **** //            <o8.16..24> External Clock divider <1-512><#-1>
+ 250:../Startup/system_XMC4500.c **** //            <i> Only valid for USB PLL and PLL clocks
+ 251:../Startup/system_XMC4500.c **** //            <o9.0> External Clock Pin Selection
+ 252:../Startup/system_XMC4500.c **** //                  <0=> P0.8
+ 253:../Startup/system_XMC4500.c **** //                  <1=> P1.15
+ 254:../Startup/system_XMC4500.c **** //        </e>
+ 255:../Startup/system_XMC4500.c **** //    </h>
+ 256:../Startup/system_XMC4500.c **** */
+ 257:../Startup/system_XMC4500.c **** #define ENABLE_SCUCLK (0U)
+ 258:../Startup/system_XMC4500.c **** #define CPUCLKDIV (0U)
+ 259:../Startup/system_XMC4500.c **** #define PBCLKDIV (0U)
+ 260:../Startup/system_XMC4500.c **** #define CCUCLKDIV (0U)
+ 261:../Startup/system_XMC4500.c **** #define WDTCLKDIV (0U | SCU_CLK_WDTCLKCR_WDTSEL_OFI)
+ 262:../Startup/system_XMC4500.c **** #define EBUCLKDIV (0U)
+ 263:../Startup/system_XMC4500.c **** #define USBCLKDIV (0U | SCU_CLK_USBCLKCR_USBSEL_USBPLL | USB_DIV)
+ 264:../Startup/system_XMC4500.c **** 
+ 265:../Startup/system_XMC4500.c **** #define ENABLE_EXTCLK (0U)
+ 266:../Startup/system_XMC4500.c **** #define EXTCLKDIV (0U | SCU_CLK_EXTCLKCR_ECKSEL_SYS)
+ 267:../Startup/system_XMC4500.c **** #define EXTCLK_PIN (0U)
+ 268:../Startup/system_XMC4500.c **** 
+ 269:../Startup/system_XMC4500.c **** #define ENABLE_PLL \
+ 270:../Startup/system_XMC4500.c ****     (SYS_CLOCK_SRC == SYS_CLOCK_SRC_PLL) || \
+ 271:../Startup/system_XMC4500.c ****     ((ENABLE_SCUCLK & SCU_CLK_CLKSET_EBUCEN_Msk) != 0) || \
+ 272:../Startup/system_XMC4500.c ****     (((ENABLE_SCUCLK & SCU_CLK_CLKSET_USBCEN_Msk) != 0) && ((USBCLKDIV & SCU_CLK_USBCLKCR_USBSEL_Ms
+ 273:../Startup/system_XMC4500.c ****     (((ENABLE_SCUCLK & SCU_CLK_CLKSET_WDTCEN_Msk) != 0) && ((WDTCLKDIV & SCU_CLK_WDTCLKCR_WDTSEL_Ms
+ 274:../Startup/system_XMC4500.c **** 
+ 275:../Startup/system_XMC4500.c **** #define ENABLE_USBPLL \
+ 276:../Startup/system_XMC4500.c ****     ((((ENABLE_SCUCLK & SCU_CLK_CLKSET_USBCEN_Msk) != 0) && ((USBCLKDIV & SCU_CLK_USBCLKCR_USBSEL_M
+ 277:../Startup/system_XMC4500.c ****      (((ENABLE_SCUCLK & SCU_CLK_CLKCLR_ENABLE_MMCCLK) != 0) && ((USBCLKDIV & SCU_CLK_USBCLKCR_USBSE
+ 278:../Startup/system_XMC4500.c **** /*
+ 279:../Startup/system_XMC4500.c **** // </h>
+ 280:../Startup/system_XMC4500.c **** */
+ 281:../Startup/system_XMC4500.c **** 
+ 282:../Startup/system_XMC4500.c **** /*
+ 283:../Startup/system_XMC4500.c **** //-------- <<< end of configuration section >>> ------------------
+ 284:../Startup/system_XMC4500.c **** */
+ 285:../Startup/system_XMC4500.c ****                                      
+ 286:../Startup/system_XMC4500.c **** /*******************************************************************************
+ 287:../Startup/system_XMC4500.c ****  * GLOBAL VARIABLES
+ 288:../Startup/system_XMC4500.c ****  *******************************************************************************/
+ 289:../Startup/system_XMC4500.c **** #if defined ( __CC_ARM )
+ 290:../Startup/system_XMC4500.c **** uint32_t SystemCoreClock __attribute__((at(0x2000FFC0)));
+ 291:../Startup/system_XMC4500.c **** uint8_t g_chipid[16] __attribute__((at(0x2000FFC4)));
+ 292:../Startup/system_XMC4500.c **** #elif defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+ 293:../Startup/system_XMC4500.c **** uint32_t SystemCoreClock __attribute__((section(".bss.ARM.__at_0x2000FFC0")));
+ 294:../Startup/system_XMC4500.c **** uint8_t g_chipid[16] __attribute__((section(".bss.ARM.__at_0x2000FFC4")));
+ 295:../Startup/system_XMC4500.c **** #elif defined ( __ICCARM__ )
+ 296:../Startup/system_XMC4500.c **** __no_init uint32_t SystemCoreClock;
+ 297:../Startup/system_XMC4500.c **** __no_init uint8_t g_chipid[16];
+ 298:../Startup/system_XMC4500.c **** #elif defined ( __GNUC__ )
+ 299:../Startup/system_XMC4500.c **** uint32_t SystemCoreClock __attribute__((section(".no_init")));
+ 300:../Startup/system_XMC4500.c **** uint8_t g_chipid[16] __attribute__((section(".no_init")));
+ 301:../Startup/system_XMC4500.c **** #elif defined ( __TASKING__ )
+ 302:../Startup/system_XMC4500.c **** uint32_t SystemCoreClock __at( 0x2000FFC0 );
+ 303:../Startup/system_XMC4500.c **** uint8_t g_chipid[16] __at( 0x2000FFC4 );
+ 304:../Startup/system_XMC4500.c **** #endif
+ 305:../Startup/system_XMC4500.c **** 
+ 306:../Startup/system_XMC4500.c **** extern uint32_t __Vectors;
+ 307:../Startup/system_XMC4500.c **** 
+ 308:../Startup/system_XMC4500.c **** /*******************************************************************************
+ 309:../Startup/system_XMC4500.c ****  * LOCAL FUNCTIONS
+ 310:../Startup/system_XMC4500.c ****  *******************************************************************************/
+ 311:../Startup/system_XMC4500.c **** static void delay(uint32_t cycles)
+ 312:../Startup/system_XMC4500.c **** {
+  27              	 .loc 1 312 0
+  28              	 .cfi_startproc
+  29              	 
+  30              	 
+  31              	 
+  32              	.LVL0:
+  33 0000 82B0     	 sub sp,sp,#8
+  34              	.LCFI0:
+  35              	 .cfi_def_cfa_offset 8
+ 313:../Startup/system_XMC4500.c ****   volatile uint32_t i;
+ 314:../Startup/system_XMC4500.c **** 
+ 315:../Startup/system_XMC4500.c ****   for(i = 0UL; i < cycles ;++i)
+  36              	 .loc 1 315 0
+  37 0002 0023     	 movs r3,#0
+  38              	.L4:
+  39              	 .loc 1 315 0 is_stmt 0 discriminator 3
+  40 0004 0193     	 str r3,[sp,#4]
+  41 0006 019B     	 ldr r3,[sp,#4]
+  42 0008 8342     	 cmp r3,r0
+  43 000a 03D2     	 bcs .L6
+ 316:../Startup/system_XMC4500.c ****   {
+ 317:../Startup/system_XMC4500.c ****     __NOP();
+  44              	 .loc 1 317 0 is_stmt 1 discriminator 3
+  45              	
+  46 000c 00BF     	 nop
+  47              	
+ 315:../Startup/system_XMC4500.c ****   {
+  48              	 .loc 1 315 0 discriminator 3
+  49              	 .thumb
+  50 000e 019B     	 ldr r3,[sp,#4]
+  51 0010 0133     	 adds r3,r3,#1
+  52 0012 F7E7     	 b .L4
+  53              	.L6:
+ 318:../Startup/system_XMC4500.c ****   }
+ 319:../Startup/system_XMC4500.c **** }
+  54              	 .loc 1 319 0
+  55 0014 02B0     	 add sp,sp,#8
+  56              	.LCFI1:
+  57              	 .cfi_def_cfa_offset 0
+  58              	 
+  59 0016 7047     	 bx lr
+  60              	 .cfi_endproc
+  61              	.LFE131:
+  63              	 .section .text.SystemCoreSetup,"ax",%progbits
+  64              	 .align 1
+  65              	 .weak SystemCoreSetup
+  66              	 .thumb
+  67              	 .thumb_func
+  69              	SystemCoreSetup:
+  70              	.LFB133:
+ 320:../Startup/system_XMC4500.c **** 
+ 321:../Startup/system_XMC4500.c **** /*******************************************************************************
+ 322:../Startup/system_XMC4500.c ****  * API IMPLEMENTATION
+ 323:../Startup/system_XMC4500.c ****  *******************************************************************************/
+ 324:../Startup/system_XMC4500.c **** 
+ 325:../Startup/system_XMC4500.c **** __WEAK void SystemInit(void)
+ 326:../Startup/system_XMC4500.c **** {
+ 327:../Startup/system_XMC4500.c ****   memcpy(g_chipid, CHIPID_LOC, 16);
+ 328:../Startup/system_XMC4500.c **** 
+ 329:../Startup/system_XMC4500.c ****   SystemCoreSetup();
+ 330:../Startup/system_XMC4500.c ****   SystemCoreClockSetup(); 
+ 331:../Startup/system_XMC4500.c **** }
+ 332:../Startup/system_XMC4500.c **** 
+ 333:../Startup/system_XMC4500.c **** __WEAK void SystemCoreSetup(void)
+ 334:../Startup/system_XMC4500.c **** {
+  71              	 .loc 1 334 0
+  72              	 .cfi_startproc
+  73              	 
+  74              	 
+  75              	 
+  76              	.LBB8:
+  77              	.LBB9:
+  78              	 .file 2 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/cmsis_gcc.h"
+   1:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**************************************************************************//**
+   2:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * @file     cmsis_gcc.h
+   3:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
+   4:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * @version  V5.1.0
+   5:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * @date     20. December 2018
+   6:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  ******************************************************************************/
+   7:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /*
+   8:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * Copyright (c) 2009-2018 Arm Limited. All rights reserved.
+   9:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  *
+  10:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * SPDX-License-Identifier: Apache-2.0
+  11:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  *
+  12:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
+  13:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * not use this file except in compliance with the License.
+  14:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * You may obtain a copy of the License at
+  15:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  *
+  16:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * www.apache.org/licenses/LICENSE-2.0
+  17:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  *
+  18:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * Unless required by applicable law or agreed to in writing, software
+  19:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+  20:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  21:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * See the License for the specific language governing permissions and
+  22:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * limitations under the License.
+  23:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+  24:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  25:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef __CMSIS_GCC_H
+  26:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __CMSIS_GCC_H
+  27:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  28:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /* ignore some GCC warnings */
+  29:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #pragma GCC diagnostic push
+  30:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wsign-conversion"
+  31:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wconversion"
+  32:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wunused-parameter"
+  33:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  34:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /* Fallback for __has_builtin */
+  35:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef __has_builtin
+  36:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __has_builtin(x) (0)
+  37:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  38:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  39:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /* CMSIS compiler specific defines */
+  40:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __ASM
+  41:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __ASM                                  __asm
+  42:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  43:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __INLINE
+  44:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __INLINE                               inline
+  45:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  46:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __STATIC_INLINE
+  47:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
+  48:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  49:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __STATIC_FORCEINLINE                 
+  50:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __STATIC_FORCEINLINE                   __attribute__((always_inline)) static inline
+  51:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif                                           
+  52:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __NO_RETURN
+  53:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __NO_RETURN                            __attribute__((__noreturn__))
+  54:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  55:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __USED
+  56:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __USED                                 __attribute__((used))
+  57:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  58:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __WEAK
+  59:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __WEAK                                 __attribute__((weak))
+  60:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  61:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __PACKED
+  62:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __PACKED                               __attribute__((packed, aligned(1)))
+  63:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  64:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __PACKED_STRUCT
+  65:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __PACKED_STRUCT                        struct __attribute__((packed, aligned(1)))
+  66:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  67:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __PACKED_UNION
+  68:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __PACKED_UNION                         union __attribute__((packed, aligned(1)))
+  69:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  70:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32        /* deprecated */
+  71:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic push
+  72:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  73:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  74:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
+  75:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  76:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
+  77:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  78:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_WRITE
+  79:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic push
+  80:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  81:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  82:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_WRITE { uint16_t v; };
+  83:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  84:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __UNALIGNED_UINT16_WRITE(addr, val)    (void)((((struct T_UINT16_WRITE *)(void *)(addr))-
+  85:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  86:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_READ
+  87:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic push
+  88:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  89:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  90:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
+  91:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  92:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(add
+  93:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  94:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_WRITE
+  95:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic push
+  96:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  97:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  98:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
+  99:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 100:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))-
+ 101:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 102:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_READ
+ 103:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic push
+ 104:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+ 105:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+ 106:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
+ 107:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 108:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(add
+ 109:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 110:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __ALIGNED
+ 111:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __ALIGNED(x)                           __attribute__((aligned(x)))
+ 112:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 113:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef   __RESTRICT
+ 114:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   #define __RESTRICT                             __restrict
+ 115:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 116:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 117:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 118:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /* ###########################  Core Function Access  ########################### */
+ 119:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
+ 120:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
+ 121:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   @{
+ 122:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 123:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 124:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 125:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Enable IRQ Interrupts
+ 126:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
+ 127:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 128:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 129:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_irq(void)
+ 130:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 131:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
+ 132:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 133:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 134:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 135:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 136:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Disable IRQ Interrupts
+ 137:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
+ 138:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 139:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 140:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_irq(void)
+ 141:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 142:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("cpsid i" : : : "memory");
+  79              	 .loc 2 142 0
+  80              	
+  81 0000 72B6     	 cpsid i
+  82              	
+  83              	 .thumb
+  84              	.LBE9:
+  85              	.LBE8:
+ 335:../Startup/system_XMC4500.c ****   uint32_t temp;
+ 336:../Startup/system_XMC4500.c **** 	
+ 337:../Startup/system_XMC4500.c ****   /* relocate vector table */
+ 338:../Startup/system_XMC4500.c ****   __disable_irq();
+ 339:../Startup/system_XMC4500.c ****   SCB->VTOR = (uint32_t)(&__Vectors);
+  86              	 .loc 1 339 0
+  87 0002 0D4B     	 ldr r3,.L8
+  88 0004 0D4A     	 ldr r2,.L8+4
+  89 0006 9A60     	 str r2,[r3,#8]
+  90              	.LBB10:
+  91              	.LBB11:
+ 143:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 144:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 145:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 146:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 147:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Control Register
+ 148:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the content of the Control Register.
+ 149:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               Control Register value
+ 150:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 151:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_CONTROL(void)
+ 152:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 153:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 154:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 155:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, control" : "=r" (result) );
+ 156:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 157:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 158:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 159:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 160:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 161:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 162:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Control Register (non-secure)
+ 163:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the content of the non-secure Control Register when in secure mode.
+ 164:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               non-secure Control Register value
+ 165:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 166:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_CONTROL_NS(void)
+ 167:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 168:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 169:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 170:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, control_ns" : "=r" (result) );
+ 171:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 172:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 173:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 174:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 175:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 176:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 177:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Control Register
+ 178:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Writes the given value to the Control Register.
+ 179:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    control  Control Register value to set
+ 180:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 181:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_CONTROL(uint32_t control)
+ 182:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 183:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR control, %0" : : "r" (control) : "memory");
+ 184:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 185:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 186:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 187:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 188:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 189:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Control Register (non-secure)
+ 190:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Writes the given value to the non-secure Control Register when in secure state.
+ 191:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    control  Control Register value to set
+ 192:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 193:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_CONTROL_NS(uint32_t control)
+ 194:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 195:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR control_ns, %0" : : "r" (control) : "memory");
+ 196:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 197:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 198:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 199:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 200:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 201:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get IPSR Register
+ 202:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the content of the IPSR Register.
+ 203:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               IPSR Register value
+ 204:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 205:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_IPSR(void)
+ 206:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 207:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 208:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 209:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, ipsr" : "=r" (result) );
+ 210:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 211:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 212:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 213:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 214:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 215:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get APSR Register
+ 216:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the content of the APSR Register.
+ 217:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               APSR Register value
+ 218:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 219:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_APSR(void)
+ 220:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 221:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 222:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 223:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, apsr" : "=r" (result) );
+ 224:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 225:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 226:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 227:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 228:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 229:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get xPSR Register
+ 230:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the content of the xPSR Register.
+ 231:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               xPSR Register value
+ 232:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 233:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_xPSR(void)
+ 234:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 235:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 236:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 237:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, xpsr" : "=r" (result) );
+ 238:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 239:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 240:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 241:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 242:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 243:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Process Stack Pointer
+ 244:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the Process Stack Pointer (PSP).
+ 245:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               PSP Register value
+ 246:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 247:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_PSP(void)
+ 248:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 249:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 250:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 251:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, psp"  : "=r" (result) );
+ 252:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 253:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 254:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 255:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 256:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 257:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 258:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Process Stack Pointer (non-secure)
+ 259:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the non-secure Process Stack Pointer (PSP) when in secure s
+ 260:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               PSP Register value
+ 261:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 262:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_PSP_NS(void)
+ 263:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 264:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 265:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 266:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, psp_ns"  : "=r" (result) );
+ 267:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 268:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 269:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 270:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 271:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 272:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 273:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Process Stack Pointer
+ 274:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Process Stack Pointer (PSP).
+ 275:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    topOfProcStack  Process Stack Pointer value to set
+ 276:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 277:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_PSP(uint32_t topOfProcStack)
+ 278:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 279:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR psp, %0" : : "r" (topOfProcStack) : );
+ 280:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 281:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 282:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 283:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 284:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 285:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Process Stack Pointer (non-secure)
+ 286:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the non-secure Process Stack Pointer (PSP) when in secure sta
+ 287:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    topOfProcStack  Process Stack Pointer value to set
+ 288:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 289:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_PSP_NS(uint32_t topOfProcStack)
+ 290:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 291:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR psp_ns, %0" : : "r" (topOfProcStack) : );
+ 292:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 293:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 294:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 295:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 296:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 297:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Main Stack Pointer
+ 298:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the Main Stack Pointer (MSP).
+ 299:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               MSP Register value
+ 300:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 301:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_MSP(void)
+ 302:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 303:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 304:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 305:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, msp" : "=r" (result) );
+ 306:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 307:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 308:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 309:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 310:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 311:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 312:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Main Stack Pointer (non-secure)
+ 313:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the non-secure Main Stack Pointer (MSP) when in secure stat
+ 314:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               MSP Register value
+ 315:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 316:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_MSP_NS(void)
+ 317:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 318:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 319:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 320:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, msp_ns" : "=r" (result) );
+ 321:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 322:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 323:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 324:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 325:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 326:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 327:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Main Stack Pointer
+ 328:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Main Stack Pointer (MSP).
+ 329:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    topOfMainStack  Main Stack Pointer value to set
+ 330:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 331:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_MSP(uint32_t topOfMainStack)
+ 332:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 333:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR msp, %0" : : "r" (topOfMainStack) : );
+ 334:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 335:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 336:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 337:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 338:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 339:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Main Stack Pointer (non-secure)
+ 340:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the non-secure Main Stack Pointer (MSP) when in secure state.
+ 341:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    topOfMainStack  Main Stack Pointer value to set
+ 342:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 343:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_MSP_NS(uint32_t topOfMainStack)
+ 344:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 345:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR msp_ns, %0" : : "r" (topOfMainStack) : );
+ 346:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 347:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 348:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 349:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 350:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 351:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 352:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Stack Pointer (non-secure)
+ 353:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the non-secure Stack Pointer (SP) when in secure state.
+ 354:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               SP Register value
+ 355:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 356:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_SP_NS(void)
+ 357:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 358:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 359:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 360:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, sp_ns" : "=r" (result) );
+ 361:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 362:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 363:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 364:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 365:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 366:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Stack Pointer (non-secure)
+ 367:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the non-secure Stack Pointer (SP) when in secure state.
+ 368:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    topOfStack  Stack Pointer value to set
+ 369:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 370:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_SP_NS(uint32_t topOfStack)
+ 371:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 372:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR sp_ns, %0" : : "r" (topOfStack) : );
+ 373:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 374:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 375:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 376:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 377:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 378:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Priority Mask
+ 379:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current state of the priority mask bit from the Priority Mask Register.
+ 380:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               Priority Mask value
+ 381:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 382:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_PRIMASK(void)
+ 383:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 384:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 385:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 386:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, primask" : "=r" (result) :: "memory");
+ 387:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 388:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 389:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 390:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 391:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 392:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 393:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Priority Mask (non-secure)
+ 394:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current state of the non-secure priority mask bit from the Priority Mask Reg
+ 395:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               Priority Mask value
+ 396:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 397:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_PRIMASK_NS(void)
+ 398:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 399:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 400:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 401:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, primask_ns" : "=r" (result) :: "memory");
+ 402:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 403:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 404:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 405:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 406:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 407:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 408:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Priority Mask
+ 409:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Priority Mask Register.
+ 410:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    priMask  Priority Mask
+ 411:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 412:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
+ 413:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 414:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR primask, %0" : : "r" (priMask) : "memory");
+ 415:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 416:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 417:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 418:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 419:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 420:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Priority Mask (non-secure)
+ 421:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the non-secure Priority Mask Register when in secure state.
+ 422:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    priMask  Priority Mask
+ 423:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 424:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_PRIMASK_NS(uint32_t priMask)
+ 425:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 426:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR primask_ns, %0" : : "r" (priMask) : "memory");
+ 427:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 428:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 429:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 430:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 431:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if ((defined (__ARM_ARCH_7M__      ) && (__ARM_ARCH_7M__      == 1)) || \
+ 432:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****      (defined (__ARM_ARCH_7EM__     ) && (__ARM_ARCH_7EM__     == 1)) || \
+ 433:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****      (defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1))    )
+ 434:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 435:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Enable FIQ
+ 436:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Enables FIQ interrupts by clearing the F-bit in the CPSR.
+ 437:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 438:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 439:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_fault_irq(void)
+ 440:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 441:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("cpsie f" : : : "memory");
+ 442:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 443:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 444:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 445:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 446:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Disable FIQ
+ 447:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Disables FIQ interrupts by setting the F-bit in the CPSR.
+ 448:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 449:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 450:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_fault_irq(void)
+ 451:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 452:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("cpsid f" : : : "memory");
+ 453:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 454:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 455:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 456:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 457:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Base Priority
+ 458:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the Base Priority register.
+ 459:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               Base Priority register value
+ 460:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 461:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_BASEPRI(void)
+ 462:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 463:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 464:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 465:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, basepri" : "=r" (result) );
+ 466:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 467:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 468:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 469:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 470:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 471:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 472:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Base Priority (non-secure)
+ 473:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the non-secure Base Priority register when in secure state.
+ 474:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               Base Priority register value
+ 475:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 476:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_BASEPRI_NS(void)
+ 477:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 478:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 479:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 480:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, basepri_ns" : "=r" (result) );
+ 481:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 482:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 483:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 484:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 485:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 486:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 487:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Base Priority
+ 488:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Base Priority register.
+ 489:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    basePri  Base Priority value to set
+ 490:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 491:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_BASEPRI(uint32_t basePri)
+ 492:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 493:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR basepri, %0" : : "r" (basePri) : "memory");
+ 494:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 495:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 496:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 497:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 498:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 499:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Base Priority (non-secure)
+ 500:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the non-secure Base Priority register when in secure state.
+ 501:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    basePri  Base Priority value to set
+ 502:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 503:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_BASEPRI_NS(uint32_t basePri)
+ 504:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 505:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR basepri_ns, %0" : : "r" (basePri) : "memory");
+ 506:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 507:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 508:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 509:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 510:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 511:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Base Priority with condition
+ 512:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Base Priority register only if BASEPRI masking is disable
+ 513:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****            or the new value increases the BASEPRI priority level.
+ 514:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    basePri  Base Priority value to set
+ 515:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 516:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_BASEPRI_MAX(uint32_t basePri)
+ 517:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 518:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR basepri_max, %0" : : "r" (basePri) : "memory");
+ 519:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 520:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 521:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 522:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 523:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Fault Mask
+ 524:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the Fault Mask register.
+ 525:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               Fault Mask register value
+ 526:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 527:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_FAULTMASK(void)
+ 528:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 529:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 530:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 531:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, faultmask" : "=r" (result) );
+ 532:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 533:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 534:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 535:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 536:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 537:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 538:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Fault Mask (non-secure)
+ 539:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the non-secure Fault Mask register when in secure state.
+ 540:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               Fault Mask register value
+ 541:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 542:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_FAULTMASK_NS(void)
+ 543:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 544:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 545:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 546:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, faultmask_ns" : "=r" (result) );
+ 547:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 548:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 549:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 550:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 551:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 552:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 553:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Fault Mask
+ 554:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Fault Mask register.
+ 555:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    faultMask  Fault Mask value to set
+ 556:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 557:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_FAULTMASK(uint32_t faultMask)
+ 558:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 559:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR faultmask, %0" : : "r" (faultMask) : "memory");
+ 560:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 561:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 562:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 563:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+ 564:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 565:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Fault Mask (non-secure)
+ 566:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the non-secure Fault Mask register when in secure state.
+ 567:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    faultMask  Fault Mask value to set
+ 568:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 569:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_FAULTMASK_NS(uint32_t faultMask)
+ 570:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 571:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR faultmask_ns, %0" : : "r" (faultMask) : "memory");
+ 572:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 573:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 574:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 575:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif /* ((defined (__ARM_ARCH_7M__      ) && (__ARM_ARCH_7M__      == 1)) || \
+ 576:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****            (defined (__ARM_ARCH_7EM__     ) && (__ARM_ARCH_7EM__     == 1)) || \
+ 577:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****            (defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1))    ) */
+ 578:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 579:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 580:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if ((defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) || \
+ 581:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****      (defined (__ARM_ARCH_8M_BASE__ ) && (__ARM_ARCH_8M_BASE__ == 1))    )
+ 582:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 583:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 584:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Process Stack Pointer Limit
+ 585:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 586:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Stack Pointer Limit register hence zero is returned always in non-secure
+ 587:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   mode.
+ 588:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   
+ 589:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the Process Stack Pointer Limit (PSPLIM).
+ 590:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               PSPLIM Register value
+ 591:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 592:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_PSPLIM(void)
+ 593:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 594:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) && \
+ 595:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****     (!defined (__ARM_FEATURE_CMSE) || (__ARM_FEATURE_CMSE < 3)))
+ 596:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****     // without main extensions, the non-secure PSPLIM is RAZ/WI
+ 597:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return 0U;
+ 598:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 599:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 600:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, psplim"  : "=r" (result) );
+ 601:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return result;
+ 602:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 603:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 604:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 605:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3))
+ 606:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 607:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Process Stack Pointer Limit (non-secure)
+ 608:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 609:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Stack Pointer Limit register hence zero is returned always.
+ 610:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 611:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the non-secure Process Stack Pointer Limit (PSPLIM) when in
+ 612:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               PSPLIM Register value
+ 613:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 614:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_PSPLIM_NS(void)
+ 615:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 616:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)))
+ 617:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   // without main extensions, the non-secure PSPLIM is RAZ/WI
+ 618:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return 0U;
+ 619:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 620:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 621:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, psplim_ns"  : "=r" (result) );
+ 622:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return result;
+ 623:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 624:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 625:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 626:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 627:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 628:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 629:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Process Stack Pointer Limit
+ 630:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 631:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Stack Pointer Limit register hence the write is silently ignored in non-secure
+ 632:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   mode.
+ 633:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   
+ 634:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Process Stack Pointer Limit (PSPLIM).
+ 635:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    ProcStackPtrLimit  Process Stack Pointer Limit value to set
+ 636:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 637:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_PSPLIM(uint32_t ProcStackPtrLimit)
+ 638:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 639:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) && \
+ 640:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****     (!defined (__ARM_FEATURE_CMSE) || (__ARM_FEATURE_CMSE < 3)))
+ 641:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   // without main extensions, the non-secure PSPLIM is RAZ/WI
+ 642:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   (void)ProcStackPtrLimit;
+ 643:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 644:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR psplim, %0" : : "r" (ProcStackPtrLimit));
+ 645:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 646:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 647:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 648:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 649:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE  ) && (__ARM_FEATURE_CMSE   == 3))
+ 650:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 651:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Process Stack Pointer (non-secure)
+ 652:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 653:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Stack Pointer Limit register hence the write is silently ignored.
+ 654:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 655:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the non-secure Process Stack Pointer Limit (PSPLIM) when in s
+ 656:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    ProcStackPtrLimit  Process Stack Pointer Limit value to set
+ 657:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 658:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_PSPLIM_NS(uint32_t ProcStackPtrLimit)
+ 659:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 660:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)))
+ 661:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   // without main extensions, the non-secure PSPLIM is RAZ/WI
+ 662:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   (void)ProcStackPtrLimit;
+ 663:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 664:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR psplim_ns, %0\n" : : "r" (ProcStackPtrLimit));
+ 665:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 666:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 667:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 668:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 669:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 670:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 671:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Main Stack Pointer Limit
+ 672:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 673:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Stack Pointer Limit register hence zero is returned always in non-secure
+ 674:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   mode.
+ 675:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 676:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the Main Stack Pointer Limit (MSPLIM).
+ 677:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               MSPLIM Register value
+ 678:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 679:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_MSPLIM(void)
+ 680:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 681:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) && \
+ 682:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****     (!defined (__ARM_FEATURE_CMSE) || (__ARM_FEATURE_CMSE < 3)))
+ 683:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   // without main extensions, the non-secure MSPLIM is RAZ/WI
+ 684:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return 0U;
+ 685:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 686:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 687:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, msplim" : "=r" (result) );
+ 688:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return result;
+ 689:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 690:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 691:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 692:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 693:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE  ) && (__ARM_FEATURE_CMSE   == 3))
+ 694:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 695:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Main Stack Pointer Limit (non-secure)
+ 696:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 697:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Stack Pointer Limit register hence zero is returned always.
+ 698:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 699:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the non-secure Main Stack Pointer Limit(MSPLIM) when in sec
+ 700:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               MSPLIM Register value
+ 701:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 702:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __TZ_get_MSPLIM_NS(void)
+ 703:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 704:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)))
+ 705:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   // without main extensions, the non-secure MSPLIM is RAZ/WI
+ 706:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return 0U;
+ 707:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 708:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 709:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, msplim_ns" : "=r" (result) );
+ 710:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return result;
+ 711:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 712:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 713:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 714:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 715:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 716:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 717:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Main Stack Pointer Limit
+ 718:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 719:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Stack Pointer Limit register hence the write is silently ignored in non-secure
+ 720:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   mode.
+ 721:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 722:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Main Stack Pointer Limit (MSPLIM).
+ 723:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    MainStackPtrLimit  Main Stack Pointer Limit value to set
+ 724:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 725:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_MSPLIM(uint32_t MainStackPtrLimit)
+ 726:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 727:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) && \
+ 728:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****     (!defined (__ARM_FEATURE_CMSE) || (__ARM_FEATURE_CMSE < 3)))
+ 729:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   // without main extensions, the non-secure MSPLIM is RAZ/WI
+ 730:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   (void)MainStackPtrLimit;
+ 731:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 732:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR msplim, %0" : : "r" (MainStackPtrLimit));
+ 733:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 734:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 735:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 736:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 737:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE  ) && (__ARM_FEATURE_CMSE   == 3))
+ 738:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 739:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Main Stack Pointer Limit (non-secure)
+ 740:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+ 741:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Stack Pointer Limit register hence the write is silently ignored.
+ 742:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 743:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the non-secure Main Stack Pointer Limit (MSPLIM) when in secu
+ 744:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    MainStackPtrLimit  Main Stack Pointer value to set
+ 745:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 746:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_MSPLIM_NS(uint32_t MainStackPtrLimit)
+ 747:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 748:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)))
+ 749:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   // without main extensions, the non-secure MSPLIM is RAZ/WI
+ 750:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   (void)MainStackPtrLimit;
+ 751:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 752:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR msplim_ns, %0" : : "r" (MainStackPtrLimit));
+ 753:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 754:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 755:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 756:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 757:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif /* ((defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) || \
+ 758:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****            (defined (__ARM_ARCH_8M_BASE__ ) && (__ARM_ARCH_8M_BASE__ == 1))    ) */
+ 759:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 760:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 761:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 762:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get FPSCR
+ 763:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the Floating Point Status/Control register.
+ 764:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               Floating Point Status/Control register value
+ 765:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 766:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_FPSCR(void)
+ 767:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 768:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if ((defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)) && \
+ 769:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****      (defined (__FPU_USED   ) && (__FPU_USED    == 1U))     )
+ 770:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if __has_builtin(__builtin_arm_get_fpscr) 
+ 771:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** // Re-enable using built-in when GCC has been fixed
+ 772:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** // || (__GNUC__ > 7) || (__GNUC__ == 7 && __GNUC_MINOR__ >= 2)
+ 773:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   /* see https://gcc.gnu.org/ml/gcc-patches/2017-04/msg00443.html */
+ 774:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return __builtin_arm_get_fpscr();
+ 775:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 776:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 777:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 778:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("VMRS %0, fpscr" : "=r" (result) );
+ 779:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 780:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 781:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 782:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(0U);
+ 783:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 784:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 785:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 786:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 787:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 788:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set FPSCR
+ 789:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Floating Point Status/Control register.
+ 790:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    fpscr  Floating Point Status/Control value to set
+ 791:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 792:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __set_FPSCR(uint32_t fpscr)
+ 793:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 794:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if ((defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)) && \
+ 795:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****      (defined (__FPU_USED   ) && (__FPU_USED    == 1U))     )
+ 796:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if __has_builtin(__builtin_arm_set_fpscr)
+ 797:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** // Re-enable using built-in when GCC has been fixed
+ 798:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** // || (__GNUC__ > 7) || (__GNUC__ == 7 && __GNUC_MINOR__ >= 2)
+ 799:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   /* see https://gcc.gnu.org/ml/gcc-patches/2017-04/msg00443.html */
+ 800:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __builtin_arm_set_fpscr(fpscr);
+ 801:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 802:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("VMSR fpscr, %0" : : "r" (fpscr) : "vfpcc", "memory");
+ 803:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 804:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 805:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   (void)fpscr;
+ 806:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 807:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 808:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 809:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 810:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /*@} end of CMSIS_Core_RegAccFunctions */
+ 811:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 812:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 813:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /* ##########################  Core Instruction Access  ######################### */
+ 814:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /** \defgroup CMSIS_Core_InstructionInterface CMSIS Core Instruction Interface
+ 815:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   Access to dedicated instructions
+ 816:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   @{
+ 817:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** */
+ 818:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 819:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /* Define macros for porting to both thumb1 and thumb2.
+ 820:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * For thumb1, use low register (r0-r7), specified by constraint "l"
+ 821:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  * Otherwise, use general registers, specified by constraint "r" */
+ 822:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #if defined (__thumb__) && !defined (__thumb2__)
+ 823:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __CMSIS_GCC_OUT_REG(r) "=l" (r)
+ 824:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __CMSIS_GCC_RW_REG(r) "+l" (r)
+ 825:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __CMSIS_GCC_USE_REG(r) "l" (r)
+ 826:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 827:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __CMSIS_GCC_OUT_REG(r) "=r" (r)
+ 828:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __CMSIS_GCC_RW_REG(r) "+r" (r)
+ 829:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __CMSIS_GCC_USE_REG(r) "r" (r)
+ 830:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 831:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 832:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 833:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   No Operation
+ 834:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details No Operation does nothing. This instruction can be used for code alignment purposes.
+ 835:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 836:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __NOP()                             __ASM volatile ("nop")
+ 837:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 838:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 839:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Wait For Interrupt
+ 840:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Wait For Interrupt is a hint instruction that suspends execution until one of a number o
+ 841:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 842:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __WFI()                             __ASM volatile ("wfi")
+ 843:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 844:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 845:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 846:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Wait For Event
+ 847:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Wait For Event is a hint instruction that permits the processor to enter
+ 848:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****            a low-power state until one of a number of events occurs.
+ 849:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 850:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __WFE()                             __ASM volatile ("wfe")
+ 851:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 852:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 853:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 854:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Send Event
+ 855:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Send Event is a hint instruction. It causes an event to be signaled to the CPU.
+ 856:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 857:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __SEV()                             __ASM volatile ("sev")
+ 858:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 859:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 860:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 861:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Instruction Synchronization Barrier
+ 862:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Instruction Synchronization Barrier flushes the pipeline in the processor,
+ 863:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****            so that all instructions following the ISB are fetched from cache or memory,
+ 864:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****            after the instruction has been completed.
+ 865:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 866:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __ISB(void)
+ 867:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 868:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("isb 0xF":::"memory");
+ 869:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 870:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 871:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 872:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 873:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Data Synchronization Barrier
+ 874:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Acts as a special kind of Data Memory Barrier.
+ 875:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****            It completes when all explicit memory accesses before this instruction complete.
+ 876:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 877:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** __STATIC_FORCEINLINE void __DSB(void)
+ 878:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 879:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("dsb 0xF":::"memory");
+  92              	 .loc 2 879 0
+  93              	
+  94 0008 BFF34F8F 	 dsb 0xF
+  95              	
+  96              	 .thumb
+  97              	.LBE11:
+  98              	.LBE10:
+  99              	.LBB12:
+ 100              	.LBB13:
+ 131:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 101              	 .loc 2 131 0
+ 102              	
+ 103 000c 62B6     	 cpsie i
+ 104              	
+ 105              	 .thumb
+ 106              	.LBE13:
+ 107              	.LBE12:
+ 340:../Startup/system_XMC4500.c ****   __DSB();
+ 341:../Startup/system_XMC4500.c ****   __enable_irq();
+ 342:../Startup/system_XMC4500.c ****     
+ 343:../Startup/system_XMC4500.c ****   /* __FPU_PRESENT = 1 defined in device header file */
+ 344:../Startup/system_XMC4500.c ****   /* __FPU_USED value depends on compiler/linker options. */
+ 345:../Startup/system_XMC4500.c ****   /* __FPU_USED = 0 if -mfloat-abi=soft is selected */
+ 346:../Startup/system_XMC4500.c ****   /* __FPU_USED = 1 if -mfloat-abi=softfp or –mfloat-abi=hard */
+ 347:../Startup/system_XMC4500.c **** 
+ 348:../Startup/system_XMC4500.c **** #if ((__FPU_PRESENT == 1) && (__FPU_USED == 1))
+ 349:../Startup/system_XMC4500.c ****   SCB->CPACR |= ((3UL << 10*2) |                 /* set CP10 Full Access */
+ 108              	 .loc 1 349 0
+ 109 000e D3F88820 	 ldr r2,[r3,#136]
+ 350:../Startup/system_XMC4500.c ****                  (3UL << 11*2)  );               /* set CP11 Full Access */
+ 351:../Startup/system_XMC4500.c **** #else
+ 352:../Startup/system_XMC4500.c ****   SCB->CPACR = 0;
+ 353:../Startup/system_XMC4500.c **** #endif
+ 354:../Startup/system_XMC4500.c **** 
+ 355:../Startup/system_XMC4500.c ****   /* Enable unaligned memory access - SCB_CCR.UNALIGN_TRP = 0 */
+ 356:../Startup/system_XMC4500.c ****   SCB->CCR &= ~(SCB_CCR_UNALIGN_TRP_Msk);
+ 357:../Startup/system_XMC4500.c **** 
+ 358:../Startup/system_XMC4500.c ****   temp = FLASH0->FCON;
+ 110              	 .loc 1 358 0
+ 111 0012 0B49     	 ldr r1,.L8+8
+ 349:../Startup/system_XMC4500.c ****                  (3UL << 11*2)  );               /* set CP11 Full Access */
+ 112              	 .loc 1 349 0
+ 113 0014 42F47002 	 orr r2,r2,#15728640
+ 114 0018 C3F88820 	 str r2,[r3,#136]
+ 356:../Startup/system_XMC4500.c **** 
+ 115              	 .loc 1 356 0
+ 116 001c 5A69     	 ldr r2,[r3,#20]
+ 117 001e 22F00802 	 bic r2,r2,#8
+ 118 0022 5A61     	 str r2,[r3,#20]
+ 119              	 .loc 1 358 0
+ 120 0024 41F21402 	 movw r2,#4116
+ 121 0028 8B58     	 ldr r3,[r1,r2]
+ 122              	.LVL1:
+ 359:../Startup/system_XMC4500.c ****   temp &= ~FLASH_FCON_WSPFLASH_Msk;
+ 123              	 .loc 1 359 0
+ 124 002a 23F00F03 	 bic r3,r3,#15
+ 125              	.LVL2:
+ 360:../Startup/system_XMC4500.c ****   temp |= PMU_FLASH_WS;
+ 126              	 .loc 1 360 0
+ 127 002e 43F00303 	 orr r3,r3,#3
+ 128              	.LVL3:
+ 361:../Startup/system_XMC4500.c ****   FLASH0->FCON = temp;
+ 129              	 .loc 1 361 0
+ 130 0032 8B50     	 str r3,[r1,r2]
+ 131 0034 7047     	 bx lr
+ 132              	.L9:
+ 133 0036 00BF     	 .align 2
+ 134              	.L8:
+ 135 0038 00ED00E0 	 .word -536810240
+ 136 003c 00000000 	 .word __Vectors
+ 137 0040 00100058 	 .word 1476399104
+ 138              	 .cfi_endproc
+ 139              	.LFE133:
+ 141              	 .section .text.OSCHP_GetFrequency,"ax",%progbits
+ 142              	 .align 1
+ 143              	 .weak OSCHP_GetFrequency
+ 144              	 .thumb
+ 145              	 .thumb_func
+ 147              	OSCHP_GetFrequency:
+ 148              	.LFB136:
+ 362:../Startup/system_XMC4500.c **** }
+ 363:../Startup/system_XMC4500.c **** 
+ 364:../Startup/system_XMC4500.c **** __WEAK void SystemCoreClockSetup(void)
+ 365:../Startup/system_XMC4500.c **** {
+ 366:../Startup/system_XMC4500.c **** #if FOFI_CALIBRATION_MODE == FOFI_CALIBRATION_MODE_FACTORY
+ 367:../Startup/system_XMC4500.c ****   /* Enable factory calibration */
+ 368:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON0 |= SCU_PLL_PLLCON0_FOTR_Msk;
+ 369:../Startup/system_XMC4500.c **** #else
+ 370:../Startup/system_XMC4500.c ****   /* Automatic calibration uses the fSTDBY */
+ 371:../Startup/system_XMC4500.c **** 
+ 372:../Startup/system_XMC4500.c ****   /* Enable HIB domain */
+ 373:../Startup/system_XMC4500.c ****   /* Power up HIB domain if and only if it is currently powered down */
+ 374:../Startup/system_XMC4500.c ****   if((SCU_POWER->PWRSTAT & SCU_POWER_PWRSTAT_HIBEN_Msk) == 0)
+ 375:../Startup/system_XMC4500.c ****   {
+ 376:../Startup/system_XMC4500.c ****     SCU_POWER->PWRSET |= SCU_POWER_PWRSET_HIB_Msk;
+ 377:../Startup/system_XMC4500.c **** 
+ 378:../Startup/system_XMC4500.c ****     while((SCU_POWER->PWRSTAT & SCU_POWER_PWRSTAT_HIBEN_Msk) == 0)
+ 379:../Startup/system_XMC4500.c ****     {
+ 380:../Startup/system_XMC4500.c ****       /* wait until HIB domain is enabled */
+ 381:../Startup/system_XMC4500.c ****     }
+ 382:../Startup/system_XMC4500.c ****   }
+ 383:../Startup/system_XMC4500.c **** 
+ 384:../Startup/system_XMC4500.c ****   /* Remove the reset only if HIB domain were in a state of reset */
+ 385:../Startup/system_XMC4500.c ****   if((SCU_RESET->RSTSTAT) & SCU_RESET_RSTSTAT_HIBRS_Msk)
+ 386:../Startup/system_XMC4500.c ****   {
+ 387:../Startup/system_XMC4500.c ****     SCU_RESET->RSTCLR |= SCU_RESET_RSTCLR_HIBRS_Msk;
+ 388:../Startup/system_XMC4500.c ****     delay(DELAY_CNT_150US_50MHZ);
+ 389:../Startup/system_XMC4500.c ****   }
+ 390:../Startup/system_XMC4500.c ****   
+ 391:../Startup/system_XMC4500.c **** #if STDBY_CLOCK_SRC == STDBY_CLOCK_SRC_OSCULP
+ 392:../Startup/system_XMC4500.c ****   /* Enable OSC_ULP */
+ 393:../Startup/system_XMC4500.c ****   if ((SCU_HIBERNATE->OSCULCTRL & SCU_HIBERNATE_OSCULCTRL_MODE_Msk) != 0UL)
+ 394:../Startup/system_XMC4500.c ****   {
+ 395:../Startup/system_XMC4500.c ****     /*enable OSC_ULP*/
+ 396:../Startup/system_XMC4500.c ****     while (SCU_GENERAL->MIRRSTS & SCU_GENERAL_MIRRSTS_OSCULCTRL_Msk)
+ 397:../Startup/system_XMC4500.c ****     {
+ 398:../Startup/system_XMC4500.c ****       /* check SCU_MIRRSTS to ensure that no transfer over serial interface is pending */
+ 399:../Startup/system_XMC4500.c ****     }
+ 400:../Startup/system_XMC4500.c ****     SCU_HIBERNATE->OSCULCTRL &= ~SCU_HIBERNATE_OSCULCTRL_MODE_Msk;
+ 401:../Startup/system_XMC4500.c **** 
+ 402:../Startup/system_XMC4500.c ****     /* Check if the clock is OK using OSCULP Oscillator Watchdog*/
+ 403:../Startup/system_XMC4500.c ****     while (SCU_GENERAL->MIRRSTS & SCU_GENERAL_MIRRSTS_HDCR_Msk)
+ 404:../Startup/system_XMC4500.c ****     {
+ 405:../Startup/system_XMC4500.c ****       /* check SCU_MIRRSTS to ensure that no transfer over serial interface is pending */
+ 406:../Startup/system_XMC4500.c ****     }
+ 407:../Startup/system_XMC4500.c ****     SCU_HIBERNATE->HDCR |= SCU_HIBERNATE_HDCR_ULPWDGEN_Msk;
+ 408:../Startup/system_XMC4500.c **** 
+ 409:../Startup/system_XMC4500.c ****     /* wait till clock is stable */
+ 410:../Startup/system_XMC4500.c ****     do
+ 411:../Startup/system_XMC4500.c ****     {
+ 412:../Startup/system_XMC4500.c ****       while (SCU_GENERAL->MIRRSTS & SCU_GENERAL_MIRRSTS_HDCLR_Msk)
+ 413:../Startup/system_XMC4500.c ****       {
+ 414:../Startup/system_XMC4500.c ****         /* check SCU_MIRRSTS to ensure that no transfer over serial interface is pending */
+ 415:../Startup/system_XMC4500.c ****       }
+ 416:../Startup/system_XMC4500.c ****       SCU_HIBERNATE->HDCLR |= SCU_HIBERNATE_HDCLR_ULPWDG_Msk;
+ 417:../Startup/system_XMC4500.c **** 
+ 418:../Startup/system_XMC4500.c ****       delay(DELAY_CNT_50US_50MHZ);
+ 419:../Startup/system_XMC4500.c **** 
+ 420:../Startup/system_XMC4500.c ****     } while ((SCU_HIBERNATE->HDSTAT & SCU_HIBERNATE_HDSTAT_ULPWDG_Msk) != 0UL);
+ 421:../Startup/system_XMC4500.c **** 
+ 422:../Startup/system_XMC4500.c ****   }
+ 423:../Startup/system_XMC4500.c **** 
+ 424:../Startup/system_XMC4500.c ****   /* now OSC_ULP is running and can be used*/
+ 425:../Startup/system_XMC4500.c ****   /* Select OSC_ULP as the clock source for RTC and STDBY*/
+ 426:../Startup/system_XMC4500.c ****   while (SCU_GENERAL->MIRRSTS & SCU_GENERAL_MIRRSTS_HDCR_Msk)
+ 427:../Startup/system_XMC4500.c ****   {
+ 428:../Startup/system_XMC4500.c ****     /* check SCU_MIRRSTS to ensure that no transfer over serial interface is pending */
+ 429:../Startup/system_XMC4500.c ****   }
+ 430:../Startup/system_XMC4500.c ****   SCU_HIBERNATE->HDCR |= SCU_HIBERNATE_HDCR_RCS_Msk | SCU_HIBERNATE_HDCR_STDBYSEL_Msk;
+ 431:../Startup/system_XMC4500.c **** 
+ 432:../Startup/system_XMC4500.c **** #endif /* STDBY_CLOCK_SRC == STDBY_CLOCK_SRC_OSCULP */
+ 433:../Startup/system_XMC4500.c **** 
+ 434:../Startup/system_XMC4500.c ****   /* Enable automatic calibration of internal fast oscillator */
+ 435:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON0 |= SCU_PLL_PLLCON0_AOTREN_Msk;
+ 436:../Startup/system_XMC4500.c **** #endif /* FOFI_CALIBRATION_MODE == FOFI_CALIBRATION_MODE_AUTOMATIC */
+ 437:../Startup/system_XMC4500.c **** 
+ 438:../Startup/system_XMC4500.c ****   delay(DELAY_CNT_50US_50MHZ);
+ 439:../Startup/system_XMC4500.c **** 
+ 440:../Startup/system_XMC4500.c **** #if ENABLE_PLL
+ 441:../Startup/system_XMC4500.c **** 
+ 442:../Startup/system_XMC4500.c ****   /* enable PLL */
+ 443:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON0 &= ~(SCU_PLL_PLLCON0_VCOPWD_Msk | SCU_PLL_PLLCON0_PLLPWD_Msk);
+ 444:../Startup/system_XMC4500.c **** 
+ 445:../Startup/system_XMC4500.c **** #if PLL_CLOCK_SRC != PLL_CLOCK_SRC_OFI
+ 446:../Startup/system_XMC4500.c ****   /* enable OSC_HP */
+ 447:../Startup/system_XMC4500.c ****   if ((SCU_OSC->OSCHPCTRL & SCU_OSC_OSCHPCTRL_MODE_Msk) != 0U)
+ 448:../Startup/system_XMC4500.c ****   {
+ 449:../Startup/system_XMC4500.c ****     SCU_OSC->OSCHPCTRL &= ~(SCU_OSC_OSCHPCTRL_MODE_Msk | SCU_OSC_OSCHPCTRL_OSCVAL_Msk);
+ 450:../Startup/system_XMC4500.c ****     SCU_OSC->OSCHPCTRL |= ((OSCHP_GetFrequency() / FOSCREF) - 1UL) << SCU_OSC_OSCHPCTRL_OSCVAL_Pos;
+ 451:../Startup/system_XMC4500.c **** 
+ 452:../Startup/system_XMC4500.c ****     /* select OSC_HP clock as PLL input */
+ 453:../Startup/system_XMC4500.c ****     SCU_PLL->PLLCON2 &= ~SCU_PLL_PLLCON2_PINSEL_Msk;
+ 454:../Startup/system_XMC4500.c **** 
+ 455:../Startup/system_XMC4500.c ****     /* restart OSC Watchdog */
+ 456:../Startup/system_XMC4500.c ****     SCU_PLL->PLLCON0 &= ~SCU_PLL_PLLCON0_OSCRES_Msk;
+ 457:../Startup/system_XMC4500.c **** 
+ 458:../Startup/system_XMC4500.c ****     while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_OSC_USABLE) != SCU_PLL_PLLSTAT_OSC_USABLE)
+ 459:../Startup/system_XMC4500.c ****     {
+ 460:../Startup/system_XMC4500.c ****       /* wait till OSC_HP output frequency is usable */
+ 461:../Startup/system_XMC4500.c ****     }
+ 462:../Startup/system_XMC4500.c ****   }
+ 463:../Startup/system_XMC4500.c **** #else /* PLL_CLOCK_SRC != PLL_CLOCK_SRC_OFI */
+ 464:../Startup/system_XMC4500.c **** 
+ 465:../Startup/system_XMC4500.c ****   /* select backup clock as PLL input */
+ 466:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON2 |= SCU_PLL_PLLCON2_PINSEL_Msk;
+ 467:../Startup/system_XMC4500.c **** #endif
+ 468:../Startup/system_XMC4500.c **** 
+ 469:../Startup/system_XMC4500.c ****   /* Go to bypass the Main PLL */
+ 470:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON0 |= SCU_PLL_PLLCON0_VCOBYP_Msk;
+ 471:../Startup/system_XMC4500.c **** 
+ 472:../Startup/system_XMC4500.c ****   /* disconnect Oscillator from PLL */
+ 473:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON0 |= SCU_PLL_PLLCON0_FINDIS_Msk;
+ 474:../Startup/system_XMC4500.c **** 
+ 475:../Startup/system_XMC4500.c ****   /* Setup divider settings for main PLL */
+ 476:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON1 = ((PLL_NDIV << SCU_PLL_PLLCON1_NDIV_Pos) |
+ 477:../Startup/system_XMC4500.c ****                       (PLL_K2DIV_0 << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 478:../Startup/system_XMC4500.c ****                       (PLL_PDIV << SCU_PLL_PLLCON1_PDIV_Pos));
+ 479:../Startup/system_XMC4500.c **** 
+ 480:../Startup/system_XMC4500.c ****   /* Set OSCDISCDIS */
+ 481:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON0 |= SCU_PLL_PLLCON0_OSCDISCDIS_Msk;
+ 482:../Startup/system_XMC4500.c **** 
+ 483:../Startup/system_XMC4500.c ****   /* connect Oscillator to PLL */
+ 484:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON0 &= ~SCU_PLL_PLLCON0_FINDIS_Msk;
+ 485:../Startup/system_XMC4500.c **** 
+ 486:../Startup/system_XMC4500.c ****   /* restart PLL Lock detection */
+ 487:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON0 |= SCU_PLL_PLLCON0_RESLD_Msk;
+ 488:../Startup/system_XMC4500.c **** 
+ 489:../Startup/system_XMC4500.c ****   while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_VCOLOCK_Msk) == 0U)
+ 490:../Startup/system_XMC4500.c ****   {
+ 491:../Startup/system_XMC4500.c ****     /* wait for PLL Lock */
+ 492:../Startup/system_XMC4500.c ****   }
+ 493:../Startup/system_XMC4500.c **** 
+ 494:../Startup/system_XMC4500.c ****   /* Disable bypass- put PLL clock back */
+ 495:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON0 &= ~SCU_PLL_PLLCON0_VCOBYP_Msk;
+ 496:../Startup/system_XMC4500.c ****   while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_VCOBYST_Msk) != 0U)
+ 497:../Startup/system_XMC4500.c ****   {
+ 498:../Startup/system_XMC4500.c ****     /* wait for normal mode */
+ 499:../Startup/system_XMC4500.c ****   }
+ 500:../Startup/system_XMC4500.c **** #endif /* ENABLE_PLL */
+ 501:../Startup/system_XMC4500.c **** 
+ 502:../Startup/system_XMC4500.c **** #if (SYS_CLOCK_SRC == SYS_CLOCK_SRC_PLL)
+ 503:../Startup/system_XMC4500.c ****   /* Switch system clock to PLL */
+ 504:../Startup/system_XMC4500.c ****   SCU_CLK->SYSCLKCR |= SCU_CLK_SYSCLKCR_SYSSEL_Msk;
+ 505:../Startup/system_XMC4500.c **** #else
+ 506:../Startup/system_XMC4500.c ****   /* Switch system clock to backup clock */
+ 507:../Startup/system_XMC4500.c ****   SCU_CLK->SYSCLKCR &= ~SCU_CLK_SYSCLKCR_SYSSEL_Msk;
+ 508:../Startup/system_XMC4500.c **** #endif
+ 509:../Startup/system_XMC4500.c **** 
+ 510:../Startup/system_XMC4500.c ****   /* Before scaling to final frequency we need to setup the clock dividers */
+ 511:../Startup/system_XMC4500.c ****   SCU_CLK->PBCLKCR = PBCLKDIV;
+ 512:../Startup/system_XMC4500.c ****   SCU_CLK->CPUCLKCR = CPUCLKDIV;
+ 513:../Startup/system_XMC4500.c ****   SCU_CLK->CCUCLKCR = CCUCLKDIV;
+ 514:../Startup/system_XMC4500.c ****   SCU_CLK->WDTCLKCR = WDTCLKDIV;
+ 515:../Startup/system_XMC4500.c ****   SCU_CLK->EBUCLKCR = EBUCLKDIV;
+ 516:../Startup/system_XMC4500.c ****   SCU_CLK->USBCLKCR = USBCLKDIV;
+ 517:../Startup/system_XMC4500.c **** 
+ 518:../Startup/system_XMC4500.c **** #if ENABLE_PLL
+ 519:../Startup/system_XMC4500.c ****   /* PLL frequency stepping...*/
+ 520:../Startup/system_XMC4500.c ****   /* Reset OSCDISCDIS */
+ 521:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON0 &= ~SCU_PLL_PLLCON0_OSCDISCDIS_Msk;
+ 522:../Startup/system_XMC4500.c **** 
+ 523:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON1 = ((PLL_NDIV << SCU_PLL_PLLCON1_NDIV_Pos) |
+ 524:../Startup/system_XMC4500.c **** 	                    (PLL_K2DIV_1 << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 525:../Startup/system_XMC4500.c **** 	                    (PLL_PDIV << SCU_PLL_PLLCON1_PDIV_Pos));
+ 526:../Startup/system_XMC4500.c **** 
+ 527:../Startup/system_XMC4500.c **** 
+ 528:../Startup/system_XMC4500.c ****   delay(DELAY_CNT_50US_60MHZ);
+ 529:../Startup/system_XMC4500.c ****   while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_VCOLOCK_Msk) == 0U)
+ 530:../Startup/system_XMC4500.c ****   {
+ 531:../Startup/system_XMC4500.c ****     /* wait for PLL Lock */
+ 532:../Startup/system_XMC4500.c ****   }
+ 533:../Startup/system_XMC4500.c **** 
+ 534:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON1 = ((PLL_NDIV << SCU_PLL_PLLCON1_NDIV_Pos) |
+ 535:../Startup/system_XMC4500.c **** 	                    (PLL_K2DIV_2 << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 536:../Startup/system_XMC4500.c **** 	                    (PLL_PDIV << SCU_PLL_PLLCON1_PDIV_Pos));
+ 537:../Startup/system_XMC4500.c **** 
+ 538:../Startup/system_XMC4500.c **** 
+ 539:../Startup/system_XMC4500.c ****   delay(DELAY_CNT_50US_90MHZ);
+ 540:../Startup/system_XMC4500.c ****   while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_VCOLOCK_Msk) == 0U)
+ 541:../Startup/system_XMC4500.c ****   {
+ 542:../Startup/system_XMC4500.c ****     /* wait for PLL Lock */
+ 543:../Startup/system_XMC4500.c ****   }
+ 544:../Startup/system_XMC4500.c **** 
+ 545:../Startup/system_XMC4500.c ****   SCU_PLL->PLLCON1 = ((PLL_NDIV << SCU_PLL_PLLCON1_NDIV_Pos) |
+ 546:../Startup/system_XMC4500.c **** 	                    (PLL_K2DIV << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 547:../Startup/system_XMC4500.c **** 	                    (PLL_PDIV << SCU_PLL_PLLCON1_PDIV_Pos));
+ 548:../Startup/system_XMC4500.c **** 
+ 549:../Startup/system_XMC4500.c **** 
+ 550:../Startup/system_XMC4500.c ****   delay(DELAY_CNT_50US_120MHZ);
+ 551:../Startup/system_XMC4500.c ****   while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_VCOLOCK_Msk) == 0U)
+ 552:../Startup/system_XMC4500.c ****   {
+ 553:../Startup/system_XMC4500.c ****     /* wait for PLL Lock */
+ 554:../Startup/system_XMC4500.c ****   }
+ 555:../Startup/system_XMC4500.c **** 
+ 556:../Startup/system_XMC4500.c ****   SCU_TRAP->TRAPCLR = SCU_TRAP_TRAPCLR_SOSCWDGT_Msk | SCU_TRAP_TRAPCLR_SVCOLCKT_Msk;
+ 557:../Startup/system_XMC4500.c **** #endif /* ENABLE_PLL */
+ 558:../Startup/system_XMC4500.c **** 
+ 559:../Startup/system_XMC4500.c **** #if ENABLE_USBPLL
+ 560:../Startup/system_XMC4500.c ****   /* enable USB PLL first */
+ 561:../Startup/system_XMC4500.c ****   SCU_PLL->USBPLLCON &= ~(SCU_PLL_USBPLLCON_VCOPWD_Msk | SCU_PLL_USBPLLCON_PLLPWD_Msk);
+ 562:../Startup/system_XMC4500.c **** 
+ 563:../Startup/system_XMC4500.c ****   /* USB PLL uses as clock input the OSC_HP */
+ 564:../Startup/system_XMC4500.c ****   /* check and if not already running enable OSC_HP */
+ 565:../Startup/system_XMC4500.c ****   if ((SCU_OSC->OSCHPCTRL & SCU_OSC_OSCHPCTRL_MODE_Msk) != 0U)
+ 566:../Startup/system_XMC4500.c ****   {
+ 567:../Startup/system_XMC4500.c ****     /* check if Main PLL is switched on for OSC WDG*/
+ 568:../Startup/system_XMC4500.c ****     if ((SCU_PLL->PLLCON0 &(SCU_PLL_PLLCON0_VCOPWD_Msk | SCU_PLL_PLLCON0_PLLPWD_Msk)) != 0UL)
+ 569:../Startup/system_XMC4500.c ****     {
+ 570:../Startup/system_XMC4500.c ****       /* enable PLL first */
+ 571:../Startup/system_XMC4500.c ****       SCU_PLL->PLLCON0 &= ~(SCU_PLL_PLLCON0_VCOPWD_Msk | SCU_PLL_PLLCON0_PLLPWD_Msk);
+ 572:../Startup/system_XMC4500.c ****     }
+ 573:../Startup/system_XMC4500.c **** 
+ 574:../Startup/system_XMC4500.c ****     SCU_OSC->OSCHPCTRL &= ~(SCU_OSC_OSCHPCTRL_MODE_Msk | SCU_OSC_OSCHPCTRL_OSCVAL_Msk);
+ 575:../Startup/system_XMC4500.c ****     SCU_OSC->OSCHPCTRL |= ((OSCHP_GetFrequency() / FOSCREF) - 1UL) << SCU_OSC_OSCHPCTRL_OSCVAL_Pos;
+ 576:../Startup/system_XMC4500.c **** 
+ 577:../Startup/system_XMC4500.c ****     /* restart OSC Watchdog */
+ 578:../Startup/system_XMC4500.c ****     SCU_PLL->PLLCON0 &= ~SCU_PLL_PLLCON0_OSCRES_Msk;
+ 579:../Startup/system_XMC4500.c **** 
+ 580:../Startup/system_XMC4500.c ****     while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_OSC_USABLE) != SCU_PLL_PLLSTAT_OSC_USABLE)
+ 581:../Startup/system_XMC4500.c ****     {
+ 582:../Startup/system_XMC4500.c ****       /* wait till OSC_HP output frequency is usable */
+ 583:../Startup/system_XMC4500.c ****     }
+ 584:../Startup/system_XMC4500.c ****   }
+ 585:../Startup/system_XMC4500.c **** 
+ 586:../Startup/system_XMC4500.c ****   /* Setup USB PLL */
+ 587:../Startup/system_XMC4500.c ****   /* Go to bypass the USB PLL */
+ 588:../Startup/system_XMC4500.c ****   SCU_PLL->USBPLLCON |= SCU_PLL_USBPLLCON_VCOBYP_Msk;
+ 589:../Startup/system_XMC4500.c **** 
+ 590:../Startup/system_XMC4500.c ****   /* disconnect Oscillator from USB PLL */
+ 591:../Startup/system_XMC4500.c ****   SCU_PLL->USBPLLCON |= SCU_PLL_USBPLLCON_FINDIS_Msk;
+ 592:../Startup/system_XMC4500.c **** 
+ 593:../Startup/system_XMC4500.c ****   /* Setup Divider settings for USB PLL */
+ 594:../Startup/system_XMC4500.c ****   SCU_PLL->USBPLLCON = ((USB_NDIV << SCU_PLL_USBPLLCON_NDIV_Pos) |
+ 595:../Startup/system_XMC4500.c ****                         (USB_PDIV << SCU_PLL_USBPLLCON_PDIV_Pos));
+ 596:../Startup/system_XMC4500.c **** 
+ 597:../Startup/system_XMC4500.c ****   /* Set OSCDISCDIS */
+ 598:../Startup/system_XMC4500.c ****   SCU_PLL->USBPLLCON |= SCU_PLL_USBPLLCON_OSCDISCDIS_Msk;
+ 599:../Startup/system_XMC4500.c **** 
+ 600:../Startup/system_XMC4500.c ****   /* connect Oscillator to USB PLL */
+ 601:../Startup/system_XMC4500.c ****   SCU_PLL->USBPLLCON &= ~SCU_PLL_USBPLLCON_FINDIS_Msk;
+ 602:../Startup/system_XMC4500.c **** 
+ 603:../Startup/system_XMC4500.c ****   /* restart PLL Lock detection */
+ 604:../Startup/system_XMC4500.c ****   SCU_PLL->USBPLLCON |= SCU_PLL_USBPLLCON_RESLD_Msk;
+ 605:../Startup/system_XMC4500.c **** 
+ 606:../Startup/system_XMC4500.c ****   while ((SCU_PLL->USBPLLSTAT & SCU_PLL_USBPLLSTAT_VCOLOCK_Msk) == 0U)
+ 607:../Startup/system_XMC4500.c ****   {
+ 608:../Startup/system_XMC4500.c ****     /* wait for PLL Lock */
+ 609:../Startup/system_XMC4500.c ****   }
+ 610:../Startup/system_XMC4500.c **** #endif /* (USBCLKDIV & SCU_CLK_USBCLKCR_USBSEL_Msk) */
+ 611:../Startup/system_XMC4500.c **** 
+ 612:../Startup/system_XMC4500.c ****   /* Enable selected clocks */
+ 613:../Startup/system_XMC4500.c ****   SCU_CLK->CLKSET = ENABLE_SCUCLK;
+ 614:../Startup/system_XMC4500.c **** 
+ 615:../Startup/system_XMC4500.c **** #if ENABLE_EXTCLK == 1
+ 616:../Startup/system_XMC4500.c ****   /* Configure external clock */
+ 617:../Startup/system_XMC4500.c ****   SCU_CLK->EXTCLKCR = EXTCLKDIV;
+ 618:../Startup/system_XMC4500.c **** 
+ 619:../Startup/system_XMC4500.c **** #if EXTCLK_PIN == EXTCLK_PIN_P1_15
+ 620:../Startup/system_XMC4500.c ****   /* P1.15 */
+ 621:../Startup/system_XMC4500.c ****   PORT1->PDR1 &= ~PORT1_PDR1_PD15_Msk;
+ 622:../Startup/system_XMC4500.c ****   PORT1->IOCR12 = (PORT1->IOCR12 & ~PORT0_IOCR12_PC15_Msk) | (0x11U << PORT0_IOCR12_PC15_Pos);
+ 623:../Startup/system_XMC4500.c **** #else
+ 624:../Startup/system_XMC4500.c ****   /* P0.8 */
+ 625:../Startup/system_XMC4500.c ****   PORT0->HWSEL &= ~PORT0_HWSEL_HW8_Msk;
+ 626:../Startup/system_XMC4500.c ****   PORT0->PDR1 &= ~PORT0_PDR1_PD8_Msk;
+ 627:../Startup/system_XMC4500.c ****   PORT0->IOCR8 = (PORT0->IOCR8 & ~PORT0_IOCR8_PC8_Msk) | (0x11U << PORT0_IOCR8_PC8_Pos);
+ 628:../Startup/system_XMC4500.c **** #endif
+ 629:../Startup/system_XMC4500.c **** 
+ 630:../Startup/system_XMC4500.c **** #endif  /* ENABLE_EXTCLK == 1  */
+ 631:../Startup/system_XMC4500.c **** 
+ 632:../Startup/system_XMC4500.c ****   SystemCoreClockUpdate();
+ 633:../Startup/system_XMC4500.c **** }
+ 634:../Startup/system_XMC4500.c **** 
+ 635:../Startup/system_XMC4500.c **** __WEAK void SystemCoreClockUpdate(void)
+ 636:../Startup/system_XMC4500.c **** {
+ 637:../Startup/system_XMC4500.c ****   uint32_t pdiv;
+ 638:../Startup/system_XMC4500.c ****   uint32_t ndiv;
+ 639:../Startup/system_XMC4500.c ****   uint32_t kdiv;
+ 640:../Startup/system_XMC4500.c ****   uint32_t temp;
+ 641:../Startup/system_XMC4500.c **** 
+ 642:../Startup/system_XMC4500.c ****   if (SCU_CLK->SYSCLKCR & SCU_CLK_SYSCLKCR_SYSSEL_Msk)
+ 643:../Startup/system_XMC4500.c ****   {
+ 644:../Startup/system_XMC4500.c ****     /* fPLL is clock source for fSYS */
+ 645:../Startup/system_XMC4500.c ****     if(SCU_PLL->PLLCON2 & SCU_PLL_PLLCON2_PINSEL_Msk)
+ 646:../Startup/system_XMC4500.c ****     {
+ 647:../Startup/system_XMC4500.c ****       /* PLL input clock is the backup clock (fOFI) */
+ 648:../Startup/system_XMC4500.c ****       temp = OFI_FREQUENCY;
+ 649:../Startup/system_XMC4500.c ****     }
+ 650:../Startup/system_XMC4500.c ****     else
+ 651:../Startup/system_XMC4500.c ****     {
+ 652:../Startup/system_XMC4500.c ****       /* PLL input clock is the high performance osicllator (fOSCHP) */
+ 653:../Startup/system_XMC4500.c ****       temp = OSCHP_GetFrequency();
+ 654:../Startup/system_XMC4500.c ****     }
+ 655:../Startup/system_XMC4500.c **** 
+ 656:../Startup/system_XMC4500.c ****     /* check if PLL is locked */
+ 657:../Startup/system_XMC4500.c ****     if (SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_VCOLOCK_Msk)
+ 658:../Startup/system_XMC4500.c ****     {
+ 659:../Startup/system_XMC4500.c ****       /* PLL normal mode */
+ 660:../Startup/system_XMC4500.c ****       /* read back divider settings */
+ 661:../Startup/system_XMC4500.c ****       pdiv = ((SCU_PLL->PLLCON1 & SCU_PLL_PLLCON1_PDIV_Msk) >> SCU_PLL_PLLCON1_PDIV_Pos) + 1;
+ 662:../Startup/system_XMC4500.c ****       ndiv = ((SCU_PLL->PLLCON1 & SCU_PLL_PLLCON1_NDIV_Msk) >> SCU_PLL_PLLCON1_NDIV_Pos) + 1;
+ 663:../Startup/system_XMC4500.c ****       kdiv = ((SCU_PLL->PLLCON1 & SCU_PLL_PLLCON1_K2DIV_Msk) >> SCU_PLL_PLLCON1_K2DIV_Pos) + 1;
+ 664:../Startup/system_XMC4500.c **** 
+ 665:../Startup/system_XMC4500.c ****       temp = (temp / (pdiv * kdiv)) * ndiv;
+ 666:../Startup/system_XMC4500.c ****     }
+ 667:../Startup/system_XMC4500.c ****     else
+ 668:../Startup/system_XMC4500.c ****     {
+ 669:../Startup/system_XMC4500.c ****       /* PLL prescalar mode */
+ 670:../Startup/system_XMC4500.c ****       /* read back divider settings */
+ 671:../Startup/system_XMC4500.c ****       kdiv  = ((SCU_PLL->PLLCON1 & SCU_PLL_PLLCON1_K1DIV_Msk) >> SCU_PLL_PLLCON1_K1DIV_Pos) + 1;
+ 672:../Startup/system_XMC4500.c ****       
+ 673:../Startup/system_XMC4500.c ****       temp = (temp / kdiv);
+ 674:../Startup/system_XMC4500.c ****     }
+ 675:../Startup/system_XMC4500.c ****   }
+ 676:../Startup/system_XMC4500.c ****   else
+ 677:../Startup/system_XMC4500.c ****   {
+ 678:../Startup/system_XMC4500.c ****     /* fOFI is clock source for fSYS */    
+ 679:../Startup/system_XMC4500.c ****     temp = OFI_FREQUENCY;
+ 680:../Startup/system_XMC4500.c ****   }
+ 681:../Startup/system_XMC4500.c **** 
+ 682:../Startup/system_XMC4500.c ****   temp = temp / ((SCU_CLK->SYSCLKCR & SCU_CLK_SYSCLKCR_SYSDIV_Msk) + 1);
+ 683:../Startup/system_XMC4500.c ****   temp = temp / ((SCU_CLK->CPUCLKCR & SCU_CLK_CPUCLKCR_CPUDIV_Msk) + 1);
+ 684:../Startup/system_XMC4500.c **** 
+ 685:../Startup/system_XMC4500.c ****   SystemCoreClock = temp;
+ 686:../Startup/system_XMC4500.c **** }
+ 687:../Startup/system_XMC4500.c **** 
+ 688:../Startup/system_XMC4500.c **** __WEAK uint32_t OSCHP_GetFrequency(void)
+ 689:../Startup/system_XMC4500.c **** {
+ 149              	 .loc 1 689 0
+ 150              	 .cfi_startproc
+ 151              	 
+ 152              	 
+ 153              	 
+ 690:../Startup/system_XMC4500.c ****   return OSCHP_FREQUENCY;
+ 691:../Startup/system_XMC4500.c **** }
+ 154              	 .loc 1 691 0
+ 155 0000 0048     	 ldr r0,.L11
+ 156 0002 7047     	 bx lr
+ 157              	.L12:
+ 158              	 .align 2
+ 159              	.L11:
+ 160 0004 001BB700 	 .word 12000000
+ 161              	 .cfi_endproc
+ 162              	.LFE136:
+ 164              	 .section .text.SystemCoreClockUpdate,"ax",%progbits
+ 165              	 .align 1
+ 166              	 .weak SystemCoreClockUpdate
+ 167              	 .thumb
+ 168              	 .thumb_func
+ 170              	SystemCoreClockUpdate:
+ 171              	.LFB135:
+ 636:../Startup/system_XMC4500.c ****   uint32_t pdiv;
+ 172              	 .loc 1 636 0
+ 173              	 .cfi_startproc
+ 174              	 
+ 175              	 
+ 642:../Startup/system_XMC4500.c ****   {
+ 176              	 .loc 1 642 0
+ 177 0000 1D4B     	 ldr r3,.L19
+ 178 0002 DB68     	 ldr r3,[r3,#12]
+ 179 0004 D903     	 lsls r1,r3,#15
+ 636:../Startup/system_XMC4500.c ****   uint32_t pdiv;
+ 180              	 .loc 1 636 0
+ 181 0006 10B5     	 push {r4,lr}
+ 182              	.LCFI2:
+ 183              	 .cfi_def_cfa_offset 8
+ 184              	 .cfi_offset 4,-8
+ 185              	 .cfi_offset 14,-4
+ 642:../Startup/system_XMC4500.c ****   {
+ 186              	 .loc 1 642 0
+ 187 0008 25D5     	 bpl .L17
+ 645:../Startup/system_XMC4500.c ****     {
+ 188              	 .loc 1 645 0
+ 189 000a 1C4B     	 ldr r3,.L19+4
+ 190 000c DA68     	 ldr r2,[r3,#12]
+ 191 000e 12F0010F 	 tst r2,#1
+ 192 0012 1C46     	 mov r4,r3
+ 193 0014 02D1     	 bne .L18
+ 653:../Startup/system_XMC4500.c ****     }
+ 194              	 .loc 1 653 0
+ 195 0016 FFF7FEFF 	 bl OSCHP_GetFrequency
+ 196              	.LVL4:
+ 197 001a 00E0     	 b .L15
+ 198              	.LVL5:
+ 199              	.L18:
+ 648:../Startup/system_XMC4500.c ****     }
+ 200              	 .loc 1 648 0
+ 201 001c 1848     	 ldr r0,.L19+8
+ 202              	.L15:
+ 203              	.LVL6:
+ 657:../Startup/system_XMC4500.c ****     {
+ 204              	 .loc 1 657 0
+ 205 001e 2268     	 ldr r2,[r4]
+ 206 0020 164B     	 ldr r3,.L19+4
+ 207 0022 5207     	 lsls r2,r2,#29
+ 208 0024 10D5     	 bpl .L16
+ 661:../Startup/system_XMC4500.c ****       ndiv = ((SCU_PLL->PLLCON1 & SCU_PLL_PLLCON1_NDIV_Msk) >> SCU_PLL_PLLCON1_NDIV_Pos) + 1;
+ 209              	 .loc 1 661 0
+ 210 0026 9A68     	 ldr r2,[r3,#8]
+ 211              	.LVL7:
+ 662:../Startup/system_XMC4500.c ****       kdiv = ((SCU_PLL->PLLCON1 & SCU_PLL_PLLCON1_K2DIV_Msk) >> SCU_PLL_PLLCON1_K2DIV_Pos) + 1;
+ 212              	 .loc 1 662 0
+ 213 0028 9968     	 ldr r1,[r3,#8]
+ 214              	.LVL8:
+ 663:../Startup/system_XMC4500.c **** 
+ 215              	 .loc 1 663 0
+ 216 002a 9B68     	 ldr r3,[r3,#8]
+ 217              	.LVL9:
+ 661:../Startup/system_XMC4500.c ****       ndiv = ((SCU_PLL->PLLCON1 & SCU_PLL_PLLCON1_NDIV_Msk) >> SCU_PLL_PLLCON1_NDIV_Pos) + 1;
+ 218              	 .loc 1 661 0
+ 219 002c C2F30362 	 ubfx r2,r2,#24,#4
+ 220              	.LVL10:
+ 663:../Startup/system_XMC4500.c **** 
+ 221              	 .loc 1 663 0
+ 222 0030 C3F30644 	 ubfx r4,r3,#16,#7
+ 661:../Startup/system_XMC4500.c ****       ndiv = ((SCU_PLL->PLLCON1 & SCU_PLL_PLLCON1_NDIV_Msk) >> SCU_PLL_PLLCON1_NDIV_Pos) + 1;
+ 223              	 .loc 1 661 0
+ 224 0034 531C     	 adds r3,r2,#1
+ 225              	.LVL11:
+ 665:../Startup/system_XMC4500.c ****     }
+ 226              	 .loc 1 665 0
+ 227 0036 04FB0333 	 mla r3,r4,r3,r3
+ 228 003a B0FBF3F0 	 udiv r0,r0,r3
+ 229              	.LVL12:
+ 662:../Startup/system_XMC4500.c ****       kdiv = ((SCU_PLL->PLLCON1 & SCU_PLL_PLLCON1_K2DIV_Msk) >> SCU_PLL_PLLCON1_K2DIV_Pos) + 1;
+ 230              	 .loc 1 662 0
+ 231 003e C1F30623 	 ubfx r3,r1,#8,#7
+ 665:../Startup/system_XMC4500.c ****     }
+ 232              	 .loc 1 665 0
+ 233 0042 03FB0000 	 mla r0,r3,r0,r0
+ 234              	.LVL13:
+ 235 0046 07E0     	 b .L14
+ 236              	.LVL14:
+ 237              	.L16:
+ 671:../Startup/system_XMC4500.c ****       
+ 238              	 .loc 1 671 0
+ 239 0048 9B68     	 ldr r3,[r3,#8]
+ 240              	.LVL15:
+ 241 004a 03F07F03 	 and r3,r3,#127
+ 242              	.LVL16:
+ 243 004e 0133     	 adds r3,r3,#1
+ 244              	.LVL17:
+ 673:../Startup/system_XMC4500.c ****     }
+ 245              	 .loc 1 673 0
+ 246 0050 B0FBF3F0 	 udiv r0,r0,r3
+ 247              	.LVL18:
+ 248 0054 00E0     	 b .L14
+ 249              	.LVL19:
+ 250              	.L17:
+ 679:../Startup/system_XMC4500.c ****   }
+ 251              	 .loc 1 679 0
+ 252 0056 0A48     	 ldr r0,.L19+8
+ 253              	.L14:
+ 254              	.LVL20:
+ 682:../Startup/system_XMC4500.c ****   temp = temp / ((SCU_CLK->CPUCLKCR & SCU_CLK_CPUCLKCR_CPUDIV_Msk) + 1);
+ 255              	 .loc 1 682 0
+ 256 0058 074A     	 ldr r2,.L19
+ 257 005a D368     	 ldr r3,[r2,#12]
+ 258 005c DBB2     	 uxtb r3,r3
+ 259 005e 0133     	 adds r3,r3,#1
+ 260 0060 B0FBF3F0 	 udiv r0,r0,r3
+ 261              	.LVL21:
+ 683:../Startup/system_XMC4500.c **** 
+ 262              	 .loc 1 683 0
+ 263 0064 1369     	 ldr r3,[r2,#16]
+ 264              	.LVL22:
+ 265 0066 03F00103 	 and r3,r3,#1
+ 266              	.LVL23:
+ 267 006a 0133     	 adds r3,r3,#1
+ 268 006c B0FBF3F0 	 udiv r0,r0,r3
+ 269              	.LVL24:
+ 685:../Startup/system_XMC4500.c **** }
+ 270              	 .loc 1 685 0
+ 271 0070 044B     	 ldr r3,.L19+12
+ 272 0072 1860     	 str r0,[r3]
+ 273 0074 10BD     	 pop {r4,pc}
+ 274              	.L20:
+ 275 0076 00BF     	 .align 2
+ 276              	.L19:
+ 277 0078 00460050 	 .word 1342195200
+ 278 007c 10470050 	 .word 1342195472
+ 279 0080 00366E01 	 .word 24000000
+ 280 0084 00000000 	 .word .LANCHOR0
+ 281              	 .cfi_endproc
+ 282              	.LFE135:
+ 284              	 .section .text.SystemCoreClockSetup,"ax",%progbits
+ 285              	 .align 1
+ 286              	 .weak SystemCoreClockSetup
+ 287              	 .thumb
+ 288              	 .thumb_func
+ 290              	SystemCoreClockSetup:
+ 291              	.LFB134:
+ 365:../Startup/system_XMC4500.c **** #if FOFI_CALIBRATION_MODE == FOFI_CALIBRATION_MODE_FACTORY
+ 292              	 .loc 1 365 0
+ 293              	 .cfi_startproc
+ 294              	 
+ 295              	 
+ 296 0000 38B5     	 push {r3,r4,r5,lr}
+ 297              	.LCFI3:
+ 298              	 .cfi_def_cfa_offset 16
+ 299              	 .cfi_offset 3,-16
+ 300              	 .cfi_offset 4,-12
+ 301              	 .cfi_offset 5,-8
+ 302              	 .cfi_offset 14,-4
+ 374:../Startup/system_XMC4500.c ****   {
+ 303              	 .loc 1 374 0
+ 304 0002 534B     	 ldr r3,.L47
+ 305 0004 1A68     	 ldr r2,[r3]
+ 306 0006 D207     	 lsls r2,r2,#31
+ 307 0008 0CD5     	 bpl .L22
+ 308              	.L26:
+ 385:../Startup/system_XMC4500.c ****   {
+ 309              	 .loc 1 385 0
+ 310 000a 524B     	 ldr r3,.L47+4
+ 311 000c 1A68     	 ldr r2,[r3]
+ 312 000e 9505     	 lsls r5,r2,#22
+ 313 0010 10D5     	 bpl .L24
+ 387:../Startup/system_XMC4500.c ****     delay(DELAY_CNT_150US_50MHZ);
+ 314              	 .loc 1 387 0
+ 315 0012 9A68     	 ldr r2,[r3,#8]
+ 316 0014 42F40072 	 orr r2,r2,#512
+ 317 0018 9A60     	 str r2,[r3,#8]
+ 388:../Startup/system_XMC4500.c ****   }
+ 318              	 .loc 1 388 0
+ 319 001a 41F64C50 	 movw r0,#7500
+ 320 001e FFF7FEFF 	 bl delay
+ 321              	.LVL25:
+ 322 0022 07E0     	 b .L24
+ 323              	.L22:
+ 376:../Startup/system_XMC4500.c **** 
+ 324              	 .loc 1 376 0
+ 325 0024 5A68     	 ldr r2,[r3,#4]
+ 326 0026 42F00102 	 orr r2,r2,#1
+ 327 002a 5A60     	 str r2,[r3,#4]
+ 328              	.L25:
+ 378:../Startup/system_XMC4500.c ****     {
+ 329              	 .loc 1 378 0 discriminator 1
+ 330 002c 1A68     	 ldr r2,[r3]
+ 331 002e D407     	 lsls r4,r2,#31
+ 332 0030 FCD5     	 bpl .L25
+ 333 0032 EAE7     	 b .L26
+ 334              	.L24:
+ 435:../Startup/system_XMC4500.c **** #endif /* FOFI_CALIBRATION_MODE == FOFI_CALIBRATION_MODE_AUTOMATIC */
+ 335              	 .loc 1 435 0
+ 336 0034 484C     	 ldr r4,.L47+8
+ 447:../Startup/system_XMC4500.c ****   {
+ 337              	 .loc 1 447 0
+ 338 0036 494D     	 ldr r5,.L47+12
+ 435:../Startup/system_XMC4500.c **** #endif /* FOFI_CALIBRATION_MODE == FOFI_CALIBRATION_MODE_AUTOMATIC */
+ 339              	 .loc 1 435 0
+ 340 0038 6368     	 ldr r3,[r4,#4]
+ 341 003a 43F40023 	 orr r3,r3,#524288
+ 342 003e 6360     	 str r3,[r4,#4]
+ 438:../Startup/system_XMC4500.c **** 
+ 343              	 .loc 1 438 0
+ 344 0040 40F6C410 	 movw r0,#2500
+ 345 0044 FFF7FEFF 	 bl delay
+ 346              	.LVL26:
+ 443:../Startup/system_XMC4500.c **** 
+ 347              	 .loc 1 443 0
+ 348 0048 6368     	 ldr r3,[r4,#4]
+ 349 004a 23F48033 	 bic r3,r3,#65536
+ 350 004e 23F00203 	 bic r3,r3,#2
+ 351 0052 6360     	 str r3,[r4,#4]
+ 447:../Startup/system_XMC4500.c ****   {
+ 352              	 .loc 1 447 0
+ 353 0054 6B68     	 ldr r3,[r5,#4]
+ 354 0056 13F0300F 	 tst r3,#48
+ 355 005a 16D1     	 bne .L27
+ 356              	.L30:
+ 470:../Startup/system_XMC4500.c **** 
+ 357              	 .loc 1 470 0
+ 358 005c 6368     	 ldr r3,[r4,#4]
+ 359 005e 43F00103 	 orr r3,r3,#1
+ 360 0062 6360     	 str r3,[r4,#4]
+ 473:../Startup/system_XMC4500.c **** 
+ 361              	 .loc 1 473 0
+ 362 0064 6368     	 ldr r3,[r4,#4]
+ 363 0066 43F01003 	 orr r3,r3,#16
+ 364 006a 6360     	 str r3,[r4,#4]
+ 476:../Startup/system_XMC4500.c ****                       (PLL_K2DIV_0 << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 365              	 .loc 1 476 0
+ 366 006c 3C4B     	 ldr r3,.L47+16
+ 367 006e A360     	 str r3,[r4,#8]
+ 481:../Startup/system_XMC4500.c **** 
+ 368              	 .loc 1 481 0
+ 369 0070 6368     	 ldr r3,[r4,#4]
+ 370 0072 43F04003 	 orr r3,r3,#64
+ 371 0076 6360     	 str r3,[r4,#4]
+ 484:../Startup/system_XMC4500.c **** 
+ 372              	 .loc 1 484 0
+ 373 0078 6368     	 ldr r3,[r4,#4]
+ 374 007a 23F01003 	 bic r3,r3,#16
+ 375 007e 6360     	 str r3,[r4,#4]
+ 487:../Startup/system_XMC4500.c **** 
+ 376              	 .loc 1 487 0
+ 377 0080 6368     	 ldr r3,[r4,#4]
+ 378 0082 43F48023 	 orr r3,r3,#262144
+ 379 0086 6360     	 str r3,[r4,#4]
+ 489:../Startup/system_XMC4500.c ****   {
+ 380              	 .loc 1 489 0
+ 381 0088 1EE0     	 b .L28
+ 382              	.L27:
+ 449:../Startup/system_XMC4500.c ****     SCU_OSC->OSCHPCTRL |= ((OSCHP_GetFrequency() / FOSCREF) - 1UL) << SCU_OSC_OSCHPCTRL_OSCVAL_Pos;
+ 383              	 .loc 1 449 0
+ 384 008a 6B68     	 ldr r3,[r5,#4]
+ 385 008c 23F47023 	 bic r3,r3,#983040
+ 386 0090 23F03003 	 bic r3,r3,#48
+ 387 0094 6B60     	 str r3,[r5,#4]
+ 450:../Startup/system_XMC4500.c **** 
+ 388              	 .loc 1 450 0
+ 389 0096 FFF7FEFF 	 bl OSCHP_GetFrequency
+ 390              	.LVL27:
+ 391 009a 6A68     	 ldr r2,[r5,#4]
+ 392 009c 314B     	 ldr r3,.L47+20
+ 393 009e B0FBF3F0 	 udiv r0,r0,r3
+ 394 00a2 0138     	 subs r0,r0,#1
+ 395 00a4 42EA0040 	 orr r0,r2,r0,lsl#16
+ 396 00a8 6860     	 str r0,[r5,#4]
+ 453:../Startup/system_XMC4500.c **** 
+ 397              	 .loc 1 453 0
+ 398 00aa E368     	 ldr r3,[r4,#12]
+ 399 00ac 23F00103 	 bic r3,r3,#1
+ 400 00b0 E360     	 str r3,[r4,#12]
+ 456:../Startup/system_XMC4500.c **** 
+ 401              	 .loc 1 456 0
+ 402 00b2 6368     	 ldr r3,[r4,#4]
+ 403 00b4 23F40033 	 bic r3,r3,#131072
+ 404 00b8 6360     	 str r3,[r4,#4]
+ 405              	.L29:
+ 458:../Startup/system_XMC4500.c ****     {
+ 406              	 .loc 1 458 0 discriminator 1
+ 407 00ba 2368     	 ldr r3,[r4]
+ 408 00bc 03F46073 	 and r3,r3,#896
+ 409 00c0 B3F5607F 	 cmp r3,#896
+ 410 00c4 F9D1     	 bne .L29
+ 411 00c6 C9E7     	 b .L30
+ 412              	.L28:
+ 489:../Startup/system_XMC4500.c ****   {
+ 413              	 .loc 1 489 0 discriminator 1
+ 414 00c8 2368     	 ldr r3,[r4]
+ 415 00ca 234A     	 ldr r2,.L47+8
+ 416 00cc 5807     	 lsls r0,r3,#29
+ 417 00ce FBD5     	 bpl .L28
+ 495:../Startup/system_XMC4500.c ****   while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_VCOBYST_Msk) != 0U)
+ 418              	 .loc 1 495 0
+ 419 00d0 5368     	 ldr r3,[r2,#4]
+ 420 00d2 23F00103 	 bic r3,r3,#1
+ 421 00d6 5360     	 str r3,[r2,#4]
+ 422              	.L31:
+ 496:../Startup/system_XMC4500.c ****   {
+ 423              	 .loc 1 496 0 discriminator 1
+ 424 00d8 2268     	 ldr r2,[r4]
+ 425 00da 1F49     	 ldr r1,.L47+8
+ 426 00dc 12F00102 	 ands r2,r2,#1
+ 427 00e0 FAD1     	 bne .L31
+ 504:../Startup/system_XMC4500.c **** #else
+ 428              	 .loc 1 504 0
+ 429 00e2 214B     	 ldr r3,.L47+24
+ 430 00e4 D868     	 ldr r0,[r3,#12]
+ 431 00e6 40F48030 	 orr r0,r0,#65536
+ 432 00ea D860     	 str r0,[r3,#12]
+ 511:../Startup/system_XMC4500.c ****   SCU_CLK->CPUCLKCR = CPUCLKDIV;
+ 433              	 .loc 1 511 0
+ 434 00ec 5A61     	 str r2,[r3,#20]
+ 512:../Startup/system_XMC4500.c ****   SCU_CLK->CCUCLKCR = CCUCLKDIV;
+ 435              	 .loc 1 512 0
+ 436 00ee 1A61     	 str r2,[r3,#16]
+ 513:../Startup/system_XMC4500.c ****   SCU_CLK->WDTCLKCR = WDTCLKDIV;
+ 437              	 .loc 1 513 0
+ 438 00f0 1A62     	 str r2,[r3,#32]
+ 514:../Startup/system_XMC4500.c ****   SCU_CLK->EBUCLKCR = EBUCLKDIV;
+ 439              	 .loc 1 514 0
+ 440 00f2 5A62     	 str r2,[r3,#36]
+ 515:../Startup/system_XMC4500.c ****   SCU_CLK->USBCLKCR = USBCLKDIV;
+ 441              	 .loc 1 515 0
+ 442 00f4 DA61     	 str r2,[r3,#28]
+ 516:../Startup/system_XMC4500.c **** 
+ 443              	 .loc 1 516 0
+ 444 00f6 0322     	 movs r2,#3
+ 445 00f8 9A61     	 str r2,[r3,#24]
+ 521:../Startup/system_XMC4500.c **** 
+ 446              	 .loc 1 521 0
+ 447 00fa 4B68     	 ldr r3,[r1,#4]
+ 448 00fc 23F04003 	 bic r3,r3,#64
+ 449 0100 4B60     	 str r3,[r1,#4]
+ 523:../Startup/system_XMC4500.c **** 	                    (PLL_K2DIV_1 << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 450              	 .loc 1 523 0
+ 451 0102 1A4B     	 ldr r3,.L47+28
+ 452 0104 8B60     	 str r3,[r1,#8]
+ 528:../Startup/system_XMC4500.c ****   while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_VCOLOCK_Msk) == 0U)
+ 453              	 .loc 1 528 0
+ 454 0106 40F6B830 	 movw r0,#3000
+ 455 010a FFF7FEFF 	 bl delay
+ 456              	.LVL28:
+ 457              	.L32:
+ 529:../Startup/system_XMC4500.c ****   {
+ 458              	 .loc 1 529 0 discriminator 1
+ 459 010e 2368     	 ldr r3,[r4]
+ 460 0110 5907     	 lsls r1,r3,#29
+ 461 0112 FCD5     	 bpl .L32
+ 534:../Startup/system_XMC4500.c **** 	                    (PLL_K2DIV_2 << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 462              	 .loc 1 534 0
+ 463 0114 104B     	 ldr r3,.L47+8
+ 464 0116 164A     	 ldr r2,.L47+32
+ 465 0118 9A60     	 str r2,[r3,#8]
+ 539:../Startup/system_XMC4500.c ****   while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_VCOLOCK_Msk) == 0U)
+ 466              	 .loc 1 539 0
+ 467 011a 41F29410 	 movw r0,#4500
+ 468 011e FFF7FEFF 	 bl delay
+ 469              	.LVL29:
+ 470              	.L33:
+ 540:../Startup/system_XMC4500.c ****   {
+ 471              	 .loc 1 540 0 discriminator 1
+ 472 0122 2368     	 ldr r3,[r4]
+ 473 0124 5A07     	 lsls r2,r3,#29
+ 474 0126 FCD5     	 bpl .L33
+ 545:../Startup/system_XMC4500.c **** 	                    (PLL_K2DIV << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 475              	 .loc 1 545 0
+ 476 0128 0B4B     	 ldr r3,.L47+8
+ 477 012a 124A     	 ldr r2,.L47+36
+ 478 012c 9A60     	 str r2,[r3,#8]
+ 550:../Startup/system_XMC4500.c ****   while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_VCOLOCK_Msk) == 0U)
+ 479              	 .loc 1 550 0
+ 480 012e 41F27070 	 movw r0,#6000
+ 481 0132 FFF7FEFF 	 bl delay
+ 482              	.LVL30:
+ 483              	.L34:
+ 551:../Startup/system_XMC4500.c ****   {
+ 484              	 .loc 1 551 0 discriminator 1
+ 485 0136 2368     	 ldr r3,[r4]
+ 486 0138 5B07     	 lsls r3,r3,#29
+ 487 013a FCD5     	 bpl .L34
+ 556:../Startup/system_XMC4500.c **** #endif /* ENABLE_PLL */
+ 488              	 .loc 1 556 0
+ 489 013c 0E4B     	 ldr r3,.L47+40
+ 490 013e 0522     	 movs r2,#5
+ 491 0140 DA60     	 str r2,[r3,#12]
+ 613:../Startup/system_XMC4500.c **** 
+ 492              	 .loc 1 613 0
+ 493 0142 0022     	 movs r2,#0
+ 494 0144 C3F8A424 	 str r2,[r3,#1188]
+ 632:../Startup/system_XMC4500.c **** }
+ 495              	 .loc 1 632 0
+ 496 0148 FFF7FEFF 	 bl SystemCoreClockUpdate
+ 497              	.LVL31:
+ 498 014c 38BD     	 pop {r3,r4,r5,pc}
+ 499              	.L48:
+ 500 014e 00BF     	 .align 2
+ 501              	.L47:
+ 502 0150 00420050 	 .word 1342194176
+ 503 0154 00440050 	 .word 1342194688
+ 504 0158 10470050 	 .word 1342195472
+ 505 015c 00470050 	 .word 1342195456
+ 506 0160 004F1301 	 .word 18042624
+ 507 0164 A0252600 	 .word 2500000
+ 508 0168 00460050 	 .word 1342195200
+ 509 016c 004F0701 	 .word 17256192
+ 510 0170 004F0401 	 .word 17059584
+ 511 0174 004F0301 	 .word 16994048
+ 512 0178 60410050 	 .word 1342194016
+ 513              	 .cfi_endproc
+ 514              	.LFE134:
+ 516              	 .section .text.SystemInit,"ax",%progbits
+ 517              	 .align 1
+ 518              	 .weak SystemInit
+ 519              	 .thumb
+ 520              	 .thumb_func
+ 522              	SystemInit:
+ 523              	.LFB132:
+ 326:../Startup/system_XMC4500.c ****   memcpy(g_chipid, CHIPID_LOC, 16);
+ 524              	 .loc 1 326 0
+ 525              	 .cfi_startproc
+ 526              	 
+ 527              	 
+ 528 0000 38B5     	 push {r3,r4,r5,lr}
+ 529              	.LCFI4:
+ 530              	 .cfi_def_cfa_offset 16
+ 531              	 .cfi_offset 3,-16
+ 532              	 .cfi_offset 4,-12
+ 533              	 .cfi_offset 5,-8
+ 534              	 .cfi_offset 14,-4
+ 327:../Startup/system_XMC4500.c **** 
+ 535              	 .loc 1 327 0
+ 536 0002 094A     	 ldr r2,.L52
+ 537 0004 094D     	 ldr r5,.L52+4
+ 538 0006 4FF00054 	 mov r4,#536870912
+ 539              	.L50:
+ 540 000a 2346     	 mov r3,r4
+ 541 000c 03CB     	 ldmia r3!,{r0,r1}
+ 542 000e AB42     	 cmp r3,r5
+ 543 0010 1060     	 str r0,[r2]
+ 544 0012 5160     	 str r1,[r2,#4]
+ 545 0014 1C46     	 mov r4,r3
+ 546 0016 02F10802 	 add r2,r2,#8
+ 547 001a F6D1     	 bne .L50
+ 329:../Startup/system_XMC4500.c ****   SystemCoreClockSetup(); 
+ 548              	 .loc 1 329 0
+ 549 001c FFF7FEFF 	 bl SystemCoreSetup
+ 550              	.LVL32:
+ 330:../Startup/system_XMC4500.c **** }
+ 551              	 .loc 1 330 0
+ 552 0020 FFF7FEFF 	 bl SystemCoreClockSetup
+ 553              	.LVL33:
+ 554 0024 38BD     	 pop {r3,r4,r5,pc}
+ 555              	.L53:
+ 556 0026 00BF     	 .align 2
+ 557              	.L52:
+ 558 0028 04000000 	 .word .LANCHOR0+4
+ 559 002c 10000020 	 .word 536870928
+ 560              	 .cfi_endproc
+ 561              	.LFE132:
+ 563              	 .global g_chipid
+ 564              	 .global SystemCoreClock
+ 565              	 .section .no_init,"aw",%progbits
+ 566              	 .align 2
+ 567              	 .set .LANCHOR0,.+0
+ 570              	SystemCoreClock:
+ 571 0000 00000000 	 .space 4
+ 574              	g_chipid:
+ 575 0004 00000000 	 .space 16
+ 575      00000000 
+ 575      00000000 
+ 575      00000000 
+ 576              	 .text
+ 577              	.Letext0:
+ 578              	 .file 3 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 579              	 .file 4 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 580              	 .file 5 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+ 581              	 .file 6 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 system_XMC4500.c
-    {standard input}:17     .text.delay:00000000 $t
-    {standard input}:21     .text.delay:00000000 delay
-    {standard input}:45     .text.SystemCoreSetup:00000000 $t
-    {standard input}:50     .text.SystemCoreSetup:00000000 SystemCoreSetup
-    {standard input}:84     .text.SystemCoreSetup:00000038 $d
-    {standard input}:89     .text.OSCHP_GetFrequency:00000000 $t
-    {standard input}:94     .text.OSCHP_GetFrequency:00000000 OSCHP_GetFrequency
-    {standard input}:103    .text.OSCHP_GetFrequency:00000004 $d
-    {standard input}:106    .text.SystemCoreClockUpdate:00000000 $t
-    {standard input}:111    .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
-    {standard input}:168    .text.SystemCoreClockUpdate:00000078 $d
-    {standard input}:174    .text.SystemCoreClockSetup:00000000 $t
-    {standard input}:179    .text.SystemCoreClockSetup:00000000 SystemCoreClockSetup
-    {standard input}:328    .text.SystemCoreClockSetup:00000150 $d
-    {standard input}:341    .text.SystemInit:00000000 $t
-    {standard input}:346    .text.SystemInit:00000000 SystemInit
-    {standard input}:368    .text.SystemInit:00000028 $d
-    {standard input}:382    .no_init:00000004 g_chipid
-    {standard input}:378    .no_init:00000000 SystemCoreClock
-    {standard input}:374    .no_init:00000000 $d
+    {standard input}:20     .text.delay:00000000 $t
+    {standard input}:24     .text.delay:00000000 delay
+    {standard input}:64     .text.SystemCoreSetup:00000000 $t
+    {standard input}:69     .text.SystemCoreSetup:00000000 SystemCoreSetup
+    {standard input}:135    .text.SystemCoreSetup:00000038 $d
+    {standard input}:142    .text.OSCHP_GetFrequency:00000000 $t
+    {standard input}:147    .text.OSCHP_GetFrequency:00000000 OSCHP_GetFrequency
+    {standard input}:160    .text.OSCHP_GetFrequency:00000004 $d
+    {standard input}:165    .text.SystemCoreClockUpdate:00000000 $t
+    {standard input}:170    .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
+    {standard input}:277    .text.SystemCoreClockUpdate:00000078 $d
+    {standard input}:285    .text.SystemCoreClockSetup:00000000 $t
+    {standard input}:290    .text.SystemCoreClockSetup:00000000 SystemCoreClockSetup
+    {standard input}:502    .text.SystemCoreClockSetup:00000150 $d
+    {standard input}:517    .text.SystemInit:00000000 $t
+    {standard input}:522    .text.SystemInit:00000000 SystemInit
+    {standard input}:558    .text.SystemInit:00000028 $d
+    {standard input}:574    .no_init:00000004 g_chipid
+    {standard input}:570    .no_init:00000000 SystemCoreClock
+    {standard input}:566    .no_init:00000000 $d
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.0.ca5ae67a873a4952d630d8e4120b9e3e
+                           .group:00000000 wm4.newlib.h.8.fe7d912fc917043c98742c35eddd8cff
+                           .group:00000000 wm4.features.h.22.bee0aee4a3878f51861c775df98fa3ea
+                           .group:00000000 wm4.config.h.216.aad1ef7bee4fb69981cb38ce62f84d9c
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4._default_types.h.6.35ee9e747940367bf2a634907d1c2382
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.cdefs.h.47.4e89a3f145accdcb1100c37260c088e6
+                           .group:00000000 wm4.string.h.15.dab3980bf35408a4c507182805e2de3a
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.XMC4500.h.55.9aa45b9b5790506b2dcb963e4e7adeaf
+                           .group:00000000 wm4._intsup.h.10.ca9f32a61b410c270a48d1161ca2c217
+                           .group:00000000 wm4.stdint.h.22.f4a337c398d8b6d821a97202448bc0d0
+                           .group:00000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.57f124f9262f3dbf77da6a6506ffb430
+                           .group:00000000 wm4.core_cm4.h.174.fcddd62df80231752fa39eb9b61dadfe
+                           .group:00000000 wm4.mpu_armv7.h.32.4049752bb5792d4e15357775e9506cfc
+                           .group:00000000 wm4.system_XMC4500.h.42.99124977c10ca8844a71949adbeabd70
+                           .group:00000000 wm4.XMC4500.h.208.b340195df97f067735c4c769ba59985a
 
 UNDEFINED SYMBOLS
 __Vectors

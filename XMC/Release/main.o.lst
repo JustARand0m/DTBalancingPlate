@@ -13,89 +13,350 @@
   13              	 .eabi_attribute 18,4
   14              	 .thumb
   15              	 .file "main.c"
-  16              	 .section .text.busy_waitMs,"ax",%progbits
-  17              	 .align 1
-  18              	 .global busy_waitMs
-  19              	 .thumb
-  20              	 .thumb_func
-  22              	busy_waitMs:
-  23              	 
-  24              	 
-  25              	 
-  26 0000 0023     	 movs r3,#0
-  27              	.L2:
-  28 0002 8342     	 cmp r3,r0
-  29 0004 06DA     	 bge .L7
-  30 0006 044A     	 ldr r2,.L9
-  31              	.L4:
-  32 0008 013A     	 subs r2,r2,#1
-  33 000a 01D0     	 beq .L8
-  34              	
-  35 000c 00BF     	 nop
-  36              	
-  37              	 .thumb
-  38 000e FBE7     	 b .L4
-  39              	.L8:
-  40 0010 0133     	 adds r3,r3,#1
-  41 0012 F6E7     	 b .L2
-  42              	.L7:
-  43 0014 7047     	 bx lr
-  44              	.L10:
-  45 0016 00BF     	 .align 2
-  46              	.L9:
-  47 0018 C1D40100 	 .word 120001
-  49              	 .section .text.startup.main,"ax",%progbits
-  50              	 .align 1
-  51              	 .global main
-  52              	 .thumb
-  53              	 .thumb_func
-  55              	main:
-  56              	 
-  57              	 
-  58 0000 10B5     	 push {r4,lr}
-  59 0002 FFF7FEFF 	 bl DAVE_Init
-  60 0006 D0B1     	 cbz r0,.L12
-  61              	.L20:
-  62 0008 FEE7     	 b .L20
-  63              	.L14:
-  64 000a 2146     	 mov r1,r4
-  65 000c 0D48     	 ldr r0,.L21
-  66 000e FFF7FEFF 	 bl PWM_SetDutyCycle
-  67 0012 1420     	 movs r0,#20
-  68 0014 FFF7FEFF 	 bl busy_waitMs
-  69 0018 0A34     	 adds r4,r4,#10
-  70 001a 40F22443 	 movw r3,#1060
-  71 001e 9C42     	 cmp r4,r3
-  72 0020 F3D1     	 bne .L14
-  73 0022 40F21944 	 movw r4,#1049
-  74              	.L15:
-  75 0026 2146     	 mov r1,r4
-  76 0028 0648     	 ldr r0,.L21
-  77 002a FFF7FEFF 	 bl PWM_SetDutyCycle
-  78 002e 1420     	 movs r0,#20
-  79 0030 FFF7FEFF 	 bl busy_waitMs
-  80 0034 0A3C     	 subs r4,r4,#10
-  81 0036 40F2C113 	 movw r3,#449
-  82 003a 9C42     	 cmp r4,r3
-  83 003c F3D1     	 bne .L15
-  84              	.L12:
-  85 003e 4FF4E174 	 mov r4,#450
-  86 0042 E2E7     	 b .L14
-  87              	.L22:
-  88              	 .align 2
-  89              	.L21:
-  90 0044 00000000 	 .word PWM_MOTOR_0
-  92              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.busy_waitMs,"ax",%progbits
+  20              	 .align 1
+  21              	 .global busy_waitMs
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	busy_waitMs:
+  26              	.LFB328:
+  27              	 .file 1 "../main.c"
+   1:../main.c     **** /*
+   2:../main.c     ****  * main.c
+   3:../main.c     ****  *
+   4:../main.c     ****  *  Created on: 2019 Nov 12 10:18:39
+   5:../main.c     ****  *  Author: brm47801
+   6:../main.c     ****  */
+   7:../main.c     **** 
+   8:../main.c     **** 
+   9:../main.c     **** 
+  10:../main.c     **** 
+  11:../main.c     **** #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaratio
+  12:../main.c     **** 
+  13:../main.c     **** 
+  14:../main.c     **** /**
+  15:../main.c     **** 
+  16:../main.c     ****  * @brief main() - Application entry point
+  17:../main.c     ****  *
+  18:../main.c     ****  * <b>Details of function</b><br>
+  19:../main.c     ****  * This routine is the application entry point. It is invoked by the device startup code. It is res
+  20:../main.c     ****  * invoking the APP initialization dispatcher routine - DAVE_Init() and hosting the place-holder fo
+  21:../main.c     ****  * code.
+  22:../main.c     ****  */
+  23:../main.c     **** 
+  24:../main.c     **** void busy_waitMs(int ms)
+  25:../main.c     **** {
+  28              	 .loc 1 25 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32              	 
+  33              	.LVL0:
+  34              	.LBB2:
+  26:../main.c     **** 	int i;
+  27:../main.c     **** 
+  28:../main.c     **** 	for(int c = 0; c < ms; c++)
+  35              	 .loc 1 28 0
+  36 0000 0023     	 movs r3,#0
+  37              	.LVL1:
+  38              	.L2:
+  39              	 .loc 1 28 0 is_stmt 0 discriminator 1
+  40 0002 8342     	 cmp r3,r0
+  41 0004 07DA     	 bge .L7
+  42 0006 4EF66022 	 movw r2,#60000
+  43              	.L4:
+  44              	.LVL2:
+  29:../main.c     **** 	{
+  30:../main.c     **** 		i = 60000;
+  31:../main.c     **** 		while(--i) { __NOP(); }
+  45              	 .loc 1 31 0 is_stmt 1 discriminator 1
+  46 000a 013A     	 subs r2,r2,#1
+  47              	.LVL3:
+  48 000c 01D0     	 beq .L8
+  49              	.LVL4:
+  50              	 .loc 1 31 0 is_stmt 0 discriminator 2
+  51              	
+  52 000e 00BF     	 nop
+  53              	
+  54              	 .thumb
+  55 0010 FBE7     	 b .L4
+  56              	.LVL5:
+  57              	.L8:
+  28:../main.c     **** 	{
+  58              	 .loc 1 28 0 is_stmt 1 discriminator 2
+  59 0012 0133     	 adds r3,r3,#1
+  60              	.LVL6:
+  61 0014 F5E7     	 b .L2
+  62              	.LVL7:
+  63              	.L7:
+  64              	.LBE2:
+  32:../main.c     **** 	}
+  33:../main.c     **** }
+  65              	 .loc 1 33 0
+  66 0016 7047     	 bx lr
+  67              	 .cfi_endproc
+  68              	.LFE328:
+  70              	 .section .text.setMemNull,"ax",%progbits
+  71              	 .align 1
+  72              	 .global setMemNull
+  73              	 .thumb
+  74              	 .thumb_func
+  76              	setMemNull:
+  77              	.LFB329:
+  34:../main.c     **** 
+  35:../main.c     **** void setMemNull(uint8_t *data, int size) {
+  78              	 .loc 1 35 0
+  79              	 .cfi_startproc
+  80              	 
+  81              	 
+  82              	 
+  83              	.LVL8:
+  36:../main.c     **** 	int i;
+  37:../main.c     **** 	for(i = 0 ;i < size; i++) {
+  84              	 .loc 1 37 0
+  85 0000 0346     	 mov r3,r0
+  86              	.LVL9:
+  87              	.L10:
+  88 0002 1A1A     	 subs r2,r3,r0
+  89              	 .loc 1 37 0 is_stmt 0 discriminator 1
+  90 0004 8A42     	 cmp r2,r1
+  91 0006 03DA     	 bge .L12
+  38:../main.c     **** 		data[i] = 0;
+  92              	 .loc 1 38 0 is_stmt 1 discriminator 3
+  93 0008 0022     	 movs r2,#0
+  94 000a 03F8012B 	 strb r2,[r3],#1
+  95              	.LVL10:
+  96 000e F8E7     	 b .L10
+  97              	.L12:
+  39:../main.c     **** 	}
+  40:../main.c     **** }
+  98              	 .loc 1 40 0
+  99 0010 7047     	 bx lr
+ 100              	 .cfi_endproc
+ 101              	.LFE329:
+ 103              	 .section .text.startup.main,"ax",%progbits
+ 104              	 .align 1
+ 105              	 .global main
+ 106              	 .thumb
+ 107              	 .thumb_func
+ 109              	main:
+ 110              	.LFB330:
+  41:../main.c     **** 
+  42:../main.c     **** #define BUFFERSIZE 1024
+  43:../main.c     **** 
+  44:../main.c     **** int main(void)
+  45:../main.c     **** {
+ 111              	 .loc 1 45 0
+ 112              	 .cfi_startproc
+ 113              	 
+ 114              	 
+ 115 0000 30B5     	 push {r4,r5,lr}
+ 116              	.LCFI0:
+ 117              	 .cfi_def_cfa_offset 12
+ 118              	 .cfi_offset 4,-12
+ 119              	 .cfi_offset 5,-8
+ 120              	 .cfi_offset 14,-4
+  46:../main.c     ****   DAVE_STATUS_t status;
+  47:../main.c     ****   uint8_t init_data[] = "startasfdasfdasfsadfasdfsafdasfdsadfasdfsadfasf";
+ 121              	 .loc 1 47 0
+ 122 0002 1C4B     	 ldr r3,.L23
+  45:../main.c     ****   DAVE_STATUS_t status;
+ 123              	 .loc 1 45 0
+ 124 0004 ADF2344D 	 subw sp,sp,#1076
+ 125              	.LCFI1:
+ 126              	 .cfi_def_cfa_offset 1088
+ 127              	 .loc 1 47 0
+ 128 0008 6C46     	 mov r4,sp
+ 129 000a 03F13005 	 add r5,r3,#48
+ 130              	.L14:
+ 131 000e 1868     	 ldr r0,[r3]
+ 132 0010 5968     	 ldr r1,[r3,#4]
+ 133 0012 2246     	 mov r2,r4
+ 134 0014 03C2     	 stmia r2!,{r0,r1}
+ 135 0016 0833     	 adds r3,r3,#8
+ 136 0018 AB42     	 cmp r3,r5
+ 137 001a 1446     	 mov r4,r2
+ 138 001c F7D1     	 bne .L14
+  48:../main.c     ****   uint8_t read_data[BUFFERSIZE];
+  49:../main.c     **** 
+  50:../main.c     ****   setMemNull(read_data, BUFFERSIZE);
+ 139              	 .loc 1 50 0
+ 140 001e 0CA8     	 add r0,sp,#48
+ 141 0020 4FF48061 	 mov r1,#1024
+ 142 0024 FFF7FEFF 	 bl setMemNull
+ 143              	.LVL11:
+  51:../main.c     ****   status = DAVE_Init();           /* Initialization of DAVE APPs  */
+ 144              	 .loc 1 51 0
+ 145 0028 FFF7FEFF 	 bl DAVE_Init
+ 146              	.LVL12:
+  52:../main.c     **** 
+  53:../main.c     ****   if(status != DAVE_STATUS_SUCCESS)
+ 147              	 .loc 1 53 0
+ 148 002c 00B1     	 cbz r0,.L15
+ 149              	.L22:
+  54:../main.c     ****   {
+  55:../main.c     ****     /* Placeholder for error handler code. The while loop below can be replaced with an user error 
+  56:../main.c     ****     XMC_DEBUG("DAVE APPs initialization failed\n");
+  57:../main.c     **** 
+  58:../main.c     ****     while(1U)
+  59:../main.c     ****     {
+  60:../main.c     **** 
+  61:../main.c     ****     }
+ 150              	 .loc 1 61 0 discriminator 1
+ 151 002e FEE7     	 b .L22
+ 152              	.L15:
+  62:../main.c     ****   }
+  63:../main.c     **** 
+  64:../main.c     ****   /* Placeholder for user application code. The while loop below can be replaced with user applicat
+  65:../main.c     **** 
+  66:../main.c     ****   // Minimal position 450  ^ 4,5  duty ^ 0,9ms
+  67:../main.c     ****   // Neutral position 750  ^ 7,5  duty ^ 1,5ms
+  68:../main.c     ****   // Maximal position 1050 ^ 10,5 duty ^ 2,1ms
+  69:../main.c     **** 
+  70:../main.c     ****   UART_Transmit(&UART_0, init_data, sizeof(init_data));
+ 153              	 .loc 1 70 0
+ 154 0030 1148     	 ldr r0,.L23+4
+ 155              	.LVL13:
+ 156 0032 6946     	 mov r1,sp
+ 157 0034 3022     	 movs r2,#48
+ 158 0036 FFF7FEFF 	 bl UART_Transmit
+ 159              	.LVL14:
+ 160              	.L17:
+  71:../main.c     **** 
+  72:../main.c     ****   while(1U)
+  73:../main.c     ****   {
+  74:../main.c     **** 	  /*
+  75:../main.c     **** 	  for(int i = 450; i <= 1050; i += 10)
+  76:../main.c     **** 	  {
+  77:../main.c     **** 		  PWM_SetDutyCycle(&PWM_MOTOR_0, i);
+  78:../main.c     **** 		  busy_waitMs(20);
+  79:../main.c     **** 	  }
+  80:../main.c     **** 	  for(int i = 1049; i > 450; i -= 10)
+  81:../main.c     **** 	  {
+  82:../main.c     **** 		  PWM_SetDutyCycle(&PWM_MOTOR_0, i);
+  83:../main.c     **** 		  busy_waitMs(20);
+  84:../main.c     **** 	  }
+  85:../main.c     **** 	  */
+  86:../main.c     **** 	  busy_waitMs(100);
+ 161              	 .loc 1 86 0
+ 162 003a 6420     	 movs r0,#100
+ 163 003c FFF7FEFF 	 bl busy_waitMs
+ 164              	.LVL15:
+  87:../main.c     **** 	  UART_Receive(&UART_0, read_data, BUFFERSIZE);
+ 165              	 .loc 1 87 0
+ 166 0040 0D48     	 ldr r0,.L23+4
+ 167 0042 0CA9     	 add r1,sp,#48
+ 168 0044 4FF48062 	 mov r2,#1024
+ 169 0048 FFF7FEFF 	 bl UART_Receive
+ 170              	.LVL16:
+  88:../main.c     **** 	  if(read_data[0] != '\0') {
+ 171              	 .loc 1 88 0
+ 172 004c 9DF83030 	 ldrb r3,[sp,#48]
+ 173 0050 002B     	 cmp r3,#0
+ 174 0052 F2D0     	 beq .L17
+  89:../main.c     **** 		  busy_waitMs(10000);
+ 175              	 .loc 1 89 0
+ 176 0054 42F21070 	 movw r0,#10000
+ 177 0058 FFF7FEFF 	 bl busy_waitMs
+ 178              	.LVL17:
+  90:../main.c     **** 		  UART_Transmit(&UART_0, read_data, sizeof(BUFFERSIZE));
+ 179              	 .loc 1 90 0
+ 180 005c 0CA9     	 add r1,sp,#48
+ 181 005e 0422     	 movs r2,#4
+ 182 0060 0548     	 ldr r0,.L23+4
+ 183 0062 FFF7FEFF 	 bl UART_Transmit
+ 184              	.LVL18:
+  91:../main.c     **** 		  setMemNull(read_data, BUFFERSIZE);
+ 185              	 .loc 1 91 0
+ 186 0066 0CA8     	 add r0,sp,#48
+ 187 0068 4FF48061 	 mov r1,#1024
+ 188 006c FFF7FEFF 	 bl setMemNull
+ 189              	.LVL19:
+ 190 0070 E3E7     	 b .L17
+ 191              	.L24:
+ 192 0072 00BF     	 .align 2
+ 193              	.L23:
+ 194 0074 00000000 	 .word .LC0
+ 195 0078 00000000 	 .word UART_0
+ 196              	 .cfi_endproc
+ 197              	.LFE330:
+ 199              	 .section .rodata.str1.1,"aMS",%progbits,1
+ 200              	.LC0:
+ 201 0000 73746172 	 .ascii "startasfdasfdasfsadfasdfsafdasfdsadfasdfsadfasf\000"
+ 201      74617366 
+ 201      64617366 
+ 201      64617366 
+ 201      73616466 
+ 202              	 .text
+ 203              	.Letext0:
+ 204              	 .file 2 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 205              	 .file 3 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 206              	 .file 4 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_gpio.h"
+ 207              	 .file 5 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 208              	 .file 6 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_usic.h"
+ 209              	 .file 7 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_uart.h"
+ 210              	 .file 8 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/UART/uart.h"
+ 211              	 .file 9 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DAVE.h"
+ 212              	 .file 10 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+ 213              	 .file 11 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 214              	 .file 12 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/UART/uart_extern.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-    {standard input}:17     .text.busy_waitMs:00000000 $t
-    {standard input}:22     .text.busy_waitMs:00000000 busy_waitMs
-    {standard input}:47     .text.busy_waitMs:00000018 $d
-    {standard input}:50     .text.startup.main:00000000 $t
-    {standard input}:55     .text.startup.main:00000000 main
-    {standard input}:90     .text.startup.main:00000044 $d
+    {standard input}:20     .text.busy_waitMs:00000000 $t
+    {standard input}:25     .text.busy_waitMs:00000000 busy_waitMs
+    {standard input}:71     .text.setMemNull:00000000 $t
+    {standard input}:76     .text.setMemNull:00000000 setMemNull
+    {standard input}:104    .text.startup.main:00000000 $t
+    {standard input}:109    .text.startup.main:00000000 main
+    {standard input}:194    .text.startup.main:00000074 $d
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.0.ca5ae67a873a4952d630d8e4120b9e3e
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4.features.h.22.bee0aee4a3878f51861c775df98fa3ea
+                           .group:00000000 wm4._default_types.h.15.933e8edd27a65e0b69af4a865eb623d2
+                           .group:00000000 wm4._intsup.h.10.ca9f32a61b410c270a48d1161ca2c217
+                           .group:00000000 wm4.stdint.h.22.f4a337c398d8b6d821a97202448bc0d0
+                           .group:00000000 wm4.stdbool.h.29.1c9ee6859ce8145f7838a4f2549ccec2
+                           .group:00000000 wm4.newlib.h.8.fe7d912fc917043c98742c35eddd8cff
+                           .group:00000000 wm4.config.h.216.aad1ef7bee4fb69981cb38ce62f84d9c
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.cdefs.h.47.4e89a3f145accdcb1100c37260c088e6
+                           .group:00000000 wm4.string.h.15.dab3980bf35408a4c507182805e2de3a
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.xmc_device.h.65.5c0d35eb1a6853ff8300ab2ec1b944b0
+                           .group:00000000 wm4.XMC4500.h.55.9aa45b9b5790506b2dcb963e4e7adeaf
+                           .group:00000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.57f124f9262f3dbf77da6a6506ffb430
+                           .group:00000000 wm4.core_cm4.h.174.fcddd62df80231752fa39eb9b61dadfe
+                           .group:00000000 wm4.mpu_armv7.h.32.4049752bb5792d4e15357775e9506cfc
+                           .group:00000000 wm4.system_XMC4500.h.42.99124977c10ca8844a71949adbeabd70
+                           .group:00000000 wm4.XMC4500.h.208.b340195df97f067735c4c769ba59985a
+                           .group:00000000 wm4.xmc_device.h.1500.3eca65ed9ba7f90e09c1ffcb0b3f5724
+                           .group:00000000 wm4.xmc_common.h.98.806f17e888fd51d0e4be2ad115163551
+                           .group:00000000 wm4.xmc4_scu.h.113.70a903f8782696023ba1d8628d8ac2d6
+                           .group:00000000 wm4.xmc_gpio.h.51.99a4c0bd520ffa931ac6d8600dce89c4
+                           .group:00000000 wm4.xmc4_gpio_map.h.77.d73d78de7f4c322ab8caf8e71725793e
+                           .group:00000000 wm4.xmc4_gpio.h.79.ce6c49508b5a7769c66e7e3c21dcdfe4
+                           .group:00000000 wm4.clock_xmc4_conf.h.59.249296d4aac332e3d32466c2fa9b8708
+                           .group:00000000 wm4.xmc4_ccu4_map.h.52.bc30e2611b29f8dfd82b8d766e443456
+                           .group:00000000 wm4.global_ccu4_conf.h.53.69a5e141699ccac04d959466f5418a86
+                           .group:00000000 wm4.pwm_conf.h.91.de1ad5462f924101b28d4a83f92c3daa
+                           .group:00000000 wm4.cpu_ctrl_xmc4_conf.h.50.edadd17ec66dd565cecf7b80b7a19d87
+                           .group:00000000 wm4.xmc_usic.h.94.805ea2394b0d7b136939c22b7f55383a
+                           .group:00000000 wm4.xmc4_usic_map.h.58.c72ca24cddd51bff3428962310391fa9
+                           .group:00000000 wm4.xmc_uart.h.109.448e7c5ea9d234a4e4112f61aa70ddeb
+                           .group:00000000 wm4.uart_conf.h.56.e335bbd0a9cf710728639073101a1ce5
 
 UNDEFINED SYMBOLS
 DAVE_Init
-PWM_SetDutyCycle
-PWM_MOTOR_0
+UART_Transmit
+UART_Receive
+UART_0
