@@ -48,7 +48,9 @@ void uartConnection::writeData(std::string input) {
 	// clears messages that couldnt be send or are still in the buffer
 	tcflush(fd, TCOFLUSH);
 	// write new data
+	lock.lock();
 	write (fd, input.c_str(), input.size() + 1);
+	lock.unlock();
 }
 
 /**
@@ -57,7 +59,7 @@ void uartConnection::writeData(std::string input) {
  * by setting the isListening flag to flase.
  */
 void uartConnection::startListening() {
-	std::thread t(listeningThread, std::ref(fd), std::ref(isListening), BUFFERSIZE);
+	std::thread t(listeningThread, std::ref(fd), std::ref(isListening), BUFFERSIZE, std::ref(lock));
 	t.detach();
 }
 
@@ -69,7 +71,7 @@ void uartConnection::startListening() {
  * @param isListen is a bool flag that can cancel the loop.
  * @param BUFFSZ is the size of the buffer in which is written.
  */
-void uartConnection::listeningThread(int &fdescr, bool &isListen, const int BUFFSZ) {
+void uartConnection::listeningThread(int &fdescr, bool &isListen, const int BUFFSZ, std::mutex &_lock) {
 	// start polling for input (wait for event on file descriptor)
 	pollfd srcPoll;
 	srcPoll.fd = fdescr;
@@ -82,6 +84,7 @@ void uartConnection::listeningThread(int &fdescr, bool &isListen, const int BUFF
 	int res = 0;
 	while(isListen) {
 		int check = poll(&srcPoll, 1, -1);
+		sleep(1);
 		if(isListen == false) {
 			break;
 		}
@@ -90,8 +93,11 @@ void uartConnection::listeningThread(int &fdescr, bool &isListen, const int BUFF
 		}
 		// @todo maybe sleep here, cause data is trasmitted bitwise, wait until all data arrives?
 		
+		_lock.lock();
 		res = read(fdescr, buf, BUFFSZ);
+		_lock.unlock();
 
+		std::cout << buf << std::endl;
 		// @todo use buf for something
 	}
 }
