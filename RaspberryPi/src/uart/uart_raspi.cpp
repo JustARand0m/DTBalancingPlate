@@ -46,9 +46,9 @@ uartConnection::uartConnection(std::string device): BUFFERSIZE(1024) {
  */
 void uartConnection::writeData(std::string input) {
 	// clears messages that couldnt be send or are still in the buffer
+	lock.lock();
 	tcflush(fd, TCOFLUSH);
 	// write new data
-	lock.lock();
 	write (fd, input.c_str(), input.size() + 1);
 	lock.unlock();
 }
