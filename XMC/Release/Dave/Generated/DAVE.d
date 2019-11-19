@@ -38,7 +38,16 @@ Dave/Generated/DAVE.o Dave/Generated/DAVE.d Dave/Generated/DAVE.o: \
  ../Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4_extern.h \
  ../Dave/Generated/INTERRUPT/interrupt.h \
  ../Dave/Generated/INTERRUPT/interrupt_conf.h \
- ../Dave/Generated/INTERRUPT/interrupt_extern.h
+ ../Dave/Generated/INTERRUPT/interrupt_extern.h \
+ ../Dave/Generated/GLOBAL_ADC/global_adc.h \
+ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_vadc.h \
+ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_vadc_map.h \
+ ../Dave/Generated/GLOBAL_ADC/global_adc_conf.h \
+ ../Dave/Generated/GLOBAL_ADC/global_adc_extern.h \
+ ../Dave/Generated/ADC_MEASUREMENT/adc_measurement.h \
+ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_ADC/global_adc.h \
+ ../Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.h \
+ ../Dave/Generated/ADC_MEASUREMENT/ADC_MEASUREMENT_Extern.h
 
 ../Dave/Generated/DAVE.h:
 
@@ -125,3 +134,21 @@ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_usic_map.
 ../Dave/Generated/INTERRUPT/interrupt_conf.h:
 
 ../Dave/Generated/INTERRUPT/interrupt_extern.h:
+
+../Dave/Generated/GLOBAL_ADC/global_adc.h:
+
+G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_vadc.h:
+
+G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_vadc_map.h:
+
+../Dave/Generated/GLOBAL_ADC/global_adc_conf.h:
+
+../Dave/Generated/GLOBAL_ADC/global_adc_extern.h:
+
+../Dave/Generated/ADC_MEASUREMENT/adc_measurement.h:
+
+G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_ADC/global_adc.h:
+
+../Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.h:
+
+../Dave/Generated/ADC_MEASUREMENT/ADC_MEASUREMENT_Extern.h:

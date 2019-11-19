@@ -22,7 +22,7 @@
   22              	 .thumb
   23              	 .thumb_func
   25              	busy_waitMs:
-  26              	.LFB334:
+  26              	.LFB415:
   27              	 .file 1 "../main.c"
    1:../main.c     **** /*
    2:../main.c     ****  * main.c
@@ -125,256 +125,272 @@
   85              	 .loc 1 40 0
   86 0020 7047     	 bx lr
   87              	 .cfi_endproc
-  88              	.LFE334:
+  88              	.LFE415:
   90              	 .section .text.startup.main,"ax",%progbits
   91              	 .align 1
   92              	 .global main
   93              	 .thumb
   94              	 .thumb_func
   96              	main:
-  97              	.LFB335:
+  97              	.LFB416:
   41:../main.c     **** 
   42:../main.c     **** #define BUFFERSIZE 1024
   43:../main.c     **** 
   44:../main.c     **** uint8_t read_data[BUFFERSIZE];
   45:../main.c     **** uint8_t testdata[] = "testdata";
-  46:../main.c     **** 
-  47:../main.c     **** int main(void)
-  48:../main.c     **** {
-  98              	 .loc 1 48 0
+  46:../main.c     **** uint32_t touchPanelResult;
+  47:../main.c     **** 
+  48:../main.c     **** int main(void)
+  49:../main.c     **** {
+  98              	 .loc 1 49 0
   99              	 .cfi_startproc
  100              	 
  101              	 
- 102 0000 70B5     	 push {r4,r5,r6,lr}
+ 102 0000 13B5     	 push {r0,r1,r4,lr}
  103              	.LCFI0:
  104              	 .cfi_def_cfa_offset 16
- 105              	 .cfi_offset 4,-16
- 106              	 .cfi_offset 5,-12
- 107              	 .cfi_offset 6,-8
- 108              	 .cfi_offset 14,-4
-  49:../main.c     ****   DAVE_STATUS_t status;
-  50:../main.c     ****   uint8_t init_data[] = "startasfdasfdasfsadfasdfsafdasfdsadfasdfsadfasf";
- 109              	 .loc 1 50 0
- 110 0002 104B     	 ldr r3,.L16
-  48:../main.c     ****   DAVE_STATUS_t status;
- 111              	 .loc 1 48 0
- 112 0004 8CB0     	 sub sp,sp,#48
- 113              	.LCFI1:
- 114              	 .cfi_def_cfa_offset 64
- 115              	 .loc 1 50 0
- 116 0006 6A46     	 mov r2,sp
- 117 0008 03F13006 	 add r6,r3,#48
- 118 000c 6D46     	 mov r5,sp
- 119              	.L10:
- 120 000e 1868     	 ldr r0,[r3]
- 121 0010 5968     	 ldr r1,[r3,#4]
- 122 0012 1446     	 mov r4,r2
- 123 0014 03C4     	 stmia r4!,{r0,r1}
- 124 0016 0833     	 adds r3,r3,#8
- 125 0018 B342     	 cmp r3,r6
- 126 001a 2246     	 mov r2,r4
- 127 001c F7D1     	 bne .L10
+ 105              	 .cfi_offset 4,-8
+ 106              	 .cfi_offset 14,-4
+  50:../main.c     ****   DAVE_STATUS_t status;
+  51:../main.c     ****   uint8_t init_data[] = "start";
+ 107              	 .loc 1 51 0
+ 108 0002 144B     	 ldr r3,.L15
+ 109 0004 1868     	 ldr r0,[r3]
+ 110 0006 0090     	 str r0,[sp]
+ 111 0008 9B88     	 ldrh r3,[r3,#4]
+  52:../main.c     **** 
+  53:../main.c     ****   memset(read_data, 0, BUFFERSIZE);
+ 112              	 .loc 1 53 0
+ 113 000a 1348     	 ldr r0,.L15+4
   51:../main.c     **** 
-  52:../main.c     ****   memset(read_data, 0, BUFFERSIZE);
- 128              	 .loc 1 52 0
- 129 001e 0021     	 movs r1,#0
- 130 0020 4FF48062 	 mov r2,#1024
- 131 0024 0848     	 ldr r0,.L16+4
- 132 0026 FFF7FEFF 	 bl memset
- 133              	.LVL8:
-  53:../main.c     ****   status = DAVE_Init();           /* Initialization of DAVE APPs  */
- 134              	 .loc 1 53 0
- 135 002a FFF7FEFF 	 bl DAVE_Init
- 136              	.LVL9:
-  54:../main.c     **** 
-  55:../main.c     ****   if(status != DAVE_STATUS_SUCCESS)
- 137              	 .loc 1 55 0
- 138 002e 00B1     	 cbz r0,.L11
- 139              	.L15:
-  56:../main.c     ****   {
-  57:../main.c     ****     /* Placeholder for error handler code. The while loop below can be replaced with an user error 
-  58:../main.c     ****     XMC_DEBUG("DAVE APPs initialization failed\n");
-  59:../main.c     **** 
-  60:../main.c     ****     while(1U)
-  61:../main.c     ****     {
-  62:../main.c     **** 
-  63:../main.c     ****     }
- 140              	 .loc 1 63 0 discriminator 1
- 141 0030 FEE7     	 b .L15
- 142              	.L11:
-  64:../main.c     ****   }
-  65:../main.c     **** 
-  66:../main.c     ****   /* Placeholder for user application code. The while loop below can be replaced with user applicat
-  67:../main.c     **** 
-  68:../main.c     ****   // Minimal position 450  ^ 4,5  duty ^ 0,9ms
-  69:../main.c     ****   // Neutral position 750  ^ 7,5  duty ^ 1,5ms
-  70:../main.c     ****   // Maximal position 1050 ^ 10,5 duty ^ 2,1ms
-  71:../main.c     **** 
-  72:../main.c     ****   UART_Transmit(&UART_0, init_data, sizeof(init_data));
- 143              	 .loc 1 72 0
- 144 0032 0648     	 ldr r0,.L16+8
- 145              	.LVL10:
- 146 0034 2946     	 mov r1,r5
- 147 0036 3022     	 movs r2,#48
- 148 0038 FFF7FEFF 	 bl UART_Transmit
- 149              	.LVL11:
- 150              	.L13:
+ 114              	 .loc 1 51 0
+ 115 000c ADF80430 	 strh r3,[sp,#4]
+ 116              	 .loc 1 53 0
+ 117 0010 0021     	 movs r1,#0
+ 118 0012 4FF48062 	 mov r2,#1024
+ 119 0016 FFF7FEFF 	 bl memset
+ 120              	.LVL8:
+  54:../main.c     ****   status = DAVE_Init();           /* Initialization of DAVE APPs  */
+ 121              	 .loc 1 54 0
+ 122 001a FFF7FEFF 	 bl DAVE_Init
+ 123              	.LVL9:
+  55:../main.c     **** 
+  56:../main.c     ****   if(status != DAVE_STATUS_SUCCESS)
+ 124              	 .loc 1 56 0
+ 125 001e 00B1     	 cbz r0,.L10
+ 126              	.L13:
+  57:../main.c     ****   {
+  58:../main.c     ****     /* Placeholder for error handler code. The while loop below can be replaced with an user error 
+  59:../main.c     ****     XMC_DEBUG("DAVE APPs initialization failed\n");
+  60:../main.c     **** 
+  61:../main.c     ****     while(1U)
+  62:../main.c     ****     {
+  63:../main.c     **** 
+  64:../main.c     ****     }
+ 127              	 .loc 1 64 0 discriminator 1
+ 128 0020 FEE7     	 b .L13
+ 129              	.L10:
+  65:../main.c     ****   }
+  66:../main.c     **** 
+  67:../main.c     ****   /* Placeholder for user application code. The while loop below can be replaced with user applicat
+  68:../main.c     ****   ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
+ 130              	 .loc 1 68 0
+ 131 0022 0E48     	 ldr r0,.L15+8
+ 132              	.LVL10:
+ 133 0024 FFF7FEFF 	 bl ADC_MEASUREMENT_StartConversion
+ 134              	.LVL11:
+  69:../main.c     **** 
+  70:../main.c     ****   // Minimal position 450  ^ 4,5  duty ^ 0,9ms
+  71:../main.c     ****   // Neutral position 750  ^ 7,5  duty ^ 1,5ms
+  72:../main.c     ****   // Maximal position 1050 ^ 10,5 duty ^ 2,1ms
   73:../main.c     **** 
-  74:../main.c     ****   while(1U)
-  75:../main.c     ****   {
-  76:../main.c     **** 	  /*
-  77:../main.c     **** 	  for(int i = 450; i <= 1050; i += 10)
-  78:../main.c     **** 	  {
-  79:../main.c     **** 		  PWM_SetDutyCycle(&PWM_MOTOR_0, i);
-  80:../main.c     **** 		  busy_waitMs(20);
-  81:../main.c     **** 	  }
-  82:../main.c     **** 	  for(int i = 1049; i > 450; i -= 10)
-  83:../main.c     **** 	  {
-  84:../main.c     **** 		  PWM_SetDutyCycle(&PWM_MOTOR_0, i);
-  85:../main.c     **** 		  busy_waitMs(20);
-  86:../main.c     **** 	  }
-  87:../main.c     **** 		*/
-  88:../main.c     **** 	  busy_waitMs(100);
- 151              	 .loc 1 88 0 discriminator 1
- 152 003c 6420     	 movs r0,#100
- 153 003e FFF7FEFF 	 bl busy_waitMs
- 154              	.LVL12:
-  89:../main.c     **** 	  /*UART_Receive(&UART_0, read_data, BUFFERSIZE);
-  90:../main.c     **** 	  if(read_data[0] != '\0') {
-  91:../main.c     **** 		  busy_waitMs(5000);
-  92:../main.c     **** 		  UART_Transmit(&UART_0, read_data, BUFFERSIZE);
-  93:../main.c     **** 		  memset(read_data, 0, BUFFERSIZE);
-  94:../main.c     **** 	  }*/
-  95:../main.c     ****   }
- 155              	 .loc 1 95 0 discriminator 1
- 156 0042 FBE7     	 b .L13
- 157              	.L17:
- 158              	 .align 2
- 159              	.L16:
- 160 0044 00000000 	 .word .LC0
- 161 0048 00000000 	 .word read_data
- 162 004c 00000000 	 .word UART_0
- 163              	 .cfi_endproc
- 164              	.LFE335:
- 166              	 .section .text.USIC0_5_IRQHandler,"ax",%progbits
- 167              	 .align 1
- 168              	 .global USIC0_5_IRQHandler
- 169              	 .thumb
- 170              	 .thumb_func
- 172              	USIC0_5_IRQHandler:
- 173              	.LFB336:
-  96:../main.c     **** }
-  97:../main.c     **** int a = 0;
-  98:../main.c     **** void DataReceived(void) {
- 174              	 .loc 1 98 0
- 175              	 .cfi_startproc
- 176              	 
- 177              	 
- 178 0000 38B5     	 push {r3,r4,r5,lr}
- 179              	.LCFI2:
- 180              	 .cfi_def_cfa_offset 16
- 181              	 .cfi_offset 3,-16
- 182              	 .cfi_offset 4,-12
- 183              	 .cfi_offset 5,-8
- 184              	 .cfi_offset 14,-4
-  99:../main.c     **** 	UART_Receive(&UART_0, read_data, 8);
- 185              	 .loc 1 99 0
- 186 0002 0B4C     	 ldr r4,.L19
- 187 0004 0B4D     	 ldr r5,.L19+4
- 188 0006 2146     	 mov r1,r4
- 189 0008 2846     	 mov r0,r5
- 190 000a 0822     	 movs r2,#8
- 191 000c FFF7FEFF 	 bl UART_Receive
- 192              	.LVL13:
- 100:../main.c     **** 	read_data[0] = '1';
- 193              	 .loc 1 100 0
- 194 0010 3123     	 movs r3,#49
- 101:../main.c     **** 	read_data[1] = '1';
- 102:../main.c     **** 	UART_Transmit(&UART_0, read_data, 8);
- 195              	 .loc 1 102 0
- 196 0012 2146     	 mov r1,r4
- 197 0014 2846     	 mov r0,r5
- 198 0016 0822     	 movs r2,#8
- 100:../main.c     **** 	read_data[0] = '1';
- 199              	 .loc 1 100 0
- 200 0018 2370     	 strb r3,[r4]
- 101:../main.c     **** 	read_data[1] = '1';
- 201              	 .loc 1 101 0
- 202 001a 6370     	 strb r3,[r4,#1]
- 203              	 .loc 1 102 0
- 204 001c FFF7FEFF 	 bl UART_Transmit
- 205              	.LVL14:
- 103:../main.c     **** 	memset(read_data, 0, BUFFERSIZE);
- 206              	 .loc 1 103 0
- 207 0020 2046     	 mov r0,r4
- 208 0022 0021     	 movs r1,#0
- 209 0024 4FF48062 	 mov r2,#1024
- 104:../main.c     **** }
- 210              	 .loc 1 104 0
- 211 0028 BDE83840 	 pop {r3,r4,r5,lr}
- 212              	.LCFI3:
- 213              	 .cfi_restore 14
- 214              	 .cfi_restore 5
- 215              	 .cfi_restore 4
- 216              	 .cfi_restore 3
- 217              	 .cfi_def_cfa_offset 0
- 103:../main.c     **** 	memset(read_data, 0, BUFFERSIZE);
- 218              	 .loc 1 103 0
- 219 002c FFF7FEBF 	 b memset
- 220              	.LVL15:
- 221              	.L20:
- 222              	 .align 2
- 223              	.L19:
- 224 0030 00000000 	 .word read_data
- 225 0034 00000000 	 .word UART_0
- 226              	 .cfi_endproc
- 227              	.LFE336:
- 229              	 .global a
- 230              	 .global testdata
- 231              	 .comm read_data,1024,1
- 232              	 .section .data.testdata,"aw",%progbits
- 235              	testdata:
- 236 0000 74657374 	 .ascii "testdata\000"
- 236      64617461 
- 236      00
- 237              	 .section .rodata.str1.1,"aMS",%progbits,1
- 238              	.LC0:
- 239 0000 73746172 	 .ascii "startasfdasfdasfsadfasdfsafdasfdsadfasdfsadfasf\000"
- 239      74617366 
- 239      64617366 
- 239      64617366 
- 239      73616466 
- 240              	 .section .bss.a,"aw",%nobits
- 241              	 .align 2
- 244              	a:
- 245 0000 00000000 	 .space 4
- 246              	 .text
- 247              	.Letext0:
- 248              	 .file 2 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
- 249              	 .file 3 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
- 250              	 .file 4 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_gpio.h"
- 251              	 .file 5 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_gpio.h"
- 252              	 .file 6 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_usic.h"
- 253              	 .file 7 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_uart.h"
- 254              	 .file 8 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/UART/uart.h"
- 255              	 .file 9 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DAVE.h"
- 256              	 .file 10 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
- 257              	 .file 11 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
- 258              	 .file 12 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/UART/uart_extern.h"
+  74:../main.c     ****   UART_Transmit(&UART_0, init_data, sizeof(init_data));
+ 135              	 .loc 1 74 0
+ 136 0028 0D48     	 ldr r0,.L15+12
+ 137 002a 6946     	 mov r1,sp
+ 138 002c 0622     	 movs r2,#6
+ 139              	.L14:
+ 140 002e FFF7FEFF 	 bl UART_Transmit
+ 141              	.LVL12:
+  75:../main.c     **** 
+  76:../main.c     ****   while(1U)
+  77:../main.c     ****   {
+  78:../main.c     **** 	  /*
+  79:../main.c     **** 	  for(int i = 450; i <= 1050; i += 10)
+  80:../main.c     **** 	  {
+  81:../main.c     **** 		  PWM_SetDutyCycle(&PWM_MOTOR_0, i);
+  82:../main.c     **** 		  busy_waitMs(20);
+  83:../main.c     **** 	  }
+  84:../main.c     **** 	  for(int i = 1049; i > 450; i -= 10)
+  85:../main.c     **** 	  {
+  86:../main.c     **** 		  PWM_SetDutyCycle(&PWM_MOTOR_0, i);
+  87:../main.c     **** 		  busy_waitMs(20);
+  88:../main.c     **** 	  }
+  89:../main.c     **** 		*/
+  90:../main.c     **** 	  busy_waitMs(1000);
+ 142              	 .loc 1 90 0
+ 143 0032 4FF47A70 	 mov r0,#1000
+ 144 0036 FFF7FEFF 	 bl busy_waitMs
+ 145              	.LVL13:
+  91:../main.c     **** 	  touchPanelResult = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A_handle);
+ 146              	 .loc 1 91 0
+ 147 003a 0A48     	 ldr r0,.L15+16
+ 148 003c 0A4C     	 ldr r4,.L15+20
+ 149 003e FFF7FEFF 	 bl ADC_MEASUREMENT_GetResult
+ 150              	.LVL14:
+ 151 0042 2060     	 str r0,[r4]
+  92:../main.c     **** 	  busy_waitMs(1000);
+ 152              	 .loc 1 92 0
+ 153 0044 4FF47A70 	 mov r0,#1000
+ 154 0048 FFF7FEFF 	 bl busy_waitMs
+ 155              	.LVL15:
+  93:../main.c     **** 	  UART_Transmit(&UART_0, &touchPanelResult, 8);
+ 156              	 .loc 1 93 0
+ 157 004c 0448     	 ldr r0,.L15+12
+ 158 004e 2146     	 mov r1,r4
+ 159 0050 0822     	 movs r2,#8
+ 160 0052 ECE7     	 b .L14
+ 161              	.L16:
+ 162              	 .align 2
+ 163              	.L15:
+ 164 0054 00000000 	 .word .LC0
+ 165 0058 00000000 	 .word read_data
+ 166 005c 00000000 	 .word ADC_MEASUREMENT_0
+ 167 0060 00000000 	 .word UART_0
+ 168 0064 00000000 	 .word ADC_MEASUREMENT_Channel_A_handle
+ 169 0068 00000000 	 .word touchPanelResult
+ 170              	 .cfi_endproc
+ 171              	.LFE416:
+ 173              	 .section .text.USIC0_5_IRQHandler,"ax",%progbits
+ 174              	 .align 1
+ 175              	 .global USIC0_5_IRQHandler
+ 176              	 .thumb
+ 177              	 .thumb_func
+ 179              	USIC0_5_IRQHandler:
+ 180              	.LFB417:
+  94:../main.c     **** 	  /*UART_Receive(&UART_0, read_data, BUFFERSIZE);
+  95:../main.c     **** 	  if(read_data[0] != '\0') {
+  96:../main.c     **** 		  busy_waitMs(5000);
+  97:../main.c     **** 		  UART_Transmit(&UART_0, read_data, BUFFERSIZE);
+  98:../main.c     **** 		  memset(read_data, 0, BUFFERSIZE);
+  99:../main.c     **** 	  }*/
+ 100:../main.c     ****   }
+ 101:../main.c     **** }
+ 102:../main.c     **** int a = 0;
+ 103:../main.c     **** void DataReceived(void) {
+ 181              	 .loc 1 103 0
+ 182              	 .cfi_startproc
+ 183              	 
+ 184              	 
+ 185 0000 38B5     	 push {r3,r4,r5,lr}
+ 186              	.LCFI1:
+ 187              	 .cfi_def_cfa_offset 16
+ 188              	 .cfi_offset 3,-16
+ 189              	 .cfi_offset 4,-12
+ 190              	 .cfi_offset 5,-8
+ 191              	 .cfi_offset 14,-4
+ 104:../main.c     **** 	UART_Receive(&UART_0, read_data, 8);
+ 192              	 .loc 1 104 0
+ 193 0002 0B4C     	 ldr r4,.L18
+ 194 0004 0B4D     	 ldr r5,.L18+4
+ 195 0006 2146     	 mov r1,r4
+ 196 0008 2846     	 mov r0,r5
+ 197 000a 0822     	 movs r2,#8
+ 198 000c FFF7FEFF 	 bl UART_Receive
+ 199              	.LVL16:
+ 105:../main.c     **** 	read_data[0] = '1';
+ 200              	 .loc 1 105 0
+ 201 0010 3123     	 movs r3,#49
+ 106:../main.c     **** 	read_data[1] = '1';
+ 107:../main.c     **** 	UART_Transmit(&UART_0, read_data, 8);
+ 202              	 .loc 1 107 0
+ 203 0012 2146     	 mov r1,r4
+ 204 0014 2846     	 mov r0,r5
+ 205 0016 0822     	 movs r2,#8
+ 105:../main.c     **** 	read_data[0] = '1';
+ 206              	 .loc 1 105 0
+ 207 0018 2370     	 strb r3,[r4]
+ 106:../main.c     **** 	read_data[1] = '1';
+ 208              	 .loc 1 106 0
+ 209 001a 6370     	 strb r3,[r4,#1]
+ 210              	 .loc 1 107 0
+ 211 001c FFF7FEFF 	 bl UART_Transmit
+ 212              	.LVL17:
+ 108:../main.c     **** 	memset(read_data, 0, BUFFERSIZE);
+ 213              	 .loc 1 108 0
+ 214 0020 2046     	 mov r0,r4
+ 215 0022 0021     	 movs r1,#0
+ 216 0024 4FF48062 	 mov r2,#1024
+ 109:../main.c     **** }
+ 217              	 .loc 1 109 0
+ 218 0028 BDE83840 	 pop {r3,r4,r5,lr}
+ 219              	.LCFI2:
+ 220              	 .cfi_restore 14
+ 221              	 .cfi_restore 5
+ 222              	 .cfi_restore 4
+ 223              	 .cfi_restore 3
+ 224              	 .cfi_def_cfa_offset 0
+ 108:../main.c     **** 	memset(read_data, 0, BUFFERSIZE);
+ 225              	 .loc 1 108 0
+ 226 002c FFF7FEBF 	 b memset
+ 227              	.LVL18:
+ 228              	.L19:
+ 229              	 .align 2
+ 230              	.L18:
+ 231 0030 00000000 	 .word read_data
+ 232 0034 00000000 	 .word UART_0
+ 233              	 .cfi_endproc
+ 234              	.LFE417:
+ 236              	 .global a
+ 237              	 .comm touchPanelResult,4,4
+ 238              	 .global testdata
+ 239              	 .comm read_data,1024,1
+ 240              	 .section .data.testdata,"aw",%progbits
+ 243              	testdata:
+ 244 0000 74657374 	 .ascii "testdata\000"
+ 244      64617461 
+ 244      00
+ 245              	 .section .rodata.str1.1,"aMS",%progbits,1
+ 246              	.LC0:
+ 247 0000 73746172 	 .ascii "start\000"
+ 247      7400
+ 248              	 .section .bss.a,"aw",%nobits
+ 249              	 .align 2
+ 252              	a:
+ 253 0000 00000000 	 .space 4
+ 254              	 .text
+ 255              	.Letext0:
+ 256              	 .file 2 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 257              	 .file 3 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 258              	 .file 4 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+ 259              	 .file 5 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_gpio.h"
+ 260              	 .file 6 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 261              	 .file 7 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_usic.h"
+ 262              	 .file 8 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_uart.h"
+ 263              	 .file 9 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/UART/uart.h"
+ 264              	 .file 10 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_vadc.h"
+ 265              	 .file 11 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_ADC/global_adc.h"
+ 266              	 .file 12 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/ADC_MEASUREMENT/adc_measurement.h"
+ 267              	 .file 13 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DAVE.h"
+ 268              	 .file 14 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+ 269              	 .file 15 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 270              	 .file 16 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/UART/uart_extern.h"
+ 271              	 .file 17 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/ADC_MEASUREMENT/ADC_MEASUREMENT_Extern.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
     {standard input}:20     .text.busy_waitMs:00000000 $t
     {standard input}:25     .text.busy_waitMs:00000000 busy_waitMs
     {standard input}:91     .text.startup.main:00000000 $t
     {standard input}:96     .text.startup.main:00000000 main
-    {standard input}:160    .text.startup.main:00000044 $d
+    {standard input}:164    .text.startup.main:00000054 $d
                             *COM*:00000400 read_data
-    {standard input}:167    .text.USIC0_5_IRQHandler:00000000 $t
-    {standard input}:172    .text.USIC0_5_IRQHandler:00000000 USIC0_5_IRQHandler
-    {standard input}:224    .text.USIC0_5_IRQHandler:00000030 $d
-    {standard input}:244    .bss.a:00000000 a
-    {standard input}:235    .data.testdata:00000000 testdata
-    {standard input}:241    .bss.a:00000000 $d
+                            *COM*:00000004 touchPanelResult
+    {standard input}:174    .text.USIC0_5_IRQHandler:00000000 $t
+    {standard input}:179    .text.USIC0_5_IRQHandler:00000000 USIC0_5_IRQHandler
+    {standard input}:231    .text.USIC0_5_IRQHandler:00000030 $d
+    {standard input}:252    .bss.a:00000000 a
+    {standard input}:243    .data.testdata:00000000 testdata
+    {standard input}:249    .bss.a:00000000 $d
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.0.ca5ae67a873a4952d630d8e4120b9e3e
                            .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
@@ -419,10 +435,19 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.cpu_ctrl_xmc4_conf.h.50.edadd17ec66dd565cecf7b80b7a19d87
                            .group:00000000 wm4.interrupt_conf.h.50.3baa91fd89684bb4ea6f6b4889884661
                            .group:00000000 wm4.interrupt_extern.h.49.3ce2b82908d967cfe39977f681ea8189
+                           .group:00000000 wm4.xmc_vadc_map.h.62.9df0d76d5c18106393e06548a14f52be
+                           .group:00000000 wm4.xmc_vadc.h.237.61ed5fbd33c6c067453e9298502ec2a9
+                           .group:00000000 wm4.global_adc_conf.h.79.ad3d3c9f6f306cd3e989ca81b8da07e7
+                           .group:00000000 wm4.adc_measurement_conf.h.92.245900a401907c63e95c2c2d32c6ae56
+                           .group:00000000 wm4.adc_measurement.h.114.7294eeab9e0acd8ff18f74e708162a72
 
 UNDEFINED SYMBOLS
 memset
 DAVE_Init
+ADC_MEASUREMENT_StartConversion
 UART_Transmit
+ADC_MEASUREMENT_GetResult
+ADC_MEASUREMENT_0
 UART_0
+ADC_MEASUREMENT_Channel_A_handle
 UART_Receive

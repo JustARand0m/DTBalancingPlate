@@ -41,7 +41,16 @@ main.o main.d main.o: ../main.c \
  G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/CPU_CTRL_XMC4/cpu_ctrl_xmc4_extern.h \
  G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/INTERRUPT/interrupt.h \
  G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/INTERRUPT/interrupt_conf.h \
- G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/INTERRUPT/interrupt_extern.h
+ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/INTERRUPT/interrupt_extern.h \
+ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_ADC/global_adc.h \
+ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_vadc.h \
+ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_vadc_map.h \
+ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_ADC/global_adc_conf.h \
+ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_ADC/global_adc_extern.h \
+ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/ADC_MEASUREMENT/adc_measurement.h \
+ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_ADC/global_adc.h \
+ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.h \
+ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/ADC_MEASUREMENT/ADC_MEASUREMENT_Extern.h
 
 G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DAVE.h:
 
@@ -128,3 +137,21 @@ G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/INTERRUPT/interrupt.
 G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/INTERRUPT/interrupt_conf.h:
 
 G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/INTERRUPT/interrupt_extern.h:
+
+G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_ADC/global_adc.h:
+
+G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_vadc.h:
+
+G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_vadc_map.h:
+
+G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_ADC/global_adc_conf.h:
+
+G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_ADC/global_adc_extern.h:
+
+G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/ADC_MEASUREMENT/adc_measurement.h:
+
+G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_ADC/global_adc.h:
+
+G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.h:
+
+G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/ADC_MEASUREMENT/ADC_MEASUREMENT_Extern.h:

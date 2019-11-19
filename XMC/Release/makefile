@@ -15,8 +15,10 @@ RM := rm -rf
 -include Dave/Generated/PWM/subdir.mk
 -include Dave/Generated/INTERRUPT/subdir.mk
 -include Dave/Generated/GLOBAL_CCU4/subdir.mk
+-include Dave/Generated/GLOBAL_ADC/subdir.mk
 -include Dave/Generated/CPU_CTRL_XMC4/subdir.mk
 -include Dave/Generated/CLOCK_XMC4/subdir.mk
+-include Dave/Generated/ADC_MEASUREMENT/subdir.mk
 -include Dave/Generated/subdir.mk
 -include subdir.mk
 -include objects.mk

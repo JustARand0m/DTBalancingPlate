@@ -43,11 +43,12 @@ void busy_waitMs(int ms)
 
 uint8_t read_data[BUFFERSIZE];
 uint8_t testdata[] = "testdata";
+uint32_t touchPanelResult;
 
 int main(void)
 {
   DAVE_STATUS_t status;
-  uint8_t init_data[] = "startasfdasfdasfsadfasdfsafdasfdsadfasdfsadfasf";
+  uint8_t init_data[] = "start";
 
   memset(read_data, 0, BUFFERSIZE);
   status = DAVE_Init();           /* Initialization of DAVE APPs  */
@@ -64,6 +65,7 @@ int main(void)
   }
 
   /* Placeholder for user application code. The while loop below can be replaced with user application code. */
+  ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
 
   // Minimal position 450  ^ 4,5  duty ^ 0,9ms
   // Neutral position 750  ^ 7,5  duty ^ 1,5ms
@@ -85,7 +87,10 @@ int main(void)
 		  busy_waitMs(20);
 	  }
 		*/
-	  busy_waitMs(100);
+	  busy_waitMs(1000);
+	  touchPanelResult = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A_handle);
+	  busy_waitMs(1000);
+	  UART_Transmit(&UART_0, &touchPanelResult, 8);
 	  /*UART_Receive(&UART_0, read_data, BUFFERSIZE);
 	  if(read_data[0] != '\0') {
 		  busy_waitMs(5000);
