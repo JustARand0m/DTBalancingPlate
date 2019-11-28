@@ -92,6 +92,7 @@
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.21" target="//@nodes.7"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.24" target="//@nodes.1"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.25" target="//@nodes.24"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.25" target="//@nodes.7"/>
   <hwConnections href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_0.app#//@connections.0"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.0"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.5"/>
@@ -184,4 +185,5 @@
   <hwConnections href="APPS/ADC_MEASUREMENT/v4_1_22/ADC_MEASUREMENT_0.app#//@connections.53"/>
   <hwConnections href="APPS/ADC_MEASUREMENT/v4_1_22/ADC_MEASUREMENT_0.app#//@connections.54"/>
   <hwConnections href="APPS/ADC_MEASUREMENT/v4_1_22/ADC_MEASUREMENT_0.app#//@connections.106"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT/v4_1_22/ADC_MEASUREMENT_0.app#//@connections.52"/>
 </ApplicationModel:ApplicationData>

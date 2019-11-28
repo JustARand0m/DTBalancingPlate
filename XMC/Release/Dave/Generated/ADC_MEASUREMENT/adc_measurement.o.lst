@@ -7406,7 +7406,7 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.xmc_vadc_map.h.62.9df0d76d5c18106393e06548a14f52be
                            .group:00000000 wm4.xmc_vadc.h.237.61ed5fbd33c6c067453e9298502ec2a9
                            .group:00000000 wm4.global_adc_conf.h.79.ad3d3c9f6f306cd3e989ca81b8da07e7
-                           .group:00000000 wm4.adc_measurement_conf.h.92.245900a401907c63e95c2c2d32c6ae56
+                           .group:00000000 wm4.adc_measurement_conf.h.92.f7315bd62d909637461317a14b7472a9
                            .group:00000000 wm4.adc_measurement.h.114.7294eeab9e0acd8ff18f74e708162a72
 
 UNDEFINED SYMBOLS

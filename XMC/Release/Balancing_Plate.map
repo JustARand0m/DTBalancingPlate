@@ -4896,7 +4896,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x272 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
  .debug_macro   0x00000000       0x74 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
  .debug_macro   0x00000000       0x2e ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
- .debug_macro   0x00000000       0x34 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+ .debug_macro   0x00000000       0x40 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
  .debug_macro   0x00000000       0x10 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
  .comment       0x00000000       0x71 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
  .group         0x00000000        0x8 ./Dave/Generated/DAVE.o
@@ -4996,7 +4996,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x272 ./Dave/Generated/DAVE.o
  .debug_macro   0x00000000       0x74 ./Dave/Generated/DAVE.o
  .debug_macro   0x00000000       0x2e ./Dave/Generated/DAVE.o
- .debug_macro   0x00000000       0x34 ./Dave/Generated/DAVE.o
+ .debug_macro   0x00000000       0x40 ./Dave/Generated/DAVE.o
  .debug_macro   0x00000000       0x10 ./Dave/Generated/DAVE.o
  .comment       0x00000000       0x71 ./Dave/Generated/DAVE.o
  .group         0x00000000        0x8 ./main.o
@@ -5099,7 +5099,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x272 ./main.o
  .debug_macro   0x00000000       0x74 ./main.o
  .debug_macro   0x00000000       0x2e ./main.o
- .debug_macro   0x00000000       0x34 ./main.o
+ .debug_macro   0x00000000       0x40 ./main.o
  .debug_macro   0x00000000       0x10 ./main.o
  .comment       0x00000000       0x71 ./main.o
  .text          0x00000000        0x0 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-errno.o)
@@ -5216,7 +5216,7 @@ END GROUP
                 0x00000800                stack_size = DEFINED (stack_size)?stack_size:0x800
                 0x00000040                no_init_size = 0x40
 
-.text           0x08000000     0x17d8 load address 0x0c000000
+.text           0x08000000     0x1808 load address 0x0c000000
                 0x08000000                sText = .
  *(.reset)
  .reset         0x08000000      0x2b4 ./Startup/startup_XMC4500.o
@@ -5307,7 +5307,6 @@ END GROUP
                 0x080002b0                ETH0_0_IRQHandler
                 0x080002b0                USIC0_3_IRQHandler
                 0x080002b0                DSD0_0_IRQHandler
-                0x080002b0                VADC0_C0_2_IRQHandler
                 0x080002b0                CCU42_0_IRQHandler
                 0x080002b0                FCE0_0_IRQHandler
                 0x080002b0                VADC0_G1_0_IRQHandler
@@ -5574,14 +5573,17 @@ END GROUP
  .text.startup.main
                 0x080014ec       0x6c ./main.o
                 0x080014ec                main
+ .text.VADC0_C0_2_IRQHandler
+                0x08001558       0x24 ./main.o
+                0x08001558                VADC0_C0_2_IRQHandler
  .text.USIC0_5_IRQHandler
-                0x08001558       0x38 ./main.o
-                0x08001558                USIC0_5_IRQHandler
+                0x0800157c       0x38 ./main.o
+                0x0800157c                USIC0_5_IRQHandler
  .text.__libc_init_array
-                0x08001590       0x50 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-init.o)
-                0x08001590                __libc_init_array
- .text.memset   0x080015e0       0x9c c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
-                0x080015e0                memset
+                0x080015b4       0x50 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-init.o)
+                0x080015b4                __libc_init_array
+ .text.memset   0x08001604       0x9c c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
+                0x08001604                memset
  *(.init)
  *(.fini)
  *crtbegin.o(.ctors)
@@ -5596,93 +5598,96 @@ END GROUP
  *(.dtors)
  *(.rodata .rodata.*)
  .rodata.CSWTCH.36
-                0x0800167c        0xa ./Libraries/XMCLib/src/xmc_ccu4.o
+                0x080016a0        0xa ./Libraries/XMCLib/src/xmc_ccu4.o
  .rodata.CSWTCH.37
-                0x08001686       0x14 ./Libraries/XMCLib/src/xmc_ccu4.o
- *fill*         0x0800169a        0x2 
+                0x080016aa       0x14 ./Libraries/XMCLib/src/xmc_ccu4.o
+ *fill*         0x080016be        0x2 
  .rodata.g_xmc_vadc_group_array
-                0x0800169c       0x10 ./Libraries/XMCLib/src/xmc_vadc.o
+                0x080016c0       0x10 ./Libraries/XMCLib/src/xmc_vadc.o
  .rodata.UART_0_config
-                0x080016ac       0x28 ./Dave/Generated/UART/uart_conf.o
-                0x080016ac                UART_0_config
+                0x080016d0       0x28 ./Dave/Generated/UART/uart_conf.o
+                0x080016d0                UART_0_config
  .rodata.UART_0_rx_pin_config
-                0x080016d4        0xc ./Dave/Generated/UART/uart_conf.o
-                0x080016d4                UART_0_rx_pin_config
- .rodata.UART_0_tx_pin
-                0x080016e0        0xc ./Dave/Generated/UART/uart_conf.o
-                0x080016e0                UART_0_tx_pin
- .rodata.UART_0_tx_pin_config
-                0x080016ec        0xc ./Dave/Generated/UART/uart_conf.o
-                0x080016ec                UART_0_tx_pin_config
- .rodata.UART_0_channel_config
                 0x080016f8        0xc ./Dave/Generated/UART/uart_conf.o
-                0x080016f8                UART_0_channel_config
+                0x080016f8                UART_0_rx_pin_config
+ .rodata.UART_0_tx_pin
+                0x08001704        0xc ./Dave/Generated/UART/uart_conf.o
+                0x08001704                UART_0_tx_pin
+ .rodata.UART_0_tx_pin_config
+                0x08001710        0xc ./Dave/Generated/UART/uart_conf.o
+                0x08001710                UART_0_tx_pin_config
+ .rodata.UART_0_channel_config
+                0x0800171c        0xc ./Dave/Generated/UART/uart_conf.o
+                0x0800171c                UART_0_channel_config
  .rodata.PWM_MOTOR_1_gpio_out_config
-                0x08001704        0xc ./Dave/Generated/PWM/pwm_conf.o
-                0x08001704                PWM_MOTOR_1_gpio_out_config
+                0x08001728        0xc ./Dave/Generated/PWM/pwm_conf.o
+                0x08001728                PWM_MOTOR_1_gpio_out_config
  .rodata.PWM_MOTOR_2_compare_config
-                0x08001710        0x8 ./Dave/Generated/PWM/pwm_conf.o
-                0x08001710                PWM_MOTOR_2_compare_config
+                0x08001734        0x8 ./Dave/Generated/PWM/pwm_conf.o
+                0x08001734                PWM_MOTOR_2_compare_config
  .rodata.PWM_MOTOR_0_gpio_out_config
-                0x08001718        0xc ./Dave/Generated/PWM/pwm_conf.o
-                0x08001718                PWM_MOTOR_0_gpio_out_config
+                0x0800173c        0xc ./Dave/Generated/PWM/pwm_conf.o
+                0x0800173c                PWM_MOTOR_0_gpio_out_config
  .rodata.PWM_MOTOR_0_compare_config
-                0x08001724        0x8 ./Dave/Generated/PWM/pwm_conf.o
-                0x08001724                PWM_MOTOR_0_compare_config
+                0x08001748        0x8 ./Dave/Generated/PWM/pwm_conf.o
+                0x08001748                PWM_MOTOR_0_compare_config
  .rodata.PWM_MOTOR_2_gpio_out_config
-                0x0800172c        0xc ./Dave/Generated/PWM/pwm_conf.o
-                0x0800172c                PWM_MOTOR_2_gpio_out_config
+                0x08001750        0xc ./Dave/Generated/PWM/pwm_conf.o
+                0x08001750                PWM_MOTOR_2_gpio_out_config
  .rodata.PWM_MOTOR_1_compare_config
-                0x08001738        0x8 ./Dave/Generated/PWM/pwm_conf.o
-                0x08001738                PWM_MOTOR_1_compare_config
+                0x0800175c        0x8 ./Dave/Generated/PWM/pwm_conf.o
+                0x0800175c                PWM_MOTOR_1_compare_config
  .rodata.UART_ISR
-                0x08001740        0x4 ./Dave/Generated/INTERRUPT/interrupt_conf.o
-                0x08001740                UART_ISR
+                0x08001764        0x4 ./Dave/Generated/INTERRUPT/interrupt_conf.o
+                0x08001764                UART_ISR
  .rodata.group_init_handle0
-                0x08001744       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
-                0x08001744                group_init_handle0
+                0x08001768       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
+                0x08001768                group_init_handle0
  .rodata.group_init_handle1
-                0x08001758       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
-                0x08001758                group_init_handle1
+                0x0800177c       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
+                0x0800177c                group_init_handle1
  .rodata.group_init_handle3
-                0x0800176c       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
-                0x0800176c                group_init_handle3
+                0x08001790       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
+                0x08001790                group_init_handle3
  .rodata.global_config
-                0x08001780       0x18 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
-                0x08001780                global_config
+                0x080017a4       0x18 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
+                0x080017a4                global_config
  .rodata.group_init_handle2
-                0x08001798       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
-                0x08001798                group_init_handle2
- .rodata        0x080017ac       0x14 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
+                0x080017bc       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
+                0x080017bc                group_init_handle2
+ .rodata        0x080017d0       0x14 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
+ .rodata.backgnd_rs_intr_handle
+                0x080017e4        0xc ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+                0x080017e4                backgnd_rs_intr_handle
  .rodata.backgnd_config
-                0x080017c0        0xc ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
-                0x080017c0                backgnd_config
+                0x080017f0        0xc ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+                0x080017f0                backgnd_config
  .rodata.global_iclass_config
-                0x080017cc        0x4 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
-                0x080017cc                global_iclass_config
+                0x080017fc        0x4 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+                0x080017fc                global_iclass_config
  .rodata.str1.1
-                0x080017d0        0x6 ./main.o
+                0x08001800        0x6 ./main.o
  *(.gnu.linkonce.r*)
  *(vtable)
-                0x080017d8                . = ALIGN (0x4)
- *fill*         0x080017d6        0x2 
+                0x08001808                . = ALIGN (0x4)
+ *fill*         0x08001806        0x2 
 
-.glue_7         0x080017d8        0x0 load address 0x0c0017d8
+.glue_7         0x08001808        0x0 load address 0x0c001808
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x080017d8        0x0 load address 0x0c0017d8
+.glue_7t        0x08001808        0x0 load address 0x0c001808
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x080017d8        0x0 load address 0x0c0017d8
+.vfp11_veneer   0x08001808        0x0 load address 0x0c001808
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x080017d8        0x0 load address 0x0c0017d8
+.v4_bx          0x08001808        0x0 load address 0x0c001808
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x080017d8        0x0 load address 0x0c0017d8
+.iplt           0x08001808        0x0 load address 0x0c001808
  .iplt          0x00000000        0x0 ./Startup/startup_XMC4500.o
 
-.rel.dyn        0x080017d8        0x0 load address 0x0c0017d8
+.rel.dyn        0x08001808        0x0 load address 0x0c001808
  .rel.iplt      0x00000000        0x0 ./Startup/startup_XMC4500.o
 
 .eh_frame_hdr
@@ -5693,13 +5698,13 @@ END GROUP
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x080017d8                . = ALIGN (0x4)
-                0x080017d8                __exidx_start = .
+                0x08001808                . = ALIGN (0x4)
+                0x08001808                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x080017d8                __exidx_end = .
-                0x080017d8                . = ALIGN (0x4)
+                0x08001808                __exidx_end = .
+                0x08001808                . = ALIGN (0x4)
 
 Stack           0x10000000      0x800
                 0x10000000                __stack_start = .
@@ -5708,25 +5713,25 @@ Stack           0x10000000      0x800
                 0x10000800                __stack_end = .
                 0x10000800                __initial_sp = .
 
-.ram_code       0x10000800        0x0 load address 0x0c0017d8
+.ram_code       0x10000800        0x0 load address 0x0c001808
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __ram_code_start = .
  *(.ram_code)
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __ram_code_end = .
-                0x0c0017d8                __ram_code_load = LOADADDR (.ram_code)
+                0x0c001808                __ram_code_load = LOADADDR (.ram_code)
                 0x00000000                __ram_code_size = (__ram_code_end - __ram_code_start)
 
-PSRAM_DATA      0x10000800        0x0 load address 0x0c0017d8
+PSRAM_DATA      0x10000800        0x0 load address 0x0c001808
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __data3_start = .
  *(PSRAM_DATA)
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __data3_end = .
-                0x0c0017d8                __data3_load = LOADADDR (PSRAM_DATA)
+                0x0c001808                __data3_load = LOADADDR (PSRAM_DATA)
                 0x00000000                __data3_size = (__data3_end - __data3_start)
 
-PSRAM_BSS       0x10000800        0x0 load address 0x0c0017d8
+PSRAM_BSS       0x10000800        0x0 load address 0x0c001808
                 0x10000800                . = ALIGN (0x4)
                 0x10000800                __bss3_start = .
  *(PSRAM_BSS)
@@ -5736,7 +5741,7 @@ PSRAM_BSS       0x10000800        0x0 load address 0x0c0017d8
                 0x10000800                Heap_Bank3_Start = .
                 0x00000000                __bss3_size = (__bss3_end - __bss3_start)
 
-.data           0x20000000      0x140 load address 0x0c0017d8
+.data           0x20000000      0x140 load address 0x0c001808
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                __data_start = .
  *(.data)
@@ -5800,13 +5805,13 @@ PSRAM_BSS       0x10000800        0x0 load address 0x0c0017d8
                 0x20000140                PROVIDE (__fini_array_end, .)
                 0x20000140                . = ALIGN (0x4)
                 0x20000140                __data_end = .
-                0x0c0017d8                __data_load = LOADADDR (.data)
+                0x0c001808                __data_load = LOADADDR (.data)
                 0x00000140                __data_size = (__data_end - __data_start)
 
-.igot.plt       0x20000140        0x0 load address 0x0c001918
+.igot.plt       0x20000140        0x0 load address 0x0c001948
  .igot.plt      0x00000000        0x0 ./Startup/startup_XMC4500.o
 
-.bss            0x20000140      0x428 load address 0x0c001918
+.bss            0x20000140      0x430 load address 0x0c001948
                 0x20000140                . = ALIGN (0x4)
                 0x20000140                __bss_start = .
  *(.bss)
@@ -5821,16 +5826,20 @@ PSRAM_BSS       0x10000800        0x0 load address 0x0c0017d8
  .bss.Channel_A_res_config
                 0x20000160        0x4 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
                 0x20000160                Channel_A_res_config
+ .bss.result_Channel_A.10070
+                0x20000164        0x2 ./main.o
  *(COMMON)
- COMMON         0x20000164      0x404 ./main.o
-                0x20000164                touchPanelResult
-                0x20000168                read_data
+ *fill*         0x20000166        0x2 
+ COMMON         0x20000168      0x404 ./main.o
+                0x20000168                touchPanelResult
+                0x2000016c                read_data
  *(.gnu.linkonce.b*)
-                0x20000568                . = ALIGN (0x4)
-                0x20000568                __bss_end = .
-                0x20000568                . = ALIGN (0x8)
-                0x20000568                Heap_Bank1_Start = .
-                0x00000428                __bss_size = (__bss_end - __bss_start)
+                0x2000056c                . = ALIGN (0x4)
+                0x2000056c                __bss_end = .
+                0x20000570                . = ALIGN (0x8)
+ *fill*         0x2000056c        0x4 
+                0x20000570                Heap_Bank1_Start = .
+                0x0000042c                __bss_size = (__bss_end - __bss_start)
 
 .no_init        0x2000ffc0       0x14
                 0x2000ffc0                Heap_Bank1_End = .
@@ -5839,18 +5848,18 @@ PSRAM_BSS       0x10000800        0x0 load address 0x0c0017d8
                 0x2000ffc0                SystemCoreClock
                 0x2000ffc4                g_chipid
 
-DSRAM2_DATA     0x30000000        0x0 load address 0x0c001918
+DSRAM2_DATA     0x30000000        0x0 load address 0x0c001948
                 0x30000000                . = ALIGN (0x4)
                 0x30000000                __data2_start = .
  *(DSRAM2_DATA)
                 0x30000000                . = ALIGN (0x4)
                 0x30000000                __data2_end = .
-                0x0c001918                __data2_load = LOADADDR (DSRAM2_DATA)
+                0x0c001948                __data2_load = LOADADDR (DSRAM2_DATA)
                 0x00000000                __data2_size = (__data2_end - __data2_start)
-                0x00001918                __text_size = (((((__exidx_end - sText) + __data_size) + __ram_code_size) + __data2_size) + __data3_size)
-                0x08001918                eText = (sText + __text_size)
+                0x00001948                __text_size = (((((__exidx_end - sText) + __data_size) + __ram_code_size) + __data2_size) + __data3_size)
+                0x08001948                eText = (sText + __text_size)
 
-DSRAM2_BSS      0x30000000        0x0 load address 0x0c001918
+DSRAM2_BSS      0x30000000        0x0 load address 0x0c001948
                 0x30000000                . = ALIGN (0x4)
                 0x30000000                __bss2_start = .
  *(ETH_RAM)
@@ -5861,7 +5870,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c001918
                 0x30000000                . = ALIGN (0x8)
                 0x30000000                Heap_Bank2_Start = .
                 0x00000000                __bss2_size = (__bss2_end - __bss2_start)
-                0x0000fa58                Heap_Bank1_Size = (Heap_Bank1_End - Heap_Bank1_Start)
+                0x0000fa50                Heap_Bank1_Size = (Heap_Bank1_End - Heap_Bank1_Start)
                 0x00008000                Heap_Bank2_Size = (0x8000 - (Heap_Bank2_Start - ORIGIN (DSRAM_2_comm)))
                 0x0000f800                Heap_Bank3_Size = (0x10000 - (Heap_Bank3_Start - ORIGIN (PSRAM_1)))
                 0x00000001                ASSERT ((Heap_Bank1_Start <= Heap_Bank1_End), region SRAM_combined overflowed no_init section)
@@ -5887,7 +5896,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c001918
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0xb98
+.debug_aranges  0x00000000      0xba0
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x20 ./Startup/startup_XMC4500.o
@@ -5940,7 +5949,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c001918
  .debug_aranges
                 0x00000b48       0x20 ./Dave/Generated/DAVE.o
  .debug_aranges
-                0x00000b68       0x30 ./main.o
+                0x00000b68       0x38 ./main.o
 
 .debug_pubnames
  *(.debug_pubnames)
@@ -5948,7 +5957,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c001918
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_info     0x00000000    0x19e0b
+.debug_info     0x00000000    0x19e5c
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000       0x7a ./Startup/startup_XMC4500.o
  .debug_info    0x0000007a      0x95b ./Startup/system_XMC4500.o
@@ -5973,11 +5982,11 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c001918
  .debug_info    0x00011473      0x252 ./Dave/Generated/CLOCK_XMC4/clock_xmc4.o
  .debug_info    0x000116c5      0x510 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .debug_info    0x00011bd5     0x1fbc ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .debug_info    0x00013b91     0x177b ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
- .debug_info    0x0001530c     0x29e5 ./Dave/Generated/DAVE.o
- .debug_info    0x00017cf1     0x211a ./main.o
+ .debug_info    0x00013b91     0x178d ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+ .debug_info    0x0001531e     0x29e5 ./Dave/Generated/DAVE.o
+ .debug_info    0x00017d03     0x2159 ./main.o
 
-.debug_abbrev   0x00000000     0x3758
+.debug_abbrev   0x00000000     0x3766
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0x14 ./Startup/startup_XMC4500.o
  .debug_abbrev  0x00000014      0x1bf ./Startup/system_XMC4500.o
@@ -6004,9 +6013,9 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c001918
  .debug_abbrev  0x00002d2b      0x373 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
  .debug_abbrev  0x0000309e      0x17e ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
  .debug_abbrev  0x0000321c      0x236 ./Dave/Generated/DAVE.o
- .debug_abbrev  0x00003452      0x306 ./main.o
+ .debug_abbrev  0x00003452      0x314 ./main.o
 
-.debug_line     0x00000000     0x9e69
+.debug_line     0x00000000     0x9e7d
  *(.debug_line)
  .debug_line    0x00000000       0x88 ./Startup/startup_XMC4500.o
  .debug_line    0x00000088      0x4af ./Startup/system_XMC4500.o
@@ -6033,9 +6042,9 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c001918
  .debug_line    0x00008036      0x695 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
  .debug_line    0x000086cb      0x578 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
  .debug_line    0x00008c43      0x8a9 ./Dave/Generated/DAVE.o
- .debug_line    0x000094ec      0x97d ./main.o
+ .debug_line    0x000094ec      0x991 ./main.o
 
-.debug_frame    0x00000000     0x1980
+.debug_frame    0x00000000     0x19a0
  *(.debug_frame)
  .debug_frame   0x00000000       0xa4 ./Startup/system_XMC4500.o
  .debug_frame   0x000000a4       0x50 ./Libraries/XMCLib/src/xmc4_gpio.o
@@ -6056,11 +6065,11 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c001918
  .debug_frame   0x000017d0       0x34 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .debug_frame   0x00001804       0x80 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
  .debug_frame   0x00001884       0x34 ./Dave/Generated/DAVE.o
- .debug_frame   0x000018b8       0x68 ./main.o
- .debug_frame   0x00001920       0x2c c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-init.o)
- .debug_frame   0x0000194c       0x34 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
+ .debug_frame   0x000018b8       0x88 ./main.o
+ .debug_frame   0x00001940       0x2c c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-init.o)
+ .debug_frame   0x0000196c       0x34 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
 
-.debug_str      0x00000000    0x82715
+.debug_str      0x00000000    0x82779
  *(.debug_str)
  .debug_str     0x00000000    0x6f78d ./Startup/system_XMC4500.o
                               0x6fa3a (size before relaxing)
@@ -6104,16 +6113,16 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c001918
                               0x735a1 (size before relaxing)
  .debug_str     0x00081d97       0x50 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
                               0x73a96 (size before relaxing)
- .debug_str     0x00081de7      0x5b3 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
-                              0x720e3 (size before relaxing)
- .debug_str     0x0008239a      0x2b1 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
-                              0x71f86 (size before relaxing)
- .debug_str     0x0008264b       0x6f ./Dave/Generated/DAVE.o
-                              0x7985a (size before relaxing)
- .debug_str     0x000826ba       0x5b ./main.o
-                              0x78d56 (size before relaxing)
+ .debug_str     0x00081de7      0x5ef ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+                              0x7211f (size before relaxing)
+ .debug_str     0x000823d6      0x2c8 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+                              0x71fd9 (size before relaxing)
+ .debug_str     0x0008269e       0x6f ./Dave/Generated/DAVE.o
+                              0x79896 (size before relaxing)
+ .debug_str     0x0008270d       0x6c ./main.o
+                              0x78db9 (size before relaxing)
 
-.debug_loc      0x00000000     0x6018
+.debug_loc      0x00000000     0x6044
  *(.debug_loc)
  .debug_loc     0x00000000      0x15a ./Startup/system_XMC4500.o
  .debug_loc     0x0000015a      0x11f ./Libraries/XMCLib/src/xmc4_gpio.o
@@ -6134,12 +6143,12 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c001918
  .debug_loc     0x00005b9a       0x38 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .debug_loc     0x00005bd2      0x2f7 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
  .debug_loc     0x00005ec9       0x99 ./Dave/Generated/DAVE.o
- .debug_loc     0x00005f62       0xb6 ./main.o
+ .debug_loc     0x00005f62       0xe2 ./main.o
 
 .debug_macinfo
  *(.debug_macinfo)
 
-.debug_ranges   0x00000000      0xc88
+.debug_ranges   0x00000000      0xc90
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x38 ./Startup/system_XMC4500.o
  .debug_ranges  0x00000038       0x18 ./Libraries/XMCLib/src/xmc4_gpio.o
@@ -6160,7 +6169,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c001918
  .debug_ranges  0x00000ba0       0x10 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .debug_ranges  0x00000bb0       0xa8 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
  .debug_ranges  0x00000c58       0x10 ./Dave/Generated/DAVE.o
- .debug_ranges  0x00000c68       0x20 ./main.o
+ .debug_ranges  0x00000c68       0x28 ./main.o
 
 .debug_weaknames
  *(.debug_weaknames)
@@ -6235,7 +6244,7 @@ DSRAM2_BSS      0x30000000        0x0 load address 0x0c001918
                 0x000005b6       0x32 c:/program files/dave_4/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg.a(lib_a-memset.o)
 OUTPUT(Balancing_Plate.elf elf32-littlearm)
 
-.debug_macro    0x00000000    0x1b5cf
+.debug_macro    0x00000000    0x1b5db
  .debug_macro   0x00000000      0x2ed ./Startup/system_XMC4500.o
  .debug_macro   0x000002ed      0x886 ./Startup/system_XMC4500.o
  .debug_macro   0x00000b73       0x58 ./Startup/system_XMC4500.o
@@ -6298,8 +6307,8 @@ OUTPUT(Balancing_Plate.elf elf32-littlearm)
  .debug_macro   0x0001a8f0       0x46 ./Dave/Generated/CLOCK_XMC4/clock_xmc4.o
  .debug_macro   0x0001a936      0x1e5 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .debug_macro   0x0001ab1b      0x1fd ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .debug_macro   0x0001ad18       0x34 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .debug_macro   0x0001ad4c       0x10 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .debug_macro   0x0001ad5c      0x1fd ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
- .debug_macro   0x0001af59      0x338 ./Dave/Generated/DAVE.o
- .debug_macro   0x0001b291      0x33e ./main.o
+ .debug_macro   0x0001ad18       0x40 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .debug_macro   0x0001ad58       0x10 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .debug_macro   0x0001ad68      0x1fd ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+ .debug_macro   0x0001af65      0x338 ./Dave/Generated/DAVE.o
+ .debug_macro   0x0001b29d      0x33e ./main.o

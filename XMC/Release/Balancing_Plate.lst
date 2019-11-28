@@ -3,35 +3,35 @@ Balancing_Plate.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000017d8  08000000  0c000000  00008000  2**2
+  0 .text         00001808  08000000  0c000000  00008000  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   1 Stack         00000800  10000000  10000000  00018000  2**0
                   ALLOC
-  2 .data         00000140  20000000  0c0017d8  00010000  2**2
+  2 .data         00000140  20000000  0c001808  00010000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  3 .bss          00000428  20000140  0c001918  00010140  2**2
+  3 .bss          00000430  20000140  0c001948  00010140  2**2
                   ALLOC
   4 .no_init      00000014  2000ffc0  2000ffc0  00017fc0  2**2
                   ALLOC
-  5 .debug_aranges 00000b98  00000000  00000000  00010140  2**3
+  5 .debug_aranges 00000ba0  00000000  00000000  00010140  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00019e0b  00000000  00000000  00010cd8  2**0
+  6 .debug_info   00019e5c  00000000  00000000  00010ce0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00003758  00000000  00000000  0002aae3  2**0
+  7 .debug_abbrev 00003766  00000000  00000000  0002ab3c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00009e69  00000000  00000000  0002e23b  2**0
+  8 .debug_line   00009e7d  00000000  00000000  0002e2a2  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00001980  00000000  00000000  000380a4  2**2
+  9 .debug_frame  000019a0  00000000  00000000  00038120  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00082715  00000000  00000000  00039a24  2**0
+ 10 .debug_str    00082779  00000000  00000000  00039ac0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00006018  00000000  00000000  000bc139  2**0
+ 11 .debug_loc    00006044  00000000  00000000  000bc239  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000c88  00000000  00000000  000c2151  2**0
+ 12 .debug_ranges 00000c90  00000000  00000000  000c227d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .build_attributes 000005e8  00000000  00000000  000c2dd9  2**0
+ 13 .build_attributes 000005e8  00000000  00000000  000c2f0d  2**0
                   CONTENTS, READONLY
- 14 .debug_macro  0001b5cf  00000000  00000000  000c33c1  2**0
+ 14 .debug_macro  0001b5db  00000000  00000000  000c34f5  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -45,7 +45,7 @@ Disassembly of section .text:
  800004c:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  800005c:	b1 02 00 08 b1 02 00 08 00 00 00 00 00 00 00 00     ................
  800006c:	00 00 00 00 b1 02 00 08 00 00 00 00 b1 02 00 08     ................
- 800007c:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
+ 800007c:	b1 02 00 08 59 15 00 08 b1 02 00 08 b1 02 00 08     ....Y...........
  800008c:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  800009c:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  80000ac:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
@@ -63,7 +63,7 @@ Disassembly of section .text:
  800016c:	00 00 00 00 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  800017c:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  800018c:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
- 800019c:	b1 02 00 08 b1 02 00 08 59 15 00 08 b1 02 00 08     ........Y.......
+ 800019c:	b1 02 00 08 b1 02 00 08 7d 15 00 08 b1 02 00 08     ........}.......
  80001ac:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  80001bc:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  80001cc:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
@@ -176,22 +176,22 @@ Disassembly of section .text:
 	...
 
 08000248 <__copy_table_start__>:
- 8000248:	0c0017d8 	.word	0x0c0017d8
+ 8000248:	0c001808 	.word	0x0c001808
  800024c:	20000000 	.word	0x20000000
  8000250:	00000140 	.word	0x00000140
- 8000254:	0c001918 	.word	0x0c001918
+ 8000254:	0c001948 	.word	0x0c001948
  8000258:	30000000 	.word	0x30000000
  800025c:	00000000 	.word	0x00000000
- 8000260:	0c0017d8 	.word	0x0c0017d8
+ 8000260:	0c001808 	.word	0x0c001808
  8000264:	10000800 	.word	0x10000800
  8000268:	00000000 	.word	0x00000000
- 800026c:	0c0017d8 	.word	0x0c0017d8
+ 800026c:	0c001808 	.word	0x0c001808
  8000270:	10000800 	.word	0x10000800
  8000274:	00000000 	.word	0x00000000
 
 08000278 <__copy_table_end__>:
  8000278:	20000140 	.word	0x20000140
- 800027c:	00000428 	.word	0x00000428
+ 800027c:	0000042c 	.word	0x0000042c
  8000280:	30000000 	.word	0x30000000
  8000284:	00000000 	.word	0x00000000
  8000288:	10000800 	.word	0x10000800
@@ -233,7 +233,7 @@ Disassembly of section .text:
    
 #ifndef __SKIP_LIBC_INIT_ARRAY
     ldr  r0, =__libc_init_array
- 80002a8:	08001591 	.word	0x08001591
+ 80002a8:	080015b5 	.word	0x080015b5
     blx  r0
 #endif
 
@@ -1984,8 +1984,8 @@ void XMC_CCU4_SLICE_SetInterruptNode(XMC_CCU4_SLICE_t *const slice,
  800098c:	f8c0 20a8 	str.w	r2, [r0, #168]	; 0xa8
  8000990:	bd30      	pop	{r4, r5, pc}
  8000992:	bf00      	nop
- 8000994:	0800167c 	.word	0x0800167c
- 8000998:	08001686 	.word	0x08001686
+ 8000994:	080016a0 	.word	0x080016a0
+ 8000998:	080016aa 	.word	0x080016aa
 
 0800099c <XMC_UART_CH_Init>:
 /*********************************************************************************************************************
@@ -2881,7 +2881,7 @@ void XMC_VADC_GLOBAL_InputClassInit(XMC_VADC_GLOBAL_t *const global_ptr, const X
 }
  8000cb4:	4770      	bx	lr
  8000cb6:	bf00      	nop
- 8000cb8:	0800169c 	.word	0x0800169c
+ 8000cb8:	080016c0 	.word	0x080016c0
 
 08000cbc <XMC_VADC_GLOBAL_BackgroundSetReqSrcEventInterruptNode>:
   else
@@ -3298,7 +3298,7 @@ __STATIC_INLINE void XMC_VADC_GROUP_BackgroundEnableArbitrationSlot(XMC_VADC_GRO
  8000e70:	bdf0      	pop	{r4, r5, r6, r7, pc}
  8000e72:	bf00      	nop
  8000e74:	40004400 	.word	0x40004400
- 8000e78:	0800169c 	.word	0x0800169c
+ 8000e78:	080016c0 	.word	0x080016c0
 
 08000e7c <XMC_VADC_GROUP_ChannelInit>:
 
@@ -3834,9 +3834,9 @@ __STATIC_INLINE void XMC_USIC_CH_EnableEvent(XMC_USIC_CH_t *const channel, const
  800102a:	bf00      	nop
  800102c:	48028100 	.word	0x48028100
  8001030:	40030000 	.word	0x40030000
- 8001034:	080016d4 	.word	0x080016d4
- 8001038:	080016f8 	.word	0x080016f8
- 800103c:	080016ec 	.word	0x080016ec
+ 8001034:	080016f8 	.word	0x080016f8
+ 8001038:	0800171c 	.word	0x0800171c
+ 800103c:	08001710 	.word	0x08001710
 
 08001040 <PWM_lCCU4_ConfigInterrupts>:
 
@@ -4695,7 +4695,7 @@ void SystemCoreClockSetup(void)
  8001306:	b007      	add	sp, #28
  8001308:	bd30      	pop	{r4, r5, pc}
  800130a:	bf00      	nop
- 800130c:	080017ac 	.word	0x080017ac
+ 800130c:	080017d0 	.word	0x080017d0
 
 08001310 <ADC_MEASUREMENT_Init>:
 }
@@ -5137,7 +5137,7 @@ __WEAK DAVE_STATUS_t DAVE_Init(void)
  80014b4:	20000000 	.word	0x20000000
  80014b8:	2000000c 	.word	0x2000000c
  80014bc:	20000040 	.word	0x20000040
- 80014c0:	08001740 	.word	0x08001740
+ 80014c0:	08001764 	.word	0x08001764
  80014c4:	20000104 	.word	0x20000104
 
 080014c8 <busy_waitMs>:
@@ -5215,7 +5215,7 @@ int main(void)
   memset(read_data, 0, BUFFERSIZE);
  80014fc:	2100      	movs	r1, #0
  80014fe:	f44f 6280 	mov.w	r2, #1024	; 0x400
- 8001502:	f000 f86d 	bl	80015e0 <memset>
+ 8001502:	f000 f87f 	bl	8001604 <memset>
   status = DAVE_Init();           /* Initialization of DAVE APPs  */
  8001506:	f7ff ffb1 	bl	800146c <DAVE_Init>
 
@@ -5265,229 +5265,265 @@ int main(void)
  800153a:	4621      	mov	r1, r4
  800153c:	2208      	movs	r2, #8
  800153e:	e7ec      	b.n	800151a <main+0x2e>
- 8001540:	080017d0 	.word	0x080017d0
- 8001544:	20000168 	.word	0x20000168
+ 8001540:	08001800 	.word	0x08001800
+ 8001544:	2000016c 	.word	0x2000016c
  8001548:	20000104 	.word	0x20000104
  800154c:	20000000 	.word	0x20000000
  8001550:	20000120 	.word	0x20000120
- 8001554:	20000164 	.word	0x20000164
+ 8001554:	20000168 	.word	0x20000168
 
-08001558 <USIC0_5_IRQHandler>:
-		  memset(read_data, 0, BUFFERSIZE);
-	  }*/
+08001558 <VADC0_C0_2_IRQHandler>:
   }
 }
 int a = 0;
-void DataReceived(void) {
- 8001558:	b538      	push	{r3, r4, r5, lr}
-	UART_Receive(&UART_0, read_data, 8);
- 800155a:	4c0b      	ldr	r4, [pc, #44]	; (8001588 <USIC0_5_IRQHandler+0x30>)
- 800155c:	4d0b      	ldr	r5, [pc, #44]	; (800158c <USIC0_5_IRQHandler+0x34>)
- 800155e:	4621      	mov	r1, r4
- 8001560:	4628      	mov	r0, r5
- 8001562:	2208      	movs	r2, #8
- 8001564:	f7ff fcfa 	bl	8000f5c <UART_Receive>
-	read_data[0] = '1';
- 8001568:	2331      	movs	r3, #49	; 0x31
-	read_data[1] = '1';
-	UART_Transmit(&UART_0, read_data, 8);
- 800156a:	4621      	mov	r1, r4
- 800156c:	4628      	mov	r0, r5
- 800156e:	2208      	movs	r2, #8
-  }
+
+void Adc_Measurement_Handler(void)
+{
+ 8001558:	b508      	push	{r3, lr}
+    static uint16_t result_Channel_A;
+
+    /*Read out conversion results*/
+    result_Channel_A = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A_handle);
+ 800155a:	4805      	ldr	r0, [pc, #20]	; (8001570 <VADC0_C0_2_IRQHandler+0x18>)
+ 800155c:	f7ff ff7b 	bl	8001456 <ADC_MEASUREMENT_GetResult>
+ 8001560:	4b04      	ldr	r3, [pc, #16]	; (8001574 <VADC0_C0_2_IRQHandler+0x1c>)
+ 8001562:	8018      	strh	r0, [r3, #0]
+
+    /*Re-trigger conversion sequence*/
+    ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
+ 8001564:	4804      	ldr	r0, [pc, #16]	; (8001578 <VADC0_C0_2_IRQHandler+0x20>)
+
 }
-int a = 0;
-void DataReceived(void) {
-	UART_Receive(&UART_0, read_data, 8);
-	read_data[0] = '1';
- 8001570:	7023      	strb	r3, [r4, #0]
-	read_data[1] = '1';
- 8001572:	7063      	strb	r3, [r4, #1]
-	UART_Transmit(&UART_0, read_data, 8);
- 8001574:	f7ff fcbb 	bl	8000eee <UART_Transmit>
-	memset(read_data, 0, BUFFERSIZE);
- 8001578:	4620      	mov	r0, r4
- 800157a:	2100      	movs	r1, #0
- 800157c:	f44f 6280 	mov.w	r2, #1024	; 0x400
+ 8001566:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
+
+    /*Read out conversion results*/
+    result_Channel_A = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A_handle);
+
+    /*Re-trigger conversion sequence*/
+    ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
+ 800156a:	f7ff bf6b 	b.w	8001444 <ADC_MEASUREMENT_StartConversion>
+ 800156e:	bf00      	nop
+ 8001570:	20000120 	.word	0x20000120
+ 8001574:	20000164 	.word	0x20000164
+ 8001578:	20000104 	.word	0x20000104
+
+0800157c <USIC0_5_IRQHandler>:
+
 }
- 8001580:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
+
+void DataReceived(void) {
+ 800157c:	b538      	push	{r3, r4, r5, lr}
+	UART_Receive(&UART_0, read_data, 8);
+ 800157e:	4c0b      	ldr	r4, [pc, #44]	; (80015ac <USIC0_5_IRQHandler+0x30>)
+ 8001580:	4d0b      	ldr	r5, [pc, #44]	; (80015b0 <USIC0_5_IRQHandler+0x34>)
+ 8001582:	4621      	mov	r1, r4
+ 8001584:	4628      	mov	r0, r5
+ 8001586:	2208      	movs	r2, #8
+ 8001588:	f7ff fce8 	bl	8000f5c <UART_Receive>
+	read_data[0] = '1';
+ 800158c:	2331      	movs	r3, #49	; 0x31
+	read_data[1] = '1';
+	UART_Transmit(&UART_0, read_data, 8);
+ 800158e:	4621      	mov	r1, r4
+ 8001590:	4628      	mov	r0, r5
+ 8001592:	2208      	movs	r2, #8
+
+}
+
+void DataReceived(void) {
+	UART_Receive(&UART_0, read_data, 8);
+	read_data[0] = '1';
+ 8001594:	7023      	strb	r3, [r4, #0]
+	read_data[1] = '1';
+ 8001596:	7063      	strb	r3, [r4, #1]
+	UART_Transmit(&UART_0, read_data, 8);
+ 8001598:	f7ff fca9 	bl	8000eee <UART_Transmit>
+	memset(read_data, 0, BUFFERSIZE);
+ 800159c:	4620      	mov	r0, r4
+ 800159e:	2100      	movs	r1, #0
+ 80015a0:	f44f 6280 	mov.w	r2, #1024	; 0x400
+}
+ 80015a4:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
 void DataReceived(void) {
 	UART_Receive(&UART_0, read_data, 8);
 	read_data[0] = '1';
 	read_data[1] = '1';
 	UART_Transmit(&UART_0, read_data, 8);
 	memset(read_data, 0, BUFFERSIZE);
- 8001584:	f000 b82c 	b.w	80015e0 <memset>
- 8001588:	20000168 	.word	0x20000168
- 800158c:	20000000 	.word	0x20000000
+ 80015a8:	f000 b82c 	b.w	8001604 <memset>
+ 80015ac:	2000016c 	.word	0x2000016c
+ 80015b0:	20000000 	.word	0x20000000
 
-08001590 <__libc_init_array>:
- 8001590:	b570      	push	{r4, r5, r6, lr}
- 8001592:	4e0f      	ldr	r6, [pc, #60]	; (80015d0 <__libc_init_array+0x40>)
- 8001594:	4d0f      	ldr	r5, [pc, #60]	; (80015d4 <__libc_init_array+0x44>)
- 8001596:	1b76      	subs	r6, r6, r5
- 8001598:	10b6      	asrs	r6, r6, #2
- 800159a:	bf18      	it	ne
- 800159c:	2400      	movne	r4, #0
- 800159e:	d005      	beq.n	80015ac <__libc_init_array+0x1c>
- 80015a0:	3401      	adds	r4, #1
- 80015a2:	f855 3b04 	ldr.w	r3, [r5], #4
- 80015a6:	4798      	blx	r3
- 80015a8:	42a6      	cmp	r6, r4
- 80015aa:	d1f9      	bne.n	80015a0 <__libc_init_array+0x10>
- 80015ac:	4e0a      	ldr	r6, [pc, #40]	; (80015d8 <__libc_init_array+0x48>)
- 80015ae:	4d0b      	ldr	r5, [pc, #44]	; (80015dc <__libc_init_array+0x4c>)
- 80015b0:	1b76      	subs	r6, r6, r5
- 80015b2:	f7ff fc98 	bl	8000ee6 <_init>
- 80015b6:	10b6      	asrs	r6, r6, #2
- 80015b8:	bf18      	it	ne
- 80015ba:	2400      	movne	r4, #0
- 80015bc:	d006      	beq.n	80015cc <__libc_init_array+0x3c>
- 80015be:	3401      	adds	r4, #1
- 80015c0:	f855 3b04 	ldr.w	r3, [r5], #4
- 80015c4:	4798      	blx	r3
- 80015c6:	42a6      	cmp	r6, r4
- 80015c8:	d1f9      	bne.n	80015be <__libc_init_array+0x2e>
- 80015ca:	bd70      	pop	{r4, r5, r6, pc}
- 80015cc:	bd70      	pop	{r4, r5, r6, pc}
- 80015ce:	bf00      	nop
- 80015d0:	20000140 	.word	0x20000140
- 80015d4:	20000140 	.word	0x20000140
- 80015d8:	20000140 	.word	0x20000140
- 80015dc:	20000140 	.word	0x20000140
+080015b4 <__libc_init_array>:
+ 80015b4:	b570      	push	{r4, r5, r6, lr}
+ 80015b6:	4e0f      	ldr	r6, [pc, #60]	; (80015f4 <__libc_init_array+0x40>)
+ 80015b8:	4d0f      	ldr	r5, [pc, #60]	; (80015f8 <__libc_init_array+0x44>)
+ 80015ba:	1b76      	subs	r6, r6, r5
+ 80015bc:	10b6      	asrs	r6, r6, #2
+ 80015be:	bf18      	it	ne
+ 80015c0:	2400      	movne	r4, #0
+ 80015c2:	d005      	beq.n	80015d0 <__libc_init_array+0x1c>
+ 80015c4:	3401      	adds	r4, #1
+ 80015c6:	f855 3b04 	ldr.w	r3, [r5], #4
+ 80015ca:	4798      	blx	r3
+ 80015cc:	42a6      	cmp	r6, r4
+ 80015ce:	d1f9      	bne.n	80015c4 <__libc_init_array+0x10>
+ 80015d0:	4e0a      	ldr	r6, [pc, #40]	; (80015fc <__libc_init_array+0x48>)
+ 80015d2:	4d0b      	ldr	r5, [pc, #44]	; (8001600 <__libc_init_array+0x4c>)
+ 80015d4:	1b76      	subs	r6, r6, r5
+ 80015d6:	f7ff fc86 	bl	8000ee6 <_init>
+ 80015da:	10b6      	asrs	r6, r6, #2
+ 80015dc:	bf18      	it	ne
+ 80015de:	2400      	movne	r4, #0
+ 80015e0:	d006      	beq.n	80015f0 <__libc_init_array+0x3c>
+ 80015e2:	3401      	adds	r4, #1
+ 80015e4:	f855 3b04 	ldr.w	r3, [r5], #4
+ 80015e8:	4798      	blx	r3
+ 80015ea:	42a6      	cmp	r6, r4
+ 80015ec:	d1f9      	bne.n	80015e2 <__libc_init_array+0x2e>
+ 80015ee:	bd70      	pop	{r4, r5, r6, pc}
+ 80015f0:	bd70      	pop	{r4, r5, r6, pc}
+ 80015f2:	bf00      	nop
+ 80015f4:	20000140 	.word	0x20000140
+ 80015f8:	20000140 	.word	0x20000140
+ 80015fc:	20000140 	.word	0x20000140
+ 8001600:	20000140 	.word	0x20000140
 
-080015e0 <memset>:
- 80015e0:	b470      	push	{r4, r5, r6}
- 80015e2:	0784      	lsls	r4, r0, #30
- 80015e4:	d046      	beq.n	8001674 <memset+0x94>
- 80015e6:	1e54      	subs	r4, r2, #1
- 80015e8:	2a00      	cmp	r2, #0
- 80015ea:	d041      	beq.n	8001670 <memset+0x90>
- 80015ec:	b2cd      	uxtb	r5, r1
- 80015ee:	4603      	mov	r3, r0
- 80015f0:	e002      	b.n	80015f8 <memset+0x18>
- 80015f2:	1e62      	subs	r2, r4, #1
- 80015f4:	b3e4      	cbz	r4, 8001670 <memset+0x90>
- 80015f6:	4614      	mov	r4, r2
- 80015f8:	f803 5b01 	strb.w	r5, [r3], #1
- 80015fc:	079a      	lsls	r2, r3, #30
- 80015fe:	d1f8      	bne.n	80015f2 <memset+0x12>
- 8001600:	2c03      	cmp	r4, #3
- 8001602:	d92e      	bls.n	8001662 <memset+0x82>
- 8001604:	b2cd      	uxtb	r5, r1
- 8001606:	ea45 2505 	orr.w	r5, r5, r5, lsl #8
- 800160a:	2c0f      	cmp	r4, #15
- 800160c:	ea45 4505 	orr.w	r5, r5, r5, lsl #16
- 8001610:	d919      	bls.n	8001646 <memset+0x66>
- 8001612:	f103 0210 	add.w	r2, r3, #16
- 8001616:	4626      	mov	r6, r4
- 8001618:	3e10      	subs	r6, #16
- 800161a:	2e0f      	cmp	r6, #15
- 800161c:	f842 5c10 	str.w	r5, [r2, #-16]
- 8001620:	f842 5c0c 	str.w	r5, [r2, #-12]
- 8001624:	f842 5c08 	str.w	r5, [r2, #-8]
- 8001628:	f842 5c04 	str.w	r5, [r2, #-4]
- 800162c:	f102 0210 	add.w	r2, r2, #16
- 8001630:	d8f2      	bhi.n	8001618 <memset+0x38>
- 8001632:	f1a4 0210 	sub.w	r2, r4, #16
- 8001636:	f022 020f 	bic.w	r2, r2, #15
- 800163a:	f004 040f 	and.w	r4, r4, #15
- 800163e:	3210      	adds	r2, #16
- 8001640:	2c03      	cmp	r4, #3
- 8001642:	4413      	add	r3, r2
- 8001644:	d90d      	bls.n	8001662 <memset+0x82>
- 8001646:	461e      	mov	r6, r3
- 8001648:	4622      	mov	r2, r4
- 800164a:	3a04      	subs	r2, #4
- 800164c:	2a03      	cmp	r2, #3
- 800164e:	f846 5b04 	str.w	r5, [r6], #4
- 8001652:	d8fa      	bhi.n	800164a <memset+0x6a>
- 8001654:	1f22      	subs	r2, r4, #4
- 8001656:	f022 0203 	bic.w	r2, r2, #3
- 800165a:	3204      	adds	r2, #4
- 800165c:	4413      	add	r3, r2
- 800165e:	f004 0403 	and.w	r4, r4, #3
- 8001662:	b12c      	cbz	r4, 8001670 <memset+0x90>
- 8001664:	b2c9      	uxtb	r1, r1
- 8001666:	441c      	add	r4, r3
- 8001668:	f803 1b01 	strb.w	r1, [r3], #1
- 800166c:	42a3      	cmp	r3, r4
- 800166e:	d1fb      	bne.n	8001668 <memset+0x88>
- 8001670:	bc70      	pop	{r4, r5, r6}
- 8001672:	4770      	bx	lr
- 8001674:	4614      	mov	r4, r2
- 8001676:	4603      	mov	r3, r0
- 8001678:	e7c2      	b.n	8001600 <memset+0x20>
- 800167a:	bf00      	nop
+08001604 <memset>:
+ 8001604:	b470      	push	{r4, r5, r6}
+ 8001606:	0784      	lsls	r4, r0, #30
+ 8001608:	d046      	beq.n	8001698 <memset+0x94>
+ 800160a:	1e54      	subs	r4, r2, #1
+ 800160c:	2a00      	cmp	r2, #0
+ 800160e:	d041      	beq.n	8001694 <memset+0x90>
+ 8001610:	b2cd      	uxtb	r5, r1
+ 8001612:	4603      	mov	r3, r0
+ 8001614:	e002      	b.n	800161c <memset+0x18>
+ 8001616:	1e62      	subs	r2, r4, #1
+ 8001618:	b3e4      	cbz	r4, 8001694 <memset+0x90>
+ 800161a:	4614      	mov	r4, r2
+ 800161c:	f803 5b01 	strb.w	r5, [r3], #1
+ 8001620:	079a      	lsls	r2, r3, #30
+ 8001622:	d1f8      	bne.n	8001616 <memset+0x12>
+ 8001624:	2c03      	cmp	r4, #3
+ 8001626:	d92e      	bls.n	8001686 <memset+0x82>
+ 8001628:	b2cd      	uxtb	r5, r1
+ 800162a:	ea45 2505 	orr.w	r5, r5, r5, lsl #8
+ 800162e:	2c0f      	cmp	r4, #15
+ 8001630:	ea45 4505 	orr.w	r5, r5, r5, lsl #16
+ 8001634:	d919      	bls.n	800166a <memset+0x66>
+ 8001636:	f103 0210 	add.w	r2, r3, #16
+ 800163a:	4626      	mov	r6, r4
+ 800163c:	3e10      	subs	r6, #16
+ 800163e:	2e0f      	cmp	r6, #15
+ 8001640:	f842 5c10 	str.w	r5, [r2, #-16]
+ 8001644:	f842 5c0c 	str.w	r5, [r2, #-12]
+ 8001648:	f842 5c08 	str.w	r5, [r2, #-8]
+ 800164c:	f842 5c04 	str.w	r5, [r2, #-4]
+ 8001650:	f102 0210 	add.w	r2, r2, #16
+ 8001654:	d8f2      	bhi.n	800163c <memset+0x38>
+ 8001656:	f1a4 0210 	sub.w	r2, r4, #16
+ 800165a:	f022 020f 	bic.w	r2, r2, #15
+ 800165e:	f004 040f 	and.w	r4, r4, #15
+ 8001662:	3210      	adds	r2, #16
+ 8001664:	2c03      	cmp	r4, #3
+ 8001666:	4413      	add	r3, r2
+ 8001668:	d90d      	bls.n	8001686 <memset+0x82>
+ 800166a:	461e      	mov	r6, r3
+ 800166c:	4622      	mov	r2, r4
+ 800166e:	3a04      	subs	r2, #4
+ 8001670:	2a03      	cmp	r2, #3
+ 8001672:	f846 5b04 	str.w	r5, [r6], #4
+ 8001676:	d8fa      	bhi.n	800166e <memset+0x6a>
+ 8001678:	1f22      	subs	r2, r4, #4
+ 800167a:	f022 0203 	bic.w	r2, r2, #3
+ 800167e:	3204      	adds	r2, #4
+ 8001680:	4413      	add	r3, r2
+ 8001682:	f004 0403 	and.w	r4, r4, #3
+ 8001686:	b12c      	cbz	r4, 8001694 <memset+0x90>
+ 8001688:	b2c9      	uxtb	r1, r1
+ 800168a:	441c      	add	r4, r3
+ 800168c:	f803 1b01 	strb.w	r1, [r3], #1
+ 8001690:	42a3      	cmp	r3, r4
+ 8001692:	d1fb      	bne.n	800168c <memset+0x88>
+ 8001694:	bc70      	pop	{r4, r5, r6}
+ 8001696:	4770      	bx	lr
+ 8001698:	4614      	mov	r4, r2
+ 800169a:	4603      	mov	r3, r0
+ 800169c:	e7c2      	b.n	8001624 <memset+0x20>
+ 800169e:	bf00      	nop
 
-0800167c <CSWTCH.36>:
- 800167c:	0000 0202 0c0c 0c0c 0a08                    ..........
+080016a0 <CSWTCH.36>:
+ 80016a0:	0000 0202 0c0c 0c0c 0a08                    ..........
 
-08001686 <CSWTCH.37>:
- 8001686:	0003 0003 000c 000c 3000 3000 3000 3000     .........0.0.0.0
- 8001696:	0300 0c00 0000                              ......
+080016aa <CSWTCH.37>:
+ 80016aa:	0003 0003 000c 000c 3000 3000 3000 3000     .........0.0.0.0
+ 80016ba:	0300 0c00 0000                              ......
 
-0800169c <g_xmc_vadc_group_array>:
- 800169c:	4400 4000 4800 4000 4c00 4000 5000 4000     .D.@.H.@.L.@.P.@
+080016c0 <g_xmc_vadc_group_array>:
+ 80016c0:	4400 4000 4800 4000 4c00 4000 5000 4000     .D.@.H.@.L.@.P.@
 
-080016ac <UART_0_config>:
- 80016ac:	16f8 0800 0fd1 0800 0000 0000 0000 0000     ................
+080016d0 <UART_0_config>:
+ 80016d0:	171c 0800 0fd1 0800 0000 0000 0000 0000     ................
 	...
- 80016c8:	16e0 0800 0200 0002 0000 0000               ............
+ 80016ec:	1704 0800 0200 0002 0000 0000               ............
 
-080016d4 <UART_0_rx_pin_config>:
- 80016d4:	0000 0000 0001 0000 0002 0000               ............
+080016f8 <UART_0_rx_pin_config>:
+ 80016f8:	0000 0000 0001 0000 0002 0000               ............
 
-080016e0 <UART_0_tx_pin>:
- 80016e0:	8100 4802 0005 0000 16ec 0800               ...H........
+08001704 <UART_0_tx_pin>:
+ 8001704:	8100 4802 0005 0000 1710 0800               ...H........
 
-080016ec <UART_0_tx_pin_config>:
- 80016ec:	0090 0000 0001 0000 0002 0000               ............
+08001710 <UART_0_tx_pin_config>:
+ 8001710:	0090 0000 0001 0000 0002 0000               ............
 
-080016f8 <UART_0_channel_config>:
- 80016f8:	4b00 0000 0800 0108 0010 0000               .K..........
+0800171c <UART_0_channel_config>:
+ 800171c:	4b00 0000 0800 0108 0010 0000               .K..........
 
-08001704 <PWM_MOTOR_1_gpio_out_config>:
- 8001704:	0098 0000 0000 0001 0004 0000               ............
+08001728 <PWM_MOTOR_1_gpio_out_config>:
+ 8001728:	0098 0000 0000 0001 0004 0000               ............
 
-08001710 <PWM_MOTOR_2_compare_config>:
- 8001710:	0000 0000 0006 0000                         ........
+08001734 <PWM_MOTOR_2_compare_config>:
+ 8001734:	0000 0000 0006 0000                         ........
 
-08001718 <PWM_MOTOR_0_gpio_out_config>:
- 8001718:	0098 0000 0000 0001 0004 0000               ............
+0800173c <PWM_MOTOR_0_gpio_out_config>:
+ 800173c:	0098 0000 0000 0001 0004 0000               ............
 
-08001724 <PWM_MOTOR_0_compare_config>:
- 8001724:	0000 0000 0006 0000                         ........
+08001748 <PWM_MOTOR_0_compare_config>:
+ 8001748:	0000 0000 0006 0000                         ........
 
-0800172c <PWM_MOTOR_2_gpio_out_config>:
- 800172c:	0098 0000 0000 0001 0004 0000               ............
+08001750 <PWM_MOTOR_2_gpio_out_config>:
+ 8001750:	0098 0000 0000 0001 0004 0000               ............
 
-08001738 <PWM_MOTOR_1_compare_config>:
- 8001738:	0000 0000 0006 0000                         ........
+0800175c <PWM_MOTOR_1_compare_config>:
+ 800175c:	0000 0000 0006 0000                         ........
 
-08001740 <UART_ISR>:
- 8001740:	3f59 0100                                   Y?..
+08001764 <UART_ISR>:
+ 8001764:	3f59 0100                                   Y?..
 
-08001744 <group_init_handle0>:
-	...
-
-08001758 <group_init_handle1>:
+08001768 <group_init_handle0>:
 	...
 
-0800176c <group_init_handle3>:
+0800177c <group_init_handle1>:
 	...
 
-08001780 <global_config>:
- 8001780:	0000 0000 0003 0000 0000 0000 0000 0000     ................
+08001790 <group_init_handle3>:
 	...
 
-08001798 <group_init_handle2>:
+080017a4 <global_config>:
+ 80017a4:	0000 0000 0003 0000 0000 0000 0000 0000     ................
 	...
- 80017ac:	0250 0104 0000 0001 0000 0000 0000 0001     P...............
- 80017bc:	0101 0101                                   ....
 
-080017c0 <backgnd_config>:
- 80017c0:	0005 0000 0000 0000 0000 0000               ............
+080017bc <group_init_handle2>:
+	...
+ 80017d0:	0250 0104 0000 0001 0000 0000 0000 0001     P...............
+ 80017e0:	0101 0101                                   ....
 
-080017cc <global_iclass_config>:
- 80017cc:	0000 0000 7473 7261 0074 0000               ....start...
+080017e4 <backgnd_rs_intr_handle>:
+ 80017e4:	0010 0000 003f 0000 0000 0000               ....?.......
+
+080017f0 <backgnd_config>:
+ 80017f0:	0005 0000 0000 0000 0008 0000               ............
+
+080017fc <global_iclass_config>:
+ 80017fc:	0000 0000 7473 7261 0074 0000               ....start...

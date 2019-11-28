@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<pi:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" visible="true" gridUnit="10" diagramTypeId="dependencydiagramType" name="ceProject" snapToGrid="true" pictogramLinks="//@link //@connections.0/@link //@connections.0/@connectionDecorators.0/@link //@connections.1/@link //@connections.1/@connectionDecorators.0/@link //@connections.2/@link //@connections.2/@connectionDecorators.0/@link //@connections.3/@link //@connections.3/@connectionDecorators.0/@link //@connections.4/@link //@connections.4/@connectionDecorators.0/@link //@connections.5/@link //@connections.5/@connectionDecorators.0/@link //@connections.6/@link //@connections.6/@connectionDecorators.0/@link //@connections.7/@link //@connections.7/@connectionDecorators.0/@link" version="0.10.0">
+<pi:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" visible="true" gridUnit="10" diagramTypeId="dependencydiagramType" name="ceProject" snapToGrid="true" pictogramLinks="//@link //@connections.0/@link //@connections.0/@connectionDecorators.0/@link //@connections.1/@link //@connections.1/@connectionDecorators.0/@link //@connections.2/@link //@connections.2/@connectionDecorators.0/@link //@connections.3/@link //@connections.3/@connectionDecorators.0/@link //@connections.4/@link //@connections.4/@connectionDecorators.0/@link //@connections.5/@link //@connections.5/@connectionDecorators.0/@link //@connections.6/@link //@connections.6/@connectionDecorators.0/@link //@connections.7/@link //@connections.7/@connectionDecorators.0/@link //@connections.8/@link //@connections.8/@connectionDecorators.0/@link" version="0.10.0">
   <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.0" lineWidth="1" transparency="0.0" width="909" height="200"/>
   <link>
     <businessObjects href="ModelConfigData.data#/"/>
@@ -110,7 +110,7 @@
     <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="158" height="40" x="41" y="160">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="158" height="40" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
-    <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.5"/>
+    <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.5 //@connections.8"/>
     <children>
       <properties key="uri" value="http://resources/4.0.16/app/CPU_CTRL_XMC4/0"/>
       <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="25" height="22" id="icons/App_Icon_16x16.jpg" stretchH="false" stretchV="false" proportional="false"/>
@@ -127,7 +127,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0"/>
     <properties key="APP_NAME_ID" value="GLOBAL_ADC/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="143" height="40" x="81" y="90">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="143" height="40" x="161" y="90">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="143" height="40" style="//@styles.0/@styles.8" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.6" incomingConnections="//@connections.7"/>
@@ -147,7 +147,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.1.12/app/GLOBAL_CCU4/0"/>
     <properties key="APP_NAME_ID" value="GLOBAL_CCU4/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="148" height="40" x="302" y="90">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="148" height="40" x="345" y="90">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="148" height="40" style="//@styles.0/@styles.0" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.0" incomingConnections="//@connections.1 //@connections.3 //@connections.4"/>
@@ -170,7 +170,7 @@
     <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="176" height="40" x="136">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="176" height="40" style="//@styles.0/@styles.9" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
-    <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.7"/>
+    <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.7 //@connections.8"/>
     <children>
       <properties key="uri" value="http://resources/4.1.22/app/ADC_MEASUREMENT/0"/>
       <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="25" height="22" id="icons/App_Icon_16x16.jpg" stretchH="false" stretchV="false" proportional="false"/>
@@ -1734,6 +1734,7 @@
   <styles lineStyle="UNSPECIFIED" id="INTERRUPT/0$CPU_CTRL_XMC4/0" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED"/>
   <styles lineStyle="UNSPECIFIED" id="GLOBAL_ADC/0$CLOCK_XMC4/0" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED"/>
   <styles lineStyle="UNSPECIFIED" id="ADC_MEASUREMENT/0$GLOBAL_ADC/0" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED"/>
+  <styles lineStyle="UNSPECIFIED" id="ADC_MEASUREMENT/0$CPU_CTRL_XMC4/0" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED"/>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.7/@anchors.0" end="//@children.2/@anchors.0">
     <graphicsAlgorithm xsi:type="al:Polyline" lineWidth="1" filled="false" transparency="0.0" style="//@styles.1"/>
     <link>
@@ -1749,7 +1750,7 @@
         <businessObjects href="ModelConfigData.data#//@connections.0"/>
       </link>
     </connectionDecorators>
-    <bendpoints x="376" y="140"/>
+    <bendpoints x="419" y="140"/>
     <bendpoints x="337" y="140"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@anchors.0" end="//@children.7/@anchors.0">
@@ -1768,7 +1769,7 @@
       </link>
     </connectionDecorators>
     <bendpoints x="840" y="80"/>
-    <bendpoints x="413" y="80"/>
+    <bendpoints x="456" y="80"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.9/@anchors.0" end="//@children.2/@anchors.0">
     <graphicsAlgorithm xsi:type="al:Polyline" lineWidth="1" filled="false" transparency="0.0" style="//@styles.3"/>
@@ -1786,8 +1787,8 @@
       </link>
     </connectionDecorators>
     <bendpoints x="382" y="50"/>
-    <bendpoints x="247" y="50"/>
-    <bendpoints x="247" y="140"/>
+    <bendpoints x="324" y="50"/>
+    <bendpoints x="324" y="140"/>
     <bendpoints x="302" y="140"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.1/@anchors.0" end="//@children.7/@anchors.0">
@@ -1806,7 +1807,7 @@
       </link>
     </connectionDecorators>
     <bendpoints x="681" y="70"/>
-    <bendpoints x="376" y="70"/>
+    <bendpoints x="419" y="70"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.4/@anchors.0" end="//@children.7/@anchors.0">
     <graphicsAlgorithm xsi:type="al:Polyline" lineWidth="1" filled="false" transparency="0.0" style="//@styles.5"/>
@@ -1824,7 +1825,7 @@
       </link>
     </connectionDecorators>
     <bendpoints x="522" y="60"/>
-    <bendpoints x="339" y="60"/>
+    <bendpoints x="382" y="60"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.3/@anchors.0" end="//@children.5/@anchors.0">
     <graphicsAlgorithm xsi:type="al:Polyline" lineWidth="1" filled="false" transparency="0.0" style="//@styles.6"/>
@@ -1843,8 +1844,8 @@
     </connectionDecorators>
     <bendpoints x="59" y="50"/>
     <bendpoints x="60" y="50"/>
-    <bendpoints x="60" y="140"/>
-    <bendpoints x="120" y="140"/>
+    <bendpoints x="60" y="150"/>
+    <bendpoints x="94" y="150"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.6/@anchors.0" end="//@children.2/@anchors.0">
     <graphicsAlgorithm xsi:type="al:Polyline" lineWidth="1" filled="false" transparency="0.0" style="//@styles.7"/>
@@ -1861,8 +1862,8 @@
         <businessObjects href="ModelConfigData.data#//@connections.6"/>
       </link>
     </connectionDecorators>
-    <bendpoints x="153" y="150"/>
-    <bendpoints x="266" y="150"/>
+    <bendpoints x="233" y="140"/>
+    <bendpoints x="266" y="140"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.8/@anchors.0" end="//@children.6/@anchors.0">
     <graphicsAlgorithm xsi:type="al:Polyline" lineWidth="1" filled="false" transparency="0.0" style="//@styles.8"/>
@@ -1879,8 +1880,28 @@
         <businessObjects href="ModelConfigData.data#//@connections.7"/>
       </link>
     </connectionDecorators>
-    <bendpoints x="224" y="50"/>
-    <bendpoints x="153" y="50"/>
+    <bendpoints x="253" y="50"/>
+    <bendpoints x="233" y="50"/>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.8/@anchors.0" end="//@children.5/@anchors.0">
+    <graphicsAlgorithm xsi:type="al:Polyline" lineWidth="1" filled="false" transparency="0.0" style="//@styles.9"/>
+    <link>
+      <businessObjects href="ModelConfigData.data#//@connections.8"/>
+    </link>
+    <connectionDecorators visible="true" locationRelative="true" location="1.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" lineWidth="1" filled="false" transparency="0.0">
+        <points x="-10" y="5"/>
+        <points/>
+        <points x="-10" y="-5"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="ModelConfigData.data#//@connections.8"/>
+      </link>
+    </connectionDecorators>
+    <bendpoints x="195" y="50"/>
+    <bendpoints x="87" y="50"/>
+    <bendpoints x="87" y="140"/>
+    <bendpoints x="146" y="140"/>
   </connections>
   <colors red="227" green="238" blue="249"/>
   <colors red="255" green="255" blue="255"/>

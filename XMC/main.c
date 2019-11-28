@@ -100,6 +100,19 @@ int main(void)
   }
 }
 int a = 0;
+
+void Adc_Measurement_Handler(void)
+{
+    static uint16_t result_Channel_A;
+
+    /*Read out conversion results*/
+    result_Channel_A = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A_handle);
+
+    /*Re-trigger conversion sequence*/
+    ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
+
+}
+
 void DataReceived(void) {
 	UART_Receive(&UART_0, read_data, 8);
 	read_data[0] = '1';
