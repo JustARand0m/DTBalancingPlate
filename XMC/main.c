@@ -44,6 +44,7 @@ void busy_waitMs(int ms)
 uint8_t read_data[BUFFERSIZE];
 uint8_t testdata[] = "testdata";
 uint32_t touchPanelResult;
+uint16_t x, y;
 
 int main(void)
 {
@@ -88,9 +89,8 @@ int main(void)
 	  }
 		*/
 	  busy_waitMs(1000);
-	  touchPanelResult = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A_handle);
+	  ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
 	  busy_waitMs(1000);
-	  UART_Transmit(&UART_0, &touchPanelResult, 8);
 	  /*UART_Receive(&UART_0, read_data, BUFFERSIZE);
 	  if(read_data[0] != '\0') {
 		  busy_waitMs(5000);
@@ -99,18 +99,37 @@ int main(void)
 	  }*/
   }
 }
-int a = 0;
 
+/**
+ *
+ * 2.15 => PIN 1 (UR) DIGITAL_IO_1
+ * VDD 3.3V => PIN 2 (LR)
+ * GND => PIN 4 (UL)
+ * 2.14 => PIN 5 (LL) DIGITAL_IO_0
+ */
 void Adc_Measurement_Handler(void)
 {
-    static uint16_t result_Channel_A;
-
-    /*Read out conversion results*/
+	static uint16_t result_Channel_A = 0;
+    /* Read out conversion results */
     result_Channel_A = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A_handle);
 
-    /*Re-trigger conversion sequence*/
-    ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
+    if(DIGITAL_IO_GetInput(&DIGITAL_IO_1) == 1) {
+    	x = result_Channel_A;
 
+        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
+        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
+
+        /* Re-trigger conversion sequence */
+        ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
+    } else {
+    	y = result_Channel_A;
+
+        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
+        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
+
+        // @todo -> trasmit result
+        //UART_Transmit(&UART_0, read_data, 8);
+    }
 }
 
 void DataReceived(void) {
