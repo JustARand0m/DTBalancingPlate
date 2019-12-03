@@ -3,35 +3,35 @@ Balancing_Plate.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000018bc  08000000  0c000000  00008000  2**2
+  0 .text         000018cc  08000000  0c000000  00008000  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   1 Stack         00000800  10000000  10000000  00018000  2**0
                   ALLOC
-  2 .data         00000140  20000000  0c0018bc  00010000  2**2
+  2 .data         00000140  20000000  0c0018cc  00010000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  3 .bss          00000438  20000140  0c0019fc  00010140  2**2
+  3 .bss          00000430  20000140  0c001a0c  00010140  2**2
                   ALLOC
   4 .no_init      00000014  2000ffc0  2000ffc0  00017fc0  2**2
                   ALLOC
   5 .debug_aranges 00000c08  00000000  00000000  00010140  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0001aeda  00000000  00000000  00010d48  2**0
+  6 .debug_info   0001af0f  00000000  00000000  00010d48  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00003b88  00000000  00000000  0002bc22  2**0
+  7 .debug_abbrev 00003b8e  00000000  00000000  0002bc57  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000ade6  00000000  00000000  0002f7aa  2**0
+  8 .debug_line   0000adf0  00000000  00000000  0002f7e5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00001a2c  00000000  00000000  0003a590  2**2
+  9 .debug_frame  00001a44  00000000  00000000  0003a5d8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00082a08  00000000  00000000  0003bfbc  2**0
+ 10 .debug_str    00082a08  00000000  00000000  0003c01c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000061f9  00000000  00000000  000be9c4  2**0
+ 11 .debug_loc    00006267  00000000  00000000  000bea24  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000d80  00000000  00000000  000c4bbd  2**0
+ 12 .debug_ranges 00000d68  00000000  00000000  000c4c8b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .build_attributes 0000068d  00000000  00000000  000c593d  2**0
+ 13 .build_attributes 0000068d  00000000  00000000  000c59f3  2**0
                   CONTENTS, READONLY
- 14 .debug_macro  0001bb6c  00000000  00000000  000c5fca  2**0
+ 14 .debug_macro  0001bb6c  00000000  00000000  000c6080  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -63,7 +63,7 @@ Disassembly of section .text:
  800016c:	00 00 00 00 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  800017c:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  800018c:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
- 800019c:	b1 02 00 08 b1 02 00 08 09 16 00 08 b1 02 00 08     ................
+ 800019c:	b1 02 00 08 b1 02 00 08 19 16 00 08 b1 02 00 08     ................
  80001ac:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  80001bc:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
  80001cc:	b1 02 00 08 b1 02 00 08 b1 02 00 08 b1 02 00 08     ................
@@ -176,22 +176,22 @@ Disassembly of section .text:
 	...
 
 08000248 <__copy_table_start__>:
- 8000248:	0c0018bc 	.word	0x0c0018bc
+ 8000248:	0c0018cc 	.word	0x0c0018cc
  800024c:	20000000 	.word	0x20000000
  8000250:	00000140 	.word	0x00000140
- 8000254:	0c0019fc 	.word	0x0c0019fc
+ 8000254:	0c001a0c 	.word	0x0c001a0c
  8000258:	30000000 	.word	0x30000000
  800025c:	00000000 	.word	0x00000000
- 8000260:	0c0018bc 	.word	0x0c0018bc
+ 8000260:	0c0018cc 	.word	0x0c0018cc
  8000264:	10000800 	.word	0x10000800
  8000268:	00000000 	.word	0x00000000
- 800026c:	0c0018bc 	.word	0x0c0018bc
+ 800026c:	0c0018cc 	.word	0x0c0018cc
  8000270:	10000800 	.word	0x10000800
  8000274:	00000000 	.word	0x00000000
 
 08000278 <__copy_table_end__>:
  8000278:	20000140 	.word	0x20000140
- 800027c:	00000434 	.word	0x00000434
+ 800027c:	0000042c 	.word	0x0000042c
  8000280:	30000000 	.word	0x30000000
  8000284:	00000000 	.word	0x00000000
  8000288:	10000800 	.word	0x10000800
@@ -233,7 +233,7 @@ Disassembly of section .text:
    
 #ifndef __SKIP_LIBC_INIT_ARRAY
     ldr  r0, =__libc_init_array
- 80002a8:	08001641 	.word	0x08001641
+ 80002a8:	08001651 	.word	0x08001651
     blx  r0
 #endif
 
@@ -1984,8 +1984,8 @@ void XMC_CCU4_SLICE_SetInterruptNode(XMC_CCU4_SLICE_t *const slice,
  800098c:	f8c0 20a8 	str.w	r2, [r0, #168]	; 0xa8
  8000990:	bd30      	pop	{r4, r5, pc}
  8000992:	bf00      	nop
- 8000994:	0800172c 	.word	0x0800172c
- 8000998:	08001736 	.word	0x08001736
+ 8000994:	0800173c 	.word	0x0800173c
+ 8000998:	08001746 	.word	0x08001746
 
 0800099c <XMC_GPIO_SetHardwareControl>:
 void XMC_GPIO_SetHardwareControl(XMC_GPIO_PORT_t *const port, const uint8_t pin, const XMC_GPIO_HWCTRL_t hwctrl)
@@ -2911,7 +2911,7 @@ void XMC_VADC_GLOBAL_InputClassInit(XMC_VADC_GLOBAL_t *const global_ptr, const X
 }
  8000ccc:	4770      	bx	lr
  8000cce:	bf00      	nop
- 8000cd0:	0800174c 	.word	0x0800174c
+ 8000cd0:	0800175c 	.word	0x0800175c
 
 08000cd4 <XMC_VADC_GLOBAL_BackgroundSetReqSrcEventInterruptNode>:
   else
@@ -3328,7 +3328,7 @@ __STATIC_INLINE void XMC_VADC_GROUP_BackgroundEnableArbitrationSlot(XMC_VADC_GRO
  8000e88:	bdf0      	pop	{r4, r5, r6, r7, pc}
  8000e8a:	bf00      	nop
  8000e8c:	40004400 	.word	0x40004400
- 8000e90:	0800174c 	.word	0x0800174c
+ 8000e90:	0800175c 	.word	0x0800175c
 
 08000e94 <XMC_VADC_GROUP_ChannelInit>:
 
@@ -3864,9 +3864,9 @@ __STATIC_INLINE void XMC_USIC_CH_EnableEvent(XMC_USIC_CH_t *const channel, const
  8001042:	bf00      	nop
  8001044:	48028100 	.word	0x48028100
  8001048:	40030000 	.word	0x40030000
- 800104c:	08001784 	.word	0x08001784
- 8001050:	080017a8 	.word	0x080017a8
- 8001054:	0800179c 	.word	0x0800179c
+ 800104c:	08001794 	.word	0x08001794
+ 8001050:	080017b8 	.word	0x080017b8
+ 8001054:	080017ac 	.word	0x080017ac
 
 08001058 <PWM_lCCU4_ConfigInterrupts>:
 
@@ -4755,7 +4755,7 @@ void SystemCoreClockSetup(void)
  800133a:	b007      	add	sp, #28
  800133c:	bd30      	pop	{r4, r5, pc}
  800133e:	bf00      	nop
- 8001340:	08001884 	.word	0x08001884
+ 8001340:	08001894 	.word	0x08001894
 
 08001344 <ADC_MEASUREMENT_Init>:
 }
@@ -5213,10 +5213,10 @@ __WEAK DAVE_STATUS_t DAVE_Init(void)
  80014f8:	20000000 	.word	0x20000000
  80014fc:	2000000c 	.word	0x2000000c
  8001500:	20000040 	.word	0x20000040
- 8001504:	080017f0 	.word	0x080017f0
+ 8001504:	08001800 	.word	0x08001800
  8001508:	20000104 	.word	0x20000104
- 800150c:	0800185c 	.word	0x0800185c
- 8001510:	08001870 	.word	0x08001870
+ 800150c:	0800186c 	.word	0x0800186c
+ 8001510:	08001880 	.word	0x08001880
 
 08001514 <busy_waitMs>:
 
@@ -5266,9 +5266,9 @@ void busy_waitMs(int ms)
 	...
 
 08001538 <main>:
+uint8_t read_data[BUFFERSIZE];
 uint8_t testdata[] = "testdata";
 uint32_t touchPanelResult;
-uint16_t x, y;
 
 int main(void)
 {
@@ -5282,7 +5282,7 @@ int main(void)
 
   memset(read_data, 0, BUFFERSIZE);
  8001542:	4811      	ldr	r0, [pc, #68]	; (8001588 <main+0x50>)
-uint16_t x, y;
+uint32_t touchPanelResult;
 
 int main(void)
 {
@@ -5293,7 +5293,7 @@ int main(void)
   memset(read_data, 0, BUFFERSIZE);
  8001548:	2100      	movs	r1, #0
  800154a:	f44f 6280 	mov.w	r2, #1024	; 0x400
- 800154e:	f000 f89f 	bl	8001690 <memset>
+ 800154e:	f000 f8a7 	bl	80016a0 <memset>
   status = DAVE_Init();           /* Initialization of DAVE APPs  */
  8001552:	f7ff ffa5 	bl	80014a0 <DAVE_Init>
 
@@ -5344,8 +5344,8 @@ int main(void)
   }
  8001580:	e7f3      	b.n	800156a <main+0x32>
  8001582:	bf00      	nop
- 8001584:	080018b4 	.word	0x080018b4
- 8001588:	20000170 	.word	0x20000170
+ 8001584:	080018c4 	.word	0x080018c4
+ 8001588:	2000016c 	.word	0x2000016c
  800158c:	20000104 	.word	0x20000104
  8001590:	20000000 	.word	0x20000000
 
@@ -5356,11 +5356,12 @@ int main(void)
  */
 void Adc_Measurement_Handler(void)
 {
- 8001594:	b510      	push	{r4, lr}
-	static uint16_t result_Channel_A = 0;
-    /* Read out conversion results */
-    result_Channel_A = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A_handle);
- 8001596:	4815      	ldr	r0, [pc, #84]	; (80015ec <VADC0_C0_2_IRQHandler+0x58>)
+ 8001594:	b538      	push	{r3, r4, r5, lr}
+	static uint16_t x, y;
+
+	/* Read out conversion results */
+    uint16_t result_Channel_A = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A_handle);
+ 8001596:	4819      	ldr	r0, [pc, #100]	; (80015fc <VADC0_C0_2_IRQHandler+0x68>)
  8001598:	f7ff ff77 	bl	800148a <ADC_MEASUREMENT_GetResult>
 */
 
@@ -5368,314 +5369,332 @@ __STATIC_INLINE uint32_t DIGITAL_IO_GetInput(const DIGITAL_IO_t *const handler)
 {
   XMC_ASSERT("DIGITAL_IO_GetInput: handler null pointer", handler != NULL);
   return XMC_GPIO_GetInput(handler->gpio_port, handler->gpio_pin);
- 800159c:	4914      	ldr	r1, [pc, #80]	; (80015f0 <VADC0_C0_2_IRQHandler+0x5c>)
- 800159e:	4b15      	ldr	r3, [pc, #84]	; (80015f4 <VADC0_C0_2_IRQHandler+0x60>)
- 80015a0:	680a      	ldr	r2, [r1, #0]
- 80015a2:	8018      	strh	r0, [r3, #0]
+ 800159c:	4918      	ldr	r1, [pc, #96]	; (8001600 <VADC0_C0_2_IRQHandler+0x6c>)
+ 800159e:	680a      	ldr	r2, [r1, #0]
 
 __STATIC_INLINE uint32_t XMC_GPIO_GetInput(XMC_GPIO_PORT_t *const port, const uint8_t pin)
 {
   XMC_ASSERT("XMC_GPIO_GetInput: Invalid port", XMC_GPIO_CHECK_PORT(port));
 
   return (((port->IN) >> pin) & 0x1U);
- 80015a4:	7c09      	ldrb	r1, [r1, #16]
- 80015a6:	6a53      	ldr	r3, [r2, #36]	; 0x24
- 80015a8:	40cb      	lsrs	r3, r1
+ 80015a0:	7c09      	ldrb	r1, [r1, #16]
+ 80015a2:	6a53      	ldr	r3, [r2, #36]	; 0x24
+ 80015a4:	40cb      	lsrs	r3, r1
 
     if(DIGITAL_IO_GetInput(&DIGITAL_IO_1) == 1) {
- 80015aa:	f013 0f01 	tst.w	r3, #1
- 80015ae:	4b12      	ldr	r3, [pc, #72]	; (80015f8 <VADC0_C0_2_IRQHandler+0x64>)
- 80015b0:	d00f      	beq.n	80015d2 <VADC0_C0_2_IRQHandler+0x3e>
+ 80015a6:	f013 0f01 	tst.w	r3, #1
+ 80015aa:	4b16      	ldr	r3, [pc, #88]	; (8001604 <VADC0_C0_2_IRQHandler+0x70>)
+ 80015ac:	d00f      	beq.n	80015ce <VADC0_C0_2_IRQHandler+0x3a>
     	x = result_Channel_A;
- 80015b2:	4c12      	ldr	r4, [pc, #72]	; (80015fc <VADC0_C0_2_IRQHandler+0x68>)
- 80015b4:	8020      	strh	r0, [r4, #0]
+ 80015ae:	4c16      	ldr	r4, [pc, #88]	; (8001608 <VADC0_C0_2_IRQHandler+0x74>)
+ 80015b0:	8020      	strh	r0, [r4, #0]
 
 __STATIC_INLINE void XMC_GPIO_ToggleOutput(XMC_GPIO_PORT_t *const port, const uint8_t pin)
 {
   XMC_ASSERT("XMC_GPIO_ToggleOutput: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
 
   port->OMR = 0x10001U << pin;
- 80015b6:	7c1c      	ldrb	r4, [r3, #16]
+ 80015b2:	7c1c      	ldrb	r4, [r3, #16]
 */
 
 __STATIC_INLINE void DIGITAL_IO_ToggleOutput(const DIGITAL_IO_t *const handler)
 {
   XMC_ASSERT("DIGITAL_IO_ToggleOutput: handler null pointer", handler != NULL);
   XMC_GPIO_ToggleOutput(handler->gpio_port, handler->gpio_pin);
- 80015b8:	6818      	ldr	r0, [r3, #0]
- 80015ba:	f04f 1301 	mov.w	r3, #65537	; 0x10001
- 80015be:	fa03 f404 	lsl.w	r4, r3, r4
- 80015c2:	408b      	lsls	r3, r1
- 80015c4:	6044      	str	r4, [r0, #4]
- 80015c6:	6053      	str	r3, [r2, #4]
-
+ 80015b4:	6818      	ldr	r0, [r3, #0]
+ 80015b6:	f04f 1301 	mov.w	r3, #65537	; 0x10001
+ 80015ba:	fa03 f404 	lsl.w	r4, r3, r4
+ 80015be:	408b      	lsls	r3, r1
+ 80015c0:	6044      	str	r4, [r0, #4]
+ 80015c2:	6053      	str	r3, [r2, #4]
+    	/* Swap x and y axis on the panel */
         DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
         DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
 
         /* Re-trigger conversion sequence */
         ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
- 80015c8:	480d      	ldr	r0, [pc, #52]	; (8001600 <VADC0_C0_2_IRQHandler+0x6c>)
-        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
-        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
-    	/* After second read transmit data */
+ 80015c4:	4811      	ldr	r0, [pc, #68]	; (800160c <VADC0_C0_2_IRQHandler+0x78>)
 
+        /* Transmit the x and y position via UART */
+        UART_Transmit(&UART_0, (uint8_t*)(&x), 2);
+        UART_Transmit(&UART_0, (uint8_t*)(&y), 2);
     }
 }
- 80015ca:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
-
+ 80015c6:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
+    	/* Swap x and y axis on the panel */
         DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
         DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
 
         /* Re-trigger conversion sequence */
         ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
- 80015ce:	f7ff bf53 	b.w	8001478 <ADC_MEASUREMENT_StartConversion>
+ 80015ca:	f7ff bf55 	b.w	8001478 <ADC_MEASUREMENT_StartConversion>
     } else {
     	y = result_Channel_A;
- 80015d2:	4c0c      	ldr	r4, [pc, #48]	; (8001604 <VADC0_C0_2_IRQHandler+0x70>)
- 80015d4:	8020      	strh	r0, [r4, #0]
- 80015d6:	7c1c      	ldrb	r4, [r3, #16]
- 80015d8:	6818      	ldr	r0, [r3, #0]
- 80015da:	f04f 1301 	mov.w	r3, #65537	; 0x10001
- 80015de:	fa03 f404 	lsl.w	r4, r3, r4
- 80015e2:	408b      	lsls	r3, r1
- 80015e4:	6044      	str	r4, [r0, #4]
- 80015e6:	6053      	str	r3, [r2, #4]
- 80015e8:	bd10      	pop	{r4, pc}
- 80015ea:	bf00      	nop
- 80015ec:	20000120 	.word	0x20000120
- 80015f0:	08001870 	.word	0x08001870
- 80015f4:	20000164 	.word	0x20000164
- 80015f8:	0800185c 	.word	0x0800185c
- 80015fc:	20000168 	.word	0x20000168
- 8001600:	20000104 	.word	0x20000104
- 8001604:	20000570 	.word	0x20000570
+ 80015ce:	4c10      	ldr	r4, [pc, #64]	; (8001610 <VADC0_C0_2_IRQHandler+0x7c>)
+ 80015d0:	7c1d      	ldrb	r5, [r3, #16]
+ 80015d2:	8020      	strh	r0, [r4, #0]
+ 80015d4:	6818      	ldr	r0, [r3, #0]
+ 80015d6:	f04f 1301 	mov.w	r3, #65537	; 0x10001
+ 80015da:	fa03 f505 	lsl.w	r5, r3, r5
+ 80015de:	408b      	lsls	r3, r1
+ 80015e0:	6045      	str	r5, [r0, #4]
+    	/* Swap x and y axis on the panel */
+        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
+        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
 
-08001608 <USIC0_5_IRQHandler>:
-    	/* After second read transmit data */
+        /* Transmit the x and y position via UART */
+        UART_Transmit(&UART_0, (uint8_t*)(&x), 2);
+ 80015e2:	4909      	ldr	r1, [pc, #36]	; (8001608 <VADC0_C0_2_IRQHandler+0x74>)
+ 80015e4:	6053      	str	r3, [r2, #4]
+ 80015e6:	480b      	ldr	r0, [pc, #44]	; (8001614 <VADC0_C0_2_IRQHandler+0x80>)
+ 80015e8:	2202      	movs	r2, #2
+ 80015ea:	f7ff fc8c 	bl	8000f06 <UART_Transmit>
+        UART_Transmit(&UART_0, (uint8_t*)(&y), 2);
+ 80015ee:	4621      	mov	r1, r4
+ 80015f0:	4808      	ldr	r0, [pc, #32]	; (8001614 <VADC0_C0_2_IRQHandler+0x80>)
+ 80015f2:	2202      	movs	r2, #2
+    }
+}
+ 80015f4:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
+        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
+        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
 
+        /* Transmit the x and y position via UART */
+        UART_Transmit(&UART_0, (uint8_t*)(&x), 2);
+        UART_Transmit(&UART_0, (uint8_t*)(&y), 2);
+ 80015f8:	f7ff bc85 	b.w	8000f06 <UART_Transmit>
+ 80015fc:	20000120 	.word	0x20000120
+ 8001600:	08001880 	.word	0x08001880
+ 8001604:	0800186c 	.word	0x0800186c
+ 8001608:	20000164 	.word	0x20000164
+ 800160c:	20000104 	.word	0x20000104
+ 8001610:	20000166 	.word	0x20000166
+ 8001614:	20000000 	.word	0x20000000
+
+08001618 <USIC0_5_IRQHandler>:
     }
 }
 
 void DataReceived(void) {
- 8001608:	b538      	push	{r3, r4, r5, lr}
+ 8001618:	b538      	push	{r3, r4, r5, lr}
 	UART_Receive(&UART_0, read_data, 8);
- 800160a:	4c0b      	ldr	r4, [pc, #44]	; (8001638 <USIC0_5_IRQHandler+0x30>)
- 800160c:	4d0b      	ldr	r5, [pc, #44]	; (800163c <USIC0_5_IRQHandler+0x34>)
- 800160e:	4621      	mov	r1, r4
- 8001610:	4628      	mov	r0, r5
- 8001612:	2208      	movs	r2, #8
- 8001614:	f7ff fcae 	bl	8000f74 <UART_Receive>
+ 800161a:	4c0b      	ldr	r4, [pc, #44]	; (8001648 <USIC0_5_IRQHandler+0x30>)
+ 800161c:	4d0b      	ldr	r5, [pc, #44]	; (800164c <USIC0_5_IRQHandler+0x34>)
+ 800161e:	4621      	mov	r1, r4
+ 8001620:	4628      	mov	r0, r5
+ 8001622:	2208      	movs	r2, #8
+ 8001624:	f7ff fca6 	bl	8000f74 <UART_Receive>
 	read_data[0] = '1';
- 8001618:	2331      	movs	r3, #49	; 0x31
+ 8001628:	2331      	movs	r3, #49	; 0x31
 	read_data[1] = '1';
 	UART_Transmit(&UART_0, read_data, 8);
- 800161a:	4621      	mov	r1, r4
- 800161c:	4628      	mov	r0, r5
- 800161e:	2208      	movs	r2, #8
+ 800162a:	4621      	mov	r1, r4
+ 800162c:	4628      	mov	r0, r5
+ 800162e:	2208      	movs	r2, #8
     }
 }
 
 void DataReceived(void) {
 	UART_Receive(&UART_0, read_data, 8);
 	read_data[0] = '1';
- 8001620:	7023      	strb	r3, [r4, #0]
+ 8001630:	7023      	strb	r3, [r4, #0]
 	read_data[1] = '1';
- 8001622:	7063      	strb	r3, [r4, #1]
+ 8001632:	7063      	strb	r3, [r4, #1]
 	UART_Transmit(&UART_0, read_data, 8);
- 8001624:	f7ff fc6f 	bl	8000f06 <UART_Transmit>
+ 8001634:	f7ff fc67 	bl	8000f06 <UART_Transmit>
 	memset(read_data, 0, BUFFERSIZE);
- 8001628:	4620      	mov	r0, r4
- 800162a:	2100      	movs	r1, #0
- 800162c:	f44f 6280 	mov.w	r2, #1024	; 0x400
+ 8001638:	4620      	mov	r0, r4
+ 800163a:	2100      	movs	r1, #0
+ 800163c:	f44f 6280 	mov.w	r2, #1024	; 0x400
 }
- 8001630:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
+ 8001640:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
 void DataReceived(void) {
 	UART_Receive(&UART_0, read_data, 8);
 	read_data[0] = '1';
 	read_data[1] = '1';
 	UART_Transmit(&UART_0, read_data, 8);
 	memset(read_data, 0, BUFFERSIZE);
- 8001634:	f000 b82c 	b.w	8001690 <memset>
- 8001638:	20000170 	.word	0x20000170
- 800163c:	20000000 	.word	0x20000000
+ 8001644:	f000 b82c 	b.w	80016a0 <memset>
+ 8001648:	2000016c 	.word	0x2000016c
+ 800164c:	20000000 	.word	0x20000000
 
-08001640 <__libc_init_array>:
- 8001640:	b570      	push	{r4, r5, r6, lr}
- 8001642:	4e0f      	ldr	r6, [pc, #60]	; (8001680 <__libc_init_array+0x40>)
- 8001644:	4d0f      	ldr	r5, [pc, #60]	; (8001684 <__libc_init_array+0x44>)
- 8001646:	1b76      	subs	r6, r6, r5
- 8001648:	10b6      	asrs	r6, r6, #2
- 800164a:	bf18      	it	ne
- 800164c:	2400      	movne	r4, #0
- 800164e:	d005      	beq.n	800165c <__libc_init_array+0x1c>
- 8001650:	3401      	adds	r4, #1
- 8001652:	f855 3b04 	ldr.w	r3, [r5], #4
- 8001656:	4798      	blx	r3
- 8001658:	42a6      	cmp	r6, r4
- 800165a:	d1f9      	bne.n	8001650 <__libc_init_array+0x10>
- 800165c:	4e0a      	ldr	r6, [pc, #40]	; (8001688 <__libc_init_array+0x48>)
- 800165e:	4d0b      	ldr	r5, [pc, #44]	; (800168c <__libc_init_array+0x4c>)
- 8001660:	1b76      	subs	r6, r6, r5
- 8001662:	f7ff fc4c 	bl	8000efe <_init>
- 8001666:	10b6      	asrs	r6, r6, #2
- 8001668:	bf18      	it	ne
- 800166a:	2400      	movne	r4, #0
- 800166c:	d006      	beq.n	800167c <__libc_init_array+0x3c>
- 800166e:	3401      	adds	r4, #1
- 8001670:	f855 3b04 	ldr.w	r3, [r5], #4
- 8001674:	4798      	blx	r3
- 8001676:	42a6      	cmp	r6, r4
- 8001678:	d1f9      	bne.n	800166e <__libc_init_array+0x2e>
- 800167a:	bd70      	pop	{r4, r5, r6, pc}
- 800167c:	bd70      	pop	{r4, r5, r6, pc}
- 800167e:	bf00      	nop
- 8001680:	20000140 	.word	0x20000140
- 8001684:	20000140 	.word	0x20000140
- 8001688:	20000140 	.word	0x20000140
- 800168c:	20000140 	.word	0x20000140
+08001650 <__libc_init_array>:
+ 8001650:	b570      	push	{r4, r5, r6, lr}
+ 8001652:	4e0f      	ldr	r6, [pc, #60]	; (8001690 <__libc_init_array+0x40>)
+ 8001654:	4d0f      	ldr	r5, [pc, #60]	; (8001694 <__libc_init_array+0x44>)
+ 8001656:	1b76      	subs	r6, r6, r5
+ 8001658:	10b6      	asrs	r6, r6, #2
+ 800165a:	bf18      	it	ne
+ 800165c:	2400      	movne	r4, #0
+ 800165e:	d005      	beq.n	800166c <__libc_init_array+0x1c>
+ 8001660:	3401      	adds	r4, #1
+ 8001662:	f855 3b04 	ldr.w	r3, [r5], #4
+ 8001666:	4798      	blx	r3
+ 8001668:	42a6      	cmp	r6, r4
+ 800166a:	d1f9      	bne.n	8001660 <__libc_init_array+0x10>
+ 800166c:	4e0a      	ldr	r6, [pc, #40]	; (8001698 <__libc_init_array+0x48>)
+ 800166e:	4d0b      	ldr	r5, [pc, #44]	; (800169c <__libc_init_array+0x4c>)
+ 8001670:	1b76      	subs	r6, r6, r5
+ 8001672:	f7ff fc44 	bl	8000efe <_init>
+ 8001676:	10b6      	asrs	r6, r6, #2
+ 8001678:	bf18      	it	ne
+ 800167a:	2400      	movne	r4, #0
+ 800167c:	d006      	beq.n	800168c <__libc_init_array+0x3c>
+ 800167e:	3401      	adds	r4, #1
+ 8001680:	f855 3b04 	ldr.w	r3, [r5], #4
+ 8001684:	4798      	blx	r3
+ 8001686:	42a6      	cmp	r6, r4
+ 8001688:	d1f9      	bne.n	800167e <__libc_init_array+0x2e>
+ 800168a:	bd70      	pop	{r4, r5, r6, pc}
+ 800168c:	bd70      	pop	{r4, r5, r6, pc}
+ 800168e:	bf00      	nop
+ 8001690:	20000140 	.word	0x20000140
+ 8001694:	20000140 	.word	0x20000140
+ 8001698:	20000140 	.word	0x20000140
+ 800169c:	20000140 	.word	0x20000140
 
-08001690 <memset>:
- 8001690:	b470      	push	{r4, r5, r6}
- 8001692:	0784      	lsls	r4, r0, #30
- 8001694:	d046      	beq.n	8001724 <memset+0x94>
- 8001696:	1e54      	subs	r4, r2, #1
- 8001698:	2a00      	cmp	r2, #0
- 800169a:	d041      	beq.n	8001720 <memset+0x90>
- 800169c:	b2cd      	uxtb	r5, r1
- 800169e:	4603      	mov	r3, r0
- 80016a0:	e002      	b.n	80016a8 <memset+0x18>
- 80016a2:	1e62      	subs	r2, r4, #1
- 80016a4:	b3e4      	cbz	r4, 8001720 <memset+0x90>
- 80016a6:	4614      	mov	r4, r2
- 80016a8:	f803 5b01 	strb.w	r5, [r3], #1
- 80016ac:	079a      	lsls	r2, r3, #30
- 80016ae:	d1f8      	bne.n	80016a2 <memset+0x12>
- 80016b0:	2c03      	cmp	r4, #3
- 80016b2:	d92e      	bls.n	8001712 <memset+0x82>
- 80016b4:	b2cd      	uxtb	r5, r1
- 80016b6:	ea45 2505 	orr.w	r5, r5, r5, lsl #8
- 80016ba:	2c0f      	cmp	r4, #15
- 80016bc:	ea45 4505 	orr.w	r5, r5, r5, lsl #16
- 80016c0:	d919      	bls.n	80016f6 <memset+0x66>
- 80016c2:	f103 0210 	add.w	r2, r3, #16
- 80016c6:	4626      	mov	r6, r4
- 80016c8:	3e10      	subs	r6, #16
- 80016ca:	2e0f      	cmp	r6, #15
- 80016cc:	f842 5c10 	str.w	r5, [r2, #-16]
- 80016d0:	f842 5c0c 	str.w	r5, [r2, #-12]
- 80016d4:	f842 5c08 	str.w	r5, [r2, #-8]
- 80016d8:	f842 5c04 	str.w	r5, [r2, #-4]
- 80016dc:	f102 0210 	add.w	r2, r2, #16
- 80016e0:	d8f2      	bhi.n	80016c8 <memset+0x38>
- 80016e2:	f1a4 0210 	sub.w	r2, r4, #16
- 80016e6:	f022 020f 	bic.w	r2, r2, #15
- 80016ea:	f004 040f 	and.w	r4, r4, #15
- 80016ee:	3210      	adds	r2, #16
- 80016f0:	2c03      	cmp	r4, #3
- 80016f2:	4413      	add	r3, r2
- 80016f4:	d90d      	bls.n	8001712 <memset+0x82>
- 80016f6:	461e      	mov	r6, r3
- 80016f8:	4622      	mov	r2, r4
- 80016fa:	3a04      	subs	r2, #4
- 80016fc:	2a03      	cmp	r2, #3
- 80016fe:	f846 5b04 	str.w	r5, [r6], #4
- 8001702:	d8fa      	bhi.n	80016fa <memset+0x6a>
- 8001704:	1f22      	subs	r2, r4, #4
- 8001706:	f022 0203 	bic.w	r2, r2, #3
- 800170a:	3204      	adds	r2, #4
- 800170c:	4413      	add	r3, r2
- 800170e:	f004 0403 	and.w	r4, r4, #3
- 8001712:	b12c      	cbz	r4, 8001720 <memset+0x90>
- 8001714:	b2c9      	uxtb	r1, r1
- 8001716:	441c      	add	r4, r3
- 8001718:	f803 1b01 	strb.w	r1, [r3], #1
- 800171c:	42a3      	cmp	r3, r4
- 800171e:	d1fb      	bne.n	8001718 <memset+0x88>
- 8001720:	bc70      	pop	{r4, r5, r6}
- 8001722:	4770      	bx	lr
- 8001724:	4614      	mov	r4, r2
- 8001726:	4603      	mov	r3, r0
- 8001728:	e7c2      	b.n	80016b0 <memset+0x20>
- 800172a:	bf00      	nop
+080016a0 <memset>:
+ 80016a0:	b470      	push	{r4, r5, r6}
+ 80016a2:	0784      	lsls	r4, r0, #30
+ 80016a4:	d046      	beq.n	8001734 <memset+0x94>
+ 80016a6:	1e54      	subs	r4, r2, #1
+ 80016a8:	2a00      	cmp	r2, #0
+ 80016aa:	d041      	beq.n	8001730 <memset+0x90>
+ 80016ac:	b2cd      	uxtb	r5, r1
+ 80016ae:	4603      	mov	r3, r0
+ 80016b0:	e002      	b.n	80016b8 <memset+0x18>
+ 80016b2:	1e62      	subs	r2, r4, #1
+ 80016b4:	b3e4      	cbz	r4, 8001730 <memset+0x90>
+ 80016b6:	4614      	mov	r4, r2
+ 80016b8:	f803 5b01 	strb.w	r5, [r3], #1
+ 80016bc:	079a      	lsls	r2, r3, #30
+ 80016be:	d1f8      	bne.n	80016b2 <memset+0x12>
+ 80016c0:	2c03      	cmp	r4, #3
+ 80016c2:	d92e      	bls.n	8001722 <memset+0x82>
+ 80016c4:	b2cd      	uxtb	r5, r1
+ 80016c6:	ea45 2505 	orr.w	r5, r5, r5, lsl #8
+ 80016ca:	2c0f      	cmp	r4, #15
+ 80016cc:	ea45 4505 	orr.w	r5, r5, r5, lsl #16
+ 80016d0:	d919      	bls.n	8001706 <memset+0x66>
+ 80016d2:	f103 0210 	add.w	r2, r3, #16
+ 80016d6:	4626      	mov	r6, r4
+ 80016d8:	3e10      	subs	r6, #16
+ 80016da:	2e0f      	cmp	r6, #15
+ 80016dc:	f842 5c10 	str.w	r5, [r2, #-16]
+ 80016e0:	f842 5c0c 	str.w	r5, [r2, #-12]
+ 80016e4:	f842 5c08 	str.w	r5, [r2, #-8]
+ 80016e8:	f842 5c04 	str.w	r5, [r2, #-4]
+ 80016ec:	f102 0210 	add.w	r2, r2, #16
+ 80016f0:	d8f2      	bhi.n	80016d8 <memset+0x38>
+ 80016f2:	f1a4 0210 	sub.w	r2, r4, #16
+ 80016f6:	f022 020f 	bic.w	r2, r2, #15
+ 80016fa:	f004 040f 	and.w	r4, r4, #15
+ 80016fe:	3210      	adds	r2, #16
+ 8001700:	2c03      	cmp	r4, #3
+ 8001702:	4413      	add	r3, r2
+ 8001704:	d90d      	bls.n	8001722 <memset+0x82>
+ 8001706:	461e      	mov	r6, r3
+ 8001708:	4622      	mov	r2, r4
+ 800170a:	3a04      	subs	r2, #4
+ 800170c:	2a03      	cmp	r2, #3
+ 800170e:	f846 5b04 	str.w	r5, [r6], #4
+ 8001712:	d8fa      	bhi.n	800170a <memset+0x6a>
+ 8001714:	1f22      	subs	r2, r4, #4
+ 8001716:	f022 0203 	bic.w	r2, r2, #3
+ 800171a:	3204      	adds	r2, #4
+ 800171c:	4413      	add	r3, r2
+ 800171e:	f004 0403 	and.w	r4, r4, #3
+ 8001722:	b12c      	cbz	r4, 8001730 <memset+0x90>
+ 8001724:	b2c9      	uxtb	r1, r1
+ 8001726:	441c      	add	r4, r3
+ 8001728:	f803 1b01 	strb.w	r1, [r3], #1
+ 800172c:	42a3      	cmp	r3, r4
+ 800172e:	d1fb      	bne.n	8001728 <memset+0x88>
+ 8001730:	bc70      	pop	{r4, r5, r6}
+ 8001732:	4770      	bx	lr
+ 8001734:	4614      	mov	r4, r2
+ 8001736:	4603      	mov	r3, r0
+ 8001738:	e7c2      	b.n	80016c0 <memset+0x20>
+ 800173a:	bf00      	nop
 
-0800172c <CSWTCH.36>:
- 800172c:	0000 0202 0c0c 0c0c 0a08                    ..........
+0800173c <CSWTCH.36>:
+ 800173c:	0000 0202 0c0c 0c0c 0a08                    ..........
 
-08001736 <CSWTCH.37>:
- 8001736:	0003 0003 000c 000c 3000 3000 3000 3000     .........0.0.0.0
- 8001746:	0300 0c00 0000                              ......
+08001746 <CSWTCH.37>:
+ 8001746:	0003 0003 000c 000c 3000 3000 3000 3000     .........0.0.0.0
+ 8001756:	0300 0c00 0000                              ......
 
-0800174c <g_xmc_vadc_group_array>:
- 800174c:	4400 4000 4800 4000 4c00 4000 5000 4000     .D.@.H.@.L.@.P.@
+0800175c <g_xmc_vadc_group_array>:
+ 800175c:	4400 4000 4800 4000 4c00 4000 5000 4000     .D.@.H.@.L.@.P.@
 
-0800175c <UART_0_config>:
- 800175c:	17a8 0800 0fe9 0800 0000 0000 0000 0000     ................
+0800176c <UART_0_config>:
+ 800176c:	17b8 0800 0fe9 0800 0000 0000 0000 0000     ................
 	...
- 8001778:	1790 0800 0200 0002 0000 0000               ............
+ 8001788:	17a0 0800 0200 0002 0000 0000               ............
 
-08001784 <UART_0_rx_pin_config>:
- 8001784:	0000 0000 0001 0000 0002 0000               ............
+08001794 <UART_0_rx_pin_config>:
+ 8001794:	0000 0000 0001 0000 0002 0000               ............
 
-08001790 <UART_0_tx_pin>:
- 8001790:	8100 4802 0005 0000 179c 0800               ...H........
+080017a0 <UART_0_tx_pin>:
+ 80017a0:	8100 4802 0005 0000 17ac 0800               ...H........
 
-0800179c <UART_0_tx_pin_config>:
- 800179c:	0090 0000 0001 0000 0002 0000               ............
+080017ac <UART_0_tx_pin_config>:
+ 80017ac:	0090 0000 0001 0000 0002 0000               ............
 
-080017a8 <UART_0_channel_config>:
- 80017a8:	4b00 0000 0800 0108 0010 0000               .K..........
+080017b8 <UART_0_channel_config>:
+ 80017b8:	4b00 0000 0800 0108 0010 0000               .K..........
 
-080017b4 <PWM_MOTOR_1_gpio_out_config>:
- 80017b4:	0098 0000 0000 0001 0004 0000               ............
+080017c4 <PWM_MOTOR_1_gpio_out_config>:
+ 80017c4:	0098 0000 0000 0001 0004 0000               ............
 
-080017c0 <PWM_MOTOR_2_compare_config>:
- 80017c0:	0000 0000 0006 0000                         ........
+080017d0 <PWM_MOTOR_2_compare_config>:
+ 80017d0:	0000 0000 0006 0000                         ........
 
-080017c8 <PWM_MOTOR_0_gpio_out_config>:
- 80017c8:	0098 0000 0000 0001 0004 0000               ............
+080017d8 <PWM_MOTOR_0_gpio_out_config>:
+ 80017d8:	0098 0000 0000 0001 0004 0000               ............
 
-080017d4 <PWM_MOTOR_0_compare_config>:
- 80017d4:	0000 0000 0006 0000                         ........
+080017e4 <PWM_MOTOR_0_compare_config>:
+ 80017e4:	0000 0000 0006 0000                         ........
 
-080017dc <PWM_MOTOR_2_gpio_out_config>:
- 80017dc:	0098 0000 0000 0001 0004 0000               ............
+080017ec <PWM_MOTOR_2_gpio_out_config>:
+ 80017ec:	0098 0000 0000 0001 0004 0000               ............
 
-080017e8 <PWM_MOTOR_1_compare_config>:
- 80017e8:	0000 0000 0006 0000                         ........
+080017f8 <PWM_MOTOR_1_compare_config>:
+ 80017f8:	0000 0000 0006 0000                         ........
 
-080017f0 <UART_ISR>:
- 80017f0:	3f59 0100                                   Y?..
+08001800 <UART_ISR>:
+ 8001800:	3f59 0100                                   Y?..
 
-080017f4 <group_init_handle0>:
-	...
-
-08001808 <group_init_handle1>:
+08001804 <group_init_handle0>:
 	...
 
-0800181c <group_init_handle3>:
+08001818 <group_init_handle1>:
 	...
 
-08001830 <global_config>:
- 8001830:	0000 0000 0003 0000 0000 0000 0000 0000     ................
+0800182c <group_init_handle3>:
 	...
 
-08001848 <group_init_handle2>:
+08001840 <global_config>:
+ 8001840:	0000 0000 0003 0000 0000 0000 0000 0000     ................
 	...
 
-0800185c <DIGITAL_IO_0>:
- 800185c:	8200 4802 0080 0000 0000 0001 0000 0000     ...H............
- 800186c:	000e 0000                                   ....
+08001858 <group_init_handle2>:
+	...
 
-08001870 <DIGITAL_IO_1>:
- 8001870:	8200 4802 0080 0000 0001 0000 0000 0000     ...H............
- 8001880:	000f 0000 0250 0104 0000 0001 0000 0000     ....P...........
- 8001890:	0000 0001 0101 0101                         ........
+0800186c <DIGITAL_IO_0>:
+ 800186c:	8200 4802 0080 0000 0000 0001 0000 0000     ...H............
+ 800187c:	000e 0000                                   ....
 
-08001898 <backgnd_rs_intr_handle>:
- 8001898:	0010 0000 003f 0000 0000 0000               ....?.......
+08001880 <DIGITAL_IO_1>:
+ 8001880:	8200 4802 0080 0000 0001 0000 0000 0000     ...H............
+ 8001890:	000f 0000 0250 0104 0000 0001 0000 0000     ....P...........
+ 80018a0:	0000 0001 0101 0101                         ........
 
-080018a4 <backgnd_config>:
- 80018a4:	0005 0000 0000 0000 0008 0000               ............
+080018a8 <backgnd_rs_intr_handle>:
+ 80018a8:	0010 0000 003f 0000 0000 0000               ....?.......
 
-080018b0 <global_iclass_config>:
- 80018b0:	0000 0000 7473 7261 0074 0000               ....start...
+080018b4 <backgnd_config>:
+ 80018b4:	0005 0000 0000 0000 0008 0000               ............
+
+080018c0 <global_iclass_config>:
+ 80018c0:	0000 0000 7473 7261 0074 0000               ....start...
