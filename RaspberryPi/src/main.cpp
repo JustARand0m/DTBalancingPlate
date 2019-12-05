@@ -3,10 +3,12 @@
 #include "../include/exceptionHandling.h"
 
 int main() {
-	uartConection uartCon("/dev/serial0");
+	uartConnection uartCon("/dev/serial0");
 	uartCon.startListening();
 	while(true) {
-		uartCon.writeData("test");
+		sleep(10);
+		uartCon.writeData("12345678");
+		std::cout << "data written" << std::endl;
 	}
 
 	return 0;
