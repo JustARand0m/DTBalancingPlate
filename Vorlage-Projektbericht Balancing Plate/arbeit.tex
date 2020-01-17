@@ -1,0 +1,646 @@
+\documentclass[12pt,a4paper,bibliography=totoc,listof=totoc]{scrartcl}
+% u.U. muss Koma-Skript Package ueber MikTeX deinstalliert und neu installiert werden
+% Hilft das nicht, so sollte statt scrartcl die Dokumentenklasse article verwendet werden
+\input{lib/includes}
+\input{lib/commands}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\begin{document}
+
+
+% ----------------------------------------------------------------------------------------------------------
+% Titelseite
+% ----------------------------------------------------------------------------------------------------------
+\student{Michael Braun}	% Studierender
+{3113161}						% Matrikelnummer
+{Technische Informatik}			% Studiengang
+
+\studentt{Korbinian Federholzner}	% Studierender
+{3114621}						% Matrikelnummer
+{Technische Informatik}			% Studiengang
+
+\studentttt{Philipp Kramer}	% Studierender
+{1234456}						% Matrikelnummer
+{Technische Informatik}			% Studiengang
+
+\studenttttt{Patrick Lesch}	% Studierender
+{12344556}						% Matrikelnummer
+{Technische Informatik}			% Studiengang
+
+\studenttt{Michael Schmidt}	% Studierender
+{2907322}						% Matrikelnummer
+{Technische Informatik}			% Studiengang
+
+
+%\MyTitelseite{pics/oth-logo-informatik.png}	% Optionales Logo des extern betreuenden Unternehmens
+\MyTitelseite{}
+{1}								% Style der Titelseite (1 oder 2)
+{Projektdokumentation(Datenverarbeitung in der Technik)}			% Typ der Arbeit 
+{Balancing Plate}				% Thema der Arbeit						
+{Prof.\ Dr.\ Richard Roth}   % Betreuer
+{ Hr.\ Matthias Altmann}	% Zweitgutachter
+{09.1.\the\year}				% Abgabedatum
+
+\setcounter{page}{1} 
+
+%-----------------------------------------------------------------------------------------------------------
+% Abstract Zusammenfassung
+%-----------------------------------------------------------------------------------------------------------
+%\section*{Kurzfassung}
+%...
+%\pagebreak
+
+%\section*{Abstract}
+%...
+%\pagebreak
+
+%\section*{Danksagung}
+%...
+%\pagebreak
+
+% ----------------------------------------------------------------------------------------------------------
+% Inhaltsverzeichnis
+% ----------------------------------------------------------------------------------------------------------
+\tableofcontents
+\pagebreak
+
+% ----------------------------------------------------------------------------------------------------------
+% Inhalt
+% ----------------------------------------------------------------------------------------------------------
+% Abstände Überschrift
+% begin change
+% alte Befehle
+%\titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
+%\titlespacing{\subsection}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
+%\titlespacing{\subsubsection}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
+% neue Befehle
+\RedeclareSectionCommands[
+beforeskip=-.9\baselineskip,
+afterskip=.4\baselineskip
+]{section,subsection,subsubsection}
+%end change
+
+% Kopfzeile
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\subsectionmark}[1]{}
+\renewcommand{\subsubsectionmark}[1]{}
+\lhead{Kapitel \thesection}
+\rhead{\rightmark}
+
+%\onehalfspacing
+\setstretch{1.15}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\theHsection}{\arabic{section}}
+\setcounter{section}{0}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% ----------------------------------------------------------------------------------
+% Kapitel 1: Einleitung
+% ----------------------------------------------------------------------------------
+\section{Einführung/ Projektkontext}
+
+%Grober Inhalt des Lastenhefts in Verbindung mit den Änderungen zur ersten Version (App als Pflicht, 
+keine Rückgabe der Servostellung). Der Grundaufbau des Prototyps ist eine Plexiglasplatte, auf der sich 
+eine Kugel befindet. Diese Kugel wird durch Druck auf eine resistive Touch-Folie (Wertbestimmung durch 
+Druck) erkannt und die zugehörigen Daten werden an einen Raspberry Pi 4 übermittelt. Dieser berechnet dann 
+den Offset zum gewünschten Stellpunkt auf der Platte und mit Hilfe eines PID-Reglers die neuen Stellwerte 
+für die Servomotoren. Diese Daten werden an einen XMC 4500 übermittelt, welcher die zuvor ermittelten Werte 
+in PWM-Signale übersetzt und diese dann an die zuständigen Servomotoren übergibt. Diese bewegen die 
+Plexiglasplatte, auf der sich die Touch-Folie befindet, um so die Kugel zu balancieren.
+Die Versuchsapparatur soll selbstständig in der Lage sein eine Kugel auf einer Platte in eine vorher 
+festgelegte Position, meist die Mitte der Platte, zu manövrieren. Dies soll durch Heben bzw. Senken der 
+Plexiglasplatte mittels dreier Servomotoren geschehen. Optional ist dabei die manuelle Steuerung der 
+Platte mittels einer App, welche über eine WiFi-Schnittstelle mit dem Raspberry Pi in Verbindung stehen 
+soll. Diese App soll dabei das im Handy verbaute Gyroskop verwenden, um den Neigungswinkel des Geräts zu 
+erfassen und die Platte dementsprechend zu neigen. Auch eine GUI sollte in der App vorhanden sein.
+Im Gegensatz zum Lastenheft, dass kurz nach dem Start abgegeben werden musste, haben sich im Laufe des 
+Projektes einige Änderungen ergeben. Dabei wurde die Steuerung mittels einer iOS-App nunmehr als 
+Pflichtmodul angesehen. Außerdem wurde das Auslesen der Potentiometer der Servomotoren aus Zeitgründen 
+fallengelassen.
+\pagebreak
+% ----------------------------------------------------------------------------------
+% Kapitel 2: Umsetzung
+% ----------------------------------------------------------------------------------
+\section {Umsetzung}
+Um eine konsistente Abarbeitung zu gewährleisten wurde das Projekt in verschieden Module/Arbeitspakete 
+geteilt.
+
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X|X|X|}
+Name 					& Aufgabe 1 			& Aufgabe 2 				& Aufgabe 3  \\
+\hline
+Michael Braun			& Physischer Aufbau		& Reglerentwicklung			& PWM-Signale \\
+\hline
+\hline
+Korbinian Federholzner	& Ansteuerung mit App	& UART Schnittstelle		& Touch-Folie \\
+\hline
+\hline
+Philipp Kramer			&Reglerentwicklung		& Modellerstellung Matlab	& Touch-Folie\\
+\hline
+\hline
+Patrick Lesch			& Ansteuerung mit App	& WiFi Schnittstelle		& Custom Kernel\\
+\hline
+\hline
+Michael Schmidt			& Physischer Aufbau		& UART Schnittstelle		& PWM-Signale\\
+\hline
+%\caption{Tabelle: Arbeisverteilung}
+%\label{tbl:arbeitsverteilung}
+\end{tabularx}
+
+Diese werden immer von mindestens zwei Projektteilnehmern abgearbeitet. Außerdem wurde auf eine in sich 
+geschlossene Aufteilung geachtet, um bei aneinandergrenzenden Modulen immer einen Ansprechpartner zu haben. 
+Um durch eine gegenseitige Kontrolle eine funktionierende Version sicherzustellen und um eine 
+Qualitätskontrolle durchzuführen, wurden in dem Git-Repository die Funktion push-Requests aktiviert.
+\pagebreak
+% ----------------------------------------------------------------------------------
+% Kapitel 2.1: Physischer Bau
+% ----------------------------------------------------------------------------------
+\subsection{Physicher Aufbau}
+\textit{Von Michael Braun und Michael Schmidt}\newline
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.44]{pics/SkizzeAufbau}
+	\caption{Skizzierter Aufbau des Prototypen}
+	\label{Skizze}
+\end{figure}
+In \ref{Skizze} ist eine Skizze des physischen Aufbaus aus dem Lastenheft zum Start des Projektes zu 
+sehen. Dabei wurde lediglich graphisch eine mögliche Vorversion des späteren Prototyps gezeichnet. 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.44]{pics/BildGrundplatte}
+	\caption{Grundplatte des Prototypen}
+	\label{Grundplatte}
+\end{figure}
+Im Gegensatz zu \ref{Skizze} wurde eine sechseckige Grundplatte mit den Halterungen für die drei 
+Servomotoren mittels Solid Edge 2020 konstruiert und mittels eines 3D-Druckers gefertigt. Diese ist 
+in \ref{Grundplatte} zu sehen
+
+Der Druck der Grundplatte dauerte dabei etwa zehn Stunden, was unter anderem an den Ausmaßen der Platte 
+(Durchmesser von 20 cm) liegt. Nachdem die Servomotoren in den Halterungen befestigt wurden, hat man die 
+Servo-Hebel und Gabelköpfen verbunden, dazu wurden die Servo-Hebel aufgebohrt. Nach dem Zusammenbau hat man 
+festgestellt, dass zwischen den Hebeln und dem Gabelkopf noch zu viel Spielraum war, der die Regelung 
+beeinträchtigen könnte. Deshalb wurden Unterlegescheiben zur Verringerung des Spiels eingesetzt. Die 
+Verbindung zur Platte wird über ein Dreieckskonstrukt \ref{Dreiecksverbindung}, das ebenfalls aus dem 
+3D-Drucker kam, hergestellt. 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.44]{pics/BildDreieck}
+	\caption{Dreiecksverbindung zur Touch-Folie}
+	\label{Dreiecksverbindung}
+\end{figure}
+Dabei war vor allem die korrekte Länge zum Mittelpunkt des Dreiecks, 
+respektive der Grundplatte, eine wichtige Größe, da eine falsche Länge nicht mehr die senkrechte 
+Ausrichtung des Gabelkopfes zu der Grundplatte zur Folge gehabt hätte. Außerdem mussten die Kugellager 
+passend in den Gabelkopf der Dreiecksverbindung eingefügt werden, um eine seitliche Drehung dieser zu 
+verhindern.
+Der 3D-Druck dieser Verbindung dauerte in etwa sechs Stunden. Die Konstruktion dieser beiden Bauteile 
+nahm in etwa fünfzehn Stunden in Anspruch. Diese Dreieckskonstruktion liegt genau über dem markierten 
+Dreieck der Grundplatte. Die Touch-Folie befindet sich dabei auf einer Plexiglasplatte, welche mittels 
+Silikon mit der Dreiecksverbindung zusammengefügt wurde.
+Außerdem wurden vor dem Zusammenbau der Servomotoren mit den Servo-Hebeln, alle Servomotoren in die 
+Neutralstellung gesetzt (vgl. PWM-Signale), um die Regelung ebenfalls von einem neutralen Punkt aus zu 
+starten. Dabei traten motorspezifische Unterschiede auf die mittels der PWM-Werte ausgeglichen werden 
+müssen.Bei der Verkabelung wurden sowohl der XMC und die drei Servomotoren mittels eines gelöteten 
+Teilstücks an die gleiche Masse gelegt. Auch die Betriebsspannung der Motoren wurde so gehandhabt.
+Zum Fazit:
+Die Teile aus dem 3D-Drucker waren insgesamt zufriedenstellend, lediglich die Löcher für die Schrauben 
+an der Dreiecksverbindung mussten nachträglich aufgebohrt werden und an einem Gabelkopf der 
+Dreiecksverbindung blieben Teile an der Grundplatte des Druckers hängen. Glücklicherweise waren die 
+Servomotoren ausreichend stark um die Platte ohne Probleme zu bewegen.
+
+% ----------------------------------------------------------------------------------
+% Kapitel 2.2: Software-Architektur
+% ----------------------------------------------------------------------------------
+\subsection{Software-Architektur}
+
+% ----------------------------------------------------------------------------------
+% Kapitel 2.3: Touch-Folie
+% ----------------------------------------------------------------------------------
+\subsection{Touch-Folie}
+\textit{Von Korbinian Federholzner und Philipp Kramer}\newline
+\subsection{Programmierung Raspberry Pi}
+
+% ----------------------------------------------------------------------------------
+% Kapitel 2.4: UART Schnittstelle
+% ----------------------------------------------------------------------------------
+\subsection{UART Schnittstelle}
+\textit{Von Korbinian Federholzner und Michael Schmidt}\newline
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.44]{pics/BildUart1}
+	\caption{Grundaufbau der UART-Verbindung}bilder 
+	\label{UART}
+\end{figure}
+Zur Datenübertragung zwischen dem Raspberry Pi und dem XMC Mikrocontroller wurde das Universal 
+Asynchronous Receiver Transmitter-Protokoll (UART) verwendet. Dieses ist für schnelle Bitübertragungsraten, 
+in unserem Fall eine Baud-Rate von 19200 (Bits pro Sekunde), über eine einzelne Leitung verantwortlich. 
+In unserem Fall ist die Übertragung im Modus Full-Duplex und erfordert somit zwei Leitungen, die sich 
+kreuzen \ref{UART}.
+
+Grundsätzlich erfolgt die Datenübertragung aufgrund der Einfachheit in Strings, welche jeweils nach dem 
+Empfang dekodiert werden. Dabei enthält ein UART-Paket genau ein Zeichen der Zeichenfolge. Ein solches 
+Beispielpaket ist in \ref{fig:UARTFrame} zu sehen.Die Übertragung erfolgt dabei auf dem Raspberry Pi über 
+die General Purpose In/Out Pins 14 und 15. Dabei ist der Pin 14 der Sender und der Pin 15 der Empfänger 
+von den Nachrichten des XMC. Auf dem XMC ist die Pinbelegung variabel und somit flexibler im Gegensatz 
+zum Raspberry Pi. Hier wurden die beiden Pins 1.4 und 1.5 gewählt. Hier fungiert Pin 1.5 als Sender und 
+Pin 1.4 als Empfänger. Zum Testen wurde vom Raspberry Pi ein vordefinierter String, in diesem Fall 
+"`\$123456789!",, an den XMC gesendet. Dieser liest die ankommenden Daten und sendet sie zurück an den 
+Raspberry Pi, welcher sie auf dem Bildschirm ausgibt. Dadurch ließen sich die nachfolgenden Fehler in 
+der Datenverarbeitung des XMC besser nachvollziehen. Am Anfang des Projektes traten diverse Schwierigkeiten 
+beim Testen der Implementierung auf. Zum Beispiel war das Flashen des Programmes auf den XMC unmöglich, 
+da ein Fehler generiert wurde, da keine Verbindung zu dem auf dem XMC integrierten Debugger hergestellt 
+werden konnte. Nach einem Test mit einem anderem XMC gleicher Bauart wurde festgestellt, dass unser erster 
+XMC lediglich defekt war. Nach einem Tausch des verwendeten XMC konnte die Programmierung wieder 
+fortfahren, allerdings wurden durch diesen Fehler insgesamt ca. 10 Stunden Arbeitszeit in die Fehlersuche 
+investiert. Dieses Problem behinderte auch das Arbeitspaket "`PWM-Signale".
+Ein weiteres Problem, auf das wir gestoßen sind, war ein Fehler in der Interrupt-Funktion. Auf dem XMC 
+lassen sich unter Dave4 in den zur Verfügung gestellten APPs diverse Empfangs- und Sendeoptionen festlegen. 
+Darunter war auch das Empfangen mittels eines Interrupts. Dieses Interrupt wurde jedoch beim Testen nicht 
+aufgerufen und somit die ankommenden Daten nicht aus dem Speicher ausgelesen. Um dieses Problem zu umgehen 
+wurde mittels der Dave4-APP NVIC/Interrupt ein Hardwareinterrupt konfiguriert, welches bei einer Änderung 
+des Buses von logisch 0 auf logisch 1 ausgelöst wird und die ankommenden Daten verarbeitet. Dabei traten 
+jedoch weitere Probleme auf, wie z.B. die ankommenden Daten waren nicht vollständig, da das Interrupt zu 
+schnell ausgelöst wurde und die verbleibenden Daten nicht in den Buffer geschrieben wurden, oder das erste 
+Zeichen wurden als "`0" \,interpretiert. Dies hatte folgenden Grund: Das Interrupt wurde zu langsam geöffnet 
+und im Buffer kam es zu einem Overflow, sodass die ersten Werte bereits wieder mit "`0"\, überschrieben wurde, 
+welche das UART-Protokoll als Byte-Stream-Ende interpretiert und somit nicht korrekte Daten liefert.
+Nach intensiver Suche in der integrierten Dokumentation in Dave 4, welche jedoch erst nach einigem Suchen 
+gefunden wurde, stießen wir auf eine Funktion:\, "`UART\_StartRecieveIRQ"\,, deren Implementierung anscheinend 
+erforderlich war, um mittels der in der UART-APP vorprogrammierten Interrupt-Option die ankommenden Daten 
+auszulesen %\cite {infineonforums}
+. Diese Funktion setzt einen Interrupt-Request und muss 
+kontinuierlich nach dem erstmaligen Empfangen ausgeführt werden, um eine fehlerfreie Abarbeitung zu 
+gewährleisten. Somit wird sie nach jedem Empfangsvorgang auf dem XMC in der Interrupt-Routine neu 
+aufgerufen.
+
+
+% ----------------------------------------------------------------------------------
+% Kapitel 2.5: Datenübertragungsformate
+% ----------------------------------------------------------------------------------
+\subsection{Datenübertragungsformate}
+\textit{Von Korbinian Federholzner und Michael Schmidt}\newline
+Um eine eindeutige Übertragung zu gewährleisten, wurde sich auf ein standardisiertes Format festgelegt. 
+Dabei wurden eine bestimmte Anzahl Pakete in einer bestimmten Reihenfolge gesendet, wobei pro Paket immer 
+ein Zeichen des Strings übertragen wird, wie in \ref{fig:UARTFrame}verdeutlicht wird.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.44]{pics/Uartframe}
+	\caption{Aufbau eines UART-Frames\cite {electricimp}}
+	\label{UARTFrame}
+\end{figure}
+Diese Zeichen werden dann aneinandergereiht und ergeben die unten beschriebenen Formate. Dabei hat die 
+Kommunikation, bei der der Raspberry Pi der Sender und der XMC 4500 der Empfänger ist folgendes Format 
+\ref{UART Servo}.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.44]{pics/Uartservo}
+	\caption{Aufbau eines Datenpakets mit Servowerten}
+	\label{UART Servo}
+\end{figure}
+Übertragen werden hierbei die aktuellen Werte für die PWM-Signalgenerierung, deren Werte sich zwischen 
+450 und 1050 befinden. Dies ist durch die maximale Auslenkung der Servomotoren begründet. Um weitere Bytes 
+zu sparen wird nur der Offset von dem Grundwert 450 übermittelt. Dieser wird in einer nachfolgenden 
+Funktion wieder dekodiert und in die jeweiligen Variablen gespeichert, auf die die PWM-Signalgenerierung 
+zugreift. Dabei befinden sich in den ersten drei Zeichen des Datenteils (Byte 1-3) die Werte für den ersten 
+Servomotor., in den zweiten drei (Byte 4-6) die Werte für den zweiten Servomotor und in den letzten drei 
+(Byte 6-9) die Werte für den dritten Servomotor, wie in der Abbildung 6 dargestellt. Das Startbyte 0, 
+"`0x24" und das Stoppbyte 10 "`0x21" dienen dabei der Erkennung der feststehenden Feldlänge, um eine korrekte 
+und vollständige Übermittlung zu gewährleisten. Die Kommunikation zwischen XMC 4500 und dem Raspberry Pi 
+erfolgt über mehrere Formate, da wir mehrere unterschiedliche Nachrichten auf dem Raspberry Pi verarbeiten 
+müssen. Zum einen wären da die Übertragung der X- und Y-Koordinaten der Touch-Folie und zum anderen die 
+Rückgabewerte der Potentiometer aus den Servomotoren. Um zwischen den beiden Nachrichtentypen, die 
+unterschiedliche Längen und Formate haben zu unterscheiden haben wir eine Nachrichten-Identifikationsnummer 
+(Message-ID) eingeführt, welche vor den jeweiligen Dekodierungsfunktionen überprüft wird. Lediglich der 
+Datenteil unterscheidet sich zwischen den beiden Typen. Da sie als String übertragen werden, ist das 
+System problemlos auf bis zu 100 unterschiedliche Nachrichtenformate erweiterbar. Um das bestehende System 
+zu erweitern muss lediglich eine zugehörige Dekodierungsfunktion auf dem Raspberry Pi programmiert werden 
+und ein korrekter Sendevorgang auf dem XMC sichergestellt werden. Die Nachricht mit den Werten der 
+Touch-Folie hat die Message-ID "`00" und wird wie folgt übertragen \ref{UART Platte}.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.44]{pics/Uartplatte}
+	\caption{Aufbau eines Datenpakets mit den Werten der Touch-Folie}
+	\label{UART Platte}
+\end{figure}
+Auch hier sind Start und Ende der Nachricht wieder mit einem Zeichen, zum Erkennen der korrekten 
+Feldlänge, markiert. Dabei werden die Werte der Touch-Folie, die bereits in X-, bzw. Y-Koordinaten 
+umgerechnet wurden übertragen. Diese sind in den Datenbytes 4-7 (X-Koordinate) und Datenbytes 9-12 
+(Y-Koordinate) kodiert. Zwischen den einzelnen Koordinatenwerten und der Message-ID wurde noch ein 
+Trennbyte eingeführt, da die Koordinaten unterschiedliche Länge haben können (3 oder 4 Zeichen). Auf dem 
+Raspberry Pi werden diese wieder in integer-Werte umgerechnet und als Koordinaten an die Regelung 
+übergeben.
+% ----------------------------------------------------------------------------------
+% Kapitel 2.6: Reglerentwicklung
+% ----------------------------------------------------------------------------------
+\subsection{Reglerentwicklung}
+\textit{Von Michael Braun und Philipp Kramer}\newline
+
+% ----------------------------------------------------------------------------------
+% Kapitel 2.7: PWM Signale
+% ----------------------------------------------------------------------------------
+\subsection{PWM-Signale}
+\textit{Von Michael Braun und Michael Schmidt}\newline
+
+Die Ansteuerung der Servomotoren erfolgt über ein 50 Hz PWM-Signal, welches mittels der Funktion 
+"`PWM_SetDutyCycle" auf die jeweils aktuellen Werte geändert wird. Diese Funktion wandelt automatisch 
+die Werte die im Promillebereich, im Format 0-10000, angegeben werden, in die richtige Länge des 
+Hochanteils des PWM-Signals um. Diese Funktionen werden von den Dave 4- eigenen APPs zu Verfügung 
+gestellt. Dabei sind durch die Servomotoren einige Werte vorgegeben \ref {servowerte}.
+
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X|X|X|}
+Bezeichnung 		& Wert in ms (zu 20ms/50Hz) & Wert in Prozent 	& Wert in Promille \\
+\hline
+Minimalstellung		& 0,9						& 4,5				& 450 \\
+\hline
+
+Neutralstellung		& 1,5						& 7,5				& 750 \\
+\hline
+
+Maximalstellung		&2,1						& 10,5				& 1050\\
+\hline
+\caption{Tabelle: Werte der Servomotoren}
+\label{tbl:servowerte}
+\end{tabularx}
+
+Sollten die übertragenen Werte den Maximalwert von 1050 überschreiten, werden sie lediglich auf den 
+Maximalwert gesetzt, um eine korrekte Ansteuerung der Servomotoren zu gewährleisten. Diese Werte werden 
+kontinuierlich von der Regelung verändert und über die Pins 3.0, 3.3 und 3.4 des XMC an die Servomotoren 
+ausgegeben. Dies wird in einem Interrupt abgearbeitet, das im 50 Hz Takt aufgerufen wird. Dabei sind jedoch 
+noch motorenspezifische Unterschiede aufgetreten, die in Tabelle 3 aufgeführt werde. Diese sind nötig, um 
+die Platte initial in eine ebene Nullstellung zu positionieren.
+
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X|X|X|}
+Servomotor		& Offset \\
+\hline
+1				& 35	\\
+\hline
+
+2				& 15\\
+\hline
+
+3				& 5	\\
+\hline
+\caption{Tabelle: Werte der Servomotoren}
+\label{tbl:offsets}
+\end{tabularx}
+
+
+%TODO
+Außerdem wird die Auslenkung der Hebel durch die Aufhängung der Motoren begrenzt, da ab einem 
+bestimmten Wert die Platte an diese stößt. Dadurch ergeben sich folgende Einschränkungen:
+Einschränkungen messen
+
+
+Abgesehen von Anfangsschwierigkeiten mit dem Flashen des XMCs, war die Ansteuerung über PWM-Signale 
+mit den internen Dave 4 APPs sehr einfach zu lösen, lediglich die Berechnung der Einschränkungen und 
+die korrekte Übergabe der Werte stellten eine kleine Herausforderung dar.
+
+% ----------------------------------------------------------------------------------
+% Kapitel 2.8: UDP-Socket
+% ----------------------------------------------------------------------------------
+\subsection{UDP-Socket}
+\textit{Von Patrick Lesch}\newline
+
+% ----------------------------------------------------------------------------------
+% Kapitel 2.9: IOS-Appliaktion
+% ----------------------------------------------------------------------------------
+\subsection{iOS-Applikation}
+\textit{Von Patrick Lesch}\newline
+
+
+% ----------------------------------------------------------------------------------
+% Kapitel 2.10: Zusammenführung
+% ----------------------------------------------------------------------------------
+\subsection{Zusammenführung der einzelnen Komponenten}
+Diverse Probleme gab es beim Merge-Vorgang auf Gitlab mit den durch Dave4 automatisch erstellten Files. 
+Diese erfassen die konfigurierten Einstellungen der XMC APPs und überführen diese in ausführbaren Code. 
+Dieses Problem wurde dadurch gelöst, dass man die Einstellungen auf einem Branch durchgeführt hat und 
+lediglich die selbstgeschriebenen Code-Files zusammengeführt hat.
+
+\pagebreak
+% ----------------------------------------------------------------------------------
+% Kapitel 3: Benutzerhandbuch
+% ----------------------------------------------------------------------------------
+\section{Benutzerhandbuch}
+
+
+\pagebreak
+% ----------------------------------------------------------------------------------
+% Kapitel 4: Fazit/Zusammenfassung
+% ----------------------------------------------------------------------------------
+\section{Fazit}
+
+% ----------------------------------------------------------------------------------
+% Kleine Einführung in LaTeX-Elemente
+% ----------------------------------------------------------------------------------
+%\section{\LaTeX-Elemente}
+%Dieser Abschnitt beinhaltet lediglich einige Informationen über \LaTeX-Distributionen, Editoren und \LaTeX-Elemente, die Ihnen beim Einstieg in das \LaTeX-Textsatzsystem helfen sollen.
+
+%\subsection{\LaTeX-Distributionen nach Betriebssystemen}
+
+%\subsubsection{\LaTeX-Distributionen}
+%Folgende Haupt-\LaTeX-Distributionen stehen Ihnen zur Verfügung:
+%\begin{itemize}
+%  \item Windows:\quad \texttt{MiKTeX}\quad Webseite:\quad\url{http://www.miktex.org}
+%  \item Linux/Unix:\quad \texttt{TeX Live}\quad Webseite:\quad\url{http://tug.org/texlive/}
+%  \item Mac OS:\quad \texttt{MacTeX}\quad Webseite:\quad\url{http://www.tug.org/mactex/}
+%\end{itemize}
+
+%\subsubsection{\LaTeX-Editoren}
+%Auf folgenden Webseiten können Sie einige hilfreiche \LaTeX-Editoren finden:
+%\begin{itemize}
+%  \item Windows/Linux/Mac OS: \url{http://www.xm1math.net/texmaker/}
+%  \item Windiws: \url{http://www.texniccenter.org/}
+%  \item Mac OS: \url{http://pages.uoregon.edu/koch/texshop/}
+%\end{itemize}
+
+%Falls bei den oben genannten Editoren kein passender vorhanden war, findet sich auf Wikipedia eine Zusammenstellung vieler weiterer \LaTeX-Editoren:\\
+%\url{https://en.wikipedia.org/wiki/Comparison_of_TeX_editors}
+
+%Für die PDF-Anzeige empfiehlt sich SumatraPDF: \\ 
+%\url{https://www.sumatrapdfreader.org/free-pdf-reader.html}.
+
+
+%\subsection{Bilder}
+%Zum Einfügen eines Bildes, siehe Abbildung \ref{fig:reversi01}, werden die \texttt{minipage}-Umgebung und der Befehl \texttt{$\backslash$includegraphics} genutzt, da die Bilder so gut positioniert und einfach integriert und skaliert werden können.
+
+%\vspace{1em}
+%\begin{minipage}{\linewidth}
+%	\centering
+%	\includegraphics[width=0.5\linewidth]{pics/gamefield01.png}
+%	\captionof{figure}[Spielfeld 01]{Unbespieltes Spielfeld}
+%	\label{fig:reversi01}
+%\end{minipage}
+
+
+%Nachdem das Spielt gestartet wurde und beide Spielphasen durchlaufen wurden, siegt schließlich der Spieler mit der Farbe rot.
+
+%\vspace{1em}
+%\begin{minipage}{\linewidth}
+%	\centering
+%	\includegraphics[width=0.5\linewidth]{pics/gamefield02.png}
+%	\captionof{figure}[Spielfeld 02]{Finales Spielfeld}
+%	\label{fig:reversi2}
+%\end{minipage}
+
+
+%\subsection{Tabellen}
+%In diesem Abschnitt wird eine Tabelle (siehe Tabelle \ref{tab:beispiel}) dargestellt.
+
+%\vspace{1em}
+%\begin{table}[!h]
+%	\centering
+%	\begin{tabular}{|l|l|l|}
+%		\hline
+%		\textbf{Name} & \textbf{Name} & \textbf{Name}\\
+%		\hline
+%		1 & 2 & 3\\
+%		\hline
+%		4 & 5 & 6\\
+%		\hline
+%		7 & 8 & 9\\
+%		\hline
+%	\end{tabular}
+%	\caption{Beispieltabelle}
+%	\label{tab:beispiel}
+%\end{table}
+
+
+%\subsection{Auflistung}
+%Für Auflistungen wird die \texttt{enumerate}- oder \texttt{itemize}-Umgebung genutzt.
+
+%\begin{itemize}
+%	\item Nur
+%	\item ein
+%	\item Beispiel.
+%\end{itemize}
+
+%\subsection{Listings}
+%Sehen Sie in Listing \ref{lst:helloworld} ein Beispiel für das Einbinden von Quellcode mit Syntax-Highlighting.
+
+%\vspace{1em}
+%\lstinputlisting[caption=Brute Force-Ansatz für das MaxTeilsum2D-Problem, label=lst:maxTeilsumZweiD,basicstyle=\ttfamily\scriptsize]{code/maxTeilsum2DBruteForce.txt}
+%\lstinputlisting[caption=Hello World Program, label=lst:helloworld,basicstyle=\ttfamily\scriptsize]{code/helloworld.c}
+
+%\subsection{Gleichungen}
+%Formatierung von Formeln:
+%\begin{itemize}
+%  \item Formelzeichen sind in kursiv zu setzen
+%  \item Zahlen, Einheiten und Funktionsnamen sind in normaler Schriftart zu setzen (nicht kursiv)
+%  \item Häufig wird fälschlicherweise das Symbol * als Multiplikationszeichen verwendet
+%  \item Zwischen Zahl und Einheit ist ein Leerzeichen zu setzen
+%\end{itemize}
+
+%Frequency Modulation (FM) is a wireless transmission system patent-registered by Edwin H. Armstrong in 1933. It is still widespread in the area of audio broadcasting today. In case of the frequency modulation the amplitude of the desired message signal varies the frequency (the argument) of the sinusoidal carrier. The general FM oscillation is formulated with 
+%\begin{equation}
+%u_{\textrm{FM}}(t)= a_0 \cos(\Psi(t)+\varphi_0) 
+%\label{eqn:fmosc}
+%\end{equation}
+
+%To simplify matters, only an one-tone modulation signal is considered to characterize the spectrum of FM-signals at first
+%\begin{multline}
+%u_{\textrm{FM}}(t)=\hat u_T \cdot [J_0(\eta)\cos\omega_Tt + \sum_{n=1}^{+\infty} J_n(\eta) \cdot (\cos[(\omega_T+n\omega_1)t]+(-1)^n \cos[(\omega_T-n\omega_1)t])] 
+%\\ \ \mbox{with Bessel functions:} \ J_n(\eta)= \frac{(-1)^n}{\pi} \int_0^{\pi} e^{j\eta\sin x} \cdot \cos(nx) dx 
+%\end{multline}
+
+%\subsection{Verwendung von Abkürzungen}
+%Die Abkürzungen können so verwendet werden:
+%Beim ersten Mal der Verwendung (vgl. Einleitung) wird die Abkürzung ausgeschrieben \ac{BA}. Beim zweiten Mal oder folgenden Malen wird nur noch die Abkürzung verwendet \ac{BA}.
+%Aber setzen Sie Abkürzungen sparsam ein.
+
+%\subsection{Tipps}
+%Die Quellen befinden sich in der Datei \textit{quellen.bib}. 
+%Alle Literaturangaben müssen im Text referenziert werden. Die höchstwertigen Quellen stellen dabei Zeitschriftenartikel \cite{Laprie2004}, gefolgt von Konferenzbeiträgen \cite{Agrou2011}, Patenten \cite{Grisenthwaite2012}, Standards \cite{ARINC2005}, Fachbüchern \cite{Kopetz2011},  Datenblättern \cite{Freescale2015}, Techreports und White-Papern \cite{Aswadhati2011} und zuletzt Onlinequellen \cite{Xil2010} dar.
+
+\pagebreak
+
+
+
+% ----------------------------------------------------------------------------------------------------------
+% Anhang
+% ----------------------------------------------------------------------------------------------------------
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\lhead{Anhang \thesection}
+
+\begin{appendix}
+\section*{Anhang}
+\phantomsection
+\addcontentsline{toc}{section}{Anhang}
+\addtocontents{toc}{\vspace{-0.5em}}
+
+%\section{Domändenmodell}
+%Ein toller Anhang.
+
+
+%\subsection*{Screenshot}
+%\label{app:screenshot}
+%Unterkategorie, die nicht im Inhaltsverzeichnis auftaucht.
+%\pagebreak
+
+\end{appendix}
+
+
+% ----------------------------------------------------------------------------------------------------------
+% Abkürzungsverzeichnis
+% ----------------------------------------------------------------------------------------------------------
+\section{Abkürzungsverzeichnis}
+\begin{acronym}[KDE]
+	\acro{BA}[BA]{Bachelorarbeit}
+	\acro{MA}[MA]{Masterarbeit}
+
+\end{acronym}
+\pagebreak
+
+
+% ----------------------------------------------------------------------------------------------------------
+% Abbildungsverzeichnis (optional)
+% ----------------------------------------------------------------------------------------------------------
+\section {Abbildungsverzeichnis}
+\listoffigures
+\pagebreak
+
+% ----------------------------------------------------------------------------------------------------------
+% Tabellenverzeichnis (optional)
+% ----------------------------------------------------------------------------------------------------------
+\listoftables
+\pagebreak
+
+
+% ----------------------------------------------------------------------------------------------------------
+% Literatur
+% ----------------------------------------------------------------------------------------------------------
+\renewcommand\refname{Literaturverzeichnis}
+\lhead{}
+%\bibliographystyle{alpha}
+\bibliographystyle{ieeetr}
+\bibliography{quellen}
+\pagebreak
+
+
+\section {Bestelliste}
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X|X|X|X|X|}
+Produktname					& Produkt Nr.			& Kosten				& Stück  insgesamte Kosten &Link \\
+\hline
+Servomotoren	&209913-62 &25,90€ &3 &77,70€	&https://www.conrad.de/de/p/hitec-standard-servo-hs-5485hb-digital-servo-getriebe-material-karbonite-stecksystem-jr-209913.html \\
+\hline
+Servo-Hebel &1530677-VQ &6,99€ &3 & 20,91€ &https://www.conrad.de/de/p/reely-alu-servohebel-geklemmt-47-mm-passend-fuer-futaba-servohebelkranz-anzahl-bohrungen-5-1530677.html \\
+\hline
+Gabelkopf &239186-62 &7,55€ & 3 &22,65€ &https://www.conrad.de/de/p/modelcraft-aluminium-gabelkopf-mit-innengewinde-m3-5-st-239186.html \\
+\hline
+Kugelgelenk &221868-62 &6,71€ &3 &20,13€ &https://www.conrad.de/de/p/modelcraft-stahl-kugelkopf-mit-aussengewinde-m3-1-st-221868.html \\
+\hline
+5 Zoll-Bildschirm &1503822-62 &43,99€ &1 &43,99€ &https://www.conrad.de/de/p/joy-it-rb-lcd5-touchscreen-modul-12-7-cm-5-zoll-800-x-480-pixel-passend-fuer-raspberry-pi-inkl-touchpen-1503822.html \\
+\hline
+Touch-Folie &710-5240 &99,73€n &1 &99,73€ &https://de.rs-online.com/web/p/touchscreen-sensoren/7105240/ \\
+\hline
+Gesamt: & & & &285,17€ &
+\hline
+\caption{Tabelle: Bestellliste}
+\label{tbl:bestellliste}
+\end{tabularx}
+
+
+
+\end{document}

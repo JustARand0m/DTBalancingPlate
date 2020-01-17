@@ -1,0 +1,120 @@
+% begin change
+%\titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
+% end change
+
+% Kopf- und Fusszeile
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\leftmark}{\rightmark}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{\thesection\space\contentsname}
+\lfoot{}
+\cfoot{}
+\rfoot{\ \linebreak \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Vorspann
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\theHsection}{\Roman{section}}
+\pagenumbering{Roman}
+
+\newcommand{\folgen}[1]{
+\ensuremath
+#1
+}
+
+\newcommandx{\student}[3][]{
+	\def\studentName{#1}%
+	\def\studentMatnr{#2}%
+	\def\studentStudiengang{#3}%
+}
+
+\newcommandx{\studentt}[3][]{
+	\def\studentNamet{#1}%
+	\def\studentMatnrt{#2}%
+	\def\studentStudiengangt{#3}%
+}
+
+
+\newcommandx{\studenttt}[3][]{
+	\def\studentNamett{#1}%
+	\def\studentMatnrtt{#2}%
+	\def\studentStudiengangtt{#3}%
+}
+\newcommandx{\studentttt}[3][]{
+	\def\studentNamettt{#1}%
+	\def\studentMatnrttt{#2}%
+	\def\studentStudiengangttt{#3}%
+}
+\newcommandx{\studenttttt}[3][]{
+	\def\studentNametttt{#1}%
+	\def\studentMatnrtttt{#2}%
+	\def\studentStudiengangtttt{#3}%
+}
+
+
+\newcommandx{\MyTitelseite}[8][]{
+\thispagestyle{empty}
+%\includegraphics[scale=0.2]{pics/oth-logo.png}\hfill\includegraphics[scale=0.2]{#1}
+\includegraphics[scale=0.2]{pics/oth-logo.png}
+\begin{center}
+\ifthenelse{\equal{#2}{2}}{ % then
+	\vspace*{2cm}
+	\Large
+	\textbf{Ostbayerische Technische Hochschule Regensburg}\\
+	\textbf{Fakultät für Informatik und Mathematik}\\
+	\vspace*{2cm}
+	\Huge
+	\textbf{#3}\\[1em]
+	\large
+	%Zur Erlangung des akademischen Grades des\\
+	%\ifthenelse{\equal{#3}{Bachelorarbeit}}{Bachelor of Science (B.Sc.)}{Master of Science (M.Sc.)}\\
+	\vspace*{1cm}
+	\Large
+	\textbf{#4}\\
+}{ % else
+	\vspace*{1cm}
+	\Large
+	\textbf{#4}\\
+	\vspace*{2cm}
+	\large
+	An der Fakultät für Informatik und Mathematik der\\
+	Ostbayerischen Technischen Hochschule Regensburg\\
+	im Studiengang\\
+	\studentStudiengang\\[2em]
+	eingereichte\\
+	\vspace*{1cm}
+	\Large
+	\textbf{#3}\\[2em]
+	\large
+	%zur Erlangung des akademischen Grades des\\
+	%\ifthenelse{\equal{#3}{Bachelorarbeit}}{Bachelor of Science (B.Sc.)}{Master of Science (M.Sc.)}
+	\vspace*{1cm}
+	\Large
+}
+	\vfill
+	\normalsize
+	%\newcolumntype{x}[1]{>{\raggedleft\arraybackslash\hspace{0pt}}p{#1}}
+	\begin{tabular}{rl}%{6cm}p{7.5cm}}
+	    \rule{0mm}{1ex}\textbf{Name:} & \studentName \\
+		\rule{0mm}{1ex}\textbf{Matrikelnummer:} & \hspace*{-0.5em}\begin{tabular}[t]{r}\studentMatnr\end{tabular} \\ 
+		\rule{0mm}{1ex}\textbf{Name:} & \studentNamet \\
+		\rule{0mm}{1ex}\textbf{Matrikelnummer:} & \hspace*{-0.5em}\begin{tabular}[t]{r}\studentMatnrt\end{tabular} \\ 
+		\rule{0mm}{1ex}\textbf{Name:} & \studentNamett \\
+		\rule{0mm}{1ex}\textbf{Matrikelnummer:} & \hspace*{-0.5em}\begin{tabular}[t]{r}\studentMatnrtt\end{tabular} \\ 
+		\ifthenelse{\equal{#2}{1}}{~\\}{\rule{0mm}{1ex}\textbf{Studiengang:} & \studentStudiengang \\[2em]}
+		\rule{0mm}{1ex}\textbf{Erstgutachter:} & #5 \\ 
+		%\rule{0mm}{1ex}\textbf{Zweitgutachter:} & #6 \\[2em]
+		\rule{0mm}{1ex}\textbf{Abgabedatum:} & #7 \\
+	\end{tabular} 
+	
+
+%\end{center}	
+%\end{center}
+	
+	
+\end{center}
+\pagebreak
+}
