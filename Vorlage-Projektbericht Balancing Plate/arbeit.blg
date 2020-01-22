@@ -1,0 +1,10 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: arbeit.aux
+The style file: ieeetr.bst
+Database file #1: quellen.bib
+I was expecting a `,' or a `}'---line 59 of file quellen.bib
+ : 
+ : @ONLINE{Kern2017,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "electricimp"
+(There was 1 error message)

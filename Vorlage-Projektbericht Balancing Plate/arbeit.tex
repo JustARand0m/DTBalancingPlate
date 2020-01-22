@@ -19,15 +19,15 @@
 {3114621}						% Matrikelnummer
 {Technische Informatik}			% Studiengang
 
-\studentttt{Philipp Kramer}	% Studierender
+\studenttt{Philipp Kramer}	% Studierender
 {1234456}						% Matrikelnummer
 {Technische Informatik}			% Studiengang
 
-\studenttttt{Patrick Lesch}	% Studierender
+\studentttt{Patrick Lesch}	% Studierender
 {12344556}						% Matrikelnummer
 {Technische Informatik}			% Studiengang
 
-\studenttt{Michael Schmidt}	% Studierender
+\studenttttt{Michael Schmidt}	% Studierender
 {2907322}						% Matrikelnummer
 {Technische Informatik}			% Studiengang
 
@@ -35,11 +35,11 @@
 %\MyTitelseite{pics/oth-logo-informatik.png}	% Optionales Logo des extern betreuenden Unternehmens
 \MyTitelseite{}
 {1}								% Style der Titelseite (1 oder 2)
-{Projektdokumentation(Datenverarbeitung in der Technik)}			% Typ der Arbeit 
+{Projektdokumentation (Datenverarbeitung in der Technik)}			% Typ der Arbeit 
 {Balancing Plate}				% Thema der Arbeit						
 {Prof.\ Dr.\ Richard Roth}   % Betreuer
 { Hr.\ Matthias Altmann}	% Zweitgutachter
-{09.1.\the\year}				% Abgabedatum
+{10.2.\the\year}				% Abgabedatum
 
 \setcounter{page}{1} 
 
@@ -101,7 +101,8 @@ afterskip=.4\baselineskip
 \section{Einführung/ Projektkontext}
 
 %Grober Inhalt des Lastenhefts in Verbindung mit den Änderungen zur ersten Version (App als Pflicht, 
-keine Rückgabe der Servostellung). Der Grundaufbau des Prototyps ist eine Plexiglasplatte, auf der sich 
+%keine Rückgabe der Servostellung). 
+Der Grundaufbau des Prototyps ist eine Plexiglasplatte, auf der sich 
 eine Kugel befindet. Diese Kugel wird durch Druck auf eine resistive Touch-Folie (Wertbestimmung durch 
 Druck) erkannt und die zugehörigen Daten werden an einen Raspberry Pi 4 übermittelt. Dieser berechnet dann 
 den Offset zum gewünschten Stellpunkt auf der Platte und mit Hilfe eines PID-Reglers die neuen Stellwerte 
@@ -114,9 +115,9 @@ Plexiglasplatte mittels dreier Servomotoren geschehen. Optional ist dabei die ma
 Platte mittels einer App, welche über eine WiFi-Schnittstelle mit dem Raspberry Pi in Verbindung stehen 
 soll. Diese App soll dabei das im Handy verbaute Gyroskop verwenden, um den Neigungswinkel des Geräts zu 
 erfassen und die Platte dementsprechend zu neigen. Auch eine GUI sollte in der App vorhanden sein.
-Im Gegensatz zum Lastenheft, dass kurz nach dem Start abgegeben werden musste, haben sich im Laufe des 
-Projektes einige Änderungen ergeben. Dabei wurde die Steuerung mittels einer iOS-App nunmehr als 
-Pflichtmodul angesehen. Außerdem wurde das Auslesen der Potentiometer der Servomotoren aus Zeitgründen 
+\newline Im Gegensatz zum Lastenheft, dass kurz nach dem Start abgegeben werden musste, haben sich im 
+Laufe des Projektes einige Änderungen ergeben. Dabei wurde die Steuerung mittels einer iOS-App nunmehr 
+als Pflichtmodul angesehen. Außerdem wurde das Auslesen der Potentiometer der Servomotoren aus Zeitgründen 
 fallengelassen.
 \pagebreak
 % ----------------------------------------------------------------------------------
@@ -127,19 +128,16 @@ Um eine konsistente Abarbeitung zu gewährleisten wurde das Projekt in verschied
 geteilt.
 
 \begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X|X|X|}
+\hline
 Name 					& Aufgabe 1 			& Aufgabe 2 				& Aufgabe 3  \\
 \hline
 Michael Braun			& Physischer Aufbau		& Reglerentwicklung			& PWM-Signale \\
 \hline
-\hline
 Korbinian Federholzner	& Ansteuerung mit App	& UART Schnittstelle		& Touch-Folie \\
-\hline
 \hline
 Philipp Kramer			&Reglerentwicklung		& Modellerstellung Matlab	& Touch-Folie\\
 \hline
-\hline
 Patrick Lesch			& Ansteuerung mit App	& WiFi Schnittstelle		& Custom Kernel\\
-\hline
 \hline
 Michael Schmidt			& Physischer Aufbau		& UART Schnittstelle		& PWM-Signale\\
 \hline
@@ -160,7 +158,7 @@ Qualitätskontrolle durchzuführen, wurden in dem Git-Repository die Funktion pu
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale = 0.44]{pics/SkizzeAufbau}
+	\includegraphics[scale = 0.8]{pics/SkizzeAufbau}
 	\caption{Skizzierter Aufbau des Prototypen}
 	\label{Skizze}
 \end{figure}
@@ -168,7 +166,7 @@ In \ref{Skizze} ist eine Skizze des physischen Aufbaus aus dem Lastenheft zum St
 sehen. Dabei wurde lediglich graphisch eine mögliche Vorversion des späteren Prototyps gezeichnet. 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale = 0.44]{pics/BildGrundplatte}
+	\includegraphics[scale = 0.5]{pics/BildGrundplatte}
 	\caption{Grundplatte des Prototypen}
 	\label{Grundplatte}
 \end{figure}
@@ -185,7 +183,7 @@ Verbindung zur Platte wird über ein Dreieckskonstrukt \ref{Dreiecksverbindung},
 3D-Drucker kam, hergestellt. 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale = 0.44]{pics/BildDreieck}
+	\includegraphics[scale = 0.5]{pics/BildDreieck}
 	\caption{Dreiecksverbindung zur Touch-Folie}
 	\label{Dreiecksverbindung}
 \end{figure}
@@ -228,7 +226,7 @@ Servomotoren ausreichend stark um die Platte ohne Probleme zu bewegen.
 \textit{Von Korbinian Federholzner und Michael Schmidt}\newline
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale = 0.44]{pics/BildUart1}
+	\includegraphics[scale = 0.6]{pics/BildUart1}
 	\caption{Grundaufbau der UART-Verbindung}bilder 
 	\label{UART}
 \end{figure}
@@ -305,7 +303,7 @@ Funktion wieder dekodiert und in die jeweiligen Variablen gespeichert, auf die d
 zugreift. Dabei befinden sich in den ersten drei Zeichen des Datenteils (Byte 1-3) die Werte für den ersten 
 Servomotor., in den zweiten drei (Byte 4-6) die Werte für den zweiten Servomotor und in den letzten drei 
 (Byte 6-9) die Werte für den dritten Servomotor, wie in der Abbildung 6 dargestellt. Das Startbyte 0, 
-"`0x24" und das Stoppbyte 10 "`0x21" dienen dabei der Erkennung der feststehenden Feldlänge, um eine korrekte 
+"`0x24"\, und das Stoppbyte 10 "`0x21"\, dienen dabei der Erkennung der feststehenden Feldlänge, um eine korrekte 
 und vollständige Übermittlung zu gewährleisten. Die Kommunikation zwischen XMC 4500 und dem Raspberry Pi 
 erfolgt über mehrere Formate, da wir mehrere unterschiedliche Nachrichten auf dem Raspberry Pi verarbeiten 
 müssen. Zum einen wären da die Übertragung der X- und Y-Koordinaten der Touch-Folie und zum anderen die 
@@ -316,7 +314,7 @@ Datenteil unterscheidet sich zwischen den beiden Typen. Da sie als String übert
 System problemlos auf bis zu 100 unterschiedliche Nachrichtenformate erweiterbar. Um das bestehende System 
 zu erweitern muss lediglich eine zugehörige Dekodierungsfunktion auf dem Raspberry Pi programmiert werden 
 und ein korrekter Sendevorgang auf dem XMC sichergestellt werden. Die Nachricht mit den Werten der 
-Touch-Folie hat die Message-ID "`00" und wird wie folgt übertragen \ref{UART Platte}.
+Touch-Folie hat die Message-ID "`00" \,und wird wie folgt übertragen \ref{UART Platte}.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.44]{pics/Uartplatte}
@@ -343,24 +341,23 @@ Raspberry Pi werden diese wieder in integer-Werte umgerechnet und als Koordinate
 \textit{Von Michael Braun und Michael Schmidt}\newline
 
 Die Ansteuerung der Servomotoren erfolgt über ein 50 Hz PWM-Signal, welches mittels der Funktion 
-"`PWM_SetDutyCycle" auf die jeweils aktuellen Werte geändert wird. Diese Funktion wandelt automatisch 
-die Werte die im Promillebereich, im Format 0-10000, angegeben werden, in die richtige Länge des 
+"`PWM\_SetDutyCycle"\, auf die jeweils aktuellen Werte geändert wird. Diese Funktion wandelt automatisch 
+die Werte die im Promillebereich, im Format $0-10000$, angegeben werden, in die richtige Länge des 
 Hochanteils des PWM-Signals um. Diese Funktionen werden von den Dave 4- eigenen APPs zu Verfügung 
 gestellt. Dabei sind durch die Servomotoren einige Werte vorgegeben \ref {servowerte}.
 
-\begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X|X|X|}
-Bezeichnung 		& Wert in ms (zu 20ms/50Hz) & Wert in Prozent 	& Wert in Promille \\
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X|X|X|X|}
 \hline
-Minimalstellung		& 0,9						& 4,5				& 450 \\
+ Bezeichnung 		& Wert in ms (zu 20ms/50Hz) & Wert in Prozent 	& Wert in Promille \\
 \hline
-
-Neutralstellung		& 1,5						& 7,5				& 750 \\
+ Minimalstellung		& 0,9						& 4,5				& 450 \\
 \hline
-
-Maximalstellung		&2,1						& 10,5				& 1050\\
+ Neutralstellung		& 1,5						& 7,5				& 750 \\
 \hline
-\caption{Tabelle: Werte der Servomotoren}
-\label{tbl:servowerte}
+ Maximalstellung		&2,1						& 10,5				& 1050\\
+\hline
+%\caption{Tabelle: Werte der Servomotoren}
+%\label{tbl:servowerte}
 \end{tabularx}
 
 Sollten die übertragenen Werte den Maximalwert von 1050 überschreiten, werden sie lediglich auf den 
@@ -370,19 +367,18 @@ ausgegeben. Dies wird in einem Interrupt abgearbeitet, das im 50 Hz Takt aufgeru
 noch motorenspezifische Unterschiede aufgetreten, die in Tabelle 3 aufgeführt werde. Diese sind nötig, um 
 die Platte initial in eine ebene Nullstellung zu positionieren.
 
-\begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X|X|X|}
-Servomotor		& Offset \\
+\begin{tabularx}{4cm}{|l|l|}
 \hline
-1				& 35	\\
+ Servomotor		& Offset \\
 \hline
-
-2				& 15\\
+ 1				& 35	\\
 \hline
-
-3				& 5	\\
+ 2				& 15\\
 \hline
-\caption{Tabelle: Werte der Servomotoren}
-\label{tbl:offsets}
+ 3				& 5	\\
+\hline
+%\caption{Tabelle: Werte der Servomotoren}
+%\label{tbl:offsets}
 \end{tabularx}
 
 
@@ -397,20 +393,28 @@ mit den internen Dave 4 APPs sehr einfach zu lösen, lediglich die Berechnung de
 die korrekte Übergabe der Werte stellten eine kleine Herausforderung dar.
 
 % ----------------------------------------------------------------------------------
-% Kapitel 2.8: UDP-Socket
+% Kapitel 2.8: Threading auf dem Raspberry Pi
+% ----------------------------------------------------------------------------------
+\subsection{Threading auuf dem Raspberry}
+\textit{Von Korbinian Federholzner}\newline
+
+
+
+% ----------------------------------------------------------------------------------
+% Kapitel 2.9: UDP-Socket
 % ----------------------------------------------------------------------------------
 \subsection{UDP-Socket}
 \textit{Von Patrick Lesch}\newline
 
 % ----------------------------------------------------------------------------------
-% Kapitel 2.9: IOS-Appliaktion
+% Kapitel 2.10: IOS-Appliaktion
 % ----------------------------------------------------------------------------------
 \subsection{iOS-Applikation}
 \textit{Von Patrick Lesch}\newline
 
 
 % ----------------------------------------------------------------------------------
-% Kapitel 2.10: Zusammenführung
+% Kapitel 2.11: Zusammenführung
 % ----------------------------------------------------------------------------------
 \subsection{Zusammenführung der einzelnen Komponenten}
 Diverse Probleme gab es beim Merge-Vorgang auf Gitlab mit den durch Dave4 automatisch erstellten Files. 
@@ -618,29 +622,36 @@ lediglich die selbstgeschriebenen Code-Files zusammengeführt hat.
 \bibliography{quellen}
 \pagebreak
 
-
 \section {Bestelliste}
-\begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X|X|X|X|X|}
-Produktname					& Produkt Nr.			& Kosten				& Stück  insgesamte Kosten &Link \\
-\hline
-Servomotoren	&209913-62 &25,90€ &3 &77,70€	&https://www.conrad.de/de/p/hitec-standard-servo-hs-5485hb-digital-servo-getriebe-material-karbonite-stecksystem-jr-209913.html \\
-\hline
-Servo-Hebel &1530677-VQ &6,99€ &3 & 20,91€ &https://www.conrad.de/de/p/reely-alu-servohebel-geklemmt-47-mm-passend-fuer-futaba-servohebelkranz-anzahl-bohrungen-5-1530677.html \\
-\hline
-Gabelkopf &239186-62 &7,55€ & 3 &22,65€ &https://www.conrad.de/de/p/modelcraft-aluminium-gabelkopf-mit-innengewinde-m3-5-st-239186.html \\
-\hline
-Kugelgelenk &221868-62 &6,71€ &3 &20,13€ &https://www.conrad.de/de/p/modelcraft-stahl-kugelkopf-mit-aussengewinde-m3-1-st-221868.html \\
-\hline
-5 Zoll-Bildschirm &1503822-62 &43,99€ &1 &43,99€ &https://www.conrad.de/de/p/joy-it-rb-lcd5-touchscreen-modul-12-7-cm-5-zoll-800-x-480-pixel-passend-fuer-raspberry-pi-inkl-touchpen-1503822.html \\
-\hline
-Touch-Folie &710-5240 &99,73€n &1 &99,73€ &https://de.rs-online.com/web/p/touchscreen-sensoren/7105240/ \\
-\hline
-Gesamt: & & & &285,17€ &
-\hline
-\caption{Tabelle: Bestellliste}
-\label{tbl:bestellliste}
-\end{tabularx}
+%\begin{tabularx}{\textwidth}{p{0.25\textwidth}|l|l|l|l|l|X|}
+%\hline
+% Produktname					& Produkt Nr.			& Kosten				& Stück  &Gesamtkosten &Link \\
+%\hline
+% Servomotoren	&209913-62 &\euro{25,90} &3 &\euro{77,70}	&https://www.conrad.de/de/p/hitec-standard-servo-hs-5485hb-digital-servo-getriebe-material-karbonite-stecksystem-jr-209913.html \\
+%\hline
+% Servo-Hebel &1530677-VQ &\euro{6,99} &3 & \euro{20,91} &https://www.conrad.de/de/p/reely-alu-servohebel-geklemmt-47-mm-passend-fuer-futaba-servohebelkranz-anzahl-bohrungen-5-1530677.html \\
+%\hline
+% Gabelkopf &239186-62 &\euro{7,55} & 3 &\euro{22,65} &https://www.conrad.de/de/p/modelcraft-aluminium-gabelkopf-mit-innengewinde-m3-5-st-239186.html \\
+%\hline
+% Kugelgelenk &221868-62 &\euro{6,71} &3 &\euro{20,13} &https://www.conrad.de/de/p/modelcraft-stahl-kugelkopf-mit-aussengewinde-m3-1-st-221868.html \\
+%\hline
+% Bildschirm &1503822-62 &\euro{43,99} &1 &\euro{43,99} &https://www.conrad.de/de/p/joy-it-rb-lcd5-touchscreen-modul-12-7-cm-5-zoll-800-x-480-pixel-passend-fuer-raspberry-pi-inkl-touchpen-1503822.html \\
+%\hline
+% Touch-Folie &710-5240 &\euro{99,73} &1 &\euro{99,73} &https://de.rs-online.com/web/p/touchscreen-sensoren/7105240/ \\
+%\hline
+%\hline
+% Gesamt: & & & &\euro{285,17} & \\
+%\hline
+%\caption{Tabelle: Bestellliste}
+%\label{tbl:bestellliste}
+%\end{tabularx}
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.8]{pics/Bestelliste}
+	\caption{Bestellliste und Kosten des Projektes}
+	\label{bestell}
+\end{figure}
 
 
 \end{document}
