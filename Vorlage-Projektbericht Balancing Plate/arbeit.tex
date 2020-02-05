@@ -296,7 +296,7 @@ zum Raspberry Pi. Hier wurden die beiden Pins 1.4 und 1.5 gewählt. Hier fungier
 Pin 1.4 als Empfänger. Zum Testen wurde vom Raspberry Pi ein vordefinierter String, in diesem Fall 
 "`\$123456789!",, an den XMC gesendet. Dieser liest die ankommenden Daten und sendet sie zurück an den 
 Raspberry Pi, welcher sie auf dem Bildschirm ausgibt. Dadurch ließen sich die nachfolgenden Fehler in 
-der Datenverarbeitung des XMC besser nachvollziehen. Am Anfang des Projektes traten diverse Schwierigkeiten 
+der Implementierung und Datenverarbeitung des XMC besser nachvollziehen. Am Anfang des Projektes traten diverse Schwierigkeiten 
 beim Testen der Implementierung auf. Zum Beispiel war das Flashen des Programmes auf den XMC unmöglich, 
 da ein Fehler generiert wurde, da keine Verbindung zu dem auf dem XMC integrierten Debugger hergestellt 
 werden konnte. Nach einem Test mit einem anderem XMC gleicher Bauart wurde festgestellt, dass unser erster 
@@ -381,29 +381,29 @@ Raspberry Pi werden diese wieder in integer-Werte umgerechnet und als Koordinate
 übergeben.
 
 \subsubsection{CRC-Check}
-Da der Austausch der mit UART immer wieder Bit-errors hatte, gab es immer wieder Störungen an den Servos.
-Um die Bitfehler zu erkennen wurde ein CRC-Check implementiert, welcher über ein Generatorpolynom über das
-gesammte Packet ermittelt wurde. Für die Implementierung wurde eine CRC-Tabelle benutzt diese hat den Vorteil,
+Da der Austausch der mit UART immer wieder Bit-Errors hatte, gab es immer wieder Störungen an den Servos.
+Um die Bitfehler zu erkennen wurde ein CRC-Check implementiert, welcher ein Generatorpolynom über das
+gesamte Packet ermittelt. Für die Implementierung wurde eine CRC-Tabelle benutzt, da diese den Vorteil hat,
 dass der CRC-Betrag nicht komplett berechnet werden muss, sondern nur ein Teil. Über diesen Anteil kann 
 der Wert in der Tabelle nachgeschlagen werden und dieser als CRC-Wert verwendet werden. Der Vorteil einer solchen
-Tabelle ist die Performance, da die Rechnung komplett mehr Performance ziehen würde. Der CRC-Check ist momemtan nur in
-der Richtung vom XMC zum Raspberry Pi implementiert. Vom Touchpanel des XMCs zum PI wurde nicht umbedingt ein CRC benötigt,
-da auf dem PI ein Kalman filter davorgeschalen wurde der diese Fehler ausgleicht. 
-Der CRC könnte hier noch implementiert werden.
+Tabelle ist die Performance, da die komplette Rechnung aufwändiger wäre und mehr Performance ziehen würde. Der CRC-Check ist momemtan nur in
+der Richtung vom XMC zum Raspberry Pi implementiert, da nur dort die Bit-Errors auftraten. Vom Touchpanel des XMCs zum PI wurde nicht unbedingt ein CRC benötigt,
+da auf dem PI ein Kalman-Filter davorgeschalten wurde der diese Fehler ausgleicht. 
+Der CRC könnte hier in Zukunft noch implementiert werden.
 
 \subsubsection{Probleme}
-Die größten Probleme beim UART war die Dave4 Dokumentation des XMCs. Online findet man ein sehr detailiertes Manuel zum 
-XMC4500, jedoch nahezu keine Dokumentation wie Dave4 Apps funktioneren. Die OTH Rechner haben bei der Dave4 IDE keine 
-Help Manuels was das ganze noch erschwehrt. Die Lösung dieses Problems ware die Help Manuels auf Dave4 manuel 
-nachzuinstallieren. In diesem git es sehr viele nützliche Informationen wie UART eigentlich mittels der App funktioniert.
+Die größten Probleme beim UART war die Dave4 Dokumentation des XMCs. Online findet man ein sehr detailiertes Handbuch zum 
+XMC4500, jedoch nahezu keine Dokumentation wie die enthaltenen Dave4 Apps funktionieren. Die OTH Rechner haben bei der Dave4 IDE keine 
+Help Manuals, was das Ganze noch erschwert. Die Lösung dieses Problems war, die Help Manuals auf Dave4 manuell 
+nachzuinstallieren. In diesem git es sehr viele nützliche Informationen wie UART eigentlich mittels der App funktioniert und welche Bedeutung die Funktionen genau haben.
 
 \subsubsection{Ausbick}
-Folgende Punkte waren auf grund von Zeit nichtmehr möglich zum implementieren.
-Der CRC-Check ist momentan aus zeitlichen gründen in nur eine Richtung implementiert, es ist zwar nicht nötig, wegen des
-Kalman Filters aber, es wäre trozdem nicht schlecht in Richtung vom XMC zum PI einen CRC check zu haben. 
+Folgende Punkte waren aufgrund von Zeitmangel nicht mehr funktionsfähig zu implementieren.
+Der CRC-Check ist momentan aus zeitlichen Gründen in nur eine Richtung implementiert. Es ist zwar nicht wegen des Kalman-Filters nicht unbedingt nötig,aber
+ es wäre trozdem nicht schlecht in Richtung vom XMC zum PI einen CRC-Check zu haben. 
 Auf dem Branch XMC/HDLCframing ist eine Version des UART Frames die sich an dem HDLC Format orientiert. Diese 
 ist warscheinlich stabiler als die momentane. Der Code auf dem Branch ist so gut wie fertig, jedoch war das Framing welches 
-in der Endversion ist, schon gut genug gestest, sodass dieser ungetestet Code nicht nötige war.
+in der Endversion ist, schon gut genug getestet, sodass dieser ungetestet Code nicht nötig war.
 % ----------------------------------------------------------------------------------
 % Kapitel 2.6: Reglerentwicklung
 % ----------------------------------------------------------------------------------
@@ -474,12 +474,12 @@ die korrekte Übergabe der Werte stellten eine kleine Herausforderung dar.
 \subsection{Threading auf dem Raspberry}
 \textit{Von Korbinian Federholzner}\newline
 Das erhalten der UDP-Packete und der UART-Frames, wurde in Blocking-Loops implementiert, dadurch wäre die Anwendung 
-die ganze Zeit durch diese Loops Blockiert. Um dieses Verhalten zu umgehen wurden alle Listing-Loops in eigene Threads
+die ganze Zeit durch diese Loops blockiert. Um dieses Verhalten zu umgehen wurden alle Listening-Loops in eigene Threads
 verschoben. Da die Anwendung zentral von einem Button gesteuert wird, welcher zwischen den Modus zum Regeln und dem 
-Modus zum manuel mit der App steuern, gesteuert wird, befindet sich die Ansteuerung des Buttons im main thread.
-für den Regeler und das Manuelle Ansteuern gibt es auch wieder zwei Threads welche je nach Zustand des Buttons auf 
+Modus zur manuelle Steuerung mit der App wechselt, gesteuert wird, befindet sich die Ansteuerung des Buttons im main Thread.
+Für den Regeler und das manuelle Ansteuern gibt es auch wieder zwei Threads welche je nach Zustand des Buttons auf 
 aktiv gesetzt werden. Um den Zugriff auf die gelesenen Daten von UART und UDP sicher zu gewährleisten, wurde mittels 
-Mutex der Zugriff auf die Daten abgeschert. Z.B. kann nur entweder UART schreiben oder der Benutzer die Daten abfragen,
+Mutex der Zugriff auf die Daten abgesichert. Dabei kann nur entweder UART schreiben oder der Benutzer die Daten abfragen,
 niemals beide gleichzeitig.
 
 
