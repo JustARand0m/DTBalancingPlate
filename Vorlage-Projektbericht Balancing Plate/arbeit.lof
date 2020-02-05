@@ -2,8 +2,10 @@
 \contentsline {figure}{\numberline {1}{\ignorespaces Skizzierter Aufbau des Prototypen\relax }}{3}{figure.caption.2}%
 \contentsline {figure}{\numberline {2}{\ignorespaces Grundplatte des Prototypen\relax }}{3}{figure.caption.3}%
 \contentsline {figure}{\numberline {3}{\ignorespaces Dreiecksverbindung zur Touch-Folie\relax }}{4}{figure.caption.4}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Grundaufbau der UART-Verbindung\relax }}{5}{figure.caption.5}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Aufbau eines UART-Frames\cite {electricimp}\relax }}{7}{figure.caption.6}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Aufbau eines Datenpakets mit Servowerten\relax }}{7}{figure.caption.7}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Aufbau eines Datenpakets mit den Werten der Touch-Folie\relax }}{8}{figure.caption.8}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Bestellliste und Kosten des Projektes\relax }}{V}{figure.caption.14}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Funktion des Touch Panels\relax }}{5}{figure.caption.5}%
+\contentsline {figure}{\numberline {5}{\ignorespaces UML Activity Diagramm, der Interrupts\relax }}{6}{figure.caption.6}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Grundaufbau der UART-Verbindung\relax }}{7}{figure.caption.7}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Aufbau eines UART-Frames\cite {electricimp}\relax }}{9}{figure.caption.8}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Aufbau eines Datenpakets mit Servowerten\relax }}{9}{figure.caption.9}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Aufbau eines Datenpakets mit den Werten der Touch-Folie\relax }}{10}{figure.caption.10}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Bestellliste und Kosten des Projektes\relax }}{V}{figure.caption.16}%

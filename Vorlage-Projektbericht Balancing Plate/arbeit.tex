@@ -217,6 +217,56 @@ Servomotoren ausreichend stark um die Platte ohne Probleme zu bewegen.
 % ----------------------------------------------------------------------------------
 \subsection{Touch-Folie}
 \textit{Von Korbinian Federholzner und Philipp Kramer}\newline
+\subsubsection{Funktion der Touch Folie}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.6]{pics/TouchScreen_5wires.png}
+	\caption{Funktion des Touch Panels} 
+	\label{fig:TouchPanelFunction}
+\end{figure}
+
+Zum Auslesen der Sensorwerte wird ein 5-Wire Rezessives Touchpanael verwendet.
+Die Variante mit 5 Kabeln hat den Vorteil, dass für das Auslesen ein 5tes Kabel verwendet wird, welches
+ein Analoges Signal liefert. Prinzipiell ist das Panel ein Spannungsteiler, bei \ref{fig:TouchPanelFunction} 
+sieht man dass es zwei Schichten hat, welche durch Druck zusammengefügt werden, dadurch ergibt sich 
+immer ein anderer Wiederstand je nach dem auf welcher Position man sich auf dem Panel befindet. Der Analoge 
+Spannungswert ist also durch diesen Spannungsteiler bestimmt. Damit Sich die Beiden Folien berühren können
+muss ein Mindestruck von $1.00 Newton$ gegeben sein. Im Bild \ref{fig:TouchPanelFunction} sieht man dass auf der 
+Oberen Seite Spannung und der unteren Masse anliegt. Mit dieser Konstellation kann man nur eine Richtung messen 
+also z.B. die X-Koordinate. Um nun auch die Y-Koordinate messen zu können müssen die Pins so umgeschalten werden, 
+dass Auf der Linken Seite Spannung und auf der Rechten Seite Masse anliegt. Dadurch ändert wird der Wiederstand der
+anderen Seite nun als Spannungsteiler gemessen. 
+
+\subsubsection{Implementierung}
+Dadurch, dass die Pins umgeschaltet werden müssen, wurden die GPIO Pins des XMC verwendet. Da das Panel nur mit einer
+Frequenz von 50 Hz geschalten werden kann, wurde ein Timer Interrupt definiert. Dieses Interrupt wurde alle 20 ms 
+Ausgelöst. Die Interrupt Service Routine startet dann die Messung für den Analog Digital Converter. 
+Der Analoge Pin des Panels ist an einem Analog fähigen Pin des XMCs angeschlossen, von welchem mittels des ADCs 
+gemessen wird. Der ADC löst sobald er mit dem Messen fertig ist auch eine Interrupt Service Routine aus, in dieser 
+wird der gemessene Wert gespeichert und dann die GPIO Pins umgeschalten damit die andere Koordinate gemessen werden kann.
+Sind beide Werte vorhanden, so werden die beiden Daten in einem UART Frame verpackt und dann ein UART-Transmit ausgelöst.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.6]{pics/TouchUML.png}
+	\caption{UML Activity Diagramm, der Interrupts}
+	\label{TouchUML}
+\end{figure}
+
+\subsubsection{Probleme}
+Ein Problem im Zuge der Implementierung der Touch-Platte, war die Funktion der ADC-App im Dave4, da bei diesem
+keine gute Dokumentation vorhanden war, so war es z.B. schwer herrauszufinden wie die Funktion zum starten der ADC Messung 
+hieß. Ein görßeres Problem war der Messfehler des Touch Panels, bei welchem die Platte einen Spannungsabfall je nach Pin hatte.
+Bsp: Falls man der X-Achse entlang messen wollte und dabei einen Konstaten Y-Wert beibehielt, so wäre das Erwartete Verhalten,
+dass der X-Wert gleich bleiben würde. Jedoch stieg der Wert bei messen entlag der X-Achse konstant an, das selbe war auch auf
+der Y-Achse. Um das dieses verhalten der Pins zu eleminieren, wurde versucht das Ganze mittels einer H-Brücke zu lösen, 
+jedoch war hier das selbe Problem, über der H-Brücke fiel auch Spannung ab, da 2 Pins immer fest waren und nur 2 Pins
+über die Brücke geschalten waren, gab es wieder ein ähnliches Szenario. Die nächste Überlegung, war die Verwendung von Relais.
+Leider sind Relais die schnell genug Schalten können relativ Teuer und diese haben einen höheren Verschleiß.
+Die Lösung des Problems war, Wiederstände zwischen die Pins des XMCs und der Platte zu schalten. Diese Wiederstände 
+minimieren den Fehler, dadruch war der Fehler vernachlässigbar und konnte durch den Regeler ausgeglichen werden. 
+
 \subsection{Programmierung Raspberry Pi}
 
 % ----------------------------------------------------------------------------------
@@ -224,6 +274,7 @@ Servomotoren ausreichend stark um die Platte ohne Probleme zu bewegen.
 % ----------------------------------------------------------------------------------
 \subsection{UART Schnittstelle}
 \textit{Von Korbinian Federholzner und Michael Schmidt}\newline
+\subsubsection{Funktion}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.6]{pics/BildUart1}
@@ -276,7 +327,7 @@ aufgerufen.
 % ----------------------------------------------------------------------------------
 % Kapitel 2.5: Datenübertragungsformate
 % ----------------------------------------------------------------------------------
-\subsection{Datenübertragungsformate}
+\subsubsection{Datenübertragungsformate}
 \textit{Von Korbinian Federholzner und Michael Schmidt}\newline
 Um eine eindeutige Übertragung zu gewährleisten, wurde sich auf ein standardisiertes Format festgelegt. 
 Dabei wurden eine bestimmte Anzahl Pakete in einer bestimmten Reihenfolge gesendet, wobei pro Paket immer 
@@ -328,6 +379,31 @@ umgerechnet wurden übertragen. Diese sind in den Datenbytes 4-7 (X-Koordinate) 
 Trennbyte eingeführt, da die Koordinaten unterschiedliche Länge haben können (3 oder 4 Zeichen). Auf dem 
 Raspberry Pi werden diese wieder in integer-Werte umgerechnet und als Koordinaten an die Regelung 
 übergeben.
+
+\subsubsection{CRC-Check}
+Da der Austausch der mit UART immer wieder Bit-errors hatte, gab es immer wieder Störungen an den Servos.
+Um die Bitfehler zu erkennen wurde ein CRC-Check implementiert, welcher über ein Generatorpolynom über das
+gesammte Packet ermittelt wurde. Für die Implementierung wurde eine CRC-Tabelle benutzt diese hat den Vorteil,
+dass der CRC-Betrag nicht komplett berechnet werden muss, sondern nur ein Teil. Über diesen Anteil kann 
+der Wert in der Tabelle nachgeschlagen werden und dieser als CRC-Wert verwendet werden. Der Vorteil einer solchen
+Tabelle ist die Performance, da die Rechnung komplett mehr Performance ziehen würde. Der CRC-Check ist momemtan nur in
+der Richtung vom XMC zum Raspberry Pi implementiert. Vom Touchpanel des XMCs zum PI wurde nicht umbedingt ein CRC benötigt,
+da auf dem PI ein Kalman filter davorgeschalen wurde der diese Fehler ausgleicht. 
+Der CRC könnte hier noch implementiert werden.
+
+\subsubsection{Probleme}
+Die größten Probleme beim UART war die Dave4 Dokumentation des XMCs. Online findet man ein sehr detailiertes Manuel zum 
+XMC4500, jedoch nahezu keine Dokumentation wie Dave4 Apps funktioneren. Die OTH Rechner haben bei der Dave4 IDE keine 
+Help Manuels was das ganze noch erschwehrt. Die Lösung dieses Problems ware die Help Manuels auf Dave4 manuel 
+nachzuinstallieren. In diesem git es sehr viele nützliche Informationen wie UART eigentlich mittels der App funktioniert.
+
+\subsubsection{Ausbick}
+Folgende Punkte waren auf grund von Zeit nichtmehr möglich zum implementieren.
+Der CRC-Check ist momentan aus zeitlichen gründen in nur eine Richtung implementiert, es ist zwar nicht nötig, wegen des
+Kalman Filters aber, es wäre trozdem nicht schlecht in Richtung vom XMC zum PI einen CRC check zu haben. 
+Auf dem Branch XMC/HDLCframing ist eine Version des UART Frames die sich an dem HDLC Format orientiert. Diese 
+ist warscheinlich stabiler als die momentane. Der Code auf dem Branch ist so gut wie fertig, jedoch war das Framing welches 
+in der Endversion ist, schon gut genug gestest, sodass dieser ungetestet Code nicht nötige war.
 % ----------------------------------------------------------------------------------
 % Kapitel 2.6: Reglerentwicklung
 % ----------------------------------------------------------------------------------
@@ -395,9 +471,16 @@ die korrekte Übergabe der Werte stellten eine kleine Herausforderung dar.
 % ----------------------------------------------------------------------------------
 % Kapitel 2.8: Threading auf dem Raspberry Pi
 % ----------------------------------------------------------------------------------
-\subsection{Threading auuf dem Raspberry}
+\subsection{Threading auf dem Raspberry}
 \textit{Von Korbinian Federholzner}\newline
-
+Das erhalten der UDP-Packete und der UART-Frames, wurde in Blocking-Loops implementiert, dadurch wäre die Anwendung 
+die ganze Zeit durch diese Loops Blockiert. Um dieses Verhalten zu umgehen wurden alle Listing-Loops in eigene Threads
+verschoben. Da die Anwendung zentral von einem Button gesteuert wird, welcher zwischen den Modus zum Regeln und dem 
+Modus zum manuel mit der App steuern, gesteuert wird, befindet sich die Ansteuerung des Buttons im main thread.
+für den Regeler und das Manuelle Ansteuern gibt es auch wieder zwei Threads welche je nach Zustand des Buttons auf 
+aktiv gesetzt werden. Um den Zugriff auf die gelesenen Daten von UART und UDP sicher zu gewährleisten, wurde mittels 
+Mutex der Zugriff auf die Daten abgeschert. Z.B. kann nur entweder UART schreiben oder der Benutzer die Daten abfragen,
+niemals beide gleichzeitig.
 
 
 % ----------------------------------------------------------------------------------
