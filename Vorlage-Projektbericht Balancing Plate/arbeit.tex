@@ -158,7 +158,7 @@ Qualitätskontrolle durchzuführen, wurden in dem Git-Repository die Funktion pu
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale = 0.8]{pics/SkizzeAufbau}
+	\includegraphics[scale = 0.9]{pics/SkizzeAufbau}
 	\caption{Skizzierter Aufbau des Prototypen}
 	\label{Skizze}
 \end{figure}
@@ -166,7 +166,7 @@ In \ref{Skizze} ist eine Skizze des physischen Aufbaus aus dem Lastenheft zum St
 sehen. Dabei wurde lediglich graphisch eine mögliche Vorversion des späteren Prototyps gezeichnet. 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale = 0.5]{pics/BildGrundplatte}
+	\includegraphics[scale = 0.45]{pics/BildGrundplatte}
 	\caption{Grundplatte des Prototypen}
 	\label{Grundplatte}
 \end{figure}
@@ -183,7 +183,7 @@ Verbindung zur Platte wird über ein Dreieckskonstrukt \ref{Dreiecksverbindung},
 3D-Drucker kam, hergestellt. 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale = 0.5]{pics/BildDreieck}
+	\includegraphics[scale = 0.45]{pics/BildDreieck}
 	\caption{Dreiecksverbindung zur Touch-Folie}
 	\label{Dreiecksverbindung}
 \end{figure}
@@ -289,7 +289,7 @@ kreuzen \ref{UART}.
 
 Grundsätzlich erfolgt die Datenübertragung aufgrund der Einfachheit in Strings, welche jeweils nach dem 
 Empfang dekodiert werden. Dabei enthält ein UART-Paket genau ein Zeichen der Zeichenfolge. Ein solches 
-Beispielpaket ist in \ref{fig:UARTFrame} zu sehen.Die Übertragung erfolgt dabei auf dem Raspberry Pi über 
+Beispielpaket ist in \ref{UARTFrame} zu sehen.Die Übertragung erfolgt dabei auf dem Raspberry Pi über 
 die General Purpose In/Out Pins 14 und 15. Dabei ist der Pin 14 der Sender und der Pin 15 der Empfänger 
 von den Nachrichten des XMC. Auf dem XMC ist die Pinbelegung variabel und somit flexibler im Gegensatz 
 zum Raspberry Pi. Hier wurden die beiden Pins 1.4 und 1.5 gewählt. Hier fungiert Pin 1.5 als Sender und 
@@ -331,10 +331,10 @@ aufgerufen.
 \textit{Von Korbinian Federholzner und Michael Schmidt}\newline
 Um eine eindeutige Übertragung zu gewährleisten, wurde sich auf ein standardisiertes Format festgelegt. 
 Dabei wurden eine bestimmte Anzahl Pakete in einer bestimmten Reihenfolge gesendet, wobei pro Paket immer 
-ein Zeichen des Strings übertragen wird, wie in \ref{fig:UARTFrame}verdeutlicht wird.
+ein Zeichen des Strings übertragen wird, wie in \ref{UARTFrame}verdeutlicht wird.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale = 0.44]{pics/Uartframe}
+	\includegraphics[scale = 0.5]{pics/Uartframe}
 	\caption{Aufbau eines UART-Frames\cite {electricimp}}
 	\label{UARTFrame}
 \end{figure}
@@ -343,7 +343,7 @@ Kommunikation, bei der der Raspberry Pi der Sender und der XMC 4500 der Empfäng
 \ref{UART Servo}.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale = 0.44]{pics/Uartservo}
+	\includegraphics[scale = 0.5]{pics/Uartservo}
 	\caption{Aufbau eines Datenpakets mit Servowerten}
 	\label{UART Servo}
 \end{figure}
@@ -368,7 +368,7 @@ und ein korrekter Sendevorgang auf dem XMC sichergestellt werden. Die Nachricht 
 Touch-Folie hat die Message-ID "`00" \,und wird wie folgt übertragen \ref{UART Platte}.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale = 0.44]{pics/Uartplatte}
+	\includegraphics[scale = 0.5]{pics/Uartplatte}
 	\caption{Aufbau eines Datenpakets mit den Werten der Touch-Folie}
 	\label{UART Platte}
 \end{figure}
@@ -379,6 +379,11 @@ umgerechnet wurden übertragen. Diese sind in den Datenbytes 4-7 (X-Koordinate) 
 Trennbyte eingeführt, da die Koordinaten unterschiedliche Länge haben können (3 oder 4 Zeichen). Auf dem 
 Raspberry Pi werden diese wieder in integer-Werte umgerechnet und als Koordinaten an die Regelung 
 übergeben.
+\newline
+Allerdings kamen die Formate mit Message-IDs nicht mehr zum Einsatz, da das Auslesen der Servowerte zeitlich 
+nicht mehr umgesetzt werden konnte. Daher fallen diese Teilstücke und das nachfolgende Trennbyte aus dem 
+Format für die Übertragung der Touch-Plattenwerte heraus. Der Code ist dennoch im Git-Repository vorhanden 
+und diese Leitung kann dadurch erweitert werden um multiple Datenformate zu unterstützen.
 
 \subsubsection{CRC-Check}
 Da der Austausch der mit UART immer wieder Bit-Errors hatte, gab es immer wieder Störungen an den Servos.
@@ -415,12 +420,12 @@ in der Endversion ist, schon gut genug getestet, sodass dieser ungetestet Code n
 % ----------------------------------------------------------------------------------
 \subsection{PWM-Signale}
 \textit{Von Michael Braun und Michael Schmidt}\newline
-
+\subsubsection{ Algemeines}
 Die Ansteuerung der Servomotoren erfolgt über ein 50 Hz PWM-Signal, welches mittels der Funktion 
 "`PWM\_SetDutyCycle"\, auf die jeweils aktuellen Werte geändert wird. Diese Funktion wandelt automatisch 
 die Werte die im Promillebereich, im Format $0-10000$, angegeben werden, in die richtige Länge des 
 Hochanteils des PWM-Signals um. Diese Funktionen werden von den Dave 4- eigenen APPs zu Verfügung 
-gestellt. Dabei sind durch die Servomotoren einige Werte vorgegeben \ref {servowerte}.
+gestellt. Dabei sind durch die Servomotoren einige Werte vorgegeben:
 
 \begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X|X|X|X|}
 \hline
@@ -433,9 +438,9 @@ gestellt. Dabei sind durch die Servomotoren einige Werte vorgegeben \ref {servow
  Maximalstellung		&2,1						& 10,5				& 1050\\
 \hline
 %\caption{Tabelle: Werte der Servomotoren}
-%\label{tbl:servowerte}
+%\label{servowerte}
 \end{tabularx}
-
+\newline
 Sollten die übertragenen Werte den Maximalwert von 1050 überschreiten, werden sie lediglich auf den 
 Maximalwert gesetzt, um eine korrekte Ansteuerung der Servomotoren zu gewährleisten. Diese Werte werden 
 kontinuierlich von der Regelung verändert und über die Pins 3.0, 3.3 und 3.4 des XMC an die Servomotoren 
@@ -454,19 +459,48 @@ die Platte initial in eine ebene Nullstellung zu positionieren.
  3				& 5	\\
 \hline
 %\caption{Tabelle: Werte der Servomotoren}
-%\label{tbl:offsets}
+%\label{offsets}
 \end{tabularx}
+\newline
+\subsubsection{Probleme und Ausblick}
 
-
-%TODO
-Außerdem wird die Auslenkung der Hebel durch die Aufhängung der Motoren begrenzt, da ab einem 
+Jedoch wird die Auslenkung der Hebel durch die Aufhängung der Motoren begrenzt, da ab einem 
 bestimmten Wert die Platte an diese stößt. Dadurch ergeben sich folgende Einschränkungen:
-Einschränkungen messen
+\newline
+\begin{tabularx}{8cm}{|l|l|l|}
+\hline
+ Servomotor		& Minimalwert & Maximalwert \\
+\hline
+ 1				& 600		&  1050 \\
+\hline
+ 2				& 490		& 950\\
+\hline
+ 3				& 490		& 950\\
+\hline
+%\caption{Tabelle: Werte der Servomotoren}
+%\label{einschränkungen}
+\end{tabularx}
+\newline
+Der Maximalwert ergibt sich dabei aus dem Umstand, dass die Hebel in der Verbindung zwischen Motor und 
+Dreiecksverbindung überdrehen und dadurch die Platte eher absenken als sie auf ihre maximale Auslenkung zu 
+bringen. 
+ \begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.8]{pics/neuedreiecksverbindung}
+	\caption{Aufbau einer alternativen Dreiecksverbindung mit größerem Wirkungsradius}
+	\label{dreieckneu}
+\end{figure}
+Dieses Problem könnte dabei in Zukunft mittels einer neuen Dreiecksverbindung gelöst werden, die auch niedrigere 
+Auslenkungen erlaubt \ref {dreieckneu}. Leider kamen wir aufgrund von Zeitdruck nicht mehr dazu diese neue Verbindung zu drucken. 
+Allerdings wäre auch noch die Befestigung an der Platte ein Problem, da die alte Verbindung bereits mittels Silikon befestigt und 
+eine Beschädigung beim Ablösen dieser zu befürchten war. Glücklicherweise hat der Regler solche extremen Ausschläge auch gar nicht zu 
+handhaben, da die Regelung für unsere Zwecke ausreichend Spielraum zum balancieren hat.
 
 
+\subsubsection{Fazit}
 Abgesehen von Anfangsschwierigkeiten mit dem Flashen des XMCs, war die Ansteuerung über PWM-Signale 
-mit den internen Dave 4 APPs sehr einfach zu lösen, lediglich die Berechnung der Einschränkungen und 
-die korrekte Übergabe der Werte stellten eine kleine Herausforderung dar.
+mit den internen Dave 4 APPs sehr einfach zu lösen, wobei natürlich auch das verspätete Auffinden der Dokumentation dieser APPsmit hineingespielt hat. 
+Lediglich die Berechnung bzw. das Ausprobieren der mechanischen Einschränkungen und die korrekte Übergabe der Werte durch UART stellten eine kleine Herausforderung dar. 
 
 % ----------------------------------------------------------------------------------
 % Kapitel 2.8: Threading auf dem Raspberry Pi
@@ -510,6 +544,90 @@ lediglich die selbstgeschriebenen Code-Files zusammengeführt hat.
 % Kapitel 3: Benutzerhandbuch
 % ----------------------------------------------------------------------------------
 \section{Benutzerhandbuch}
+\subsection{Starten des Prototyps}
+%TODO ALLE!
+Schritt 1:
+\newline
+
+\subsection{Flashen des Custom-Kernels}
+%TODO Patrick Lesch
+Ohh nein. Wir haben den Raspberry getötet. Was sollen wir tun?!
+(Alle Kommandos sind im folgenden zwischen doppelten Anführungsstrichen: "`command"\,)
+
+1. Raspbian Buster Lite herunterladen. (Wer braucht schon eine grafische Oberfläche)
+   https://www.raspberrypi.org/downloads/raspbian/
+\newline
+
+2. Auf die SD-Karte flashen (z.B. mit BalenaEtcher unter Windows)\newline
+   https://www.balena.io/etcher/
+\newline
+
+3. Raspberry-Pi booten und einrichten:
+\newline
+3.1 Login: "`pi"\, | Passwort: "`raspberry"\, (Achtung! Englisches Layout standardmäßig --$>$ y == z und umgekehrt)\newline
+3.1.x1 Nach dem Bootvorgang ist der Bildschirm schwarz:\newline
+3.1.x2 SD-Karte in PC stecken und in der Config.txt unter [pi4] "`dtoverlay=vc4-fkms-v3d"\, mit "`\#"\, auskommentieren.
+       (Das erzwingt Legacy Treiber.) Falls das nichts bringt - google is your friend.
+\newline
+3.2 Config anpassen: "`sudo raspi-config"\,\newline
+3.2.1 WLAN einrichten: Network Options (Dort dem Dialog folgen und die Verbindung einrichten)\newline
+      [Verbindung prüfen. z.B. mit "`ping google.com"\, oder mit "`ifconfig"\,]\newline
+3.2.2 SSH einschalten: Interfacing Options --$>$ SSH\newline
+3.2.3 Neustart: "`sudo reboot"\,\newline
+\newline
+4. Preempt-RT Kernel flashen:\newline
+4.1 Dem Tutorial hier folgen und Kernel selber kompilieren\newline
+    https://lemariva.com/blog/2019/09/raspberry-pi-4b-preempt-rt-kernel-419y-performance-test
+    oder den fertigen aus dem Git-Repository nehmen [Für den Raspberry Pi 4B "`kernel\_4\_19\_59-rt23-v7l+"\, nehmen (siehe Tutorial-Link)]
+    https://github.com/lemariva/RT-Tools-RPi/tree/master/preempt-rt\newline
+4.2 Den Kernel an den Raspberry senden: "`scp rt-kernel.tgz pi@$<$ipaddress$>$:/tmp"\,\newline
+4.3 Am Pi folgende Kommandos ausführen um den Kernel zu entpacken und einzurichten:\newline
+\begin{itemize}
+    \item "`cd /tmp"\,
+    \item "`tar xzf rt-kernel.tgz"\,
+    \item "`cd boot"\,
+    \item "`sudo cp -rd * /boot/"\,
+    \item "`cd ../lib"\,
+    \item "`sudo cp -dr * /lib/"\,
+    \item "`cd ../overlays"\,
+    \item "`sudo cp -d * /boot/overlays"\,
+    \item "`cd .."\,
+    \item "`sudo cp -d bcm* /boot/"\,
+\end {itemize}
+
+4.4 Config.txt bearbeiten um den neuen Kernel zu nutzen:\newline
+4.4.1 Mit nano öffnen: "`sudo nano config.txt"\,\newline
+4.4.2 An das Ende folgendes einfügen: "kernel=kernel7\_rt.img"\,\newline
+4.4.3 Reboot ("`sudo reboot"\,)\newline
+4.4.4 Prüfen ob der Kernel funktioniert: "`uname -r" \,sollte "`4.19.59-rt23-v7l+"\, ausgeben. 
+      (Die Version die man kompiliert hat)\newline
+\newline
+5. UART einschalten:\newline
+5.1 Config.txt mit nano öffnen: "`sudo nano config.txt"\,\newline
+5.2 An das Ende folgendes einfügen: "`enable\_uart=1"\,\newline
+5.3 Reboot ("`sudo reboot"\,)\newline
+\newline
+6. Kleines Raspberry Pi Display des Hardware-Kartons rotieren:\newline
+6.1 Config.txt mit nano öffnen: "`sudo nano config.txt"\,\newline
+6.2 An das Ende folgendes einfügen: "`display\_rotate=2"\,\newline
+6.3 Reboot ("`sudo reboot"\,)\newline
+\newline
+7. Software installieren / updaten:\newline
+7.1 "`sudo apt update"\,\newline
+7.2 "`sudo apt install pip"\,\newline
+7.3 QR installieren: "`pip install qrcode[pil]"\,
+    (https://github.com/lincolnloop/python-qrcode)\newline
+\newline
+8. Befehle zur Bedienung:\newline
+8.1 Befehl um QR der eigenen IP zu generieren (die inneren \"\, gehören zum Befehl):
+    "`hostname -I | awk '{print \$1}' | qr \&\& hostname -I | awk '{print \$1}' | xargs echo "`BalancingPlate IP: \$1"\,"\,
+    (Ein QR Code sowie der Text "`BalancingPlate IP: $<$RaspberryPi-IP$>$"\,) sollte ausgegeben werden.)
+\newline
+9. Ab hier dann Korbi?
+
+
+\subsection{Bekannte Probleme}
+%TODO ALLE!
 
 
 \pagebreak
