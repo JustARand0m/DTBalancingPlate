@@ -16,18 +16,21 @@
 \contentsline {subsubsection}{\numberline {2.5.5}Ausblick}{13}{subsubsection.2.5.5}%
 \contentsline {subsection}{\numberline {2.6}Reglerentwicklung}{13}{subsection.2.6}%
 \contentsline {subsection}{\numberline {2.7}PWM-Signale}{14}{subsection.2.7}%
-\contentsline {subsubsection}{\numberline {2.7.1}Algemeines}{14}{subsubsection.2.7.1}%
+\contentsline {subsubsection}{\numberline {2.7.1}Allgemeines}{14}{subsubsection.2.7.1}%
 \contentsline {subsubsection}{\numberline {2.7.2}Probleme und Ausblick}{14}{subsubsection.2.7.2}%
 \contentsline {subsubsection}{\numberline {2.7.3}Fazit}{15}{subsubsection.2.7.3}%
 \contentsline {subsection}{\numberline {2.8}Threading auf dem Raspberry}{16}{subsection.2.8}%
 \contentsline {subsection}{\numberline {2.9}UDP-Socket}{16}{subsection.2.9}%
 \contentsline {subsection}{\numberline {2.10}iOS-Applikation}{16}{subsection.2.10}%
-\contentsline {subsection}{\numberline {2.11}Zusammenführung der einzelnen Komponenten}{16}{subsection.2.11}%
-\contentsline {section}{\numberline {3}Benutzerhandbuch}{17}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Starten des Prototyps}{17}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Flashen des Custom-Kernels}{17}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Bekannte Probleme}{19}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Fazit}{20}{section.4}%
+\contentsline {subsubsection}{\numberline {2.10.1}Allgemeines}{17}{subsubsection.2.10.1}%
+\contentsline {subsubsection}{\numberline {2.10.2}Views}{17}{subsubsection.2.10.2}%
+\contentsline {subsubsection}{\numberline {2.10.3}Implementierung}{17}{subsubsection.2.10.3}%
+\contentsline {subsection}{\numberline {2.11}Zusammenführung der einzelnen Komponenten}{18}{subsection.2.11}%
+\contentsline {section}{\numberline {3}Benutzerhandbuch}{19}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Starten des Prototyps}{19}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Flashen des Custom-Kernels und allgemeine Einrichtung}{19}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Bekannte Probleme}{21}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Fazit}{22}{section.4}%
 \contentsline {section}{Anhang}{I}{section*.17}%
 \vspace {-0.5em}
 \contentsline {section}{\numberline {A}Abkürzungsverzeichnis}{I}{appendix.A}%

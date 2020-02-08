@@ -24,7 +24,7 @@
 {Technische Informatik}			% Studiengang
 
 \studentttt{Patrick Lesch}	% Studierender
-{12344556}						% Matrikelnummer
+{2917177}						% Matrikelnummer
 {Technische Informatik}			% Studiengang
 
 \studenttttt{Michael Schmidt}	% Studierender
@@ -445,7 +445,7 @@ in der Endversion ist, schon gut genug getestet, sodass dieser ungetestet Code n
 % ----------------------------------------------------------------------------------
 \subsection{PWM-Signale}
 \textit{Von Michael Braun und Michael Schmidt}\newline
-\subsubsection{ Algemeines}
+\subsubsection{ Allgemeines}
 Die Ansteuerung der Servomotoren erfolgt über ein 50 Hz PWM-Signal, welches mittels der Funktion 
 "`PWM\_SetDutyCycle"\, auf die jeweils aktuellen Werte geändert wird. Diese Funktion wandelt automatisch 
 die Werte die im Promillebereich, im Format $0-10000$, angegeben werden, in die richtige Länge des 
@@ -547,6 +547,15 @@ niemals beide gleichzeitig.
 % ----------------------------------------------------------------------------------
 \subsection{UDP-Socket}
 \textit{Von Patrick Lesch}\newline
+Zum externen Empfang von Steuersignalen wurde auf dem Raspberry Pi ein UDP-Socket implementiert welcher auf eingehende Daten auf
+Port 1337 wartet. Dieser Port wurde festgelegt um den Kommunikationsaufbau zu vereinfachen und Störquellen zu minimieren. Durch 
+einen festgelegten Port wird sichergestellt, dass keine ungewollten Nachrichten auf eventuell bereits belegten Ports eingehen und die 
+Kommunikation erschweren. Zur Verbindung wird vorausgesetzt, dass sich die Geräte im selben Netzwerk befinden und dieses die Kommunikation
+zwischen den Geräten zulässt. Im Gegensatz zu anderen Protokollen erfüllt UDP am besten die Echtzeitanforderungen des Projekts da stets
+die aktuellsten Daten gesendet werden. 
+
+Zusätzlich zur iOS-Applikation können durch den UDP-Socket auch andere Geräte mit dem Raspberry Pi kommunizieren. Die Funktionalität kann so
+beliebig erweitert werden. 
 
 % ----------------------------------------------------------------------------------
 % Kapitel 2.10: IOS-Appliaktion
@@ -554,6 +563,32 @@ niemals beide gleichzeitig.
 \subsection{iOS-Applikation}
 \textit{Von Patrick Lesch}\newline
 
+\subsubsection{Allgemeines}
+Eine der Anforderungen an das Projekt war, dass die Platte manuell steuerbar sein sollte. Dazu wurde eine Applikation für 
+iOS-Geräte entwickelt. Ziel der Applikation ist es die Neigung des mobilen Endgerätes an den Raspberry Pi zu übertragen. 
+Dieser übersetzt die übermittelten Werte in Neigungswinkel mit deren Hilfe der XMC die Motoren ansteuert welche die Platte 
+in eine Lage versetzen welche die Lage des iOS-Gerätes spiegelt.
+
+\subsubsection{Views}
+Die Applikation verfügt im wesentlichen über zwei Views. Der erste View der nach dem Splash-Screen gestartet wird ist der QR-Scanner. 
+Wird ein QR-Code erfolgreich gescannt wird zum eigentlichen Steuerungs-View gewechselt welcher die Winkel der X- und Y-Achse, sowie 
+die IP die mittels QR-Code eingelesen wurde anzeigt.
+
+\subsubsection{Implementierung}
+Umgesetzt wurde die App zum großteil in nativem Swift-Code. Für den Aufbau der UDP-Verbindung und dem einrichten des sendenden Sockets
+werden Apples C Libraries verwendet. Als Verbindungsart zwischen iOS-App und Raspberry Pi wurde UDP gewählt um eine Echtzeitübertragung zu garantieren. 
+Da die App dank UDP kein Acknowldge des Raspberry Pi erwartet gibt es weder Verzögerung noch einen Datenrückstau. Gegebenenfalls bei
+der Übertragung verlorengegangene Daten wurden in Kauf genommen um stets möglichst aktuelle Werte an die Platte zu liefern. 
+
+Da der Raspberry Pi, wie in Kapitel 2.9 erwähnt, auf Port 1337 lauscht sendet die App nur auf diesem ihre X- und Y-Winkel. Die Winkel werden 
+von der iOS-Schnittstelle die das Gyroskop des Gerätes ausliest in Radiant angegeben. Vor der Übertragung werden diese aufbereitet indem
+sie in Grad umgerechnet und auf 3 Nachkommastellen gerundet werden. Zusätzlich werden diese Werte mit einem Faktor von 0.5 multipliziert, da sich
+gezeigt hat, dass die Bewegung der Platte die notwendig ist um die Kugel zu bewegen kleiner ist als die Neigung die ein Nutzer sinnvoll steuern kann. 
+Ohne diese Ergänzende Anpassung reichten bereits minimale Bewegungen um die Platte stark zu bewegen was ein Kontrollieren der Kugel schwierig machte.
+
+Die aufbereiteten Winkel werden zur Übertragung an die Sende-Funktion als String in dem Format 
+"`X\_ACHSEN\_WINKEL;Y\_ACHSEN\_WINKEL;"\ übergeben welche diesen über den festgelegten Port an die gescannte IP überträgt.
+Das Aktualisierungsintervall des Gyroscops wurde aufgrund guter Ergebnisse auf 60 Hz festgelegt. 
 
 % ----------------------------------------------------------------------------------
 % Kapitel 2.11: Zusammenführung
@@ -574,12 +609,11 @@ lediglich die selbstgeschriebenen Code-Files zusammengeführt hat.
 Schritt 1:
 \newline
 
-\subsection{Flashen des Custom-Kernels}
+\subsection{Flashen des Custom-Kernels und allgemeine Einrichtung}
 %TODO Patrick Lesch
-Ohh nein. Wir haben den Raspberry getötet. Was sollen wir tun?!
-(Alle Kommandos sind im folgenden zwischen doppelten Anführungsstrichen: "`command"\,)
+Alle Kommandos sind im folgenden zwischen doppelten Anführungsstrichen: "`command"\,
 
-1. Raspbian Buster Lite herunterladen. (Wer braucht schon eine grafische Oberfläche)
+1. Raspbian Buster Lite herunterladen.
    https://www.raspberrypi.org/downloads/raspbian/
 \newline
 
@@ -627,6 +661,7 @@ Ohh nein. Wir haben den Raspberry getötet. Was sollen wir tun?!
 4.4.4 Prüfen ob der Kernel funktioniert: "`uname -r" \,sollte "`4.19.59-rt23-v7l+"\, ausgeben. 
       (Die Version die man kompiliert hat)\newline
 \newline
+
 5. UART einschalten:\newline
 5.1 Config.txt mit nano öffnen: "`sudo nano config.txt"\,\newline
 5.2 An das Ende folgendes einfügen: "`enable\_uart=1"\,\newline
@@ -648,11 +683,14 @@ Ohh nein. Wir haben den Raspberry getötet. Was sollen wir tun?!
     "`hostname -I | awk '{print \$1}' | qr \&\& hostname -I | awk '{print \$1}' | xargs echo "`BalancingPlate IP: \$1"\,"\,
     (Ein QR Code sowie der Text "`BalancingPlate IP: $<$RaspberryPi-IP$>$"\,) sollte ausgegeben werden.)
 \newline
-9. Ab hier dann Korbi?
+%TODO Korbinian!
 
 
 \subsection{Bekannte Probleme}
 %TODO ALLE!
+\begin{itemize}
+    \item Wurde mittels QR-Code eine falsche IP gescannt muss die App neu gestartet werden\,
+\end {itemize}
 
 
 \pagebreak
