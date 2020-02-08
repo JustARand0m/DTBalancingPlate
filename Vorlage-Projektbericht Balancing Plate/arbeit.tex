@@ -299,7 +299,7 @@ minimieren den Fehler, dadruch war der Fehler vernachlässigbar und konnte durch
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.6]{pics/BildUart1}
-	\caption{Grundaufbau der UART-Verbindung}bilder 
+	\caption{Grundaufbau der UART-Verbindung\cite {mikroe}}bilder 
 	\label{fig:UART}
 \end{figure}
 Zur Datenübertragung zwischen dem Raspberry Pi und dem XMC Mikrocontroller wurde das Universal 
@@ -338,7 +338,7 @@ welche das UART-Protokoll als Byte-Stream-Ende interpretiert und somit nicht kor
 Nach intensiver Suche in der integrierten Dokumentation in Dave 4, welche jedoch erst nach einigem Suchen 
 gefunden wurde, stießen wir auf eine Funktion:\, "`UART\_StartRecieveIRQ"\,, deren Implementierung anscheinend 
 erforderlich war, um mittels der in der UART-APP vorprogrammierten Interrupt-Option die ankommenden Daten 
-auszulesen %\cite {infineonforums}
+auszulesen \cite {infineon}
 . Diese Funktion setzt einen Interrupt-Request und muss 
 kontinuierlich nach dem erstmaligen Empfangen ausgeführt werden, um eine fehlerfreie Abarbeitung zu 
 gewährleisten. Somit wird sie nach jedem Empfangsvorgang auf dem XMC in der Interrupt-Routine neu 
