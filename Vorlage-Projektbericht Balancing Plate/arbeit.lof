@@ -3,10 +3,11 @@
 \contentsline {figure}{\numberline {2}{\ignorespaces Grundplatte des Prototypen\relax }}{3}{figure.caption.3}%
 \contentsline {figure}{\numberline {3}{\ignorespaces Dreiecksverbindung zur Touch-Folie\relax }}{4}{figure.caption.4}%
 \contentsline {figure}{\numberline {4}{\ignorespaces Funktion des Touch Panels\relax }}{5}{figure.caption.5}%
-\contentsline {figure}{\numberline {5}{\ignorespaces UML Activity Diagramm, der Interrupts\relax }}{6}{figure.caption.6}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Grundaufbau der UART-Verbindung\relax }}{7}{figure.caption.7}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Aufbau eines UART-Frames\cite {electricimp}\relax }}{9}{figure.caption.8}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Aufbau eines Datenpakets mit Servowerten\relax }}{9}{figure.caption.9}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Aufbau eines Datenpakets mit den Werten der Touch-Folie\relax }}{10}{figure.caption.10}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Aufbau einer alternativen Dreiecksverbindung mit größerem Wirkungsradius\relax }}{13}{figure.caption.11}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Bestellliste und Kosten des Projektes\relax }}{V}{figure.caption.17}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Skizze der Platte\relax }}{6}{figure.caption.6}%
+\contentsline {figure}{\numberline {6}{\ignorespaces UML Activity Diagramm, der Interrupts\relax }}{7}{figure.caption.8}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Grundaufbau der UART-Verbindung\relax }}{8}{figure.caption.9}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Aufbau eines UART-Frames\cite {electricimp}\relax }}{10}{figure.caption.10}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Aufbau eines Datenpakets mit Servowerten\relax }}{10}{figure.caption.11}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Aufbau eines Datenpakets mit den Werten der Touch-Folie\relax }}{11}{figure.caption.12}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Aufbau einer alternativen Dreiecksverbindung mit größerem Wirkungsradius\relax }}{14}{figure.caption.13}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Bestellliste und Kosten des Projektes\relax }}{V}{figure.caption.19}%

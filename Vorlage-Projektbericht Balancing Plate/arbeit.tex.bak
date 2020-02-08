@@ -264,9 +264,7 @@ Pin 5           & Pin 2.14
 
 Da das Panel nur mit einer Frequenz von 50 Hz geschaltet werden kann, also alle 0.02 Sekunden, ist ein Timer-Interrupt definiert. Dieser wird alle 20 ms ausgelöst, das Panel wird also maximal oft ausgelesen. Die Interrupt Service Routine (ISR) startet die Messung für den Analog Digital Converter (ADC). Dieser ADC wandelt die analoge Spannung, die per Pin 3 der Touch Plate an den XMC geleitet wird, in einen digitalen Wert um, der, wie bereits in Kapitel \ref{subsec:Touch-Folie} beschrieben, zwischen 1500 und 2500 liegt. Sobald der ADC die Messung und Umwandlung abgeschlossen hat, startet er selbst ebenfalls eine 
 Der ADC löst sobald er mit dem Messen fertig ist auch eine ISR aus. In dieser wird der gemessene digitale Wert je nach gemessener Koordinate in eine x- bzw. y-Variable gespeichert und daraufhin die GPIO Pins umgeschaltet, sodass die andere Koordinate ermittelt werden kann.
-Die GPIO-Pins sind beim Start des Programms so eingestellt, dass erst der x-Wert ausgelesen wird und daraufhin der y-Wert. Sind beide Werte vorhanden, so werden die beiden Daten in einem UART Frame verpackt und dann ein UART-Transmit ausgelöst.\newline
-
-Der gesamte Ablauf ist schematisch in Abb. \ref{fig:TouchUML} dargestellt.
+Die GPIO-Pins sind beim Start des Programms so eingestellt, dass erst der x-Wert ausgelesen wird und daraufhin der y-Wert. Sind beide Werte vorhanden, so werden die beiden Daten in einem UART Frame verpackt und dann ein UART-Transmit ausgelöst.
 
 \begin{figure}[htbp]
 	\centering
