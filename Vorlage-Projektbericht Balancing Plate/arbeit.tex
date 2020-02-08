@@ -127,7 +127,9 @@ fallengelassen.
 Um eine konsistente Abarbeitung zu gewährleisten wurde das Projekt in verschieden Module/Arbeitspakete 
 geteilt.
 
-\begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X|X|X|}
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|l|}
 \hline
 Name 					& Aufgabe 1 			& Aufgabe 2 				& Aufgabe 3  \\
 \hline
@@ -141,9 +143,10 @@ Patrick Lesch			& Ansteuerung mit App	& WiFi Schnittstelle		& Custom Kernel\\
 \hline
 Michael Schmidt			& Physischer Aufbau		& UART Schnittstelle		& PWM-Signale\\
 \hline
-%\caption{Tabelle: Arbeisverteilung}
-%\label{tbl:arbeitsverteilung}
-\end{tabularx}
+\end{tabular}
+\label{tab:Arbeisverteilung}
+\caption{Arbeisverteilung}
+\end{table}
 
 Diese werden immer von mindestens zwei Projektteilnehmern abgearbeitet. Außerdem wurde auf eine in sich 
 geschlossene Aufteilung geachtet, um bei aneinandergrenzenden Modulen immer einen Ansprechpartner zu haben. 
@@ -231,7 +234,7 @@ Wie in Abb. \ref{fig:TouchPanelFunction} gezeigt, besteht dieses grundsätzlich 
 Um zu messen, wo auf der Touchplatte sich ein Druckpunkt befindet, werden zwei der fünf Pins des Panels auf Masse (GND) gesetzt und zwei auf Spannung (V\textsubscript{DD}), im Fall dieses Projektes sind dies $5 Volt$. Die Verwendung von fünf Kabeln bietet den Vorteil, dass der Pin in der Mitte, Pin 3, zum Auslesen des analogen Sensorwerts verwendet wird.
 Sind wie in Abb. \ref{fig:TouchPanelFunction} die oberen beiden Pins auf V\textsubscript{DD} und die unteren beiden auf GND, so lässt sich ermitteln, wo der Druckpunkt sich zwischen der oberen und der unteren Kante befindet. Bei einem kartesischen zweidimensionalen Koordinatensystem entspricht dies dem y-Wert.
 Da mit dieser Methode nur eine Richtung gemessen werden kann, für einen Punkt auf dem Panel allerdings sowohl ein y- als auch ein x-Wert benötigt wird, müssen die Pins so umgeschaltet werden, sodass beide Pins an der linken kurzen Seite auf V\textsubscript{DD} sind und beide Pins auf der rechten Seite GND.\newline
-Die Werte der Platte liegen bei perfekten Bedingungen zwischen  0 und 4096, wobei 0 an der Kante, an der GND anliegt, ist und 4096 der maximale Wert an der V \textsubscript{DD}-Seite. Bei diesem Projekt liegen die Werte, die letztlich ausgegeben werden, bei beiden Seiten zwischen 1500 und 2500. Die Verringerung der Anzahl der Messwerte ist zum Teil auf die in Kapitel \ref{subsec:Probleme} angeführten Probleme zurückzuführen.
+Die Werte der Platte liegen bei perfekten Bedingungen zwischen  0 und 4096, wobei 0 an der Kante, an der GND anliegt, ist und 4096 der maximale Wert an der V \textsubscript{DD}-Seite. Bei diesem Projekt liegen die Werte, die letztlich ausgegeben werden, bei beiden Seiten zwischen 1500 und 2500. Die Verringerung der Anzahl der Messwerte ist zum Teil auf die in Kapitel \ref{subsec:ProblemePlatte} angeführten Probleme zurückzuführen.
 
 \subsubsection{Implementierung}
 
@@ -242,10 +245,10 @@ Die Werte der Platte liegen bei perfekten Bedingungen zwischen  0 und 4096, wobe
 	\label{fig:PlatteSkizze}
 \end{figure}
 
-Bei der Implementierung wird als Verbindung zur Touch Plate ein XMC4500-Mikro-controller verwendet.
+Bei der Implementierung wird als Verbindung zur Touch Plate ein XMC4500 Mikrocontroller verwendet, welcher mit der Applikation Dave4 der Infineon AG programmiert wird.
 Die einzelnen Pins der Platte sind hierbei mit Pins des XMC verbunden. Da, wie in \ref{subsec:Touch-Folie} beschrieben, die Pins an der Platte umgeschaltet werden müssen, um sowohl x-, als auch y- Koordinate auslesen zu können, werden zwei GPIO-Pins des XMC verwendet. Bei einem skizzierten Aufbau der Platte wie in Abb. \ref{fig:PlatteSkizze} werden die Pins 1 und 5 mit GPIO-Pins des XMC verbunden. Pin 1 und Pin 5 müssen immer jeweils gegenteilig sein, also wenn Pin 1 high ist, ist Pin 5 low und vice versa.
 Der übrige Pin 3 wird ausschließlich dafür verwendet die Werte, die die Platte liefert, in je eine x-Variable und eine y-Variable zu schreiben. 
-In diesem Projekt sind die Pins der Touch Plate wie folgt mit dem XMC verbunden:
+In diesem Projekt sind die Pins der Touch Plate wie in Tabelle \ref{tab:VerbindungenPins} mit dem XMC verbunden.
 
 \begin{table}[]
 \centering
@@ -258,14 +261,12 @@ Pin 3           & Pin 15.2    \\
 Pin 4           & GND     \\
 Pin 5           & Pin 2.14
 \end{tabular}
-\label{tab:VerbindungenPins}
-\caption{Verbindungen der Pins der Touch Plate mit dem XMC}
+\caption{Verbindungen der Pins der Touch Plate mit dem XMC \label{tab:VerbindungenPins}}
 \end{table}
 
 Da das Panel nur mit einer Frequenz von 50 Hz geschaltet werden kann, also alle 0.02 Sekunden, ist ein Timer-Interrupt definiert. Dieser wird alle 20 ms ausgelöst, das Panel wird also maximal oft ausgelesen. Die Interrupt Service Routine (ISR) startet die Messung für den Analog Digital Converter (ADC). Dieser ADC wandelt die analoge Spannung, die per Pin 3 der Touch Plate an den XMC geleitet wird, in einen digitalen Wert um, der, wie bereits in Kapitel \ref{subsec:Touch-Folie} beschrieben, zwischen 1500 und 2500 liegt. Sobald der ADC die Messung und Umwandlung abgeschlossen hat, startet er selbst ebenfalls eine 
 Der ADC löst sobald er mit dem Messen fertig ist auch eine ISR aus. In dieser wird der gemessene digitale Wert je nach gemessener Koordinate in eine x- bzw. y-Variable gespeichert und daraufhin die GPIO Pins umgeschaltet, sodass die andere Koordinate ermittelt werden kann.
-Die GPIO-Pins sind beim Start des Programms so eingestellt, dass erst der x-Wert ausgelesen wird und daraufhin der y-Wert. Sind beide Werte vorhanden, so werden die beiden Daten in einem UART Frame verpackt und dann ein UART-Transmit ausgelöst.\newline
-
+Die GPIO-Pins sind beim Start des Programms so eingestellt, dass erst der x-Wert ausgelesen wird und daraufhin der y-Wert. Sind beide Werte vorhanden, so wird bei beiden Variablen jeweils 1500 abgezogen. Dadurch sind die weiterverwendeten nicht mehr im Bereich von 1500 bis 2500, sondern befinden sich zwischen 0 und 1000, was die darauffolgenden Berechnungen erleichtert. Nach der Umrechnung werden die beiden Daten in einem UART Frame verpackt und dann ein UART-Transmit ausgelöst.
 Der gesamte Ablauf ist schematisch in Abb. \ref{fig:TouchUML} dargestellt.
 
 \begin{figure}[htbp]
@@ -275,18 +276,21 @@ Der gesamte Ablauf ist schematisch in Abb. \ref{fig:TouchUML} dargestellt.
 	\label{fig:TouchUML}
 \end{figure}
 
-\subsubsection{Probleme} \label{subsec:Probleme}
-Ein Problem im Zuge der Implementierung der Touch-Platte, war die Funktion der ADC-App im Dave4, da bei diesem
-keine gute Dokumentation vorhanden war, so war es z.B. schwer herrauszufinden wie die Funktion zum starten der ADC Messung 
-hieß. Ein görßeres Problem war der Messfehler des Touch Panels, bei welchem die Platte einen Spannungsabfall je nach Pin hatte.
-Bsp: Falls man der X-Achse entlang messen wollte und dabei einen Konstaten Y-Wert beibehielt, so wäre das Erwartete Verhalten,
-dass der X-Wert gleich bleiben würde. Jedoch stieg der Wert bei messen entlag der X-Achse konstant an, das selbe war auch auf
-der Y-Achse. Um das dieses verhalten der Pins zu eleminieren, wurde versucht das Ganze mittels einer H-Brücke zu lösen, 
-jedoch war hier das selbe Problem, über der H-Brücke fiel auch Spannung ab, da 2 Pins immer fest waren und nur 2 Pins
-über die Brücke geschalten waren, gab es wieder ein ähnliches Szenario. Die nächste Überlegung, war die Verwendung von Relais.
-Leider sind Relais die schnell genug Schalten können relativ Teuer und diese haben einen höheren Verschleiß.
-Die Lösung des Problems war, Wiederstände zwischen die Pins des XMCs und der Platte zu schalten. Diese Wiederstände 
-minimieren den Fehler, dadruch war der Fehler vernachlässigbar und konnte durch den Regeler ausgeglichen werden. 
+\subsubsection{Probleme} \label{subsec:ProblemePlatte}
+Ein Problem im Zuge der Implementierung der Touch-Platte war die Funktion der ADC-App im Dave4. Da bei dieser keine gute Dokumentation vorhanden war, war es z.B. schwer herauszufinden, wie sich eine Messung bei dem Analog Digital Converter starten lässt und wie die dafür benötigte Funktion heißt. \newline
+Das Hauptproblem, das bei der Implementierung der Platte anfiel waren konstante Messfehler des Touch Panels. Das erwartete Verhalten ist, dass die x-Werte konstant bleiben, wenn sich die Druckpunkte parallel zur y-Achse bewegen. Dies entspricht beim endgültigen Aufbau einer Kugelbahn, die parallel zur kurzen Seite verläuft. Plausiblerweise wird das gleiche Verhalten auch bei den y-Werten erwartet, wenn die Druckpunkte parallel zur x-Achse liegen.
+Bei Tests stieg allerdings der konstant erwartete Wert entlang der Achsen immer weiter an. In Abb. \ref{fig:ProblemPlattenwerte} ist dieses Verhalten für die Messung des x-Werts dargestellt.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.6]{pics/ProblemPlattenwerte}
+	\caption{Problem der Plattenwerte am Beispiel der x-Werte}
+	\label{fig:ProblemPlattenwerte}
+\end{figure}
+
+Nachdem die Touch Plate mittels eines Picoscopes auf Fehler untersucht war, dort aber alles wie erwartet funktionierte, wurden alle Pins des XMC auf eventuelle Mängel untersucht. Dort waren ebenfalls keine Fehler zu erkennen.\newline
+Der nächste Lösungsansatz war es die GPIO-Pins zu eliminieren, indem eine H-Brücke eingesetzt wird. Allerdings fiel wie bei den GPIO-Pins des XMC über die H-Brücke die Spannung ab,
+jedoch war hier das selbe Problem, über der H-Brücke fiel auch Spannung ab, was zu einem sehr ähnlichen Endszenario führte. Die nächste Überlegung war die Verwendung von Relais. Da Relais, die schnell genug für die Anforderungen dieses Projektes sind, sehr teuer und weiterhin ist deren Verschleiß hoch.\newline
+Die Lösung, die letztendlich im Projekt verwendet wird, ist, Widerstände von $100 Ohm$ zwischen die Pins des XMC und die der Platte zu schalten. Diese Widerstände minimieren den Fehler so weit, dass er entlang einer Achse nur noch etwa 40 ist und damit vernachlässigbar. Der minimale Fehler, der übrig bleibt, kann außerdem mithilfe des Reglers ausgeglichen werden.
 
 \subsection{Programmierung Raspberry Pi}
 

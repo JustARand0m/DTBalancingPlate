@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.6)  8 FEB 2020 14:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.6)  8 FEB 2020 23:12
 entering extended mode
 **./arbeit.tex
 (arbeit.tex
@@ -843,241 +843,231 @@ been already used, duplicate ignored
                    \relax 
 l.66 
       [1] [2] [1]
-Underfull \hbox (badness 10000) in paragraph at lines 146--146
-[]|\OT1/cmr/m/n/12 Physischer Auf-
- []
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 130.
 
 
-Overfull \hbox (3.34285pt too wide) in paragraph at lines 146--146
-[]|\OT1/cmr/m/n/12 Reglerentwicklung| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--146
-[]|\OT1/cmr/m/n/12 Korbinian Fe-der-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--146
-[]|\OT1/cmr/m/n/12 UART Schnitt-
- []
-
-
-Overfull \hbox (3.34285pt too wide) in paragraph at lines 146--146
-[]|\OT1/cmr/m/n/12 Reglerentwicklung| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--146
-[]|\OT1/cmr/m/n/12 Modellerstellung
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--146
-[]|\OT1/cmr/m/n/12 Physischer Auf-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--146
-[]|\OT1/cmr/m/n/12 UART Schnitt-
+Overfull \hbox (59.91798pt too wide) in paragraph at lines 132--148
+ [][] 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 157--158
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
 
  []
 
-<pics/SkizzeAufbau.jpg, id=102, 262.4715pt x 218.4525pt>
+<pics/SkizzeAufbau.jpg, id=103, 262.4715pt x 218.4525pt>
 File: pics/SkizzeAufbau.jpg Graphic file (type jpg)
 <use pics/SkizzeAufbau.jpg>
-Package pdftex.def Info: pics/SkizzeAufbau.jpg  used on input line 161.
+Package pdftex.def Info: pics/SkizzeAufbau.jpg  used on input line 164.
 (pdftex.def)             Requested size: 236.22215pt x 196.60542pt.
-<pics/BildGrundplatte.png, id=104, 618.81187pt x 456.20438pt>
+<pics/BildGrundplatte.png, id=105, 618.81187pt x 456.20438pt>
 File: pics/BildGrundplatte.png Graphic file (type png)
 <use pics/BildGrundplatte.png>
-Package pdftex.def Info: pics/BildGrundplatte.png  used on input line 169.
+Package pdftex.def Info: pics/BildGrundplatte.png  used on input line 172.
 (pdftex.def)             Requested size: 278.46277pt x 205.29005pt.
-<pics/BildDreieck.png, id=108, 616.55344pt x 408.02437pt>
+<pics/BildDreieck.png, id=109, 616.55344pt x 408.02437pt>
 File: pics/BildDreieck.png Graphic file (type png)
 <use pics/BildDreieck.png>
-Package pdftex.def Info: pics/BildDreieck.png  used on input line 186.
+Package pdftex.def Info: pics/BildDreieck.png  used on input line 189.
 (pdftex.def)             Requested size: 277.44647pt x 183.60927pt.
 [3 <./pics/SkizzeAufbau.jpg> <./pics/BildGrundplatte.png>] [4 <./pics/BildDreie
 ck.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 219--220
+Underfull \hbox (badness 10000) in paragraph at lines 222--223
 
  []
 
-<pics/TouchScreen_5wires.png, id=124, 441.65pt x 244.915pt>
+<pics/TouchScreen_5wires.png, id=125, 441.65pt x 244.915pt>
 File: pics/TouchScreen_5wires.png Graphic file (type png)
 <use pics/TouchScreen_5wires.png>
-Package pdftex.def Info: pics/TouchScreen_5wires.png  used on input line 224.
+Package pdftex.def Info: pics/TouchScreen_5wires.png  used on input line 227.
 (pdftex.def)             Requested size: 264.99203pt x 146.95012pt.
 
-Overfull \hbox (6.21245pt too wide) in paragraph at lines 229--235
+Overfull \hbox (6.21245pt too wide) in paragraph at lines 232--238
 \OT1/cmr/m/n/12 Druck von $1\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 00\OML/cmm/m/it/1
 2 Newton$ \OT1/cmr/m/n/12 oder mehr auf die Ober-fl[]ache des Pa-nels aus-ge[]u
 bt, so ber[]uhren
  []
 
 [5 <./pics/TouchScreen_5wires.png>]
-<pics/PlatteSkizze.png, id=136, 350.05782pt x 209.28188pt>
+<pics/PlatteSkizze.png, id=137, 350.05782pt x 209.28188pt>
 File: pics/PlatteSkizze.png Graphic file (type png)
 <use pics/PlatteSkizze.png>
-Package pdftex.def Info: pics/PlatteSkizze.png  used on input line 240.
+Package pdftex.def Info: pics/PlatteSkizze.png  used on input line 243.
 (pdftex.def)             Requested size: 210.0363pt x 125.57007pt.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 250.
+               Default added (so using `tbp') on input line 253.
 
 [6 <./pics/PlatteSkizze.png>]
-<pics/TouchUML.png, id=146, 610.07925pt x 227.6505pt>
+<pics/TouchUML.png, id=150, 610.07925pt x 227.6505pt>
 File: pics/TouchUML.png Graphic file (type png)
 <use pics/TouchUML.png>
-Package pdftex.def Info: pics/TouchUML.png  used on input line 271.
+Package pdftex.def Info: pics/TouchUML.png  used on input line 274.
 (pdftex.def)             Requested size: 366.05037pt x 136.59134pt.
+<pics/ProblemPlattenwerte.png, id=152, 362.10281pt x 221.32687pt>
+File: pics/ProblemPlattenwerte.png Graphic file (type png)
+<use pics/ProblemPlattenwerte.png>
+Package pdftex.def Info: pics/ProblemPlattenwerte.png  used on input line 285.
+(pdftex.def)             Requested size: 217.26335pt x 132.79713pt.
  [7 <./pics/TouchUML.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 295--296
+Overfull \hbox (6.25867pt too wide) in paragraph at lines 290--294
+\OT1/cmr/m/n/12 Die L[]osung, die letzt-end-lich im Pro-jekt ver-wen-det wird, 
+ist, Wi-derst[]ande von $100\OML/cmm/m/it/12 Ohm$
+ []
+
+[8 <./pics/ProblemPlattenwerte.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 301--302
 
  []
 
-<pics/BildUart1.png, id=153, 300.3722pt x 147.55125pt>
+<pics/BildUart1.png, id=164, 300.3722pt x 147.55125pt>
 File: pics/BildUart1.png Graphic file (type png)
 <use pics/BildUart1.png>
-Package pdftex.def Info: pics/BildUart1.png  used on input line 299.
+Package pdftex.def Info: pics/BildUart1.png  used on input line 305.
 (pdftex.def)             Requested size: 180.22469pt x 88.53142pt.
-[8 <./pics/BildUart1.png>] [9]
-<pics/Uartframe.png, id=169, 652.4375pt x 412.54124pt>
+
+LaTeX Warning: Citation `mikroe' on page 9 undefined on input line 306.
+
+
+LaTeX Warning: Citation `mikroe' on page 9 undefined on input line 306.
+
+
+LaTeX Warning: Citation `infineon' on page 9 undefined on input line 345.
+
+[9 <./pics/BildUart1.png>]
+<pics/Uartframe.png, id=176, 652.4375pt x 412.54124pt>
 File: pics/Uartframe.png Graphic file (type png)
 <use pics/Uartframe.png>
-Package pdftex.def Info: pics/Uartframe.png  used on input line 356.
+Package pdftex.def Info: pics/Uartframe.png  used on input line 362.
 (pdftex.def)             Requested size: 326.21794pt x 206.27011pt.
 
 
-LaTeX Warning: Citation `electricimp' on page 10 undefined on input line 357.
+LaTeX Warning: Citation `electricimp' on page 10 undefined on input line 363.
 
 
-LaTeX Warning: Citation `electricimp' on page 10 undefined on input line 357.
+LaTeX Warning: Citation `electricimp' on page 10 undefined on input line 363.
 
-<pics/Uartservo.png, id=171, 620.3175pt x 106.89937pt>
+<pics/Uartservo.png, id=178, 620.3175pt x 106.89937pt>
 File: pics/Uartservo.png Graphic file (type png)
 <use pics/Uartservo.png>
-Package pdftex.def Info: pics/Uartservo.png  used on input line 365.
+Package pdftex.def Info: pics/Uartservo.png  used on input line 371.
 (pdftex.def)             Requested size: 310.15799pt x 53.44954pt.
-<pics/Uartplatte.png, id=173, 837.1275pt x 129.48375pt>
+<pics/Uartplatte.png, id=180, 837.1275pt x 129.48375pt>
 File: pics/Uartplatte.png Graphic file (type png)
 <use pics/Uartplatte.png>
-Package pdftex.def Info: pics/Uartplatte.png  used on input line 390.
+Package pdftex.def Info: pics/Uartplatte.png  used on input line 396.
 (pdftex.def)             Requested size: 418.56273pt x 64.7417pt.
-[10 <./pics/Uartframe.png> <./pics/Uartservo.png>] [11 <./pics/Uartplatte.png>]
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 435--436
-
- []
-
-
+[10] [11 <./pics/Uartframe.png> <./pics/Uartservo.png>] [12 <./pics/Uartplatte.
+png>]
 Underfull \hbox (badness 10000) in paragraph at lines 441--442
 
  []
 
 
-Overfull \hbox (0.55748pt too wide) in alignment at lines 482--482
-[][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 482--484
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
 
  []
 
 [13]
-Overfull \hbox (1.55789pt too wide) in alignment at lines 501--501
+Overfull \hbox (0.55748pt too wide) in alignment at lines 488--488
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 488--490
+
+ []
+
+
+Overfull \hbox (1.55789pt too wide) in alignment at lines 507--507
 [][][] 
  []
 
-<pics/neuedreiecksverbindung.png, id=196, 269.3262pt x 236.082pt>
+<pics/neuedreiecksverbindung.png, id=202, 269.3262pt x 236.082pt>
 File: pics/neuedreiecksverbindung.png Graphic file (type png)
 <use pics/neuedreiecksverbindung.png>
-Package pdftex.def Info: pics/neuedreiecksverbindung.png  used on input line 50
-8.
+Package pdftex.def Info: pics/neuedreiecksverbindung.png  used on input line 51
+4.
 (pdftex.def)             Requested size: 215.46126pt x 188.86584pt.
-[14 <./pics/neuedreiecksverbindung.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 543--544
-
- []
-
-
+[14] [15 <./pics/neuedreiecksverbindung.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 549--550
 
  []
 
-[15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 568--570
+
+Underfull \hbox (badness 10000) in paragraph at lines 555--556
+
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 574--576
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 576--579
+Underfull \hbox (badness 10000) in paragraph at lines 582--585
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 580--583
+Underfull \hbox (badness 10000) in paragraph at lines 586--589
 
  []
 
 
-Overfull \hbox (5.77542pt too wide) in paragraph at lines 584--605
+Overfull \hbox (5.77542pt too wide) in paragraph at lines 590--611
 \OT1/cmr/m/n/12 3.1 Lo-gin: []pi" | Pass-wort: []raspber-ry" (Ach-tung! Eng-li-
 sches Lay-out stan-dardm[]aig
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 584--605
+Underfull \hbox (badness 10000) in paragraph at lines 590--611
 
  []
 
 
-Overfull \hbox (34.52191pt too wide) in paragraph at lines 584--605
+Overfull \hbox (34.52191pt too wide) in paragraph at lines 590--611
 \OT1/cmr/m/n/12 https://lemariva.com/blog/2019/09/raspberry-pi-4b-preempt-rt-ke
 rnel-419y-performance-
  []
 
 
-Overfull \hbox (42.4951pt too wide) in paragraph at lines 584--605
+Overfull \hbox (42.4951pt too wide) in paragraph at lines 590--611
 []\OT1/cmr/m/n/12 ker-nel[]4[]19[]59-rt23-v7l+" neh-men (sie-he Tutorial-Link)]
  https://github.com/lemariva/RT-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 584--605
+Underfull \hbox (badness 10000) in paragraph at lines 590--611
 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 617--646
+Underfull \hbox (badness 10000) in paragraph at lines 623--652
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 617--646
+Underfull \hbox (badness 10000) in paragraph at lines 623--652
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 617--646
+Underfull \hbox (badness 10000) in paragraph at lines 623--652
 
  []
 
 
-Overfull \hbox (6.21227pt too wide) in paragraph at lines 617--646
+Overfull \hbox (6.21227pt too wide) in paragraph at lines 623--652
 \OT1/cmr/m/n/12 7.3 QR in-stal-lie-ren: []pip in-stall qr-co-de[pil]" (https://
 github.com/lincolnloop/python-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 617--646
+Underfull \hbox (badness 10000) in paragraph at lines 623--652
 
  []
 
@@ -1094,19 +1084,22 @@ Class scrartcl Warning: You are using `\begin{appendix}...\end{appendix}'.
 (scrartcl)              inconsistent.
 (scrartcl)              Because of this, you should remove `\end{appendix}'
 (scrartcl)              and replace `\begin{appendix}' by command
-(scrartcl)              `\appendix' on input line 791.
+(scrartcl)              `\appendix' on input line 797.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.I}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.819 
+l.825 
        [1] (arbeit.lof
 
-LaTeX Warning: Citation `electricimp' on page II undefined on input line 9.
+LaTeX Warning: Citation `mikroe' on page II undefined on input line 9.
 
 
-Overfull \hbox (6.14867pt too wide) in paragraph at lines 12--12
+LaTeX Warning: Citation `electricimp' on page II undefined on input line 10.
+
+
+Overfull \hbox (6.14867pt too wide) in paragraph at lines 13--13
  [][] [][]\OT1/cmr/m/n/12 Aufbau ei-ner al-ter-na-ti-ven Drei-ecks-ver-bin-dung
  mit gr[]oerem Wir-kungs- 
  []
@@ -1119,7 +1112,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.II}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.827 
+l.833 
        [2] (arbeit.lot)
 \tf@lot=\write6
 \openout6 = `arbeit.lot'.
@@ -1130,22 +1123,22 @@ LaTeX Warning: Empty `thebibliography' environment or \BreakBibliography
                before end of `thebibliography' environment on input line 3.
 
 ) [4]
-<pics/Bestelliste.png, id=260, 599.99156pt x 462.97969pt>
+<pics/Bestelliste.png, id=269, 599.99156pt x 462.97969pt>
 File: pics/Bestelliste.png Graphic file (type png)
 <use pics/Bestelliste.png>
-Package pdftex.def Info: pics/Bestelliste.png  used on input line 871.
+Package pdftex.def Info: pics/Bestelliste.png  used on input line 877.
 (pdftex.def)             Requested size: 479.9939pt x 370.38425pt.
 
-Overfull \hbox (53.20255pt too wide) in paragraph at lines 871--872
+Overfull \hbox (53.20255pt too wide) in paragraph at lines 877--878
  [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 877.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 883.
 [5 <./pics/Bestelliste.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 877.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 883.
  (arbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 877.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 877.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 883.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 883.
 Package rerunfilecheck Info: File `arbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1154,10 +1147,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 15500 strings out of 481565
- 252414 string characters out of 2923945
- 837388 words of memory out of 3000000
- 30350 multiletter control sequences out of 15000+200000
+ 15512 strings out of 481565
+ 252734 string characters out of 2923945
+ 839388 words of memory out of 3000000
+ 30359 multiletter control sequences out of 15000+200000
  540067 words of font info for 52 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  70i,14n,120p,10123b,506s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1169,9 +1162,9 @@ iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><D:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmti12.pfb>
-Output written on arbeit.pdf (28 pages, 534802 bytes).
+Output written on arbeit.pdf (28 pages, 545171 bytes).
 PDF statistics:
- 421 PDF objects out of 1000 (max. 8388607)
- 77 named destinations out of 1000 (max. 500000)
- 354 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 431 PDF objects out of 1000 (max. 8388607)
+ 79 named destinations out of 1000 (max. 500000)
+ 359 words of extra memory for PDF output out of 10000 (max. 10000000)
 
