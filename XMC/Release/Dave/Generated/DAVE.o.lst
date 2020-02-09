@@ -108,170 +108,238 @@
   72:../Dave/Generated/DAVE.c ****      /** @Initialization of APPs Init Functions */
   73:../Dave/Generated/DAVE.c ****      init_status = (DAVE_STATUS_t)CLOCK_XMC4_Init(&CLOCK_XMC4_0);
   38              	 .loc 1 73 0
-  39 0002 1348     	 ldr r0,.L10
+  39 0002 1D48     	 ldr r0,.L15
   40 0004 FFF7FEFF 	 bl CLOCK_XMC4_Init
   41              	.LVL1:
   74:../Dave/Generated/DAVE.c **** 
   75:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
   42              	 .loc 1 75 0
-  43 0008 00BB     	 cbnz r0,.L8
+  43 0008 0028     	 cmp r0,#0
+  44 000a 34D1     	 bne .L13
   76:../Dave/Generated/DAVE.c ****   {
   77:../Dave/Generated/DAVE.c **** 	 /**  Initialization of PWM APP instance PWM_MOTOR_0 */
   78:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)PWM_Init(&PWM_MOTOR_0); 
-  44              	 .loc 1 78 0
-  45 000a 1248     	 ldr r0,.L10+4
-  46              	.LVL2:
-  47 000c FFF7FEFF 	 bl PWM_Init
-  48              	.LVL3:
+  45              	 .loc 1 78 0
+  46 000c 1B48     	 ldr r0,.L15+4
+  47              	.LVL2:
+  48 000e FFF7FEFF 	 bl PWM_Init
+  49              	.LVL3:
   79:../Dave/Generated/DAVE.c ****    } 
   80:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
-  49              	 .loc 1 80 0
-  50 0010 E0B9     	 cbnz r0,.L8
+  50              	 .loc 1 80 0
+  51 0012 80BB     	 cbnz r0,.L13
   81:../Dave/Generated/DAVE.c ****   {
   82:../Dave/Generated/DAVE.c **** 	 /**  Initialization of UART APP instance UART_0 */
   83:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)UART_Init(&UART_0); 
-  51              	 .loc 1 83 0
-  52 0012 1148     	 ldr r0,.L10+8
-  53              	.LVL4:
-  54 0014 FFF7FEFF 	 bl UART_Init
-  55              	.LVL5:
+  52              	 .loc 1 83 0
+  53 0014 1A48     	 ldr r0,.L15+8
+  54              	.LVL4:
+  55 0016 FFF7FEFF 	 bl UART_Init
+  56              	.LVL5:
   84:../Dave/Generated/DAVE.c ****    } 
   85:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
-  56              	 .loc 1 85 0
-  57 0018 C0B9     	 cbnz r0,.L8
+  57              	 .loc 1 85 0
+  58 001a 60BB     	 cbnz r0,.L13
   86:../Dave/Generated/DAVE.c ****   {
   87:../Dave/Generated/DAVE.c **** 	 /**  Initialization of PWM APP instance PWM_MOTOR_1 */
   88:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)PWM_Init(&PWM_MOTOR_1); 
-  58              	 .loc 1 88 0
-  59 001a 1048     	 ldr r0,.L10+12
-  60              	.LVL6:
-  61 001c FFF7FEFF 	 bl PWM_Init
-  62              	.LVL7:
+  59              	 .loc 1 88 0
+  60 001c 1948     	 ldr r0,.L15+12
+  61              	.LVL6:
+  62 001e FFF7FEFF 	 bl PWM_Init
+  63              	.LVL7:
   89:../Dave/Generated/DAVE.c ****    } 
   90:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
-  63              	 .loc 1 90 0
-  64 0020 A0B9     	 cbnz r0,.L8
+  64              	 .loc 1 90 0
+  65 0022 40BB     	 cbnz r0,.L13
   91:../Dave/Generated/DAVE.c ****   {
   92:../Dave/Generated/DAVE.c **** 	 /**  Initialization of PWM APP instance PWM_MOTOR_2 */
   93:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)PWM_Init(&PWM_MOTOR_2); 
-  65              	 .loc 1 93 0
-  66 0022 0F48     	 ldr r0,.L10+16
-  67              	.LVL8:
-  68 0024 FFF7FEFF 	 bl PWM_Init
-  69              	.LVL9:
+  66              	 .loc 1 93 0
+  67 0024 1848     	 ldr r0,.L15+16
+  68              	.LVL8:
+  69 0026 FFF7FEFF 	 bl PWM_Init
+  70              	.LVL9:
   94:../Dave/Generated/DAVE.c ****    } 
   95:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
-  70              	 .loc 1 95 0
-  71 0028 80B9     	 cbnz r0,.L8
+  71              	 .loc 1 95 0
+  72 002a 20BB     	 cbnz r0,.L13
   96:../Dave/Generated/DAVE.c ****   {
-  97:../Dave/Generated/DAVE.c **** 	 /**  Initialization of INTERRUPT APP instance UART_ISR */
-  98:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&UART_ISR); 
-  72              	 .loc 1 98 0
-  73 002a 0E48     	 ldr r0,.L10+20
-  74              	.LVL10:
-  75 002c FFF7FEFF 	 bl INTERRUPT_Init
-  76              	.LVL11:
+  97:../Dave/Generated/DAVE.c **** 	 /**  Initialization of ADC_MEASUREMENT APP instance ADC_MEASUREMENT_0 */
+  98:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)ADC_MEASUREMENT_Init(&ADC_MEASUREMENT_0); 
+  73              	 .loc 1 98 0
+  74 002c 1748     	 ldr r0,.L15+20
+  75              	.LVL10:
+  76 002e FFF7FEFF 	 bl ADC_MEASUREMENT_Init
+  77              	.LVL11:
   99:../Dave/Generated/DAVE.c ****    } 
  100:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
-  77              	 .loc 1 100 0
-  78 0030 60B9     	 cbnz r0,.L8
+  78              	 .loc 1 100 0
+  79 0032 00BB     	 cbnz r0,.L13
  101:../Dave/Generated/DAVE.c ****   {
- 102:../Dave/Generated/DAVE.c **** 	 /**  Initialization of ADC_MEASUREMENT APP instance ADC_MEASUREMENT_0 */
- 103:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)ADC_MEASUREMENT_Init(&ADC_MEASUREMENT_0); 
-  79              	 .loc 1 103 0
-  80 0032 0D48     	 ldr r0,.L10+24
-  81              	.LVL12:
-  82 0034 FFF7FEFF 	 bl ADC_MEASUREMENT_Init
-  83              	.LVL13:
+ 102:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_PLATE_LL */
+ 103:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_PLATE_LL); 
+  80              	 .loc 1 103 0
+  81 0034 1648     	 ldr r0,.L15+24
+  82              	.LVL12:
+  83 0036 FFF7FEFF 	 bl DIGITAL_IO_Init
+  84              	.LVL13:
  104:../Dave/Generated/DAVE.c ****    } 
  105:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
-  84              	 .loc 1 105 0
-  85 0038 40B9     	 cbnz r0,.L8
+  85              	 .loc 1 105 0
+  86 003a E0B9     	 cbnz r0,.L13
  106:../Dave/Generated/DAVE.c ****   {
- 107:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_0 */
- 108:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0); 
-  86              	 .loc 1 108 0
-  87 003a 0C48     	 ldr r0,.L10+28
-  88              	.LVL14:
-  89 003c FFF7FEFF 	 bl DIGITAL_IO_Init
-  90              	.LVL15:
+ 107:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_PLATE_UR */
+ 108:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_PLATE_UR); 
+  87              	 .loc 1 108 0
+  88 003c 1548     	 ldr r0,.L15+28
+  89              	.LVL14:
+  90 003e FFF7FEFF 	 bl DIGITAL_IO_Init
+  91              	.LVL15:
  109:../Dave/Generated/DAVE.c ****    } 
  110:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
-  91              	 .loc 1 110 0
-  92 0040 20B9     	 cbnz r0,.L8
+  92              	 .loc 1 110 0
+  93 0042 C0B9     	 cbnz r0,.L13
  111:../Dave/Generated/DAVE.c ****   {
- 112:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_1 */
- 113:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_1); 
-  93              	 .loc 1 113 0
-  94 0042 0B48     	 ldr r0,.L10+32
-  95              	.LVL16:
- 114:../Dave/Generated/DAVE.c ****    }  
- 115:../Dave/Generated/DAVE.c ****   return init_status;
- 116:../Dave/Generated/DAVE.c **** } /**  End of function DAVE_Init */
-  96              	 .loc 1 116 0
-  97 0044 BDE80840 	 pop {r3,lr}
-  98              	.LCFI1:
-  99              	 .cfi_remember_state
- 100              	 .cfi_restore 14
- 101              	 .cfi_restore 3
- 102              	 .cfi_def_cfa_offset 0
- 113:../Dave/Generated/DAVE.c ****    }  
- 103              	 .loc 1 113 0
- 104 0048 FFF7FEBF 	 b DIGITAL_IO_Init
- 105              	.LVL17:
- 106              	.L8:
- 107              	.LCFI2:
- 108              	 .cfi_restore_state
- 109              	 .loc 1 116 0
- 110 004c 08BD     	 pop {r3,pc}
- 111              	.L11:
- 112 004e 00BF     	 .align 2
- 113              	.L10:
- 114 0050 00000000 	 .word CLOCK_XMC4_0
- 115 0054 00000000 	 .word PWM_MOTOR_0
- 116 0058 00000000 	 .word UART_0
- 117 005c 00000000 	 .word PWM_MOTOR_1
- 118 0060 00000000 	 .word PWM_MOTOR_2
- 119 0064 00000000 	 .word UART_ISR
- 120 0068 00000000 	 .word ADC_MEASUREMENT_0
- 121 006c 00000000 	 .word DIGITAL_IO_0
- 122 0070 00000000 	 .word DIGITAL_IO_1
- 123              	 .cfi_endproc
- 124              	.LFE419:
- 126              	 .text
- 127              	.Letext0:
- 128              	 .file 2 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
- 129              	 .file 3 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
- 130              	 .file 4 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
- 131              	 .file 5 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_scu.h"
- 132              	 .file 6 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_gpio.h"
- 133              	 .file 7 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_gpio.h"
- 134              	 .file 8 "../Dave/Generated/CLOCK_XMC4/clock_xmc4.h"
- 135              	 .file 9 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_ccu4.h"
- 136              	 .file 10 "../Dave/Generated/GLOBAL_CCU4/global_ccu4.h"
- 137              	 .file 11 "../Dave/Generated/PWM/pwm.h"
- 138              	 .file 12 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_usic.h"
- 139              	 .file 13 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_uart.h"
- 140              	 .file 14 "../Dave/Generated/UART/uart.h"
- 141              	 .file 15 "../Dave/Generated/INTERRUPT/interrupt.h"
- 142              	 .file 16 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_vadc.h"
- 143              	 .file 17 "../Dave/Generated/GLOBAL_ADC/global_adc.h"
- 144              	 .file 18 "../Dave/Generated/ADC_MEASUREMENT/adc_measurement.h"
- 145              	 .file 19 "../Dave/Generated/DIGITAL_IO/digital_io.h"
- 146              	 .file 20 "../Dave/Generated/DAVE.h"
- 147              	 .file 21 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
- 148              	 .file 22 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
- 149              	 .file 23 "../Dave/Generated/CLOCK_XMC4/clock_xmc4_extern.h"
- 150              	 .file 24 "../Dave/Generated/PWM/PWM_Extern.h"
- 151              	 .file 25 "../Dave/Generated/UART/uart_extern.h"
- 152              	 .file 26 "../Dave/Generated/INTERRUPT/interrupt_extern.h"
- 153              	 .file 27 "../Dave/Generated/ADC_MEASUREMENT/ADC_MEASUREMENT_Extern.h"
- 154              	 .file 28 "../Dave/Generated/DIGITAL_IO/digital_io_extern.h"
+ 112:../Dave/Generated/DAVE.c **** 	 /**  Initialization of TIMER APP instance TIMER_PLATE_SCAN */
+ 113:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)TIMER_Init(&TIMER_PLATE_SCAN); 
+  94              	 .loc 1 113 0
+  95 0044 1448     	 ldr r0,.L15+32
+  96              	.LVL16:
+  97 0046 FFF7FEFF 	 bl TIMER_Init
+  98              	.LVL17:
+ 114:../Dave/Generated/DAVE.c ****    } 
+ 115:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
+  99              	 .loc 1 115 0
+ 100 004a A0B9     	 cbnz r0,.L13
+ 116:../Dave/Generated/DAVE.c ****   {
+ 117:../Dave/Generated/DAVE.c **** 	 /**  Initialization of INTERRUPT APP instance INTERRUPT_TIMER_PLATE_SCAN */
+ 118:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&INTERRUPT_TIMER_PLATE_SCAN); 
+ 101              	 .loc 1 118 0
+ 102 004c 1348     	 ldr r0,.L15+36
+ 103              	.LVL18:
+ 104 004e FFF7FEFF 	 bl INTERRUPT_Init
+ 105              	.LVL19:
+ 119:../Dave/Generated/DAVE.c ****    } 
+ 120:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
+ 106              	 .loc 1 120 0
+ 107 0052 80B9     	 cbnz r0,.L13
+ 121:../Dave/Generated/DAVE.c ****   {
+ 122:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_PLATE_LR */
+ 123:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_PLATE_LR); 
+ 108              	 .loc 1 123 0
+ 109 0054 1248     	 ldr r0,.L15+40
+ 110              	.LVL20:
+ 111 0056 FFF7FEFF 	 bl DIGITAL_IO_Init
+ 112              	.LVL21:
+ 124:../Dave/Generated/DAVE.c ****    } 
+ 125:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
+ 113              	 .loc 1 125 0
+ 114 005a 60B9     	 cbnz r0,.L13
+ 126:../Dave/Generated/DAVE.c ****   {
+ 127:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_PLATE_UL */
+ 128:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_PLATE_UL); 
+ 115              	 .loc 1 128 0
+ 116 005c 1148     	 ldr r0,.L15+44
+ 117              	.LVL22:
+ 118 005e FFF7FEFF 	 bl DIGITAL_IO_Init
+ 119              	.LVL23:
+ 129:../Dave/Generated/DAVE.c ****    } 
+ 130:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
+ 120              	 .loc 1 130 0
+ 121 0062 40B9     	 cbnz r0,.L13
+ 131:../Dave/Generated/DAVE.c ****   {
+ 132:../Dave/Generated/DAVE.c **** 	 /**  Initialization of TIMER APP instance TIMER_SET_PWM_VALUES */
+ 133:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)TIMER_Init(&TIMER_SET_PWM_VALUES); 
+ 122              	 .loc 1 133 0
+ 123 0064 1048     	 ldr r0,.L15+48
+ 124              	.LVL24:
+ 125 0066 FFF7FEFF 	 bl TIMER_Init
+ 126              	.LVL25:
+ 134:../Dave/Generated/DAVE.c ****    } 
+ 135:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
+ 127              	 .loc 1 135 0
+ 128 006a 20B9     	 cbnz r0,.L13
+ 136:../Dave/Generated/DAVE.c ****   {
+ 137:../Dave/Generated/DAVE.c **** 	 /**  Initialization of INTERRUPT APP instance INTERRUPT_SET_PWM_VALUES */
+ 138:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&INTERRUPT_SET_PWM_VALUES); 
+ 129              	 .loc 1 138 0
+ 130 006c 0F48     	 ldr r0,.L15+52
+ 131              	.LVL26:
+ 139:../Dave/Generated/DAVE.c ****    }  
+ 140:../Dave/Generated/DAVE.c ****   return init_status;
+ 141:../Dave/Generated/DAVE.c **** } /**  End of function DAVE_Init */
+ 132              	 .loc 1 141 0
+ 133 006e BDE80840 	 pop {r3,lr}
+ 134              	.LCFI1:
+ 135              	 .cfi_remember_state
+ 136              	 .cfi_restore 14
+ 137              	 .cfi_restore 3
+ 138              	 .cfi_def_cfa_offset 0
+ 138:../Dave/Generated/DAVE.c ****    }  
+ 139              	 .loc 1 138 0
+ 140 0072 FFF7FEBF 	 b INTERRUPT_Init
+ 141              	.LVL27:
+ 142              	.L13:
+ 143              	.LCFI2:
+ 144              	 .cfi_restore_state
+ 145              	 .loc 1 141 0
+ 146 0076 08BD     	 pop {r3,pc}
+ 147              	.L16:
+ 148              	 .align 2
+ 149              	.L15:
+ 150 0078 00000000 	 .word CLOCK_XMC4_0
+ 151 007c 00000000 	 .word PWM_MOTOR_0
+ 152 0080 00000000 	 .word UART_0
+ 153 0084 00000000 	 .word PWM_MOTOR_1
+ 154 0088 00000000 	 .word PWM_MOTOR_2
+ 155 008c 00000000 	 .word ADC_MEASUREMENT_0
+ 156 0090 00000000 	 .word DIGITAL_IO_PLATE_LL
+ 157 0094 00000000 	 .word DIGITAL_IO_PLATE_UR
+ 158 0098 00000000 	 .word TIMER_PLATE_SCAN
+ 159 009c 00000000 	 .word INTERRUPT_TIMER_PLATE_SCAN
+ 160 00a0 00000000 	 .word DIGITAL_IO_PLATE_LR
+ 161 00a4 00000000 	 .word DIGITAL_IO_PLATE_UL
+ 162 00a8 00000000 	 .word TIMER_SET_PWM_VALUES
+ 163 00ac 00000000 	 .word INTERRUPT_SET_PWM_VALUES
+ 164              	 .cfi_endproc
+ 165              	.LFE419:
+ 167              	 .text
+ 168              	.Letext0:
+ 169              	 .file 2 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 170              	 .file 3 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 171              	 .file 4 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+ 172              	 .file 5 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_scu.h"
+ 173              	 .file 6 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_gpio.h"
+ 174              	 .file 7 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 175              	 .file 8 "../Dave/Generated/CLOCK_XMC4/clock_xmc4.h"
+ 176              	 .file 9 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_ccu4.h"
+ 177              	 .file 10 "../Dave/Generated/GLOBAL_CCU4/global_ccu4.h"
+ 178              	 .file 11 "../Dave/Generated/PWM/pwm.h"
+ 179              	 .file 12 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_usic.h"
+ 180              	 .file 13 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_uart.h"
+ 181              	 .file 14 "../Dave/Generated/UART/uart.h"
+ 182              	 .file 15 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_vadc.h"
+ 183              	 .file 16 "../Dave/Generated/GLOBAL_ADC/global_adc.h"
+ 184              	 .file 17 "../Dave/Generated/ADC_MEASUREMENT/adc_measurement.h"
+ 185              	 .file 18 "../Dave/Generated/DIGITAL_IO/digital_io.h"
+ 186              	 .file 19 "../Dave/Generated/TIMER/timer.h"
+ 187              	 .file 20 "../Dave/Generated/INTERRUPT/interrupt.h"
+ 188              	 .file 21 "../Dave/Generated/DAVE.h"
+ 189              	 .file 22 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+ 190              	 .file 23 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 191              	 .file 24 "../Dave/Generated/CLOCK_XMC4/clock_xmc4_extern.h"
+ 192              	 .file 25 "../Dave/Generated/PWM/PWM_Extern.h"
+ 193              	 .file 26 "../Dave/Generated/UART/uart_extern.h"
+ 194              	 .file 27 "../Dave/Generated/ADC_MEASUREMENT/ADC_MEASUREMENT_Extern.h"
+ 195              	 .file 28 "../Dave/Generated/DIGITAL_IO/digital_io_extern.h"
+ 196              	 .file 29 "../Dave/Generated/TIMER/timer_extern.h"
+ 197              	 .file 30 "../Dave/Generated/INTERRUPT/interrupt_extern.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 DAVE.c
     {standard input}:20     .text.DAVE_Init:00000000 $t
     {standard input}:25     .text.DAVE_Init:00000000 DAVE_Init
-    {standard input}:114    .text.DAVE_Init:00000050 $d
+    {standard input}:150    .text.DAVE_Init:00000078 $d
                      .debug_frame:00000010 $d
                            .group:00000000 wm4.0.ca5ae67a873a4952d630d8e4120b9e3e
                            .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
@@ -307,35 +375,42 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.xmc4_gpio.h.79.ce6c49508b5a7769c66e7e3c21dcdfe4
                            .group:00000000 wm4.clock_xmc4_conf.h.59.249296d4aac332e3d32466c2fa9b8708
                            .group:00000000 wm4.xmc4_ccu4_map.h.52.bc30e2611b29f8dfd82b8d766e443456
-                           .group:00000000 wm4.global_ccu4_conf.h.53.69a5e141699ccac04d959466f5418a86
+                           .group:00000000 wm4.global_ccu4_conf.h.53.171028076f31067af187aedd932f16c4
                            .group:00000000 wm4.pwm_conf.h.91.de1ad5462f924101b28d4a83f92c3daa
+                           .group:00000000 wm4.cpu_ctrl_xmc4_conf.h.50.edadd17ec66dd565cecf7b80b7a19d87
                            .group:00000000 wm4.xmc_usic.h.94.805ea2394b0d7b136939c22b7f55383a
                            .group:00000000 wm4.xmc4_usic_map.h.58.c72ca24cddd51bff3428962310391fa9
                            .group:00000000 wm4.xmc_uart.h.109.448e7c5ea9d234a4e4112f61aa70ddeb
-                           .group:00000000 wm4.uart_conf.h.56.fefc2749d96d28e8253da4c4476018ba
-                           .group:00000000 wm4.cpu_ctrl_xmc4_conf.h.50.edadd17ec66dd565cecf7b80b7a19d87
-                           .group:00000000 wm4.interrupt_conf.h.50.3baa91fd89684bb4ea6f6b4889884661
-                           .group:00000000 wm4.interrupt_extern.h.49.3ce2b82908d967cfe39977f681ea8189
+                           .group:00000000 wm4.uart_conf.h.56.c388d77d60f598933dd023b5e4d2a364
                            .group:00000000 wm4.xmc_vadc_map.h.62.9df0d76d5c18106393e06548a14f52be
                            .group:00000000 wm4.xmc_vadc.h.237.61ed5fbd33c6c067453e9298502ec2a9
                            .group:00000000 wm4.global_adc_conf.h.79.ad3d3c9f6f306cd3e989ca81b8da07e7
-                           .group:00000000 wm4.adc_measurement_conf.h.92.f7315bd62d909637461317a14b7472a9
+                           .group:00000000 wm4.adc_measurement_conf.h.92.cccc29e4ddbd0754ad04857ffa4fd661
                            .group:00000000 wm4.adc_measurement.h.114.7294eeab9e0acd8ff18f74e708162a72
                            .group:00000000 wm4.digital_io_conf.h.60.7e6ff84a67e8f07f78124480426d8243
+                           .group:00000000 wm4.timer_conf.h.54.996b42824e61eb96ec9d683fbb4da995
+                           .group:00000000 wm4.interrupt_conf.h.50.3baa91fd89684bb4ea6f6b4889884661
+                           .group:00000000 wm4.interrupt_extern.h.49.ccc9b9895c91382260480912eaa9a3c6
 
 UNDEFINED SYMBOLS
 CLOCK_XMC4_Init
 PWM_Init
 UART_Init
-INTERRUPT_Init
 ADC_MEASUREMENT_Init
 DIGITAL_IO_Init
+TIMER_Init
+INTERRUPT_Init
 CLOCK_XMC4_0
 PWM_MOTOR_0
 UART_0
 PWM_MOTOR_1
 PWM_MOTOR_2
-UART_ISR
 ADC_MEASUREMENT_0
-DIGITAL_IO_0
-DIGITAL_IO_1
+DIGITAL_IO_PLATE_LL
+DIGITAL_IO_PLATE_UR
+TIMER_PLATE_SCAN
+INTERRUPT_TIMER_PLATE_SCAN
+DIGITAL_IO_PLATE_LR
+DIGITAL_IO_PLATE_UL
+TIMER_SET_PWM_VALUES
+INTERRUPT_SET_PWM_VALUES

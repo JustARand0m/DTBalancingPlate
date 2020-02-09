@@ -4,13 +4,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../main.c 
+../TouchPlate.c \
+../main.c \
+../uartCom.c 
 
 OBJS += \
-./main.o 
+./TouchPlate.o \
+./main.o \
+./uartCom.o 
 
 C_DEPS += \
-./main.d 
+./TouchPlate.d \
+./main.d \
+./uartCom.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

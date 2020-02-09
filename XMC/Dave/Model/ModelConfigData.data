@@ -63,9 +63,6 @@
   <nodes xsi:type="ApplicationModel:PeripheralNode">
     <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/ERU1/ERU1_1.dd#/"/>
   </nodes>
-  <nodes xsi:type="ApplicationModel:AppNode">
-    <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_0.app#/"/>
-  </nodes>
   <nodes xsi:type="ApplicationModel:PeripheralNode">
     <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/GPDMA0/GPDMA0_0.dd#/"/>
   </nodes>
@@ -90,15 +87,44 @@
   <nodes xsi:type="ApplicationModel:AppNode">
     <resource xsi:type="ResourceModel:App" href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_1.app#/"/>
   </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/TIMER/v4_1_10/TIMER_0.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_0.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_2.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_3.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_1.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/TIMER/v4_1_10/TIMER_1.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:PeripheralNode">
+    <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/CCU43/CCU43_3.dd#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_1.app#/"/>
+  </nodes>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.0" target="//@nodes.1"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.2" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.8" target="//@nodes.1"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.12" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.13" target="//@nodes.0"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.21" target="//@nodes.7"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.24" target="//@nodes.1"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.25" target="//@nodes.24"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.25" target="//@nodes.7"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.23" target="//@nodes.1"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.24" target="//@nodes.23"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.24" target="//@nodes.7"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.8" target="//@nodes.7"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.29" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.30" target="//@nodes.7"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.33" target="//@nodes.1"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.34" target="//@nodes.33"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.36" target="//@nodes.7"/>
   <hwConnections href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_0.app#//@connections.0"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.0"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.5"/>
@@ -135,7 +161,6 @@
   <hwConnections href="APPS/PWM/v4_1_10/PWM_2.app#//@connections.2"/>
   <hwConnections href="APPS/PWM/v4_1_10/PWM_2.app#//@connections.4"/>
   <hwConnections href="APPS/PWM/v4_1_10/PWM_2.app#//@connections.5"/>
-  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.22"/>
   <hwConnections href="APPS/ADC_MEASUREMENT/v4_1_22/ADC_MEASUREMENT_0.app#//@connections.0"/>
   <hwConnections href="APPS/ADC_MEASUREMENT/v4_1_22/ADC_MEASUREMENT_0.app#//@connections.1"/>
   <hwConnections href="APPS/ADC_MEASUREMENT/v4_1_22/ADC_MEASUREMENT_0.app#//@connections.2"/>
@@ -196,4 +221,16 @@
   <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_0.app#//@connections.1"/>
   <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_1.app#//@connections.0"/>
   <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_1.app#//@connections.1"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.10"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.0"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.2"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.5"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.6"/>
+  <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_2.app#//@connections.0"/>
+  <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_2.app#//@connections.1"/>
+  <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_3.app#//@connections.0"/>
+  <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_3.app#//@connections.1"/>
+  <hwConnections href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_1.app#//@connections.0"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_1.app#//@connections.0"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_1.app#//@connections.2"/>
 </ApplicationModel:ApplicationData>

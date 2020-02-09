@@ -8,7 +8,7 @@
  *
  * @param device The string for the device to be opend
  */
-uartConnection::uartConnection(std::string device): BUFFERSIZE(1024) {
+uartConnection::uartConnection(std::string device): BUFFERSIZE(15) {
 	try {
 		isListening = false;
 		// open the uart tty device
@@ -31,7 +31,7 @@ uartConnection::uartConnection(std::string device): BUFFERSIZE(1024) {
 		}
 	}
 	catch(exceptionHandling &e) {
-		std::cout << e.what() << std::endl;
+		std::cout << "eception was: " << e.what() << std::endl;
 	}
 	catch(...) {
 		std::cout << "error has been thrown" << std::endl;
@@ -48,9 +48,16 @@ void uartConnection::writeData(std::string input) {
 	// clears messages that couldnt be send or are still in the buffer
 	lock.lock();
 	tcflush(fd, TCOFLUSH);
-	// write new data
-	write (fd, input.c_str(), input.size() + 1);
+	// write new data (data is written bytewise)
+	write (fd, input.c_str(), input.size());
 	lock.unlock();
+}
+
+std::vector<int> uartConnection::getData() {
+	dataAccess.lock();
+	std::vector<int> temp_data = data;	
+	dataAccess.unlock();
+	return temp_data;
 }
 
 /**
@@ -59,7 +66,8 @@ void uartConnection::writeData(std::string input) {
  * by setting the isListening flag to flase.
  */
 void uartConnection::startListening() {
-	std::thread t(listeningThread, std::ref(fd), std::ref(isListening), BUFFERSIZE, std::ref(lock));
+	std::thread t(listeningThread, std::ref(fd), std::ref(isListening), BUFFERSIZE, 
+			std::ref(lock), std::ref(dataAccess), std::ref(decode), std::ref(data));
 	t.detach();
 }
 
@@ -71,7 +79,8 @@ void uartConnection::startListening() {
  * @param isListen is a bool flag that can cancel the loop.
  * @param BUFFSZ is the size of the buffer in which is written.
  */
-void uartConnection::listeningThread(int &fdescr, bool &isListen, const int BUFFSZ, std::mutex &_lock) {
+void uartConnection::listeningThread(int &fdescr, bool &isListen, const int BUFFSZ, 
+		std::mutex &_lock, std::mutex &_dataAccess, messageDecoding &decode, std::vector<int> &_data) {
 	// start polling for input (wait for event on file descriptor)
 	pollfd srcPoll;
 	srcPoll.fd = fdescr;
@@ -80,11 +89,9 @@ void uartConnection::listeningThread(int &fdescr, bool &isListen, const int BUFF
 	isListen = true;
 
 	// Main loop that is polling for new messages
-	char buf[BUFFSZ];
-	int res = 0;
+	uint8_t buf[BUFFSZ];
 	while(isListen) {
 		int check = poll(&srcPoll, 1, -1);
-		sleep(1);
 		if(isListen == false) {
 			break;
 		}
@@ -94,11 +101,15 @@ void uartConnection::listeningThread(int &fdescr, bool &isListen, const int BUFF
 		// @todo maybe sleep here, cause data is trasmitted bitwise, wait until all data arrives?
 		
 		_lock.lock();
-		res = read(fdescr, buf, BUFFSZ);
+		int pos = read(fdescr, buf, BUFFSZ);
 		_lock.unlock();
 
-		std::cout << buf << std::endl;
-		// @todo use buf for something
+		decode.startDecoding(buf, pos);
+		if(decode.isDone()) {
+			_dataAccess.lock();
+			_data = decode.getData();
+			_dataAccess.unlock();
+		}
 	}
 }
 
@@ -206,6 +217,7 @@ termios uartConnection::configSetup(int fd) {
 
 	return config;
 }
+
 
 /**
  * Deconstructor to close the opened tty device

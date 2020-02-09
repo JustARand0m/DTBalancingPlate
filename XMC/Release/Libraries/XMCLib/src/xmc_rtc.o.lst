@@ -133,552 +133,552 @@
   33              	.L2:
   34              	.LBB16:
   35              	.LBB17:
-  36              	 .file 2 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_scu.h"
-   1:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
-   2:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @file xmc_scu.h
-   3:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @date 2016-03-09
-   4:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
-   5:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @cond
-   6:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
-   7:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMClib v2.1.22 - XMC Peripheral Driver Library 
-   8:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
-   9:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Copyright (c) 2015-2019, Infineon Technologies AG
-  10:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * All rights reserved.                        
-  11:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                                             
-  12:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
-  13:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * following conditions are met:   
-  14:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                                                                              
-  15:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
-  16:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * disclaimer.                        
-  17:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 
-  18:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
-  19:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
-  20:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 
-  21:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
-  22:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * products derived from this software without specific prior written permission.                  
-  23:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                                                                              
-  24:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
-  25:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
-  26:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
-  27:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
-  28:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
-  29:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
-  30:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
-  31:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                                                                              
-  32:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
-  33:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
-  34:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
-  35:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
-  36:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Change History
-  37:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * --------------
-  38:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
-  39:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-02-20:
-  40:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Initial <br>
-  41:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
-  42:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-05-20:
-  43:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Documentation improved <br>
-  44:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - XMC_ASSERT() hanging issues have fixed for XMC4 devices. <br>
-  45:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
-  46:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-06-20:
-  47:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Removed version macros and declaration of GetDriverVersion API
-  48:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Removed STATIC_INLINE property for the below APIs and declared as void
-  49:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *       XMC_SCU_INTERRUPT_EnableEvent, XMC_SCU_INTERRUPT_DisableEvent,
-  50:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *       XMC_SCU_INTERRUPT_TriggerEvent, XMC_SCU_INTERUPT_GetEventStatus,
-  51:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *       XMC_SCU_INTERUPT_ClearEventStatus
-  52:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
-  53:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-11-30:
-  54:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Documentation improved <br>
-  55:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *      
-  56:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 2016-03-09:
-  57:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Optimization of write only registers
-  58:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *      
-  59:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @endcond 
-  60:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
-  61:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
-  62:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #ifndef XMC_SCU_H
-  63:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #define XMC_SCU_H
-  64:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  
-  65:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
-  66:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * HEADER FILES
-  67:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
-  68:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #include <xmc_common.h>
-  69:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
-  70:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
-  71:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @addtogroup XMClib XMC Peripheral Library
-  72:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @{
-  73:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
-  74:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  
-  75:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
-  76:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @addtogroup SCU
-  77:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @brief System Control Unit(SCU) driver for XMC microcontroller family.
-  78:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
-  79:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * System control unit is the SoC power, reset and a clock manager with additional responsibility o
-  80:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * providing system stability protection and other auxiliary functions.<br>
-  81:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * SCU provides the following features,
-  82:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Power control
-  83:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4 
-  84:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Hibernate control 
-  85:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
-  86:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Reset control
-  87:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Clock control
-  88:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Miscellaneous control(boot mode, system interrupts etc.)<br><br>
-  89:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
-  90:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The SCU driver is divided in to clock control logic, reset control logic, system interrupt contr
-  91:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
-  92:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * , hibernate control logic, trap control logic, parity control logic 
-  93:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
-  94:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * and miscellaneous control logic.<br>
-  95:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
-  96:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Clock driver features:
-  97:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows clock configuration using the structure XMC_SCU_CLOCK_CONFIG_t and API XMC_SCU_CLOCK_I
-  98:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
-  99:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides structure XMC_SCU_CLOCK_SYSPLL_CONFIG_t for configuring the system PLL
- 100:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of clock source for system PLL, XMC_SCU_CLOCK_GetSystemPllClockSource()
- 101:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for configuring different module clock frequencies XMC_SCU_CLOCK_SetWdtClockDiv
- 102:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of clock source for external output, XMC_SCU_CLOCK_SetExternalOutputClockSou
- 103:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for enabling external high power oscillator and ultra low power oscillator, XMC
- 104:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for getting various clock frequencies XMC_SCU_CLOCK_GetPeripheralClockFrequency
- 105:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  XMC_SCU_CLOCK_GetCpuClockFrequency(), XMC_SCU_CLOCK_GetSystemClockFrequency()<br>
- 106:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
- 107:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC1
- 108:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of peripheral clock frequency, XMC_SCU_CLOCK_SetFastPeripheralClockSource()
- 109:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides API to get the peripheral clock frequency, XMC_SCU_CLOCK_GetFastPeripheralClockFrequ
- 110:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
- 111:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 112:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Reset driver features:
- 113:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
- 114:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to handle peripheral reset XMC_SCU_RESET_AssertPeripheralReset(), XMC_SCU_RESET_Deasse
- 115:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuration of NMI generation for selected events, XMC_SCU_INTERRUPT_EnableNmiReques
- 116:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
- 117:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC1
- 118:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to trigger device reset XMC_SCU_RESET_AssertMasterReset()
- 119:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to configure multiple sources for reset, XMC_SCU_RESET_EnableResetRequest()
- 120:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif <br>
- 121:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 122:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Interrupt driver features:
- 123:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for enabling/ disabling interrupt event generation XMC_SCU_INTERRUPT_EnableEven
- 124:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  XMC_SCU_INTERRUPT_DisableEvent()
- 125:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides API for registering callback function for events XMC_SCU_INTERRUPT_SetEventHandler()
- 126:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 127:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
- 128:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Hibernate driver features:
- 129:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuration of hibernate domain XMC_SCU_HIB_EnableHibernateDomain(), XMC_SCU_HIB_Dis
- 130:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of standby clock source, XMC_SCU_HIB_SetStandbyClockSource()
- 131:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of RTC clock source, XMC_SCU_HIB_SetRtcClockSource()
- 132:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides API for enabling slow internal clock used for backup clock, XMC_SCU_HIB_EnableIntern
- 133:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 134:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Trap driver features:
- 135:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows handling of trap XMC_SCU_TRAP_Enable(), XMC_SCU_TRAP_GetStatus(), XMC_SCU_TRAP_Trigger
- 136:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 137:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Parity driver features:
- 138:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Parity error generated by on-chip RAM can be monitored, XMC_SCU_PARITY_Enable(), XMC_SCU_PARI
- 139:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuration of trap generation on detection of parity error, XMC_SCU_PARITY_EnableTr
- 140:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 141:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Power driver features:
- 142:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to power the USB module XMC_SCU_POWER_EnableUsb(), XMC_SCU_POWER_DisableUsb()
- 143:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
- 144:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 145:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Miscellaneous features:
- 146:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to trigger multiple capture compare unit(CCU) channels to be started together XMC_SCU_
- 147:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
- 148:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of out of range comparator (ORC) XMC_SCU_EnableOutOfRangeComparator()
- 149:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of die temperature sensor XMC_SCU_EnableTemperatureSensor(), XMC_SCU_Ca
- 150:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of device boot mode XMC_SCU_SetBootMode()<br>
- 151:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
- 152:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC1
- 153:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of die temperature sensor XMC_SCU_StartTempMeasurement(), XMC_SCU_SetRa
- 154:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuring supply monitor unit using the structure XMC_SCU_SUPPLYMONITOR_t and API XM
- 155:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows handling of protected bits XMC_SCU_LockProtectedBits(), XMC_SCU_UnlockProtectedBits()<
- 156:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
- 157:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @{
- 158:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 159:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  
- 160:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
- 161:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * MACROS
- 162:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
- 163:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 164:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
- 165:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * ENUMS
- 166:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
- 167:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 168:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *  Defines the status of SCU API execution, used to verify the SCU related API calls.
- 169:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 170:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** typedef enum XMC_SCU_STATUS 
- 171:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
- 172:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   XMC_SCU_STATUS_OK   = 0UL, /**< SCU related operation successfully completed.*/
- 173:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   XMC_SCU_STATUS_ERROR,      /**< SCU related operation failed. When API cannot fulfill request, th
- 174:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   XMC_SCU_STATUS_BUSY,       /**< Cannot execute the SCU related operation request because
- 175:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****                                   another operation is in progress. \a XMC_SCU_STATUS_BUSY is retur
- 176:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****                                   processing another request. */
- 177:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** } XMC_SCU_STATUS_t;
- 178:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 179:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 180:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
- 181:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * DATA TYPES
- 182:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
- 183:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 184:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 185:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Function pointer type used for registering callback functions on SCU event occurrence.
- 186:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 187:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** typedef void (*XMC_SCU_INTERRUPT_EVENT_HANDLER_t)(void);
- 188:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 189:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
- 190:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * DEVICE EXTENSIONS
- 191:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
- 192:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 193:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #if (UC_FAMILY == XMC1)
- 194:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #include <xmc1_scu.h>
- 195:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #elif (UC_FAMILY == XMC4)
- 196:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #include <xmc4_scu.h>
- 197:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #else
- 198:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #error "Unspecified chipset"
- 199:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #endif
- 200:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 201:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
- 202:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * API Prototypes
- 203:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
- 204:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 205:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #ifdef __cplusplus
- 206:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** extern "C" {
- 207:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #endif
- 208:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 209:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 210:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 211:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 212:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param trigger    CCU slices to be triggered synchronously via software. The value is a bitmask 
- 213:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    in the register CCUCON. <br>
- 214:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    \b Range: Use type @ref XMC_SCU_CCU_TRIGGER_t for bitmask of individual CCU s
- 215:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    combined using \a OR operation.
- 216:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 217:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
- 218:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 219:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 220:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Generates active edge(low to high) trigger for multiple CCU units at the same time.\n\n
- 221:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Before executing this API, all the required CCU timers should configure external start.
- 222:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The edge of the start signal should be selected as active edge.
- 223:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The input signal for the CCU slice should be selected as SCU input.
- 224:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The above mentioned configurations can be made using the CCU LLD API XMC_CCU4_SLICE_StartConfig(
- 225:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * CCU timer slice should be started using XMC_CCU4_SLICE_StartTimer() before triggering 
- 226:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * the timer using this API.<BR>
- 227:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 228:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_CCU4_SLICE_StartConfig(), XMC_CCU4_SLICE_SetInput(), XMC_SCU_SetCcuTriggerLow()\n\n\n
- 229:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 230:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE void XMC_SCU_SetCcuTriggerHigh(const uint32_t trigger)
- 231:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
- 232:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   SCU_GENERAL->CCUCON |= (uint32_t)trigger;
- 233:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** }
- 234:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 235:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 236:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 237:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param trigger  CCU slices to be triggered synchronously via software. The value is a bitmask of
- 238:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    in the register CCUCON. <br>
- 239:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    \b Range: Use type @ref XMC_SCU_CCU_TRIGGER_t for bitmask of individual CCU s
- 240:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    combined using \a OR operation.
- 241:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 242:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
- 243:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 244:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 245:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Generates passive edge(high to low) trigger for multiple CCU units at the same time.\n\n
- 246:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Before executing this API, all the required CCU timers should configure external start.
- 247:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The edge of the start signal should be selected as passive edge.
- 248:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The input signal for the CCU slice should be selected as SCU input.
- 249:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The above mentioned configurations can be made using the CCU LLD API XMC_CCU4_SLICE_StartConfig(
- 250:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * CCU timer slice should be started using XMC_CCU4_SLICE_StartTimer() before triggering 
- 251:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * the timer using this API.<BR>
- 252:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 253:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_CCU4_SLICE_StartConfig(), XMC_CCU4_SLICE_SetInput(), XMC_SCU_SetCcuTriggerHigh()\n\n\n
- 254:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 255:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE void XMC_SCU_SetCcuTriggerLow(const uint32_t trigger)
- 256:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
- 257:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   SCU_GENERAL->CCUCON &= (uint32_t)~trigger;
- 258:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** }
- 259:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 260:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 261:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 262:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param config Pointer to structure holding the clock prescaler values and divider values for 
- 263:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                configuring clock generators and clock tree.\n
- 264:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                \b Range: Configure the members of structure @ref XMC_SCU_CLOCK_CONFIG_t for vari
- 265:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                parameters of clock setup.
- 266:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 267:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
- 268:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 269:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 270:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Initializes clock generators and clock tree.\n\n
- 271:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC1
- 272:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Peripheral clock and system clock are configured based on the input configuration \a config.
- 273:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The system clock frequency is tuned by configuring the FDIV and IDIV values of CLKCR register.
- 274:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The values of FDIV and IDIV can be provided as part of input configuration.
- 275:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The PCLK divider determines the ratio of peripheral clock to the system clock. 
- 276:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The source of RTC clock is set based on the input configuration. 
- 277:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \a SystemCoreClock variable will be updated with the value of
- 278:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * system clock frequency. Access to protected bit fields are handled internally.
- 279:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
- 280:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC4
- 281:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Enables the high precision oscillator(fOHP) input and configures the system and peripheral clock
- 282:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Based on the system clock source selected in \a config, either fPLL or fOFI will be chosen as sy
- 283:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Based on PLL mode(normal or prescaler mode) used, PLL ramps up in steps to achieve target freque
- 284:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The clock dividers for CPU, CCU and peripheral clocks will be set based on the input configurati
- 285:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The \a SystemCoreClock variable is set with the value of system clock frequency.
- 286:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
- 287:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 288:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_GetPeripheralClockFrequency(), XMC_SCU_CLOCK_GetCpuClockFrequency() \n\n\n
- 289:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 290:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_CLOCK_Init(const XMC_SCU_CLOCK_CONFIG_t *const config);
- 291:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 292:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 293:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 294:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event  Bit mask of the event to enable. \b Range: Use type @ref XMC_SCU_INTERRUPT_EVENT_t
- 295:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
- 296:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 297:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
- 298:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 299:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 300:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Enables the generation of interrupt for the input events.\n\n
- 301:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The events are enabled by setting the respective bit fields in the SRMSK register. \n
- 302:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Note: User should separately enable the NVIC node responsible for handling the SCU interrupt.
- 303:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The interrupt will be generated when the respective event occurs.
- 304:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 305:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * NVIC_EnableIRQ(), XMC_SCU_INTERRUPT_DisableEvent()\n\n\n
- 306:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 307:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_EnableEvent(const XMC_SCU_INTERRUPT_EVENT_t event);
- 308:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 309:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 310:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 311:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 312:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event  Bit mask of the event to disable. \b Range: Use type @ref XMC_SCU_INTERRUPT_EVENT_
- 313:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
- 314:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 315:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
- 316:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 317:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 318:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Disables generation of interrupt on occurrence of the input event.\n\n
- 319:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The events are disabled by resetting the respective bit fields in the SRMSK register. \n
- 320:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 321:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * NVIC_DisableIRQ(), XMC_SCU_INTERRUPT_EnableEvent()\n\n\n
- 322:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 323:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_DisableEvent(const XMC_SCU_INTERRUPT_EVENT_t event);
- 324:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 325:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 326:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 327:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event Bit mask of the event to be triggered. \b Range: Use type @ref XMC_SCU_INTERRUPT_EV
- 328:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
- 329:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 330:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
- 331:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 332:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 333:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Triggers the event as if the hardware raised it.\n\n
- 334:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Event will be triggered by setting the respective bitfield in the SRSET register.\n
- 335:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Note: User should enable the NVIC node that handles the respective event for interrupt generatio
- 336:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 337:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * NVIC_EnableIRQ(), XMC_SCU_INTERUPT_GetEventStatus(), XMC_SCU_INTERRUPT_ClearEventStatus() \n\n\n
- 338:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 339:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_TriggerEvent(const XMC_SCU_INTERRUPT_EVENT_t  event);
- 340:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 341:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 342:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return uint32_t  Status of the SCU events.
- 343:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 344:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 345:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the status of all SCU events.\n\n
- 346:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The status is read from the SRRAW register. To check the status of a particular 
- 347:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * event, the returned value should be masked with the bit mask of the event. The bitmask
- 348:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * of events can be obtained using the type @ref XMC_SCU_INTERRUPT_EVENT_t. Multiple events'
- 349:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * status can be checked by combining the bit masks using \a OR operation. 
- 350:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * After detecting the event, the event status should be cleared using software to detect the event
- 351:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 352:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_INTERRUPT_ClearEventStatus(), XMC_SCU_INTERRUPT_TriggerEvent(), XMC_SCU_INTERRUPT_SetEve
- 353:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 354:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** XMC_SCU_INTERRUPT_EVENT_t XMC_SCU_INTERUPT_GetEventStatus(void);
- 355:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 356:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 357:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 358:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event  Bit mask of the events to clear. \b Range: Use type @ref XMC_SCU_INTERRUPT_EVENT_t
- 359:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
- 360:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 361:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
- 362:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 363:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 364:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Clears the event status bit in SRRAW register.\n\n
- 365:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The events are cleared by writing value 1 to their bit positions in the SRCLR register.
- 366:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The API can be used when polling method is used. After detecting the event, the event status
- 367:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * should be cleared using software to detect the event again.
- 368:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 369:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 370:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_INTERUPT_GetEventStatus(), XMC_SCU_INTERRUPT_TriggerEvent() \n\n\n
- 371:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 372:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_ClearEventStatus(const XMC_SCU_INTERRUPT_EVENT_t event);
- 373:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 374:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 375:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 376:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return uint32_t  Status representing the reason for device reset.
- 377:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 378:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 379:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the value representing the reason for device reset.\n\n
- 380:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The return value is an encoded word, which can indicate multiple reasons for the last reset. Eac
- 381:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * returned word is representative of a last reset cause. The returned value should be appropriatel
- 382:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * the cause of reset. 
- 383:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The cause of the last reset gets automatically stored in 
- 384:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * the \a SCU_RSTSTAT register. The reset status shall be reset after each
- 385:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * startup in order to ensure consistent source indication after the next reset.
- 386:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \b Range: The type @ref XMC_SCU_RESET_REASON_t can be used to get the bit masks of the reset cau
- 387:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 388:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 389:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_RESET_ClearDeviceResetReason() \n\n\n
- 390:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 391:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE uint32_t XMC_SCU_RESET_GetDeviceResetReason(void)
- 392:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
- 393:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   return ((SCU_RESET->RSTSTAT) & SCU_RESET_RSTSTAT_RSTSTAT_Msk);
- 394:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** }
- 395:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 396:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None 
- 397:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 398:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 399:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Clears the reset reason bits in the reset status register. \n\n
- 400:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Clearing of the reset status information in the \a SCU_RSTSTAT register via register bit \a RSTC
- 401:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * recommended to ensure a clear indication of the cause of next reset.
- 402:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 403:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 404:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_RESET_GetDeviceResetReason() \n\n\n
- 405:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 406:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE void XMC_SCU_RESET_ClearDeviceResetReason(void)
- 407:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
- 408:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   /* Clear RSTSTAT.RSTSTAT bitfield */
- 409:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   SCU_RESET->RSTCLR = (uint32_t)SCU_RESET_RSTCLR_RSCLR_Msk;
- 410:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** }
- 411:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  
- 412:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 413:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return uint32_t  Value of CPU clock frequency.
- 414:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 415:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 416:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the vlaue of CPU clock frequency.\n\n
- 417:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The value is stored in a global variable \a \b SystemCoreClock.
- 418:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * It is updated when the clock configuration is done using the SCU LLD APIs.
- 419:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The value represents the frequency of clock used for CPU operation.
- 420:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \b Range: Value is of type uint32_t, and gives the value of frequency in Hertz.
- 421:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 422:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 423:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_GetPeripheralClockFrequency(), XMC_SCU_CLOCK_GatePeripheralClock() \n\n\n
- 424:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 425:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE uint32_t XMC_SCU_CLOCK_GetCpuClockFrequency(void)
- 426:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
- 427:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   return SystemCoreClock;
- 428:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** }
- 429:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 430:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 431:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return uint32_t  Value of peripheral clock frequency in Hertz.
- 432:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 433:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 434:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the vlaue of clock frequency at which the peripherals are working.\n\n
- 435:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The value is derived from the CPU frequency. \b Range: Value is of type uint32_t. It is represen
- 436:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 437:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_GetCpuClockFrequency(),XMC_SCU_CLOCK_GatePeripheralClock() \n\n\n
- 438:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 439:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** uint32_t XMC_SCU_CLOCK_GetPeripheralClockFrequency(void); 
- 440:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 441:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #if(UC_SERIES != XMC45)
- 442:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  
- 443:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 444:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 445:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param  peripheral The peripheral for which the clock has to be gated. \b Range: Use type @ref X
- 446:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    to identify the peripheral clock to be gated.
- 447:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 448:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
- 449:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 450:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 451:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Blocks the supply of clock to the selected peripheral.\n\n
- 452:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Clock gating helps in reducing the power consumption. User can selectively gate the clocks of un
- 453:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC1
- 454:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * fPCLK is the source of clock to various peripherals. Some peripherals support clock gate. Such a
- 455:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * the clock supply for the selected peripheral.
- 456:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Software can request for individual gating of such peripheral clocks by enabling the \a SCU_CGAT
- 457:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * register bit field. Every bit in \a SCU_CGATSET0 register is protected by the bit protection sch
- 458:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * bit fields are handled internally.
- 459:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
- 460:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC4
- 461:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * fPERI is the source of clock to various peripherals. Some peripherals support clock gate. Such a
- 462:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * the clock supply for the selected peripheral.
- 463:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Software can request for individual gating of such peripheral clocks by enabling one of the \a
- 464:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * SCU_CGATSET0, \a SCU_CGATSET1 or \a SCU_CGATSET2 register bitfields.
- 465:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 
- 466:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
- 467:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Note: Clock gating shall not be activated unless the module is in reset state. So use \a
- 468:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_IsPeripheralClockGated() API before enabling the gating of any peripheral.
- 469:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 470:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_IsPeripheralClockGated(), XMC_SCU_CLOCK_UngatePeripheralClock() \n\n\n
- 471:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 472:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_CLOCK_GatePeripheralClock(const XMC_SCU_PERIPHERAL_CLOCK_t peripheral);
- 473:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  
- 474:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 475:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 476:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param  peripheral  The peripheral for which the clock has to be ungated. \b Range: Use type @re
- 477:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    to identify the peripheral.
- 478:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 479:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
- 480:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 481:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 482:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Enables the supply of clock to the selected peripheral.\n\n
- 483:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * By default when the device powers on, the peripheral clock will be gated for the 
- 484:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * peripherals that support clock gating.
- 485:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The peripheral clock should be enabled before using it for any functionality.
- 486:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC1
- 487:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * fPCLK is the source of clock to various peripherals. Some peripherals support clock gate.
- 488:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Software can request for individual ungating of such peripheral clocks by setting respective bit
- 489:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * in the \a SCU_CGATCLR0 register.
- 490:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
- 491:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC4
- 492:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * fPERI is the source of clock to various peripherals. Some peripherals support clock gate.
- 493:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Software can request for individual ungating of such peripheral clocks by setting the respective
- 494:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * SCU_CGATCLR0, \a SCU_CGATCLR1 or \a SCU_CGATCLR2 registers.
- 495:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
- 496:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 497:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 498:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_IsPeripheralClockGated(), XMC_SCU_CLOCK_GatePeripheralClock() \n\n\n
- 499:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 500:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_CLOCK_UngatePeripheralClock(const XMC_SCU_PERIPHERAL_CLOCK_t peripheral);
- 501:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 502:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 503:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 504:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param  peripheral  The peripheral for which the check for clock gating has to be done. 
- 505:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    \b Range: Use type @ref XMC_SCU_PERIPHERAL_CLOCK_t to identify the peripheral
- 506:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 507:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return bool Status of the peripheral clock gating. \b Range: true if the peripheral clock is ga
- 508:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *              false if the peripheral clock ungated(gate de-asserted).
- 509:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 510:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 511:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Gives the status of peripheral clock gating.\n\n
- 512:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC1
- 513:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Checks the status of peripheral clock gating using the register CGATSTAT0.
- 514:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
- 515:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC4
- 516:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Checks the status of peripheral clock gating using one of CGATSTAT0, CGATSTAT1 or CGATSTAT2 regi
- 517:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
- 518:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * It is recommended to use this API before
- 519:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * enabling the gating of any peripherals through \a XMC_SCU_CLOCK_GatePeripheralClock() API.
- 520:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 521:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
- 522:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_UngatePeripheralClock(), XMC_SCU_CLOCK_GatePeripheralClock() \n\n\n
- 523:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 524:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** bool XMC_SCU_CLOCK_IsPeripheralClockGated(const XMC_SCU_PERIPHERAL_CLOCK_t peripheral);
- 525:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #endif
- 526:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 527:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
- 528:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
- 529:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return  uint32_t  Status of the register mirror update.\n
- 530:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    \b Range: Use the bit mask of the SCU_GENERAL_MIRRSTS register for the mirror
- 531:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    interest. e.g.: SCU_GENERAL_MIRRSTS_RTC_CTR_Msk. Multiple update events can b
- 532:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    using \a OR operation.
- 533:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
- 534:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
- 535:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the status of hibernate domain register update, when the respective mirror registers ar
- 536:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The hibernate domain is connected to the core domain via SPI serial communication. MIRRSTS is a 
- 537:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * representing the communication of changed value of a mirror register to its corresponding regist
- 538:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * hibernate domain. The bit fields of the register indicate
- 539:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * that a corresponding register of the hibernate domain is ready to accept a write or that the com
- 540:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * is busy with executing the previous operation.\n
- 541:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Note: There is no hibernate domain in XMC1x devices. This register is retained for legacy purpos
- 542:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
- 543:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE uint32_t XMC_SCU_GetMirrorStatus(void)
- 544:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
- 545:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   return(SCU_GENERAL->MIRRSTS);
+  36              	 .file 2 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_scu.h"
+   1:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+   2:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @file xmc_scu.h
+   3:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @date 2016-03-09
+   4:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+   5:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @cond
+   6:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+   7:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMClib v2.1.22 - XMC Peripheral Driver Library 
+   8:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+   9:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Copyright (c) 2015-2019, Infineon Technologies AG
+  10:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * All rights reserved.                        
+  11:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                                             
+  12:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * following conditions are met:   
+  14:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                                                                              
+  15:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * disclaimer.                        
+  17:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 
+  18:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 
+  21:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * products derived from this software without specific prior written permission.                  
+  23:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                                                                              
+  24:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                                                                              
+  32:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+  35:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  36:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Change History
+  37:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * --------------
+  38:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  39:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-02-20:
+  40:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Initial <br>
+  41:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  42:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-05-20:
+  43:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Documentation improved <br>
+  44:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - XMC_ASSERT() hanging issues have fixed for XMC4 devices. <br>
+  45:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  46:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-06-20:
+  47:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Removed version macros and declaration of GetDriverVersion API
+  48:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Removed STATIC_INLINE property for the below APIs and declared as void
+  49:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *       XMC_SCU_INTERRUPT_EnableEvent, XMC_SCU_INTERRUPT_DisableEvent,
+  50:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *       XMC_SCU_INTERRUPT_TriggerEvent, XMC_SCU_INTERUPT_GetEventStatus,
+  51:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *       XMC_SCU_INTERUPT_ClearEventStatus
+  52:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  53:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-11-30:
+  54:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Documentation improved <br>
+  55:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *      
+  56:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 2016-03-09:
+  57:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Optimization of write only registers
+  58:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *      
+  59:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @endcond 
+  60:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  61:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+  62:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #ifndef XMC_SCU_H
+  63:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #define XMC_SCU_H
+  64:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  
+  65:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+  66:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * HEADER FILES
+  67:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+  68:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #include <xmc_common.h>
+  69:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+  70:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+  71:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @addtogroup XMClib XMC Peripheral Library
+  72:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @{
+  73:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+  74:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  
+  75:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+  76:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @addtogroup SCU
+  77:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @brief System Control Unit(SCU) driver for XMC microcontroller family.
+  78:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  79:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * System control unit is the SoC power, reset and a clock manager with additional responsibility o
+  80:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * providing system stability protection and other auxiliary functions.<br>
+  81:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * SCU provides the following features,
+  82:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Power control
+  83:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4 
+  84:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Hibernate control 
+  85:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+  86:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Reset control
+  87:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Clock control
+  88:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Miscellaneous control(boot mode, system interrupts etc.)<br><br>
+  89:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  90:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The SCU driver is divided in to clock control logic, reset control logic, system interrupt contr
+  91:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+  92:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * , hibernate control logic, trap control logic, parity control logic 
+  93:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+  94:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * and miscellaneous control logic.<br>
+  95:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  96:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Clock driver features:
+  97:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows clock configuration using the structure XMC_SCU_CLOCK_CONFIG_t and API XMC_SCU_CLOCK_I
+  98:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+  99:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides structure XMC_SCU_CLOCK_SYSPLL_CONFIG_t for configuring the system PLL
+ 100:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of clock source for system PLL, XMC_SCU_CLOCK_GetSystemPllClockSource()
+ 101:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for configuring different module clock frequencies XMC_SCU_CLOCK_SetWdtClockDiv
+ 102:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of clock source for external output, XMC_SCU_CLOCK_SetExternalOutputClockSou
+ 103:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for enabling external high power oscillator and ultra low power oscillator, XMC
+ 104:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for getting various clock frequencies XMC_SCU_CLOCK_GetPeripheralClockFrequency
+ 105:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  XMC_SCU_CLOCK_GetCpuClockFrequency(), XMC_SCU_CLOCK_GetSystemClockFrequency()<br>
+ 106:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 107:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC1
+ 108:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of peripheral clock frequency, XMC_SCU_CLOCK_SetFastPeripheralClockSource()
+ 109:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides API to get the peripheral clock frequency, XMC_SCU_CLOCK_GetFastPeripheralClockFrequ
+ 110:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 111:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 112:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Reset driver features:
+ 113:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+ 114:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to handle peripheral reset XMC_SCU_RESET_AssertPeripheralReset(), XMC_SCU_RESET_Deasse
+ 115:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuration of NMI generation for selected events, XMC_SCU_INTERRUPT_EnableNmiReques
+ 116:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 117:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC1
+ 118:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to trigger device reset XMC_SCU_RESET_AssertMasterReset()
+ 119:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to configure multiple sources for reset, XMC_SCU_RESET_EnableResetRequest()
+ 120:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif <br>
+ 121:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 122:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Interrupt driver features:
+ 123:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for enabling/ disabling interrupt event generation XMC_SCU_INTERRUPT_EnableEven
+ 124:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  XMC_SCU_INTERRUPT_DisableEvent()
+ 125:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides API for registering callback function for events XMC_SCU_INTERRUPT_SetEventHandler()
+ 126:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 127:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+ 128:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Hibernate driver features:
+ 129:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuration of hibernate domain XMC_SCU_HIB_EnableHibernateDomain(), XMC_SCU_HIB_Dis
+ 130:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of standby clock source, XMC_SCU_HIB_SetStandbyClockSource()
+ 131:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of RTC clock source, XMC_SCU_HIB_SetRtcClockSource()
+ 132:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides API for enabling slow internal clock used for backup clock, XMC_SCU_HIB_EnableIntern
+ 133:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 134:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Trap driver features:
+ 135:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows handling of trap XMC_SCU_TRAP_Enable(), XMC_SCU_TRAP_GetStatus(), XMC_SCU_TRAP_Trigger
+ 136:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 137:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Parity driver features:
+ 138:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Parity error generated by on-chip RAM can be monitored, XMC_SCU_PARITY_Enable(), XMC_SCU_PARI
+ 139:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuration of trap generation on detection of parity error, XMC_SCU_PARITY_EnableTr
+ 140:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 141:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Power driver features:
+ 142:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to power the USB module XMC_SCU_POWER_EnableUsb(), XMC_SCU_POWER_DisableUsb()
+ 143:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 144:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 145:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Miscellaneous features:
+ 146:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to trigger multiple capture compare unit(CCU) channels to be started together XMC_SCU_
+ 147:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+ 148:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of out of range comparator (ORC) XMC_SCU_EnableOutOfRangeComparator()
+ 149:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of die temperature sensor XMC_SCU_EnableTemperatureSensor(), XMC_SCU_Ca
+ 150:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of device boot mode XMC_SCU_SetBootMode()<br>
+ 151:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 152:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC1
+ 153:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of die temperature sensor XMC_SCU_StartTempMeasurement(), XMC_SCU_SetRa
+ 154:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuring supply monitor unit using the structure XMC_SCU_SUPPLYMONITOR_t and API XM
+ 155:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows handling of protected bits XMC_SCU_LockProtectedBits(), XMC_SCU_UnlockProtectedBits()<
+ 156:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 157:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @{
+ 158:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 159:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  
+ 160:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 161:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * MACROS
+ 162:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 163:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 164:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 165:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * ENUMS
+ 166:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 167:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 168:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *  Defines the status of SCU API execution, used to verify the SCU related API calls.
+ 169:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 170:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** typedef enum XMC_SCU_STATUS 
+ 171:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 172:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   XMC_SCU_STATUS_OK   = 0UL, /**< SCU related operation successfully completed.*/
+ 173:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   XMC_SCU_STATUS_ERROR,      /**< SCU related operation failed. When API cannot fulfill request, th
+ 174:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   XMC_SCU_STATUS_BUSY,       /**< Cannot execute the SCU related operation request because
+ 175:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****                                   another operation is in progress. \a XMC_SCU_STATUS_BUSY is retur
+ 176:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****                                   processing another request. */
+ 177:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** } XMC_SCU_STATUS_t;
+ 178:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 179:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 180:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 181:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * DATA TYPES
+ 182:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 183:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 184:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 185:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Function pointer type used for registering callback functions on SCU event occurrence.
+ 186:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 187:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** typedef void (*XMC_SCU_INTERRUPT_EVENT_HANDLER_t)(void);
+ 188:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 189:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 190:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * DEVICE EXTENSIONS
+ 191:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 192:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 193:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #if (UC_FAMILY == XMC1)
+ 194:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #include <xmc1_scu.h>
+ 195:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #elif (UC_FAMILY == XMC4)
+ 196:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #include <xmc4_scu.h>
+ 197:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #else
+ 198:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #error "Unspecified chipset"
+ 199:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #endif
+ 200:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 201:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 202:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * API Prototypes
+ 203:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 204:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 205:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #ifdef __cplusplus
+ 206:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** extern "C" {
+ 207:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #endif
+ 208:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 209:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 210:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 211:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 212:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param trigger    CCU slices to be triggered synchronously via software. The value is a bitmask 
+ 213:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    in the register CCUCON. <br>
+ 214:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    \b Range: Use type @ref XMC_SCU_CCU_TRIGGER_t for bitmask of individual CCU s
+ 215:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    combined using \a OR operation.
+ 216:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 217:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 218:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 219:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 220:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Generates active edge(low to high) trigger for multiple CCU units at the same time.\n\n
+ 221:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Before executing this API, all the required CCU timers should configure external start.
+ 222:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The edge of the start signal should be selected as active edge.
+ 223:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The input signal for the CCU slice should be selected as SCU input.
+ 224:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The above mentioned configurations can be made using the CCU LLD API XMC_CCU4_SLICE_StartConfig(
+ 225:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * CCU timer slice should be started using XMC_CCU4_SLICE_StartTimer() before triggering 
+ 226:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * the timer using this API.<BR>
+ 227:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 228:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_CCU4_SLICE_StartConfig(), XMC_CCU4_SLICE_SetInput(), XMC_SCU_SetCcuTriggerLow()\n\n\n
+ 229:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 230:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE void XMC_SCU_SetCcuTriggerHigh(const uint32_t trigger)
+ 231:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 232:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   SCU_GENERAL->CCUCON |= (uint32_t)trigger;
+ 233:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** }
+ 234:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 235:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 236:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 237:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param trigger  CCU slices to be triggered synchronously via software. The value is a bitmask of
+ 238:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    in the register CCUCON. <br>
+ 239:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    \b Range: Use type @ref XMC_SCU_CCU_TRIGGER_t for bitmask of individual CCU s
+ 240:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    combined using \a OR operation.
+ 241:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 242:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 243:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 244:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 245:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Generates passive edge(high to low) trigger for multiple CCU units at the same time.\n\n
+ 246:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Before executing this API, all the required CCU timers should configure external start.
+ 247:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The edge of the start signal should be selected as passive edge.
+ 248:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The input signal for the CCU slice should be selected as SCU input.
+ 249:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The above mentioned configurations can be made using the CCU LLD API XMC_CCU4_SLICE_StartConfig(
+ 250:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * CCU timer slice should be started using XMC_CCU4_SLICE_StartTimer() before triggering 
+ 251:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * the timer using this API.<BR>
+ 252:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 253:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_CCU4_SLICE_StartConfig(), XMC_CCU4_SLICE_SetInput(), XMC_SCU_SetCcuTriggerHigh()\n\n\n
+ 254:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 255:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE void XMC_SCU_SetCcuTriggerLow(const uint32_t trigger)
+ 256:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 257:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   SCU_GENERAL->CCUCON &= (uint32_t)~trigger;
+ 258:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** }
+ 259:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 260:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 261:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 262:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param config Pointer to structure holding the clock prescaler values and divider values for 
+ 263:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                configuring clock generators and clock tree.\n
+ 264:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                \b Range: Configure the members of structure @ref XMC_SCU_CLOCK_CONFIG_t for vari
+ 265:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                parameters of clock setup.
+ 266:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 267:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 268:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 269:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 270:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Initializes clock generators and clock tree.\n\n
+ 271:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC1
+ 272:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Peripheral clock and system clock are configured based on the input configuration \a config.
+ 273:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The system clock frequency is tuned by configuring the FDIV and IDIV values of CLKCR register.
+ 274:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The values of FDIV and IDIV can be provided as part of input configuration.
+ 275:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The PCLK divider determines the ratio of peripheral clock to the system clock. 
+ 276:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The source of RTC clock is set based on the input configuration. 
+ 277:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \a SystemCoreClock variable will be updated with the value of
+ 278:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * system clock frequency. Access to protected bit fields are handled internally.
+ 279:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
+ 280:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC4
+ 281:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Enables the high precision oscillator(fOHP) input and configures the system and peripheral clock
+ 282:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Based on the system clock source selected in \a config, either fPLL or fOFI will be chosen as sy
+ 283:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Based on PLL mode(normal or prescaler mode) used, PLL ramps up in steps to achieve target freque
+ 284:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The clock dividers for CPU, CCU and peripheral clocks will be set based on the input configurati
+ 285:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The \a SystemCoreClock variable is set with the value of system clock frequency.
+ 286:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
+ 287:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 288:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_GetPeripheralClockFrequency(), XMC_SCU_CLOCK_GetCpuClockFrequency() \n\n\n
+ 289:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 290:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_CLOCK_Init(const XMC_SCU_CLOCK_CONFIG_t *const config);
+ 291:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 292:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 293:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 294:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event  Bit mask of the event to enable. \b Range: Use type @ref XMC_SCU_INTERRUPT_EVENT_t
+ 295:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
+ 296:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 297:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 298:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 299:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 300:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Enables the generation of interrupt for the input events.\n\n
+ 301:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The events are enabled by setting the respective bit fields in the SRMSK register. \n
+ 302:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Note: User should separately enable the NVIC node responsible for handling the SCU interrupt.
+ 303:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The interrupt will be generated when the respective event occurs.
+ 304:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 305:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * NVIC_EnableIRQ(), XMC_SCU_INTERRUPT_DisableEvent()\n\n\n
+ 306:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 307:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_EnableEvent(const XMC_SCU_INTERRUPT_EVENT_t event);
+ 308:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 309:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 310:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 311:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 312:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event  Bit mask of the event to disable. \b Range: Use type @ref XMC_SCU_INTERRUPT_EVENT_
+ 313:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
+ 314:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 315:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 316:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 317:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 318:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Disables generation of interrupt on occurrence of the input event.\n\n
+ 319:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The events are disabled by resetting the respective bit fields in the SRMSK register. \n
+ 320:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 321:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * NVIC_DisableIRQ(), XMC_SCU_INTERRUPT_EnableEvent()\n\n\n
+ 322:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 323:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_DisableEvent(const XMC_SCU_INTERRUPT_EVENT_t event);
+ 324:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 325:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 326:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 327:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event Bit mask of the event to be triggered. \b Range: Use type @ref XMC_SCU_INTERRUPT_EV
+ 328:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
+ 329:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 330:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 331:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 332:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 333:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Triggers the event as if the hardware raised it.\n\n
+ 334:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Event will be triggered by setting the respective bitfield in the SRSET register.\n
+ 335:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Note: User should enable the NVIC node that handles the respective event for interrupt generatio
+ 336:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 337:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * NVIC_EnableIRQ(), XMC_SCU_INTERUPT_GetEventStatus(), XMC_SCU_INTERRUPT_ClearEventStatus() \n\n\n
+ 338:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 339:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_TriggerEvent(const XMC_SCU_INTERRUPT_EVENT_t  event);
+ 340:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 341:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 342:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return uint32_t  Status of the SCU events.
+ 343:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 344:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 345:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the status of all SCU events.\n\n
+ 346:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The status is read from the SRRAW register. To check the status of a particular 
+ 347:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * event, the returned value should be masked with the bit mask of the event. The bitmask
+ 348:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * of events can be obtained using the type @ref XMC_SCU_INTERRUPT_EVENT_t. Multiple events'
+ 349:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * status can be checked by combining the bit masks using \a OR operation. 
+ 350:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * After detecting the event, the event status should be cleared using software to detect the event
+ 351:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 352:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_INTERRUPT_ClearEventStatus(), XMC_SCU_INTERRUPT_TriggerEvent(), XMC_SCU_INTERRUPT_SetEve
+ 353:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 354:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** XMC_SCU_INTERRUPT_EVENT_t XMC_SCU_INTERUPT_GetEventStatus(void);
+ 355:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 356:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 357:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 358:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event  Bit mask of the events to clear. \b Range: Use type @ref XMC_SCU_INTERRUPT_EVENT_t
+ 359:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
+ 360:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 361:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 362:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 363:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 364:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Clears the event status bit in SRRAW register.\n\n
+ 365:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The events are cleared by writing value 1 to their bit positions in the SRCLR register.
+ 366:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The API can be used when polling method is used. After detecting the event, the event status
+ 367:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * should be cleared using software to detect the event again.
+ 368:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 369:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 370:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_INTERUPT_GetEventStatus(), XMC_SCU_INTERRUPT_TriggerEvent() \n\n\n
+ 371:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 372:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_ClearEventStatus(const XMC_SCU_INTERRUPT_EVENT_t event);
+ 373:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 374:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 375:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 376:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return uint32_t  Status representing the reason for device reset.
+ 377:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 378:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 379:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the value representing the reason for device reset.\n\n
+ 380:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The return value is an encoded word, which can indicate multiple reasons for the last reset. Eac
+ 381:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * returned word is representative of a last reset cause. The returned value should be appropriatel
+ 382:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * the cause of reset. 
+ 383:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The cause of the last reset gets automatically stored in 
+ 384:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * the \a SCU_RSTSTAT register. The reset status shall be reset after each
+ 385:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * startup in order to ensure consistent source indication after the next reset.
+ 386:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \b Range: The type @ref XMC_SCU_RESET_REASON_t can be used to get the bit masks of the reset cau
+ 387:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 388:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 389:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_RESET_ClearDeviceResetReason() \n\n\n
+ 390:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 391:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE uint32_t XMC_SCU_RESET_GetDeviceResetReason(void)
+ 392:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 393:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   return ((SCU_RESET->RSTSTAT) & SCU_RESET_RSTSTAT_RSTSTAT_Msk);
+ 394:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** }
+ 395:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 396:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None 
+ 397:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 398:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 399:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Clears the reset reason bits in the reset status register. \n\n
+ 400:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Clearing of the reset status information in the \a SCU_RSTSTAT register via register bit \a RSTC
+ 401:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * recommended to ensure a clear indication of the cause of next reset.
+ 402:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 403:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 404:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_RESET_GetDeviceResetReason() \n\n\n
+ 405:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 406:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE void XMC_SCU_RESET_ClearDeviceResetReason(void)
+ 407:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 408:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   /* Clear RSTSTAT.RSTSTAT bitfield */
+ 409:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   SCU_RESET->RSTCLR = (uint32_t)SCU_RESET_RSTCLR_RSCLR_Msk;
+ 410:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** }
+ 411:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  
+ 412:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 413:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return uint32_t  Value of CPU clock frequency.
+ 414:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 415:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 416:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the vlaue of CPU clock frequency.\n\n
+ 417:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The value is stored in a global variable \a \b SystemCoreClock.
+ 418:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * It is updated when the clock configuration is done using the SCU LLD APIs.
+ 419:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The value represents the frequency of clock used for CPU operation.
+ 420:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \b Range: Value is of type uint32_t, and gives the value of frequency in Hertz.
+ 421:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 422:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 423:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_GetPeripheralClockFrequency(), XMC_SCU_CLOCK_GatePeripheralClock() \n\n\n
+ 424:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 425:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE uint32_t XMC_SCU_CLOCK_GetCpuClockFrequency(void)
+ 426:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 427:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   return SystemCoreClock;
+ 428:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** }
+ 429:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 430:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 431:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return uint32_t  Value of peripheral clock frequency in Hertz.
+ 432:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 433:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 434:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the vlaue of clock frequency at which the peripherals are working.\n\n
+ 435:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The value is derived from the CPU frequency. \b Range: Value is of type uint32_t. It is represen
+ 436:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 437:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_GetCpuClockFrequency(),XMC_SCU_CLOCK_GatePeripheralClock() \n\n\n
+ 438:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 439:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** uint32_t XMC_SCU_CLOCK_GetPeripheralClockFrequency(void); 
+ 440:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 441:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #if(UC_SERIES != XMC45)
+ 442:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  
+ 443:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 444:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 445:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param  peripheral The peripheral for which the clock has to be gated. \b Range: Use type @ref X
+ 446:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    to identify the peripheral clock to be gated.
+ 447:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 448:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 449:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 450:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 451:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Blocks the supply of clock to the selected peripheral.\n\n
+ 452:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Clock gating helps in reducing the power consumption. User can selectively gate the clocks of un
+ 453:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC1
+ 454:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * fPCLK is the source of clock to various peripherals. Some peripherals support clock gate. Such a
+ 455:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * the clock supply for the selected peripheral.
+ 456:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Software can request for individual gating of such peripheral clocks by enabling the \a SCU_CGAT
+ 457:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * register bit field. Every bit in \a SCU_CGATSET0 register is protected by the bit protection sch
+ 458:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * bit fields are handled internally.
+ 459:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
+ 460:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC4
+ 461:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * fPERI is the source of clock to various peripherals. Some peripherals support clock gate. Such a
+ 462:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * the clock supply for the selected peripheral.
+ 463:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Software can request for individual gating of such peripheral clocks by enabling one of the \a
+ 464:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * SCU_CGATSET0, \a SCU_CGATSET1 or \a SCU_CGATSET2 register bitfields.
+ 465:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * 
+ 466:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
+ 467:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Note: Clock gating shall not be activated unless the module is in reset state. So use \a
+ 468:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_IsPeripheralClockGated() API before enabling the gating of any peripheral.
+ 469:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 470:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_IsPeripheralClockGated(), XMC_SCU_CLOCK_UngatePeripheralClock() \n\n\n
+ 471:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 472:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_CLOCK_GatePeripheralClock(const XMC_SCU_PERIPHERAL_CLOCK_t peripheral);
+ 473:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  
+ 474:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 475:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 476:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param  peripheral  The peripheral for which the clock has to be ungated. \b Range: Use type @re
+ 477:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    to identify the peripheral.
+ 478:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 479:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 480:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 481:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 482:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Enables the supply of clock to the selected peripheral.\n\n
+ 483:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * By default when the device powers on, the peripheral clock will be gated for the 
+ 484:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * peripherals that support clock gating.
+ 485:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The peripheral clock should be enabled before using it for any functionality.
+ 486:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC1
+ 487:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * fPCLK is the source of clock to various peripherals. Some peripherals support clock gate.
+ 488:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Software can request for individual ungating of such peripheral clocks by setting respective bit
+ 489:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * in the \a SCU_CGATCLR0 register.
+ 490:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
+ 491:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC4
+ 492:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * fPERI is the source of clock to various peripherals. Some peripherals support clock gate.
+ 493:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Software can request for individual ungating of such peripheral clocks by setting the respective
+ 494:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * SCU_CGATCLR0, \a SCU_CGATCLR1 or \a SCU_CGATCLR2 registers.
+ 495:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
+ 496:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 497:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 498:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_IsPeripheralClockGated(), XMC_SCU_CLOCK_GatePeripheralClock() \n\n\n
+ 499:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 500:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_CLOCK_UngatePeripheralClock(const XMC_SCU_PERIPHERAL_CLOCK_t peripheral);
+ 501:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 502:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 503:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 504:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @param  peripheral  The peripheral for which the check for clock gating has to be done. 
+ 505:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    \b Range: Use type @ref XMC_SCU_PERIPHERAL_CLOCK_t to identify the peripheral
+ 506:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 507:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return bool Status of the peripheral clock gating. \b Range: true if the peripheral clock is ga
+ 508:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *              false if the peripheral clock ungated(gate de-asserted).
+ 509:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 510:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 511:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Gives the status of peripheral clock gating.\n\n
+ 512:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC1
+ 513:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Checks the status of peripheral clock gating using the register CGATSTAT0.
+ 514:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
+ 515:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC4
+ 516:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Checks the status of peripheral clock gating using one of CGATSTAT0, CGATSTAT1 or CGATSTAT2 regi
+ 517:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
+ 518:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * It is recommended to use this API before
+ 519:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * enabling the gating of any peripherals through \a XMC_SCU_CLOCK_GatePeripheralClock() API.
+ 520:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 521:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 522:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_UngatePeripheralClock(), XMC_SCU_CLOCK_GatePeripheralClock() \n\n\n
+ 523:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 524:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** bool XMC_SCU_CLOCK_IsPeripheralClockGated(const XMC_SCU_PERIPHERAL_CLOCK_t peripheral);
+ 525:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** #endif
+ 526:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 527:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 528:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 529:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * @return  uint32_t  Status of the register mirror update.\n
+ 530:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    \b Range: Use the bit mask of the SCU_GENERAL_MIRRSTS register for the mirror
+ 531:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    interest. e.g.: SCU_GENERAL_MIRRSTS_RTC_CTR_Msk. Multiple update events can b
+ 532:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *                    using \a OR operation.
+ 533:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 534:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 535:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the status of hibernate domain register update, when the respective mirror registers ar
+ 536:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * The hibernate domain is connected to the core domain via SPI serial communication. MIRRSTS is a 
+ 537:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * representing the communication of changed value of a mirror register to its corresponding regist
+ 538:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * hibernate domain. The bit fields of the register indicate
+ 539:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * that a corresponding register of the hibernate domain is ready to accept a write or that the com
+ 540:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * is busy with executing the previous operation.\n
+ 541:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  * Note: There is no hibernate domain in XMC1x devices. This register is retained for legacy purpos
+ 542:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 543:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE uint32_t XMC_SCU_GetMirrorStatus(void)
+ 544:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 545:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_scu.h ****   return(SCU_GENERAL->MIRRSTS);
   37              	 .loc 2 545 0 discriminator 1
   38 0000 054B     	 ldr r3,.L5
   39 0002 D3F8C430 	 ldr r3,[r3,#196]
@@ -1423,11 +1423,11 @@
  590              	.Letext0:
  591              	 .file 3 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
  592              	 .file 4 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
- 593              	 .file 5 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+ 593              	 .file 5 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
  594              	 .file 6 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\time.h"
- 595              	 .file 7 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_rtc.h"
- 596              	 .file 8 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
- 597              	 .file 9 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 595              	 .file 7 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_rtc.h"
+ 596              	 .file 8 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+ 597              	 .file 9 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 xmc_rtc.c
     {standard input}:20     .text.XMC_RTC_Start:00000000 $t

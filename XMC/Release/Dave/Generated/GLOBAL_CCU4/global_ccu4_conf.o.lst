@@ -16,32 +16,45 @@
   16              	 .text
   17              	.Ltext0:
   18              	 .cfi_sections .debug_frame
-  19              	 .global GLOBAL_CCU4_0
-  20              	 .section .data.GLOBAL_CCU4_0,"aw",%progbits
-  21              	 .align 2
-  24              	GLOBAL_CCU4_0:
-  25 0000 000E2707 	 .word 120000000
-  26 0004 0400     	 .short 4
-  27 0006 0000     	 .space 2
-  28 0008 00400140 	 .word 1073823744
-  29 000c 00       	 .byte 0
-  30 000d 00       	 .byte 0
-  31 000e 0000     	 .space 2
-  32              	 .text
-  33              	.Letext0:
-  34              	 .file 1 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
-  35              	 .file 2 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
-  36              	 .file 3 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
-  37              	 .file 4 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_ccu4.h"
-  38              	 .file 5 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_scu.h"
-  39              	 .file 6 "../Dave/Generated/GLOBAL_CCU4/global_ccu4.h"
-  40              	 .file 7 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
-  41              	 .file 8 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
-  42              	 .file 9 "../Dave/Generated/GLOBAL_CCU4/global_ccu4_conf.c"
+  19              	 .global GLOBAL_CCU4_1
+  20              	 .global GLOBAL_CCU4_0
+  21              	 .section .data.GLOBAL_CCU4_0,"aw",%progbits
+  22              	 .align 2
+  25              	GLOBAL_CCU4_0:
+  26 0000 000E2707 	 .word 120000000
+  27 0004 0400     	 .short 4
+  28 0006 0000     	 .space 2
+  29 0008 00400140 	 .word 1073823744
+  30 000c 00       	 .byte 0
+  31 000d 00       	 .byte 0
+  32 000e 0000     	 .space 2
+  33              	 .section .data.GLOBAL_CCU4_1,"aw",%progbits
+  34              	 .align 2
+  37              	GLOBAL_CCU4_1:
+  38 0000 000E2707 	 .word 120000000
+  39 0004 0800     	 .short 8
+  40 0006 0000     	 .space 2
+  41 0008 00400048 	 .word 1207975936
+  42 000c 00       	 .byte 0
+  43 000d 00       	 .byte 0
+  44 000e 0000     	 .space 2
+  45              	 .text
+  46              	.Letext0:
+  47              	 .file 1 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+  48              	 .file 2 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+  49              	 .file 3 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+  50              	 .file 4 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_ccu4.h"
+  51              	 .file 5 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_scu.h"
+  52              	 .file 6 "../Dave/Generated/GLOBAL_CCU4/global_ccu4.h"
+  53              	 .file 7 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+  54              	 .file 8 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+  55              	 .file 9 "../Dave/Generated/GLOBAL_CCU4/global_ccu4_conf.c"
 DEFINED SYMBOLS
                             *ABS*:00000000 global_ccu4_conf.c
-    {standard input}:24     .data.GLOBAL_CCU4_0:00000000 GLOBAL_CCU4_0
-    {standard input}:21     .data.GLOBAL_CCU4_0:00000000 $d
+    {standard input}:37     .data.GLOBAL_CCU4_1:00000000 GLOBAL_CCU4_1
+    {standard input}:25     .data.GLOBAL_CCU4_0:00000000 GLOBAL_CCU4_0
+    {standard input}:22     .data.GLOBAL_CCU4_0:00000000 $d
+    {standard input}:34     .data.GLOBAL_CCU4_1:00000000 $d
                            .group:00000000 wm4.0.ca5ae67a873a4952d630d8e4120b9e3e
                            .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
                            .group:00000000 wm4.features.h.22.bee0aee4a3878f51861c775df98fa3ea
@@ -72,6 +85,6 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.xmc_common.h.98.806f17e888fd51d0e4be2ad115163551
                            .group:00000000 wm4.xmc4_ccu4_map.h.52.bc30e2611b29f8dfd82b8d766e443456
                            .group:00000000 wm4.xmc4_scu.h.90.f49c0839764a6c1240876a5f2e586200
-                           .group:00000000 wm4.global_ccu4_conf.h.53.69a5e141699ccac04d959466f5418a86
+                           .group:00000000 wm4.global_ccu4_conf.h.53.171028076f31067af187aedd932f16c4
 
 NO UNDEFINED SYMBOLS

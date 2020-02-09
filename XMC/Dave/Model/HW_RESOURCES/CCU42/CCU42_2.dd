@@ -63,6 +63,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b11" description="CCU4xECLK[C]"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="1" URI="http://resources/0.1.29/peripheral/ccu4/2/cc4/1">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/TIMER/v4_1_10/TIMER_0.app#//@hwResources.0"/>
     <resourcesList name="ins" requiredResourceUri="http://resources/0.1.29/peripheral/ccu4/2/cc41ins"/>
     <resourcesList name="ins_ev0is" requiredResourceUri="http://resources/0.1.29/peripheral/ccu4/2/cc41ins/ev0is"/>
     <resourcesList name="ins_ev1is" requiredResourceUri="http://resources/0.1.29/peripheral/ccu4/2/cc41ins/ev1is"/>

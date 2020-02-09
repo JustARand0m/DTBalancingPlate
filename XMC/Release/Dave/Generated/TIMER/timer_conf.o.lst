@@ -1,0 +1,139 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "timer_conf.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .global TIMER_SET_PWM_VALUES
+  20              	 .global TIMER_SET_PWM_VALUES_config
+  21              	 .global TIMER_PLATE_SCAN
+  22              	 .global TIMER_PLATE_SCAN_config
+  23              	 .section .data.TIMER_SET_PWM_VALUES_config,"aw",%progbits
+  24              	 .align 2
+  27              	TIMER_SET_PWM_VALUES_config:
+  28 0000 00       	 .byte 0
+  29 0001 00       	 .byte 0
+  30 0002 00       	 .byte 0
+  31 0003 00       	 .byte 0
+  32 0004 06       	 .byte 6
+  33 0005 00       	 .byte 0
+  34 0006 0000     	 .space 2
+  35              	 .section .data.TIMER_PLATE_SCAN,"aw",%progbits
+  36              	 .align 2
+  39              	TIMER_PLATE_SCAN:
+  40 0000 002D3101 	 .word 20000000
+  41 0004 0040AA6A 	 .word 1789542400
+  42 0008 0A000000 	 .word 10
+  43 000c 50000000 	 .word 80
+  44 0010 00000000 	 .word GLOBAL_CCU4_0
+  45 0014 00420140 	 .word 1073824256
+  46 0018 01       	 .byte 1
+  47 0019 000000   	 .space 3
+  48 001c 00000000 	 .word TIMER_PLATE_SCAN_config
+  49 0020 01       	 .byte 1
+  50 0021 00       	 .byte 0
+  51 0022 1AB7     	 .short -18662
+  52 0024 01       	 .byte 1
+  53 0025 01       	 .byte 1
+  54 0026 00       	 .byte 0
+  55 0027 00       	 .space 1
+  56              	 .section .data.TIMER_SET_PWM_VALUES,"aw",%progbits
+  57              	 .align 2
+  60              	TIMER_SET_PWM_VALUES:
+  61 0000 80841E00 	 .word 2000000
+  62 0004 0040AA6A 	 .word 1789542400
+  63 0008 0A000000 	 .word 10
+  64 000c 00500000 	 .word 20480
+  65 0010 00000000 	 .word GLOBAL_CCU4_1
+  66 0014 00440048 	 .word 1207976960
+  67 0018 03       	 .byte 3
+  68 0019 000000   	 .space 3
+  69 001c 00000000 	 .word TIMER_SET_PWM_VALUES_config
+  70 0020 01       	 .byte 1
+  71 0021 00       	 .byte 0
+  72 0022 7B92     	 .short -28037
+  73 0024 01       	 .byte 1
+  74 0025 01       	 .byte 1
+  75 0026 00       	 .byte 0
+  76 0027 00       	 .space 1
+  77              	 .section .data.TIMER_PLATE_SCAN_config,"aw",%progbits
+  78              	 .align 2
+  81              	TIMER_PLATE_SCAN_config:
+  82 0000 00       	 .byte 0
+  83 0001 00       	 .byte 0
+  84 0002 00       	 .byte 0
+  85 0003 00       	 .byte 0
+  86 0004 09       	 .byte 9
+  87 0005 00       	 .byte 0
+  88 0006 0000     	 .space 2
+  89              	 .text
+  90              	.Letext0:
+  91              	 .file 1 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+  92              	 .file 2 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+  93              	 .file 3 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+  94              	 .file 4 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_ccu4.h"
+  95              	 .file 5 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_scu.h"
+  96              	 .file 6 "G:/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_CCU4/global_ccu4.h"
+  97              	 .file 7 "../Dave/Generated/TIMER/timer.h"
+  98              	 .file 8 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+  99              	 .file 9 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 100              	 .file 10 "G:/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_CCU4/global_ccu4_extern.h"
+ 101              	 .file 11 "../Dave/Generated/TIMER/timer_conf.c"
+DEFINED SYMBOLS
+                            *ABS*:00000000 timer_conf.c
+    {standard input}:60     .data.TIMER_SET_PWM_VALUES:00000000 TIMER_SET_PWM_VALUES
+    {standard input}:27     .data.TIMER_SET_PWM_VALUES_config:00000000 TIMER_SET_PWM_VALUES_config
+    {standard input}:39     .data.TIMER_PLATE_SCAN:00000000 TIMER_PLATE_SCAN
+    {standard input}:81     .data.TIMER_PLATE_SCAN_config:00000000 TIMER_PLATE_SCAN_config
+    {standard input}:24     .data.TIMER_SET_PWM_VALUES_config:00000000 $d
+    {standard input}:36     .data.TIMER_PLATE_SCAN:00000000 $d
+    {standard input}:57     .data.TIMER_SET_PWM_VALUES:00000000 $d
+    {standard input}:78     .data.TIMER_PLATE_SCAN_config:00000000 $d
+                           .group:00000000 wm4.0.ca5ae67a873a4952d630d8e4120b9e3e
+                           .group:00000000 wm4.timer_conf.h.54.996b42824e61eb96ec9d683fbb4da995
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4.features.h.22.bee0aee4a3878f51861c775df98fa3ea
+                           .group:00000000 wm4._default_types.h.15.933e8edd27a65e0b69af4a865eb623d2
+                           .group:00000000 wm4._intsup.h.10.ca9f32a61b410c270a48d1161ca2c217
+                           .group:00000000 wm4.stdint.h.22.f4a337c398d8b6d821a97202448bc0d0
+                           .group:00000000 wm4.stdbool.h.29.1c9ee6859ce8145f7838a4f2549ccec2
+                           .group:00000000 wm4.newlib.h.8.fe7d912fc917043c98742c35eddd8cff
+                           .group:00000000 wm4.config.h.216.aad1ef7bee4fb69981cb38ce62f84d9c
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.cdefs.h.47.4e89a3f145accdcb1100c37260c088e6
+                           .group:00000000 wm4.string.h.15.dab3980bf35408a4c507182805e2de3a
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.xmc_device.h.65.5c0d35eb1a6853ff8300ab2ec1b944b0
+                           .group:00000000 wm4.XMC4500.h.55.9aa45b9b5790506b2dcb963e4e7adeaf
+                           .group:00000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.57f124f9262f3dbf77da6a6506ffb430
+                           .group:00000000 wm4.core_cm4.h.174.fcddd62df80231752fa39eb9b61dadfe
+                           .group:00000000 wm4.mpu_armv7.h.32.4049752bb5792d4e15357775e9506cfc
+                           .group:00000000 wm4.system_XMC4500.h.42.99124977c10ca8844a71949adbeabd70
+                           .group:00000000 wm4.XMC4500.h.208.b340195df97f067735c4c769ba59985a
+                           .group:00000000 wm4.xmc_device.h.1500.3eca65ed9ba7f90e09c1ffcb0b3f5724
+                           .group:00000000 wm4.xmc_common.h.98.806f17e888fd51d0e4be2ad115163551
+                           .group:00000000 wm4.xmc4_ccu4_map.h.52.bc30e2611b29f8dfd82b8d766e443456
+                           .group:00000000 wm4.xmc4_scu.h.90.f49c0839764a6c1240876a5f2e586200
+                           .group:00000000 wm4.global_ccu4_conf.h.53.171028076f31067af187aedd932f16c4
+
+UNDEFINED SYMBOLS
+GLOBAL_CCU4_0
+GLOBAL_CCU4_1

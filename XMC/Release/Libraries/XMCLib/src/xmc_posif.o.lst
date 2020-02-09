@@ -318,583 +318,583 @@
  153              	.LVL12:
  154              	.LBB4:
  155              	.LBB5:
- 156              	 .file 2 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_posif.h"
-   1:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
-   2:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @file xmc_posif.h
-   3:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @date 2017-06-24
-   4:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
-   5:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @cond
-   6:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
-   7:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMClib v2.1.22 - XMC Peripheral Driver Library 
-   8:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
-   9:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Copyright (c) 2015-2019, Infineon Technologies AG
-  10:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * All rights reserved.                        
-  11:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *                                             
-  12:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
-  13:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * following conditions are met:   
-  14:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *                                                                              
-  15:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
-  16:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * disclaimer.                        
-  17:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 
-  18:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
-  19:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
-  20:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 
-  21:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
-  22:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * products derived from this software without specific prior written permission.                  
-  23:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *                                                                              
-  24:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
-  25:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
-  26:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
-  27:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
-  28:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
-  29:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
-  30:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
-  31:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *                                                                              
-  32:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
-  33:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
-  34:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
-  35:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
-  36:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Change History
-  37:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * --------------
-  38:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
-  39:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 2015-02-18:
-  40:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *     - Initial version
-  41:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *      
-  42:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 2015-02-20:
-  43:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *     - Driver description added <BR>
-  44:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
-  45:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 2015-06-19:
-  46:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *     - Removed version macros and declaration of GetDriverVersion API <BR> 
-  47:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
-  48:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 2015-07-02:
-  49:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *     - Updated XMC_POSIF_QD_GetDirection API
-  50:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
-  51:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 2016-03-09:
-  52:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *     - Optimization of write only registers
-  53:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
-  54:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 2017-06-24
-  55:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *     - Added posif map connectivity file<br>
-  56:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
-  57:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @endcond 
-  58:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
-  59:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
-  60:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
-  61:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
-  62:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #ifndef XMC_POSIF_H
-  63:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #define XMC_POSIF_H
-  64:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
-  65:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**************************************************************************************************
-  66:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * HEADER FILES
-  67:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
-  68:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #include <xmc_common.h>
-  69:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
-  70:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #if defined(POSIF0)
-  71:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #include <xmc_scu.h>
-  72:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #include "xmc_posif_map.h"
-  73:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
-  74:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
-  75:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @addtogroup XMClib XMC Peripheral Library
-  76:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @{
-  77:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
-  78:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
-  79:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
-  80:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @addtogroup POSIF
-  81:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @brief Position Interface Unit (POSIF) driver for the XMC microcontroller family <br>
-  82:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
-  83:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The POSIF unit is a flexible and powerful component for motor control systems that use
-  84:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * rotary encoders or hall sensors as feedback loop. It provides interface for motor position and v
-  85:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * POSIF unit works with CCU4 and CCU8 to enable position and velocity measurement and to control P
-  86:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
-  87:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Driver is divided in three POSIF functional blocks - Hall Sensor Control (POSIF_HSC), Quadrature
-  88:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * MultiChannel Mode (POSIF_MCM). <br>
-  89:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
-  90:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * POSIF driver features:
-  91:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -#  Configuration structure XMC_POSIF_CONFIG_t and initialization function XMC_POSIF_Init() to c
-  92:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -# Allows to change the operating mode using XMC_POSIF_SetMode()
-  93:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -# Allows the selection of one of the four inputs (A, B, C or D) using XMC_POSIF_SelectInputSour
-  94:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * hall0, hall1 and hall2 signals. For quadrature decoder mode, inputs are phase A, phase B and ind
-  95:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -#  Hall Sensor Control (APIs prefixed with XMC_POSIF_HSC_) <br>
-  96:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 	-  Configuration structure XMC_POSIF_HSC_CONFIG_t and initialization function XMC_POSIF_HSC_Ini
-  97:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 	-  Update current and expected hall pattern in shadow register using XMC_POSIF_HSC_SetHallPatte
-  98:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 	- Allows immediate shadow transfer using XMC_POSIF_HSC_UpdateHallPattern()
-  99:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -#  Quadrature Decoder (APIs prefixed with XMC_POSIF_QD_) <br>
- 100:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 	-  Configuration structure XMC_POSIF_QD_CONFIG_t and initialization function XMC_POSIF_QD_Init(
- 101:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 	-  Get direction of rotation using XMC_POSIF_QD_GetDirection()
- 102:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -#  MultiChannel Mode (APIs prefixed with XMC_POSIF_MCM_) <br>
- 103:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *	-  Configuration structure XMC_POSIF_MCM_CONFIG_t and initialization function XMC_POSIF_MCM_Init
- 104:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *	-  Update multichannel pattern in shadow register using XMC_POSIF_MCM_SetMultiChannelPattern()
- 105:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *	-  Allows immediate shadow transfer using XMC_POSIF_MCM_UpdateMultiChannelPattern()
- 106:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -# User need to call respective init functions to configure POSIF operating mode. e.g to configu
- 107:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * call both XMC_POSIF_HSC_Init() and XMC_POSIF_MCM_Init().
- 108:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -# Allows to enable and disable interrupt sources and assign to service request node using XMC_P
- 109:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 
- 110:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @note POSIF is not available on XMC11 and XMC12 devices
- 111:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 112:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @{
- 113:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 114:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 115:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**************************************************************************************************
- 116:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * MACROS
- 117:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
- 118:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #if ((UC_SERIES == XMC45) || (UC_SERIES == XMC44) || (UC_SERIES == XMC47) || (UC_SERIES == XMC48) |
- 119:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #define XMC_POSIF_CHECK_MODULE_PTR(PTR)  ( ((PTR)== POSIF0) || ((PTR)== POSIF1) ) /*< Check for val
- 120:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #else
- 121:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #define XMC_POSIF_CHECK_MODULE_PTR(PTR)  ( ((PTR)== POSIF0))  /*< Check for valid module pointer */
- 122:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #endif
- 123:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 124:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**************************************************************************************************
- 125:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * ENUMS
- 126:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
- 127:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 128:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Defines the return status, to verify the POSIF related API calls. Use type @ref XMC_POSIF_STATU
- 129:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 130:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_STATUS
- 131:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 132:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_STATUS_OK = 0U,     /**< API fulfills request */
- 133:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_STATUS_ERROR        /**< API cannot fulfill request */
- 134:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_STATUS_t;
- 135:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 136:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 137:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF configurable modes.Use type @ref XMC_POSIF_MODE_t for this enum.
- 138:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The members defines the function selector(FSEL) bitfields of \a PCONF register.
- 139:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 140:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_MODE
- 141:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 142:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_MODE_HALL_SENSOR = 0U, /**< Hall sensor mode */
- 143:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_MODE_QD              , /**< Quadrature Decoder mode */
- 144:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_MODE_MCM             , /**< Standalone Multichannel mode */
- 145:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_MODE_MCM_QD           /**< Quadrature Decoder + Standalone Multichannel mode */
- 146:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_MODE_t;
- 147:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 148:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 149:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF configurable input ports.Use type @ref XMC_POSIF_INPUT_PORT_t for this enum.
- 150:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The member defines the respective input selector(INSELX) bitfields of \a PCONF register.
- 151:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It selects, which input is used for the phase or Hall input function (depending on the module is
- 152:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Quadrature Decoder or Hall Sensor Mode). Same enum can be used to configure pattern update signa
- 153:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \a PCONF register's \a MSETS bit field.
- 154:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 155:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_INPUT_PORT
- 156:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 157:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_A = 0U, /**< INPUT-A */
- 158:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_B     , /**< INPUT-B */
- 159:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_C     , /**< INPUT-C */
- 160:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_D     , /**< INPUT-D */
- 161:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_E     , /**< INPUT-E */
- 162:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_F     , /**< INPUT-F */
- 163:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_G     , /**< INPUT-G */
- 164:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_H       /**< INPUT-H */
- 165:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_INPUT_PORT_t;
- 166:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 167:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 168:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Defines active level of an input signal.Use type @ref XMC_POSIF_INPUT_ACTIVE_LEVEL_t for this e
- 169:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 170:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_INPUT_ACTIVE_LEVEL
- 171:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 172:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_ACTIVE_LEVEL_HIGH  = 0U, /**< Input - Active High */
- 173:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_ACTIVE_LEVEL_LOW         /**< Input - Active Low */
- 174:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_INPUT_ACTIVE_LEVEL_t;
- 175:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 176:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 177:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF input debounce filter configuration.POSIF inputs are connected to low pass filter 
- 178:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * this enum is used to configure low pass filters cut off frequency.
- 179:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Use type @ref XMC_POSIF_FILTER_t for this enum.
- 180:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The member defines the low pass filter configuration(LPC) bitfield of \a PCONF register.
- 181:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 182:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_FILTER
- 183:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 184:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_DISABLED     = 0U, /**< No filtering */
- 185:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_1_CLOCK_CYCLE    , /**< Filter of 1 Clock Cycle */
- 186:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_2_CLOCK_CYCLE    , /**< Filter of 2 Clock Cycles */
- 187:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_4_CLOCK_CYCLE    , /**< Filter of 4 Clock Cycles */
- 188:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_8_CLOCK_CYCLE    , /**< Filter of 8 Clock Cycles */
- 189:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_16_CLOCK_CYCLE   , /**< Filter of 16 Clock Cycles */
- 190:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_32_CLOCK_CYCLE   , /**< Filter of 32 Clock Cycles */
- 191:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_64_CLOCK_CYCLE     /**< Filter of 64 Clock Cycles */
- 192:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_FILTER_t;
- 193:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 194:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 195:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF events.Use type @ref XMC_POSIF_IRQ_EVENT_t for this enum.
- 196:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The member defines available event sources.It is used to configure which event to be used for
- 197:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * interrupt generation using \a PFLGE register. [ PFLG,SPFLG,RPFLG]
- 198:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 199:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_IRQ_EVENT
- 200:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 201:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_CHE                  = 0U, /**< Hall Mode : Correct Hall Event */
- 202:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_WHE                  = 1U, /**< Hall Mode : Wrong Hall Event */
- 203:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_HALL_INPUT           = 2U, /**< Hall Mode : Hall Input update */
- 204:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_MCP_SHADOW_TRANSFER  = 4U, /**< Hall Mode + MCM Mode : MC Pattern shadow tran
- 205:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_INDX                 = 8U, /**< Quadrature Mode : Index event detection */
- 206:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_ERR                  = 9U, /**< Quadrature Mode : Quadrature Phase Error */
- 207:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_CNT                  = 10U, /**< Quadrature Mode : Quadrature Clock event */
- 208:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_DIR                  = 11U, /**< Quadrature Mode : Quadrature Direction chang
- 209:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_PCLK                 = 12U  /**< Quadrature Mode : Quadrature period clock ge
- 210:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_IRQ_EVENT_t;
- 211:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 212:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 213:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF service request lines.Use type @ref XMC_POSIF_SR_ID_t for this enum.
- 214:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It used to connect POSIF event to required service request line.
- 215:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * in \a PFLGE register for interrupt generation.
- 216:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 217:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_SR_ID
- 218:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 219:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_SR_ID_0 = 0U, /**< SR-0 */
- 220:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_SR_ID_1      /**< SR-1 */
- 221:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_SR_ID_t;
- 222:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 223:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 224:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines position decoder mode selection.Use type @ref XMC_POSIF_QD_MODE_t for this enum.
- 225:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The member defines configuration for the operation of the quadrature decoder mode.
- 226:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It used to configure \a QDC register.
- 227:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 228:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_QD_MODE
- 229:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 230:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_MODE_QUADRATURE       = 0U, /**< Standard Quadrature Mode */
- 231:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_MODE_DIRECTION_COUNT       /**< Direction Count Mode */
- 232:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_QD_MODE_t;
- 233:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 234:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 235:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines motor rotation direction.Use type @ref XMC_POSIF_QD_DIR_t for this enum.
- 236:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The member defines the direction in quadrature mode.
- 237:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 238:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_QD_DIR
- 239:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 240:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_DIR_COUNTERCLOCKWISE  = 0U, /**< Counter Clockwise */
- 241:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_DIR_CLOCKWISE              /**< Clockwise */
- 242:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_QD_DIR_t;
- 243:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 244:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 245:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines frequency of index signal generation.Use type @ref XMC_POSIF_QD_INDEX_GENERATION_t for t
- 246:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Member represents available configuration for index marker generation using \a ICM  bit field in
- 247:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 248:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_QD_INDEX_GENERATION
- 249:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 250:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_INDEX_GENERATION_NEVER  = 0U, /**< Never generate the index marker signal */
- 251:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_INDEX_GENERATION_ONCE      , /**< Generate only once after the first revolution */
- 252:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_INDEX_GENERATION_ALWAYS      /**< Index marker generated upon every revolution */
- 253:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_QD_INDEX_GENERATION_t;
- 254:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 255:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 256:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Defines trigger edge in hall sensor mode.Use type @ref XMC_POSIF_HSC_TRIGGER_EDGE_t for this en
- 257:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  It can be used to configure \a PCONF register's \a SPES and \a MSES bit fields.
- 258:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 259:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_HSC_TRIGGER_EDGE
- 260:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 261:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_HSC_TRIGGER_EDGE_RISING  = 0U, /**< Rising edge */
- 262:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_HSC_TRIGGER_EDGE_FALLING      /**< Falling edge */
- 263:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_HSC_TRIGGER_EDGE_t;
- 264:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 265:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**************************************************************************************************
- 266:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * DATA STRUCTURES
- 267:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
- 268:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 269:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /*Anonymous structure/union guard start*/
- 270:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #if defined(__CC_ARM)
- 271:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   #pragma push
- 272:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   #pragma anon_unions
- 273:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #elif defined(__TASKING__)
- 274:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   #pragma warning 586
- 275:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #endif
- 276:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 277:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 278:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 279:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF peripheral register structure.Use type @ref XMC_POSIF_t for this data structure.
- 280:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 281:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef POSIF_GLOBAL_TypeDef XMC_POSIF_t;
- 282:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 283:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 284:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Defines POSIF quadrature decoder initialization data structure.
- 285:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Use type @ref XMC_POSIF_QD_CONFIG_t for this data structure.
- 286:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  It used to configure Quadrature mode using \a QDC register.
- 287:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 288:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef struct XMC_POSIF_QD_CONFIG
- 289:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 290:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_MODE_t mode;      /**< Operational Mode of the quadrature encoder and decoder */
- 291:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   union
- 292:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   {
- 293:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     struct
- 294:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     {
- 295:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t phase_a: 1;       /**< Phase-A active level configuration */
- 296:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t phase_b: 1;       /**< Phase-B active level configuration */
- 297:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t phase_leader: 1;  /**< Which of the two phase signals[Phase A or Phase B] leads the 
- 298:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 1;
- 299:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t index: 2;        /**< Index signal generation control. Use @ref XMC_POSIF_QD_INDEX_G
- 300:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 26;
- 301:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     };
- 302:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     uint32_t qdc;
- 303:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   };
- 304:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_QD_CONFIG_t;
- 305:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 306:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 307:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF hall sensor control initialization data structure.
- 308:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Use type @ref XMC_POSIF_HSC_CONFIG_t for this data structure.
- 309:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It used to initialize hall sensor mode configuration using \a PCONF register.
- 310:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 311:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef struct XMC_POSIF_HSC_CONFIG
- 312:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 313:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   union
- 314:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   {
- 315:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     struct
- 316:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     {
- 317:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 4;
- 318:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t disable_idle_signal: 1;   /**< Should idle signal be disabled upon wrong hall event?
- 319:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 11;
- 320:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t sampling_trigger: 1;      /**< Of HSDA and HSDB, which one is to be used to trigger 
- 321:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t sampling_trigger_edge: 1; /**< Which edge of the sampling trigger signal is to be co
- 322:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 	  uint32_t : 6;
- 323:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t external_error_port: 2;    /**< Of the 4 external error ports, which one is to be co
- 324:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t external_error_enable: 1;  /**< Should external errors lead to Wrong Hall event? */
- 325:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t external_error_level: 1;   /**< What should be the active level of external error si
- 326:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t: 4;
- 327:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     };
- 328:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     uint32_t hall_config;
- 329:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   };
- 330:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_HSC_CONFIG_t;
- 331:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 332:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 333:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF multi-channel mode initialization data structure.
- 334:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Use type @ref XMC_POSIF_MCM_CONFIG_t for this data structure.
- 335:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It used to initialize multi channel mode configuration using \a PCONF register.
- 336:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 337:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef struct XMC_POSIF_MCM_CONFIG
- 338:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 339:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   union
- 340:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   {
- 341:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     struct
- 342:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     {
- 343:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 5;
- 344:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t pattern_sw_update: 1; /**< should multi channel pattern updated by SW ? */
- 345:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 12;
- 346:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 	  uint32_t pattern_update_trigger: 3; /**< Of the 8 update triggers, which one is to be considered
- 347:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t pattern_trigger_edge: 1;  /**< Which edge of the pattern update trigger is to be con
- 348:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t pwm_sync: 2;         /**< Of the 4 pwm sync inputs, which one is to be considered? *
- 349:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 8;
- 350:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     };
- 351:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     uint32_t mcm_config;
- 352:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   };
- 353:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** }XMC_POSIF_MCM_CONFIG_t;
- 354:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 355:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 356:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Defines POSIF module initialization data structure.
- 357:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Use type @ref XMC_POSIF_CONFIG_t for this data structure.
- 358:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  It is used to initialize POSIF module using \a PCONF register.
- 359:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 360:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef struct XMC_POSIF_CONFIG
- 361:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 362:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   union
- 363:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   {
- 364:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     struct
- 365:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     {
- 366:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t mode: 2;    /**< POSIF Operational mode. Use @ref XMC_POSIF_MODE_t to configure */
- 367:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t :6;
- 368:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t input0: 2; /**< Choice of input for Input-1 */
- 369:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t input1: 2; /**< Choice of input for Input-2 */
- 370:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t input2: 2; /**< Choice of input for Input-3 */
- 371:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t :14;
- 372:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t filter: 3; /**< Input filter configuration */
- 373:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t: 1;
- 374:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     };
- 375:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     uint32_t pconf;
- 376:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   };
- 377:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_CONFIG_t;
- 378:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 379:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /*Anonymous structure/union guard end*/
- 380:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #if defined(__CC_ARM)
- 381:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   #pragma pop
- 382:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #elif defined(__TASKING__)
- 383:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   #pragma warning restore
- 384:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #endif
- 385:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 386:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**************************************************************************************************
- 387:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * API Prototypes
- 388:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
- 389:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #ifdef __cplusplus
- 390:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** extern "C" {
- 391:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #endif
- 392:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 393:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 394:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module of type @ref XMC_POSIF_t
- 395:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
- 396:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 397:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
- 398:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * De-asserts the POSIF module from reset and enables the clock.\n
- 399:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PRCLR0 register's \a POSIF0RS or \a POSIF1RS bit field depends upon \a peripheral.
- 400:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * If running on other than XMC45 device then it will ungate the peripheral clock.
- 401:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 402:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
- 403:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * This is the first API which application must invoke to configure POSIF.
- 404:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It is internally called by XMC_POSIF_Init().
- 405:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 406:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
- 407:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Disable(),XMC_POSIF_Init() \n\n\n
- 408:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 409:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** void XMC_POSIF_Enable(XMC_POSIF_t *const peripheral);
- 410:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 411:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 412:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module of type @ref XMC_POSIF_t
- 413:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
- 414:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 415:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
- 416:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Asserts the POSIF module into reset and disables the clock.\n
- 417:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * If running on other than XMC45 device then in addition it will gate the peripheral clock.
- 418:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PRCLR0 register's \a POSIF0RS or \a POSIF1RS bitfield depends upon \a peripheral.
- 419:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 420:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
- 421:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Enable()\n\n\n
- 422:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 423:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** void XMC_POSIF_Disable(XMC_POSIF_t *const peripheral);
- 424:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 425:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 426:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module of type @ref XMC_POSIF_t
- 427:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param config Pointer to POSIF configuration data(operation mode,input selection and filter conf
- 428:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
- 429:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 430:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
- 431:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Initialize POSIF module with \a config.\n
- 432:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures POSIF global registers.This is the first API which application must invoke to configu
- 433:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It sets up parameters common to all the POSIF modes - hall sensor,quadrature decoder and multi-c
- 434:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PCONF register with mode of operation,input selection and filter configuration.
- 435:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 436:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
- 437:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_HSC_Init(),XMC_POSIF_QD_Init(),XMC_POSIF_MCM_Init() \n\n\n
- 438:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** */
- 439:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** void XMC_POSIF_Init(XMC_POSIF_t *const peripheral, const XMC_POSIF_CONFIG_t * const config);
- 440:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 441:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 442:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
- 443:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param config Pointer to hall sensor control initialization data of type @ref XMC_POSIF_HSC_CONF
- 444:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval XMC_POSIF_STATUS_t  Returns @ref XMC_POSIF_STATUS_OK if configured in Hall Sensor Mode
- 445:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *                             else return @ref XMC_POSIF_STATUS_ERROR.
- 446:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 447:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
- 448:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Initializes hall sensor control mode.\n
- 449:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PCONF register with which POSIF input trigger to be used for
- 450:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * sampling hall pattern.Configures \a PCONF register for idle signal generation for wrong hall eve
- 451:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 452:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
- 453:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It is necessary to have called XMC_POSIF_Init first with Hall sensor mode before invocation of t
- 454:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 455:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
- 456:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Init() \n\n\n
- 457:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 458:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** XMC_POSIF_STATUS_t XMC_POSIF_HSC_Init(XMC_POSIF_t *const peripheral, const XMC_POSIF_HSC_CONFIG_t *
- 459:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 460:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 461:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
- 462:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param config Pointer to quadrature decoder initialization data
- 463:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval XMC_POSIF_STATUS_t Returns quadrature mode initialization status of type @ref XMC_POSIF_
- 464:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 465:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
- 466:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Initializes quadrature decoder control mode.\n
- 467:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PCONF register with quadrature mode using @ref XMC_POSIF_QD_MODE_t data structure.
- 468:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Initializes \a QDC register with quadrature mode configuration using @ref XMC_POSIF_QD_CONFIG_t 
- 469:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 470:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
- 471:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It is necessary to have called XMC_POSIF_Init first with Quadrature decoder mode before invocati
- 472:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 473:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
- 474:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Init() \n\n\n
- 475:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 476:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** XMC_POSIF_STATUS_t XMC_POSIF_QD_Init(XMC_POSIF_t *const peripheral, const XMC_POSIF_QD_CONFIG_t * c
- 477:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 478:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 479:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
- 480:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param config Pointer to quadrature decoder initialization data
- 481:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval XMC_POSIF_STATUS_t Returns multi channel pattern initialization status of type @ref XMC_
- 482:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 483:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
- 484:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Initializes multi channel mode in Hall mode, standalone multi-channel mode and quadrature with m
- 485:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PCONF register with multi channel mode using @ref XMC_POSIF_MCM_CONFIG_t data stru
- 486:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 487:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
- 488:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It is necessary to call XMC_POSIF_Init first before invocation of this API.
- 489:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * For XMC_POSIF_MODE_HALL_SENSOR, it is necessary to have called XMC_POSIF_HSC_Init before invocat
- 490:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * For XMC_POSIF_MODE_MCM_QD, it is necessary to have called XMC_POSIF_QD_Init before invocation of
- 491:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 492:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
- 493:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Init(),XMC_POSIF_HSC_Init(),XMC_POSIF_QD_Init() \n\n\n
- 494:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 495:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** XMC_POSIF_STATUS_t XMC_POSIF_MCM_Init(XMC_POSIF_t *const peripheral, const XMC_POSIF_MCM_CONFIG_t *
- 496:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 497:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 498:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
- 499:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param mode POSIF operating mode of type @ref XMC_POSIF_MODE_t
- 500:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
- 501:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 502:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
- 503:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures POSIF module for \a mode.\n
- 504:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PCONF register's a\ FSEL bitfield with \a mode.
- 505:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Refer @ref XMC_POSIF_MODE_t for available options.
- 506:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 507:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
- 508:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * POSIF module should be in stopped state while changing the operating mode.
- 509:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 510:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
- 511:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Stop() \n\n\n
- 512:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 513:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** __STATIC_INLINE void XMC_POSIF_SetMode(XMC_POSIF_t *const peripheral, const XMC_POSIF_MODE_t mode)
- 514:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 515:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   peripheral->PCONF = ((peripheral->PCONF & ~(uint32_t)(POSIF_PCONF_FSEL_Msk)) |
- 516:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****                      (((uint32_t)mode << POSIF_PCONF_FSEL_Pos) & (uint32_t)POSIF_PCONF_FSEL_Msk));
- 517:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** }
- 518:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 519:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 520:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
- 521:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param input0 Choice of input for input 0 [0-3]
- 522:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param input1 Choice of input for input 1 [0-3]
- 523:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param input2 Choice of input for input 2 [0-3]
- 524:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
- 525:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 526:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
- 527:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures which input to be connected to POSIF module. \n
- 528:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PCONF register's INSEL0,INSEL1,INSEL2 bit fields with source for the input connect
- 529:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \a input1, \a input2 respectively.
- 530:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 531:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
- 532:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures which input is used for the Phase X or Hall input X function depending upon the modul
- 533:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * set for Quadrature Decoder or Hall Sensor Mode.
- 534:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 535:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
- 536:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Init() \n\n\n
- 537:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 538:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** void XMC_POSIF_SelectInputSource(XMC_POSIF_t *const peripheral, const XMC_POSIF_INPUT_PORT_t input0
- 539:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     const XMC_POSIF_INPUT_PORT_t input1, const XMC_POSIF_INPUT_PORT_t input2);
- 540:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 541:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 542:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 543:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
- 544:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
- 545:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 546:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
- 547:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Starts POSIF \a peripheral functional state machine.\n
- 548:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Starts POSIF state machine for \a peripheral.Configures \a PRUNS register's \a SRB bit field wit
- 549:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 550:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
- 551:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Global properties of POSIF along with mode specific properties should have been initialized befo
- 552:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * FSM.
- 553:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 554:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
- 555:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Stop(),XMC_POSIF_IsRunning() \n\n\n
- 556:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 557:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** __STATIC_INLINE void XMC_POSIF_Start(XMC_POSIF_t *const peripheral)
- 558:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 559:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   peripheral->PRUNS = (uint32_t)POSIF_PRUNS_SRB_Msk;
- 560:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** }
- 561:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
- 562:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
- 563:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
- 564:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
- 565:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 566:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
- 567:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Stops POSIF \a peripheral functional state machine.\n
- 568:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Stop POSIF functional state machine and clears current internal status of the \a peripheral.
- 569:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PRUNC register's \a CRB bit field with 1.
- 570:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
- 571:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
- 572:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Start(),XMC_POSIF_IsRunning() \n\n\n
- 573:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
- 574:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** __STATIC_INLINE void XMC_POSIF_Stop(XMC_POSIF_t *const peripheral)
- 575:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
- 576:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   peripheral->PRUNC = (uint32_t)(POSIF_PRUNC_CRB_Msk | POSIF_PRUNC_CSM_Msk);
+ 156              	 .file 2 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_posif.h"
+   1:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+   2:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @file xmc_posif.h
+   3:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @date 2017-06-24
+   4:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+   5:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @cond
+   6:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
+   7:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMClib v2.1.22 - XMC Peripheral Driver Library 
+   8:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+   9:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Copyright (c) 2015-2019, Infineon Technologies AG
+  10:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * All rights reserved.                        
+  11:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *                                             
+  12:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * following conditions are met:   
+  14:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *                                                                              
+  15:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * disclaimer.                        
+  17:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 
+  18:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 
+  21:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * products derived from this software without specific prior written permission.                  
+  23:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *                                                                              
+  24:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *                                                                              
+  32:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
+  35:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+  36:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Change History
+  37:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * --------------
+  38:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+  39:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 2015-02-18:
+  40:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *     - Initial version
+  41:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *      
+  42:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 2015-02-20:
+  43:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *     - Driver description added <BR>
+  44:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+  45:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 2015-06-19:
+  46:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *     - Removed version macros and declaration of GetDriverVersion API <BR> 
+  47:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+  48:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 2015-07-02:
+  49:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *     - Updated XMC_POSIF_QD_GetDirection API
+  50:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+  51:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 2016-03-09:
+  52:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *     - Optimization of write only registers
+  53:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+  54:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 2017-06-24
+  55:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *     - Added posif map connectivity file<br>
+  56:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+  57:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @endcond 
+  58:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+  59:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+  60:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+  61:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+  62:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #ifndef XMC_POSIF_H
+  63:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #define XMC_POSIF_H
+  64:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+  65:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**************************************************************************************************
+  66:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * HEADER FILES
+  67:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
+  68:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #include <xmc_common.h>
+  69:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+  70:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #if defined(POSIF0)
+  71:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #include <xmc_scu.h>
+  72:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #include "xmc_posif_map.h"
+  73:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+  74:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+  75:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @addtogroup XMClib XMC Peripheral Library
+  76:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @{
+  77:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+  78:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+  79:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+  80:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @addtogroup POSIF
+  81:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @brief Position Interface Unit (POSIF) driver for the XMC microcontroller family <br>
+  82:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+  83:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The POSIF unit is a flexible and powerful component for motor control systems that use
+  84:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * rotary encoders or hall sensors as feedback loop. It provides interface for motor position and v
+  85:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * POSIF unit works with CCU4 and CCU8 to enable position and velocity measurement and to control P
+  86:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+  87:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Driver is divided in three POSIF functional blocks - Hall Sensor Control (POSIF_HSC), Quadrature
+  88:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * MultiChannel Mode (POSIF_MCM). <br>
+  89:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+  90:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * POSIF driver features:
+  91:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -#  Configuration structure XMC_POSIF_CONFIG_t and initialization function XMC_POSIF_Init() to c
+  92:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -# Allows to change the operating mode using XMC_POSIF_SetMode()
+  93:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -# Allows the selection of one of the four inputs (A, B, C or D) using XMC_POSIF_SelectInputSour
+  94:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * hall0, hall1 and hall2 signals. For quadrature decoder mode, inputs are phase A, phase B and ind
+  95:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -#  Hall Sensor Control (APIs prefixed with XMC_POSIF_HSC_) <br>
+  96:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 	-  Configuration structure XMC_POSIF_HSC_CONFIG_t and initialization function XMC_POSIF_HSC_Ini
+  97:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 	-  Update current and expected hall pattern in shadow register using XMC_POSIF_HSC_SetHallPatte
+  98:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 	- Allows immediate shadow transfer using XMC_POSIF_HSC_UpdateHallPattern()
+  99:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -#  Quadrature Decoder (APIs prefixed with XMC_POSIF_QD_) <br>
+ 100:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 	-  Configuration structure XMC_POSIF_QD_CONFIG_t and initialization function XMC_POSIF_QD_Init(
+ 101:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 	-  Get direction of rotation using XMC_POSIF_QD_GetDirection()
+ 102:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -#  MultiChannel Mode (APIs prefixed with XMC_POSIF_MCM_) <br>
+ 103:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *	-  Configuration structure XMC_POSIF_MCM_CONFIG_t and initialization function XMC_POSIF_MCM_Init
+ 104:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *	-  Update multichannel pattern in shadow register using XMC_POSIF_MCM_SetMultiChannelPattern()
+ 105:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *	-  Allows immediate shadow transfer using XMC_POSIF_MCM_UpdateMultiChannelPattern()
+ 106:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -# User need to call respective init functions to configure POSIF operating mode. e.g to configu
+ 107:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * call both XMC_POSIF_HSC_Init() and XMC_POSIF_MCM_Init().
+ 108:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * -# Allows to enable and disable interrupt sources and assign to service request node using XMC_P
+ 109:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * 
+ 110:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @note POSIF is not available on XMC11 and XMC12 devices
+ 111:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 112:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @{
+ 113:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 114:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 115:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**************************************************************************************************
+ 116:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * MACROS
+ 117:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
+ 118:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #if ((UC_SERIES == XMC45) || (UC_SERIES == XMC44) || (UC_SERIES == XMC47) || (UC_SERIES == XMC48) |
+ 119:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #define XMC_POSIF_CHECK_MODULE_PTR(PTR)  ( ((PTR)== POSIF0) || ((PTR)== POSIF1) ) /*< Check for val
+ 120:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #else
+ 121:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #define XMC_POSIF_CHECK_MODULE_PTR(PTR)  ( ((PTR)== POSIF0))  /*< Check for valid module pointer */
+ 122:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #endif
+ 123:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 124:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**************************************************************************************************
+ 125:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * ENUMS
+ 126:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
+ 127:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 128:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Defines the return status, to verify the POSIF related API calls. Use type @ref XMC_POSIF_STATU
+ 129:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 130:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_STATUS
+ 131:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 132:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_STATUS_OK = 0U,     /**< API fulfills request */
+ 133:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_STATUS_ERROR        /**< API cannot fulfill request */
+ 134:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_STATUS_t;
+ 135:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 136:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 137:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF configurable modes.Use type @ref XMC_POSIF_MODE_t for this enum.
+ 138:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The members defines the function selector(FSEL) bitfields of \a PCONF register.
+ 139:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 140:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_MODE
+ 141:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 142:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_MODE_HALL_SENSOR = 0U, /**< Hall sensor mode */
+ 143:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_MODE_QD              , /**< Quadrature Decoder mode */
+ 144:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_MODE_MCM             , /**< Standalone Multichannel mode */
+ 145:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_MODE_MCM_QD           /**< Quadrature Decoder + Standalone Multichannel mode */
+ 146:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_MODE_t;
+ 147:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 148:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 149:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF configurable input ports.Use type @ref XMC_POSIF_INPUT_PORT_t for this enum.
+ 150:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The member defines the respective input selector(INSELX) bitfields of \a PCONF register.
+ 151:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It selects, which input is used for the phase or Hall input function (depending on the module is
+ 152:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Quadrature Decoder or Hall Sensor Mode). Same enum can be used to configure pattern update signa
+ 153:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \a PCONF register's \a MSETS bit field.
+ 154:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 155:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_INPUT_PORT
+ 156:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 157:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_A = 0U, /**< INPUT-A */
+ 158:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_B     , /**< INPUT-B */
+ 159:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_C     , /**< INPUT-C */
+ 160:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_D     , /**< INPUT-D */
+ 161:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_E     , /**< INPUT-E */
+ 162:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_F     , /**< INPUT-F */
+ 163:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_G     , /**< INPUT-G */
+ 164:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_PORT_H       /**< INPUT-H */
+ 165:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_INPUT_PORT_t;
+ 166:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 167:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 168:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Defines active level of an input signal.Use type @ref XMC_POSIF_INPUT_ACTIVE_LEVEL_t for this e
+ 169:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 170:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_INPUT_ACTIVE_LEVEL
+ 171:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 172:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_ACTIVE_LEVEL_HIGH  = 0U, /**< Input - Active High */
+ 173:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_INPUT_ACTIVE_LEVEL_LOW         /**< Input - Active Low */
+ 174:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_INPUT_ACTIVE_LEVEL_t;
+ 175:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 176:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 177:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF input debounce filter configuration.POSIF inputs are connected to low pass filter 
+ 178:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * this enum is used to configure low pass filters cut off frequency.
+ 179:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Use type @ref XMC_POSIF_FILTER_t for this enum.
+ 180:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The member defines the low pass filter configuration(LPC) bitfield of \a PCONF register.
+ 181:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 182:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_FILTER
+ 183:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 184:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_DISABLED     = 0U, /**< No filtering */
+ 185:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_1_CLOCK_CYCLE    , /**< Filter of 1 Clock Cycle */
+ 186:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_2_CLOCK_CYCLE    , /**< Filter of 2 Clock Cycles */
+ 187:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_4_CLOCK_CYCLE    , /**< Filter of 4 Clock Cycles */
+ 188:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_8_CLOCK_CYCLE    , /**< Filter of 8 Clock Cycles */
+ 189:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_16_CLOCK_CYCLE   , /**< Filter of 16 Clock Cycles */
+ 190:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_32_CLOCK_CYCLE   , /**< Filter of 32 Clock Cycles */
+ 191:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_FILTER_64_CLOCK_CYCLE     /**< Filter of 64 Clock Cycles */
+ 192:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_FILTER_t;
+ 193:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 194:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 195:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF events.Use type @ref XMC_POSIF_IRQ_EVENT_t for this enum.
+ 196:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The member defines available event sources.It is used to configure which event to be used for
+ 197:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * interrupt generation using \a PFLGE register. [ PFLG,SPFLG,RPFLG]
+ 198:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 199:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_IRQ_EVENT
+ 200:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 201:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_CHE                  = 0U, /**< Hall Mode : Correct Hall Event */
+ 202:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_WHE                  = 1U, /**< Hall Mode : Wrong Hall Event */
+ 203:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_HALL_INPUT           = 2U, /**< Hall Mode : Hall Input update */
+ 204:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_MCP_SHADOW_TRANSFER  = 4U, /**< Hall Mode + MCM Mode : MC Pattern shadow tran
+ 205:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_INDX                 = 8U, /**< Quadrature Mode : Index event detection */
+ 206:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_ERR                  = 9U, /**< Quadrature Mode : Quadrature Phase Error */
+ 207:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_CNT                  = 10U, /**< Quadrature Mode : Quadrature Clock event */
+ 208:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_DIR                  = 11U, /**< Quadrature Mode : Quadrature Direction chang
+ 209:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_IRQ_EVENT_PCLK                 = 12U  /**< Quadrature Mode : Quadrature period clock ge
+ 210:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_IRQ_EVENT_t;
+ 211:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 212:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 213:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF service request lines.Use type @ref XMC_POSIF_SR_ID_t for this enum.
+ 214:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It used to connect POSIF event to required service request line.
+ 215:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * in \a PFLGE register for interrupt generation.
+ 216:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 217:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_SR_ID
+ 218:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 219:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_SR_ID_0 = 0U, /**< SR-0 */
+ 220:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_SR_ID_1      /**< SR-1 */
+ 221:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_SR_ID_t;
+ 222:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 223:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 224:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines position decoder mode selection.Use type @ref XMC_POSIF_QD_MODE_t for this enum.
+ 225:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The member defines configuration for the operation of the quadrature decoder mode.
+ 226:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It used to configure \a QDC register.
+ 227:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 228:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_QD_MODE
+ 229:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 230:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_MODE_QUADRATURE       = 0U, /**< Standard Quadrature Mode */
+ 231:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_MODE_DIRECTION_COUNT       /**< Direction Count Mode */
+ 232:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_QD_MODE_t;
+ 233:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 234:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 235:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines motor rotation direction.Use type @ref XMC_POSIF_QD_DIR_t for this enum.
+ 236:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * The member defines the direction in quadrature mode.
+ 237:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 238:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_QD_DIR
+ 239:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 240:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_DIR_COUNTERCLOCKWISE  = 0U, /**< Counter Clockwise */
+ 241:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_DIR_CLOCKWISE              /**< Clockwise */
+ 242:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_QD_DIR_t;
+ 243:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 244:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 245:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines frequency of index signal generation.Use type @ref XMC_POSIF_QD_INDEX_GENERATION_t for t
+ 246:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Member represents available configuration for index marker generation using \a ICM  bit field in
+ 247:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 248:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_QD_INDEX_GENERATION
+ 249:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 250:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_INDEX_GENERATION_NEVER  = 0U, /**< Never generate the index marker signal */
+ 251:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_INDEX_GENERATION_ONCE      , /**< Generate only once after the first revolution */
+ 252:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_INDEX_GENERATION_ALWAYS      /**< Index marker generated upon every revolution */
+ 253:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_QD_INDEX_GENERATION_t;
+ 254:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 255:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 256:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Defines trigger edge in hall sensor mode.Use type @ref XMC_POSIF_HSC_TRIGGER_EDGE_t for this en
+ 257:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  It can be used to configure \a PCONF register's \a SPES and \a MSES bit fields.
+ 258:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 259:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef enum XMC_POSIF_HSC_TRIGGER_EDGE
+ 260:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 261:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_HSC_TRIGGER_EDGE_RISING  = 0U, /**< Rising edge */
+ 262:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_HSC_TRIGGER_EDGE_FALLING      /**< Falling edge */
+ 263:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_HSC_TRIGGER_EDGE_t;
+ 264:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 265:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**************************************************************************************************
+ 266:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * DATA STRUCTURES
+ 267:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
+ 268:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 269:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /*Anonymous structure/union guard start*/
+ 270:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #if defined(__CC_ARM)
+ 271:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   #pragma push
+ 272:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   #pragma anon_unions
+ 273:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #elif defined(__TASKING__)
+ 274:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   #pragma warning 586
+ 275:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #endif
+ 276:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 277:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 278:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 279:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF peripheral register structure.Use type @ref XMC_POSIF_t for this data structure.
+ 280:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 281:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef POSIF_GLOBAL_TypeDef XMC_POSIF_t;
+ 282:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 283:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 284:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Defines POSIF quadrature decoder initialization data structure.
+ 285:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Use type @ref XMC_POSIF_QD_CONFIG_t for this data structure.
+ 286:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  It used to configure Quadrature mode using \a QDC register.
+ 287:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 288:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef struct XMC_POSIF_QD_CONFIG
+ 289:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 290:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   XMC_POSIF_QD_MODE_t mode;      /**< Operational Mode of the quadrature encoder and decoder */
+ 291:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   union
+ 292:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   {
+ 293:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     struct
+ 294:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     {
+ 295:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t phase_a: 1;       /**< Phase-A active level configuration */
+ 296:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t phase_b: 1;       /**< Phase-B active level configuration */
+ 297:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t phase_leader: 1;  /**< Which of the two phase signals[Phase A or Phase B] leads the 
+ 298:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 1;
+ 299:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t index: 2;        /**< Index signal generation control. Use @ref XMC_POSIF_QD_INDEX_G
+ 300:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 26;
+ 301:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     };
+ 302:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     uint32_t qdc;
+ 303:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   };
+ 304:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_QD_CONFIG_t;
+ 305:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 306:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 307:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF hall sensor control initialization data structure.
+ 308:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Use type @ref XMC_POSIF_HSC_CONFIG_t for this data structure.
+ 309:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It used to initialize hall sensor mode configuration using \a PCONF register.
+ 310:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 311:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef struct XMC_POSIF_HSC_CONFIG
+ 312:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 313:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   union
+ 314:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   {
+ 315:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     struct
+ 316:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     {
+ 317:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 4;
+ 318:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t disable_idle_signal: 1;   /**< Should idle signal be disabled upon wrong hall event?
+ 319:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 11;
+ 320:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t sampling_trigger: 1;      /**< Of HSDA and HSDB, which one is to be used to trigger 
+ 321:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t sampling_trigger_edge: 1; /**< Which edge of the sampling trigger signal is to be co
+ 322:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 	  uint32_t : 6;
+ 323:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t external_error_port: 2;    /**< Of the 4 external error ports, which one is to be co
+ 324:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t external_error_enable: 1;  /**< Should external errors lead to Wrong Hall event? */
+ 325:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t external_error_level: 1;   /**< What should be the active level of external error si
+ 326:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t: 4;
+ 327:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     };
+ 328:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     uint32_t hall_config;
+ 329:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   };
+ 330:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_HSC_CONFIG_t;
+ 331:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 332:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 333:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Defines POSIF multi-channel mode initialization data structure.
+ 334:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Use type @ref XMC_POSIF_MCM_CONFIG_t for this data structure.
+ 335:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It used to initialize multi channel mode configuration using \a PCONF register.
+ 336:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 337:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef struct XMC_POSIF_MCM_CONFIG
+ 338:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 339:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   union
+ 340:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   {
+ 341:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     struct
+ 342:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     {
+ 343:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 5;
+ 344:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t pattern_sw_update: 1; /**< should multi channel pattern updated by SW ? */
+ 345:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 12;
+ 346:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 	  uint32_t pattern_update_trigger: 3; /**< Of the 8 update triggers, which one is to be considered
+ 347:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t pattern_trigger_edge: 1;  /**< Which edge of the pattern update trigger is to be con
+ 348:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t pwm_sync: 2;         /**< Of the 4 pwm sync inputs, which one is to be considered? *
+ 349:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t : 8;
+ 350:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     };
+ 351:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     uint32_t mcm_config;
+ 352:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   };
+ 353:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** }XMC_POSIF_MCM_CONFIG_t;
+ 354:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 355:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 356:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Defines POSIF module initialization data structure.
+ 357:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  Use type @ref XMC_POSIF_CONFIG_t for this data structure.
+ 358:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *  It is used to initialize POSIF module using \a PCONF register.
+ 359:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 360:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** typedef struct XMC_POSIF_CONFIG
+ 361:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 362:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   union
+ 363:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   {
+ 364:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     struct
+ 365:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     {
+ 366:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t mode: 2;    /**< POSIF Operational mode. Use @ref XMC_POSIF_MODE_t to configure */
+ 367:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t :6;
+ 368:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t input0: 2; /**< Choice of input for Input-1 */
+ 369:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t input1: 2; /**< Choice of input for Input-2 */
+ 370:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t input2: 2; /**< Choice of input for Input-3 */
+ 371:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t :14;
+ 372:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t filter: 3; /**< Input filter configuration */
+ 373:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****       uint32_t: 1;
+ 374:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     };
+ 375:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     uint32_t pconf;
+ 376:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   };
+ 377:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** } XMC_POSIF_CONFIG_t;
+ 378:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 379:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /*Anonymous structure/union guard end*/
+ 380:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #if defined(__CC_ARM)
+ 381:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   #pragma pop
+ 382:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #elif defined(__TASKING__)
+ 383:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   #pragma warning restore
+ 384:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #endif
+ 385:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 386:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**************************************************************************************************
+ 387:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * API Prototypes
+ 388:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  **************************************************************************************************
+ 389:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #ifdef __cplusplus
+ 390:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** extern "C" {
+ 391:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** #endif
+ 392:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 393:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 394:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module of type @ref XMC_POSIF_t
+ 395:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
+ 396:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 397:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
+ 398:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * De-asserts the POSIF module from reset and enables the clock.\n
+ 399:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PRCLR0 register's \a POSIF0RS or \a POSIF1RS bit field depends upon \a peripheral.
+ 400:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * If running on other than XMC45 device then it will ungate the peripheral clock.
+ 401:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 402:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
+ 403:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * This is the first API which application must invoke to configure POSIF.
+ 404:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It is internally called by XMC_POSIF_Init().
+ 405:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 406:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
+ 407:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Disable(),XMC_POSIF_Init() \n\n\n
+ 408:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 409:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** void XMC_POSIF_Enable(XMC_POSIF_t *const peripheral);
+ 410:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 411:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 412:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module of type @ref XMC_POSIF_t
+ 413:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
+ 414:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 415:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
+ 416:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Asserts the POSIF module into reset and disables the clock.\n
+ 417:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * If running on other than XMC45 device then in addition it will gate the peripheral clock.
+ 418:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PRCLR0 register's \a POSIF0RS or \a POSIF1RS bitfield depends upon \a peripheral.
+ 419:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 420:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
+ 421:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Enable()\n\n\n
+ 422:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 423:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** void XMC_POSIF_Disable(XMC_POSIF_t *const peripheral);
+ 424:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 425:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 426:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module of type @ref XMC_POSIF_t
+ 427:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param config Pointer to POSIF configuration data(operation mode,input selection and filter conf
+ 428:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
+ 429:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 430:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
+ 431:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Initialize POSIF module with \a config.\n
+ 432:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures POSIF global registers.This is the first API which application must invoke to configu
+ 433:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It sets up parameters common to all the POSIF modes - hall sensor,quadrature decoder and multi-c
+ 434:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PCONF register with mode of operation,input selection and filter configuration.
+ 435:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 436:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
+ 437:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_HSC_Init(),XMC_POSIF_QD_Init(),XMC_POSIF_MCM_Init() \n\n\n
+ 438:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** */
+ 439:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** void XMC_POSIF_Init(XMC_POSIF_t *const peripheral, const XMC_POSIF_CONFIG_t * const config);
+ 440:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 441:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 442:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
+ 443:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param config Pointer to hall sensor control initialization data of type @ref XMC_POSIF_HSC_CONF
+ 444:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval XMC_POSIF_STATUS_t  Returns @ref XMC_POSIF_STATUS_OK if configured in Hall Sensor Mode
+ 445:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *                             else return @ref XMC_POSIF_STATUS_ERROR.
+ 446:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 447:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
+ 448:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Initializes hall sensor control mode.\n
+ 449:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PCONF register with which POSIF input trigger to be used for
+ 450:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * sampling hall pattern.Configures \a PCONF register for idle signal generation for wrong hall eve
+ 451:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 452:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
+ 453:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It is necessary to have called XMC_POSIF_Init first with Hall sensor mode before invocation of t
+ 454:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 455:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
+ 456:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Init() \n\n\n
+ 457:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 458:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** XMC_POSIF_STATUS_t XMC_POSIF_HSC_Init(XMC_POSIF_t *const peripheral, const XMC_POSIF_HSC_CONFIG_t *
+ 459:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 460:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 461:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
+ 462:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param config Pointer to quadrature decoder initialization data
+ 463:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval XMC_POSIF_STATUS_t Returns quadrature mode initialization status of type @ref XMC_POSIF_
+ 464:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 465:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
+ 466:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Initializes quadrature decoder control mode.\n
+ 467:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PCONF register with quadrature mode using @ref XMC_POSIF_QD_MODE_t data structure.
+ 468:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Initializes \a QDC register with quadrature mode configuration using @ref XMC_POSIF_QD_CONFIG_t 
+ 469:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 470:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
+ 471:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It is necessary to have called XMC_POSIF_Init first with Quadrature decoder mode before invocati
+ 472:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 473:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
+ 474:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Init() \n\n\n
+ 475:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 476:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** XMC_POSIF_STATUS_t XMC_POSIF_QD_Init(XMC_POSIF_t *const peripheral, const XMC_POSIF_QD_CONFIG_t * c
+ 477:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 478:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 479:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
+ 480:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param config Pointer to quadrature decoder initialization data
+ 481:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval XMC_POSIF_STATUS_t Returns multi channel pattern initialization status of type @ref XMC_
+ 482:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 483:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
+ 484:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Initializes multi channel mode in Hall mode, standalone multi-channel mode and quadrature with m
+ 485:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PCONF register with multi channel mode using @ref XMC_POSIF_MCM_CONFIG_t data stru
+ 486:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 487:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
+ 488:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * It is necessary to call XMC_POSIF_Init first before invocation of this API.
+ 489:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * For XMC_POSIF_MODE_HALL_SENSOR, it is necessary to have called XMC_POSIF_HSC_Init before invocat
+ 490:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * For XMC_POSIF_MODE_MCM_QD, it is necessary to have called XMC_POSIF_QD_Init before invocation of
+ 491:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 492:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
+ 493:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Init(),XMC_POSIF_HSC_Init(),XMC_POSIF_QD_Init() \n\n\n
+ 494:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 495:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** XMC_POSIF_STATUS_t XMC_POSIF_MCM_Init(XMC_POSIF_t *const peripheral, const XMC_POSIF_MCM_CONFIG_t *
+ 496:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 497:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 498:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
+ 499:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param mode POSIF operating mode of type @ref XMC_POSIF_MODE_t
+ 500:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
+ 501:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 502:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
+ 503:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures POSIF module for \a mode.\n
+ 504:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PCONF register's a\ FSEL bitfield with \a mode.
+ 505:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Refer @ref XMC_POSIF_MODE_t for available options.
+ 506:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 507:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
+ 508:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * POSIF module should be in stopped state while changing the operating mode.
+ 509:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 510:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
+ 511:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Stop() \n\n\n
+ 512:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 513:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** __STATIC_INLINE void XMC_POSIF_SetMode(XMC_POSIF_t *const peripheral, const XMC_POSIF_MODE_t mode)
+ 514:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 515:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   peripheral->PCONF = ((peripheral->PCONF & ~(uint32_t)(POSIF_PCONF_FSEL_Msk)) |
+ 516:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****                      (((uint32_t)mode << POSIF_PCONF_FSEL_Pos) & (uint32_t)POSIF_PCONF_FSEL_Msk));
+ 517:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** }
+ 518:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 519:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 520:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
+ 521:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param input0 Choice of input for input 0 [0-3]
+ 522:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param input1 Choice of input for input 1 [0-3]
+ 523:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param input2 Choice of input for input 2 [0-3]
+ 524:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
+ 525:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 526:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
+ 527:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures which input to be connected to POSIF module. \n
+ 528:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PCONF register's INSEL0,INSEL1,INSEL2 bit fields with source for the input connect
+ 529:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \a input1, \a input2 respectively.
+ 530:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 531:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
+ 532:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures which input is used for the Phase X or Hall input X function depending upon the modul
+ 533:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * set for Quadrature Decoder or Hall Sensor Mode.
+ 534:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 535:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
+ 536:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Init() \n\n\n
+ 537:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 538:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** void XMC_POSIF_SelectInputSource(XMC_POSIF_t *const peripheral, const XMC_POSIF_INPUT_PORT_t input0
+ 539:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****     const XMC_POSIF_INPUT_PORT_t input1, const XMC_POSIF_INPUT_PORT_t input2);
+ 540:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 541:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 542:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 543:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
+ 544:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
+ 545:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 546:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
+ 547:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Starts POSIF \a peripheral functional state machine.\n
+ 548:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Starts POSIF state machine for \a peripheral.Configures \a PRUNS register's \a SRB bit field wit
+ 549:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 550:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Note</b><br>
+ 551:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Global properties of POSIF along with mode specific properties should have been initialized befo
+ 552:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * FSM.
+ 553:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 554:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
+ 555:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Stop(),XMC_POSIF_IsRunning() \n\n\n
+ 556:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 557:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** __STATIC_INLINE void XMC_POSIF_Start(XMC_POSIF_t *const peripheral)
+ 558:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 559:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   peripheral->PRUNS = (uint32_t)POSIF_PRUNS_SRB_Msk;
+ 560:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** }
+ 561:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** 
+ 562:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** /**
+ 563:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @param peripheral Pointer to an instance of POSIF module
+ 564:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * @retval None
+ 565:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 566:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Description</b><br>
+ 567:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Stops POSIF \a peripheral functional state machine.\n
+ 568:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Stop POSIF functional state machine and clears current internal status of the \a peripheral.
+ 569:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * Configures \a PRUNC register's \a CRB bit field with 1.
+ 570:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  *
+ 571:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * \par<b>Related APIs:</b><BR>
+ 572:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  * XMC_POSIF_Start(),XMC_POSIF_IsRunning() \n\n\n
+ 573:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****  */
+ 574:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** __STATIC_INLINE void XMC_POSIF_Stop(XMC_POSIF_t *const peripheral)
+ 575:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h **** {
+ 576:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_posif.h ****   peripheral->PRUNC = (uint32_t)(POSIF_PRUNC_CRB_Msk | POSIF_PRUNC_CSM_Msk);
  157              	 .loc 2 576 0
  158 000a 0323     	 movs r3,#3
  159 000c E360     	 str r3,[r4,#12]
@@ -1211,10 +1211,10 @@
  373              	.Letext0:
  374              	 .file 3 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
  375              	 .file 4 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
- 376              	 .file 5 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
- 377              	 .file 6 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_scu.h"
- 378              	 .file 7 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
- 379              	 .file 8 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 376              	 .file 5 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+ 377              	 .file 6 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_scu.h"
+ 378              	 .file 7 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+ 379              	 .file 8 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 xmc_posif.c
     {standard input}:20     .text.XMC_POSIF_Enable:00000000 $t

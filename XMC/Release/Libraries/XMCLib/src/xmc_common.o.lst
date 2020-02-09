@@ -465,272 +465,272 @@
  292              	.LVL21:
  293              	.LBB12:
  294              	.LBB13:
- 295              	 .file 2 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_common.h"
-   1:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /**
-   2:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @file xmc_common.h
-   3:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @date 2019-05-29
-   4:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
-   5:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @cond
-   6:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   *************************************************************************************************
-   7:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * XMClib v2.1.22 - XMC Peripheral Driver Library 
-   8:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
-   9:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Copyright (c) 2015-2019, Infineon Technologies AG
-  10:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * All rights reserved.                        
-  11:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *                                             
-  12:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
-  13:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * following conditions are met:   
-  14:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *                                                                              
-  15:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
-  16:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * disclaimer.                        
-  17:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 
-  18:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
-  19:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
-  20:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 
-  21:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
-  22:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * products derived from this software without specific prior written permission.                  
-  23:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *                                                                              
-  24:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
-  25:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
-  26:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
-  27:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
-  28:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
-  29:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
-  30:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
-  31:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *                                                                              
-  32:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
-  33:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
-  34:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  **************************************************************************************************
-  35:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
-  36:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Change History
-  37:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * --------------
-  38:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
-  39:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2015-06-20:
-  40:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Initial
-  41:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Brief section updated
-  42:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Added XMC_LIB_VERSION macro
-  43:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
-  44:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2016-02-26:
-  45:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.6
-  46:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *      
-  47:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2016-05-30:
-  48:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.8
-  49:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
-  50:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2016-11-18:
-  51:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.10
-  52:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Changed type of size in XMC_PRIOARRAY_t to fix compilation warnings
-  53:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
-  54:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2017-04-04:
-  55:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.12
-  56:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
-  57:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2017-06-24:
-  58:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.14
-  59:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
-  60:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2017-08-03:
-  61:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.16
-  62:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Added __RAM_FUNC macro
-  63:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
-  64:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2018-06-29:
-  65:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.20
-  66:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
-  67:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2019-05-29:
-  68:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.22
-  69:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
-  70:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @endcond 
-  71:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
-  72:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
-  73:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
-  74:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #ifndef XMC_COMMON_H
-  75:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_COMMON_H
-  76:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
-  77:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #include <stddef.h>
-  78:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #include <stdint.h>
-  79:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #include <stdbool.h>
-  80:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #include <string.h>
-  81:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
-  82:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #include "xmc_device.h"
-  83:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
-  84:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /**
-  85:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @addtogroup XMClib XMC Peripheral Library
-  86:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @{
-  87:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
-  88:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
-  89:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /**
-  90:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @addtogroup COMMON
-  91:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @brief Common APIs to all peripherals for XMC microcontroller family 
-  92:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @{
-  93:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
-  94:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
-  95:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /**************************************************************************************************
-  96:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * MACROS
-  97:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  **************************************************************************************************
-  98:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_LIB_MAJOR_VERSION	(2U)
-  99:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_LIB_MINOR_VERSION	(1U)
- 100:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_LIB_PATCH_VERSION	(22U)
- 101:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  
- 102:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_LIB_VERSION         ((XMC_LIB_MAJOR_VERSION << 16U) + (XMC_LIB_MINOR_VERSION << 8U) + X
- 103:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 104:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /* Define WEAK attribute */
- 105:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #if !defined(__WEAK)
- 106:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #if defined ( __CC_ARM )
- 107:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __WEAK __attribute__ ((weak))
- 108:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
- 109:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __WEAK __attribute__ ((weak))
- 110:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined ( __ICCARM__ )
- 111:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __WEAK __weak
- 112:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined ( __GNUC__ )
- 113:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __WEAK __attribute__ ((weak))
- 114:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined ( __TASKING__ )
- 115:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __WEAK __attribute__ ((weak))
- 116:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
- 117:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
- 118:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 119:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #if !defined(__RAM_FUNC)
- 120:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #if defined ( __CC_ARM )
- 121:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** // http://www.keil.com/support/docs/3723.htm
- 122:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __RAM_FUNC __attribute__((section("RAMCODESECTION")))
- 123:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
- 124:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __RAM_FUNC __attribute__((section("RAMCODESECTION")))
- 125:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined ( __ICCARM__ )
- 126:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** // https://www.iar.com/support/tech-notes/linker/controlling-placement-of-the-section-where-__ramfu
- 127:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __RAM_FUNC __ramfunc
- 128:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined ( __GNUC__ )
- 129:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __RAM_FUNC __attribute__((section(".ram_code"), long_call))
- 130:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined ( __TASKING__ )
- 131:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __RAM_FUNC __attribute__((section(".ram_code")))
- 132:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
- 133:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
- 134:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 135:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #ifdef XMC_ASSERT_ENABLE
- 136:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  #define XMC_ASSERT(msg, exp) { if(!(exp)) {XMC_AssertHandler(msg, __FILE__, __LINE__);} }
- 137:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #else
- 138:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  #define XMC_ASSERT(msg, exp) { ; }
- 139:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
- 140:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 141:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #ifdef XMC_DEBUG_ENABLE
- 142:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  #include <stdio.h>
- 143:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  #define XMC_DEBUG(...) { printf(__VA_ARGS__); }
- 144:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #else
- 145:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  #define XMC_DEBUG(...) { ; }
- 146:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
- 147:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 148:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_UNUSED_ARG(x) (void)x
- 149:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 150:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_STRUCT_INIT(m) memset(&m, 0, sizeof(m))
- 151:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 152:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_PRIOARRAY_DEF(name, size) \
- 153:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** XMC_PRIOARRAY_ITEM_t prioarray_m_##name[size + 2]; \
- 154:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** XMC_PRIOARRAY_t prioarray_def_##name = {(size), (prioarray_m_##name)};
- 155:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 156:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_PRIOARRAY(name) \
- 157:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** &prioarray_def_##name
- 158:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 159:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /**************************************************************************************************
- 160:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * DATA STRUCTURES
- 161:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  **************************************************************************************************
- 162:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 163:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 164:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 165:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** typedef struct XMC_DRIVER_VERSION 
- 166:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
- 167:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   uint8_t major;
- 168:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   uint8_t minor;
- 169:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   uint8_t patch;
- 170:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** } XMC_DRIVER_VERSION_t;
- 171:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 172:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 173:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 174:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 175:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** typedef void *XMC_LIST_t;
- 176:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 177:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 178:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 179:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 180:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** typedef struct XMC_PRIOARRAY_ITEM
- 181:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
- 182:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   int32_t priority;
- 183:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   int32_t previous;
- 184:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   int32_t next;
- 185:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** } XMC_PRIOARRAY_ITEM_t;
- 186:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 187:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 188:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 189:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 190:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** typedef struct XMC_PRIOARRAY
- 191:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
- 192:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   int32_t size;
- 193:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   XMC_PRIOARRAY_ITEM_t *items;
- 194:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** } XMC_PRIOARRAY_t;
- 195:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 196:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /**************************************************************************************************
- 197:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * API PROTOTYPES
- 198:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  **************************************************************************************************
- 199:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 200:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #ifdef __cplusplus
- 201:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** extern "C" {
- 202:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
- 203:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 204:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 205:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 206:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 207:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_AssertHandler(const char *const msg, const char *const file, uint32_t line);
- 208:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 209:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 210:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 211:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 212:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_LIST_Init(XMC_LIST_t *list);
- 213:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 214:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 215:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 216:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 217:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_LIST_Add(XMC_LIST_t *list, void *const item);
- 218:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 219:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 220:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 221:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 222:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_LIST_Remove(XMC_LIST_t *list, void *const item);
- 223:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 224:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 225:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 226:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 227:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** uint32_t XMC_LIST_GetLength(XMC_LIST_t *list);
- 228:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 229:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 230:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 231:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 232:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void *XMC_LIST_GetHead(XMC_LIST_t *list);
- 233:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 234:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 235:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 236:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 237:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void *XMC_LIST_GetTail(XMC_LIST_t *list);
- 238:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 239:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 240:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 241:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 242:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_LIST_Insert(XMC_LIST_t *list, void *prev_item, void *new_item);
- 243:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 244:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 245:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 246:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 247:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_PRIOARRAY_Init(XMC_PRIOARRAY_t *prioarray);
- 248:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 249:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 250:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 251:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 252:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_PRIOARRAY_Add(XMC_PRIOARRAY_t *prioarray, int32_t item, int32_t priority);
- 253:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 254:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 255:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 256:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 257:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_PRIOARRAY_Remove(XMC_PRIOARRAY_t *prioarray, int32_t item);
- 258:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 259:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 260:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 261:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 262:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** __STATIC_INLINE int32_t XMC_PRIOARRAY_GetHead(XMC_PRIOARRAY_t *prioarray)
- 263:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
- 264:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   XMC_ASSERT("XMC_PRIOARRAY_Init: NULL pointer", prioarray != NULL);
- 265:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   return prioarray->items[prioarray->size].next;
+ 295              	 .file 2 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_common.h"
+   1:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /**
+   2:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @file xmc_common.h
+   3:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @date 2019-05-29
+   4:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+   5:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @cond
+   6:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   *************************************************************************************************
+   7:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * XMClib v2.1.22 - XMC Peripheral Driver Library 
+   8:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+   9:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Copyright (c) 2015-2019, Infineon Technologies AG
+  10:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * All rights reserved.                        
+  11:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *                                             
+  12:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * following conditions are met:   
+  14:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *                                                                              
+  15:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * disclaimer.                        
+  17:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 
+  18:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 
+  21:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * products derived from this software without specific prior written permission.                  
+  23:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *                                                                              
+  24:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *                                                                              
+  32:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  **************************************************************************************************
+  35:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+  36:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * Change History
+  37:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * --------------
+  38:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+  39:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2015-06-20:
+  40:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Initial
+  41:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Brief section updated
+  42:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Added XMC_LIB_VERSION macro
+  43:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+  44:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2016-02-26:
+  45:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.6
+  46:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *      
+  47:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2016-05-30:
+  48:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.8
+  49:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+  50:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2016-11-18:
+  51:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.10
+  52:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Changed type of size in XMC_PRIOARRAY_t to fix compilation warnings
+  53:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+  54:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2017-04-04:
+  55:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.12
+  56:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+  57:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2017-06-24:
+  58:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.14
+  59:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+  60:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2017-08-03:
+  61:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.16
+  62:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Added __RAM_FUNC macro
+  63:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+  64:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2018-06-29:
+  65:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.20
+  66:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+  67:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * 2019-05-29:
+  68:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *     - Updated XMC_LIB_VERSION macro to v2.1.22
+  69:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+  70:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @endcond 
+  71:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+  72:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+  73:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+  74:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #ifndef XMC_COMMON_H
+  75:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_COMMON_H
+  76:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+  77:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #include <stddef.h>
+  78:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #include <stdint.h>
+  79:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #include <stdbool.h>
+  80:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #include <string.h>
+  81:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+  82:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #include "xmc_device.h"
+  83:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+  84:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /**
+  85:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @addtogroup XMClib XMC Peripheral Library
+  86:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @{
+  87:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+  88:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+  89:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /**
+  90:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @addtogroup COMMON
+  91:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @brief Common APIs to all peripherals for XMC microcontroller family 
+  92:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * @{
+  93:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+  94:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+  95:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /**************************************************************************************************
+  96:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * MACROS
+  97:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  **************************************************************************************************
+  98:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_LIB_MAJOR_VERSION	(2U)
+  99:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_LIB_MINOR_VERSION	(1U)
+ 100:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_LIB_PATCH_VERSION	(22U)
+ 101:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  
+ 102:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_LIB_VERSION         ((XMC_LIB_MAJOR_VERSION << 16U) + (XMC_LIB_MINOR_VERSION << 8U) + X
+ 103:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 104:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /* Define WEAK attribute */
+ 105:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #if !defined(__WEAK)
+ 106:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #if defined ( __CC_ARM )
+ 107:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __WEAK __attribute__ ((weak))
+ 108:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+ 109:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __WEAK __attribute__ ((weak))
+ 110:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined ( __ICCARM__ )
+ 111:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __WEAK __weak
+ 112:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined ( __GNUC__ )
+ 113:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __WEAK __attribute__ ((weak))
+ 114:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined ( __TASKING__ )
+ 115:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __WEAK __attribute__ ((weak))
+ 116:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
+ 117:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
+ 118:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 119:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #if !defined(__RAM_FUNC)
+ 120:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #if defined ( __CC_ARM )
+ 121:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** // http://www.keil.com/support/docs/3723.htm
+ 122:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __RAM_FUNC __attribute__((section("RAMCODESECTION")))
+ 123:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+ 124:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __RAM_FUNC __attribute__((section("RAMCODESECTION")))
+ 125:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined ( __ICCARM__ )
+ 126:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** // https://www.iar.com/support/tech-notes/linker/controlling-placement-of-the-section-where-__ramfu
+ 127:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __RAM_FUNC __ramfunc
+ 128:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined ( __GNUC__ )
+ 129:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __RAM_FUNC __attribute__((section(".ram_code"), long_call))
+ 130:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #elif defined ( __TASKING__ )
+ 131:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define __RAM_FUNC __attribute__((section(".ram_code")))
+ 132:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
+ 133:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
+ 134:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 135:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #ifdef XMC_ASSERT_ENABLE
+ 136:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  #define XMC_ASSERT(msg, exp) { if(!(exp)) {XMC_AssertHandler(msg, __FILE__, __LINE__);} }
+ 137:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #else
+ 138:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  #define XMC_ASSERT(msg, exp) { ; }
+ 139:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
+ 140:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 141:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #ifdef XMC_DEBUG_ENABLE
+ 142:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  #include <stdio.h>
+ 143:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  #define XMC_DEBUG(...) { printf(__VA_ARGS__); }
+ 144:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #else
+ 145:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  #define XMC_DEBUG(...) { ; }
+ 146:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
+ 147:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 148:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_UNUSED_ARG(x) (void)x
+ 149:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 150:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_STRUCT_INIT(m) memset(&m, 0, sizeof(m))
+ 151:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 152:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_PRIOARRAY_DEF(name, size) \
+ 153:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** XMC_PRIOARRAY_ITEM_t prioarray_m_##name[size + 2]; \
+ 154:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** XMC_PRIOARRAY_t prioarray_def_##name = {(size), (prioarray_m_##name)};
+ 155:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 156:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #define XMC_PRIOARRAY(name) \
+ 157:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** &prioarray_def_##name
+ 158:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 159:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /**************************************************************************************************
+ 160:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * DATA STRUCTURES
+ 161:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  **************************************************************************************************
+ 162:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 163:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 164:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 165:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** typedef struct XMC_DRIVER_VERSION 
+ 166:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
+ 167:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   uint8_t major;
+ 168:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   uint8_t minor;
+ 169:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   uint8_t patch;
+ 170:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** } XMC_DRIVER_VERSION_t;
+ 171:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 172:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 173:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 174:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 175:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** typedef void *XMC_LIST_t;
+ 176:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 177:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 178:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 179:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 180:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** typedef struct XMC_PRIOARRAY_ITEM
+ 181:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
+ 182:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   int32_t priority;
+ 183:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   int32_t previous;
+ 184:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   int32_t next;
+ 185:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** } XMC_PRIOARRAY_ITEM_t;
+ 186:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 187:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 188:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 189:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 190:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** typedef struct XMC_PRIOARRAY
+ 191:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
+ 192:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   int32_t size;
+ 193:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   XMC_PRIOARRAY_ITEM_t *items;
+ 194:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** } XMC_PRIOARRAY_t;
+ 195:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 196:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /**************************************************************************************************
+ 197:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  * API PROTOTYPES
+ 198:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  **************************************************************************************************
+ 199:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 200:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #ifdef __cplusplus
+ 201:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** extern "C" {
+ 202:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** #endif
+ 203:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 204:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 205:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 206:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 207:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_AssertHandler(const char *const msg, const char *const file, uint32_t line);
+ 208:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 209:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 210:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 211:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 212:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_LIST_Init(XMC_LIST_t *list);
+ 213:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 214:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 215:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 216:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 217:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_LIST_Add(XMC_LIST_t *list, void *const item);
+ 218:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 219:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 220:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 221:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 222:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_LIST_Remove(XMC_LIST_t *list, void *const item);
+ 223:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 224:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 225:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 226:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 227:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** uint32_t XMC_LIST_GetLength(XMC_LIST_t *list);
+ 228:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 229:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 230:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 231:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 232:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void *XMC_LIST_GetHead(XMC_LIST_t *list);
+ 233:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 234:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 235:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 236:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 237:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void *XMC_LIST_GetTail(XMC_LIST_t *list);
+ 238:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 239:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 240:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 241:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 242:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_LIST_Insert(XMC_LIST_t *list, void *prev_item, void *new_item);
+ 243:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 244:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 245:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 246:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 247:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_PRIOARRAY_Init(XMC_PRIOARRAY_t *prioarray);
+ 248:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 249:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 250:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 251:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 252:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_PRIOARRAY_Add(XMC_PRIOARRAY_t *prioarray, int32_t item, int32_t priority);
+ 253:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 254:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 255:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 256:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 257:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** void XMC_PRIOARRAY_Remove(XMC_PRIOARRAY_t *prioarray, int32_t item);
+ 258:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 259:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 260:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 261:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 262:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** __STATIC_INLINE int32_t XMC_PRIOARRAY_GetHead(XMC_PRIOARRAY_t *prioarray)
+ 263:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
+ 264:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   XMC_ASSERT("XMC_PRIOARRAY_Init: NULL pointer", prioarray != NULL);
+ 265:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   return prioarray->items[prioarray->size].next;
  296              	 .loc 2 265 0
  297 0000 09C8     	 ldmia r0,{r0,r3}
  298              	.LVL22:
@@ -757,24 +757,24 @@
  319              	.LBE15:
  320              	.LBB16:
  321              	.LBB17:
- 266:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** }
- 267:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 268:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 269:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 270:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 271:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** __STATIC_INLINE int32_t XMC_PRIOARRAY_GetTail(XMC_PRIOARRAY_t *prioarray)
- 272:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
- 273:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   XMC_ASSERT("XMC_PRIOARRAY_Init: NULL pointer", prioarray != NULL);
- 274:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   return prioarray->items[prioarray->size + 1].previous;
- 275:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** }
- 276:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 277:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 278:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 279:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 280:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** __STATIC_INLINE int32_t XMC_PRIOARRAY_GetItemPriority(XMC_PRIOARRAY_t *prioarray, int32_t item)
- 281:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
- 282:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   XMC_ASSERT("XMC_PRIOARRAY_GetItemPriority: item out of range", (item >= 0) && (item < prioarray->
- 283:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   return prioarray->items[item].priority;
+ 266:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** }
+ 267:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 268:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 269:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 270:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 271:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** __STATIC_INLINE int32_t XMC_PRIOARRAY_GetTail(XMC_PRIOARRAY_t *prioarray)
+ 272:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
+ 273:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   XMC_ASSERT("XMC_PRIOARRAY_Init: NULL pointer", prioarray != NULL);
+ 274:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   return prioarray->items[prioarray->size + 1].previous;
+ 275:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** }
+ 276:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 277:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 278:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 279:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 280:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** __STATIC_INLINE int32_t XMC_PRIOARRAY_GetItemPriority(XMC_PRIOARRAY_t *prioarray, int32_t item)
+ 281:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
+ 282:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   XMC_ASSERT("XMC_PRIOARRAY_GetItemPriority: item out of range", (item >= 0) && (item < prioarray->
+ 283:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   return prioarray->items[item].priority;
  322              	 .loc 2 283 0
  323 000c 0C25     	 movs r5,#12
  324 000e 05FB06F0 	 mul r0,r5,r6
@@ -795,15 +795,15 @@
  332              	.LVL24:
  333              	.LBB18:
  334              	.LBB19:
- 284:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** }
- 285:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
- 286:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
- 287:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
- 288:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
- 289:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** __STATIC_INLINE int32_t XMC_PRIOARRAY_GetItemNext(XMC_PRIOARRAY_t *prioarray, int32_t item)
- 290:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
- 291:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   XMC_ASSERT("XMC_PRIOARRAY_GetItemNext: item out of range", (item >= 0) && (item < prioarray->size
- 292:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   return prioarray->items[item].next;
+ 284:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** }
+ 285:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** 
+ 286:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** /*
+ 287:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  *
+ 288:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****  */
+ 289:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** __STATIC_INLINE int32_t XMC_PRIOARRAY_GetItemNext(XMC_PRIOARRAY_t *prioarray, int32_t item)
+ 290:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h **** {
+ 291:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   XMC_ASSERT("XMC_PRIOARRAY_GetItemNext: item out of range", (item >= 0) && (item < prioarray->size
+ 292:G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_common.h ****   return prioarray->items[item].next;
  335              	 .loc 2 292 0
  336 001a A668     	 ldr r6,[r4,#8]
  337 001c F6E7     	 b .L30
@@ -903,7 +903,7 @@
  406              	.Letext0:
  407              	 .file 3 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
  408              	 .file 4 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
- 409              	 .file 5 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+ 409              	 .file 5 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 xmc_common.c
     {standard input}:20     .text.XMC_LIST_Init:00000000 $t

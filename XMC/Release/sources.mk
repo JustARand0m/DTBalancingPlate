@@ -28,6 +28,7 @@ Dave/Generated/GLOBAL_ADC \
 Dave/Generated/GLOBAL_CCU4 \
 Dave/Generated/INTERRUPT \
 Dave/Generated/PWM \
+Dave/Generated/TIMER \
 Dave/Generated/UART \
 Libraries/Newlib \
 Libraries/XMCLib/src \

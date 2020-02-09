@@ -1,0 +1,948 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "uartCom.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.crc_ccitt,"ax",%progbits
+  20              	 .align 1
+  21              	 .global crc_ccitt
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	crc_ccitt:
+  26              	.LFB419:
+  27              	 .file 1 "../uartCom.c"
+   1:../uartCom.c  **** #include "uartCom.h"
+   2:../uartCom.c  **** 
+   3:../uartCom.c  **** unsigned short crc_table[256] = {
+   4:../uartCom.c  **** 	0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5,
+   5:../uartCom.c  **** 	0x60c6, 0x70e7, 0x8108, 0x9129, 0xa14a, 0xb16b,
+   6:../uartCom.c  **** 	0xc18c, 0xd1ad, 0xe1ce, 0xf1ef, 0x1231, 0x0210,
+   7:../uartCom.c  **** 	0x3273, 0x2252, 0x52b5, 0x4294, 0x72f7, 0x62d6,
+   8:../uartCom.c  **** 	0x9339, 0x8318, 0xb37b, 0xa35a, 0xd3bd, 0xc39c,
+   9:../uartCom.c  **** 	0xf3ff, 0xe3de, 0x2462, 0x3443, 0x0420, 0x1401,
+  10:../uartCom.c  **** 	0x64e6, 0x74c7, 0x44a4, 0x5485, 0xa56a, 0xb54b,
+  11:../uartCom.c  **** 	0x8528, 0x9509, 0xe5ee, 0xf5cf, 0xc5ac, 0xd58d,
+  12:../uartCom.c  **** 	0x3653, 0x2672, 0x1611, 0x0630, 0x76d7, 0x66f6,
+  13:../uartCom.c  **** 	0x5695, 0x46b4, 0xb75b, 0xa77a, 0x9719, 0x8738,
+  14:../uartCom.c  **** 	0xf7df, 0xe7fe, 0xd79d, 0xc7bc, 0x48c4, 0x58e5,
+  15:../uartCom.c  **** 	0x6886, 0x78a7, 0x0840, 0x1861, 0x2802, 0x3823,
+  16:../uartCom.c  **** 	0xc9cc, 0xd9ed, 0xe98e, 0xf9af, 0x8948, 0x9969,
+  17:../uartCom.c  **** 	0xa90a, 0xb92b, 0x5af5, 0x4ad4, 0x7ab7, 0x6a96,
+  18:../uartCom.c  **** 	0x1a71, 0x0a50, 0x3a33, 0x2a12, 0xdbfd, 0xcbdc,
+  19:../uartCom.c  **** 	0xfbbf, 0xeb9e, 0x9b79, 0x8b58, 0xbb3b, 0xab1a,
+  20:../uartCom.c  **** 	0x6ca6, 0x7c87, 0x4ce4, 0x5cc5, 0x2c22, 0x3c03,
+  21:../uartCom.c  **** 	0x0c60, 0x1c41, 0xedae, 0xfd8f, 0xcdec, 0xddcd,
+  22:../uartCom.c  **** 	0xad2a, 0xbd0b, 0x8d68, 0x9d49, 0x7e97, 0x6eb6,
+  23:../uartCom.c  **** 	0x5ed5, 0x4ef4, 0x3e13, 0x2e32, 0x1e51, 0x0e70,
+  24:../uartCom.c  **** 	0xff9f, 0xefbe, 0xdfdd, 0xcffc, 0xbf1b, 0xaf3a,
+  25:../uartCom.c  **** 	0x9f59, 0x8f78, 0x9188, 0x81a9, 0xb1ca, 0xa1eb,
+  26:../uartCom.c  **** 	0xd10c, 0xc12d, 0xf14e, 0xe16f, 0x1080, 0x00a1,
+  27:../uartCom.c  **** 	0x30c2, 0x20e3, 0x5004, 0x4025, 0x7046, 0x6067,
+  28:../uartCom.c  **** 	0x83b9, 0x9398, 0xa3fb, 0xb3da, 0xc33d, 0xd31c,
+  29:../uartCom.c  **** 	0xe37f, 0xf35e, 0x02b1, 0x1290, 0x22f3, 0x32d2,
+  30:../uartCom.c  **** 	0x4235, 0x5214, 0x6277, 0x7256, 0xb5ea, 0xa5cb,
+  31:../uartCom.c  **** 	0x95a8, 0x8589, 0xf56e, 0xe54f, 0xd52c, 0xc50d,
+  32:../uartCom.c  **** 	0x34e2, 0x24c3, 0x14a0, 0x0481, 0x7466, 0x6447,
+  33:../uartCom.c  **** 	0x5424, 0x4405, 0xa7db, 0xb7fa, 0x8799, 0x97b8,
+  34:../uartCom.c  **** 	0xe75f, 0xf77e, 0xc71d, 0xd73c, 0x26d3, 0x36f2,
+  35:../uartCom.c  **** 	0x0691, 0x16b0, 0x6657, 0x7676, 0x4615, 0x5634,
+  36:../uartCom.c  **** 	0xd94c, 0xc96d, 0xf90e, 0xe92f, 0x99c8, 0x89e9,
+  37:../uartCom.c  **** 	0xb98a, 0xa9ab, 0x5844, 0x4865, 0x7806, 0x6827,
+  38:../uartCom.c  **** 	0x18c0, 0x08e1, 0x3882, 0x28a3, 0xcb7d, 0xdb5c,
+  39:../uartCom.c  **** 	0xeb3f, 0xfb1e, 0x8bf9, 0x9bd8, 0xabbb, 0xbb9a,
+  40:../uartCom.c  **** 	0x4a75, 0x5a54, 0x6a37, 0x7a16, 0x0af1, 0x1ad0,
+  41:../uartCom.c  **** 	0x2ab3, 0x3a92, 0xfd2e, 0xed0f, 0xdd6c, 0xcd4d,
+  42:../uartCom.c  **** 	0xbdaa, 0xad8b, 0x9de8, 0x8dc9, 0x7c26, 0x6c07,
+  43:../uartCom.c  **** 	0x5c64, 0x4c45, 0x3ca2, 0x2c83, 0x1ce0, 0x0cc1,
+  44:../uartCom.c  **** 	0xef1f, 0xff3e, 0xcf5d, 0xdf7c, 0xaf9b, 0xbfba,
+  45:../uartCom.c  **** 	0x8fd9, 0x9ff8, 0x6e17, 0x7e36, 0x4e55, 0x5e74,
+  46:../uartCom.c  **** 	0x2e93, 0x3eb2, 0x0ed1, 0x1ef0
+  47:../uartCom.c  **** };
+  48:../uartCom.c  **** 
+  49:../uartCom.c  **** /**
+  50:../uartCom.c  ****  * This function calculates the crc check. It uses a CRC-Table for faster lookups.
+  51:../uartCom.c  ****  *
+  52:../uartCom.c  ****  * @param data the input data bytes from which a crc has to be calculated.
+  53:../uartCom.c  ****  */
+  54:../uartCom.c  **** uint16_t crc_ccitt(uint8_t *data, size_t dataSize) {
+  28              	 .loc 1 54 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32              	.LVL0:
+  33 0000 10B5     	 push {r4,lr}
+  34              	.LCFI0:
+  35              	 .cfi_def_cfa_offset 8
+  36              	 .cfi_offset 4,-8
+  37              	 .cfi_offset 14,-4
+  38 0002 0144     	 add r1,r1,r0
+  39              	.LVL1:
+  55:../uartCom.c  **** 	size_t count;
+  56:../uartCom.c  **** 	unsigned int temp, crc = 0xffff;;
+  40              	 .loc 1 56 0
+  41 0004 4FF6FF72 	 movw r2,#65535
+  42              	.LVL2:
+  43              	.L2:
+  57:../uartCom.c  **** 
+  58:../uartCom.c  **** 	for (count = 0; count < dataSize; ++count)
+  44              	 .loc 1 58 0 discriminator 1
+  45 0008 8842     	 cmp r0,r1
+  46 000a 0AD0     	 beq .L5
+  59:../uartCom.c  **** 	{
+  60:../uartCom.c  **** 		temp = (data[count] ^ (crc >> 8)) & 0xff;
+  47              	 .loc 1 60 0 discriminator 3
+  48 000c 10F8013B 	 ldrb r3,[r0],#1
+  49              	.LVL3:
+  61:../uartCom.c  **** 		crc = crc_table[temp] ^ (crc << 8);
+  50              	 .loc 1 61 0 discriminator 3
+  51 0010 054C     	 ldr r4,.L6
+  60:../uartCom.c  **** 		crc = crc_table[temp] ^ (crc << 8);
+  52              	 .loc 1 60 0 discriminator 3
+  53 0012 83EA1223 	 eor r3,r3,r2,lsr#8
+  54              	.LVL4:
+  55 0016 DBB2     	 uxtb r3,r3
+  56              	 .loc 1 61 0 discriminator 3
+  57 0018 34F81330 	 ldrh r3,[r4,r3,lsl#1]
+  58 001c 83EA0222 	 eor r2,r3,r2,lsl#8
+  59              	.LVL5:
+  60 0020 F2E7     	 b .L2
+  61              	.L5:
+  62:../uartCom.c  **** 	}
+  63:../uartCom.c  **** 	return (unsigned short)(crc ^ 0);
+  64:../uartCom.c  **** }
+  62              	 .loc 1 64 0
+  63 0022 90B2     	 uxth r0,r2
+  64              	.LVL6:
+  65 0024 10BD     	 pop {r4,pc}
+  66              	.L7:
+  67 0026 00BF     	 .align 2
+  68              	.L6:
+  69 0028 00000000 	 .word .LANCHOR0
+  70              	 .cfi_endproc
+  71              	.LFE419:
+  73              	 .section .text.decodeData,"ax",%progbits
+  74              	 .align 1
+  75              	 .global decodeData
+  76              	 .thumb
+  77              	 .thumb_func
+  79              	decodeData:
+  80              	.LFB420:
+  65:../uartCom.c  **** 
+  66:../uartCom.c  **** 
+  67:../uartCom.c  **** /**
+  68:../uartCom.c  ****  * Function that decodes the received data, and stores it in the global servo struct.
+  69:../uartCom.c  ****  */
+  70:../uartCom.c  **** void decodeData()
+  71:../uartCom.c  **** {
+  81              	 .loc 1 71 0
+  82              	 .cfi_startproc
+  83              	 
+  84              	 
+  85              	.LVL7:
+  86 0000 30B5     	 push {r4,r5,lr}
+  87              	.LCFI1:
+  88              	 .cfi_def_cfa_offset 12
+  89              	 .cfi_offset 4,-12
+  90              	 .cfi_offset 5,-8
+  91              	 .cfi_offset 14,-4
+  92 0002 444C     	 ldr r4,.L33
+  93 0004 85B0     	 sub sp,sp,#20
+  94              	.LCFI2:
+  95              	 .cfi_def_cfa_offset 32
+  72:../uartCom.c  **** 	int asfd = 0;
+  73:../uartCom.c  **** 	uint8_t servo0[SERVO_DATA_LENGTH+1];
+  74:../uartCom.c  **** 	uint8_t servo1[SERVO_DATA_LENGTH+1];
+  75:../uartCom.c  **** 	uint8_t servo2[SERVO_DATA_LENGTH+1];
+  76:../uartCom.c  **** 
+  77:../uartCom.c  **** 	memset(servo0, 0, SERVO_DATA_LENGTH + 1);
+  96              	 .loc 1 77 0
+  97 0006 0022     	 movs r2,#0
+  98 0008 2368     	 ldr r3,[r4]
+  99 000a 0192     	 str r2,[sp,#4]
+  78:../uartCom.c  **** 	memset(servo1, 0, SERVO_DATA_LENGTH + 1);
+ 100              	 .loc 1 78 0
+ 101 000c 0292     	 str r2,[sp,#8]
+  79:../uartCom.c  **** 	memset(servo2, 0, SERVO_DATA_LENGTH + 1);
+ 102              	 .loc 1 79 0
+ 103 000e 0392     	 str r2,[sp,#12]
+ 104              	.LVL8:
+ 105              	.L14:
+ 106              	.LBB2:
+  80:../uartCom.c  **** 
+  81:../uartCom.c  **** 	static int i = 0;
+  82:../uartCom.c  **** 	static uint8_t data[BUFFERSIZE-2];
+  83:../uartCom.c  **** 	uint8_t isFinished = 0;
+  84:../uartCom.c  **** 
+  85:../uartCom.c  **** 	for (int j = 0; j < BUFFERSIZE; j++)
+  86:../uartCom.c  **** 	{
+  87:../uartCom.c  **** 		if(read_data[j] == '\0') {
+ 107              	 .loc 1 87 0
+ 108 0010 4149     	 ldr r1,.L33+4
+ 109 0012 515C     	 ldrb r1,[r2,r1]
+ 110 0014 0029     	 cmp r1,#0
+ 111 0016 7AD0     	 beq .L9
+  88:../uartCom.c  **** 			break;
+  89:../uartCom.c  **** 		}
+  90:../uartCom.c  **** 		if(i > BUFFERSIZE) {
+  91:../uartCom.c  **** 			i = 0;
+ 112              	 .loc 1 91 0
+ 113 0018 0E2B     	 cmp r3,#14
+ 114 001a A8BF     	 it ge
+ 115 001c 0023     	 movge r3,#0
+  92:../uartCom.c  **** 		}
+  93:../uartCom.c  **** 		if (read_data[j]== '$')
+ 116              	 .loc 1 93 0
+ 117 001e 2429     	 cmp r1,#36
+ 118 0020 08D0     	 beq .L25
+  94:../uartCom.c  **** 		{
+  95:../uartCom.c  **** 			i = 0;
+  96:../uartCom.c  **** 		}
+  97:../uartCom.c  **** 		else if (read_data[j]=='!')
+ 119              	 .loc 1 97 0
+ 120 0022 2129     	 cmp r1,#33
+ 121 0024 02D1     	 bne .L12
+  98:../uartCom.c  **** 		{
+  99:../uartCom.c  **** 			if(i == BUFFERSIZE - 2) {
+ 122              	 .loc 1 99 0
+ 123 0026 0B2B     	 cmp r3,#11
+ 124 0028 05D1     	 bne .L11
+ 125 002a 08E0     	 b .L32
+ 126              	.L12:
+ 100:../uartCom.c  **** 				isFinished = 1;
+ 101:../uartCom.c  **** 				break;
+ 102:../uartCom.c  **** 			}
+ 103:../uartCom.c  **** 		}
+ 104:../uartCom.c  **** 		else
+ 105:../uartCom.c  **** 		{
+ 106:../uartCom.c  **** 			data[i] = read_data[j];
+ 127              	 .loc 1 106 0
+ 128 002c 3B48     	 ldr r0,.L33+8
+ 129 002e C154     	 strb r1,[r0,r3]
+ 107:../uartCom.c  **** 			i++;
+ 130              	 .loc 1 107 0
+ 131 0030 0133     	 adds r3,r3,#1
+ 132 0032 00E0     	 b .L11
+ 133              	.L25:
+  95:../uartCom.c  **** 		}
+ 134              	 .loc 1 95 0
+ 135 0034 0023     	 movs r3,#0
+ 136              	.L11:
+  85:../uartCom.c  **** 	{
+ 137              	 .loc 1 85 0 discriminator 2
+ 138 0036 0132     	 adds r2,r2,#1
+ 139              	.LVL9:
+ 140 0038 0D2A     	 cmp r2,#13
+ 141 003a E9D1     	 bne .L14
+ 142 003c 67E0     	 b .L9
+ 143              	.L32:
+ 144              	.LBE2:
+ 145              	.LBB3:
+ 108:../uartCom.c  **** 		}
+ 109:../uartCom.c  **** 
+ 110:../uartCom.c  **** 	}
+ 111:../uartCom.c  **** 
+ 112:../uartCom.c  **** 
+ 113:../uartCom.c  **** 	if (isFinished == 1)
+ 114:../uartCom.c  **** 	{
+ 115:../uartCom.c  **** 		unsigned short crc16 = crc_ccitt(data, BUFFERSIZE - 4);
+ 146              	 .loc 1 115 0
+ 147 003e 3748     	 ldr r0,.L33+8
+ 148 0040 2360     	 str r3,[r4]
+ 149              	.LVL10:
+ 150 0042 0921     	 movs r1,#9
+ 151 0044 FFF7FEFF 	 bl crc_ccitt
+ 152              	.LVL11:
+ 116:../uartCom.c  **** 		if((crc16 >> 8) == '!' || (crc16 >> 8) == '$' || (crc16) == '!' || (crc16) == '$'){
+ 153              	 .loc 1 116 0
+ 154 0048 C0F30F23 	 ubfx r3,r0,#8,#16
+ 155 004c 212B     	 cmp r3,#33
+ 156 004e 07D0     	 beq .L28
+ 157              	 .loc 1 116 0 is_stmt 0 discriminator 1
+ 158 0050 242B     	 cmp r3,#36
+ 159 0052 05D0     	 beq .L28
+ 160              	 .loc 1 116 0 discriminator 2
+ 161 0054 2128     	 cmp r0,#33
+ 162 0056 03D0     	 beq .L28
+ 117:../uartCom.c  **** 			crc16 = 0;
+ 163              	 .loc 1 117 0 is_stmt 1 discriminator 3
+ 164 0058 2428     	 cmp r0,#36
+ 165 005a 08BF     	 it eq
+ 166 005c 0020     	 moveq r0,#0
+ 167              	.LVL12:
+ 168 005e 00E0     	 b .L16
+ 169              	.LVL13:
+ 170              	.L28:
+ 171              	 .loc 1 117 0 is_stmt 0
+ 172 0060 0020     	 movs r0,#0
+ 173              	.LVL14:
+ 174              	.L16:
+ 118:../uartCom.c  **** 		}
+ 119:../uartCom.c  **** 		if(data[BUFFERSIZE-3] == (uint8_t)(crc16 >> 8) && data[BUFFERSIZE - 4] == (uint8_t)(crc16)){
+ 175              	 .loc 1 119 0 is_stmt 1
+ 176 0062 2E4B     	 ldr r3,.L33+8
+ 177 0064 997A     	 ldrb r1,[r3,#10]
+ 178 0066 C0F30722 	 ubfx r2,r0,#8,#8
+ 179 006a 9142     	 cmp r1,r2
+ 180 006c 47D1     	 bne .L17
+ 181              	 .loc 1 119 0 is_stmt 0 discriminator 1
+ 182 006e 5A7A     	 ldrb r2,[r3,#9]
+ 183 0070 C0B2     	 uxtb r0,r0
+ 184              	.LVL15:
+ 185 0072 8242     	 cmp r2,r0
+ 186 0074 43D1     	 bne .L17
+ 187              	 .loc 1 119 0
+ 188 0076 0022     	 movs r2,#0
+ 189              	.L21:
+ 190              	.LVL16:
+ 191              	.LBB4:
+ 120:../uartCom.c  **** 			for(int k = 0; k < BUFFERSIZE - 2; k++)
+ 121:../uartCom.c  **** 			{
+ 122:../uartCom.c  **** 				if(k < SERVO_DATA_LENGTH)
+ 192              	 .loc 1 122 0 is_stmt 1
+ 193 0078 022A     	 cmp r2,#2
+ 194 007a 03DC     	 bgt .L18
+ 123:../uartCom.c  **** 				{
+ 124:../uartCom.c  **** 					servo0[k] = data[k];
+ 195              	 .loc 1 124 0
+ 196 007c 01A9     	 add r1,sp,#4
+ 197 007e 1878     	 ldrb r0,[r3]
+ 198 0080 5054     	 strb r0,[r2,r1]
+ 199 0082 09E0     	 b .L19
+ 200              	.L18:
+ 201 0084 D11E     	 subs r1,r2,#3
+ 125:../uartCom.c  **** 				} else if((k < (2 * SERVO_DATA_LENGTH))  && k >=SERVO_DATA_LENGTH)
+ 202              	 .loc 1 125 0
+ 203 0086 0229     	 cmp r1,#2
+ 126:../uartCom.c  **** 				{
+ 127:../uartCom.c  **** 					servo1[k - SERVO_DATA_LENGTH] = data[k];
+ 204              	 .loc 1 127 0
+ 205 0088 04A9     	 add r1,sp,#16
+ 206 008a 1144     	 add r1,r1,r2
+ 207 008c 1878     	 ldrb r0,[r3]
+ 208 008e 94BF     	 ite ls
+ 209 0090 01F80B0C 	 strbls r0,[r1,#-11]
+ 128:../uartCom.c  **** 				} else {
+ 129:../uartCom.c  **** 					servo2[k - 2 * SERVO_DATA_LENGTH] = data[k];
+ 210              	 .loc 1 129 0
+ 211 0094 01F80A0C 	 strbhi r0,[r1,#-10]
+ 212              	.L19:
+ 120:../uartCom.c  **** 			{
+ 213              	 .loc 1 120 0 discriminator 2
+ 214 0098 0132     	 adds r2,r2,#1
+ 215              	.LVL17:
+ 216 009a 0B2A     	 cmp r2,#11
+ 217 009c 03F10103 	 add r3,r3,#1
+ 218 00a0 EAD1     	 bne .L21
+ 219              	.LBE4:
+ 130:../uartCom.c  **** 				}
+ 131:../uartCom.c  **** 			}
+ 132:../uartCom.c  **** 			if (atoi((char*)servo0) != 399) {
+ 220              	 .loc 1 132 0
+ 221 00a2 01A8     	 add r0,sp,#4
+ 222 00a4 FFF7FEFF 	 bl atoi
+ 223              	.LVL18:
+ 224 00a8 40F28F13 	 movw r3,#399
+ 225 00ac 9842     	 cmp r0,r3
+ 226 00ae 1C4D     	 ldr r5,.L33+12
+ 227 00b0 11D0     	 beq .L22
+ 133:../uartCom.c  **** 				servos.servo0 = atoi((char*)servo0)+SERVO_OFFSET+MOTOR_0_OFFSET -1;
+ 228              	 .loc 1 133 0
+ 229 00b2 01A8     	 add r0,sp,#4
+ 230 00b4 FFF7FEFF 	 bl atoi
+ 231              	.LVL19:
+ 232 00b8 00F5F270 	 add r0,r0,#484
+ 233 00bc 2860     	 str r0,[r5]
+ 134:../uartCom.c  **** 				servos.servo1 = atoi((char*)servo1)+SERVO_OFFSET+MOTOR_1_OFFSET + 2;
+ 234              	 .loc 1 134 0
+ 235 00be 02A8     	 add r0,sp,#8
+ 236 00c0 FFF7FEFF 	 bl atoi
+ 237              	.LVL20:
+ 238 00c4 00F5E770 	 add r0,r0,#462
+ 239 00c8 6860     	 str r0,[r5,#4]
+ 135:../uartCom.c  **** 				servos.servo2 = atoi((char*)servo2)+SERVO_OFFSET+MOTOR_2_OFFSET + 22;
+ 240              	 .loc 1 135 0
+ 241 00ca 03A8     	 add r0,sp,#12
+ 242 00cc FFF7FEFF 	 bl atoi
+ 243              	.LVL21:
+ 244 00d0 00F2DD10 	 addw r0,r0,#477
+ 245 00d4 A860     	 str r0,[r5,#8]
+ 246              	.L22:
+ 136:../uartCom.c  **** 			}
+ 137:../uartCom.c  **** 
+ 138:../uartCom.c  **** 			servos.servo0 = atoi((char*)servo0)+SERVO_OFFSET+MOTOR_0_OFFSET;
+ 247              	 .loc 1 138 0
+ 248 00d6 01A8     	 add r0,sp,#4
+ 249 00d8 FFF7FEFF 	 bl atoi
+ 250              	.LVL22:
+ 251 00dc 00F2E510 	 addw r0,r0,#485
+ 252 00e0 2860     	 str r0,[r5]
+ 139:../uartCom.c  **** 			servos.servo1 = atoi((char*)servo1)+SERVO_OFFSET+MOTOR_1_OFFSET;
+ 253              	 .loc 1 139 0
+ 254 00e2 02A8     	 add r0,sp,#8
+ 255 00e4 FFF7FEFF 	 bl atoi
+ 256              	.LVL23:
+ 257 00e8 00F5E670 	 add r0,r0,#460
+ 258 00ec 6860     	 str r0,[r5,#4]
+ 140:../uartCom.c  **** 			servos.servo2 = atoi((char*)servo2)+SERVO_OFFSET+MOTOR_2_OFFSET;
+ 259              	 .loc 1 140 0
+ 260 00ee 03A8     	 add r0,sp,#12
+ 261 00f0 FFF7FEFF 	 bl atoi
+ 262              	.LVL24:
+ 263 00f4 00F2C710 	 addw r0,r0,#455
+ 264 00f8 A860     	 str r0,[r5,#8]
+ 265              	.LVL25:
+ 141:../uartCom.c  **** 			isFinished = 0;
+ 142:../uartCom.c  **** 			i=0;
+ 266              	 .loc 1 142 0
+ 267 00fa 0023     	 movs r3,#0
+ 268 00fc 07E0     	 b .L9
+ 269              	.LVL26:
+ 270              	.L17:
+ 143:../uartCom.c  **** 		} else {
+ 144:../uartCom.c  **** 			servos.servo0 = atoi((char*)servo0)+SERVO_OFFSET+MOTOR_0_OFFSET + asfd;
+ 271              	 .loc 1 144 0
+ 272 00fe 01A8     	 add r0,sp,#4
+ 273 0100 FFF7FEFF 	 bl atoi
+ 274              	.LVL27:
+ 275 0104 064B     	 ldr r3,.L33+12
+ 276 0106 00F2E510 	 addw r0,r0,#485
+ 277 010a 1860     	 str r0,[r3]
+ 278              	.LVL28:
+ 279 010c 00E0     	 b .L8
+ 280              	.LVL29:
+ 281              	.L9:
+ 282 010e 2360     	 str r3,[r4]
+ 283              	.LVL30:
+ 284              	.L8:
+ 285              	.LBE3:
+ 145:../uartCom.c  **** 			asfd++;
+ 146:../uartCom.c  **** 		}
+ 147:../uartCom.c  **** 	}
+ 148:../uartCom.c  **** }
+ 286              	 .loc 1 148 0
+ 287 0110 05B0     	 add sp,sp,#20
+ 288              	.LCFI3:
+ 289              	 .cfi_def_cfa_offset 12
+ 290              	 
+ 291 0112 30BD     	 pop {r4,r5,pc}
+ 292              	.L34:
+ 293              	 .align 2
+ 294              	.L33:
+ 295 0114 00000000 	 .word .LANCHOR1
+ 296 0118 00000000 	 .word read_data
+ 297 011c 00000000 	 .word .LANCHOR2
+ 298 0120 00000000 	 .word servos
+ 299              	 .cfi_endproc
+ 300              	.LFE420:
+ 302              	 .section .text.irUartDataReceived,"ax",%progbits
+ 303              	 .align 1
+ 304              	 .global irUartDataReceived
+ 305              	 .thumb
+ 306              	 .thumb_func
+ 308              	irUartDataReceived:
+ 309              	.LFB421:
+ 149:../uartCom.c  **** 
+ 150:../uartCom.c  **** /**
+ 151:../uartCom.c  ****  * Interrupt routine for UART receive.
+ 152:../uartCom.c  ****  * This handler decodes the received message and than starts to listen for new messages again.
+ 153:../uartCom.c  ****  */
+ 154:../uartCom.c  **** void irUartDataReceived()
+ 155:../uartCom.c  **** {
+ 310              	 .loc 1 155 0
+ 311              	 .cfi_startproc
+ 312              	 
+ 313              	 
+ 314 0000 08B5     	 push {r3,lr}
+ 315              	.LCFI4:
+ 316              	 .cfi_def_cfa_offset 8
+ 317              	 .cfi_offset 3,-8
+ 318              	 .cfi_offset 14,-4
+ 156:../uartCom.c  **** 	decodeData();
+ 319              	 .loc 1 156 0
+ 320 0002 FFF7FEFF 	 bl decodeData
+ 321              	.LVL31:
+ 157:../uartCom.c  **** 	UART_StartReceiveIRQ(&UART_0, read_data, BUFFERSIZE);
+ 322              	 .loc 1 157 0
+ 323 0006 0348     	 ldr r0,.L36
+ 324 0008 0349     	 ldr r1,.L36+4
+ 325 000a 0D22     	 movs r2,#13
+ 158:../uartCom.c  **** }
+ 326              	 .loc 1 158 0
+ 327 000c BDE80840 	 pop {r3,lr}
+ 328              	.LCFI5:
+ 329              	 .cfi_restore 14
+ 330              	 .cfi_restore 3
+ 331              	 .cfi_def_cfa_offset 0
+ 157:../uartCom.c  **** 	UART_StartReceiveIRQ(&UART_0, read_data, BUFFERSIZE);
+ 332              	 .loc 1 157 0
+ 333 0010 FFF7FEBF 	 b UART_StartReceiveIRQ
+ 334              	.LVL32:
+ 335              	.L37:
+ 336              	 .align 2
+ 337              	.L36:
+ 338 0014 00000000 	 .word UART_0
+ 339 0018 00000000 	 .word read_data
+ 340              	 .cfi_endproc
+ 341              	.LFE421:
+ 343              	 .section .text.uart_noise,"ax",%progbits
+ 344              	 .align 1
+ 345              	 .global uart_noise
+ 346              	 .thumb
+ 347              	 .thumb_func
+ 349              	uart_noise:
+ 350              	.LFB422:
+ 159:../uartCom.c  **** 
+ 160:../uartCom.c  **** 
+ 161:../uartCom.c  **** /* Error handling callback functions */
+ 162:../uartCom.c  **** void uart_noise() {
+ 351              	 .loc 1 162 0
+ 352              	 .cfi_startproc
+ 353              	 
+ 354              	 
+ 355              	 
+ 356 0000 7047     	 bx lr
+ 357              	 .cfi_endproc
+ 358              	.LFE422:
+ 360              	 .section .text.uart_stop0,"ax",%progbits
+ 361              	 .align 1
+ 362              	 .global uart_stop0
+ 363              	 .thumb
+ 364              	 .thumb_func
+ 366              	uart_stop0:
+ 367              	.LFB423:
+ 163:../uartCom.c  **** 	XMC_DEBUG("DAVE APPs initialization failed\n");
+ 164:../uartCom.c  **** }
+ 165:../uartCom.c  **** void uart_stop0() {
+ 368              	 .loc 1 165 0
+ 369              	 .cfi_startproc
+ 370              	 
+ 371              	 
+ 372              	 
+ 373 0000 7047     	 bx lr
+ 374              	 .cfi_endproc
+ 375              	.LFE423:
+ 377              	 .section .text.uart_stop1,"ax",%progbits
+ 378              	 .align 1
+ 379              	 .global uart_stop1
+ 380              	 .thumb
+ 381              	 .thumb_func
+ 383              	uart_stop1:
+ 384              	.LFB424:
+ 166:../uartCom.c  **** 	XMC_DEBUG("DAVE APPs initialization failed\n");
+ 167:../uartCom.c  **** }
+ 168:../uartCom.c  **** void uart_stop1() {
+ 385              	 .loc 1 168 0
+ 386              	 .cfi_startproc
+ 387              	 
+ 388              	 
+ 389              	 
+ 390 0000 7047     	 bx lr
+ 391              	 .cfi_endproc
+ 392              	.LFE424:
+ 394              	 .section .text.uart_sync,"ax",%progbits
+ 395              	 .align 1
+ 396              	 .global uart_sync
+ 397              	 .thumb
+ 398              	 .thumb_func
+ 400              	uart_sync:
+ 401              	.LFB425:
+ 169:../uartCom.c  **** 	XMC_DEBUG("DAVE APPs initialization failed\n");
+ 170:../uartCom.c  **** }
+ 171:../uartCom.c  **** void uart_sync() {
+ 402              	 .loc 1 171 0
+ 403              	 .cfi_startproc
+ 404              	 
+ 405              	 
+ 406              	 
+ 407 0000 7047     	 bx lr
+ 408              	 .cfi_endproc
+ 409              	.LFE425:
+ 411              	 .global crc_table
+ 412              	 .comm servos,12,4
+ 413              	 .comm read_data,13,1
+ 414              	 .section .bss.i.10574,"aw",%nobits
+ 415              	 .align 2
+ 416              	 .set .LANCHOR1,.+0
+ 419              	i.10574:
+ 420 0000 00000000 	 .space 4
+ 421              	 .section .bss.data.10575,"aw",%nobits
+ 422              	 .set .LANCHOR2,.+0
+ 425              	data.10575:
+ 426 0000 00000000 	 .space 11
+ 426      00000000 
+ 426      000000
+ 427              	 .section .data.crc_table,"aw",%progbits
+ 428              	 .align 1
+ 429              	 .set .LANCHOR0,.+0
+ 432              	crc_table:
+ 433 0000 0000     	 .short 0
+ 434 0002 2110     	 .short 4129
+ 435 0004 4220     	 .short 8258
+ 436 0006 6330     	 .short 12387
+ 437 0008 8440     	 .short 16516
+ 438 000a A550     	 .short 20645
+ 439 000c C660     	 .short 24774
+ 440 000e E770     	 .short 28903
+ 441 0010 0881     	 .short -32504
+ 442 0012 2991     	 .short -28375
+ 443 0014 4AA1     	 .short -24246
+ 444 0016 6BB1     	 .short -20117
+ 445 0018 8CC1     	 .short -15988
+ 446 001a ADD1     	 .short -11859
+ 447 001c CEE1     	 .short -7730
+ 448 001e EFF1     	 .short -3601
+ 449 0020 3112     	 .short 4657
+ 450 0022 1002     	 .short 528
+ 451 0024 7332     	 .short 12915
+ 452 0026 5222     	 .short 8786
+ 453 0028 B552     	 .short 21173
+ 454 002a 9442     	 .short 17044
+ 455 002c F772     	 .short 29431
+ 456 002e D662     	 .short 25302
+ 457 0030 3993     	 .short -27847
+ 458 0032 1883     	 .short -31976
+ 459 0034 7BB3     	 .short -19589
+ 460 0036 5AA3     	 .short -23718
+ 461 0038 BDD3     	 .short -11331
+ 462 003a 9CC3     	 .short -15460
+ 463 003c FFF3     	 .short -3073
+ 464 003e DEE3     	 .short -7202
+ 465 0040 6224     	 .short 9314
+ 466 0042 4334     	 .short 13379
+ 467 0044 2004     	 .short 1056
+ 468 0046 0114     	 .short 5121
+ 469 0048 E664     	 .short 25830
+ 470 004a C774     	 .short 29895
+ 471 004c A444     	 .short 17572
+ 472 004e 8554     	 .short 21637
+ 473 0050 6AA5     	 .short -23190
+ 474 0052 4BB5     	 .short -19125
+ 475 0054 2885     	 .short -31448
+ 476 0056 0995     	 .short -27383
+ 477 0058 EEE5     	 .short -6674
+ 478 005a CFF5     	 .short -2609
+ 479 005c ACC5     	 .short -14932
+ 480 005e 8DD5     	 .short -10867
+ 481 0060 5336     	 .short 13907
+ 482 0062 7226     	 .short 9842
+ 483 0064 1116     	 .short 5649
+ 484 0066 3006     	 .short 1584
+ 485 0068 D776     	 .short 30423
+ 486 006a F666     	 .short 26358
+ 487 006c 9556     	 .short 22165
+ 488 006e B446     	 .short 18100
+ 489 0070 5BB7     	 .short -18597
+ 490 0072 7AA7     	 .short -22662
+ 491 0074 1997     	 .short -26855
+ 492 0076 3887     	 .short -30920
+ 493 0078 DFF7     	 .short -2081
+ 494 007a FEE7     	 .short -6146
+ 495 007c 9DD7     	 .short -10339
+ 496 007e BCC7     	 .short -14404
+ 497 0080 C448     	 .short 18628
+ 498 0082 E558     	 .short 22757
+ 499 0084 8668     	 .short 26758
+ 500 0086 A778     	 .short 30887
+ 501 0088 4008     	 .short 2112
+ 502 008a 6118     	 .short 6241
+ 503 008c 0228     	 .short 10242
+ 504 008e 2338     	 .short 14371
+ 505 0090 CCC9     	 .short -13876
+ 506 0092 EDD9     	 .short -9747
+ 507 0094 8EE9     	 .short -5746
+ 508 0096 AFF9     	 .short -1617
+ 509 0098 4889     	 .short -30392
+ 510 009a 6999     	 .short -26263
+ 511 009c 0AA9     	 .short -22262
+ 512 009e 2BB9     	 .short -18133
+ 513 00a0 F55A     	 .short 23285
+ 514 00a2 D44A     	 .short 19156
+ 515 00a4 B77A     	 .short 31415
+ 516 00a6 966A     	 .short 27286
+ 517 00a8 711A     	 .short 6769
+ 518 00aa 500A     	 .short 2640
+ 519 00ac 333A     	 .short 14899
+ 520 00ae 122A     	 .short 10770
+ 521 00b0 FDDB     	 .short -9219
+ 522 00b2 DCCB     	 .short -13348
+ 523 00b4 BFFB     	 .short -1089
+ 524 00b6 9EEB     	 .short -5218
+ 525 00b8 799B     	 .short -25735
+ 526 00ba 588B     	 .short -29864
+ 527 00bc 3BBB     	 .short -17605
+ 528 00be 1AAB     	 .short -21734
+ 529 00c0 A66C     	 .short 27814
+ 530 00c2 877C     	 .short 31879
+ 531 00c4 E44C     	 .short 19684
+ 532 00c6 C55C     	 .short 23749
+ 533 00c8 222C     	 .short 11298
+ 534 00ca 033C     	 .short 15363
+ 535 00cc 600C     	 .short 3168
+ 536 00ce 411C     	 .short 7233
+ 537 00d0 AEED     	 .short -4690
+ 538 00d2 8FFD     	 .short -625
+ 539 00d4 ECCD     	 .short -12820
+ 540 00d6 CDDD     	 .short -8755
+ 541 00d8 2AAD     	 .short -21206
+ 542 00da 0BBD     	 .short -17141
+ 543 00dc 688D     	 .short -29336
+ 544 00de 499D     	 .short -25271
+ 545 00e0 977E     	 .short 32407
+ 546 00e2 B66E     	 .short 28342
+ 547 00e4 D55E     	 .short 24277
+ 548 00e6 F44E     	 .short 20212
+ 549 00e8 133E     	 .short 15891
+ 550 00ea 322E     	 .short 11826
+ 551 00ec 511E     	 .short 7761
+ 552 00ee 700E     	 .short 3696
+ 553 00f0 9FFF     	 .short -97
+ 554 00f2 BEEF     	 .short -4162
+ 555 00f4 DDDF     	 .short -8227
+ 556 00f6 FCCF     	 .short -12292
+ 557 00f8 1BBF     	 .short -16613
+ 558 00fa 3AAF     	 .short -20678
+ 559 00fc 599F     	 .short -24743
+ 560 00fe 788F     	 .short -28808
+ 561 0100 8891     	 .short -28280
+ 562 0102 A981     	 .short -32343
+ 563 0104 CAB1     	 .short -20022
+ 564 0106 EBA1     	 .short -24085
+ 565 0108 0CD1     	 .short -12020
+ 566 010a 2DC1     	 .short -16083
+ 567 010c 4EF1     	 .short -3762
+ 568 010e 6FE1     	 .short -7825
+ 569 0110 8010     	 .short 4224
+ 570 0112 A100     	 .short 161
+ 571 0114 C230     	 .short 12482
+ 572 0116 E320     	 .short 8419
+ 573 0118 0450     	 .short 20484
+ 574 011a 2540     	 .short 16421
+ 575 011c 4670     	 .short 28742
+ 576 011e 6760     	 .short 24679
+ 577 0120 B983     	 .short -31815
+ 578 0122 9893     	 .short -27752
+ 579 0124 FBA3     	 .short -23557
+ 580 0126 DAB3     	 .short -19494
+ 581 0128 3DC3     	 .short -15555
+ 582 012a 1CD3     	 .short -11492
+ 583 012c 7FE3     	 .short -7297
+ 584 012e 5EF3     	 .short -3234
+ 585 0130 B102     	 .short 689
+ 586 0132 9012     	 .short 4752
+ 587 0134 F322     	 .short 8947
+ 588 0136 D232     	 .short 13010
+ 589 0138 3542     	 .short 16949
+ 590 013a 1452     	 .short 21012
+ 591 013c 7762     	 .short 25207
+ 592 013e 5672     	 .short 29270
+ 593 0140 EAB5     	 .short -18966
+ 594 0142 CBA5     	 .short -23093
+ 595 0144 A895     	 .short -27224
+ 596 0146 8985     	 .short -31351
+ 597 0148 6EF5     	 .short -2706
+ 598 014a 4FE5     	 .short -6833
+ 599 014c 2CD5     	 .short -10964
+ 600 014e 0DC5     	 .short -15091
+ 601 0150 E234     	 .short 13538
+ 602 0152 C324     	 .short 9411
+ 603 0154 A014     	 .short 5280
+ 604 0156 8104     	 .short 1153
+ 605 0158 6674     	 .short 29798
+ 606 015a 4764     	 .short 25671
+ 607 015c 2454     	 .short 21540
+ 608 015e 0544     	 .short 17413
+ 609 0160 DBA7     	 .short -22565
+ 610 0162 FAB7     	 .short -18438
+ 611 0164 9987     	 .short -30823
+ 612 0166 B897     	 .short -26696
+ 613 0168 5FE7     	 .short -6305
+ 614 016a 7EF7     	 .short -2178
+ 615 016c 1DC7     	 .short -14563
+ 616 016e 3CD7     	 .short -10436
+ 617 0170 D326     	 .short 9939
+ 618 0172 F236     	 .short 14066
+ 619 0174 9106     	 .short 1681
+ 620 0176 B016     	 .short 5808
+ 621 0178 5766     	 .short 26199
+ 622 017a 7676     	 .short 30326
+ 623 017c 1546     	 .short 17941
+ 624 017e 3456     	 .short 22068
+ 625 0180 4CD9     	 .short -9908
+ 626 0182 6DC9     	 .short -13971
+ 627 0184 0EF9     	 .short -1778
+ 628 0186 2FE9     	 .short -5841
+ 629 0188 C899     	 .short -26168
+ 630 018a E989     	 .short -30231
+ 631 018c 8AB9     	 .short -18038
+ 632 018e ABA9     	 .short -22101
+ 633 0190 4458     	 .short 22596
+ 634 0192 6548     	 .short 18533
+ 635 0194 0678     	 .short 30726
+ 636 0196 2768     	 .short 26663
+ 637 0198 C018     	 .short 6336
+ 638 019a E108     	 .short 2273
+ 639 019c 8238     	 .short 14466
+ 640 019e A328     	 .short 10403
+ 641 01a0 7DCB     	 .short -13443
+ 642 01a2 5CDB     	 .short -9380
+ 643 01a4 3FEB     	 .short -5313
+ 644 01a6 1EFB     	 .short -1250
+ 645 01a8 F98B     	 .short -29703
+ 646 01aa D89B     	 .short -25640
+ 647 01ac BBAB     	 .short -21573
+ 648 01ae 9ABB     	 .short -17510
+ 649 01b0 754A     	 .short 19061
+ 650 01b2 545A     	 .short 23124
+ 651 01b4 376A     	 .short 27191
+ 652 01b6 167A     	 .short 31254
+ 653 01b8 F10A     	 .short 2801
+ 654 01ba D01A     	 .short 6864
+ 655 01bc B32A     	 .short 10931
+ 656 01be 923A     	 .short 14994
+ 657 01c0 2EFD     	 .short -722
+ 658 01c2 0FED     	 .short -4849
+ 659 01c4 6CDD     	 .short -8852
+ 660 01c6 4DCD     	 .short -12979
+ 661 01c8 AABD     	 .short -16982
+ 662 01ca 8BAD     	 .short -21109
+ 663 01cc E89D     	 .short -25112
+ 664 01ce C98D     	 .short -29239
+ 665 01d0 267C     	 .short 31782
+ 666 01d2 076C     	 .short 27655
+ 667 01d4 645C     	 .short 23652
+ 668 01d6 454C     	 .short 19525
+ 669 01d8 A23C     	 .short 15522
+ 670 01da 832C     	 .short 11395
+ 671 01dc E01C     	 .short 7392
+ 672 01de C10C     	 .short 3265
+ 673 01e0 1FEF     	 .short -4321
+ 674 01e2 3EFF     	 .short -194
+ 675 01e4 5DCF     	 .short -12451
+ 676 01e6 7CDF     	 .short -8324
+ 677 01e8 9BAF     	 .short -20581
+ 678 01ea BABF     	 .short -16454
+ 679 01ec D98F     	 .short -28711
+ 680 01ee F89F     	 .short -24584
+ 681 01f0 176E     	 .short 28183
+ 682 01f2 367E     	 .short 32310
+ 683 01f4 554E     	 .short 20053
+ 684 01f6 745E     	 .short 24180
+ 685 01f8 932E     	 .short 11923
+ 686 01fa B23E     	 .short 16050
+ 687 01fc D10E     	 .short 3793
+ 688 01fe F01E     	 .short 7920
+ 689              	 .text
+ 690              	.Letext0:
+ 691              	 .file 2 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\lib\\gcc\\arm-none-eabi\\4.9.3\\include\\stddef.h"
+ 692              	 .file 3 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 693              	 .file 4 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 694              	 .file 5 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_gpio.h"
+ 695              	 .file 6 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 696              	 .file 7 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_usic.h"
+ 697              	 .file 8 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_uart.h"
+ 698              	 .file 9 "G:/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/UART/uart.h"
+ 699              	 .file 10 "../globals.h"
+ 700              	 .file 11 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+ 701              	 .file 12 "G:/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 702              	 .file 13 "G:/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/UART/uart_extern.h"
+ 703              	 .file 14 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdlib.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 uartCom.c
+    {standard input}:20     .text.crc_ccitt:00000000 $t
+    {standard input}:25     .text.crc_ccitt:00000000 crc_ccitt
+    {standard input}:69     .text.crc_ccitt:00000028 $d
+    {standard input}:74     .text.decodeData:00000000 $t
+    {standard input}:79     .text.decodeData:00000000 decodeData
+    {standard input}:295    .text.decodeData:00000114 $d
+                            *COM*:0000000d read_data
+                            *COM*:0000000c servos
+    {standard input}:303    .text.irUartDataReceived:00000000 $t
+    {standard input}:308    .text.irUartDataReceived:00000000 irUartDataReceived
+    {standard input}:338    .text.irUartDataReceived:00000014 $d
+    {standard input}:344    .text.uart_noise:00000000 $t
+    {standard input}:349    .text.uart_noise:00000000 uart_noise
+    {standard input}:361    .text.uart_stop0:00000000 $t
+    {standard input}:366    .text.uart_stop0:00000000 uart_stop0
+    {standard input}:378    .text.uart_stop1:00000000 $t
+    {standard input}:383    .text.uart_stop1:00000000 uart_stop1
+    {standard input}:395    .text.uart_sync:00000000 $t
+    {standard input}:400    .text.uart_sync:00000000 uart_sync
+    {standard input}:432    .data.crc_table:00000000 crc_table
+    {standard input}:415    .bss.i.10574:00000000 $d
+    {standard input}:419    .bss.i.10574:00000000 i.10574
+    {standard input}:425    .bss.data.10575:00000000 data.10575
+    {standard input}:426    .bss.data.10575:00000000 $d
+    {standard input}:428    .data.crc_table:00000000 $d
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.0.ca5ae67a873a4952d630d8e4120b9e3e
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4.features.h.22.bee0aee4a3878f51861c775df98fa3ea
+                           .group:00000000 wm4._default_types.h.15.933e8edd27a65e0b69af4a865eb623d2
+                           .group:00000000 wm4._intsup.h.10.ca9f32a61b410c270a48d1161ca2c217
+                           .group:00000000 wm4.stdint.h.22.f4a337c398d8b6d821a97202448bc0d0
+                           .group:00000000 wm4.stdbool.h.29.1c9ee6859ce8145f7838a4f2549ccec2
+                           .group:00000000 wm4.newlib.h.8.fe7d912fc917043c98742c35eddd8cff
+                           .group:00000000 wm4.config.h.216.aad1ef7bee4fb69981cb38ce62f84d9c
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.cdefs.h.47.4e89a3f145accdcb1100c37260c088e6
+                           .group:00000000 wm4.string.h.15.dab3980bf35408a4c507182805e2de3a
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.xmc_device.h.65.5c0d35eb1a6853ff8300ab2ec1b944b0
+                           .group:00000000 wm4.XMC4500.h.55.9aa45b9b5790506b2dcb963e4e7adeaf
+                           .group:00000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.57f124f9262f3dbf77da6a6506ffb430
+                           .group:00000000 wm4.core_cm4.h.174.fcddd62df80231752fa39eb9b61dadfe
+                           .group:00000000 wm4.mpu_armv7.h.32.4049752bb5792d4e15357775e9506cfc
+                           .group:00000000 wm4.system_XMC4500.h.42.99124977c10ca8844a71949adbeabd70
+                           .group:00000000 wm4.XMC4500.h.208.b340195df97f067735c4c769ba59985a
+                           .group:00000000 wm4.xmc_device.h.1500.3eca65ed9ba7f90e09c1ffcb0b3f5724
+                           .group:00000000 wm4.xmc_common.h.98.806f17e888fd51d0e4be2ad115163551
+                           .group:00000000 wm4.xmc4_scu.h.113.70a903f8782696023ba1d8628d8ac2d6
+                           .group:00000000 wm4.xmc_gpio.h.51.99a4c0bd520ffa931ac6d8600dce89c4
+                           .group:00000000 wm4.xmc4_gpio_map.h.77.d73d78de7f4c322ab8caf8e71725793e
+                           .group:00000000 wm4.xmc4_gpio.h.79.ce6c49508b5a7769c66e7e3c21dcdfe4
+                           .group:00000000 wm4.clock_xmc4_conf.h.59.249296d4aac332e3d32466c2fa9b8708
+                           .group:00000000 wm4.xmc4_ccu4_map.h.52.bc30e2611b29f8dfd82b8d766e443456
+                           .group:00000000 wm4.global_ccu4_conf.h.53.171028076f31067af187aedd932f16c4
+                           .group:00000000 wm4.pwm_conf.h.91.de1ad5462f924101b28d4a83f92c3daa
+                           .group:00000000 wm4.cpu_ctrl_xmc4_conf.h.50.edadd17ec66dd565cecf7b80b7a19d87
+                           .group:00000000 wm4.xmc_usic.h.94.805ea2394b0d7b136939c22b7f55383a
+                           .group:00000000 wm4.xmc4_usic_map.h.58.c72ca24cddd51bff3428962310391fa9
+                           .group:00000000 wm4.xmc_uart.h.109.448e7c5ea9d234a4e4112f61aa70ddeb
+                           .group:00000000 wm4.uart_conf.h.56.c388d77d60f598933dd023b5e4d2a364
+                           .group:00000000 wm4.xmc_vadc_map.h.62.9df0d76d5c18106393e06548a14f52be
+                           .group:00000000 wm4.xmc_vadc.h.237.61ed5fbd33c6c067453e9298502ec2a9
+                           .group:00000000 wm4.global_adc_conf.h.79.ad3d3c9f6f306cd3e989ca81b8da07e7
+                           .group:00000000 wm4.adc_measurement_conf.h.92.cccc29e4ddbd0754ad04857ffa4fd661
+                           .group:00000000 wm4.adc_measurement.h.114.7294eeab9e0acd8ff18f74e708162a72
+                           .group:00000000 wm4.digital_io_conf.h.60.7e6ff84a67e8f07f78124480426d8243
+                           .group:00000000 wm4.timer_conf.h.54.996b42824e61eb96ec9d683fbb4da995
+                           .group:00000000 wm4.interrupt_conf.h.50.3baa91fd89684bb4ea6f6b4889884661
+                           .group:00000000 wm4.interrupt_extern.h.49.ccc9b9895c91382260480912eaa9a3c6
+                           .group:00000000 wm4.globals.h.6.d2acb0a2178ab61b10a1b091a76451b6
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.53.fe81d5186f74ee22c982a1a79f340ee8
+
+UNDEFINED SYMBOLS
+atoi
+UART_StartReceiveIRQ
+UART_0

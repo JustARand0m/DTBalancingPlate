@@ -1,0 +1,205 @@
+/*
+ * main.c
+ *
+ *  Created on: 2019 Nov 12 10:18:39
+ *  Author: brm47801
+ */
+
+
+
+
+#include <DAVE.h>
+
+#define BUFFERSIZE 3
+#define SERVO_OFFSET 450
+#define SERVO_DATA_LENGTH ((BUFFERSIZE - 2) / 3)
+
+struct PWM_Servos {
+	int servo1;
+	int servo2;
+	int servo3;
+};
+
+void busy_waitMs(int ms)
+{
+	int i;
+
+	for(int c = 0; c < ms; c++)
+	{
+		i = 10000;
+		while(--i)
+		{
+			__NOP();
+			__NOP();
+			__NOP();
+			__NOP();
+			__NOP();
+			__NOP();
+		}
+	}
+}
+
+
+uint8_t read_data[BUFFERSIZE];
+<<<<<<< HEAD
+struct PWM_Servos servos;
+=======
+uint8_t testdata[] = "testdata";
+uint32_t touchPanelResult;
+>>>>>>> dev
+
+int main(void)
+{
+  DAVE_STATUS_t status;
+<<<<<<< HEAD
+
+  servos.servo1 = 750;
+  servos.servo2 = 750;
+  servos.servo3 = 750;
+=======
+  uint8_t init_data[] = "start";
+>>>>>>> dev
+
+  memset(read_data, 0, BUFFERSIZE);
+  status = DAVE_Init();           /* Initialization of DAVE APPs  */
+
+  if(status != DAVE_STATUS_SUCCESS)
+  {
+    /* Placeholder for error handler code. The while loop below can be replaced with an user error handler. */
+    XMC_DEBUG("DAVE APPs initialization failed\n");
+
+    while(1U)
+    {
+
+    }
+  }
+
+<<<<<<< HEAD
+  UART_StartReceiveIRQ(&UART_0, read_data, BUFFERSIZE);
+=======
+  /* Placeholder for user application code. The while loop below can be replaced with user application code. */
+  ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
+>>>>>>> dev
+
+  // Minimal position 450  ^ 4,5  duty ^ 0,9ms
+  // Neutral position 750  ^ 7,5  duty ^ 1,5ms
+  // Maximal position 1050 ^ 10,5 duty ^ 2,1ms
+  while(1U)
+  {
+	  /*
+	  for(int i = 450; i <= 1050; i += 10)
+	  {
+		  PWM_SetDutyCycle(&PWM_MOTOR_0, i);
+		  busy_waitMs(20);
+	  }
+	  for(int i = 1049; i > 450; i -= 10)
+	  {
+		  PWM_SetDutyCycle(&PWM_MOTOR_0, i);
+		  busy_waitMs(20);
+	  }
+		*/
+<<<<<<< HEAD
+	  busy_waitMs(100);
+=======
+	  busy_waitMs(1000);
+	  ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
+	  busy_waitMs(1000);
+	  /*UART_Receive(&UART_0, read_data, BUFFERSIZE);
+	  if(read_data[0] != '\0') {
+		  busy_waitMs(5000);
+		  UART_Transmit(&UART_0, read_data, BUFFERSIZE);
+		  memset(read_data, 0, BUFFERSIZE);
+	  }*/
+>>>>>>> dev
+  }
+}
+
+/**
+<<<<<<< HEAD
+ * Interrupt routine for UART receive.
+ */
+=======
+ * This interrupt routine gets executed when the ADC returns with an result after getting triggered with ADC_MEASUREMENT_StartConversion.
+ * After receiving the value of the x axis, the ADC needs be re-triggered to swap 2 pins to access the y axis and call this routine again.
+ * This routine sends the x and y coordinates via UART.
+ *
+ * The PIN mapping on the Panel:
+ * 2.15 => PIN 1 (UR) DIGITAL_IO_1
+ * VDD 3.3V => PIN 2 (LR)
+ * GND => PIN 4 (UL)
+ * 2.14 => PIN 5 (LL) DIGITAL_IO_0
+ */
+void Adc_Measurement_Handler(void)
+{
+	static uint16_t x, y;
+
+	/* Read out conversion results */
+    uint16_t result_Channel_A = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A_handle);
+
+    if(DIGITAL_IO_GetInput(&DIGITAL_IO_1) == 1) {
+    	x = result_Channel_A;
+
+    	/* Swap x and y axis on the panel */
+        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
+        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
+
+        /* Re-trigger conversion sequence */
+        ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
+    } else {
+    	y = result_Channel_A;
+
+    	/* Swap x and y axis on the panel */
+        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
+        DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
+
+        /* Transmit the x and y position via UART */
+        UART_Transmit(&UART_0, (uint8_t*)(&x), 2);
+        UART_Transmit(&UART_0, (uint8_t*)(&y), 2);
+    }
+}
+
+>>>>>>> dev
+void DataReceived(void) {
+
+}
+
+void decodeData() {
+	uint8_t servo1[SERVO_DATA_LENGTH];
+	uint8_t servo2[SERVO_DATA_LENGTH];
+	uint8_t servo3[SERVO_DATA_LENGTH];
+
+	for(int i = 1; i < BUFFERSIZE - 1; i++) {
+		if(i < SERVO_DATA_LENGTH + 1) {
+			servo1[i - 1] = read_data[i];
+		} else if( i < 2 * SERVO_DATA_LENGTH +1  && i >=SERVO_DATA_LENGTH + 1) {
+			servo2[i - 1 - SERVO_DATA_LENGTH] = read_data[i];
+		} else {
+			servo3[i - 1 - 2 * SERVO_DATA_LENGTH] = read_data[i];
+		}
+	}
+
+	servos.servo1 = atoi(servo1) + SERVO_OFFSET;
+	servos.servo2 = atoi(servo2) + SERVO_OFFSET;
+	servos.servo3 = atoi(servo3) + SERVO_OFFSET;
+
+	// Maximum 1050, if higher = Max gets set
+
+	if (servos.servo1 > 1050) servos.servo1 = 1050;
+	if (servos.servo2 > 1050) servos.servo2 = 1050;
+	if (servos.servo3 > 1050) servos.servo3 = 1050;
+}
+
+/* Error handling callback functions for UART */
+void UART_NOISE(void) {
+	XMC_DEBUG("DAVE APPs initialization failed noise\n");
+}
+void UART_STOP0(void) {
+	XMC_DEBUG("DAVE APPs initialization failed stop 0\n");
+}
+void UART_STOP1(void) {
+	XMC_DEBUG("DAVE APPs initialization failed stop 1\n");
+}
+void UART_SYNC(void) {
+	XMC_DEBUG("DAVE APPs initialization failed sync\n");
+}
+
