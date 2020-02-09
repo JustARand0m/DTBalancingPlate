@@ -241,7 +241,7 @@ Insgesamt liegt jedoch ein für unsere Zwecke einfacher und dennoch ausreichende
 \subsection{Software-Architektur}
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale = 0.5]{pics/SW Architektur}
+	\includegraphics[scale = 0.5]{pics/SW_Architektur}
 	\caption{Grundaufbau der Software-Architektur}
 	\label{fig:SWarchitektur}
 \end{figure}
@@ -250,7 +250,7 @@ Wie in \ref{fig:SWarchitektur} zu sehen gliedert sich der Aufbau der Software in
 Programmteil auf dem XMC, der die eingehenden Daten verarbeitet und an die Servomotoren weiterleitet und 
 gleichzeitig die Werte der Touch-Platte ausliest. Zum zweiten die Regelung auf dem Raspberry Pi, welche 
 die ankommenden Werte von der Touchplatte umwandelt und an den XMC zurücksendet. Außerdem beschäftigt sich 
-dieser Teil mit dem Threading zwischen den beiden Modi: Steuerung mittels App und selbstständige Regelung. 
+dieser Teil mit dem Threading zwischen den beiden Modi: Steuerung mittels App und selbstständige Regelung.  
 Für die Steuerung per App müssen auch hier die ankommenden Daten verarbeitet werden. Die App bildet dabei 
 den dritten Teil in dem die eingebauten Gyroskope des Handys ausgelesen und diese Werte an den Raspberry Pi 
 übermittelt werden.
@@ -259,6 +259,9 @@ den dritten Teil in dem die eingebauten Gyroskope des Handys ausgelesen und dies
 % ----------------------------------------------------------------------------------
 \subsection{Touch-Folie} \label{subsec:Touch-Folie}
 \textit{Von Korbinian Federholzner und Philipp Kramer}\newline
+
+Nachdem feststand, dass dieses Projekt ein Balancing Plate sein wird, war einer der ersten Schritte die Suche nach vergleichbaren selbstbalancierenden Platten, um nachzusehen, welche Hardware diese verwenden. Hauptsächlich relevant war dafür, wie die einzelnen Vergleichsprojekte die Position des Balles erkennen können. Eine der am beiden am meisten vertretenen Aufbauten war es, eine einfache Plastikplatte zu verbauen und den Ball mithilfe einer Kamera zu erkennen. Diese Umsetzung war aufgrund von mangelnder Kenntnis in der Bildverarbeitung und dem Ziel, das Endprodukt so simpel und kompakt wie möglich zu gestalten, allerdings nicht die letztendliche Wahl. Die Entscheidung fiel dafür eine Touch-Folie zu nutzen und mit einer ausreichend schweren Kugel per Druck die Koordinaten zu bestimmen. Da die Suche nach einer geeigneten Platte auf den deutschen Markt eingegrenzt war, war es schwerer als erwartet eine passende Touch-Platte zu finden. Endgültig fiel die Entscheidung auf das in Abb. \ref{fig:bestell} genannte Platte AMT 2517 der Apex Material Technology Corp.
+
 \subsubsection{Funktion der Touch Folie}
 
 \begin{figure}[htbp]
@@ -269,8 +272,8 @@ den dritten Teil in dem die eingebauten Gyroskope des Handys ausgelesen und dies
 \end{figure}
 
 Zum Auslesen der Sensorwerte wird ein 5-Wire rezessives Touch Panel verwendet.\newline
-Wie in Abb. \ref{fig:TouchPanelFunction} \cite {wikipdeia} gezeigt, besteht dieses grundsätzlich aus zwei Schichten. Wird ein Druck von $1.00 Newton$ oder mehr auf die Oberfläche des Panels ausgeübt, so berühren sich die beiden Schichten. Da das Touch Panel im Prinzip ein Spannungsteiler ist, ergeben sich, je nachdem wo gedrückt wird, unterschiedliche Widerstände, welche wiederum einen Rückschluss geben auf die Position des Druckpunktes. Der analoge Spannungswert, der durch Pin 3 zurückgegeben wird, ist also durch diesen Spannungsteiler bestimmt.\newline
-Um zu messen, wo auf der Touchplatte sich ein Druckpunkt befindet, werden zwei der fünf Pins des Panels auf Masse (GND) gesetzt und zwei auf Spannung (V\textsubscript{DD}), im Fall dieses Projektes sind dies $5 Volt$. Die Verwendung von fünf Kabeln bietet den Vorteil, dass der Pin in der Mitte, Pin 3, zum Auslesen des analogen Sensorwerts verwendet wird.
+Wie in Abb. \ref{fig:TouchPanelFunction} \cite {wikipdeia} gezeigt, besteht dieses grundsätzlich aus zwei Schichten. Wird ein Druck von 1.00 $Newton$ oder mehr auf die Oberfläche des Panels ausgeübt, so berühren sich die beiden Schichten. Da das Touch Panel im Prinzip ein Spannungsteiler ist, ergeben sich, je nachdem wo gedrückt wird, unterschiedliche Widerstände, welche wiederum einen Rückschluss geben auf die Position des Druckpunktes. Der analoge Spannungswert, der durch Pin 3 zurückgegeben wird, ist also durch diesen Spannungsteiler bestimmt.\newline
+Um zu messen, wo auf der Touchplatte sich ein Druckpunkt befindet, werden zwei der fünf Pins des Panels auf Masse (GND) gesetzt und zwei auf Spannung (V\textsubscript{DD}), im Fall dieses Projektes sind dies 5 $Volt$. Die Verwendung von fünf Kabeln bietet den Vorteil, dass der Pin in der Mitte, Pin 3, zum Auslesen des analogen Sensorwerts verwendet wird.
 Sind wie in Abb. \ref{fig:TouchPanelFunction} die oberen beiden Pins auf V\textsubscript{DD} und die unteren beiden auf GND, so lässt sich ermitteln, wo der Druckpunkt sich zwischen der oberen und der unteren Kante befindet. Bei einem kartesischen zweidimensionalen Koordinatensystem entspricht dies dem y-Wert.
 Da mit dieser Methode nur eine Richtung gemessen werden kann, für einen Punkt auf dem Panel allerdings sowohl ein y- als auch ein x-Wert benötigt wird, müssen die Pins so umgeschaltet werden, sodass beide Pins an der linken kurzen Seite auf V\textsubscript{DD} sind und beide Pins auf der rechten Seite GND.\newline
 Die Werte der Platte liegen bei perfekten Bedingungen zwischen  0 und 4096, wobei 0 an der Kante, an der GND anliegt, ist und 4096 der maximale Wert an der V \textsubscript{DD}-Seite. Bei diesem Projekt liegen die Werte, die letztlich ausgegeben werden, bei beiden Seiten zwischen 1500 und 2500. Die Verringerung der Anzahl der Messwerte ist zum Teil auf die in Kapitel \ref{subsec:ProblemePlatte} angeführten Probleme zurückzuführen.
@@ -311,13 +314,14 @@ Der gesamte Ablauf ist schematisch in Abb. \ref{fig:TouchUML} dargestellt.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.6]{pics/TouchUML.png}
-	\caption{UML Activity Diagramm, der Interrupts}
+	\caption{UML Aktivitätsdiagramm der Interrupts}
 	\label{fig:TouchUML}
 \end{figure}
 
 \subsubsection{Probleme} \label{subsec:ProblemePlatte}
 Ein Problem im Zuge der Implementierung der Touch-Platte war die Funktion der ADC-App im Dave4. Da bei dieser keine gute Dokumentation vorhanden war, war es z.B. schwer herauszufinden, wie sich eine Messung bei dem Analog Digital Converter starten lässt und wie die dafür benötigte Funktion heißt. \newline
-Das Hauptproblem, das bei der Implementierung der Platte anfiel waren konstante Messfehler des Touch Panels. Das erwartete Verhalten ist, dass die x-Werte konstant bleiben, wenn sich die Druckpunkte parallel zur y-Achse bewegen. Dies entspricht beim endgültigen Aufbau einer Kugelbahn, die parallel zur kurzen Seite verläuft. Plausiblerweise wird das gleiche Verhalten auch bei den y-Werten erwartet, wenn die Druckpunkte parallel zur x-Achse liegen.
+Eine weitere Problematik stellt der Randbereich der Platte dar. Dieser ist minimal höher als der Rest der Touch-Folie und auf diesem schwanken die Werte sehr stark. Anstatt eines erwarteten Wertes, der kleiner als 500 ist, werden dort teils Werte von über 2000 ausgegeben. Zur Behebung des Hindernisses wurde ein etwas kleinerer Innenbereich definiert und sollte ein Druckpunkt zwischen dem inneren Bereich und dem etwas erhöhten Rand sein, so wird die Platte maximal ausgelenkt, sodass sich der Ball möglichst wieder in Richtung Mitte der Platte bewegt.
+Das Hauptproblem, das bei der Implementierung der Platte anfiel, waren konstante Messfehler des Touch Panels. Das erwartete Verhalten ist, dass die x-Werte konstant bleiben, wenn sich die Druckpunkte parallel zur y-Achse bewegen. Dies entspricht beim endgültigen Aufbau einer Kugelbahn, die parallel zur kurzen Seite verläuft. Plausiblerweise wird das gleiche Verhalten auch bei den y-Werten erwartet, wenn die Druckpunkte parallel zur x-Achse liegen.
 Bei Tests stieg allerdings der konstant erwartete Wert entlang der Achsen immer weiter an. In Abb. \ref{fig:ProblemPlattenwerte} ist dieses Verhalten für die Messung des x-Werts dargestellt.
 \begin{figure}[htbp]
 	\centering
@@ -327,9 +331,11 @@ Bei Tests stieg allerdings der konstant erwartete Wert entlang der Achsen immer 
 \end{figure}
 
 Nachdem die Touch Plate mittels eines Picoscopes auf Fehler untersucht war, dort aber alles wie erwartet funktionierte, wurden alle Pins des XMC auf eventuelle Mängel untersucht. Dort waren ebenfalls keine Fehler zu erkennen.\newline
-Der nächste Lösungsansatz war es die GPIO-Pins zu eliminieren, indem eine H-Brücke eingesetzt wird. Allerdings fiel wie bei den GPIO-Pins des XMC über die H-Brücke die Spannung ab,
-jedoch war hier das selbe Problem, über der H-Brücke fiel auch Spannung ab, was zu einem sehr ähnlichen Endszenario führte. Die nächste Überlegung war die Verwendung von Relais. Da Relais, die schnell genug für die Anforderungen dieses Projektes sind, sehr teuer und weiterhin ist deren Verschleiß hoch.\newline
-Die Lösung, die letztendlich im Projekt verwendet wird, ist, Widerstände von $100 Ohm$ zwischen die Pins des XMC und die der Platte zu schalten. Diese Widerstände minimieren den Fehler so weit, dass er entlang einer Achse nur noch etwa 40 ist und damit vernachlässigbar. Der minimale Fehler, der übrig bleibt, kann außerdem mithilfe des Reglers ausgeglichen werden.
+Der nächste Lösungsansatz war es die GPIO-Pins zu eliminieren, indem eine H-Brücke eingesetzt wird. Hintergrund dieser Idee war es, dass die GPIO-Pins des XMC keine wirklich konstante Spannung liefern können und mittels der H-Brücke der Strom nicht mehr vom Mikrocontroller, sondern direkt von der Stromversorgung kommt. Allerdings fiel wie bei den GPIO-Pins des XMC über die H-Brücke die Spannung ab, was zu einem sehr ähnlichen Endszenario führte. Die nächste Überlegung war die Verwendung von Relais. Da Relais, die schnell genug für die Anforderungen dieses Projektes sind, sehr teuer sind und weiterhin deren Verschleiß hoch ist, wurde diese Idee letztlich ebenfalls nicht angewandt.\newline
+Die Lösung, die letztendlich im Projekt verwendet wird, ist, Widerstände von 100 $Ohm$ zwischen die Pins des XMC und die der Platte zu schalten. Diese Widerstände minimieren den Fehler so weit, dass er entlang einer Achse nur noch etwa 40 ist und damit vernachlässigbar. Der minimale Fehler, der übrig bleibt, kann außerdem mithilfe des Reglers ausgeglichen werden.
+Mit der Kenntnis, dass dieser Ansatz den erhofften Erfolg brachte, lag der Fehler weniger an der mangelnden Konstanz der GPIO-Pins, sondern eher am zu geringen Widerstand, den die Platte liefert, was wiederum zu gelegentlichen Spannungsabbrüchen führte.\newline
+Ein anderes Problem, das im Laufe der Tests aufkam, war, dass die erste Kugel, die genutzt wurde, zu leicht war, wenn sich die Platte zu schnell bewegte. Dies war der Fall, da in dem kurzen Moment, in dem sich die Platte bewegte, der Mindestdruck von 1 $Newton$ unterschritten wurde und dadurch falsche Werte an den XMC gesendet wurden. Daraufhin berechnete der Regler neue Plattenneigungswinkel, die allerdings basierend waren auf den unkorrekten Positionen. Eine geeignete Kugel war dann eine Flipperkugel, die der Inhaber der Flipperwerkstatt Regensburg zur Verfügung stellte.
+
 
 % ----------------------------------------------------------------------------------
 % Kapitel 2.4: Einrichtung des Raspberry Pi
@@ -835,18 +841,6 @@ der ein großes Erweiterungspotential besitzt und außerdem für Vorführungen z
 
 \end{appendix}
 % ----------------------------------------------------------------------------------------------------------
-% Abkürzungsverzeichnis
-% ----------------------------------------------------------------------------------------------------------
-\section{Abkürzungsverzeichnis}
-\begin{acronym}[KDE]
-	\acro{BA}[BA]{Bachelorarbeit}
-	\acro{MA}[MA]{Masterarbeit}
-
-\end{acronym}
-\pagebreak
-
-
-% ----------------------------------------------------------------------------------------------------------
 % Abbildungsverzeichnis (optional)
 % ----------------------------------------------------------------------------------------------------------
 \section {Abbildungsverzeichnis}
@@ -900,10 +894,13 @@ der ein großes Erweiterungspotential besitzt und außerdem für Vorführungen z
 	\caption{Bestellliste und Kosten des Projektes}
 	\label{fig:bestell}
 \end{figure}
+\pagebreak
 
 \section {Stundenliste}
 
-\begin{tabularx}{\textwidth}{p{0.22\textwidth}|l|l|l|l|l|}
+\begin{table}[htb]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
 \hline
  Name					& Gesamt &Aufgabe 1	&Aufgabe 2	&Aufgabe 3 \\
  \hline
@@ -911,13 +908,14 @@ der ein großes Erweiterungspotential besitzt und außerdem für Vorführungen z
  \hline
  Korbinian Federholzner	&128			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
  \hline
- Philipp Kramer			&123			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
+ Philipp Kramer			&123			&Touch-Folie 63			&Testing 19		&Reglerentwicklung 41			\\
  \hline
  Patrick Lesch			&125			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
  \hline
  Michael Schmidt		&122			&UART 62			& Phys. Bau 40			&PWM-Signale 20			\\
   \hline
-\label{tbl:stundenliste}
-\end{tabularx}
+\end{tabular}
+\label{tab:stundenliste}
+\end{table}
 
 \end{document}
