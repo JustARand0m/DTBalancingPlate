@@ -6,6 +6,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{subfig}
+\usepackage{caption}
+
+\newcommand{\source}[1]{\caption*{\textbf{Quelle:} {#1}} }
+
 \begin{document}
 
 
@@ -354,6 +358,7 @@ für das Darstellen von Grafiken und Animationen aufgewendet die eventuell die G
     \qquad
     \subfloat[Preempt-RT Raspbian Kernel\newline(4.19.59-rt23-v7l+)]{{\includegraphics[scale = 0.55]{pics/RaspiKernelAfter} }}%
     \caption{Latenzen und Temperaturen der jeweiligen Kernel}%
+    \source{https://lemariva.com/blog/2019/09/raspberry-pi-4b-preempt-rt-kernel-419y-performance-test}
     \label{fig:Kernel}%
 \end{figure}
 Um die Echtzeitfähigkeit des gesamten Systems zu optimieren wurde für den Raspberry Pi der Preempt-RT Kernel kompiliert und aufgespielt.
@@ -1105,7 +1110,7 @@ der ein großes Erweiterungspotential besitzt und außerdem für Vorführungen z
  \hline
  Philipp Kramer			&123			&Touch-Folie 63			&Testing 19		&Reglerentwicklung 41			\\
  \hline
- Patrick Lesch			&125			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
+ Patrick Lesch			&125			&App 53 			&WiFi Schnittstelle	33		&Custom Kernel 39  			\\
  \hline
  Michael Schmidt		&122			&UART 62			& Phys. Bau 40			&PWM-Signale 20			\\
   \hline

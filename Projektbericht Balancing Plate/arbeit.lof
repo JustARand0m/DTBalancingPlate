@@ -11,9 +11,11 @@
 \contentsline {figure}{\numberline {10}{\ignorespaces Latenzen und Temperaturen der jeweiligen Kernel\relax }}{12}{figure.caption.13}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Standard Raspbian Kernel\newline (4.19.57-v7l+)}}}{12}{subfigure.10.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Preempt-RT Raspbian Kernel\newline (4.19.59-rt23-v7l+)}}}{12}{subfigure.10.2}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Grundaufbau der UART-Verbindung\relax }}{13}{figure.caption.14}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Aufbau eines UART-Frames\relax }}{15}{figure.caption.15}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Grundaufbau der UART-Verbindung\relax }}{12}{figure.caption.14}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Aufbau eines UART-Frames\relax }}{14}{figure.caption.15}%
 \contentsline {figure}{\numberline {13}{\ignorespaces Aufbau eines Datenpakets mit Servowerten\relax }}{15}{figure.caption.16}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Aufbau eines Datenpakets mit den Werten der Touch-Folie\relax }}{16}{figure.caption.17}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Aufbau einer alternativen Dreiecksverbindung mit größerem Wirkungsradius\relax }}{20}{figure.caption.18}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Bestellliste und Kosten des Projektes\relax }}{IV}{figure.caption.24}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Blockschaltbild einer Regelstrecke\relax }}{18}{figure.caption.17}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Kleinwinkelnäherung\relax }}{21}{figure.caption.18}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Sprungantwort des Systems\relax }}{23}{figure.caption.19}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Aufbau einer alternativen Dreiecksverbindung mit größerem Wirkungsradius\relax }}{25}{figure.caption.20}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Bestellliste und Kosten des Projektes\relax }}{IV}{figure.caption.26}%
