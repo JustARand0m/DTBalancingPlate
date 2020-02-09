@@ -415,6 +415,185 @@ in der Endversion ist, schon gut genug getestet, sodass dieser ungetestet Code n
 \subsection{Reglerentwicklung}
 \textit{Von Michael Braun und Philipp Kramer}\newline
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.4]{pics/Regelung}
+	\caption{Blockschaltbild einer Regelstrecke}
+	\label{Regelung}
+\end{figure}
+
+Eine Regelung beschreibt einen Vorgang bei dem kontinuierlich eine zu regelnde Größe erfasst und mit einer \textbf{Führungsgröße}(Sollwert) verglichen wird.
+Die Differenz zwischen der gemessenen Eingangsgröße und dem Sollwert bezeichnen man als \textbf{Regeldifferenz}. 
+Der PID Regler erfässt diese Differenz und berechnet damit eine allgemeine \textbf{Stellgröße}.
+Mögliche Beispiele für Stellgrößen wären Motorstellungen oder die Leistung eines Heizelements.
+Da das Anpassen der Stellgröße nichtlinear bzw. verzögert erfolgen kann, wird das Stellglied als eigenes Blockschaltbild mit aufgenommen. 
+Das letzte Element bildet die Regelstrecke. Hier befindet sich das zu regelnde System. Um das Verhalten einer Regelung im Zusammenhang mit einem System ausreichend beschreiben zu können, ist deswegen eine genaue mathematische Beschreibung der physikalischen Vorgänge des Systems notwendig. Denn nur so kann festgestellt werden wie die Regelgröße auf Änderungen der Stellgröße reagiert.
+
+\subsubsection{Regelung}
+Ein \textbf{PID Regler} besteht hierbei aus drei Teilen.\newline
+Dem \textbf{P (Proportional) Anteil}, welcher proportional zur Regeldifferenz(e(t)) die Stellgröße beeinflusst.
+\begin{equation} 
+P_{Out}(t) = K_P*e(t)
+\end{equation}
+
+Einem \textbf{I (Integral) Anteil}, der das Integral der Regeldifferenz bildet und dadurch den Regler mit einer Art Gedächtnis ausstattet. Sollte bei gleicher Stellgröße eine Differenz zwischen Führungsgröße und Regelgröße über einen längeren Zeitraum vorhanden sein, erhöht der I-Anteil weiterhin die Stellgröße. Bei einem Regler der nur aus einem K-Anteil besteht könnte es so zu einer bleibenden Regeldifferenz kommen.
+
+\begin{equation} 
+I_{Out}(t) = K_I*\int_0^t e(t') dt'
+\end{equation}
+
+Und einem \textbf{D (Derivative) Anteil}, welcher kontinuierlich die Änderungsrate der Regeldiffernz bestimmt. Dadurch kann der Regler auf schnelle Änderungen der Regelgröße reagieren.
+
+\begin{equation} 
+D_{Out}(t) = K_D*\frac{e(t)}{dt}
+\end{equation}
+
+Jede der Komponenten liefert einen Betrag zur Ausgabegröße des PID Reglers. Je nach Anwendung ist jedoch eine andere Dimensionierung der Konstanten Faktoren notwendig, um so den Einfluss auf die Ausgabestellgröße des Reglers zu bestimmen.
+
+\begin{equation} 
+Stellgroesse(t) = P_{Out}(t) + I_{Out}(t) + D_{Out}(t)
+\end{equation}
+
+\subsubsection{Model}
+Um die Konstanten des Reglers bestimmen zu können, wird ein Modell erstellt. Dafür muss zuerst das zu regelnde System mathematisch beschrieben werden. Denn nur so kann die Reaktion eines Systems auf Stellgrößenänderungen simuliert werden. Die Regelstrecke bildet eine gleichförmige Kugel mit Radius \(r_{Kugel}\) auf einer schiefen Ebene.
+Die Parameter sind folgende:
+\begin{itemize}
+\item Führungsgröße: Gewünschte Position der Kugel.
+\item Stellgröße: Neigung der Platte.
+\item Regelgröße: Aktuelle Position der Kugel.
+\end{itemize}
+
+Da die Regelung in X- und in Y- Richtung jeweils analog erfolgt reicht es das System in nur eine Richtung zu betrachten. Es wurde angenommen, dass zu keinem Zeitpunkt eine Gleitbewegung der Kugel stattfindet sondern eine Haftreibung auf die Kugel wirkt. Außerdem wird eine konstante Massenverteilung der Kugel angenommen.
+Die Beschleunigung ergibt sich aus der von der Kugelmasse abhängigen Gewichtskraft \(F_G\) und der daraus resultierenden Hangabtriebskraft \(F_{Hang}\) bei einem Plattenneigungswinkel \(\phi\).
+
+\begin{equation} 
+F_{Hang} = m_{Kugel} * g * \sin\phi
+\label{eq:Hangabtrieb}
+\end{equation}
+
+Die translatorische Beschleunigung, des Massenmittelpunkts der Kugel, entlang der X-Achse kann durch Anwendung des 2. Newton'schen Axioms berechnet werden.
+
+\begin{equation} 
+\sum{F_{Ext}} = m_{Kugel} * \ddot{x}
+\end{equation}
+
+\begin{equation} 
+F_{Hang} + F_{Haftreibung} = m_{Kugel} * \ddot{x}
+\end{equation}
+
+\begin{equation} 
+F_{Haftreibung} = m_{Kugel} * \ddot{x} - F_{Hang}
+\label{eq:Haftreibung} 
+\end{equation}
+
+Sie \(I_{Kugel}\) das Trägheitsmoment einer homogenen Kugel, \(M_{Ext}\) ein auf die Kugel wirkendes Drehmoment  und \(\alpha\) der Drehwinkel. Die Anwendung des 2. Newton'schens Axioms für Drehbewegungen ergibt:
+\begin{equation} 
+\sum{M_{Ext}} = I_{Kugel} * \ddot{\alpha}
+\end{equation}
+
+\begin{equation} 
+-F_{Haftreibung} * r_{Kugel} = I_{Kugel} * \ddot{\alpha}
+\label{eq:Drehbewegung}
+\end{equation}
+
+Die Beschleunigungen(Translation und Rotation) stehen über die Rollbedingung im Zusammenhang.
+
+\begin{equation} 
+\ddot{x} = \ddot{\alpha} * r_{Kugel}
+\end{equation}
+
+\begin{equation} 
+\ddot{\alpha} = \frac{\ddot{x}}{r_{Kugel}}
+\label{eq:Winkelbeschleunigung}
+\end{equation}
+
+Durch einsetzen der Gleichungen \ref{eq:Hangabtrieb}, \ref{eq:Haftreibung} und \ref{eq:Winkelbeschleunigung} in Gleichung \ref{eq:Drehbewegung} erhält man:
+
+\begin{equation} 
+(m_{Kugel} *  g *\sin\phi * r_{Kugel} - m_{Kugel} * \ddot{x}) = I_{Kugel} * \frac{\ddot{x}}{r_{Kugel}}
+\end{equation}
+
+\begin{equation} 
+g * \sin\phi - \ddot{x} = I_{Kugel} * \frac{\ddot{x}}{m_{Kugel} * r_{Kugel}^2}
+\end{equation}
+
+\begin{equation} 
+\ddot{x} =  \dfrac{g * \sin\phi }{1 + \dfrac{I_{Kugel}}{m_{Kugel} * r_{Kugel}^2}}
+\label{eq:Kugelbeschleunigung}
+\end{equation}
+
+Das Trägheitsmoment einer homogenen Kugel ist:
+
+\begin{equation} 
+I_{Kugel} =  \frac{2}{5} * m_{Kugel} * r_{Kugel}^2
+\end{equation}
+
+Setzt man dies nun in Gleichung \ref{eq:Kugelbeschleunigung} ein, folgt daraus eine Differenzialgleichung 2. Ordnung, welche die Kugelbeschleunigung bei einer gegenbenen Plattenneigung \(\phi\) beschreibt.
+
+\begin{equation} 
+\ddot{x} =  \dfrac{5}{7}*g* \sin\phi
+\end{equation}
+
+Da die Auslenkwinkel des Kontrollers klein gehalten werden, wenden wir die Kleinwinkelnäherung an und nähern \(\sin\phi\) durch \(\phi\).
+
+\begin{equation} 
+x(t) =  \iint\dfrac{5}{7}*g* \phi dt^2
+\end{equation}
+
+Das Lösen von Differenzialgleichungen ist häufig Aufwendig, deshalb werden diese in den Laplacebereich transformiert. Hier sind Differenzieren und Integrieren durch arithmetische Operationen möglich. Die Übertragungsfunktion einer Strecke bildet also den Quotienten aus laplacetransformierter Ausgangsfunktion und Eingangsfunktion der Regelstrecke.
+
+\begin{equation} 
+G_{Strecke} =  \dfrac{x(s)}{\beta(s)} = \dfrac{5}{7} * g * \dfrac{1}{s^2}
+\end{equation}
+
+Zur Annäherung des Verhaltens des Stellglieds(der Servomotoren und der Platte) wurde ein PT2-Glied gewählt. Jedoch erwies sich das validieren der Sprungantwort der Übertragungsfunktion als schwierig, da kein geeignetes Messverfahren für den Plattenwinkel gefunden werden konnte.
+
+\begin{equation} 
+G_{Stellglied} =  \dfrac{\beta(s)}{\beta_{soll}(s)} = 
+\dfrac{K}{T^2*s^2+2*D*T*s+1}
+\end{equation}
+
+Wobei \(K\) den Verstärkungsfaktor, \(T\) die Zeitverzögerung und \(D\) den Dämpfungsgrad darstellt. Versuche das Verhalten mit einer Kamera zu messen führten zu folgenden Konstanten und letztlich der Übertragungsfunktion des Stellglieds:
+
+\begin{equation} 
+G_{Stellglied} =  \dfrac{\beta(s)}{\beta_{soll}(s)} = 
+\dfrac{1}{0.0016*s^2+0.048*s+1}
+\end{equation}
+
+Multipliziert man beide Übertragungsfunktionen miteinander ergibt das die Funktion des Systems. Diese bildet die Grundlage für die Bestimmung der PID-Reglerkonstanten. 
+
+\begin{equation} 
+G_{System} = \dfrac{5}{7} * 9.81 * \dfrac{1}{s^2} * \dfrac{1}{0.0016*s^2+0.048*s+1}
+\end{equation}
+\begin{equation} 
+G_{System} = \dfrac{7.0071}{{(0.0016*s^2+0.048*s+1)*s^2}}
+\end{equation}
+
+Damit wurde ein Matlabscript erstellt, das mithilfe der Übertragungsfunktion und dem Tool PID Tuner eine Anpassung der Reglerkonstanten ermöglicht. Das Ergebnis sind die Werte:
+
+\begin{itemize}
+\item \(K_P\): 1.04
+\item \(K_I\): 0.14
+\item \(K_D\): 0.56
+\end{itemize} 
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.35]{pics/Sprung}
+	\caption{Sprungantwort des Systems}
+	\label{Sprung}
+\end{figure}
+
+Ein Führungsgrößensprung von X-Koordinate 0 zu 100 führt dann zu der in Abbildung \ref{Sprung} gezeigten Sprungantwort.
+
+Leider erwiesen sich die berechneten Werte als nicht praxistauglich. Mögliche Gründe hierfür könnten eine falsche Abschätzung des Stellglieds sein oder die Tatsache, dass durch das Ändern des Neigungswinkels eine zusätzliche Kraft auf die Kugel wirkt wenn sich diese nicht im Mittelpunkt der Platte befindet.\newline
+Deswegen wurde ein empirisches Verfahren zur Bestimmung der Regelparameter verwendet. Hierbei wird zuerst \(K_P\) auf einen unkritischen Wert und \(K_P\) bzw. \(K_P\) auf 0 gestellt. Schrittweise erhöht man nun \(K_P\) bis das System anfängt zu schwingen. Danach reduziert man \(K_P\) wieder etwas und erhöht die beiden anderen Konstanten bis ein akzeptables Ergebnis erzielt wird. 
+
+\subsubsection{Verbesserungen}
+Durch die Einstellung des Plattenneigungswinkels mittels drei Servomotoren könnte man den Neigungswinkel nicht mehr am Plattenmittelpunkt angreifen lassen sondern an der Kugelposition. Das hätte zur Folge, dass die Kraft die auf die Kugel beim Ändern des Winkels wirkt, nicht zustande kommt.\newline
+Mithilfe eines geeigneten Messverfahrens für den Plattenneigungswinkel könnte man auch die Übertragungsfunktion des Stellglieds verifizieren und so die Annäherung durch das Modell verbessern.
+Sollte dies keine Besserung bringen gibt es auch noch andere empirische Verfahren um Reglerwerte zu bestimmen. (Ziegler/Nichols oder Chien, Hrones und Reswick)
+
 % ----------------------------------------------------------------------------------
 % Kapitel 2.7: PWM Signale
 % ----------------------------------------------------------------------------------
