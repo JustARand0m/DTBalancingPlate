@@ -212,17 +212,45 @@ Neutralstellung gesetzt (vgl. PWM-Signale), um die Regelung ebenfalls von einem 
 starten. Dabei traten motorspezifische Unterschiede auf die mittels der PWM-Werte ausgeglichen werden 
 müssen.
 
-\subsubsection{Schaltplan und Verkabelung}
+\subsubsection{Verkabelung}
 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[scale = 0.5]{pics/Schaltplan}
-	\caption{Schaltplan des Prototyps}
-	\label{fig:verkabelung}
-\end{figure}
-Die gesamte Verkabelung ist dabei in \ref{fig:1verkabelung} zu sehen. Hier sind auch alle Pins verzeichnet, 
-sollte sich einmal ein Kabel lösen. Dabei wurde die Stromversorgung für den XMC und den Raspberry Pi getrennt 
-von der allgemeinen Stromversorgung für die Servomotoren gehalten, um ein Absacken der Spannung zu verhindern.
+\begin{table}[htb]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+ RaspberryPi	& XMC & Servo 1 & Servo 2	& Servo 3 & Powersupply & Platte\\
+ \hline
+ Pin 14 &Pin 1.4 & & & & &\\
+ \hline
+ Pin 15 &Pin 1.5 & & & & &\\
+ \hline
+  & Pin 3.0 & PWM & & & &\\
+   \hline
+  & & Pin 3.3 & PWM & & &\\
+   \hline
+  & & & Pin 3.4 & PWM & &\\
+   \hline
+ GND & GND & GND & GND & GND & GND &\\
+   \hline
+  &  & VCC & VCC & VCC & VCC &\\
+ \hline
+  & Pin 2.15 & & & & & Pin 1\\
+  \hline
+  & VDD3.3 & & & & & Pin 2 \\
+  \hline
+  & Pin 15.2 & & & & & Pin 3\\
+  \hline
+  & GND & & & & & Pin 4\\
+  \hline
+  & Pin 2.14 & & & & & Pin 5 \\
+  \hline
+\end{tabular}
+\caption{Verdrahtungsplan}
+\label{tab:verkabelung}
+\end{table}
+Die Verkabelung ist dabei in Tabelle \ref{tab:verkabelung} zu sehen. Hier sind alle Pins eingetragen, 
+sollte sich ein Kabel lösen. Dabei wurde die Stromversorgung für den XMC und den Raspberry Pi getrennt 
+von der allgemeinen Stromversorgung für die Servomotoren gehalten, um ein Absacken der Spannung zu verhindern. Die Pins 1,2,3 und 4 der Platte werden allerdings über 100 \(\Omega\) Widerstände mit den jeweiligen Pins des XMC verbunden.
 
 \subsubsection{Fazit}
 Die Teile aus dem 3D-Drucker waren insgesamt sehr zufriedenstellend, lediglich die Löcher für die Schrauben 
@@ -458,13 +486,13 @@ Datenteil unterscheidet sich zwischen den beiden Typen. Da sie als String übert
 System problemlos auf bis zu 100 unterschiedliche Nachrichtenformate erweiterbar. Um das bestehende System 
 zu erweitern muss lediglich eine zugehörige Dekodierungsfunktion auf dem Raspberry Pi programmiert werden 
 und ein korrekter Sendevorgang auf dem XMC sichergestellt werden. Die Nachricht mit den Werten der 
-%Touch-Folie hat die Message-ID "`00" \,und wird wie folgt übertragen \ref{fig:UART Platte}.
-%\begin{figure}[htbp]
-%	\centering
-%	\includegraphics[scale = 0.5]{pics/Uartplatte}
-%	\caption{Aufbau eines Datenpakets mit den Werten der Touch-Folie}
-%	\label{fig:UART Platte}
-%\end{figure}
+Touch-Folie hat die Message-ID "`00" \,und wird wie in Abbildung \ref{fig:UART Platte} übertragen.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.5]{pics/Uartplatte}
+	\caption{Aufbau eines Datenpakets mit den Werten der Touch-Folie}
+	\label{fig:UART Platte}
+\end{figure}
 Auch hier sind Start und Ende der Nachricht wieder mit einem Zeichen, zum Erkennen der korrekten 
 Feldlänge, markiert. Dabei werden die Werte der Touch-Folie, die bereits in X-, bzw. Y-Koordinaten 
 umgerechnet wurden übertragen. Diese sind in den Datenbytes 4-7 (X-Koordinate) und Datenbytes 9-12 
@@ -489,13 +517,13 @@ der Richtung vom XMC zum Raspberry Pi implementiert, da nur dort die Bit-Errors 
 da auf dem PI ein Kalman-Filter davorgeschalten wurde der diese Fehler ausgleicht. 
 In Abbildung \ref{fig:UARTFrameCRC} kann man den geupdateten Frame mit CRC-Check sehen
 Der CRC könnte hier in Zukunft noch implementiert werden.
-%\begin{figure}[htbp]
-%	\centering
-%	\includegraphics[scale = 0.5]{pics/Uartplattecrc.png}
-%	\caption{Aufbau eines Datenpakets mit den Werten der Touch-Folie mit CRC check}
-%	\label{fig:UARTFrameCRC}
-%\end{figure}
-%\subsubsection {Zeitliche Betrachtungen}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.5]{pics/Uartplattecrc.png}
+	\caption{Aufbau eines Datenpakets mit den Werten der Touch-Folie mit CRC check}
+	\label{fig:UARTFrameCRC}
+\end{figure}
+\subsubsection {Zeitliche Betrachtungen}
 
 Die Übertragungsgeschwindigkeit setzt sich hierbei zusammen aus Baudrate und in unserem Fall Message-Länge:\newline
 $\text{Baudrate}/ \text{Message-Länge} = \text {Nachrichtenfrequenz} $\newline
