@@ -215,7 +215,21 @@ Servomotoren ausreichend stark um die Platte ohne Probleme zu bewegen.
 % Kapitel 2.2: Software-Architektur
 % ----------------------------------------------------------------------------------
 \subsection{Software-Architektur}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.5]{pics/SW Architektur}
+	\caption{Grundaufbau der Software-Architektur}
+	\label{fig:SWarchitektur}
+\end{figure}
 
+Wie in \ref{fig:SWarchitektur} zu sehen gliedert sich der Aufbau der Software in drei Teile. Zum einen der 
+Programmteil auf dem XMC, der die eingehenden Daten verarbeitet und an die Servomotoren weiterleitet und 
+gleichzeitig die Werte der Touch-Platte ausliest. Zum zweiten die Regelung auf dem Raspberry Pi, welche 
+die ankommenden Werte von der Touchplatte umwandelt und an den XMC zurücksendet. Außerdem beschäftigt sich 
+dieser Teil mit dem Threading zwischen den beiden Modi: Steuerung mittels App und selbstständige Regelung. 
+Für die Steuerung per App müssen auch hier die ankommenden Daten verarbeitet werden. Die App bildet dabei 
+den dritten Teil in dem die eingebauten Gyroskope des Handys ausgelesen und diese Werte an den Raspberry Pi 
+übermittelt werden.
 % ----------------------------------------------------------------------------------
 % Kapitel 2.3: Touch-Folie
 % ----------------------------------------------------------------------------------
@@ -973,5 +987,22 @@ dem iOS-Geräte Display welches die Kugel analog auf die entsprechende Position 
 	\label{fig:bestell}
 \end{figure}
 
+\section {Stundenliste}
 
+\begin{tabularx}{\textwidth}{p{0.22\textwidth}|l|l|l|l|l|}
+\hline
+ Name					& Gesamt &Aufgabe 1	&Aufgabe 2	&Aufgabe 3 \\
+ \hline
+ Michael Braun			&125			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
+ \hline
+ Korbinian Federholzner	&128			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
+ \hline
+ Philipp Kramer			&123			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
+ \hline
+ Patrick Lesch			&125			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
+ \hline
+ Michael Schmidt		&122			&UART 62			& Phys. Bau 40			&PWM-Signale 20			\\
+  \hline
+\label{tbl:stundenliste}
+\end{tabularx}
 \end{document}
