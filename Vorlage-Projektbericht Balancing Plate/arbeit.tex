@@ -482,7 +482,14 @@ der Wert in der Tabelle nachgeschlagen werden und dieser als CRC-Wert verwendet 
 Tabelle ist die Performance, da die komplette Rechnung aufwändiger wäre und mehr Performance ziehen würde. Der CRC-Check ist momemtan nur in
 der Richtung vom XMC zum Raspberry Pi implementiert, da nur dort die Bit-Errors auftraten. Vom Touch Panel des XMCs zum PI wurde nicht unbedingt ein CRC benötigt,
 da auf dem PI ein Kalman-Filter davorgeschalten wurde der diese Fehler ausgleicht. 
+In Abbildung \ref{fig:UARTFrameCRC} kann man den geupdateten Frame mit CRC-Check sehen
 Der CRC könnte hier in Zukunft noch implementiert werden.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.5]{pics/Uartplattecrc.png}
+	\caption{Aufbau eines Datenpakets mit den Werten der Touch-Folie mit CRC check}
+	\label{fig:UARTFrameCRC}
+\end{figure}
 \subsubsection {Zeitliche Betrachtungen}
 
 Die Übertragungsgeschwindigkeit setzt sich hierbei zusammen aus Baudrate und in unserem Fall Message-Länge:\newline
@@ -495,7 +502,7 @@ von XMC zu Raspberry Pi aktiviert sein ergibt sich durch die geänderte Frame-L�
 $19200 /[(13*8)+(10*2)]=154,8\text {Nachrichten pro Sekunde}$ \newline
 Sollte die UART-Verbindung, wie in den beiden Fällen angenommen, vollständig ausgelastet sein, reicht die Verbindung aus um die 
 Kommunikation konsistent und vorallem schnell genug zu gewährleisten um eine Regelung zu ermöglichen. Dies liegt daran, dass die 
-Servomotoren lediglich in einem 50 Hz takt arbeiten und die Verbindung somit deutlich schneller arbeitet
+Servomotoren lediglich in einem 50 Hz Takt arbeiten und die Verbindung somit deutlich schneller arbeitet
 
 
 \subsubsection{Probleme}
