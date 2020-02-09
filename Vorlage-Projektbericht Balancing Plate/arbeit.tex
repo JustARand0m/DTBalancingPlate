@@ -230,7 +230,7 @@ Servomotoren ausreichend stark um die Platte ohne Probleme zu bewegen.
 \end{figure}
 
 Zum Auslesen der Sensorwerte wird ein 5-Wire rezessives Touch Panel verwendet.\newline
-Wie in Abb. \ref{fig:TouchPanelFunction} gezeigt, besteht dieses grundsätzlich aus zwei Schichten. Wird ein Druck von $1.00 Newton$ oder mehr auf die Oberfläche des Panels ausgeübt, so berühren sich die beiden Schichten. Da das Touch Panel im Prinzip ein Spannungsteiler ist, ergeben sich, je nachdem wo gedrückt wird, unterschiedliche Widerstände, welche wiederum einen Rückschluss geben auf die Position des Druckpunktes. Der analoge Spannungswert, der durch Pin 3 zurückgegeben wird, ist also durch diesen Spannungsteiler bestimmt.\newline
+Wie in Abb. \ref{fig:TouchPanelFunction} \cite {wikipdeia} gezeigt, besteht dieses grundsätzlich aus zwei Schichten. Wird ein Druck von $1.00 Newton$ oder mehr auf die Oberfläche des Panels ausgeübt, so berühren sich die beiden Schichten. Da das Touch Panel im Prinzip ein Spannungsteiler ist, ergeben sich, je nachdem wo gedrückt wird, unterschiedliche Widerstände, welche wiederum einen Rückschluss geben auf die Position des Druckpunktes. Der analoge Spannungswert, der durch Pin 3 zurückgegeben wird, ist also durch diesen Spannungsteiler bestimmt.\newline
 Um zu messen, wo auf der Touchplatte sich ein Druckpunkt befindet, werden zwei der fünf Pins des Panels auf Masse (GND) gesetzt und zwei auf Spannung (V\textsubscript{DD}), im Fall dieses Projektes sind dies $5 Volt$. Die Verwendung von fünf Kabeln bietet den Vorteil, dass der Pin in der Mitte, Pin 3, zum Auslesen des analogen Sensorwerts verwendet wird.
 Sind wie in Abb. \ref{fig:TouchPanelFunction} die oberen beiden Pins auf V\textsubscript{DD} und die unteren beiden auf GND, so lässt sich ermitteln, wo der Druckpunkt sich zwischen der oberen und der unteren Kante befindet. Bei einem kartesischen zweidimensionalen Koordinatensystem entspricht dies dem y-Wert.
 Da mit dieser Methode nur eine Richtung gemessen werden kann, für einen Punkt auf dem Panel allerdings sowohl ein y- als auch ein x-Wert benötigt wird, müssen die Pins so umgeschaltet werden, sodass beide Pins an der linken kurzen Seite auf V\textsubscript{DD} sind und beide Pins auf der rechten Seite GND.\newline
@@ -303,14 +303,14 @@ Die Lösung, die letztendlich im Projekt verwendet wird, ist, Widerstände von $
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.6]{pics/BildUart1}
-	\caption{Grundaufbau der UART-Verbindung\cite {mikroe}}bilder 
+	\caption{Grundaufbau der UART-Verbindung}bilder 
 	\label{fig:UART}
 \end{figure}
 Zur Datenübertragung zwischen dem Raspberry Pi und dem XMC Mikrocontroller wurde das Universal 
 Asynchronous Receiver Transmitter-Protokoll (UART) verwendet. Dieses ist für schnelle Bitübertragungsraten, 
 in unserem Fall eine Baud-Rate von 19200 (Bits pro Sekunde), über eine einzelne Leitung verantwortlich. 
 In unserem Fall ist die Übertragung im Modus Full-Duplex und erfordert somit zwei Leitungen, die sich 
-kreuzen \ref{fig:UART}.
+kreuzen \ref{fig:UART} \cite {mikroe}.
 
 Grundsätzlich erfolgt die Datenübertragung aufgrund der Einfachheit in Strings, welche jeweils nach dem 
 Empfang dekodiert werden. Dabei enthält ein UART-Paket genau ein Zeichen der Zeichenfolge. Ein solches 
@@ -356,11 +356,11 @@ aufgerufen.
 \textit{Von Korbinian Federholzner und Michael Schmidt}\newline
 Um eine eindeutige Übertragung zu gewährleisten, wurde sich auf ein standardisiertes Format festgelegt. 
 Dabei wurden eine bestimmte Anzahl Pakete in einer bestimmten Reihenfolge gesendet, wobei pro Paket immer 
-ein Zeichen des Strings übertragen wird, wie in \ref{fig:UARTFrame}verdeutlicht wird.
+ein Zeichen des Strings übertragen wird, wie in \ref{fig:UARTFrame} \cite {electricimp} verdeutlicht wird.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.5]{pics/Uartframe}
-	\caption{Aufbau eines UART-Frames\cite {electricimp}}
+	\caption{Aufbau eines UART-Frames}
 	\label{fig:UARTFrame}
 \end{figure}
 Diese Zeichen werden dann aneinandergereiht und ergeben die unten beschriebenen Formate. Dabei hat die 
