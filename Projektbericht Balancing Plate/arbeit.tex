@@ -535,10 +535,10 @@ Die Übertragungsgeschwindigkeit setzt sich hierbei zusammen aus Baudrate und in
 $\text{Baudrate}/ \text{Message-Länge} = \text {Nachrichtenfrequenz} $\newline
 Da in unserem Fall jedoch String-Zeichen und keine einzelnen Bits übertragen werden ergibt sich folgende Frequenz für 
 die Nachrichten vom XMC zum Raspberry Pi (Werte der Touch-Platte):\newline
-$ 19200/[(10*8)+(10*2)]= 192 \text { Nachrichten pro Sekunde}$\newline
+$ 19200/[(11*8)+(11*2)]= 174,5 \text { Nachrichten pro Sekunde}$\newline
 Selbiges ergibt sich für die Nachrichten vom Raspberry Pi zum XMC (Servowerte). Sollte jedoch die Message-ID für die Kommunikation 
 von XMC zu Raspberry Pi aktiviert sein ergibt sich durch die geänderte Frame-Länge folgende Rechnung:\newline
-$19200 /[(13*8)+(10*2)]=154,8\text { Nachrichten pro Sekunde}$ \newline
+$19200 /[(14*8)+(14*2)]=137,1\text { Nachrichten pro Sekunde}$ \newline
 Sollte die UART-Verbindung, wie in den beiden Fällen angenommen, vollständig ausgelastet sein, reicht die Verbindung aus um die 
 Kommunikation konsistent und vorallem schnell genug zu gewährleisten um eine Regelung zu ermöglichen. Dies liegt daran, dass die 
 Servomotoren lediglich in einem 50 Hz Takt arbeiten und die Verbindung somit deutlich schneller arbeitet
