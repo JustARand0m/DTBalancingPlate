@@ -12,7 +12,7 @@
 \contentsline {subsubsection}{\numberline {2.4.2}Echtzeit Preempt-RT Kernel}{10}{subsubsection.2.4.2}%
 \contentsline {subsubsection}{\numberline {2.4.3}Ausblick}{10}{subsubsection.2.4.3}%
 \contentsline {subsection}{\numberline {2.5}UART Schnittstelle}{10}{subsection.2.5}%
-\contentsline {subsubsection}{\numberline {2.5.1}Funktion}{10}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.1}Funktion}{11}{subsubsection.2.5.1}%
 \contentsline {subsubsection}{\numberline {2.5.2}Datenübertragungsformate}{12}{subsubsection.2.5.2}%
 \contentsline {subsubsection}{\numberline {2.5.3}CRC-Check}{15}{subsubsection.2.5.3}%
 \contentsline {subsubsection}{\numberline {2.5.4}Probleme}{15}{subsubsection.2.5.4}%
