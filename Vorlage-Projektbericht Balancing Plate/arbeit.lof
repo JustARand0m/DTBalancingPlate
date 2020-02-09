@@ -6,9 +6,12 @@
 \contentsline {figure}{\numberline {5}{\ignorespaces Skizze der Platte\relax }}{6}{figure.caption.7}%
 \contentsline {figure}{\numberline {6}{\ignorespaces UML Activity Diagramm, der Interrupts\relax }}{7}{figure.caption.9}%
 \contentsline {figure}{\numberline {7}{\ignorespaces Problem der Plattenwerte am Beispiel der x-Werte\relax }}{8}{figure.caption.10}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Grundaufbau der UART-Verbindung\cite {mikroe}\relax }}{9}{figure.caption.11}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Aufbau eines UART-Frames\cite {electricimp}\relax }}{11}{figure.caption.12}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Aufbau eines Datenpakets mit Servowerten\relax }}{11}{figure.caption.13}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Aufbau eines Datenpakets mit den Werten der Touch-Folie\relax }}{12}{figure.caption.14}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Aufbau einer alternativen Dreiecksverbindung mit größerem Wirkungsradius\relax }}{15}{figure.caption.15}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Bestellliste und Kosten des Projektes\relax }}{V}{figure.caption.21}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Latenzen und Temperaturen der jeweiligen Kernel\relax }}{9}{figure.caption.11}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Standard Raspbian Kernel\newline (4.19.57-v7l+)}}}{9}{subfigure.8.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Preempt-RT Raspbian Kernel\newline (4.19.59-rt23-v7l+)}}}{9}{subfigure.8.2}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Grundaufbau der UART-Verbindung\relax }}{10}{figure.caption.12}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Aufbau eines UART-Frames\relax }}{12}{figure.caption.13}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Aufbau eines Datenpakets mit Servowerten\relax }}{12}{figure.caption.14}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Aufbau eines Datenpakets mit den Werten der Touch-Folie\relax }}{13}{figure.caption.15}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Aufbau einer alternativen Dreiecksverbindung mit größerem Wirkungsradius\relax }}{16}{figure.caption.16}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Bestellliste und Kosten des Projektes\relax }}{V}{figure.caption.22}%

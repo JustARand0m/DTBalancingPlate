@@ -7,35 +7,38 @@
 \contentsline {subsubsection}{\numberline {2.3.1}Funktion der Touch Folie}{5}{subsubsection.2.3.1}%
 \contentsline {subsubsection}{\numberline {2.3.2}Implementierung}{6}{subsubsection.2.3.2}%
 \contentsline {subsubsection}{\numberline {2.3.3}Probleme}{8}{subsubsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.4}Programmierung Raspberry Pi}{9}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}UART Schnittstelle}{9}{subsection.2.5}%
-\contentsline {subsubsection}{\numberline {2.5.1}Funktion}{9}{subsubsection.2.5.1}%
-\contentsline {subsubsection}{\numberline {2.5.2}Datenübertragungsformate}{10}{subsubsection.2.5.2}%
-\contentsline {subsubsection}{\numberline {2.5.3}CRC-Check}{12}{subsubsection.2.5.3}%
-\contentsline {subsubsection}{\numberline {2.5.4}Probleme}{13}{subsubsection.2.5.4}%
-\contentsline {subsubsection}{\numberline {2.5.5}Ausblick}{13}{subsubsection.2.5.5}%
-\contentsline {subsection}{\numberline {2.6}Reglerentwicklung}{13}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}PWM-Signale}{14}{subsection.2.7}%
-\contentsline {subsubsection}{\numberline {2.7.1}Allgemeines}{14}{subsubsection.2.7.1}%
-\contentsline {subsubsection}{\numberline {2.7.2}Probleme und Ausblick}{14}{subsubsection.2.7.2}%
-\contentsline {subsubsection}{\numberline {2.7.3}Fazit}{15}{subsubsection.2.7.3}%
-\contentsline {subsection}{\numberline {2.8}Threading auf dem Raspberry}{16}{subsection.2.8}%
-\contentsline {subsection}{\numberline {2.9}UDP-Socket}{16}{subsection.2.9}%
-\contentsline {subsection}{\numberline {2.10}iOS-Applikation}{17}{subsection.2.10}%
-\contentsline {subsubsection}{\numberline {2.10.1}Allgemeines}{17}{subsubsection.2.10.1}%
-\contentsline {subsubsection}{\numberline {2.10.2}Views}{18}{subsubsection.2.10.2}%
-\contentsline {subsubsection}{\numberline {2.10.3}Implementierung}{18}{subsubsection.2.10.3}%
-\contentsline {subsection}{\numberline {2.11}Zusammenführung der einzelnen Komponenten}{18}{subsection.2.11}%
-\contentsline {section}{\numberline {3}Benutzerhandbuch}{20}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Starten des Prototyps}{20}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Flashen des Custom-Kernels und allgemeine Einrichtung}{20}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Bekannte Probleme}{22}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Fazit}{23}{section.4}%
-\contentsline {section}{Anhang}{I}{section*.17}%
+\contentsline {subsection}{\numberline {2.4}Einrichtung des Raspberry Pi}{9}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Allgemeines}{9}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Echtzeit Preempt-RT Kernel}{9}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Ausblick}{10}{subsubsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.5}UART Schnittstelle}{10}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Funktion}{10}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}Datenübertragungsformate}{11}{subsubsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.3}CRC-Check}{14}{subsubsection.2.5.3}%
+\contentsline {subsubsection}{\numberline {2.5.4}Probleme}{14}{subsubsection.2.5.4}%
+\contentsline {subsubsection}{\numberline {2.5.5}Ausblick}{14}{subsubsection.2.5.5}%
+\contentsline {subsection}{\numberline {2.6}Reglerentwicklung}{15}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}PWM-Signale}{15}{subsection.2.7}%
+\contentsline {subsubsection}{\numberline {2.7.1}Allgemeines}{15}{subsubsection.2.7.1}%
+\contentsline {subsubsection}{\numberline {2.7.2}Probleme und Ausblick}{16}{subsubsection.2.7.2}%
+\contentsline {subsubsection}{\numberline {2.7.3}Fazit}{17}{subsubsection.2.7.3}%
+\contentsline {subsection}{\numberline {2.8}Threading auf dem Raspberry}{17}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}UDP-Socket}{17}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}iOS-Applikation}{18}{subsection.2.10}%
+\contentsline {subsubsection}{\numberline {2.10.1}Allgemeines}{18}{subsubsection.2.10.1}%
+\contentsline {subsubsection}{\numberline {2.10.2}Views}{19}{subsubsection.2.10.2}%
+\contentsline {subsubsection}{\numberline {2.10.3}Implementierung}{19}{subsubsection.2.10.3}%
+\contentsline {subsection}{\numberline {2.11}Zusammenführung der einzelnen Komponenten}{20}{subsection.2.11}%
+\contentsline {section}{\numberline {3}Benutzerhandbuch}{21}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Starten des Prototyps}{21}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Flashen des Custom-Kernels und allgemeine Einrichtung}{21}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Bekannte Probleme}{23}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Fazit}{24}{section.4}%
+\contentsline {section}{Anhang}{I}{section*.18}%
 \vspace {-0.5em}
 \contentsline {section}{\numberline {A}Abkürzungsverzeichnis}{I}{appendix.A}%
 \contentsline {section}{\numberline {B}Abbildungsverzeichnis}{II}{appendix.B}%
-\contentsline {section}{\nonumberline Abbildungsverzeichnis}{II}{section*.18}%
-\contentsline {section}{\nonumberline Tabellenverzeichnis}{III}{section*.19}%
-\contentsline {section}{\nonumberline Literaturverzeichnis}{IV}{section*.20}%
+\contentsline {section}{\nonumberline Abbildungsverzeichnis}{II}{section*.19}%
+\contentsline {section}{\nonumberline Tabellenverzeichnis}{III}{section*.20}%
+\contentsline {section}{\nonumberline Literaturverzeichnis}{IV}{section*.21}%
 \contentsline {section}{\numberline {C}Bestellliste}{V}{appendix.C}%
