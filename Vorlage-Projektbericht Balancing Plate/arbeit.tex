@@ -555,7 +555,12 @@ zwischen den Geräten zulässt. Im Gegensatz zu anderen Protokollen erfüllt UDP
 die aktuellsten Daten gesendet werden. 
 
 Zusätzlich zur iOS-Applikation können durch den UDP-Socket auch andere Geräte mit dem Raspberry Pi kommunizieren. Die Funktionalität kann so
-beliebig erweitert werden. 
+beliebig erweitert werden. Während der Recherche zu sinnvollen Echtzeitübertragungen wurde unter anderem in Erwägung gezogen die Kommunikation
+über Bluetooth statt Wlan stattfinden zu lassen. Dies hätte zwar potentiell geringere Latenzen aber auch einen begrenzten Raum zur Steuerung gebracht.
+Dank der Kommunikation über das Netzwerk kann die Platte auch aus weiter Entfernung bedient werden ohne, dass merkliche Verzögerungen eintreten. 
+Eine weitere Überlegung stellten andere Protokolle wie Beispielsweise TCP dar. Diese waren für das Projekt aufgrund eines potentiellen Kommunikationsstaus 
+ungeeignet, da die App dann auf eine Bestätigung des Raspberry Pi warten müsste. Somit wäre nicht gewährleistet, dass stets die aktuellsten Daten
+empfangen werden. Ein eigener Hotspot wurde aus Gründen der Bürokratie als Idee verworfen, da die Hochschule diesen erst speziell genehmigen müsste.
 
 % ----------------------------------------------------------------------------------
 % Kapitel 2.10: IOS-Appliaktion
@@ -568,6 +573,17 @@ Eine der Anforderungen an das Projekt war, dass die Platte manuell steuerbar sei
 iOS-Geräte entwickelt. Ziel der Applikation ist es die Neigung des mobilen Endgerätes an den Raspberry Pi zu übertragen. 
 Dieser übersetzt die übermittelten Werte in Neigungswinkel mit deren Hilfe der XMC die Motoren ansteuert welche die Platte 
 in eine Lage versetzen welche die Lage des iOS-Gerätes spiegelt.
+
+Um eine möglichst einfache und Geräteübergreifende Installation auf verschiedenen Geräten zu gewährleisten wurde erwogen die App 
+als Webapp zu implementieren. Dieser Ansatz wurde aufgrund von in iOS 13 von Apple eingeführten Policies verworfen. Die Abfrage zur Genehmigung
+des Auslesens des Gyroskops muss für verschiedene iOS Versionen aktuell unterschiedlich implementiert werden. Das hätte einen für das Projekt
+unverhältnismäßigen Mehraufwand bedeutet der den zeitlichen Rahmen des Projekts gesprengt hätte. 
+
+Ein weiteres Gegenargument stellte zudem die durch den Browser festgelegte Orientierung der Seite dar. 
+Wird das Gerät gedreht während die Orientierung des Gerätes entsperrt ist dreht sich dieser entsprechend mit. 
+Dies würde bei jedem Kippen des Gerätes den Browser drehen was wiederum die zu übertragenden X- und Y-Winkel des Gerätes drehen würde. 
+Durch eine native Implementierung als iOS-App kann gewährleistet werden, dass die Orientierung der App immer festgesetzt ist und die Daten 
+unabhängig von Systemweit aktivierter Orientierungssperre gleich bleibt.
 
 \subsubsection{Views}
 Die Applikation verfügt im wesentlichen über zwei Views. Der erste View der nach dem Splash-Screen gestartet wird ist der QR-Scanner. 
@@ -588,6 +604,7 @@ Ohne diese Ergänzende Anpassung reichten bereits minimale Bewegungen um die Pla
 
 Die aufbereiteten Winkel werden zur Übertragung an die Sende-Funktion als String in dem Format 
 "`X\_ACHSEN\_WINKEL;Y\_ACHSEN\_WINKEL;"\ übergeben welche diesen über den festgelegten Port an die gescannte IP überträgt.
+Auf dem Raspberry Pi kann anhand der Semikola zwischen den einzelnen Winkeln einer Nachricht unterschieden werden. 
 Das Aktualisierungsintervall des Gyroscops wurde aufgrund guter Ergebnisse auf 60 Hz festgelegt. 
 
 % ----------------------------------------------------------------------------------
@@ -607,7 +624,17 @@ lediglich die selbstgeschriebenen Code-Files zusammengeführt hat.
 \subsection{Starten des Prototyps}
 %TODO ALLE!
 Schritt 1:
+Einloggen mit Benutzername "`pi"\ und Passwort "`raspberry"\
 \newline
+Schritt 2: Aufrufen des QR-Codes mit Hilfe des folgenden Kommandos: 
+\newline(die inneren \"\, gehören zum Befehl)
+\newline\newline
+"`raspberry"\ "`hostname -I | awk '{print \$1}' | qr \&\& hostname -I | awk '{print \$1}' | xargs echo "`BalancingPlate IP: \$1"\,"\,
+\newline\newline
+    (Ein QR Code sowie der Text "`BalancingPlate IP: $<$RaspberryPi-IP$>$"\,) sollte ausgegeben werden.)
+\newline
+Schritt 3:
+%TODO Korbinian
 
 \subsection{Flashen des Custom-Kernels und allgemeine Einrichtung}
 %TODO Patrick Lesch
@@ -678,11 +705,6 @@ Alle Kommandos sind im folgenden zwischen doppelten Anführungsstrichen: "`comma
 7.3 QR installieren: "`pip install qrcode[pil]"\,
     (https://github.com/lincolnloop/python-qrcode)\newline
 \newline
-8. Befehle zur Bedienung:\newline
-8.1 Befehl um QR der eigenen IP zu generieren (die inneren \"\, gehören zum Befehl):
-    "`hostname -I | awk '{print \$1}' | qr \&\& hostname -I | awk '{print \$1}' | xargs echo "`BalancingPlate IP: \$1"\,"\,
-    (Ein QR Code sowie der Text "`BalancingPlate IP: $<$RaspberryPi-IP$>$"\,) sollte ausgegeben werden.)
-\newline
 %TODO Korbinian!
 
 
@@ -698,6 +720,11 @@ Alle Kommandos sind im folgenden zwischen doppelten Anführungsstrichen: "`comma
 % Kapitel 4: Fazit/Zusammenfassung
 % ----------------------------------------------------------------------------------
 \section{Fazit}
+Das Projekt wurde fristgemäß mit allen daran festgelegten Anforderungen abgeschlossen. Es befindet sich in einem 
+funktionsfähigen und erweiterbarem Zustand. Dennoch besteht weiteres Verbesserungspotential. So könnte etwa die 
+derzeit noch langsame und etwas ruckelige Regelung optimiert werden. Des weiteren könnten weitere Funktionen eingebaut werden. 
+Wünschenswert wäre hier etwa die graphische Ausgabe der aktuellen Kugelposition in der iOS-App oder das festlegen eines Punktes auf
+dem iOS-Geräte Display welches die Kugel analog auf die entsprechende Position der Platte bringt.
 
 % ----------------------------------------------------------------------------------
 % Kleine Einführung in LaTeX-Elemente

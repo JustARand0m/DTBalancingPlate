@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.8)  8 FEB 2020 23:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.8)  9 FEB 2020 13:54
 entering extended mode
 **./arbeit.tex
 (arbeit.tex
@@ -999,97 +999,102 @@ Overfull \hbox (7.58887pt too wide) in paragraph at lines 549--556
 ver-ein-fa-chen und St[]orquellen
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 564--565
-
- []
-
-[16] [17] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 609--611
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 569--570
 
  []
 
+[17] [18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 626--638
 
-Overfull \hbox (34.95558pt too wide) in paragraph at lines 616--619
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 626--638
+
+ []
+
+
+Overfull \hbox (34.95558pt too wide) in paragraph at lines 643--646
 []\OT1/cmr/m/n/12 1. Raspbi-an Bus-ter Li-te her-un-ter-la-den. htt-ps://www.ra
 spberrypi.org/downloads/raspbian/ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 616--619
+Underfull \hbox (badness 10000) in paragraph at lines 643--646
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 620--623
+Underfull \hbox (badness 10000) in paragraph at lines 647--650
 
  []
 
 
-Overfull \hbox (5.77542pt too wide) in paragraph at lines 624--645
+Overfull \hbox (5.77542pt too wide) in paragraph at lines 651--672
 \OT1/cmr/m/n/12 3.1 Lo-gin: []pi" | Pass-wort: []raspber-ry" (Ach-tung! Eng-li-
 sches Lay-out stan-dardm[]aig
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 624--645
+Underfull \hbox (badness 10000) in paragraph at lines 651--672
 
  []
 
 
-Overfull \hbox (34.52191pt too wide) in paragraph at lines 624--645
+Overfull \hbox (34.52191pt too wide) in paragraph at lines 651--672
 \OT1/cmr/m/n/12 https://lemariva.com/blog/2019/09/raspberry-pi-4b-preempt-rt-ke
 rnel-419y-performance-
  []
 
 
-Overfull \hbox (42.4951pt too wide) in paragraph at lines 624--645
+Overfull \hbox (42.4951pt too wide) in paragraph at lines 651--672
 []\OT1/cmr/m/n/12 ker-nel[]4[]19[]59-rt23-v7l+" neh-men (sie-he Tutorial-Link)]
  https://github.com/lemariva/RT-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 624--645
+Underfull \hbox (badness 10000) in paragraph at lines 651--672
 
  []
 
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 657--664
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 657--664
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 684--691
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--687
+Underfull \hbox (badness 10000) in paragraph at lines 684--691
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--687
+Underfull \hbox (badness 10000) in paragraph at lines 692--709
 
  []
 
 
-Overfull \hbox (6.21227pt too wide) in paragraph at lines 665--687
+Underfull \hbox (badness 10000) in paragraph at lines 692--709
+
+ []
+
+
+Overfull \hbox (6.21227pt too wide) in paragraph at lines 692--709
 \OT1/cmr/m/n/12 7.3 QR in-stal-lie-ren: []pip in-stall qr-co-de[pil]" (https://
 github.com/lincolnloop/python-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--687
+Underfull \hbox (badness 10000) in paragraph at lines 692--709
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--687
+Underfull \hbox (badness 10000) in paragraph at lines 692--709
 
  []
 
-[20] [21] [22]
+[21] [22] [23]
 
 Class scrartcl Warning: You are using `\begin{appendix}...\end{appendix}'.
 (scrartcl)              You should note, that `\appendix' is a mostly globally
@@ -1102,13 +1107,13 @@ Class scrartcl Warning: You are using `\begin{appendix}...\end{appendix}'.
 (scrartcl)              inconsistent.
 (scrartcl)              Because of this, you should remove `\end{appendix}'
 (scrartcl)              and replace `\begin{appendix}' by command
-(scrartcl)              `\appendix' on input line 835.
+(scrartcl)              `\appendix' on input line 862.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.I}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.863 
+l.890 
        [1] (arbeit.lof
 
 LaTeX Warning: Citation `mikroe' on page II undefined on input line 9.
@@ -1130,7 +1135,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.II}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.871 
+l.898 
        [2] (arbeit.lot)
 \tf@lot=\write6
 \openout6 = `arbeit.lot'.
@@ -1141,22 +1146,22 @@ LaTeX Warning: Empty `thebibliography' environment or \BreakBibliography
                before end of `thebibliography' environment on input line 3.
 
 ) [4]
-<pics/Bestelliste.png, id=283, 599.99156pt x 462.97969pt>
+<pics/Bestelliste.png, id=287, 599.99156pt x 462.97969pt>
 File: pics/Bestelliste.png Graphic file (type png)
 <use pics/Bestelliste.png>
-Package pdftex.def Info: pics/Bestelliste.png  used on input line 915.
+Package pdftex.def Info: pics/Bestelliste.png  used on input line 942.
 (pdftex.def)             Requested size: 479.9939pt x 370.38425pt.
 
-Overfull \hbox (53.20255pt too wide) in paragraph at lines 915--916
+Overfull \hbox (53.20255pt too wide) in paragraph at lines 942--943
  [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 921.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 948.
 [5 <./pics/Bestelliste.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 921.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 948.
  (arbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 921.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 921.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 948.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 948.
 Package rerunfilecheck Info: File `arbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1165,10 +1170,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 15521 strings out of 481565
- 254565 string characters out of 2923945
+ 15523 strings out of 481565
+ 254588 string characters out of 2923945
  839388 words of memory out of 3000000
- 30363 multiletter control sequences out of 15000+200000
+ 30364 multiletter control sequences out of 15000+200000
  540067 words of font info for 52 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  70i,14n,120p,10123b,626s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1180,9 +1185,9 @@ iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmti12.pfb>
-Output written on arbeit.pdf (30 pages, 551431 bytes).
+Output written on arbeit.pdf (31 pages, 555278 bytes).
 PDF statistics:
- 454 PDF objects out of 1000 (max. 8388607)
- 84 named destinations out of 1000 (max. 500000)
+ 460 PDF objects out of 1000 (max. 8388607)
+ 85 named destinations out of 1000 (max. 500000)
  383 words of extra memory for PDF output out of 10000 (max. 10000000)
 

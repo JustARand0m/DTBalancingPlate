@@ -21,16 +21,16 @@
 \contentsline {subsubsection}{\numberline {2.7.3}Fazit}{15}{subsubsection.2.7.3}%
 \contentsline {subsection}{\numberline {2.8}Threading auf dem Raspberry}{16}{subsection.2.8}%
 \contentsline {subsection}{\numberline {2.9}UDP-Socket}{16}{subsection.2.9}%
-\contentsline {subsection}{\numberline {2.10}iOS-Applikation}{16}{subsection.2.10}%
+\contentsline {subsection}{\numberline {2.10}iOS-Applikation}{17}{subsection.2.10}%
 \contentsline {subsubsection}{\numberline {2.10.1}Allgemeines}{17}{subsubsection.2.10.1}%
-\contentsline {subsubsection}{\numberline {2.10.2}Views}{17}{subsubsection.2.10.2}%
-\contentsline {subsubsection}{\numberline {2.10.3}Implementierung}{17}{subsubsection.2.10.3}%
+\contentsline {subsubsection}{\numberline {2.10.2}Views}{18}{subsubsection.2.10.2}%
+\contentsline {subsubsection}{\numberline {2.10.3}Implementierung}{18}{subsubsection.2.10.3}%
 \contentsline {subsection}{\numberline {2.11}Zusammenführung der einzelnen Komponenten}{18}{subsection.2.11}%
-\contentsline {section}{\numberline {3}Benutzerhandbuch}{19}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Starten des Prototyps}{19}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Flashen des Custom-Kernels und allgemeine Einrichtung}{19}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Bekannte Probleme}{21}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Fazit}{22}{section.4}%
+\contentsline {section}{\numberline {3}Benutzerhandbuch}{20}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Starten des Prototyps}{20}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Flashen des Custom-Kernels und allgemeine Einrichtung}{20}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Bekannte Probleme}{22}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Fazit}{23}{section.4}%
 \contentsline {section}{Anhang}{I}{section*.17}%
 \vspace {-0.5em}
 \contentsline {section}{\numberline {A}Abkürzungsverzeichnis}{I}{appendix.A}%
