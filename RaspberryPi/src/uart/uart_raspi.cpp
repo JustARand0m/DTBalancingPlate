@@ -38,42 +38,77 @@ uartConnection::uartConnection(std::string device): BUFFERSIZE(1024) {
 	}
 }
 
+/**
+ * This function writes a string into the uart buffer to send the string.
+ * If there would still be content from before the old content gets deleted.
+ *
+ * @param input the string that gets sent.
+ */
 void uartConnection::writeData(std::string input) {
 	// clears messages that couldnt be send or are still in the buffer
+	lock.lock();
 	tcflush(fd, TCOFLUSH);
 	// write new data
 	write (fd, input.c_str(), input.size() + 1);
+	lock.unlock();
 }
 
 /**
- * This function starts to listen for new messages.
- * It can be canceld by changing isListening to false. 
+ * This function is a wrapper function around the listingThread function.
+ * It will create a Thread that listens for input over UART and can be terminated
+ * by setting the isListening flag to flase.
  */
 void uartConnection::startListening() {
+	std::thread t(listeningThread, std::ref(fd), std::ref(isListening), BUFFERSIZE, std::ref(lock));
+	t.detach();
+}
+
+/**
+ * This static function is the function that is executed in an extra thread when calling
+ * startListening(). It has a loop that looks for input over the uart connection.
+ *
+ * @param fdescr is the file descriptor passed as reference, to be read from
+ * @param isListen is a bool flag that can cancel the loop.
+ * @param BUFFSZ is the size of the buffer in which is written.
+ */
+void uartConnection::listeningThread(int &fdescr, bool &isListen, const int BUFFSZ, std::mutex &_lock) {
 	// start polling for input (wait for event on file descriptor)
 	pollfd srcPoll;
-	srcPoll.fd = fd;
+	srcPoll.fd = fdescr;
 	srcPoll.events = POLLIN;
 	srcPoll.revents = 0;
-	isListening = true;
+	isListen = true;
 
 	// Main loop that is polling for new messages
-	char buf[BUFFERSIZE];
+	char buf[BUFFSZ];
 	int res = 0;
-	while(isListening) {
+	while(isListen) {
 		int check = poll(&srcPoll, 1, -1);
-		// @todo maybe sleep here, cause data is trasmitted bitwise, wait until all data arrives?
+		sleep(1);
+		if(isListen == false) {
+			break;
+		}
 		if(check != 1) {
 			std::cout << "package lost" << std::endl;
 		}
-		res = read(fd, buf, BUFFERSIZE);
+		// @todo maybe sleep here, cause data is trasmitted bitwise, wait until all data arrives?
+		
+		_lock.lock();
+		res = read(fdescr, buf, BUFFSZ);
+		_lock.unlock();
 
+		std::cout << buf << std::endl;
 		// @todo use buf for something
 	}
 }
 
+/**
+ * This function stops the listingThread function.
+ */
 void uartConnection::stopListening() {
 	isListening = false;
+	// stop for poll to give up control
+	write(fd, "stop", 5);
 }
 
 /**

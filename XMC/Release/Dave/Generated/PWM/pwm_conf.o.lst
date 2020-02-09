@@ -1,0 +1,226 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "pwm_conf.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .global PWM_MOTOR_2
+  20              	 .global PWM_MOTOR_2_gpio_out_config
+  21              	 .global PWM_MOTOR_2_compare_config
+  22              	 .global PWM_MOTOR_1
+  23              	 .global PWM_MOTOR_1_gpio_out_config
+  24              	 .global PWM_MOTOR_1_compare_config
+  25              	 .global PWM_MOTOR_0
+  26              	 .global PWM_MOTOR_0_gpio_out_config
+  27              	 .global PWM_MOTOR_0_compare_config
+  28              	 .section .data.PWM_MOTOR_1,"aw",%progbits
+  29              	 .align 2
+  32              	PWM_MOTOR_1:
+  33 0000 00000000 	 .word GLOBAL_CCU4_0
+  34 0004 00400140 	 .word 1073823744
+  35 0008 00440140 	 .word 1073824768
+  36 000c 00000000 	 .word PWM_MOTOR_1_compare_config
+  37 0010 00830248 	 .word 1208124160
+  38 0014 00000000 	 .word PWM_MOTOR_1_gpio_out_config
+  39 0018 3E490000 	 .word 18750
+  40 001c 7B920000 	 .word 37499
+  41 0020 88130000 	 .word 5000
+  42 0024 00500000 	 .word 20480
+  43 0028 00       	 .byte 0
+  44 0029 02       	 .byte 2
+  45 002a 00       	 .byte 0
+  46 002b 00       	 .byte 0
+  47 002c 03       	 .byte 3
+  48 002d 02       	 .byte 2
+  49 002e 03       	 .byte 3
+  50 002f 00       	 .byte 0
+  51 0030 00       	 .byte 0
+  52 0031 00       	 .byte 0
+  53 0032 0000     	 .space 2
+  54              	 .section .data.PWM_MOTOR_2,"aw",%progbits
+  55              	 .align 2
+  58              	PWM_MOTOR_2:
+  59 0000 00000000 	 .word GLOBAL_CCU4_0
+  60 0004 00400140 	 .word 1073823744
+  61 0008 00430140 	 .word 1073824512
+  62 000c 00000000 	 .word PWM_MOTOR_2_compare_config
+  63 0010 00830248 	 .word 1208124160
+  64 0014 00000000 	 .word PWM_MOTOR_2_gpio_out_config
+  65 0018 3E490000 	 .word 18750
+  66 001c 7B920000 	 .word 37499
+  67 0020 88130000 	 .word 5000
+  68 0024 00050000 	 .word 1280
+  69 0028 00       	 .byte 0
+  70 0029 02       	 .byte 2
+  71 002a 00       	 .byte 0
+  72 002b 00       	 .byte 0
+  73 002c 04       	 .byte 4
+  74 002d 02       	 .byte 2
+  75 002e 02       	 .byte 2
+  76 002f 00       	 .byte 0
+  77 0030 00       	 .byte 0
+  78 0031 00       	 .byte 0
+  79 0032 0000     	 .space 2
+  80              	 .section .rodata.PWM_MOTOR_1_gpio_out_config,"a",%progbits
+  81              	 .align 2
+  84              	PWM_MOTOR_1_gpio_out_config:
+  85 0000 98       	 .byte -104
+  86 0001 000000   	 .space 3
+  87 0004 00000100 	 .word 65536
+  88 0008 04       	 .byte 4
+  89 0009 000000   	 .space 3
+  90              	 .section .rodata.PWM_MOTOR_2_compare_config,"a",%progbits
+  91              	 .align 2
+  94              	PWM_MOTOR_2_compare_config:
+  95 0000 00       	 .byte 0
+  96 0001 00       	 .byte 0
+  97 0002 00       	 .byte 0
+  98 0003 00       	 .byte 0
+  99 0004 06       	 .byte 6
+ 100 0005 00       	 .byte 0
+ 101 0006 0000     	 .space 2
+ 102              	 .section .rodata.PWM_MOTOR_0_gpio_out_config,"a",%progbits
+ 103              	 .align 2
+ 106              	PWM_MOTOR_0_gpio_out_config:
+ 107 0000 98       	 .byte -104
+ 108 0001 000000   	 .space 3
+ 109 0004 00000100 	 .word 65536
+ 110 0008 04       	 .byte 4
+ 111 0009 000000   	 .space 3
+ 112              	 .section .rodata.PWM_MOTOR_0_compare_config,"a",%progbits
+ 113              	 .align 2
+ 116              	PWM_MOTOR_0_compare_config:
+ 117 0000 00       	 .byte 0
+ 118 0001 00       	 .byte 0
+ 119 0002 00       	 .byte 0
+ 120 0003 00       	 .byte 0
+ 121 0004 06       	 .byte 6
+ 122 0005 00       	 .byte 0
+ 123 0006 0000     	 .space 2
+ 124              	 .section .rodata.PWM_MOTOR_2_gpio_out_config,"a",%progbits
+ 125              	 .align 2
+ 128              	PWM_MOTOR_2_gpio_out_config:
+ 129 0000 98       	 .byte -104
+ 130 0001 000000   	 .space 3
+ 131 0004 00000100 	 .word 65536
+ 132 0008 04       	 .byte 4
+ 133 0009 000000   	 .space 3
+ 134              	 .section .rodata.PWM_MOTOR_1_compare_config,"a",%progbits
+ 135              	 .align 2
+ 138              	PWM_MOTOR_1_compare_config:
+ 139 0000 00       	 .byte 0
+ 140 0001 00       	 .byte 0
+ 141 0002 00       	 .byte 0
+ 142 0003 00       	 .byte 0
+ 143 0004 06       	 .byte 6
+ 144 0005 00       	 .byte 0
+ 145 0006 0000     	 .space 2
+ 146              	 .section .data.PWM_MOTOR_0,"aw",%progbits
+ 147              	 .align 2
+ 150              	PWM_MOTOR_0:
+ 151 0000 00000000 	 .word GLOBAL_CCU4_0
+ 152 0004 00400140 	 .word 1073823744
+ 153 0008 00410140 	 .word 1073824000
+ 154 000c 00000000 	 .word PWM_MOTOR_0_compare_config
+ 155 0010 00830248 	 .word 1208124160
+ 156 0014 00000000 	 .word PWM_MOTOR_0_gpio_out_config
+ 157 0018 3E490000 	 .word 18750
+ 158 001c 7B920000 	 .word 37499
+ 159 0020 88130000 	 .word 5000
+ 160 0024 05000000 	 .word 5
+ 161 0028 00       	 .byte 0
+ 162 0029 02       	 .byte 2
+ 163 002a 00       	 .byte 0
+ 164 002b 00       	 .byte 0
+ 165 002c 00       	 .byte 0
+ 166 002d 02       	 .byte 2
+ 167 002e 00       	 .byte 0
+ 168 002f 00       	 .byte 0
+ 169 0030 00       	 .byte 0
+ 170 0031 00       	 .byte 0
+ 171 0032 0000     	 .space 2
+ 172              	 .text
+ 173              	.Letext0:
+ 174              	 .file 1 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 175              	 .file 2 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 176              	 .file 3 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+ 177              	 .file 4 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_gpio.h"
+ 178              	 .file 5 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 179              	 .file 6 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_ccu4.h"
+ 180              	 .file 7 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_scu.h"
+ 181              	 .file 8 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_CCU4/global_ccu4.h"
+ 182              	 .file 9 "../Dave/Generated/PWM/pwm.h"
+ 183              	 .file 10 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+ 184              	 .file 11 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 185              	 .file 12 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_CCU4/global_ccu4_extern.h"
+ 186              	 .file 13 "../Dave/Generated/PWM/pwm_conf.c"
+DEFINED SYMBOLS
+                            *ABS*:00000000 pwm_conf.c
+    {standard input}:58     .data.PWM_MOTOR_2:00000000 PWM_MOTOR_2
+    {standard input}:128    .rodata.PWM_MOTOR_2_gpio_out_config:00000000 PWM_MOTOR_2_gpio_out_config
+    {standard input}:94     .rodata.PWM_MOTOR_2_compare_config:00000000 PWM_MOTOR_2_compare_config
+    {standard input}:32     .data.PWM_MOTOR_1:00000000 PWM_MOTOR_1
+    {standard input}:84     .rodata.PWM_MOTOR_1_gpio_out_config:00000000 PWM_MOTOR_1_gpio_out_config
+    {standard input}:138    .rodata.PWM_MOTOR_1_compare_config:00000000 PWM_MOTOR_1_compare_config
+    {standard input}:150    .data.PWM_MOTOR_0:00000000 PWM_MOTOR_0
+    {standard input}:106    .rodata.PWM_MOTOR_0_gpio_out_config:00000000 PWM_MOTOR_0_gpio_out_config
+    {standard input}:116    .rodata.PWM_MOTOR_0_compare_config:00000000 PWM_MOTOR_0_compare_config
+    {standard input}:29     .data.PWM_MOTOR_1:00000000 $d
+    {standard input}:55     .data.PWM_MOTOR_2:00000000 $d
+    {standard input}:81     .rodata.PWM_MOTOR_1_gpio_out_config:00000000 $d
+    {standard input}:91     .rodata.PWM_MOTOR_2_compare_config:00000000 $d
+    {standard input}:103    .rodata.PWM_MOTOR_0_gpio_out_config:00000000 $d
+    {standard input}:113    .rodata.PWM_MOTOR_0_compare_config:00000000 $d
+    {standard input}:125    .rodata.PWM_MOTOR_2_gpio_out_config:00000000 $d
+    {standard input}:135    .rodata.PWM_MOTOR_1_compare_config:00000000 $d
+    {standard input}:147    .data.PWM_MOTOR_0:00000000 $d
+                           .group:00000000 wm4.0.ca5ae67a873a4952d630d8e4120b9e3e
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4.features.h.22.bee0aee4a3878f51861c775df98fa3ea
+                           .group:00000000 wm4._default_types.h.15.933e8edd27a65e0b69af4a865eb623d2
+                           .group:00000000 wm4._intsup.h.10.ca9f32a61b410c270a48d1161ca2c217
+                           .group:00000000 wm4.stdint.h.22.f4a337c398d8b6d821a97202448bc0d0
+                           .group:00000000 wm4.stdbool.h.29.1c9ee6859ce8145f7838a4f2549ccec2
+                           .group:00000000 wm4.newlib.h.8.fe7d912fc917043c98742c35eddd8cff
+                           .group:00000000 wm4.config.h.216.aad1ef7bee4fb69981cb38ce62f84d9c
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.cdefs.h.47.4e89a3f145accdcb1100c37260c088e6
+                           .group:00000000 wm4.string.h.15.dab3980bf35408a4c507182805e2de3a
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.xmc_device.h.65.5c0d35eb1a6853ff8300ab2ec1b944b0
+                           .group:00000000 wm4.XMC4500.h.55.9aa45b9b5790506b2dcb963e4e7adeaf
+                           .group:00000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.57f124f9262f3dbf77da6a6506ffb430
+                           .group:00000000 wm4.core_cm4.h.174.fcddd62df80231752fa39eb9b61dadfe
+                           .group:00000000 wm4.mpu_armv7.h.32.4049752bb5792d4e15357775e9506cfc
+                           .group:00000000 wm4.system_XMC4500.h.42.99124977c10ca8844a71949adbeabd70
+                           .group:00000000 wm4.XMC4500.h.208.b340195df97f067735c4c769ba59985a
+                           .group:00000000 wm4.xmc_device.h.1500.3eca65ed9ba7f90e09c1ffcb0b3f5724
+                           .group:00000000 wm4.xmc_common.h.98.806f17e888fd51d0e4be2ad115163551
+                           .group:00000000 wm4.xmc_gpio.h.97.fa6a2e1be6030a75d960293cc3bbbd6b
+                           .group:00000000 wm4.xmc4_gpio_map.h.77.d73d78de7f4c322ab8caf8e71725793e
+                           .group:00000000 wm4.xmc4_gpio.h.79.ce6c49508b5a7769c66e7e3c21dcdfe4
+                           .group:00000000 wm4.xmc4_ccu4_map.h.52.bc30e2611b29f8dfd82b8d766e443456
+                           .group:00000000 wm4.xmc4_scu.h.90.f49c0839764a6c1240876a5f2e586200
+                           .group:00000000 wm4.global_ccu4_conf.h.53.69a5e141699ccac04d959466f5418a86
+                           .group:00000000 wm4.pwm_conf.h.91.de1ad5462f924101b28d4a83f92c3daa
+
+UNDEFINED SYMBOLS
+GLOBAL_CCU4_0

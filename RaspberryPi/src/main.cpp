@@ -4,7 +4,12 @@
 
 int main() {
 	uartConnection uartCon("/dev/serial0");
-	uartCon.writeData("test");
+	uartCon.startListening();
+	while(true) {
+		sleep(10);
+		uartCon.writeData("12345678");
+		std::cout << "data written" << std::endl;
+	}
 
 	return 0;
 }

@@ -4,5 +4,9 @@ RaspberryPi/CMakeCache.txt
 RaspberryPi/CMakeFiles/
 RaspberryPi/cmake_install.cmake
 RaspberryPi/compile_commands.json  
-RaspberryPi/Makefile  
+RaspberryPi/Makefile
+
+XMC/Dave/Generated
+XMC/Debug
+XMC/Docs
 

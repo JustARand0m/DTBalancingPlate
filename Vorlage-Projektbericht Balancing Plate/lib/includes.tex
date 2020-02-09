@@ -1,0 +1,54 @@
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ifthen}
+\usepackage{xargs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage[right]{eurosym}
+\usepackage[printonlyused]{acronym}
+\usepackage{subfig}
+\usepackage{floatflt}
+\usepackage{float}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{colortbl}
+\usepackage{paralist}
+\usepackage{array}
+\usepackage{parskip}
+\usepackage[right]{eurosym}
+\usepackage[subfigure,titles]{tocloft}
+\usepackage[pdfpagelabels=true]{hyperref}
+
+\usepackage{listings}
+\lstset{basicstyle=\footnotesize, captionpos=b, breaklines=true, showstringspaces=false, tabsize=2, frame=lines, numbers=left, numberstyle=\tiny, xleftmargin=2em, framexleftmargin=2em}
+\makeatletter
+\def\l@lstlisting#1#2{\@dottedtocline{1}{0em}{1em}{\hspace{1,5em} Lst. #1}{#2}}
+\makeatother
+
+\geometry{a4paper, top=35mm, left=35mm, right=25mm, bottom=40mm, headsep=10mm, footskip=10mm}
+
+\definecolor{codered}{rgb}{0.6,0,0} % for strings
+\definecolor{codegreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{codepurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{codeblue}{rgb}{0.25,0.35,0.75} 
+\definecolor{codegray}{rgb}{0.6,0.6,0.6}
+ 
+\lstset{language=C,
+basicstyle=\ttfamily\footnotesize,
+keywordstyle=\color{codepurple}\bfseries,
+stringstyle=\color{codered},
+commentstyle=\color{codegreen}\itshape\bfseries,
+morecomment=[s][\color{codeblue}]{/**}{*/},
+numbers=left,
+numberstyle=\tiny\color{codegray},
+stepnumber=1,
+numbersep=10pt,
+tabsize=2,
+showspaces=false,
+showstringspaces=false}
+

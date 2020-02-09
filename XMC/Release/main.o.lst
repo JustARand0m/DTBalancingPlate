@@ -1,0 +1,1472 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "main.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.busy_waitMs,"ax",%progbits
+  20              	 .align 1
+  21              	 .global busy_waitMs
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	busy_waitMs:
+  26              	.LFB419:
+  27              	 .file 1 "../main.c"
+   1:../main.c     **** /*
+   2:../main.c     ****  * main.c
+   3:../main.c     ****  *
+   4:../main.c     ****  *  Created on: 2019 Nov 12 10:18:39
+   5:../main.c     ****  *  Author: brm47801
+   6:../main.c     ****  */
+   7:../main.c     **** 
+   8:../main.c     **** 
+   9:../main.c     **** 
+  10:../main.c     **** 
+  11:../main.c     **** #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaratio
+  12:../main.c     **** 
+  13:../main.c     **** /**
+  14:../main.c     **** 
+  15:../main.c     ****  * @brief main() - Application entry point
+  16:../main.c     ****  *
+  17:../main.c     ****  * <b>Details of function</b><br>
+  18:../main.c     ****  * This routine is the application entry point. It is invoked by the device startup code. It is res
+  19:../main.c     ****  * invoking the APP initialization dispatcher routine - DAVE_Init() and hosting the place-holder fo
+  20:../main.c     ****  * code.
+  21:../main.c     ****  */
+  22:../main.c     **** 
+  23:../main.c     **** void busy_waitMs(int ms)
+  24:../main.c     **** {
+  28              	 .loc 1 24 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32              	 
+  33              	.LVL0:
+  34              	.LBB8:
+  25:../main.c     **** 	int i;
+  26:../main.c     **** 
+  27:../main.c     **** 	for(int c = 0; c < ms; c++)
+  35              	 .loc 1 27 0
+  36 0000 0023     	 movs r3,#0
+  37              	.LVL1:
+  38              	.L2:
+  39              	 .loc 1 27 0 is_stmt 0 discriminator 1
+  40 0002 8342     	 cmp r3,r0
+  41 0004 0CDA     	 bge .L7
+  42 0006 42F21072 	 movw r2,#10000
+  43              	.L4:
+  44              	.LVL2:
+  28:../main.c     **** 	{
+  29:../main.c     **** 		i = 10000;
+  30:../main.c     **** 		while(--i)
+  45              	 .loc 1 30 0 is_stmt 1
+  46 000a 013A     	 subs r2,r2,#1
+  47              	.LVL3:
+  48 000c 06D0     	 beq .L8
+  49              	.LVL4:
+  31:../main.c     **** 		{
+  32:../main.c     **** 			__NOP();
+  50              	 .loc 1 32 0
+  51              	
+  52 000e 00BF     	 nop
+  53              	
+  33:../main.c     **** 			__NOP();
+  54              	 .loc 1 33 0
+  55              	
+  56 0010 00BF     	 nop
+  57              	
+  34:../main.c     **** 			__NOP();
+  58              	 .loc 1 34 0
+  59              	
+  60 0012 00BF     	 nop
+  61              	
+  35:../main.c     **** 			__NOP();
+  62              	 .loc 1 35 0
+  63              	
+  64 0014 00BF     	 nop
+  65              	
+  36:../main.c     **** 			__NOP();
+  66              	 .loc 1 36 0
+  67              	
+  68 0016 00BF     	 nop
+  69              	
+  37:../main.c     **** 			__NOP();
+  70              	 .loc 1 37 0
+  71              	
+  72 0018 00BF     	 nop
+  73              	
+  74              	 .thumb
+  75 001a F6E7     	 b .L4
+  76              	.LVL5:
+  77              	.L8:
+  27:../main.c     **** 	{
+  78              	 .loc 1 27 0 discriminator 2
+  79 001c 0133     	 adds r3,r3,#1
+  80              	.LVL6:
+  81 001e F0E7     	 b .L2
+  82              	.LVL7:
+  83              	.L7:
+  84              	.LBE8:
+  38:../main.c     **** 		}
+  39:../main.c     **** 	}
+  40:../main.c     **** }
+  85              	 .loc 1 40 0
+  86 0020 7047     	 bx lr
+  87              	 .cfi_endproc
+  88              	.LFE419:
+  90              	 .section .text.startup.main,"ax",%progbits
+  91              	 .align 1
+  92              	 .global main
+  93              	 .thumb
+  94              	 .thumb_func
+  96              	main:
+  97              	.LFB420:
+  41:../main.c     **** 
+  42:../main.c     **** #define BUFFERSIZE 1024
+  43:../main.c     **** 
+  44:../main.c     **** uint8_t read_data[BUFFERSIZE];
+  45:../main.c     **** uint8_t testdata[] = "testdata";
+  46:../main.c     **** uint32_t touchPanelResult;
+  47:../main.c     **** 
+  48:../main.c     **** int main(void)
+  49:../main.c     **** {
+  98              	 .loc 1 49 0
+  99              	 .cfi_startproc
+ 100              	 
+ 101              	 
+ 102 0000 07B5     	 push {r0,r1,r2,lr}
+ 103              	.LCFI0:
+ 104              	 .cfi_def_cfa_offset 16
+ 105              	 .cfi_offset 14,-4
+  50:../main.c     ****   DAVE_STATUS_t status;
+  51:../main.c     ****   uint8_t init_data[] = "start";
+ 106              	 .loc 1 51 0
+ 107 0002 124B     	 ldr r3,.L14
+ 108 0004 1868     	 ldr r0,[r3]
+ 109 0006 0090     	 str r0,[sp]
+ 110 0008 9B88     	 ldrh r3,[r3,#4]
+  52:../main.c     **** 
+  53:../main.c     ****   memset(read_data, 0, BUFFERSIZE);
+ 111              	 .loc 1 53 0
+ 112 000a 1148     	 ldr r0,.L14+4
+  51:../main.c     **** 
+ 113              	 .loc 1 51 0
+ 114 000c ADF80430 	 strh r3,[sp,#4]
+ 115              	 .loc 1 53 0
+ 116 0010 0021     	 movs r1,#0
+ 117 0012 4FF48062 	 mov r2,#1024
+ 118 0016 FFF7FEFF 	 bl memset
+ 119              	.LVL8:
+  54:../main.c     ****   status = DAVE_Init();           /* Initialization of DAVE APPs  */
+ 120              	 .loc 1 54 0
+ 121 001a FFF7FEFF 	 bl DAVE_Init
+ 122              	.LVL9:
+  55:../main.c     **** 
+  56:../main.c     ****   if(status != DAVE_STATUS_SUCCESS)
+ 123              	 .loc 1 56 0
+ 124 001e 00B1     	 cbz r0,.L10
+ 125              	.L13:
+  57:../main.c     ****   {
+  58:../main.c     ****     /* Placeholder for error handler code. The while loop below can be replaced with an user error 
+  59:../main.c     ****     XMC_DEBUG("DAVE APPs initialization failed\n");
+  60:../main.c     **** 
+  61:../main.c     ****     while(1U)
+  62:../main.c     ****     {
+  63:../main.c     **** 
+  64:../main.c     ****     }
+ 126              	 .loc 1 64 0 discriminator 1
+ 127 0020 FEE7     	 b .L13
+ 128              	.L10:
+  65:../main.c     ****   }
+  66:../main.c     **** 
+  67:../main.c     ****   /* Placeholder for user application code. The while loop below can be replaced with user applicat
+  68:../main.c     ****   ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
+ 129              	 .loc 1 68 0
+ 130 0022 0C48     	 ldr r0,.L14+8
+ 131              	.LVL10:
+ 132 0024 FFF7FEFF 	 bl ADC_MEASUREMENT_StartConversion
+ 133              	.LVL11:
+  69:../main.c     **** 
+  70:../main.c     ****   // Minimal position 450  ^ 4,5  duty ^ 0,9ms
+  71:../main.c     ****   // Neutral position 750  ^ 7,5  duty ^ 1,5ms
+  72:../main.c     ****   // Maximal position 1050 ^ 10,5 duty ^ 2,1ms
+  73:../main.c     **** 
+  74:../main.c     ****   UART_Transmit(&UART_0, init_data, sizeof(init_data));
+ 134              	 .loc 1 74 0
+ 135 0028 0B48     	 ldr r0,.L14+12
+ 136 002a 6946     	 mov r1,sp
+ 137 002c 0622     	 movs r2,#6
+ 138 002e FFF7FEFF 	 bl UART_Transmit
+ 139              	.LVL12:
+ 140              	.L12:
+  75:../main.c     **** 
+  76:../main.c     ****   while(1U)
+  77:../main.c     ****   {
+  78:../main.c     **** 	  /*
+  79:../main.c     **** 	  for(int i = 450; i <= 1050; i += 10)
+  80:../main.c     **** 	  {
+  81:../main.c     **** 		  PWM_SetDutyCycle(&PWM_MOTOR_0, i);
+  82:../main.c     **** 		  busy_waitMs(20);
+  83:../main.c     **** 	  }
+  84:../main.c     **** 	  for(int i = 1049; i > 450; i -= 10)
+  85:../main.c     **** 	  {
+  86:../main.c     **** 		  PWM_SetDutyCycle(&PWM_MOTOR_0, i);
+  87:../main.c     **** 		  busy_waitMs(20);
+  88:../main.c     **** 	  }
+  89:../main.c     **** 		*/
+  90:../main.c     **** 	  busy_waitMs(1000);
+ 141              	 .loc 1 90 0 discriminator 1
+ 142 0032 4FF47A70 	 mov r0,#1000
+ 143 0036 FFF7FEFF 	 bl busy_waitMs
+ 144              	.LVL13:
+  91:../main.c     **** 	  ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
+ 145              	 .loc 1 91 0 discriminator 1
+ 146 003a 0648     	 ldr r0,.L14+8
+ 147 003c FFF7FEFF 	 bl ADC_MEASUREMENT_StartConversion
+ 148              	.LVL14:
+  92:../main.c     **** 	  busy_waitMs(1000);
+ 149              	 .loc 1 92 0 discriminator 1
+ 150 0040 4FF47A70 	 mov r0,#1000
+ 151 0044 FFF7FEFF 	 bl busy_waitMs
+ 152              	.LVL15:
+  93:../main.c     **** 	  /*UART_Receive(&UART_0, read_data, BUFFERSIZE);
+  94:../main.c     **** 	  if(read_data[0] != '\0') {
+  95:../main.c     **** 		  busy_waitMs(5000);
+  96:../main.c     **** 		  UART_Transmit(&UART_0, read_data, BUFFERSIZE);
+  97:../main.c     **** 		  memset(read_data, 0, BUFFERSIZE);
+  98:../main.c     **** 	  }*/
+  99:../main.c     ****   }
+ 153              	 .loc 1 99 0 discriminator 1
+ 154 0048 F3E7     	 b .L12
+ 155              	.L15:
+ 156 004a 00BF     	 .align 2
+ 157              	.L14:
+ 158 004c 00000000 	 .word .LC0
+ 159 0050 00000000 	 .word read_data
+ 160 0054 00000000 	 .word ADC_MEASUREMENT_0
+ 161 0058 00000000 	 .word UART_0
+ 162              	 .cfi_endproc
+ 163              	.LFE420:
+ 165              	 .section .text.VADC0_C0_2_IRQHandler,"ax",%progbits
+ 166              	 .align 1
+ 167              	 .global VADC0_C0_2_IRQHandler
+ 168              	 .thumb
+ 169              	 .thumb_func
+ 171              	VADC0_C0_2_IRQHandler:
+ 172              	.LFB421:
+ 100:../main.c     **** }
+ 101:../main.c     **** 
+ 102:../main.c     **** /**
+ 103:../main.c     ****  * This interrupt routine gets executed when the ADC returns with an result after getting triggered
+ 104:../main.c     ****  * After receiving the value of the x axis, the ADC needs be re-triggered to swap 2 pins to access 
+ 105:../main.c     ****  * This routine sends the x and y coordinates via UART.
+ 106:../main.c     ****  *
+ 107:../main.c     ****  * The PIN mapping on the Panel:
+ 108:../main.c     ****  * 2.15 => PIN 1 (UR) DIGITAL_IO_1
+ 109:../main.c     ****  * VDD 3.3V => PIN 2 (LR)
+ 110:../main.c     ****  * GND => PIN 4 (UL)
+ 111:../main.c     ****  * 2.14 => PIN 5 (LL) DIGITAL_IO_0
+ 112:../main.c     ****  */
+ 113:../main.c     **** void Adc_Measurement_Handler(void)
+ 114:../main.c     **** {
+ 173              	 .loc 1 114 0
+ 174              	 .cfi_startproc
+ 175              	 
+ 176              	 
+ 177 0000 38B5     	 push {r3,r4,r5,lr}
+ 178              	.LCFI1:
+ 179              	 .cfi_def_cfa_offset 16
+ 180              	 .cfi_offset 3,-16
+ 181              	 .cfi_offset 4,-12
+ 182              	 .cfi_offset 5,-8
+ 183              	 .cfi_offset 14,-4
+ 115:../main.c     **** 	static uint16_t x, y;
+ 116:../main.c     **** 
+ 117:../main.c     **** 	/* Read out conversion results */
+ 118:../main.c     ****     uint16_t result_Channel_A = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A_handle);
+ 184              	 .loc 1 118 0
+ 185 0002 1948     	 ldr r0,.L18
+ 186 0004 FFF7FEFF 	 bl ADC_MEASUREMENT_GetResult
+ 187              	.LVL16:
+ 188              	.LBB29:
+ 189              	.LBB30:
+ 190              	 .file 2 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO/digital_io.h"
+   1:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /*
+   2:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+   3:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * @file digital_io.h
+   4:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * @date 2016-07-08
+   5:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+   6:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * NOTE:
+   7:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * This file is generated by DAVE. Any manual modification done to this file will be lost when the 
+   8:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+   9:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * @cond
+  10:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  11:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * DIGITAL_IO v4.0.16 - The DIGITAL_IO APP is used to configure a port pin as digital Input/Output.
+  12:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  13:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * Copyright (c) 2015-2016, Infineon Technologies AG
+  14:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * All rights reserved.
+  15:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  16:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  17:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * following conditions are met:
+  18:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  19:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   Redistributions of source code must retain the above copyright notice, this list of conditions
+  20:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   disclaimer.
+  21:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  22:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   Redistributions in binary form must reproduce the above copyright notice, this list of conditi
+  23:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   following disclaimer in the documentation and/or other materials provided with the distributio
+  24:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  25:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   Neither the name of the copyright holders nor the names of its contributors may be used to end
+  26:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   products derived from this software without specific prior written permission.
+  27:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  28:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  29:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  30:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  31:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  32:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  33:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  34:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  35:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  36:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  37:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * with Infineon Technologies AG (dave@infineon.com).
+  38:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  39:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  40:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * Change History
+  41:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * --------------
+  42:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  43:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2015-02-16
+  44:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - Initial version
+  45:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  46:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2015-04-22
+  47:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - XMC_ASSERT is added in static inline functions.<br>
+  48:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  49:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2015-06-20
+  50:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - Version check added for XMCLib dependency.<br>
+  51:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  52:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2015-12-22
+  53:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - Added hardware controlled IO feature.
+  54:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2016-07-08:
+  55:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - Fixed incorrect case for an included header.<br>
+  56:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  57:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * @endcond
+  58:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  59:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  */
+  60:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  61:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**************************************************************************************************
+  62:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * HEADER FILES
+  63:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  64:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  65:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** #ifndef DIGITAL_IO_H
+  66:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** #define DIGITAL_IO_H
+  67:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  68:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** #include <xmc_gpio.h>
+  69:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** #include <DAVE_Common.h>
+  70:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** #include "digital_io_conf.h"
+  71:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  72:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**************************************************************************************************
+  73:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * MACROS
+  74:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  75:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** #if (!((XMC_LIB_MAJOR_VERSION == 2U) && \
+  76:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****        (XMC_LIB_MINOR_VERSION >= 0U) && \
+  77:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****        (XMC_LIB_PATCH_VERSION >= 0U)))
+  78:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** #error "DIGITAL_IO requires XMC Peripheral Library v2.0.0 or higher"
+  79:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** #endif
+  80:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  81:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  /*************************************************************************************************
+  82:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * ENUMS
+  83:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  84:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  85:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+  86:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @ingroup DIGITAL_IO_enumerations
+  87:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @{
+  88:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+  89:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  90:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+  91:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Initialization status of DIGITAL_IO APP.
+  92:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+  93:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** typedef enum DIGITAL_IO_STATUS
+  94:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+  95:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   DIGITAL_IO_STATUS_OK = 0U,/**< 0=Status OK */
+  96:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   DIGITAL_IO_STATUS_FAILURE = 1U/**< 1=Status Failed */
+  97:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** } DIGITAL_IO_STATUS_t;
+  98:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  99:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 100:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @}
+ 101:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 102:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 103:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**************************************************************************************************
+ 104:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * DATA STRUCTURES
+ 105:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+ 106:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 107:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @ingroup DIGITAL_IO_datastructures
+ 108:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @{
+ 109:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 110:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 111:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 112:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Initialization data structure of DIGITAL_IO APP
+ 113:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 114:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** typedef struct DIGITAL_IO
+ 115:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+ 116:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_GPIO_PORT_t *const gpio_port;             /**< port number */
+ 117:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   const XMC_GPIO_CONFIG_t gpio_config;          /**< mode, initial output level and pad driver stre
+ 118:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   const uint8_t gpio_pin;                       /**< pin number */
+ 119:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   const XMC_GPIO_HWCTRL_t hwctrl;               /**< Hardware port control */
+ 120:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** } DIGITAL_IO_t;
+ 121:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 122:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 123:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 124:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @}
+ 125:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 126:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 127:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 128:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**************************************************************************************************
+ 129:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  * API Prototypes
+ 130:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+ 131:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 132:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 133:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** #ifdef __cplusplus
+ 134:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** extern "C" {
+ 135:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** #endif
+ 136:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 137:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 138:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @ingroup DIGITAL_IO_apidoc
+ 139:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @{
+ 140:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 141:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 142:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 143:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 144:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 145:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Get DIGITAL_IO APP version
+ 146:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return DAVE_APP_VERSION_t APP version information (major, minor and patch number)
+ 147:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 148:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description: </b><br>
+ 149:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * The function can be used to check application software compatibility with a
+ 150:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * specific version of the APP.
+ 151:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 152:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 153:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 154:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 155:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * #include <DAVE.h>
+ 156:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 157:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * int main(void)
+ 158:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * {
+ 159:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_STATUS_t init_status;
+ 160:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_APP_VERSION_t version;
+ 161:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 162:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   // Initialize DIGITAL_IO APP:
+ 163:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   // DIGITAL_IO_Init() is called from within DAVE_Init().
+ 164:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   init_status = DAVE_Init();
+ 165:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   if(init_status == DAVE_STATUS_SUCCESS)
+ 166:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 167:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     version = DIGITAL_IO_GetAppVersion();
+ 168:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     if (version.major != 4U) {
+ 169:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     // Probably, not the right version.
+ 170:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 171:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 172:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 173:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     // More code here
+ 174:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     while(1) {
+ 175:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 176:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 177:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     return (1);
+ 178:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *  }
+ 179:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @endcode<BR>
+ 180:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 181:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 182:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** DAVE_APP_VERSION_t DIGITAL_IO_GetAppVersion(void);
+ 183:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 184:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 185:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 186:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Function to initialize the port pin as per UI settings.
+ 187:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @param handler Pointer pointing to APP data structure. Refer @ref DIGITAL_IO_t for details.
+ 188:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return DIGITAL_IO_STATUS_t DIGITAL_IO APP status. Refer @ref DIGITAL_IO_STATUS_t structure for d
+ 189:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 190:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description:</b><br>
+ 191:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * This function initializes GPIO port registers IOCR,PDISC,OMR,PDR/PHCR to configure pin direction,
+ 192:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * and pad driver strength/hysteresis.
+ 193:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 194:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Related APIs:</b><BR>
+ 195:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * None
+ 196:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 197:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 198:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 199:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * #include <DAVE.h>//Declarations from DAVE Code Generation (includes SFR declaration)
+ 200:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * int main(void)
+ 201:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * {
+ 202:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_STATUS_t status;
+ 203:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   status = DAVE_Init();  //(DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0) is called within DAVE_In
+ 204:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   if(status == DAVE_STATUS_SUCCESS)
+ 205:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 206:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG("DAVE Apps initialization success\n");
+ 207:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 208:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   else
+ 209:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 210:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG(("DAVE Apps initialization failed with status %d\n", status));
+ 211:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     while(1U)
+ 212:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     {
+ 213:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 214:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 215:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   //Placeholder for user application code. The while loop below can be replaced with user applica
+ 216:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   while(1U)
+ 217:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 218:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 219:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   return 1U;
+ 220:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *  }
+ 221:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *  @endcode
+ 222:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 223:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 224:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** DIGITAL_IO_STATUS_t DIGITAL_IO_Init(const DIGITAL_IO_t *const handler);
+ 225:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 226:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 227:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 228:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Function to set port pin high.
+ 229:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @param handler Pointer pointing to APP data structure. Refer @ref DIGITAL_IO_t for details.
+ 230:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return None
+ 231:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 232:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description:</b><br>
+ 233:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * This function configures port output modification register Pn_OMR, to make port pin to high level
+ 234:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 235:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Related APIs:</b><BR>
+ 236:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *  DIGITAL_IO_SetOutputLow()
+ 237:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 238:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 239:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 240:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * #include <DAVE.h>//Declarations from DAVE Code Generation (includes SFR declaration)
+ 241:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * int main(void)
+ 242:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * {
+ 243:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_STATUS_t status;
+ 244:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   status = DAVE_Init();  //(DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0) is called within DAVE_In
+ 245:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   if(status == DAVE_STATUS_SUCCESS)
+ 246:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 247:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG("DAVE Apps initialization success\n");
+ 248:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 249:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   else
+ 250:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 251:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG(("DAVE Apps initialization failed with status %d\n", status));
+ 252:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     while(1U)
+ 253:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     {
+ 254:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 255:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 256:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   //Placeholder for user application code. The while loop below can be replaced with user applica
+ 257:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_0);
+ 258:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   while(1U)
+ 259:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 260:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     // Add application code here
+ 261:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 262:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 263:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   return (1);
+ 264:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * }
+ 265:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *  @endcode
+ 266:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 267:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 268:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** __STATIC_INLINE void DIGITAL_IO_SetOutputHigh(const DIGITAL_IO_t *const handler)
+ 269:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+ 270:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_ASSERT("DIGITAL_IO_SetOutputHigh: handler null pointer", handler != NULL);
+ 271:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_GPIO_SetOutputHigh(handler->gpio_port, handler->gpio_pin);
+ 272:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** }
+ 273:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 274:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 275:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Function to reset port pin.
+ 276:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @param handler Pointer pointing to APP data structure. Refer @ref DIGITAL_IO_t for details.
+ 277:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return None
+ 278:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 279:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description:</b><br>
+ 280:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * This function configures port output modification register Pn_OMR, to make port pin to low level.
+ 281:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 282:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Related APIs:</b><BR>
+ 283:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * DIGITAL_IO_SetOutputHigh()
+ 284:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 285:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 286:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 287:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *  #include <DAVE.h>//Declarations from DAVE Code Generation (includes SFR declaration)
+ 288:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *  int main(void)
+ 289:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *  {
+ 290:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *    DAVE_STATUS_t status;
+ 291:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *    status = DAVE_Init();  //(DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0) is called within DAVE_I
+ 292:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *    if(status == DAVE_STATUS_SUCCESS)
+ 293:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *    {
+ 294:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      XMC_DEBUG("DAVE Apps initialization success\n");
+ 295:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *    }
+ 296:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *    else
+ 297:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *    {
+ 298:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      XMC_DEBUG(("DAVE Apps initialization failed with status %d\n", status));
+ 299:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      while(1U)
+ 300:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      {
+ 301:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      }
+ 302:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *    }
+ 303:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *    //Placeholder for user application code. The while loop below can be replaced with user applic
+ 304:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *    DIGITAL_IO_SetOutputLow(&DIGITAL_IO_0);
+ 305:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *    while(1U)
+ 306:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *    {
+ 307:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      // Add application code here
+ 308:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *    }
+ 309:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 310:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   return (1);
+ 311:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * }
+ 312:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *  @endcode
+ 313:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 314:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 315:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** __STATIC_INLINE void DIGITAL_IO_SetOutputLow(const DIGITAL_IO_t *const handler)
+ 316:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+ 317:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_ASSERT("DIGITAL_IO_SetOutputLow: handler null pointer", handler != NULL);
+ 318:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_GPIO_SetOutputLow(handler->gpio_port,handler->gpio_pin);
+ 319:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** }
+ 320:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 321:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 322:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Function to Toggle port pin.
+ 323:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @param handler Pointer pointing to APP data structure. Refer @ref DIGITAL_IO_t for details.
+ 324:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return None
+ 325:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 326:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description:</b><br>
+ 327:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * This function configures port output modification register Pn_OMR, to toggle port pin.
+ 328:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 329:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Related APIs:</b><BR>
+ 330:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * DIGITAL_IO_SetOutputLow(), DIGITAL_IO_SetOutputHigh()
+ 331:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 332:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 333:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 334:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 335:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * #include <DAVE.h>//Declarations from DAVE Code Generation (includes SFR declaration)
+ 336:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * int main(void)
+ 337:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * {
+ 338:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_STATUS_t status;
+ 339:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   uint32_t delay_count;;
+ 340:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   status = DAVE_Init();  //(DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0) is called within DAVE_In
+ 341:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   if(status == DAVE_STATUS_SUCCESS)
+ 342:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 343:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG("DAVE Apps initialization success\n");
+ 344:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 345:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   else
+ 346:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 347:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      XMC_DEBUG(("DAVE Apps initialization failed with status %d\n", status));
+ 348:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      while(1U)
+ 349:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      {
+ 350:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      }
+ 351:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 352:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   //Placeholder for user application code. The while loop below can be replaced with user applica
+ 353:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   while(1U)
+ 354:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 355:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0); //toggles : 1 -> 0 (if initial output level is logic
+ 356:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      //Add application code here
+ 357:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      for(delay_count = 0;delay_count<0xfffff;delay_count++);
+ 358:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0); //toggles : 0 -> 1
+ 359:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      //Add application code here
+ 360:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *      for(delay_count = 0;delay_count<0xfffff;delay_count++);
+ 361:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 362:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   return (1);
+ 363:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * }
+ 364:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *  @endcode
+ 365:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 366:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 367:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** __STATIC_INLINE void DIGITAL_IO_ToggleOutput(const DIGITAL_IO_t *const handler)
+ 368:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+ 369:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_ASSERT("DIGITAL_IO_ToggleOutput: handler null pointer", handler != NULL);
+ 370:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_GPIO_ToggleOutput(handler->gpio_port, handler->gpio_pin);
+ 371:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** }
+ 372:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 373:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 374:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Function to read input level of port pin.
+ 375:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @param handler Pointer pointing to APP data structure. Refer @ref DIGITAL_IO_t for details.
+ 376:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return uint32_t input logic level. Range:0-1
+ 377:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 378:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description:</b><br>
+ 379:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * This function reads the Pn_IN register and returns the current logical value at the GPIO pin.
+ 380:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 381:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Related APIs:</b><BR>
+ 382:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *  None
+ 383:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 384:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 385:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 386:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * #include <DAVE.h>//Declarations from DAVE Code Generation (includes SFR declaration)
+ 387:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * int main(void)
+ 388:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * {
+ 389:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_STATUS_t status;
+ 390:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   uint32_t pin_status;
+ 391:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   status = DAVE_Init();   // (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0) is called within DAVE_
+ 392:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   if(status == DAVE_STATUS_SUCCESS)
+ 393:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 394:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG("DAVE Apps initialization success\n");
+ 395:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 396:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   else
+ 397:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 398:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG(("DAVE Apps initialization failed with status %d\n", status));
+ 399:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     while(1U)
+ 400:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     {
+ 401:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 402:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 403:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   //Placeholder for user application code. The while loop below can be replaced with user applica
+ 404:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   while(1U)
+ 405:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 406:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     pin_status = DIGITAL_IO_GetInput(&DIGITAL_IO_0);
+ 407:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     if(pin_status == 1)
+ 408:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     {
+ 409:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *       // Add application code here
+ 410:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 411:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     else
+ 412:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     {
+ 413:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *       // Add application code here
+ 414:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 415:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 416:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *   return (1);
+ 417:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** * }
+ 418:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** *  @endcode
+ 419:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 420:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 421:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** __STATIC_INLINE uint32_t DIGITAL_IO_GetInput(const DIGITAL_IO_t *const handler)
+ 422:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+ 423:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_ASSERT("DIGITAL_IO_GetInput: handler null pointer", handler != NULL);
+ 424:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h ****   return XMC_GPIO_GetInput(handler->gpio_port, handler->gpio_pin);
+ 191              	 .loc 2 424 0
+ 192 0008 1849     	 ldr r1,.L18+4
+ 193 000a 0A68     	 ldr r2,[r1]
+ 194              	.LVL17:
+ 195              	.LBB31:
+ 196              	.LBB32:
+ 197              	 .file 3 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_gpio.h"
+   1:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+   2:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @file xmc_gpio.h
+   3:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @date 2015-06-20
+   4:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+   5:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @cond
+   6:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+   7:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMClib v2.1.22 - XMC Peripheral Driver Library 
+   8:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+   9:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Copyright (c) 2015-2019, Infineon Technologies AG
+  10:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * All rights reserved.                        
+  11:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                             
+  12:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * following conditions are met:   
+  14:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                                                              
+  15:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * disclaimer.                        
+  17:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * 
+  18:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * 
+  21:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * products derived from this software without specific prior written permission.                  
+  23:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                                                              
+  24:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                                                              
+  32:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+  35:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  36:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Change History
+  37:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * --------------
+  38:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  39:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * 2015-02-20:
+  40:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Initial draft<br>
+  41:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Documentation improved <br>
+  42:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *      
+  43:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * 2015-06-20:
+  44:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Removed version macros and declaration of GetDriverVersion API
+  45:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  46:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @endcond
+  47:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  48:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  49:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  50:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #ifndef XMC_GPIO_H
+  51:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_H
+  52:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  53:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+  54:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * HEADER FILES
+  55:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+  56:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  57:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc_common.h"
+  58:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  59:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+  60:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @addtogroup XMClib XMC Peripheral Library
+  61:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @{
+  62:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  63:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  64:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+  65:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @addtogroup GPIO
+  66:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @brief General Purpose Input Output (GPIO) driver for the XMC microcontroller family.
+  67:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  68:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * GPIO driver provide a generic and very flexible software interface for all standard digital I/O 
+  69:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Each port slice has individual interfaces for the operation as General Purpose I/O and it furthe
+  70:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * connectivity to the on-chip periphery and the control for the pad characteristics. 
+  71:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  72:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * The driver is divided into Input and Output mode.
+  73:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  74:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Input mode features:
+  75:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Configuration structure XMC_GPIO_CONFIG_t and initialization function XMC_GPIO_Init()
+  76:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of weak pull-up or pull-down device. Configuration structure XMC_GPIO_MO
+  77:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC1
+  78:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of input hysteresis. XMC_GPIO_SetInputHysteresis()
+  79:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+  80:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  81:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * 
+  82:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Output mode features:
+  83:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of push pull/open drain and Alternate output. Configuration structure XM
+  84:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC4
+  85:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of pad driver strength. Configuration structure XMC_GPIO_OUTPUT_STRENGTH
+  86:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+  87:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  88:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of initial output level. Configuration structure XMC_GPIO_OUTPUT_LEVEL_t
+  89:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  90:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *@{
+  91:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  92:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  
+  93:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+  94:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * MACROS
+  95:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+  96:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  97:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Pos PORT0_IOCR0_PC0_Pos
+  98:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Msk PORT0_IOCR0_PC0_Msk
+  99:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 100:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Size 				(8U)
+ 101:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 											
+ 102:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 103:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_CHECK_OUTPUT_LEVEL(level) ((level == XMC_GPIO_OUTPUT_LEVEL_LOW) || \
+ 104:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****                                             (level == XMC_GPIO_OUTPUT_LEVEL_HIGH))
+ 105:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****                                             
+ 106:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_CHECK_HWCTRL(hwctrl) ((hwctrl == XMC_GPIO_HWCTRL_DISABLED) || \
+ 107:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****                                        (hwctrl == XMC_GPIO_HWCTRL_PERIPHERAL1) || \
+ 108:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****                                        (hwctrl == XMC_GPIO_HWCTRL_PERIPHERAL2))                    
+ 109:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****                                             
+ 110:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 111:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * ENUMS
+ 112:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 113:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 114:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 115:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 116:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Defines output level of a pin. Use type \a XMC_GPIO_OUTPUT_LEVEL_t for this enum.
+ 117:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 118:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** typedef enum XMC_GPIO_OUTPUT_LEVEL
+ 119:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 120:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_OUTPUT_LEVEL_LOW  = 0x10000U, /**<  Reset bit */
+ 121:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_OUTPUT_LEVEL_HIGH = 0x1U, 	/**< Set bit  */
+ 122:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** } XMC_GPIO_OUTPUT_LEVEL_t;
+ 123:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 124:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 125:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Defines direct hardware control characteristics of the pin . Use type \a XMC_GPIO_HWCTRL_t for t
+ 126:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 127:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** typedef enum XMC_GPIO_HWCTRL
+ 128:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 129:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_DISABLED     = 0x0U, /**<  Software control only */
+ 130:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_PERIPHERAL1  = 0x1U, /**<  HWI0/HWO0 control path can override the software confi
+ 131:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_PERIPHERAL2  = 0x2U  /**<  HWI1/HWO1 control path can override the software confi
+ 132:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** } XMC_GPIO_HWCTRL_t;
+ 133:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 134:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 135:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * DEVICE FAMILY EXTENSIONS
+ 136:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 137:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 138:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  #if UC_FAMILY == XMC1
+ 139:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc1_gpio.h"
+ 140:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #elif UC_FAMILY == XMC4
+ 141:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc4_gpio.h"
+ 142:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #else
+ 143:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #error "xmc_gpio.h: family device not supported"
+ 144:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #endif
+ 145:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 146:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 147:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * API PROTOTYPES
+ 148:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 149:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 150:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #ifdef __cplusplus
+ 151:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** extern "C" {
+ 152:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** #endif
+ 153:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 154:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 155:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 156:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	  Constant pointer pointing to GPIO port, to access port registers like Pn_OUT,Pn_O
+ 157:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	  Port pin number.
+ 158:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  config GPIO configuration data structure. Refer data structure @ref XMC_GPIO_CONFIG_t fo
+ 159:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 160:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 161:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 162:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 163:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC1
+ 164:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Initializes input / output mode settings like, pull up / pull down devices,hysteresis, push pull
+ 165:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Also configures alternate function outputs and clears hardware port control for a selected \a po
+ 166:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \a config provides selected I/O settings. It configures hardware registers Pn_IOCR,Pn_OUT, Pn_OM
+ 167:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+ 168:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC4
+ 169:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Initializes input / output mode settings like, pull up / pull down devices,push pull /open drain
+ 170:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Also configures alternate function outputs and clears hardware port control for selected \a port
+ 171:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * It configures hardware registers Pn_IOCR,Pn_OUT,Pn_OMR,Pn_PDISC and Pn_PDR.\n
+ 172:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+ 173:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 174:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 175:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *  None
+ 176:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 177:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 178:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * This API is called in definition of DAVE_init by code generation and therefore should not be exp
+ 179:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * for the normal operation. Use other APIs only after DAVE_init is called successfully (returns DA
+ 180:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 181:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 182:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 183:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 184:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  
+ 185:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** void XMC_GPIO_Init(XMC_GPIO_PORT_t *const port, const uint8_t pin, const XMC_GPIO_CONFIG_t *const c
+ 186:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  
+ 187:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 188:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 189:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	Constant pointer pointing to GPIO port, to access hardware register Pn_IOCR.
+ 190:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	Port pin number.
+ 191:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  mode input / output functionality selection. Refer @ref XMC_GPIO_MODE_t for valid values
+ 192:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 193:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 194:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 195:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 196:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Sets digital input and output driver functionality and characteristics of a GPIO port pin. It co
+ 197:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * registers Pn_IOCR. \a mode is initially configured during initialization in XMC_GPIO_Init(). Cal
+ 198:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * the port direction functionality as needed later in the program.
+ 199:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 200:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 201:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *  None
+ 202:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 203:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 204:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 205:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** void XMC_GPIO_SetMode(XMC_GPIO_PORT_t *const port, const uint8_t pin, const XMC_GPIO_MODE_t mode);
+ 206:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 207:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 208:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 209:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 210:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	 Constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 211:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	 Port pin number.
+ 212:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  level output level selection. Refer @ref XMC_GPIO_OUTPUT_LEVEL_t for valid values.
+ 213:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 214:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 215:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 216:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 217:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Set port pin output level to high or low.It configures hardware registers Pn_OMR.\a level is ini
+ 218:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * configured during initialization in XMC_GPIO_Init(). Call this API to alter output level as need
+ 219:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 220:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 221:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *  XMC_GPIO_SetOutputHigh(), XMC_GPIO_SetOutputLow().
+ 222:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 223:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 224:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().
+ 225:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 226:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 227:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 228:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 229:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputLevel(XMC_GPIO_PORT_t *const port, const uint8_t pin, const 
+ 230:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 231:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLevel: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 232:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLevel: Invalid output level", XMC_GPIO_CHECK_OUTPUT_LEVEL(level));
+ 233:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   
+ 234:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = (uint32_t)level << pin;
+ 235:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 236:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 237:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 238:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 239:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 240:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	Port pin number.
+ 241:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 242:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 243:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 244:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 245:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *  Sets port pin output to high. It configures hardware registers Pn_OMR.
+ 246:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 247:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *  \par<b>Related APIs:</b><BR>
+ 248:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *  XMC_GPIO_SetOutputLow()
+ 249:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 250:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 251:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().\n
+ 252:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Register Pn_OMR is virtual and does not contain any flip-flop. A read action delivers the value 
+ 253:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 254:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 255:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 256:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputHigh(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 257:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 258:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputHigh: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 259:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 260:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = (uint32_t)0x1U << pin;
+ 261:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 262:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 263:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 264:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 265:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 266:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	port pin number.
+ 267:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 268:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return  None
+ 269:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 270:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Description:</b><br>
+ 271:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Sets port pin output to low. It configures hardware registers Pn_OMR.\n
+ 272:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 273:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>>
+ 274:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMC_GPIO_SetOutputHigh()
+ 275:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 276:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Note:</b><br>
+ 277:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().
+ 278:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Register Pn_OMR is virtual and does not contain any flip-flop. A read action delivers the value 
+ 279:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 280:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 281:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 282:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputLow(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 283:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 284:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLow: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 285:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 286:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = 0x10000U << pin;
+ 287:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 288:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 289:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 290:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 291:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param port constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 292:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param pin  port pin number.
+ 293:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 294:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 295:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 296:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 297:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Configures port pin output to Toggle. It configures hardware registers Pn_OMR.
+ 298:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 299:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 300:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMC_GPIO_SetOutputHigh(), XMC_GPIO_SetOutputLow().
+ 301:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 302:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 303:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode(). Regis
+ 304:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * and does not contain any flip-flop. A read action delivers the value of 0.
+ 305:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 306:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 307:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 308:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_ToggleOutput(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 309:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 310:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_ToggleOutput: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 311:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 312:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = 0x10001U << pin;
+ 313:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 314:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 315:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 316:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 317:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param port constant pointer pointing to GPIO port, to access hardware register Pn_IN.
+ 318:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param pin  Port pin number.
+ 319:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 320:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return uint32_t pin logic level status.
+ 321:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 322:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Description:</b><br>
+ 323:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Reads the Pn_IN register and returns the current logical value at the GPIO pin.
+ 324:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 325:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 326:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * None
+ 327:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 328:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 329:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to input mode using XMC_GPIO_SetMode().
+ 330:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 331:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 332:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 333:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE uint32_t XMC_GPIO_GetInput(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 334:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 335:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_GetInput: Invalid port", XMC_GPIO_CHECK_PORT(port));
+ 336:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 337:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h ****   return (((port->IN) >> pin) & 0x1U);
+ 198              	 .loc 3 337 0
+ 199 000c 097C     	 ldrb r1,[r1,#16]
+ 200 000e 536A     	 ldr r3,[r2,#36]
+ 201 0010 CB40     	 lsrs r3,r3,r1
+ 202              	.LBE32:
+ 203              	.LBE31:
+ 204              	.LBE30:
+ 205              	.LBE29:
+ 119:../main.c     **** 
+ 120:../main.c     ****     if(DIGITAL_IO_GetInput(&DIGITAL_IO_1) == 1) {
+ 206              	 .loc 1 120 0
+ 207 0012 13F0010F 	 tst r3,#1
+ 208 0016 164B     	 ldr r3,.L18+8
+ 209 0018 0FD0     	 beq .L17
+ 121:../main.c     ****     	x = result_Channel_A;
+ 210              	 .loc 1 121 0
+ 211 001a 164C     	 ldr r4,.L18+12
+ 212 001c 2080     	 strh r0,[r4]
+ 213              	.LVL18:
+ 214              	.LBB33:
+ 215              	.LBB34:
+ 216              	.LBB35:
+ 217              	.LBB36:
+ 312:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 218              	 .loc 3 312 0
+ 219 001e 1C7C     	 ldrb r4,[r3,#16]
+ 220              	.LBE36:
+ 221              	.LBE35:
+ 370:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** }
+ 222              	 .loc 2 370 0
+ 223 0020 1868     	 ldr r0,[r3]
+ 224              	.LVL19:
+ 225              	.LBB39:
+ 226              	.LBB37:
+ 312:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 227              	 .loc 3 312 0
+ 228 0022 4FF00113 	 mov r3,#65537
+ 229 0026 03FA04F4 	 lsl r4,r3,r4
+ 230              	.LBE37:
+ 231              	.LBE39:
+ 232              	.LBE34:
+ 233              	.LBE33:
+ 234              	.LBB42:
+ 235              	.LBB43:
+ 236              	.LBB44:
+ 237 002a 8B40     	 lsls r3,r3,r1
+ 238              	.LBE44:
+ 239              	.LBE43:
+ 240              	.LBE42:
+ 241              	.LBB47:
+ 242              	.LBB41:
+ 243              	.LBB40:
+ 244              	.LBB38:
+ 245 002c 4460     	 str r4,[r0,#4]
+ 246              	.LVL20:
+ 247              	.LBE38:
+ 248              	.LBE40:
+ 249              	.LBE41:
+ 250              	.LBE47:
+ 251              	.LBB48:
+ 252              	.LBB46:
+ 253              	.LBB45:
+ 254 002e 5360     	 str r3,[r2,#4]
+ 255              	.LBE45:
+ 256              	.LBE46:
+ 257              	.LBE48:
+ 122:../main.c     **** 
+ 123:../main.c     ****     	/* Swap x and y axis on the panel */
+ 124:../main.c     ****         DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
+ 125:../main.c     ****         DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
+ 126:../main.c     **** 
+ 127:../main.c     ****         /* Re-trigger conversion sequence */
+ 128:../main.c     ****         ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
+ 258              	 .loc 1 128 0
+ 259 0030 1148     	 ldr r0,.L18+16
+ 260              	.LVL21:
+ 129:../main.c     ****     } else {
+ 130:../main.c     ****     	y = result_Channel_A;
+ 131:../main.c     **** 
+ 132:../main.c     ****     	/* Swap x and y axis on the panel */
+ 133:../main.c     ****         DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
+ 134:../main.c     ****         DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
+ 135:../main.c     **** 
+ 136:../main.c     ****         /* Transmit the x and y position via UART */
+ 137:../main.c     ****         UART_Transmit(&UART_0, (uint8_t*)(&x), 2);
+ 138:../main.c     ****         UART_Transmit(&UART_0, (uint8_t*)(&y), 2);
+ 139:../main.c     ****     }
+ 140:../main.c     **** }
+ 261              	 .loc 1 140 0
+ 262 0032 BDE83840 	 pop {r3,r4,r5,lr}
+ 263              	.LCFI2:
+ 264              	 .cfi_remember_state
+ 265              	 .cfi_restore 14
+ 266              	 .cfi_restore 5
+ 267              	 .cfi_restore 4
+ 268              	 .cfi_restore 3
+ 269              	 .cfi_def_cfa_offset 0
+ 128:../main.c     ****     } else {
+ 270              	 .loc 1 128 0
+ 271 0036 FFF7FEBF 	 b ADC_MEASUREMENT_StartConversion
+ 272              	.LVL22:
+ 273              	.L17:
+ 274              	.LCFI3:
+ 275              	 .cfi_restore_state
+ 130:../main.c     **** 
+ 276              	 .loc 1 130 0
+ 277 003a 104C     	 ldr r4,.L18+20
+ 278              	.LBB49:
+ 279              	.LBB50:
+ 280              	.LBB51:
+ 281              	.LBB52:
+ 312:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 282              	 .loc 3 312 0
+ 283 003c 1D7C     	 ldrb r5,[r3,#16]
+ 284              	.LBE52:
+ 285              	.LBE51:
+ 286              	.LBE50:
+ 287              	.LBE49:
+ 130:../main.c     **** 
+ 288              	 .loc 1 130 0
+ 289 003e 2080     	 strh r0,[r4]
+ 290              	.LVL23:
+ 291              	.LBB59:
+ 292              	.LBB57:
+ 370:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO\digital_io.h **** }
+ 293              	 .loc 2 370 0
+ 294 0040 1868     	 ldr r0,[r3]
+ 295              	.LVL24:
+ 296              	.LBB55:
+ 297              	.LBB53:
+ 312:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 298              	 .loc 3 312 0
+ 299 0042 4FF00113 	 mov r3,#65537
+ 300 0046 03FA05F5 	 lsl r5,r3,r5
+ 301              	.LBE53:
+ 302              	.LBE55:
+ 303              	.LBE57:
+ 304              	.LBE59:
+ 305              	.LBB60:
+ 306              	.LBB61:
+ 307              	.LBB62:
+ 308 004a 8B40     	 lsls r3,r3,r1
+ 309              	.LBE62:
+ 310              	.LBE61:
+ 311              	.LBE60:
+ 312              	.LBB65:
+ 313              	.LBB58:
+ 314              	.LBB56:
+ 315              	.LBB54:
+ 316 004c 4560     	 str r5,[r0,#4]
+ 317              	.LVL25:
+ 318              	.LBE54:
+ 319              	.LBE56:
+ 320              	.LBE58:
+ 321              	.LBE65:
+ 137:../main.c     ****         UART_Transmit(&UART_0, (uint8_t*)(&y), 2);
+ 322              	 .loc 1 137 0
+ 323 004e 0949     	 ldr r1,.L18+12
+ 324              	.LBB66:
+ 325              	.LBB64:
+ 326              	.LBB63:
+ 312:G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 327              	 .loc 3 312 0
+ 328 0050 5360     	 str r3,[r2,#4]
+ 329              	.LBE63:
+ 330              	.LBE64:
+ 331              	.LBE66:
+ 137:../main.c     ****         UART_Transmit(&UART_0, (uint8_t*)(&y), 2);
+ 332              	 .loc 1 137 0
+ 333 0052 0B48     	 ldr r0,.L18+24
+ 334              	.LVL26:
+ 335 0054 0222     	 movs r2,#2
+ 336              	.LVL27:
+ 337 0056 FFF7FEFF 	 bl UART_Transmit
+ 338              	.LVL28:
+ 138:../main.c     ****     }
+ 339              	 .loc 1 138 0
+ 340 005a 2146     	 mov r1,r4
+ 341 005c 0848     	 ldr r0,.L18+24
+ 342 005e 0222     	 movs r2,#2
+ 343              	 .loc 1 140 0
+ 344 0060 BDE83840 	 pop {r3,r4,r5,lr}
+ 345              	.LCFI4:
+ 346              	 .cfi_restore 14
+ 347              	 .cfi_restore 5
+ 348              	 .cfi_restore 4
+ 349              	 .cfi_restore 3
+ 350              	 .cfi_def_cfa_offset 0
+ 138:../main.c     ****     }
+ 351              	 .loc 1 138 0
+ 352 0064 FFF7FEBF 	 b UART_Transmit
+ 353              	.LVL29:
+ 354              	.L19:
+ 355              	 .align 2
+ 356              	.L18:
+ 357 0068 00000000 	 .word ADC_MEASUREMENT_Channel_A_handle
+ 358 006c 00000000 	 .word DIGITAL_IO_1
+ 359 0070 00000000 	 .word DIGITAL_IO_0
+ 360 0074 00000000 	 .word .LANCHOR0
+ 361 0078 00000000 	 .word ADC_MEASUREMENT_0
+ 362 007c 00000000 	 .word .LANCHOR1
+ 363 0080 00000000 	 .word UART_0
+ 364              	 .cfi_endproc
+ 365              	.LFE421:
+ 367              	 .section .text.USIC0_5_IRQHandler,"ax",%progbits
+ 368              	 .align 1
+ 369              	 .global USIC0_5_IRQHandler
+ 370              	 .thumb
+ 371              	 .thumb_func
+ 373              	USIC0_5_IRQHandler:
+ 374              	.LFB422:
+ 141:../main.c     **** 
+ 142:../main.c     **** void DataReceived(void) {
+ 375              	 .loc 1 142 0
+ 376              	 .cfi_startproc
+ 377              	 
+ 378              	 
+ 379 0000 38B5     	 push {r3,r4,r5,lr}
+ 380              	.LCFI5:
+ 381              	 .cfi_def_cfa_offset 16
+ 382              	 .cfi_offset 3,-16
+ 383              	 .cfi_offset 4,-12
+ 384              	 .cfi_offset 5,-8
+ 385              	 .cfi_offset 14,-4
+ 143:../main.c     **** 	UART_Receive(&UART_0, read_data, 8);
+ 386              	 .loc 1 143 0
+ 387 0002 0B4C     	 ldr r4,.L21
+ 388 0004 0B4D     	 ldr r5,.L21+4
+ 389 0006 2146     	 mov r1,r4
+ 390 0008 2846     	 mov r0,r5
+ 391 000a 0822     	 movs r2,#8
+ 392 000c FFF7FEFF 	 bl UART_Receive
+ 393              	.LVL30:
+ 144:../main.c     **** 	read_data[0] = '1';
+ 394              	 .loc 1 144 0
+ 395 0010 3123     	 movs r3,#49
+ 145:../main.c     **** 	read_data[1] = '1';
+ 146:../main.c     **** 	UART_Transmit(&UART_0, read_data, 8);
+ 396              	 .loc 1 146 0
+ 397 0012 2146     	 mov r1,r4
+ 398 0014 2846     	 mov r0,r5
+ 399 0016 0822     	 movs r2,#8
+ 144:../main.c     **** 	read_data[0] = '1';
+ 400              	 .loc 1 144 0
+ 401 0018 2370     	 strb r3,[r4]
+ 145:../main.c     **** 	read_data[1] = '1';
+ 402              	 .loc 1 145 0
+ 403 001a 6370     	 strb r3,[r4,#1]
+ 404              	 .loc 1 146 0
+ 405 001c FFF7FEFF 	 bl UART_Transmit
+ 406              	.LVL31:
+ 147:../main.c     **** 	memset(read_data, 0, BUFFERSIZE);
+ 407              	 .loc 1 147 0
+ 408 0020 2046     	 mov r0,r4
+ 409 0022 0021     	 movs r1,#0
+ 410 0024 4FF48062 	 mov r2,#1024
+ 148:../main.c     **** }
+ 411              	 .loc 1 148 0
+ 412 0028 BDE83840 	 pop {r3,r4,r5,lr}
+ 413              	.LCFI6:
+ 414              	 .cfi_restore 14
+ 415              	 .cfi_restore 5
+ 416              	 .cfi_restore 4
+ 417              	 .cfi_restore 3
+ 418              	 .cfi_def_cfa_offset 0
+ 147:../main.c     **** 	memset(read_data, 0, BUFFERSIZE);
+ 419              	 .loc 1 147 0
+ 420 002c FFF7FEBF 	 b memset
+ 421              	.LVL32:
+ 422              	.L22:
+ 423              	 .align 2
+ 424              	.L21:
+ 425 0030 00000000 	 .word read_data
+ 426 0034 00000000 	 .word UART_0
+ 427              	 .cfi_endproc
+ 428              	.LFE422:
+ 430              	 .comm touchPanelResult,4,4
+ 431              	 .global testdata
+ 432              	 .comm read_data,1024,1
+ 433              	 .section .bss.x.10097,"aw",%nobits
+ 434              	 .align 1
+ 435              	 .set .LANCHOR0,.+0
+ 438              	x.10097:
+ 439 0000 0000     	 .space 2
+ 440              	 .section .rodata.str1.1,"aMS",%progbits,1
+ 441              	.LC0:
+ 442 0000 73746172 	 .ascii "start\000"
+ 442      7400
+ 443              	 .section .data.testdata,"aw",%progbits
+ 446              	testdata:
+ 447 0000 74657374 	 .ascii "testdata\000"
+ 447      64617461 
+ 447      00
+ 448              	 .section .bss.y.10098,"aw",%nobits
+ 449              	 .align 1
+ 450              	 .set .LANCHOR1,.+0
+ 453              	y.10098:
+ 454 0000 0000     	 .space 2
+ 455              	 .text
+ 456              	.Letext0:
+ 457              	 .file 4 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 458              	 .file 5 "c:\\program files\\dave_4\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 459              	 .file 6 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+ 460              	 .file 7 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 461              	 .file 8 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_usic.h"
+ 462              	 .file 9 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_uart.h"
+ 463              	 .file 10 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/UART/uart.h"
+ 464              	 .file 11 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/XMCLib/inc/xmc_vadc.h"
+ 465              	 .file 12 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/GLOBAL_ADC/global_adc.h"
+ 466              	 .file 13 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/ADC_MEASUREMENT/adc_measurement.h"
+ 467              	 .file 14 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DAVE.h"
+ 468              	 .file 15 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Include/core_cm4.h"
+ 469              	 .file 16 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 470              	 .file 17 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/UART/uart_extern.h"
+ 471              	 .file 18 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/ADC_MEASUREMENT/ADC_MEASUREMENT_Extern.h"
+ 472              	 .file 19 "G:/DT/dt_g1_balancing_plate_wise20192020/XMC/Dave/Generated/DIGITAL_IO/digital_io_extern.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+    {standard input}:20     .text.busy_waitMs:00000000 $t
+    {standard input}:25     .text.busy_waitMs:00000000 busy_waitMs
+    {standard input}:91     .text.startup.main:00000000 $t
+    {standard input}:96     .text.startup.main:00000000 main
+    {standard input}:158    .text.startup.main:0000004c $d
+                            *COM*:00000400 read_data
+    {standard input}:166    .text.VADC0_C0_2_IRQHandler:00000000 $t
+    {standard input}:171    .text.VADC0_C0_2_IRQHandler:00000000 VADC0_C0_2_IRQHandler
+    {standard input}:357    .text.VADC0_C0_2_IRQHandler:00000068 $d
+    {standard input}:368    .text.USIC0_5_IRQHandler:00000000 $t
+    {standard input}:373    .text.USIC0_5_IRQHandler:00000000 USIC0_5_IRQHandler
+    {standard input}:425    .text.USIC0_5_IRQHandler:00000030 $d
+                            *COM*:00000004 touchPanelResult
+    {standard input}:446    .data.testdata:00000000 testdata
+    {standard input}:434    .bss.x.10097:00000000 $d
+    {standard input}:438    .bss.x.10097:00000000 x.10097
+    {standard input}:449    .bss.y.10098:00000000 $d
+    {standard input}:453    .bss.y.10098:00000000 y.10098
+                     .debug_frame:00000010 $d
+                           .group:00000000 wm4.0.ca5ae67a873a4952d630d8e4120b9e3e
+                           .group:00000000 wm4.stddef.h.39.daafd3d79fe2f3a84d2d73d7d4e706f8
+                           .group:00000000 wm4.features.h.22.bee0aee4a3878f51861c775df98fa3ea
+                           .group:00000000 wm4._default_types.h.15.933e8edd27a65e0b69af4a865eb623d2
+                           .group:00000000 wm4._intsup.h.10.ca9f32a61b410c270a48d1161ca2c217
+                           .group:00000000 wm4.stdint.h.22.f4a337c398d8b6d821a97202448bc0d0
+                           .group:00000000 wm4.stdbool.h.29.1c9ee6859ce8145f7838a4f2549ccec2
+                           .group:00000000 wm4.newlib.h.8.fe7d912fc917043c98742c35eddd8cff
+                           .group:00000000 wm4.config.h.216.aad1ef7bee4fb69981cb38ce62f84d9c
+                           .group:00000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:00000000 wm4.lock.h.2.9bc98482741e5e2a9450b12934a684ea
+                           .group:00000000 wm4._types.h.54.d3d34a3b7f3cc230cd159baf022b4b08
+                           .group:00000000 wm4.stddef.h.158.61317cdbfb4026324507d123a50b0fd6
+                           .group:00000000 wm4.reent.h.17.8bd9e4098e0428508c282cad794fae43
+                           .group:00000000 wm4.cdefs.h.47.4e89a3f145accdcb1100c37260c088e6
+                           .group:00000000 wm4.string.h.15.dab3980bf35408a4c507182805e2de3a
+                           .group:00000000 wm4.stddef.h.158.a7efb00f6cbc6f43213b50e183c9830c
+                           .group:00000000 wm4.xmc_device.h.65.5c0d35eb1a6853ff8300ab2ec1b944b0
+                           .group:00000000 wm4.XMC4500.h.55.9aa45b9b5790506b2dcb963e4e7adeaf
+                           .group:00000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.57f124f9262f3dbf77da6a6506ffb430
+                           .group:00000000 wm4.core_cm4.h.174.fcddd62df80231752fa39eb9b61dadfe
+                           .group:00000000 wm4.mpu_armv7.h.32.4049752bb5792d4e15357775e9506cfc
+                           .group:00000000 wm4.system_XMC4500.h.42.99124977c10ca8844a71949adbeabd70
+                           .group:00000000 wm4.XMC4500.h.208.b340195df97f067735c4c769ba59985a
+                           .group:00000000 wm4.xmc_device.h.1500.3eca65ed9ba7f90e09c1ffcb0b3f5724
+                           .group:00000000 wm4.xmc_common.h.98.806f17e888fd51d0e4be2ad115163551
+                           .group:00000000 wm4.xmc4_scu.h.113.70a903f8782696023ba1d8628d8ac2d6
+                           .group:00000000 wm4.xmc_gpio.h.51.99a4c0bd520ffa931ac6d8600dce89c4
+                           .group:00000000 wm4.xmc4_gpio_map.h.77.d73d78de7f4c322ab8caf8e71725793e
+                           .group:00000000 wm4.xmc4_gpio.h.79.ce6c49508b5a7769c66e7e3c21dcdfe4
+                           .group:00000000 wm4.clock_xmc4_conf.h.59.249296d4aac332e3d32466c2fa9b8708
+                           .group:00000000 wm4.xmc4_ccu4_map.h.52.bc30e2611b29f8dfd82b8d766e443456
+                           .group:00000000 wm4.global_ccu4_conf.h.53.69a5e141699ccac04d959466f5418a86
+                           .group:00000000 wm4.pwm_conf.h.91.de1ad5462f924101b28d4a83f92c3daa
+                           .group:00000000 wm4.xmc_usic.h.94.805ea2394b0d7b136939c22b7f55383a
+                           .group:00000000 wm4.xmc4_usic_map.h.58.c72ca24cddd51bff3428962310391fa9
+                           .group:00000000 wm4.xmc_uart.h.109.448e7c5ea9d234a4e4112f61aa70ddeb
+                           .group:00000000 wm4.uart_conf.h.56.fefc2749d96d28e8253da4c4476018ba
+                           .group:00000000 wm4.cpu_ctrl_xmc4_conf.h.50.edadd17ec66dd565cecf7b80b7a19d87
+                           .group:00000000 wm4.interrupt_conf.h.50.3baa91fd89684bb4ea6f6b4889884661
+                           .group:00000000 wm4.interrupt_extern.h.49.3ce2b82908d967cfe39977f681ea8189
+                           .group:00000000 wm4.xmc_vadc_map.h.62.9df0d76d5c18106393e06548a14f52be
+                           .group:00000000 wm4.xmc_vadc.h.237.61ed5fbd33c6c067453e9298502ec2a9
+                           .group:00000000 wm4.global_adc_conf.h.79.ad3d3c9f6f306cd3e989ca81b8da07e7
+                           .group:00000000 wm4.adc_measurement_conf.h.92.f7315bd62d909637461317a14b7472a9
+                           .group:00000000 wm4.adc_measurement.h.114.7294eeab9e0acd8ff18f74e708162a72
+                           .group:00000000 wm4.digital_io_conf.h.60.7e6ff84a67e8f07f78124480426d8243
+
+UNDEFINED SYMBOLS
+memset
+DAVE_Init
+ADC_MEASUREMENT_StartConversion
+UART_Transmit
+ADC_MEASUREMENT_0
+UART_0
+ADC_MEASUREMENT_GetResult
+ADC_MEASUREMENT_Channel_A_handle
+DIGITAL_IO_1
+DIGITAL_IO_0
+UART_Receive
