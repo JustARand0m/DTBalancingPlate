@@ -1,0 +1,22 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: arbeit.aux
+The style file: ieeetr.bst
+Database file #1: quellen.bib
+I was expecting a `,' or a `}'---line 59 of file quellen.bib
+ : 
+ : @ONLINE{Kern2017,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--entry type for "electricimp" isn't style-file defined
+--line 66 of file quellen.bib
+Warning--entry type for "wikipdeia" isn't style-file defined
+--line 75 of file quellen.bib
+Warning--entry type for "infineon" isn't style-file defined
+--line 82 of file quellen.bib
+Warning--entry type for "mikroe" isn't style-file defined
+--line 90 of file quellen.bib
+I was expecting a `,' or a `}'---line 93 of file quellen.bib
+ :   
+ :   year = 2016,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+(There were 2 error messages)
