@@ -2,20 +2,22 @@
 \contentsline {figure}{\numberline {1}{\ignorespaces Skizzierter Aufbau des Prototypen\relax }}{3}{figure.caption.3}%
 \contentsline {figure}{\numberline {2}{\ignorespaces Grundplatte des Prototypen\relax }}{4}{figure.caption.4}%
 \contentsline {figure}{\numberline {3}{\ignorespaces Dreiecksverbindung zur Touch-Folie\relax }}{4}{figure.caption.5}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Schaltplan des Prototyps\relax }}{5}{figure.caption.6}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Grundaufbau der Software-Architektur\relax }}{6}{figure.caption.7}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Funktion des Touch Panels\relax }}{7}{figure.caption.8}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Skizze der Platte\relax }}{8}{figure.caption.9}%
-\contentsline {figure}{\numberline {8}{\ignorespaces UML Aktivitätsdiagramm der Interrupts\relax }}{9}{figure.caption.11}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Problem der Plattenwerte am Beispiel der x-Werte\relax }}{10}{figure.caption.12}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Latenzen und Temperaturen der jeweiligen Kernel\relax }}{12}{figure.caption.13}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Standard Raspbian Kernel\newline (4.19.57-v7l+)}}}{12}{subfigure.10.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Preempt-RT Raspbian Kernel\newline (4.19.59-rt23-v7l+)}}}{12}{subfigure.10.2}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Grundaufbau der UART-Verbindung\relax }}{12}{figure.caption.14}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Aufbau eines UART-Frames\relax }}{14}{figure.caption.15}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Aufbau eines Datenpakets mit Servowerten\relax }}{15}{figure.caption.16}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Blockschaltbild einer Regelstrecke\relax }}{18}{figure.caption.17}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Kleinwinkelnäherung\relax }}{21}{figure.caption.18}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Sprungantwort des Systems\relax }}{23}{figure.caption.19}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Aufbau einer alternativen Dreiecksverbindung mit größerem Wirkungsradius\relax }}{25}{figure.caption.20}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Bestellliste und Kosten des Projektes\relax }}{IV}{figure.caption.26}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Grundaufbau der Software-Architektur\relax }}{6}{figure.caption.7}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Funktion des Touch Panels \cite {wikipdeia}\relax }}{7}{figure.caption.8}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Skizze der Platte\relax }}{8}{figure.caption.9}%
+\contentsline {figure}{\numberline {7}{\ignorespaces UML Aktivitätsdiagramm der Interrupts\relax }}{10}{figure.caption.11}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Problem der Plattenwerte am Beispiel der x-Werte\relax }}{11}{figure.caption.12}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Latenzen und Temperaturen der jeweiligen Kernel\relax }}{12}{figure.caption.13}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Standard Raspbian Kernel\newline (4.19.57-v7l+)}}}{12}{subfigure.9.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Preempt-RT Raspbian Kernel\newline (4.19.59-rt23-v7l+)}}}{12}{subfigure.9.2}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Grundaufbau der UART-Verbindung\relax }}{13}{figure.caption.14}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Aufbau eines UART-Frames\relax }}{15}{figure.caption.15}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Aufbau eines Datenpakets mit Servowerten\relax }}{15}{figure.caption.16}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Aufbau eines Datenpakets mit den Werten der Touch-Folie\relax }}{16}{figure.caption.17}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Aufbau eines Datenpakets mit den Werten der Touch-Folie mit CRC check\relax }}{17}{figure.caption.18}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Blockschaltbild einer Regelstrecke\relax }}{19}{figure.caption.19}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Kräftediagramm\relax }}{20}{figure.caption.20}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Kleinwinkelnäherung\relax }}{22}{figure.caption.21}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Sprungantwort des Systems\relax }}{24}{figure.caption.22}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Aufbau einer alternativen Dreiecksverbindung mit größerem Wirkungsradius\relax }}{26}{figure.caption.23}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Bestellliste und Kosten des Projektes\relax }}{IV}{figure.caption.29}%

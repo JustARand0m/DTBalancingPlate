@@ -863,7 +863,7 @@ niemals beide gleichzeitig.
 % ----------------------------------------------------------------------------------
 % Kapitel 2.9: UDP-Socket
 % ----------------------------------------------------------------------------------
-\subsection{UDP-Socket}
+\subsection{UDP-Socket} \label{subsec:UDPsocket}
 \textit{Von Patrick Lesch}\newline
 Zum externen Empfang von Steuersignalen wurde auf dem Raspberry Pi ein UDP-Socket implementiert welcher auf eingehende Daten auf
 Port 1337 wartet. Dieser Port wurde festgelegt um den Kommunikationsaufbau zu vereinfachen und Störquellen zu minimieren. Durch 
@@ -914,7 +914,7 @@ werden Apples C Libraries verwendet. Als Verbindungsart zwischen iOS-App und Ras
 Da die App dank UDP kein Acknowldge des Raspberry Pi erwartet gibt es weder Verzögerung noch einen Datenrückstau. Gegebenenfalls bei
 der Übertragung verlorengegangene Daten wurden in Kauf genommen um stets möglichst aktuelle Werte an die Platte zu liefern. 
 
-Da der Raspberry Pi, wie in Kapitel 2.9 erwähnt, auf Port 1337 lauscht sendet die App nur auf diesem ihre X- und Y-Winkel. Die Winkel werden 
+Da der Raspberry Pi, wie in Kapitel  \ref{subsec:UDPsocket} erwähnt, auf Port 1337 lauscht sendet die App nur auf diesem ihre X- und Y-Winkel. Die Winkel werden 
 von der iOS-Schnittstelle die das Gyroskop des Gerätes ausliest in Radiant angegeben. Vor der Übertragung werden diese aufbereitet indem
 sie in Grad umgerechnet und auf 3 Nachkommastellen gerundet werden. Zusätzlich werden diese Werte mit einem Faktor von 0.5 multipliziert, da sich
 gezeigt hat, dass die Bewegung der Platte die notwendig ist um die Kugel zu bewegen kleiner ist als die Neigung die ein Nutzer sinnvoll steuern kann. 
