@@ -6,10 +6,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{subfig}
-\usepackage{caption}
-
-\newcommand{\source}[1]{\caption*{\textbf{Quelle:} {#1}} }
-
 \begin{document}
 
 
@@ -164,20 +160,25 @@ Qualitätskontrolle durchzuführen, wurden in dem Git-Repository die Funktion pu
 \subsection{Physicher Aufbau}
 \textit{Von Michael Braun und Michael Schmidt}\newline
 
+\subsubsection {Mechanik}
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.9]{pics/SkizzeAufbau}
 	\caption{Skizzierter Aufbau des Prototypen}
 	\label{fig:Skizze}
 \end{figure}
+
 In \ref{fig:Skizze} ist eine Skizze des physischen Aufbaus aus dem Lastenheft zum Start des Projektes zu 
 sehen. Dabei wurde lediglich graphisch eine mögliche Vorversion des späteren Prototyps gezeichnet. 
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.45]{pics/BildGrundplatte}
 	\caption{Grundplatte des Prototypen}
 	\label{fig:Grundplatte}
 \end{figure}
+
 Im Gegensatz zu \ref{fig:Skizze} wurde eine sechseckige Grundplatte mit den Halterungen für die drei 
 Servomotoren mittels Solid Edge 2020 konstruiert und mittels eines 3D-Druckers gefertigt. Diese ist 
 in \ref{fig:Grundplatte} zu sehen
@@ -189,12 +190,14 @@ festgestellt, dass zwischen den Hebeln und dem Gabelkopf noch zu viel Spielraum 
 beeinträchtigen könnte. Deshalb wurden Unterlegescheiben zur Verringerung des Spiels eingesetzt. Die 
 Verbindung zur Platte wird über ein Dreieckskonstrukt \ref{fig:Dreiecksverbindung}, das ebenfalls aus dem 
 3D-Drucker kam, hergestellt. 
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.45]{pics/BildDreieck}
 	\caption{Dreiecksverbindung zur Touch-Folie}
 	\label{fig:Dreiecksverbindung}
 \end{figure}
+
 Dabei war vor allem die korrekte Länge zum Mittelpunkt des Dreiecks, 
 respektive der Grundplatte, eine wichtige Größe, da eine falsche Länge nicht mehr die senkrechte 
 Ausrichtung des Gabelkopfes zu der Grundplatte zur Folge gehabt hätte. Außerdem mussten die Kugellager 
@@ -207,13 +210,30 @@ Silikon mit der Dreiecksverbindung zusammengefügt wurde.
 Außerdem wurden vor dem Zusammenbau der Servomotoren mit den Servo-Hebeln, alle Servomotoren in die 
 Neutralstellung gesetzt (vgl. PWM-Signale), um die Regelung ebenfalls von einem neutralen Punkt aus zu 
 starten. Dabei traten motorspezifische Unterschiede auf die mittels der PWM-Werte ausgeglichen werden 
-müssen.Bei der Verkabelung wurden sowohl der XMC und die drei Servomotoren mittels eines gelöteten 
-Teilstücks an die gleiche Masse gelegt. Auch die Betriebsspannung der Motoren wurde so gehandhabt.
-Zum Fazit:
-Die Teile aus dem 3D-Drucker waren insgesamt zufriedenstellend, lediglich die Löcher für die Schrauben 
-an der Dreiecksverbindung mussten nachträglich aufgebohrt werden und an einem Gabelkopf der 
-Dreiecksverbindung blieben Teile an der Grundplatte des Druckers hängen. Glücklicherweise waren die 
-Servomotoren ausreichend stark um die Platte ohne Probleme zu bewegen.
+müssen.
+
+\subsubsection{Schaltplan und Verkabelung}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.5]{pics/Schaltplan}
+	\caption{Schaltplan des Prototyps}
+	\label{fig:verkabelung}
+\end{figure}
+Die gesamte Verkabelung ist dabei in \ref{verkabelung} zu sehen. Hier sind auch alle Pins verzeichnet, 
+sollte sich einmal ein Kabel lösen. Dabei wurde die Stromversorgung für den XMC und den Raspberry Pi getrennt 
+von der allgemeinen Stromversorgung für die Servomotoren gehalten, um ein Absacken der Spannung zu verhindern.
+Außerdem wurden sowohl die Servomotoren, als auch die UART-Verbindung auf dieselbe Erdung gelegt.
+
+\subsubsection{Fazit}
+Die Teile aus dem 3D-Drucker waren insgesamt sehr zufriedenstellend, lediglich die Löcher für die Schrauben 
+an der Dreiecksverbindung mussten nachträglich aufgebohrt werden. Dasselbe galt für die Löcher in den Servohebeln. 
+Außerdem blieben von einem Gabelkopf der Dreiecksverbindung leider nicht funktionsessentielle Teile an der Platte 
+des Druckers hängen, somit war lediglich der ästethische Punkt beeinträchtigt. Glücklicherweise waren die 
+Servomotoren ausreichend stark um die Platte ohne Probleme und mit einer ausreichenden Geschwindigkeit bewegen zu 
+können. Des Weiteren wurde aufgrund von Zeitmangel die Verkabelung des Prototypen und die Halterung des Bildschirms 
+lediglich provisorisch ausgeführt. An dieser Stelle wäre für zukünftige Projekte noch Verbesserungspotential. 
+Insgesamt liegt jedoch ein für unsere Zwecke einfacher und dennoch ausreichender physischer Aufbau vor.
 
 % ----------------------------------------------------------------------------------
 % Kapitel 2.2: Software-Architektur
@@ -221,7 +241,7 @@ Servomotoren ausreichend stark um die Platte ohne Probleme zu bewegen.
 \subsection{Software-Architektur}
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale = 0.5]{pics/SW_Architektur}
+	\includegraphics[scale = 0.5]{pics/SW Architektur}
 	\caption{Grundaufbau der Software-Architektur}
 	\label{fig:SWarchitektur}
 \end{figure}
@@ -329,12 +349,11 @@ für das Darstellen von Grafiken und Animationen aufgewendet die eventuell die G
     \qquad
     \subfloat[Preempt-RT Raspbian Kernel\newline(4.19.59-rt23-v7l+)]{{\includegraphics[scale = 0.55]{pics/RaspiKernelAfter} }}%
     \caption{Latenzen und Temperaturen der jeweiligen Kernel}%
-    \source{https://lemariva.com/blog/2019/09/raspberry-pi-4b-preempt-rt-kernel-419y-performance-test}
     \label{fig:Kernel}%
 \end{figure}
 Um die Echtzeitfähigkeit des gesamten Systems zu optimieren wurde für den Raspberry Pi der Preempt-RT Kernel kompiliert und aufgespielt.
 Die Latenzen verbessern sich in Tests, wie in Abbildung \ref{fig:Kernel} zu sehen ist, 
-um einen Faktor von 3 während die Temperatur der CPU um nur 0.5° C steigt. Dies stellt objektiv betrachtet eine
+um einen Faktor von 3 während die Temperatur der CPU um nur 0.5$^\circ$ C steigt. Dies stellt objektiv betrachtet eine
 Verhältnismäßig gute Kosten-Nutzen Balance dar.
 \subsubsection{Ausblick}
 Auch wenn das Potential des Preempt-RT Kernels aktuell nicht voll ausgeschöpft wird bietet er das Potential künftige Funktionalität auf einem 
@@ -349,7 +368,7 @@ möglichst schnellen Level zu halten wodurch die Echtzeitfähigkeit des Systems 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.6]{pics/BildUart1}
-	\caption{Grundaufbau der UART-Verbindung}bilder 
+	\caption{Grundaufbau der UART-Verbindung} 
 	\label{fig:UART}
 \end{figure}
 Zur Datenübertragung zwischen dem Raspberry Pi und dem XMC Mikrocontroller wurde das Universal 
@@ -364,7 +383,9 @@ Beispielpaket ist in \ref{fig:UARTFrame} zu sehen.Die Übertragung erfolgt dabei
 die General Purpose In/Out Pins 14 und 15. Dabei ist der Pin 14 der Sender und der Pin 15 der Empfänger 
 von den Nachrichten des XMC. Auf dem XMC ist die Pinbelegung variabel und somit flexibler im Gegensatz 
 zum Raspberry Pi. Hier wurden die beiden Pins 1.4 und 1.5 gewählt. Hier fungiert Pin 1.5 als Sender und 
-Pin 1.4 als Empfänger. Zum Testen wurde vom Raspberry Pi ein vordefinierter String, in diesem Fall 
+Pin 1.4 als Empfänger.
+\subsubsection {Testen und erste Fehler}
+Zum Testen wurde vom Raspberry Pi ein vordefinierter String, in diesem Fall 
 "`\$123456789!",, an den XMC gesendet. Dieser liest die ankommenden Daten und sendet sie zurück an den 
 Raspberry Pi, welcher sie auf dem Bildschirm ausgibt. Dadurch ließen sich die nachfolgenden Fehler in 
 der Implementierung und Datenverarbeitung des XMC besser nachvollziehen. Am Anfang des Projektes traten diverse Schwierigkeiten 
@@ -395,7 +416,7 @@ gewährleisten. Somit wird sie nach jedem Empfangsvorgang auf dem XMC in der Int
 aufgerufen.
 
 \subsubsection{Datenübertragungsformate}
-\textit{Von Korbinian Federholzner und Michael Schmidt}\newline
+
 Um eine eindeutige Übertragung zu gewährleisten, wurde sich auf ein standardisiertes Format festgelegt. 
 Dabei wurden eine bestimmte Anzahl Pakete in einer bestimmten Reihenfolge gesendet, wobei pro Paket immer 
 ein Zeichen des Strings übertragen wird, wie in \ref{fig:UARTFrame} \cite {electricimp} verdeutlicht wird.
@@ -462,6 +483,20 @@ Tabelle ist die Performance, da die komplette Rechnung aufwändiger wäre und me
 der Richtung vom XMC zum Raspberry Pi implementiert, da nur dort die Bit-Errors auftraten. Vom Touch Panel des XMCs zum PI wurde nicht unbedingt ein CRC benötigt,
 da auf dem PI ein Kalman-Filter davorgeschalten wurde der diese Fehler ausgleicht. 
 Der CRC könnte hier in Zukunft noch implementiert werden.
+\subsubsection {Zeitliche Betrachtungen}
+
+Die Übertragungsgeschwindigkeit setzt sich hierbei zusammen aus Baudrate und in unserem Fall Message-Länge:\newline
+$\text{Baudrate}/ \text{Message-Länge} = \text {Nachrichtenfrequenz} $\newline
+Da in unserem Fall jedoch String-Zeichen und keine einzelnen Bits übertragen werden ergibt sich folgende Frequenz für 
+die Nachrichten vom XMC zum Raspberry Pi (Werte der Touch-Platte):\newline
+$ 19200/[(10*8)+(10*2)]= 192 \text {Nachrichten pro Sekunde}$\newline
+Selbiges ergibt sich für die Nachrichten vom Raspberry Pi zum XMC (Servowerte). Sollte jedoch die Message-ID für die Kommunikation 
+von XMC zu Raspberry Pi aktiviert sein ergibt sich durch die geänderte Frame-Länge folgende Rechnung:\newline
+$19200 /[(13*8)+(10*2)]=154,8\text {Nachrichten pro Sekunde}$ \newline
+Sollte die UART-Verbindung, wie in den beiden Fällen angenommen, vollständig ausgelastet sein, reicht die Verbindung aus um die 
+Kommunikation konsistent und vorallem schnell genug zu gewährleisten um eine Regelung zu ermöglichen. Dies liegt daran, dass die 
+Servomotoren lediglich in einem 50 Hz takt arbeiten und die Verbindung somit deutlich schneller arbeitet
+
 
 \subsubsection{Probleme}
 Die größten Probleme beim UART war die Dave4 Dokumentation des XMCs. Online findet man ein sehr detailiertes Handbuch zum 
@@ -656,7 +691,9 @@ Das Aktualisierungsintervall des Gyroscops wurde aufgrund guter Ergebnisse auf 6
 Diverse Probleme gab es beim Merge-Vorgang auf Gitlab mit den durch Dave4 automatisch erstellten Files. 
 Diese erfassen die konfigurierten Einstellungen der XMC APPs und überführen diese in ausführbaren Code. 
 Dieses Problem wurde dadurch gelöst, dass man die Einstellungen auf einem Branch durchgeführt hat und 
-lediglich die selbstgeschriebenen Code-Files zusammengeführt hat.
+lediglich die selbstgeschriebenen Code-Files zusammengeführt hat. Im Bereich der App gestaltete sich das 
+Zusammenführen der Komponenten dank guter Zusammenarbeit denkbar einfach und es traten an dieser Stelle 
+keine unvorhergesehenen Fehler auf.
 
 \pagebreak
 % ----------------------------------------------------------------------------------
@@ -776,128 +813,7 @@ dem iOS-Geräte Display welches die Kugel analog auf die entsprechende Position 
 Formen nachgefahren werden (z.B. ein Unendlichkeitszeichen).
 \newline
 Insgesamt kann das Projekt dennoch als Erfolg betrachtet werden, da ein funktionsfähiger Prototyp mit kleineren Fehlern geschaffen wurde, 
-der ein großes Erweiterungspotential besitzt.
-% ----------------------------------------------------------------------------------
-% Kleine Einführung in LaTeX-Elemente
-% ----------------------------------------------------------------------------------
-%\section{\LaTeX-Elemente}
-%Dieser Abschnitt beinhaltet lediglich einige Informationen über \LaTeX-Distributionen, Editoren und \LaTeX-Elemente, die Ihnen beim Einstieg in das \LaTeX-Textsatzsystem helfen sollen.
-
-%\subsection{\LaTeX-Distributionen nach Betriebssystemen}
-
-%\subsubsection{\LaTeX-Distributionen}
-%Folgende Haupt-\LaTeX-Distributionen stehen Ihnen zur Verfügung:
-%\begin{itemize}
-%  \item Windows:\quad \texttt{MiKTeX}\quad Webseite:\quad\url{http://www.miktex.org}
-%  \item Linux/Unix:\quad \texttt{TeX Live}\quad Webseite:\quad\url{http://tug.org/texlive/}
-%  \item Mac OS:\quad \texttt{MacTeX}\quad Webseite:\quad\url{http://www.tug.org/mactex/}
-%\end{itemize}
-
-%\subsubsection{\LaTeX-Editoren}
-%Auf folgenden Webseiten können Sie einige hilfreiche \LaTeX-Editoren finden:
-%\begin{itemize}
-%  \item Windows/Linux/Mac OS: \url{http://www.xm1math.net/texmaker/}
-%  \item Windiws: \url{http://www.texniccenter.org/}
-%  \item Mac OS: \url{http://pages.uoregon.edu/koch/texshop/}
-%\end{itemize}
-
-%Falls bei den oben genannten Editoren kein passender vorhanden war, findet sich auf Wikipedia eine Zusammenstellung vieler weiterer \LaTeX-Editoren:\\
-%\url{https://en.wikipedia.org/wiki/Comparison_of_TeX_editors}
-
-%Für die PDF-Anzeige empfiehlt sich SumatraPDF: \\ 
-%\url{https://www.sumatrapdfreader.org/free-pdf-reader.html}.
-
-
-%\subsection{Bilder}
-%Zum Einfügen eines Bildes, siehe Abbildung \ref{fig:reversi01}, werden die \texttt{minipage}-Umgebung und der Befehl \texttt{$\backslash$includegraphics} genutzt, da die Bilder so gut positioniert und einfach integriert und skaliert werden können.
-
-%\vspace{1em}
-%\begin{minipage}{\linewidth}
-%	\centering
-%	\includegraphics[width=0.5\linewidth]{pics/gamefield01.png}
-%	\captionof{figure}[Spielfeld 01]{Unbespieltes Spielfeld}
-%	\label{fig:reversi01}
-%\end{minipage}
-
-
-%Nachdem das Spielt gestartet wurde und beide Spielphasen durchlaufen wurden, siegt schließlich der Spieler mit der Farbe rot.
-
-%\vspace{1em}
-%\begin{minipage}{\linewidth}
-%	\centering
-%	\includegraphics[width=0.5\linewidth]{pics/gamefield02.png}
-%	\captionof{figure}[Spielfeld 02]{Finales Spielfeld}
-%	\label{fig:reversi2}
-%\end{minipage}
-
-
-%\subsection{Tabellen}
-%In diesem Abschnitt wird eine Tabelle (siehe Tabelle \ref{tab:beispiel}) dargestellt.
-
-%\vspace{1em}
-%\begin{table}[!h]
-%	\centering
-%	\begin{tabular}{|l|l|l|}
-%		\hline
-%		\textbf{Name} & \textbf{Name} & \textbf{Name}\\
-%		\hline
-%		1 & 2 & 3\\
-%		\hline
-%		4 & 5 & 6\\
-%		\hline
-%		7 & 8 & 9\\
-%		\hline
-%	\end{tabular}
-%	\caption{Beispieltabelle}
-%	\label{tab:beispiel}
-%\end{table}
-
-
-%\subsection{Auflistung}
-%Für Auflistungen wird die \texttt{enumerate}- oder \texttt{itemize}-Umgebung genutzt.
-
-%\begin{itemize}
-%	\item Nur
-%	\item ein
-%	\item Beispiel.
-%\end{itemize}
-
-%\subsection{Listings}
-%Sehen Sie in Listing \ref{lst:helloworld} ein Beispiel für das Einbinden von Quellcode mit Syntax-Highlighting.
-
-%\vspace{1em}
-%\lstinputlisting[caption=Brute Force-Ansatz für das MaxTeilsum2D-Problem, label=lst:maxTeilsumZweiD,basicstyle=\ttfamily\scriptsize]{code/maxTeilsum2DBruteForce.txt}
-%\lstinputlisting[caption=Hello World Program, label=lst:helloworld,basicstyle=\ttfamily\scriptsize]{code/helloworld.c}
-
-%\subsection{Gleichungen}
-%Formatierung von Formeln:
-%\begin{itemize}
-%  \item Formelzeichen sind in kursiv zu setzen
-%  \item Zahlen, Einheiten und Funktionsnamen sind in normaler Schriftart zu setzen (nicht kursiv)
-%  \item Häufig wird fälschlicherweise das Symbol * als Multiplikationszeichen verwendet
-%  \item Zwischen Zahl und Einheit ist ein Leerzeichen zu setzen
-%\end{itemize}
-
-%Frequency Modulation (FM) is a wireless transmission system patent-registered by Edwin H. Armstrong in 1933. It is still widespread in the area of audio broadcasting today. In case of the frequency modulation the amplitude of the desired message signal varies the frequency (the argument) of the sinusoidal carrier. The general FM oscillation is formulated with 
-%\begin{equation}
-%u_{\textrm{FM}}(t)= a_0 \cos(\Psi(t)+\varphi_0) 
-%\label{eqn:fmosc}
-%\end{equation}
-
-%To simplify matters, only an one-tone modulation signal is considered to characterize the spectrum of FM-signals at first
-%\begin{multline}
-%u_{\textrm{FM}}(t)=\hat u_T \cdot [J_0(\eta)\cos\omega_Tt + \sum_{n=1}^{+\infty} J_n(\eta) \cdot (\cos[(\omega_T+n\omega_1)t]+(-1)^n \cos[(\omega_T-n\omega_1)t])] 
-%\\ \ \mbox{with Bessel functions:} \ J_n(\eta)= \frac{(-1)^n}{\pi} \int_0^{\pi} e^{j\eta\sin x} \cdot \cos(nx) dx 
-%\end{multline}
-
-%\subsection{Verwendung von Abkürzungen}
-%Die Abkürzungen können so verwendet werden:
-%Beim ersten Mal der Verwendung (vgl. Einleitung) wird die Abkürzung ausgeschrieben \ac{BA}. Beim zweiten Mal oder folgenden Malen wird nur noch die Abkürzung verwendet \ac{BA}.
-%Aber setzen Sie Abkürzungen sparsam ein.
-
-%\subsection{Tipps}
-%Die Quellen befinden sich in der Datei \textit{quellen.bib}. 
-%Alle Literaturangaben müssen im Text referenziert werden. Die höchstwertigen Quellen stellen dabei Zeitschriftenartikel \cite{Laprie2004}, gefolgt von Konferenzbeiträgen \cite{Agrou2011}, Patenten \cite{Grisenthwaite2012}, Standards \cite{ARINC2005}, Fachbüchern \cite{Kopetz2011},  Datenblättern \cite{Freescale2015}, Techreports und White-Papern \cite{Aswadhati2011} und zuletzt Onlinequellen \cite{Xil2010} dar.
+der ein großes Erweiterungspotential besitzt und außerdem für Vorführungen zur verfügung steht.
 
 \pagebreak
 
@@ -916,18 +832,8 @@ der ein großes Erweiterungspotential besitzt.
 \addcontentsline{toc}{section}{Anhang}
 \addtocontents{toc}{\vspace{-0.5em}}
 
-%\section{Domändenmodell}
-%Ein toller Anhang.
-
-
-%\subsection*{Screenshot}
-%\label{app:screenshot}
-%Unterkategorie, die nicht im Inhaltsverzeichnis auftaucht.
-%\pagebreak
 
 \end{appendix}
-
-
 % ----------------------------------------------------------------------------------------------------------
 % Abkürzungsverzeichnis
 % ----------------------------------------------------------------------------------------------------------
@@ -1007,10 +913,11 @@ der ein großes Erweiterungspotential besitzt.
  \hline
  Philipp Kramer			&123			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
  \hline
- Patrick Lesch			&125			&App 53 			&WiFi Schnittstelle	33		&Custom Kernel 39  			\\
+ Patrick Lesch			&125			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
  \hline
  Michael Schmidt		&122			&UART 62			& Phys. Bau 40			&PWM-Signale 20			\\
   \hline
 \label{tbl:stundenliste}
 \end{tabularx}
+
 \end{document}
