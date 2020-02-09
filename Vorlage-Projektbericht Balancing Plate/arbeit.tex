@@ -5,6 +5,7 @@
 \input{lib/commands}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+\usepackage{subfig}
 \begin{document}
 
 
@@ -20,11 +21,11 @@
 {Technische Informatik}			% Studiengang
 
 \studenttt{Philipp Kramer}	% Studierender
-{1234456}						% Matrikelnummer
+{3117284}						% Matrikelnummer
 {Technische Informatik}			% Studiengang
 
 \studentttt{Patrick Lesch}	% Studierender
-{12344556}						% Matrikelnummer
+{2917177}						% Matrikelnummer
 {Technische Informatik}			% Studiengang
 
 \studenttttt{Michael Schmidt}	% Studierender
@@ -38,7 +39,7 @@
 {Projektdokumentation (Datenverarbeitung in der Technik)}			% Typ der Arbeit 
 {Balancing Plate}				% Thema der Arbeit						
 {Prof.\ Dr.\ Richard Roth}   % Betreuer
-{ Hr.\ Matthias Altmann}	% Zweitgutachter
+{Hr.\ Matthias Altmann}	% Zweitgutachter
 {10.2.\the\year}				% Abgabedatum
 
 \setcounter{page}{1} 
@@ -127,7 +128,9 @@ fallengelassen.
 Um eine konsistente Abarbeitung zu gewährleisten wurde das Projekt in verschieden Module/Arbeitspakete 
 geteilt.
 
-\begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X|X|X|}
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|l|}
 \hline
 Name 					& Aufgabe 1 			& Aufgabe 2 				& Aufgabe 3  \\
 \hline
@@ -141,9 +144,10 @@ Patrick Lesch			& Ansteuerung mit App	& WiFi Schnittstelle		& Custom Kernel\\
 \hline
 Michael Schmidt			& Physischer Aufbau		& UART Schnittstelle		& PWM-Signale\\
 \hline
-%\caption{Tabelle: Arbeisverteilung}
-%\label{tbl:arbeitsverteilung}
-\end{tabularx}
+\end{tabular}
+\label{tab:Arbeisverteilung}
+\caption{Arbeisverteilung}
+\end{table}
 
 Diese werden immer von mindestens zwei Projektteilnehmern abgearbeitet. Außerdem wurde auf eine in sich 
 geschlossene Aufteilung geachtet, um bei aneinandergrenzenden Modulen immer einen Ansprechpartner zu haben. 
@@ -156,37 +160,44 @@ Qualitätskontrolle durchzuführen, wurden in dem Git-Repository die Funktion pu
 \subsection{Physicher Aufbau}
 \textit{Von Michael Braun und Michael Schmidt}\newline
 
+\subsubsection {Mechanik}
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.9]{pics/SkizzeAufbau}
 	\caption{Skizzierter Aufbau des Prototypen}
-	\label{Skizze}
+	\label{fig:Skizze}
 \end{figure}
-In \ref{Skizze} ist eine Skizze des physischen Aufbaus aus dem Lastenheft zum Start des Projektes zu 
+
+In \ref{fig:Skizze} ist eine Skizze des physischen Aufbaus aus dem Lastenheft zum Start des Projektes zu 
 sehen. Dabei wurde lediglich graphisch eine mögliche Vorversion des späteren Prototyps gezeichnet. 
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.45]{pics/BildGrundplatte}
 	\caption{Grundplatte des Prototypen}
-	\label{Grundplatte}
+	\label{fig:Grundplatte}
 \end{figure}
-Im Gegensatz zu \ref{Skizze} wurde eine sechseckige Grundplatte mit den Halterungen für die drei 
+
+Im Gegensatz zu \ref{fig:Skizze} wurde eine sechseckige Grundplatte mit den Halterungen für die drei 
 Servomotoren mittels Solid Edge 2020 konstruiert und mittels eines 3D-Druckers gefertigt. Diese ist 
-in \ref{Grundplatte} zu sehen
+in \ref{fig:Grundplatte} zu sehen
 
 Der Druck der Grundplatte dauerte dabei etwa zehn Stunden, was unter anderem an den Ausmaßen der Platte 
 (Durchmesser von 20 cm) liegt. Nachdem die Servomotoren in den Halterungen befestigt wurden, hat man die 
 Servo-Hebel und Gabelköpfen verbunden, dazu wurden die Servo-Hebel aufgebohrt. Nach dem Zusammenbau hat man 
 festgestellt, dass zwischen den Hebeln und dem Gabelkopf noch zu viel Spielraum war, der die Regelung 
 beeinträchtigen könnte. Deshalb wurden Unterlegescheiben zur Verringerung des Spiels eingesetzt. Die 
-Verbindung zur Platte wird über ein Dreieckskonstrukt \ref{Dreiecksverbindung}, das ebenfalls aus dem 
+Verbindung zur Platte wird über ein Dreieckskonstrukt \ref{fig:Dreiecksverbindung}, das ebenfalls aus dem 
 3D-Drucker kam, hergestellt. 
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.45]{pics/BildDreieck}
 	\caption{Dreiecksverbindung zur Touch-Folie}
-	\label{Dreiecksverbindung}
+	\label{fig:Dreiecksverbindung}
 \end{figure}
+
 Dabei war vor allem die korrekte Länge zum Mittelpunkt des Dreiecks, 
 respektive der Grundplatte, eine wichtige Größe, da eine falsche Länge nicht mehr die senkrechte 
 Ausrichtung des Gabelkopfes zu der Grundplatte zur Folge gehabt hätte. Außerdem mussten die Kugellager 
@@ -199,24 +210,58 @@ Silikon mit der Dreiecksverbindung zusammengefügt wurde.
 Außerdem wurden vor dem Zusammenbau der Servomotoren mit den Servo-Hebeln, alle Servomotoren in die 
 Neutralstellung gesetzt (vgl. PWM-Signale), um die Regelung ebenfalls von einem neutralen Punkt aus zu 
 starten. Dabei traten motorspezifische Unterschiede auf die mittels der PWM-Werte ausgeglichen werden 
-müssen.Bei der Verkabelung wurden sowohl der XMC und die drei Servomotoren mittels eines gelöteten 
-Teilstücks an die gleiche Masse gelegt. Auch die Betriebsspannung der Motoren wurde so gehandhabt.
-Zum Fazit:
-Die Teile aus dem 3D-Drucker waren insgesamt zufriedenstellend, lediglich die Löcher für die Schrauben 
-an der Dreiecksverbindung mussten nachträglich aufgebohrt werden und an einem Gabelkopf der 
-Dreiecksverbindung blieben Teile an der Grundplatte des Druckers hängen. Glücklicherweise waren die 
-Servomotoren ausreichend stark um die Platte ohne Probleme zu bewegen.
+müssen.
+
+\subsubsection{Schaltplan und Verkabelung}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.5]{pics/Schaltplan}
+	\caption{Schaltplan des Prototyps}
+	\label{fig:verkabelung}
+\end{figure}
+Die gesamte Verkabelung ist dabei in \ref{verkabelung} zu sehen. Hier sind auch alle Pins verzeichnet, 
+sollte sich einmal ein Kabel lösen. Dabei wurde die Stromversorgung für den XMC und den Raspberry Pi getrennt 
+von der allgemeinen Stromversorgung für die Servomotoren gehalten, um ein Absacken der Spannung zu verhindern.
+Außerdem wurden sowohl die Servomotoren, als auch die UART-Verbindung auf dieselbe Erdung gelegt.
+
+\subsubsection{Fazit}
+Die Teile aus dem 3D-Drucker waren insgesamt sehr zufriedenstellend, lediglich die Löcher für die Schrauben 
+an der Dreiecksverbindung mussten nachträglich aufgebohrt werden. Dasselbe galt für die Löcher in den Servohebeln. 
+Außerdem blieben von einem Gabelkopf der Dreiecksverbindung leider nicht funktionsessentielle Teile an der Platte 
+des Druckers hängen, somit war lediglich der ästethische Punkt beeinträchtigt. Glücklicherweise waren die 
+Servomotoren ausreichend stark um die Platte ohne Probleme und mit einer ausreichenden Geschwindigkeit bewegen zu 
+können. Des Weiteren wurde aufgrund von Zeitmangel die Verkabelung des Prototypen und die Halterung des Bildschirms 
+lediglich provisorisch ausgeführt. An dieser Stelle wäre für zukünftige Projekte noch Verbesserungspotential. 
+Insgesamt liegt jedoch ein für unsere Zwecke einfacher und dennoch ausreichender physischer Aufbau vor.
 
 % ----------------------------------------------------------------------------------
 % Kapitel 2.2: Software-Architektur
 % ----------------------------------------------------------------------------------
 \subsection{Software-Architektur}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.5]{pics/SW_Architektur}
+	\caption{Grundaufbau der Software-Architektur}
+	\label{fig:SWarchitektur}
+\end{figure}
 
+Wie in \ref{fig:SWarchitektur} zu sehen gliedert sich der Aufbau der Software in drei Teile. Zum einen der 
+Programmteil auf dem XMC, der die eingehenden Daten verarbeitet und an die Servomotoren weiterleitet und 
+gleichzeitig die Werte der Touch-Platte ausliest. Zum zweiten die Regelung auf dem Raspberry Pi, welche 
+die ankommenden Werte von der Touchplatte umwandelt und an den XMC zurücksendet. Außerdem beschäftigt sich 
+dieser Teil mit dem Threading zwischen den beiden Modi: Steuerung mittels App und selbstständige Regelung.  
+Für die Steuerung per App müssen auch hier die ankommenden Daten verarbeitet werden. Die App bildet dabei 
+den dritten Teil in dem die eingebauten Gyroskope des Handys ausgelesen und diese Werte an den Raspberry Pi 
+übermittelt werden.
 % ----------------------------------------------------------------------------------
 % Kapitel 2.3: Touch-Folie
 % ----------------------------------------------------------------------------------
-\subsection{Touch-Folie}
+\subsection{Touch-Folie} \label{subsec:Touch-Folie}
 \textit{Von Korbinian Federholzner und Philipp Kramer}\newline
+
+Nachdem feststand, dass dieses Projekt ein Balancing Plate sein wird, war einer der ersten Schritte die Suche nach vergleichbaren selbstbalancierenden Platten, um nachzusehen, welche Hardware diese verwenden. Hauptsächlich relevant war dafür, wie die einzelnen Vergleichsprojekte die Position des Balles erkennen können. Eine der am beiden am meisten vertretenen Aufbauten war es, eine einfache Plastikplatte zu verbauen und den Ball mithilfe einer Kamera zu erkennen. Diese Umsetzung war aufgrund von mangelnder Kenntnis in der Bildverarbeitung und dem Ziel, das Endprodukt so simpel und kompakt wie möglich zu gestalten, allerdings nicht die letztendliche Wahl. Die Entscheidung fiel dafür eine Touch-Folie zu nutzen und mit einer ausreichend schweren Kugel per Druck die Koordinaten zu bestimmen. Da die Suche nach einer geeigneten Platte auf den deutschen Markt eingegrenzt war, war es schwerer als erwartet eine passende Touch-Platte zu finden. Endgültig fiel die Entscheidung auf das in Abb. \ref{fig:bestell} genannte Platte AMT 2517 der Apex Material Technology Corp.
+
 \subsubsection{Funktion der Touch Folie}
 
 \begin{figure}[htbp]
@@ -226,51 +271,102 @@ Servomotoren ausreichend stark um die Platte ohne Probleme zu bewegen.
 	\label{fig:TouchPanelFunction}
 \end{figure}
 
-Zum Auslesen der Sensorwerte wird ein 5-Wire Rezessives Touchpanael verwendet.
-Die Variante mit 5 Kabeln hat den Vorteil, dass für das Auslesen ein 5tes Kabel verwendet wird, welches
-ein Analoges Signal liefert. Prinzipiell ist das Panel ein Spannungsteiler, bei \ref{fig:TouchPanelFunction} 
-sieht man dass es zwei Schichten hat, welche durch Druck zusammengefügt werden, dadurch ergibt sich 
-immer ein anderer Wiederstand je nach dem auf welcher Position man sich auf dem Panel befindet. Der Analoge 
-Spannungswert ist also durch diesen Spannungsteiler bestimmt. Damit Sich die Beiden Folien berühren können
-muss ein Mindestruck von $1.00 Newton$ gegeben sein. Im Bild \ref{fig:TouchPanelFunction} sieht man dass auf der 
-Oberen Seite Spannung und der unteren Masse anliegt. Mit dieser Konstellation kann man nur eine Richtung messen 
-also z.B. die X-Koordinate. Um nun auch die Y-Koordinate messen zu können müssen die Pins so umgeschalten werden, 
-dass Auf der Linken Seite Spannung und auf der Rechten Seite Masse anliegt. Dadurch ändert wird der Wiederstand der
-anderen Seite nun als Spannungsteiler gemessen. 
+Zum Auslesen der Sensorwerte wird ein 5-Wire rezessives Touch Panel verwendet.\newline
+Wie in Abb. \ref{fig:TouchPanelFunction} \cite {wikipdeia} gezeigt, besteht dieses grundsätzlich aus zwei Schichten. Wird ein Druck von 1.00 $Newton$ oder mehr auf die Oberfläche des Panels ausgeübt, so berühren sich die beiden Schichten. Da das Touch Panel im Prinzip ein Spannungsteiler ist, ergeben sich, je nachdem wo gedrückt wird, unterschiedliche Widerstände, welche wiederum einen Rückschluss geben auf die Position des Druckpunktes. Der analoge Spannungswert, der durch Pin 3 zurückgegeben wird, ist also durch diesen Spannungsteiler bestimmt.\newline
+Um zu messen, wo auf der Touchplatte sich ein Druckpunkt befindet, werden zwei der fünf Pins des Panels auf Masse (GND) gesetzt und zwei auf Spannung (V\textsubscript{DD}), im Fall dieses Projektes sind dies 5 $Volt$. Die Verwendung von fünf Kabeln bietet den Vorteil, dass der Pin in der Mitte, Pin 3, zum Auslesen des analogen Sensorwerts verwendet wird.
+Sind wie in Abb. \ref{fig:TouchPanelFunction} die oberen beiden Pins auf V\textsubscript{DD} und die unteren beiden auf GND, so lässt sich ermitteln, wo der Druckpunkt sich zwischen der oberen und der unteren Kante befindet. Bei einem kartesischen zweidimensionalen Koordinatensystem entspricht dies dem y-Wert.
+Da mit dieser Methode nur eine Richtung gemessen werden kann, für einen Punkt auf dem Panel allerdings sowohl ein y- als auch ein x-Wert benötigt wird, müssen die Pins so umgeschaltet werden, sodass beide Pins an der linken kurzen Seite auf V\textsubscript{DD} sind und beide Pins auf der rechten Seite GND.\newline
+Die Werte der Platte liegen bei perfekten Bedingungen zwischen  0 und 4096, wobei 0 an der Kante, an der GND anliegt, ist und 4096 der maximale Wert an der V \textsubscript{DD}-Seite. Bei diesem Projekt liegen die Werte, die letztlich ausgegeben werden, bei beiden Seiten zwischen 1500 und 2500. Die Verringerung der Anzahl der Messwerte ist zum Teil auf die in Kapitel \ref{subsec:ProblemePlatte} angeführten Probleme zurückzuführen.
 
 \subsubsection{Implementierung}
-Dadurch, dass die Pins umgeschaltet werden müssen, wurden die GPIO Pins des XMC verwendet. Da das Panel nur mit einer
-Frequenz von 50 Hz geschalten werden kann, wurde ein Timer Interrupt definiert. Dieses Interrupt wurde alle 20 ms 
-Ausgelöst. Die Interrupt Service Routine startet dann die Messung für den Analog Digital Converter. 
-Der Analoge Pin des Panels ist an einem Analog fähigen Pin des XMCs angeschlossen, von welchem mittels des ADCs 
-gemessen wird. Der ADC löst sobald er mit dem Messen fertig ist auch eine Interrupt Service Routine aus, in dieser 
-wird der gemessene Wert gespeichert und dann die GPIO Pins umgeschalten damit die andere Koordinate gemessen werden kann.
-Sind beide Werte vorhanden, so werden die beiden Daten in einem UART Frame verpackt und dann ein UART-Transmit ausgelöst.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.6]{pics/PlatteSkizze.png}
+	\caption{Skizze der Platte} 
+	\label{fig:PlatteSkizze}
+\end{figure}
+
+Bei der Implementierung wird als Verbindung zur Touch Plate ein XMC4500 Mikrocontroller verwendet, welcher mit der Applikation Dave4 der Infineon AG programmiert wird.
+Die einzelnen Pins der Platte sind hierbei mit Pins des XMC verbunden. Da, wie in \ref{subsec:Touch-Folie} beschrieben, die Pins an der Platte umgeschaltet werden müssen, um sowohl x-, als auch y- Koordinate auslesen zu können, werden zwei GPIO-Pins des XMC verwendet. Bei einem skizzierten Aufbau der Platte wie in Abb. \ref{fig:PlatteSkizze} werden die Pins 1 und 5 mit GPIO-Pins des XMC verbunden. Pin 1 und Pin 5 müssen immer jeweils gegenteilig sein, also wenn Pin 1 high ist, ist Pin 5 low und vice versa.
+Der übrige Pin 3 wird ausschließlich dafür verwendet die Werte, die die Platte liefert, in je eine x-Variable und eine y-Variable zu schreiben. 
+In diesem Projekt sind die Pins der Touch Plate wie in Tabelle \ref{tab:VerbindungenPins} mit dem XMC verbunden.
+
+\begin{table}[]
+\centering
+\begin{tabular}{l|l}
+Pin Touch Plate & Pin XMC \\
+\hline
+Pin 1           & Pin 2.15\\
+Pin 2           & VDD     \\
+Pin 3           & Pin 15.2    \\
+Pin 4           & GND     \\
+Pin 5           & Pin 2.14
+\end{tabular}
+\caption{Verbindungen der Pins der Touch Plate mit dem XMC \label{tab:VerbindungenPins}}
+\end{table}
+
+Da das Panel nur mit einer Frequenz von 50 Hz geschaltet werden kann, also alle 0.02 Sekunden, ist ein Timer-Interrupt definiert. Dieser wird alle 20 ms ausgelöst, das Panel wird also maximal oft ausgelesen. Die Interrupt Service Routine (ISR) startet die Messung für den Analog Digital Converter (ADC). Dieser ADC wandelt die analoge Spannung, die per Pin 3 der Touch Plate an den XMC geleitet wird, in einen digitalen Wert um, der, wie bereits in Kapitel \ref{subsec:Touch-Folie} beschrieben, zwischen 1500 und 2500 liegt. Sobald der ADC die Messung und Umwandlung abgeschlossen hat, startet er selbst ebenfalls eine 
+Der ADC löst sobald er mit dem Messen fertig ist auch eine ISR aus. In dieser wird der gemessene digitale Wert je nach gemessener Koordinate in eine x- bzw. y-Variable gespeichert und daraufhin die GPIO Pins umgeschaltet, sodass die andere Koordinate ermittelt werden kann.
+Die GPIO-Pins sind beim Start des Programms so eingestellt, dass erst der x-Wert ausgelesen wird und daraufhin der y-Wert. Sind beide Werte vorhanden, so wird bei beiden Variablen jeweils 1500 abgezogen. Dadurch sind die weiterverwendeten nicht mehr im Bereich von 1500 bis 2500, sondern befinden sich zwischen 0 und 1000, was die darauffolgenden Berechnungen erleichtert. Nach der Umrechnung werden die beiden Daten in einem UART Frame verpackt und dann ein UART-Transmit ausgelöst.
+Der gesamte Ablauf ist schematisch in Abb. \ref{fig:TouchUML} dargestellt.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.6]{pics/TouchUML.png}
-	\caption{UML Activity Diagramm, der Interrupts}
-	\label{TouchUML}
+	\caption{UML Aktivitätsdiagramm der Interrupts}
+	\label{fig:TouchUML}
 \end{figure}
 
-\subsubsection{Probleme}
-Ein Problem im Zuge der Implementierung der Touch-Platte, war die Funktion der ADC-App im Dave4, da bei diesem
-keine gute Dokumentation vorhanden war, so war es z.B. schwer herrauszufinden wie die Funktion zum starten der ADC Messung 
-hieß. Ein görßeres Problem war der Messfehler des Touch Panels, bei welchem die Platte einen Spannungsabfall je nach Pin hatte.
-Bsp: Falls man der X-Achse entlang messen wollte und dabei einen Konstaten Y-Wert beibehielt, so wäre das Erwartete Verhalten,
-dass der X-Wert gleich bleiben würde. Jedoch stieg der Wert bei messen entlag der X-Achse konstant an, das selbe war auch auf
-der Y-Achse. Um das dieses verhalten der Pins zu eleminieren, wurde versucht das Ganze mittels einer H-Brücke zu lösen, 
-jedoch war hier das selbe Problem, über der H-Brücke fiel auch Spannung ab, da 2 Pins immer fest waren und nur 2 Pins
-über die Brücke geschalten waren, gab es wieder ein ähnliches Szenario. Die nächste Überlegung, war die Verwendung von Relais.
-Leider sind Relais die schnell genug Schalten können relativ Teuer und diese haben einen höheren Verschleiß.
-Die Lösung des Problems war, Wiederstände zwischen die Pins des XMCs und der Platte zu schalten. Diese Wiederstände 
-minimieren den Fehler, dadruch war der Fehler vernachlässigbar und konnte durch den Regeler ausgeglichen werden. 
+\subsubsection{Probleme} \label{subsec:ProblemePlatte}
+Ein Problem im Zuge der Implementierung der Touch-Platte war die Funktion der ADC-App im Dave4. Da bei dieser keine gute Dokumentation vorhanden war, war es z.B. schwer herauszufinden, wie sich eine Messung bei dem Analog Digital Converter starten lässt und wie die dafür benötigte Funktion heißt. \newline
+Eine weitere Problematik stellt der Randbereich der Platte dar. Dieser ist minimal höher als der Rest der Touch-Folie und auf diesem schwanken die Werte sehr stark. Anstatt eines erwarteten Wertes, der kleiner als 500 ist, werden dort teils Werte von über 2000 ausgegeben. Zur Behebung des Hindernisses wurde ein etwas kleinerer Innenbereich definiert und sollte ein Druckpunkt zwischen dem inneren Bereich und dem etwas erhöhten Rand sein, so wird die Platte maximal ausgelenkt, sodass sich der Ball möglichst wieder in Richtung Mitte der Platte bewegt.
+Das Hauptproblem, das bei der Implementierung der Platte anfiel, waren konstante Messfehler des Touch Panels. Das erwartete Verhalten ist, dass die x-Werte konstant bleiben, wenn sich die Druckpunkte parallel zur y-Achse bewegen. Dies entspricht beim endgültigen Aufbau einer Kugelbahn, die parallel zur kurzen Seite verläuft. Plausiblerweise wird das gleiche Verhalten auch bei den y-Werten erwartet, wenn die Druckpunkte parallel zur x-Achse liegen.
+Bei Tests stieg allerdings der konstant erwartete Wert entlang der Achsen immer weiter an. In Abb. \ref{fig:ProblemPlattenwerte} ist dieses Verhalten für die Messung des x-Werts dargestellt.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.5]{pics/ProblemPlattenwerte}
+	\caption{Problem der Plattenwerte am Beispiel der x-Werte}
+	\label{fig:ProblemPlattenwerte}
+\end{figure}
 
-\subsection{Programmierung Raspberry Pi}
+Nachdem die Touch Plate mittels eines Picoscopes auf Fehler untersucht war, dort aber alles wie erwartet funktionierte, wurden alle Pins des XMC auf eventuelle Mängel untersucht. Dort waren ebenfalls keine Fehler zu erkennen.\newline
+Der nächste Lösungsansatz war es die GPIO-Pins zu eliminieren, indem eine H-Brücke eingesetzt wird. Hintergrund dieser Idee war es, dass die GPIO-Pins des XMC keine wirklich konstante Spannung liefern können und mittels der H-Brücke der Strom nicht mehr vom Mikrocontroller, sondern direkt von der Stromversorgung kommt. Allerdings fiel wie bei den GPIO-Pins des XMC über die H-Brücke die Spannung ab, was zu einem sehr ähnlichen Endszenario führte. Die nächste Überlegung war die Verwendung von Relais. Da Relais, die schnell genug für die Anforderungen dieses Projektes sind, sehr teuer sind und weiterhin deren Verschleiß hoch ist, wurde diese Idee letztlich ebenfalls nicht angewandt.\newline
+Die Lösung, die letztendlich im Projekt verwendet wird, ist, Widerstände von 100 $Ohm$ zwischen die Pins des XMC und die der Platte zu schalten. Diese Widerstände minimieren den Fehler so weit, dass er entlang einer Achse nur noch etwa 40 ist und damit vernachlässigbar. Der minimale Fehler, der übrig bleibt, kann außerdem mithilfe des Reglers ausgeglichen werden.
+Mit der Kenntnis, dass dieser Ansatz den erhofften Erfolg brachte, lag der Fehler weniger an der mangelnden Konstanz der GPIO-Pins, sondern eher am zu geringen Widerstand, den die Platte liefert, was wiederum zu gelegentlichen Spannungsabbrüchen führte.\newline
+Ein anderes Problem, das im Laufe der Tests aufkam, war, dass die erste Kugel, die genutzt wurde, zu leicht war, wenn sich die Platte zu schnell bewegte. Dies war der Fall, da in dem kurzen Moment, in dem sich die Platte bewegte, der Mindestdruck von 1 $Newton$ unterschritten wurde und dadurch falsche Werte an den XMC gesendet wurden. Daraufhin berechnete der Regler neue Plattenneigungswinkel, die allerdings basierend waren auf den unkorrekten Positionen. Eine geeignete Kugel war dann eine Flipperkugel, die der Inhaber der Flipperwerkstatt Regensburg zur Verfügung stellte.
+
 
 % ----------------------------------------------------------------------------------
-% Kapitel 2.4: UART Schnittstelle
+% Kapitel 2.4: Einrichtung des Raspberry Pi
+% ----------------------------------------------------------------------------------
+\subsection{Einrichtung des Raspberry Pi}
+\textit{Von Patrick Lesch}
+\subsubsection{Allgemeines}
+Aufgrund seiner Vielzahl von flexibel einsetzbaren Komponenten wurde der Raspberry Pi 4 als zentraler Bestandteil des Systems gewählt.
+Besonders die hohe Rechenleistung sowie das bereits verbaute Wlan-Modul und die einfache Bedienbarkeit waren hierbei ausschlaggebend. 
+Als Betriebssystem wurde eine Aktuelle Version des Raspbian Buster Lite gewählt welches ein leichtgewichtiges Image ohne Grafische Oberfläche darstellt.
+Die Wahl viel auf dieses Image da hierfür der im anschließenden Kapitel erwähnte Preempt-RT Kernel existiert. Zudem wird keine Rechenleistung
+für das Darstellen von Grafiken und Animationen aufgewendet die eventuell die Geschwindigkeit von kritischen Prozessen negativ beeinflussen.
+\subsubsection{Echtzeit Preempt-RT Kernel} \label{subsec:Kernel}
+\begin{figure}[htbp]
+    \centering
+    \subfloat[Standard Raspbian Kernel\newline(4.19.57-v7l+)]{{\includegraphics[scale = 0.55]{pics/RaspiKernelBefore} }}%
+    \qquad
+    \subfloat[Preempt-RT Raspbian Kernel\newline(4.19.59-rt23-v7l+)]{{\includegraphics[scale = 0.55]{pics/RaspiKernelAfter} }}%
+    \caption{Latenzen und Temperaturen der jeweiligen Kernel}%
+    \label{fig:Kernel}%
+\end{figure}
+Um die Echtzeitfähigkeit des gesamten Systems zu optimieren wurde für den Raspberry Pi der Preempt-RT Kernel kompiliert und aufgespielt.
+Die Latenzen verbessern sich in Tests, wie in Abbildung \ref{fig:Kernel} zu sehen ist, 
+um einen Faktor von 3 während die Temperatur der CPU um nur 0.5$^\circ$ C steigt. Dies stellt objektiv betrachtet eine
+Verhältnismäßig gute Kosten-Nutzen Balance dar.
+\subsubsection{Ausblick}
+Auch wenn das Potential des Preempt-RT Kernels aktuell nicht voll ausgeschöpft wird bietet er das Potential künftige Funktionalität auf einem 
+möglichst schnellen Level zu halten wodurch die Echtzeitfähigkeit des Systems gewährleistet wird.
+
+% ----------------------------------------------------------------------------------
+% Kapitel 2.5: UART Schnittstelle
 % ----------------------------------------------------------------------------------
 \subsection{UART Schnittstelle}
 \textit{Von Korbinian Federholzner und Michael Schmidt}\newline
@@ -278,22 +374,24 @@ minimieren den Fehler, dadruch war der Fehler vernachlässigbar und konnte durch
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.6]{pics/BildUart1}
-	\caption{Grundaufbau der UART-Verbindung}bilder 
-	\label{UART}
+	\caption{Grundaufbau der UART-Verbindung} 
+	\label{fig:UART}
 \end{figure}
 Zur Datenübertragung zwischen dem Raspberry Pi und dem XMC Mikrocontroller wurde das Universal 
 Asynchronous Receiver Transmitter-Protokoll (UART) verwendet. Dieses ist für schnelle Bitübertragungsraten, 
 in unserem Fall eine Baud-Rate von 19200 (Bits pro Sekunde), über eine einzelne Leitung verantwortlich. 
 In unserem Fall ist die Übertragung im Modus Full-Duplex und erfordert somit zwei Leitungen, die sich 
-kreuzen \ref{UART}.
+kreuzen \ref{fig:UART} \cite {mikroe}.
 
 Grundsätzlich erfolgt die Datenübertragung aufgrund der Einfachheit in Strings, welche jeweils nach dem 
 Empfang dekodiert werden. Dabei enthält ein UART-Paket genau ein Zeichen der Zeichenfolge. Ein solches 
-Beispielpaket ist in \ref{UARTFrame} zu sehen.Die Übertragung erfolgt dabei auf dem Raspberry Pi über 
+Beispielpaket ist in \ref{fig:UARTFrame} zu sehen.Die Übertragung erfolgt dabei auf dem Raspberry Pi über 
 die General Purpose In/Out Pins 14 und 15. Dabei ist der Pin 14 der Sender und der Pin 15 der Empfänger 
 von den Nachrichten des XMC. Auf dem XMC ist die Pinbelegung variabel und somit flexibler im Gegensatz 
 zum Raspberry Pi. Hier wurden die beiden Pins 1.4 und 1.5 gewählt. Hier fungiert Pin 1.5 als Sender und 
-Pin 1.4 als Empfänger. Zum Testen wurde vom Raspberry Pi ein vordefinierter String, in diesem Fall 
+Pin 1.4 als Empfänger.
+\subsubsection {Testen und erste Fehler}
+Zum Testen wurde vom Raspberry Pi ein vordefinierter String, in diesem Fall 
 "`\$123456789!",, an den XMC gesendet. Dieser liest die ankommenden Daten und sendet sie zurück an den 
 Raspberry Pi, welcher sie auf dem Bildschirm ausgibt. Dadurch ließen sich die nachfolgenden Fehler in 
 der Implementierung und Datenverarbeitung des XMC besser nachvollziehen. Am Anfang des Projektes traten diverse Schwierigkeiten 
@@ -317,35 +415,31 @@ welche das UART-Protokoll als Byte-Stream-Ende interpretiert und somit nicht kor
 Nach intensiver Suche in der integrierten Dokumentation in Dave 4, welche jedoch erst nach einigem Suchen 
 gefunden wurde, stießen wir auf eine Funktion:\, "`UART\_StartRecieveIRQ"\,, deren Implementierung anscheinend 
 erforderlich war, um mittels der in der UART-APP vorprogrammierten Interrupt-Option die ankommenden Daten 
-auszulesen %\cite {infineonforums}
+auszulesen \cite {infineon}
 . Diese Funktion setzt einen Interrupt-Request und muss 
 kontinuierlich nach dem erstmaligen Empfangen ausgeführt werden, um eine fehlerfreie Abarbeitung zu 
 gewährleisten. Somit wird sie nach jedem Empfangsvorgang auf dem XMC in der Interrupt-Routine neu 
 aufgerufen.
 
-
-% ----------------------------------------------------------------------------------
-% Kapitel 2.5: Datenübertragungsformate
-% ----------------------------------------------------------------------------------
 \subsubsection{Datenübertragungsformate}
-\textit{Von Korbinian Federholzner und Michael Schmidt}\newline
+
 Um eine eindeutige Übertragung zu gewährleisten, wurde sich auf ein standardisiertes Format festgelegt. 
 Dabei wurden eine bestimmte Anzahl Pakete in einer bestimmten Reihenfolge gesendet, wobei pro Paket immer 
-ein Zeichen des Strings übertragen wird, wie in \ref{UARTFrame}verdeutlicht wird.
+ein Zeichen des Strings übertragen wird, wie in \ref{fig:UARTFrame} \cite {electricimp} verdeutlicht wird.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.5]{pics/Uartframe}
-	\caption{Aufbau eines UART-Frames\cite {electricimp}}
-	\label{UARTFrame}
+	\caption{Aufbau eines UART-Frames}
+	\label{fig:UARTFrame}
 \end{figure}
 Diese Zeichen werden dann aneinandergereiht und ergeben die unten beschriebenen Formate. Dabei hat die 
 Kommunikation, bei der der Raspberry Pi der Sender und der XMC 4500 der Empfänger ist folgendes Format 
-\ref{UART Servo}.
+\ref{fig:UART Servo}.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.5]{pics/Uartservo}
 	\caption{Aufbau eines Datenpakets mit Servowerten}
-	\label{UART Servo}
+	\label{fig:UART Servo}
 \end{figure}
 Übertragen werden hierbei die aktuellen Werte für die PWM-Signalgenerierung, deren Werte sich zwischen 
 450 und 1050 befinden. Dies ist durch die maximale Auslenkung der Servomotoren begründet. Um weitere Bytes 
@@ -365,12 +459,12 @@ Datenteil unterscheidet sich zwischen den beiden Typen. Da sie als String übert
 System problemlos auf bis zu 100 unterschiedliche Nachrichtenformate erweiterbar. Um das bestehende System 
 zu erweitern muss lediglich eine zugehörige Dekodierungsfunktion auf dem Raspberry Pi programmiert werden 
 und ein korrekter Sendevorgang auf dem XMC sichergestellt werden. Die Nachricht mit den Werten der 
-Touch-Folie hat die Message-ID "`00" \,und wird wie folgt übertragen \ref{UART Platte}.
+Touch-Folie hat die Message-ID "`00" \,und wird wie folgt übertragen \ref{fig:UART Platte}.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale = 0.5]{pics/Uartplatte}
 	\caption{Aufbau eines Datenpakets mit den Werten der Touch-Folie}
-	\label{UART Platte}
+	\label{fig:UART Platte}
 \end{figure}
 Auch hier sind Start und Ende der Nachricht wieder mit einem Zeichen, zum Erkennen der korrekten 
 Feldlänge, markiert. Dabei werden die Werte der Touch-Folie, die bereits in X-, bzw. Y-Koordinaten 
@@ -392,9 +486,30 @@ gesamte Packet ermittelt. Für die Implementierung wurde eine CRC-Tabelle benutz
 dass der CRC-Betrag nicht komplett berechnet werden muss, sondern nur ein Teil. Über diesen Anteil kann 
 der Wert in der Tabelle nachgeschlagen werden und dieser als CRC-Wert verwendet werden. Der Vorteil einer solchen
 Tabelle ist die Performance, da die komplette Rechnung aufwändiger wäre und mehr Performance ziehen würde. Der CRC-Check ist momemtan nur in
-der Richtung vom XMC zum Raspberry Pi implementiert, da nur dort die Bit-Errors auftraten. Vom Touchpanel des XMCs zum PI wurde nicht unbedingt ein CRC benötigt,
+der Richtung vom XMC zum Raspberry Pi implementiert, da nur dort die Bit-Errors auftraten. Vom Touch Panel des XMCs zum PI wurde nicht unbedingt ein CRC benötigt,
 da auf dem PI ein Kalman-Filter davorgeschalten wurde der diese Fehler ausgleicht. 
+In Abbildung \ref{fig:UARTFrameCRC} kann man den geupdateten Frame mit CRC-Check sehen
 Der CRC könnte hier in Zukunft noch implementiert werden.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale = 0.5]{pics/Uartplattecrc.png}
+	\caption{Aufbau eines Datenpakets mit den Werten der Touch-Folie mit CRC check}
+	\label{fig:UARTFrameCRC}
+\end{figure}
+\subsubsection {Zeitliche Betrachtungen}
+
+Die Übertragungsgeschwindigkeit setzt sich hierbei zusammen aus Baudrate und in unserem Fall Message-Länge:\newline
+$\text{Baudrate}/ \text{Message-Länge} = \text {Nachrichtenfrequenz} $\newline
+Da in unserem Fall jedoch String-Zeichen und keine einzelnen Bits übertragen werden ergibt sich folgende Frequenz für 
+die Nachrichten vom XMC zum Raspberry Pi (Werte der Touch-Platte):\newline
+$ 19200/[(10*8)+(10*2)]= 192 \text {Nachrichten pro Sekunde}$\newline
+Selbiges ergibt sich für die Nachrichten vom Raspberry Pi zum XMC (Servowerte). Sollte jedoch die Message-ID für die Kommunikation 
+von XMC zu Raspberry Pi aktiviert sein ergibt sich durch die geänderte Frame-Länge folgende Rechnung:\newline
+$19200 /[(13*8)+(10*2)]=154,8\text {Nachrichten pro Sekunde}$ \newline
+Sollte die UART-Verbindung, wie in den beiden Fällen angenommen, vollständig ausgelastet sein, reicht die Verbindung aus um die 
+Kommunikation konsistent und vorallem schnell genug zu gewährleisten um eine Regelung zu ermöglichen. Dies liegt daran, dass die 
+Servomotoren lediglich in einem 50 Hz Takt arbeiten und die Verbindung somit deutlich schneller arbeitet
+
 
 \subsubsection{Probleme}
 Die größten Probleme beim UART war die Dave4 Dokumentation des XMCs. Online findet man ein sehr detailiertes Handbuch zum 
@@ -402,7 +517,7 @@ XMC4500, jedoch nahezu keine Dokumentation wie die enthaltenen Dave4 Apps funkti
 Help Manuals, was das Ganze noch erschwert. Die Lösung dieses Problems war, die Help Manuals auf Dave4 manuell 
 nachzuinstallieren. In diesem git es sehr viele nützliche Informationen wie UART eigentlich mittels der App funktioniert und welche Bedeutung die Funktionen genau haben.
 
-\subsubsection{Ausbick}
+\subsubsection{Ausblick}
 Folgende Punkte waren aufgrund von Zeitmangel nicht mehr funktionsfähig zu implementieren.
 Der CRC-Check ist momentan aus zeitlichen Gründen in nur eine Richtung implementiert. Es ist zwar nicht wegen des Kalman-Filters nicht unbedingt nötig,aber
  es wäre trozdem nicht schlecht in Richtung vom XMC zum PI einen CRC-Check zu haben. 
@@ -599,7 +714,7 @@ Sollte dies keine Besserung bringen gibt es auch noch andere empirische Verfahre
 % ----------------------------------------------------------------------------------
 \subsection{PWM-Signale}
 \textit{Von Michael Braun und Michael Schmidt}\newline
-\subsubsection{ Algemeines}
+\subsubsection{ Allgemeines}
 Die Ansteuerung der Servomotoren erfolgt über ein 50 Hz PWM-Signal, welches mittels der Funktion 
 "`PWM\_SetDutyCycle"\, auf die jeweils aktuellen Werte geändert wird. Diese Funktion wandelt automatisch 
 die Werte die im Promillebereich, im Format $0-10000$, angegeben werden, in die richtige Länge des 
@@ -667,10 +782,10 @@ bringen.
 	\centering
 	\includegraphics[scale = 0.8]{pics/neuedreiecksverbindung}
 	\caption{Aufbau einer alternativen Dreiecksverbindung mit größerem Wirkungsradius}
-	\label{dreieckneu}
+	\label{fig:dreieckneu}
 \end{figure}
 Dieses Problem könnte dabei in Zukunft mittels einer neuen Dreiecksverbindung gelöst werden, die auch niedrigere 
-Auslenkungen erlaubt \ref {dreieckneu}. Leider kamen wir aufgrund von Zeitdruck nicht mehr dazu diese neue Verbindung zu drucken. 
+Auslenkungen erlaubt \ref {fig:dreieckneu}. Leider kamen wir aufgrund von Zeitdruck nicht mehr dazu diese neue Verbindung zu drucken. 
 Allerdings wäre auch noch die Befestigung an der Platte ein Problem, da die alte Verbindung bereits mittels Silikon befestigt und 
 eine Beschädigung beim Ablösen dieser zu befürchten war. Glücklicherweise hat der Regler solche extremen Ausschläge auch gar nicht zu 
 handhaben, da die Regelung für unsere Zwecke ausreichend Spielraum zum balancieren hat.
@@ -701,6 +816,20 @@ niemals beide gleichzeitig.
 % ----------------------------------------------------------------------------------
 \subsection{UDP-Socket}
 \textit{Von Patrick Lesch}\newline
+Zum externen Empfang von Steuersignalen wurde auf dem Raspberry Pi ein UDP-Socket implementiert welcher auf eingehende Daten auf
+Port 1337 wartet. Dieser Port wurde festgelegt um den Kommunikationsaufbau zu vereinfachen und Störquellen zu minimieren. Durch 
+einen festgelegten Port wird sichergestellt, dass keine ungewollten Nachrichten auf eventuell bereits belegten Ports eingehen und die 
+Kommunikation erschweren. Zur Verbindung wird vorausgesetzt, dass sich die Geräte im selben Netzwerk befinden und dieses die Kommunikation
+zwischen den Geräten zulässt. Im Gegensatz zu anderen Protokollen erfüllt UDP am besten die Echtzeitanforderungen des Projekts da stets
+die aktuellsten Daten gesendet werden. 
+
+Zusätzlich zur iOS-Applikation können durch den UDP-Socket auch andere Geräte mit dem Raspberry Pi kommunizieren. Die Funktionalität kann so
+beliebig erweitert werden. Während der Recherche zu sinnvollen Echtzeitübertragungen wurde unter anderem in Erwägung gezogen die Kommunikation
+über Bluetooth statt Wlan stattfinden zu lassen. Dies hätte zwar potentiell geringere Latenzen aber auch einen begrenzten Raum zur Steuerung gebracht.
+Dank der Kommunikation über das Netzwerk kann die Platte auch aus weiter Entfernung bedient werden ohne, dass merkliche Verzögerungen eintreten. 
+Eine weitere Überlegung stellten andere Protokolle wie Beispielsweise TCP dar. Diese waren für das Projekt aufgrund eines potentiellen Kommunikationsstaus 
+ungeeignet, da die App dann auf eine Bestätigung des Raspberry Pi warten müsste. Somit wäre nicht gewährleistet, dass stets die aktuellsten Daten
+empfangen werden. Ein eigener Hotspot wurde aus Gründen der Bürokratie als Idee verworfen, da die Hochschule diesen erst speziell genehmigen müsste.
 
 % ----------------------------------------------------------------------------------
 % Kapitel 2.10: IOS-Appliaktion
@@ -708,6 +837,44 @@ niemals beide gleichzeitig.
 \subsection{iOS-Applikation}
 \textit{Von Patrick Lesch}\newline
 
+\subsubsection{Allgemeines}
+Eine der Anforderungen an das Projekt war, dass die Platte manuell steuerbar sein sollte. Dazu wurde eine Applikation für 
+iOS-Geräte entwickelt. Ziel der Applikation ist es die Neigung des mobilen Endgerätes an den Raspberry Pi zu übertragen. 
+Dieser übersetzt die übermittelten Werte in Neigungswinkel mit deren Hilfe der XMC die Motoren ansteuert welche die Platte 
+in eine Lage versetzen welche die Lage des iOS-Gerätes spiegelt.
+
+Um eine möglichst einfache und Geräteübergreifende Installation auf verschiedenen Geräten zu gewährleisten wurde erwogen die App 
+als Webapp zu implementieren. Dieser Ansatz wurde aufgrund von in iOS 13 von Apple eingeführten Policies verworfen. Die Abfrage zur Genehmigung
+des Auslesens des Gyroskops muss für verschiedene iOS Versionen aktuell unterschiedlich implementiert werden. Das hätte einen für das Projekt
+unverhältnismäßigen Mehraufwand bedeutet der den zeitlichen Rahmen des Projekts gesprengt hätte. 
+
+Ein weiteres Gegenargument stellte zudem die durch den Browser festgelegte Orientierung der Seite dar. 
+Wird das Gerät gedreht während die Orientierung des Gerätes entsperrt ist dreht sich dieser entsprechend mit. 
+Dies würde bei jedem Kippen des Gerätes den Browser drehen was wiederum die zu übertragenden X- und Y-Winkel des Gerätes drehen würde. 
+Durch eine native Implementierung als iOS-App kann gewährleistet werden, dass die Orientierung der App immer festgesetzt ist und die Daten 
+unabhängig von Systemweit aktivierter Orientierungssperre gleich bleibt.
+
+\subsubsection{Views}
+Die Applikation verfügt im wesentlichen über zwei Views. Der erste View der nach dem Splash-Screen gestartet wird ist der QR-Scanner. 
+Wird ein QR-Code erfolgreich gescannt wird zum eigentlichen Steuerungs-View gewechselt welcher die Winkel der X- und Y-Achse, sowie 
+die IP die mittels QR-Code eingelesen wurde anzeigt.
+
+\subsubsection{Implementierung}
+Umgesetzt wurde die App zum großteil in nativem Swift-Code. Für den Aufbau der UDP-Verbindung und dem einrichten des sendenden Sockets
+werden Apples C Libraries verwendet. Als Verbindungsart zwischen iOS-App und Raspberry Pi wurde UDP gewählt um eine Echtzeitübertragung zu garantieren. 
+Da die App dank UDP kein Acknowldge des Raspberry Pi erwartet gibt es weder Verzögerung noch einen Datenrückstau. Gegebenenfalls bei
+der Übertragung verlorengegangene Daten wurden in Kauf genommen um stets möglichst aktuelle Werte an die Platte zu liefern. 
+
+Da der Raspberry Pi, wie in Kapitel 2.9 erwähnt, auf Port 1337 lauscht sendet die App nur auf diesem ihre X- und Y-Winkel. Die Winkel werden 
+von der iOS-Schnittstelle die das Gyroskop des Gerätes ausliest in Radiant angegeben. Vor der Übertragung werden diese aufbereitet indem
+sie in Grad umgerechnet und auf 3 Nachkommastellen gerundet werden. Zusätzlich werden diese Werte mit einem Faktor von 0.5 multipliziert, da sich
+gezeigt hat, dass die Bewegung der Platte die notwendig ist um die Kugel zu bewegen kleiner ist als die Neigung die ein Nutzer sinnvoll steuern kann. 
+Ohne diese Ergänzende Anpassung reichten bereits minimale Bewegungen um die Platte stark zu bewegen was ein Kontrollieren der Kugel schwierig machte.
+
+Die aufbereiteten Winkel werden zur Übertragung an die Sende-Funktion als String in dem Format 
+"`X\_ACHSEN\_WINKEL;Y\_ACHSEN\_WINKEL;"\ übergeben welche diesen über den festgelegten Port an die gescannte IP überträgt.
+Auf dem Raspberry Pi kann anhand der Semikola zwischen den einzelnen Winkeln einer Nachricht unterschieden werden. 
+Das Aktualisierungsintervall des Gyroscops wurde aufgrund guter Ergebnisse auf 60 Hz festgelegt. 
 
 % ----------------------------------------------------------------------------------
 % Kapitel 2.11: Zusammenführung
@@ -716,7 +883,9 @@ niemals beide gleichzeitig.
 Diverse Probleme gab es beim Merge-Vorgang auf Gitlab mit den durch Dave4 automatisch erstellten Files. 
 Diese erfassen die konfigurierten Einstellungen der XMC APPs und überführen diese in ausführbaren Code. 
 Dieses Problem wurde dadurch gelöst, dass man die Einstellungen auf einem Branch durchgeführt hat und 
-lediglich die selbstgeschriebenen Code-Files zusammengeführt hat.
+lediglich die selbstgeschriebenen Code-Files zusammengeführt hat. Im Bereich der App gestaltete sich das 
+Zusammenführen der Komponenten dank guter Zusammenarbeit denkbar einfach und es traten an dieser Stelle 
+keine unvorhergesehenen Fehler auf.
 
 \pagebreak
 % ----------------------------------------------------------------------------------
@@ -726,14 +895,23 @@ lediglich die selbstgeschriebenen Code-Files zusammengeführt hat.
 \subsection{Starten des Prototyps}
 %TODO ALLE!
 Schritt 1:
+Einloggen mit Benutzername "`pi"\ und Passwort "`raspberry"\
 \newline
+Schritt 2: Aufrufen des QR-Codes mit Hilfe des folgenden Kommandos: 
+\newline(die inneren \"\, gehören zum Befehl)
+\newline\newline
+"`raspberry"\ "`hostname -I | awk '{print \$1}' | qr \&\& hostname -I | awk '{print \$1}' | xargs echo "`BalancingPlate IP: \$1"\,"\,
+\newline\newline
+    (Ein QR Code sowie der Text "`BalancingPlate IP: $<$RaspberryPi-IP$>$"\,) sollte ausgegeben werden.)
+\newline
+Schritt 3:
+%TODO Korbinian
 
-\subsection{Flashen des Custom-Kernels}
+\subsection{Flashen des Custom-Kernels und allgemeine Einrichtung}
 %TODO Patrick Lesch
-Ohh nein. Wir haben den Raspberry getötet. Was sollen wir tun?!
-(Alle Kommandos sind im folgenden zwischen doppelten Anführungsstrichen: "`command"\,)
+Alle Kommandos sind im folgenden zwischen doppelten Anführungsstrichen: "`command"\,
 
-1. Raspbian Buster Lite herunterladen. (Wer braucht schon eine grafische Oberfläche)
+1. Raspbian Buster Lite herunterladen.
    https://www.raspberrypi.org/downloads/raspbian/
 \newline
 
@@ -781,6 +959,7 @@ Ohh nein. Wir haben den Raspberry getötet. Was sollen wir tun?!
 4.4.4 Prüfen ob der Kernel funktioniert: "`uname -r" \,sollte "`4.19.59-rt23-v7l+"\, ausgeben. 
       (Die Version die man kompiliert hat)\newline
 \newline
+
 5. UART einschalten:\newline
 5.1 Config.txt mit nano öffnen: "`sudo nano config.txt"\,\newline
 5.2 An das Ende folgendes einfügen: "`enable\_uart=1"\,\newline
@@ -796,17 +975,21 @@ Ohh nein. Wir haben den Raspberry getötet. Was sollen wir tun?!
 7.2 "`sudo apt install pip"\,\newline
 7.3 QR installieren: "`pip install qrcode[pil]"\,
     (https://github.com/lincolnloop/python-qrcode)\newline
-\newline
-8. Befehle zur Bedienung:\newline
-8.1 Befehl um QR der eigenen IP zu generieren (die inneren \"\, gehören zum Befehl):
-    "`hostname -I | awk '{print \$1}' | qr \&\& hostname -I | awk '{print \$1}' | xargs echo "`BalancingPlate IP: \$1"\,"\,
-    (Ein QR Code sowie der Text "`BalancingPlate IP: $<$RaspberryPi-IP$>$"\,) sollte ausgegeben werden.)
-\newline
-9. Ab hier dann Korbi?
+7.4. WiringPI: "`sudo apt install wiringpi"\ \newline
+7.5. "`sudo apt install cmake"\ \newline
+
+8. Starten des Programmes \newline
+8.1 Navigieren in das Verzeichnis in dem CMakeList.txt liegt \newline
+8.2 "`cmake ."\ \newline
+8.3 "`make"\ \newline
+8.4 danach sollte eine Executable in /bin liegen 
 
 
 \subsection{Bekannte Probleme}
 %TODO ALLE!
+\begin{itemize}
+    \item Wurde mittels QR-Code eine falsche IP gescannt muss die App neu gestartet werden\,
+\end {itemize}
 
 
 \pagebreak
@@ -814,128 +997,15 @@ Ohh nein. Wir haben den Raspberry getötet. Was sollen wir tun?!
 % Kapitel 4: Fazit/Zusammenfassung
 % ----------------------------------------------------------------------------------
 \section{Fazit}
-
-% ----------------------------------------------------------------------------------
-% Kleine Einführung in LaTeX-Elemente
-% ----------------------------------------------------------------------------------
-%\section{\LaTeX-Elemente}
-%Dieser Abschnitt beinhaltet lediglich einige Informationen über \LaTeX-Distributionen, Editoren und \LaTeX-Elemente, die Ihnen beim Einstieg in das \LaTeX-Textsatzsystem helfen sollen.
-
-%\subsection{\LaTeX-Distributionen nach Betriebssystemen}
-
-%\subsubsection{\LaTeX-Distributionen}
-%Folgende Haupt-\LaTeX-Distributionen stehen Ihnen zur Verfügung:
-%\begin{itemize}
-%  \item Windows:\quad \texttt{MiKTeX}\quad Webseite:\quad\url{http://www.miktex.org}
-%  \item Linux/Unix:\quad \texttt{TeX Live}\quad Webseite:\quad\url{http://tug.org/texlive/}
-%  \item Mac OS:\quad \texttt{MacTeX}\quad Webseite:\quad\url{http://www.tug.org/mactex/}
-%\end{itemize}
-
-%\subsubsection{\LaTeX-Editoren}
-%Auf folgenden Webseiten können Sie einige hilfreiche \LaTeX-Editoren finden:
-%\begin{itemize}
-%  \item Windows/Linux/Mac OS: \url{http://www.xm1math.net/texmaker/}
-%  \item Windiws: \url{http://www.texniccenter.org/}
-%  \item Mac OS: \url{http://pages.uoregon.edu/koch/texshop/}
-%\end{itemize}
-
-%Falls bei den oben genannten Editoren kein passender vorhanden war, findet sich auf Wikipedia eine Zusammenstellung vieler weiterer \LaTeX-Editoren:\\
-%\url{https://en.wikipedia.org/wiki/Comparison_of_TeX_editors}
-
-%Für die PDF-Anzeige empfiehlt sich SumatraPDF: \\ 
-%\url{https://www.sumatrapdfreader.org/free-pdf-reader.html}.
-
-
-%\subsection{Bilder}
-%Zum Einfügen eines Bildes, siehe Abbildung \ref{fig:reversi01}, werden die \texttt{minipage}-Umgebung und der Befehl \texttt{$\backslash$includegraphics} genutzt, da die Bilder so gut positioniert und einfach integriert und skaliert werden können.
-
-%\vspace{1em}
-%\begin{minipage}{\linewidth}
-%	\centering
-%	\includegraphics[width=0.5\linewidth]{pics/gamefield01.png}
-%	\captionof{figure}[Spielfeld 01]{Unbespieltes Spielfeld}
-%	\label{fig:reversi01}
-%\end{minipage}
-
-
-%Nachdem das Spielt gestartet wurde und beide Spielphasen durchlaufen wurden, siegt schließlich der Spieler mit der Farbe rot.
-
-%\vspace{1em}
-%\begin{minipage}{\linewidth}
-%	\centering
-%	\includegraphics[width=0.5\linewidth]{pics/gamefield02.png}
-%	\captionof{figure}[Spielfeld 02]{Finales Spielfeld}
-%	\label{fig:reversi2}
-%\end{minipage}
-
-
-%\subsection{Tabellen}
-%In diesem Abschnitt wird eine Tabelle (siehe Tabelle \ref{tab:beispiel}) dargestellt.
-
-%\vspace{1em}
-%\begin{table}[!h]
-%	\centering
-%	\begin{tabular}{|l|l|l|}
-%		\hline
-%		\textbf{Name} & \textbf{Name} & \textbf{Name}\\
-%		\hline
-%		1 & 2 & 3\\
-%		\hline
-%		4 & 5 & 6\\
-%		\hline
-%		7 & 8 & 9\\
-%		\hline
-%	\end{tabular}
-%	\caption{Beispieltabelle}
-%	\label{tab:beispiel}
-%\end{table}
-
-
-%\subsection{Auflistung}
-%Für Auflistungen wird die \texttt{enumerate}- oder \texttt{itemize}-Umgebung genutzt.
-
-%\begin{itemize}
-%	\item Nur
-%	\item ein
-%	\item Beispiel.
-%\end{itemize}
-
-%\subsection{Listings}
-%Sehen Sie in Listing \ref{lst:helloworld} ein Beispiel für das Einbinden von Quellcode mit Syntax-Highlighting.
-
-%\vspace{1em}
-%\lstinputlisting[caption=Brute Force-Ansatz für das MaxTeilsum2D-Problem, label=lst:maxTeilsumZweiD,basicstyle=\ttfamily\scriptsize]{code/maxTeilsum2DBruteForce.txt}
-%\lstinputlisting[caption=Hello World Program, label=lst:helloworld,basicstyle=\ttfamily\scriptsize]{code/helloworld.c}
-
-%\subsection{Gleichungen}
-%Formatierung von Formeln:
-%\begin{itemize}
-%  \item Formelzeichen sind in kursiv zu setzen
-%  \item Zahlen, Einheiten und Funktionsnamen sind in normaler Schriftart zu setzen (nicht kursiv)
-%  \item Häufig wird fälschlicherweise das Symbol * als Multiplikationszeichen verwendet
-%  \item Zwischen Zahl und Einheit ist ein Leerzeichen zu setzen
-%\end{itemize}
-
-%Frequency Modulation (FM) is a wireless transmission system patent-registered by Edwin H. Armstrong in 1933. It is still widespread in the area of audio broadcasting today. In case of the frequency modulation the amplitude of the desired message signal varies the frequency (the argument) of the sinusoidal carrier. The general FM oscillation is formulated with 
-%\begin{equation}
-%u_{\textrm{FM}}(t)= a_0 \cos(\Psi(t)+\varphi_0) 
-%\label{eqn:fmosc}
-%\end{equation}
-
-%To simplify matters, only an one-tone modulation signal is considered to characterize the spectrum of FM-signals at first
-%\begin{multline}
-%u_{\textrm{FM}}(t)=\hat u_T \cdot [J_0(\eta)\cos\omega_Tt + \sum_{n=1}^{+\infty} J_n(\eta) \cdot (\cos[(\omega_T+n\omega_1)t]+(-1)^n \cos[(\omega_T-n\omega_1)t])] 
-%\\ \ \mbox{with Bessel functions:} \ J_n(\eta)= \frac{(-1)^n}{\pi} \int_0^{\pi} e^{j\eta\sin x} \cdot \cos(nx) dx 
-%\end{multline}
-
-%\subsection{Verwendung von Abkürzungen}
-%Die Abkürzungen können so verwendet werden:
-%Beim ersten Mal der Verwendung (vgl. Einleitung) wird die Abkürzung ausgeschrieben \ac{BA}. Beim zweiten Mal oder folgenden Malen wird nur noch die Abkürzung verwendet \ac{BA}.
-%Aber setzen Sie Abkürzungen sparsam ein.
-
-%\subsection{Tipps}
-%Die Quellen befinden sich in der Datei \textit{quellen.bib}. 
-%Alle Literaturangaben müssen im Text referenziert werden. Die höchstwertigen Quellen stellen dabei Zeitschriftenartikel \cite{Laprie2004}, gefolgt von Konferenzbeiträgen \cite{Agrou2011}, Patenten \cite{Grisenthwaite2012}, Standards \cite{ARINC2005}, Fachbüchern \cite{Kopetz2011},  Datenblättern \cite{Freescale2015}, Techreports und White-Papern \cite{Aswadhati2011} und zuletzt Onlinequellen \cite{Xil2010} dar.
+Das Projekt wurde fristgemäß mit allen daran festgelegten Anforderungen abgeschlossen. Es befindet sich in einem 
+funktionsfähigen und erweiterbarem Zustand. Dennoch besteht weiteres Verbesserungspotential. So könnte etwa die 
+derzeit noch langsame und etwas ruckelige Regelung optimiert werden. Des weiteren könnten weitere Funktionen eingebaut werden. 
+Wünschenswert wäre hier etwa die graphische Ausgabe der aktuellen Kugelposition in der iOS-App oder das festlegen eines Punktes auf
+dem iOS-Geräte Display welches die Kugel analog auf die entsprechende Position der Platte bringt. Dadurch könnten auch noch gewisse 
+Formen nachgefahren werden (z.B. ein Unendlichkeitszeichen).
+\newline
+Insgesamt kann das Projekt dennoch als Erfolg betrachtet werden, da ein funktionsfähiger Prototyp mit kleineren Fehlern geschaffen wurde, 
+der ein großes Erweiterungspotential besitzt und außerdem für Vorführungen zur verfügung steht.
 
 \pagebreak
 
@@ -954,29 +1024,8 @@ Ohh nein. Wir haben den Raspberry getötet. Was sollen wir tun?!
 \addcontentsline{toc}{section}{Anhang}
 \addtocontents{toc}{\vspace{-0.5em}}
 
-%\section{Domändenmodell}
-%Ein toller Anhang.
-
-
-%\subsection*{Screenshot}
-%\label{app:screenshot}
-%Unterkategorie, die nicht im Inhaltsverzeichnis auftaucht.
-%\pagebreak
 
 \end{appendix}
-
-
-% ----------------------------------------------------------------------------------------------------------
-% Abkürzungsverzeichnis
-% ----------------------------------------------------------------------------------------------------------
-\section{Abkürzungsverzeichnis}
-\begin{acronym}[KDE]
-	\acro{BA}[BA]{Bachelorarbeit}
-	\acro{MA}[MA]{Masterarbeit}
-
-\end{acronym}
-\pagebreak
-
 
 % ----------------------------------------------------------------------------------------------------------
 % Abbildungsverzeichnis (optional)
@@ -1002,7 +1051,7 @@ Ohh nein. Wir haben den Raspberry getötet. Was sollen wir tun?!
 \bibliography{quellen}
 \pagebreak
 
-\section {Bestelliste}
+\section {Bestellliste}
 %\begin{tabularx}{\textwidth}{p{0.25\textwidth}|l|l|l|l|l|X|}
 %\hline
 % Produktname					& Produkt Nr.			& Kosten				& Stück  &Gesamtkosten &Link \\
@@ -1030,8 +1079,30 @@ Ohh nein. Wir haben den Raspberry getötet. Was sollen wir tun?!
 	\centering
 	\includegraphics[scale = 0.8]{pics/Bestelliste}
 	\caption{Bestellliste und Kosten des Projektes}
-	\label{bestell}
+	\label{fig:bestell}
 \end{figure}
+\pagebreak
 
+\section {Stundenliste}
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ Name					& Gesamt &Aufgabe 1	&Aufgabe 2	&Aufgabe 3 \\
+ \hline
+ Michael Braun			&125			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
+ \hline
+ Korbinian Federholzner	&128			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
+ \hline
+ Philipp Kramer			&123			&Touch-Folie 63			&Testing 19		&Reglerentwicklung 41			\\
+ \hline
+ Patrick Lesch			&125			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
+ \hline
+ Michael Schmidt		&122			&UART 62			& Phys. Bau 40			&PWM-Signale 20			\\
+  \hline
+\end{tabular}
+\label{tab:stundenliste}
+\end{table}
 
 \end{document}
