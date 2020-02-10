@@ -969,8 +969,7 @@ Sollte die SD-Card des Raspberry Pi abhanden kommen oder zerstört werden, läss
 Alle Kommandos sind im folgenden zwischen doppelten Anführungsstrichen: "`command"\,
 
 1. Raspbian Buster Lite herunterladen.
-   https://www.raspberrypi.org/downloads/
-   raspbian/
+   https://www.raspberrypi.org/downloads/raspbian/
 \newline
 
 2. Auf die SD-Karte flashen (z.B. mit BalenaEtcher unter Windows)\newline
@@ -1145,7 +1144,7 @@ der ein großes Erweiterungspotential besitzt und außerdem für Vorführungen z
 
 \section {Stundenliste}
 
-\begin{tabularx}{\textwidth}{|c|c|X|X|X|}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|}
 \hline
 \label{tab:stundenliste}
 \centering
@@ -1153,7 +1152,7 @@ der ein großes Erweiterungspotential besitzt und außerdem für Vorführungen z
  \hline
  Michael Braun			&125			&Phys. Aufbau 35			&PWM-Signale 20			&Reglerentwick-lung 70			\\
  \hline
- Korbinian Federholzner	&128			&UART 60			&Touch-Folie 40			&Threading 28			\\
+ Korbinian Federholzner	&128			&lirem ipso lorem			&lirem ipso lorem			&lirem ipso lorem			\\
  \hline
  Philipp Kramer			&123			&Touch-Folie 63			&Testing 19		&Reglerentwick-lung 41			\\
  \hline
